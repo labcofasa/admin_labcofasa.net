@@ -364,16 +364,18 @@ class EmpresaController extends Controller
 
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
-                $nombreImagen = $empresa->id . '_' . time() . '_' . $imagen->getClientOriginalName();
-                $imagen->move(public_path('images/empresas'), $nombreImagen);
-
-                if ($empresa->imagen) {
-                    unlink(public_path('images/empresas/' . $empresa->imagen));
+                $nombreImagen = $imagen->getClientOriginalName();
+        
+                if ($empresa->imagen && file_exists(public_path('images/empresas/' . $empresa->id . '/' . $empresa->imagen))) {
+                    unlink(public_path('images/empresas/' . $empresa->id . '/' . $empresa->imagen));
                 }
-
+        
+                $imagen->move(public_path('images/empresas/' . $empresa->id), $nombreImagen);
                 $empresa->imagen = $nombreImagen;
+            } else {
+                $empresa->imagen = null;
             }
-
+        
             $empresa->save();
 
             $redesSociales = $empresa->redesSociales;
