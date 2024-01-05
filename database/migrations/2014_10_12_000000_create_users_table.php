@@ -17,9 +17,9 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('nombre_tabla')->nullable();
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable();
             $table->unsignedBigInteger('user_modified_id')->nullable();
             $table->softDeletes();
             $table->unsignedBigInteger('user_deleted_id')->nullable();

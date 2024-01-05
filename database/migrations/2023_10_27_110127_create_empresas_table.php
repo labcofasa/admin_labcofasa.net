@@ -35,10 +35,10 @@ return new class extends Migration {
             $table->unsignedBigInteger('departamento_id');
             $table->unsignedBigInteger('municipio_id');
 
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('user_id');
 
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable();
             $table->unsignedBigInteger('user_modified_id')->nullable();
 
             $table->softDeletes();
