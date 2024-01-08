@@ -9,7 +9,7 @@ class AjustesController extends Controller
 {
     public function index()
     {
-        $usuario = User::with('perfil', 'pais')->find(auth()->id());
+        $usuario = User::with('perfil')->find(auth()->id());
 
         return view('ajustes', compact('usuario'));
     }

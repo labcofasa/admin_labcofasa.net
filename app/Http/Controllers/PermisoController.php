@@ -13,7 +13,7 @@ class PermisoController extends Controller
 {
     public function index()
     {
-        $usuario = User::with('perfil', 'pais')->find(auth()->id());
+        $usuario = User::with('perfil')->find(auth()->id());
 
         return view('permisos', compact('usuario'));
     }
