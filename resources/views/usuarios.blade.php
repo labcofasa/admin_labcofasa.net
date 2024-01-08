@@ -4,7 +4,7 @@
 
 @section('contenido')
     <div class="container-fluid main-container py-3">
-        <div class="row g-3 pb-3">
+        {{-- <div class="row g-3 pb-3">
             <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-4">
                 <div class="card h-100">
                     <div class="card-body rounded-3">
@@ -34,7 +34,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+        <x-usuarios.contadores :usuarios="$usuarios" :regitrosMes="$regitrosMes" />
 
         <h1 class="pb-3">@yield('titulo')</h1>
 

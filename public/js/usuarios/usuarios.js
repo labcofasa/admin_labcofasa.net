@@ -5,8 +5,6 @@ $(document).ready(function () {
 
     tablaUsuarios();
 
-    estadisticaUsuario();
-
     function tablaUsuarios() {
         if (tabla_usuarios) {
             tabla_usuarios.destroy();
@@ -313,7 +311,6 @@ $(document).ready(function () {
             },
             success: function (response) {
                 tabla_usuarios.ajax.reload();
-                estadisticaUsuario();
 
                 if (response.success) {
                     mostrarToast(response.message, "success");
@@ -511,7 +508,6 @@ $(document).ready(function () {
             },
             success: function (response) {
                 tabla_usuarios.ajax.reload();
-                estadisticaUsuario();
 
                 if (response.success) {
                     mostrarToast(response.message, "success");
@@ -562,7 +558,6 @@ $(document).ready(function () {
             },
             success: function (response) {
                 tabla_usuarios.ajax.reload();
-                estadisticaUsuario();
 
                 $("#eliminarUsuario").modal("hide");
 
@@ -662,27 +657,5 @@ function cargarEmpresas(
     $(empresaSelectId).on("change", function () {
         var selectEmpresaId = $(this).val();
         $(idEmpresaInputId).val(selectEmpresaId);
-    });
-}
-
-// Cargar estadisticas
-function estadisticaUsuario() {
-    $.ajax({
-        url: "/obtener-estadisticas-usuarios",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            $("#usuarioMes").text(data.usuariosUltimoMes);
-            $("#actualizacionMes").text(data.ultimaActualizacion);
-            $("#totalUsuarios").text(data.totalUsuarios);
-            $("#totalUsuarioActualizacion").text(
-                data.totalUsuarioActualizacion
-            );
-        },
-        error: function (error) {
-            console.log(
-                "Error al obtener las estadísticas de usuarios: " + error
-            );
-        },
     });
 }

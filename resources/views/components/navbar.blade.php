@@ -165,7 +165,7 @@
 
         <div class="d-flex align-items-center">
 
-            <button class="navbar-toggler position-relative" type="button" data-bs-toggle="offcanvas"
+            {{-- <button class="navbar-toggler position-relative" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
                     <span class="visually-hidden">New alerts</span>
@@ -234,7 +234,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="flex-shrink-0 dropdown perfil-usuario me-1">
                 <a href="#" id="dropdown-perfil"

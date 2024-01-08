@@ -1829,3 +1829,46 @@ body.dark .switch2::before {
 .text-primary-500 {
     color: rgba(0, 77, 255, 1);
 }
+
+/* Cartas */
+.card-counter {
+    margin: 5px;
+    padding: 15px 10px;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 5px;
+    transition: 0.3s linear all;
+}
+
+.card-counter.primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.card-counter.danger {
+    background-color: #ef5350;
+    color: #fff;
+}
+
+.card-counter.success {
+    background-color: #66bb6a;
+    color: #fff;
+}
+
+.card-counter.info {
+    background-color: #26c6da;
+    color: #fff;
+}
+
+.card-counter .count-numbers {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.card-counter .counter-icono {
+    opacity: 0.2;
+    fill: #ffffff;
+    height: 75px;
+    width: 75px;
+}
