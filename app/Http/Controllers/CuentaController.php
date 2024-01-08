@@ -12,7 +12,9 @@ class CuentaController extends Controller
 {
     public function index()
     {
-        return view('auth.cuenta');
+        $usuario = User::with('perfil', 'pais', 'departamento', 'municipio')->find(auth()->id());
+
+        return view('auth.cuenta', compact('usuario'));
     }
 
     public function obtenerUsuario()

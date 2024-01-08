@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Perfil;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -12,22 +11,12 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        return view('usuarios');
+        $usuario = User::with('perfil', 'pais')->find(auth()->id());
+        $regitrosMes = User::where('created_at', '>=', now()->subMonth())->count();
+        $usuarios = User::count();
+
+        return view('usuarios', compact('usuario', 'regitrosMes', 'usuarios'));
     }
-    public function obtenerEstadisticasUsuarios()
-    {
-        $usuariosUltimoMes = User::where('created_at', '>=', now()->subMonth())->count();
-
-        $totalUsuarios = User::count();
-
-        return response()->json([
-            'usuariosUltimoMes' => $usuariosUltimoMes,
-            'totalUsuarios' => $totalUsuarios,
-            'ultimaActualizacion' => now()->toDateTimeString(),
-            'totalUsuarioActualizacion' => now()->toDateTimeString(),
-        ]);
-    }
-
     public function tablaUsuarios(Request $request)
     {
         $draw = $request->input('draw');
@@ -232,15 +221,14 @@ class UsuarioController extends Controller
 
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
-                $nombreImagen = $usuarioId . '_' . time() . '_' . $imagen->getClientOriginalName();
-                $imagen->move(public_path('images/usuarios'), $nombreImagen);
-
-                $perfil->imagen = $nombreImagen;
+                $perfil->imagen = $imagen->getClientOriginalName();
             } else {
                 $perfil->imagen = null;
             }
 
             $perfil->save();
+
+            $imagen->move(public_path('images/usuarios/' . $perfil->id), $imagen->getClientOriginalName());
 
             $rolId = $request->input('rol');
             $role = Role::findById($rolId);
@@ -318,14 +306,16 @@ class UsuarioController extends Controller
 
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
-                $nombreImagen = $usuarioId . '_' . time() . $imagen->getClientOriginalName();
-                $imagen->move(public_path('images/usuarios'), $nombreImagen);
+                $nombreImagen = $imagen->getClientOriginalName();
 
-                if ($perfil->imagen) {
-                    unlink(public_path('images/usuarios/' . $perfil->imagen));
+                if ($perfil->imagen && file_exists(public_path('images/usuarios/' . $perfil->id . '/' . $perfil->imagen))) {
+                    unlink(public_path('images/usuarios/' . $perfil->id . '/' . $perfil->imagen));
                 }
 
+                $imagen->move(public_path('images/usuarios/' . $perfil->id), $nombreImagen);
                 $perfil->imagen = $nombreImagen;
+            } else {
+                $perfil->imagen = null;
             }
 
             $perfil->save();

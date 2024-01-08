@@ -22,7 +22,7 @@
 
 <body>
     <header>
-        <x-navbar />
+        <x-navbar :usuario="$usuario" />
         <x-sidebar-desktop />
     </header>
 
@@ -33,7 +33,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/usuarios/perfil.js') }}"></script>
 </body>
 
 </html>

@@ -10,21 +10,17 @@
                     <div class="card-body">
                         <div class="text-center">
                             <div class="py-3" id="foto">
-                                {{-- <label class="d-flex">
-                                    <svg data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
-                                        data-bs-placement="top" data-bs-title="Editar foto de perfil"
-                                        class="icon-warning image-edit rounded-circle" xmlns="http://www.w3.org/2000/svg"
-                                        height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
-                                        <path
-                                            d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.20-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
-                                    </svg>
-                                    <input type="file" accept=".jpg, .jpeg, .png, .gif, .webp" name="imagen" id="nueva-imagen-perfil" class="d-none">
-                                </label> --}}
-                                <img id="imagen-perfil" class="rounded-circle">
+                                @if ($usuario->perfil->imagen)
+                                    <img class="imagen-perfil rounded-circle"
+                                        src="{{ asset('images/usuarios/' . $usuario->perfil->id . '/' . $usuario->perfil->imagen) }}"
+                                        alt="Foto de perfil">
+                                @else
+                                    <img class="imagen-perfil rounded-circle" src="{{ asset('images/defecto.png') }}"
+                                        alt="">
+                                @endif
                             </div>
 
-                            <h2>{{ auth()->user()->name }}</h2>
+                            <h2>{{ $usuario->name }}</h2>
                             <span class="small text-secondary fw-semibold">
                                 {{ auth()->user()->getRoleNames()->implode(', ') }}</span>
                         </div>
@@ -77,8 +73,8 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="name" class="text-card">Nombre de usuario</label>
-                                    <input id="name" disabled readonly autocomplete="off" type="text"
-                                        class="form-control">
+                                    <input id="name" value="{{ $usuario->name }}" disabled readonly autocomplete="off"
+                                        type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -87,70 +83,68 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="nombre" class="text-card">Nombres</label>
-                                    <input disabled readonly id="nombre" type="text" aria-label="Nombres"
-                                        class="form-control">
+                                    <input disabled readonly id="nombre" value="{{ $usuario->perfil->nombre }}"
+                                        type="text" aria-label="Nombres" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="email" class="text-card">Apellidos</label>
-                                    <input disabled readonly id="apellido" type="text" aria-label="Apellidos"
-                                        class="form-control">
+                                    <input disabled readonly id="apellido" value="{{ $usuario->perfil->apellido }}"
+                                        type="text" aria-label="Apellidos" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="telefono" class="text-card">Teléfono</label>
-                                    <input disabled id="telefono" type="tel" class="form-control" placeholder="">
+                                    <input disabled id="telefono" value="{{ $usuario->perfil->telefono }}" type="tel"
+                                        class="form-control" placeholder="">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="email" class="text-card">Correo electrónico</label>
-                                    <input disabled readonly type="email" autocomplete="off" class="form-control"
-                                        id="email">
+                                    <input disabled readonly type="email" value="{{ $usuario->email }}" autocomplete="off"
+                                        class="form-control" id="email">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="pais-perfil" class="text-card">País</label>
-                                    <select disabled name="pais" id="pais-perfil" class="form-control">
-                                        <option value="">Seleccione el país</option>
-                                    </select>
-                                    <input type="hidden" id="id-pais-perfil" name="id_pais" value="">
+                                    <label for="pais" class="text-card">País</label>
+                                    <input disabled readonly type="text" value="{{ $usuario->perfil->pais->nombre }}"
+                                        autocomplete="off" class="form-control" id="pais">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="departamento-perfil" class="text-card">Departamento</label>
-                                    <select disabled name="departamento" id="departamento-perfil" class="form-control">
-                                        <option value="">Seleccione el departamento</option>
-                                    </select>
-                                    <input type="hidden" id="id-departamento-perfil" name="id_departamento"
-                                        value="">
+                                    <label for="departamento" class="text-card">Departamento</label>
+                                    <input disabled readonly type="text"
+                                        value="{{ $usuario->perfil->departamento->nombre }}" autocomplete="off"
+                                        class="form-control" id="departamento">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="municipio" class="text-card">Municipio</label>
-                                    <select disabled name="municipio" id="municipio" class="form-control">
-                                        <option value="">Seleccione el municipio</option>
-                                    </select>
-                                    <input type="hidden" id="id-municipio-perfil" name="id_municipio" value="">
+                                    <input disabled readonly type="text"
+                                        value="{{ $usuario->perfil->municipio->nombre }}" autocomplete="off"
+                                        class="form-control" id="municipio">
                                 </div>
                             </div>
+
 
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <label for="direccion1" class="text-label">Dirección</label>
                                     <textarea disabled autocomplete="off" name="direccion1" class="form-control textarea-normal" id="direccion1"
-                                        maxlength="255"></textarea>
+                                        maxlength="255">{{ $usuario->perfil->direccion }}
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
@@ -215,6 +209,5 @@
 
     <x-notificaciones />
 
-    <script src="{{ asset('js/usuarios/perfil.js') }}"></script>
     <script src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
 @endsection

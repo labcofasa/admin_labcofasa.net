@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Empresa;
 use App\Models\RedSocial;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use App\Models\User;
 
 class EmpresaController extends Controller
 {
     public function index()
     {
-        return view('empresas');
+        $usuario = User::with('perfil', 'pais')->find(auth()->id());
+
+        return view('empresas', compact('usuario'));
     }
+
     public function obtenerEmpresas()
     {
         $empresas = Empresa::pluck('nombre', 'id');
@@ -365,17 +368,17 @@ class EmpresaController extends Controller
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
                 $nombreImagen = $imagen->getClientOriginalName();
-        
+
                 if ($empresa->imagen && file_exists(public_path('images/empresas/' . $empresa->id . '/' . $empresa->imagen))) {
                     unlink(public_path('images/empresas/' . $empresa->id . '/' . $empresa->imagen));
                 }
-        
+
                 $imagen->move(public_path('images/empresas/' . $empresa->id), $nombreImagen);
                 $empresa->imagen = $nombreImagen;
             } else {
                 $empresa->imagen = null;
             }
-        
+
             $empresa->save();
 
             $redesSociales = $empresa->redesSociales;

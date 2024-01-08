@@ -240,7 +240,14 @@
                 <a href="#" id="dropdown-perfil"
                     class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false" data-bs-auto-close="outside">
-                    <img id="icono-perfil" class="rounded-circle">
+                    @if ($usuario->perfil->imagen)
+                        <img class="icono-perfil rounded-circle"
+                            src="{{ asset('images/usuarios/' . $usuario->perfil->id . '/' . $usuario->perfil->imagen) }}"
+                            alt="Foto de perfil">
+                    @else
+                        <img class="icono-perfil rounded-circle" src="{{ asset('images/defecto.png') }}"
+                            alt="">
+                    @endif
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-end shadow">

@@ -19,7 +19,9 @@ class PapeleraController extends Controller
 {
     public function index()
     {
-        return view('papelera');
+        $usuario = User::with('perfil', 'pais')->find(auth()->id());
+
+        return view('papelera', compact('usuario'));
     }
 
     public function obtenerEliminados(Request $request)

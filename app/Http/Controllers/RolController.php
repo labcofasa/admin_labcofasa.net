@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class RolController extends Controller
 {
     public function index()
     {
-        return view('roles');
+        $usuario = User::with('perfil', 'pais')->find(auth()->id());
+
+        return view('roles', compact('usuario'));
     }
 
     public function obtenerRolesUsuarios()

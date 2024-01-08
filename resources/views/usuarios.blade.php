@@ -11,9 +11,10 @@
                         <div class="d-flex d-sm-block">
                             <div class="p-2">
                                 <p>Usuarios registrados este mes</p>
-                                <p class="text-primary fs-1 fw-bold text-center" id="usuarioMes"></p>
+                                <p class="text-primary fs-1 fw-bold text-center">
+                                    {{ $regitrosMes }}
+                                </p>
                             </div>
-                            <p class="mb-0 p-2">Última actualización: <span id="actualizacionMes"></span></p>
                         </div>
                     </div>
                 </div>
@@ -25,9 +26,10 @@
                         <div class="d-flex d-sm-block">
                             <div class="p-2">
                                 <p>Total de usuarios registrados</p>
-                                <p class="text-primary fs-1 fw-bold text-center" id="totalUsuarios"></p>
+                                <p class="text-primary fs-1 fw-bold text-center">
+                                    {{ $usuarios }}
+                                </p>
                             </div>
-                            <p class="mb-0 p-2">Última actualización: <span id="totalUsuarioActualizacion"></span></p>
                         </div>
                     </div>
                 </div>

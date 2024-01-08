@@ -7,13 +7,17 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class PermisoController extends Controller
 {
     public function index()
     {
-        return view('permisos');
+        $usuario = User::with('perfil', 'pais')->find(auth()->id());
+
+        return view('permisos', compact('usuario'));
     }
+
     public function obtenerPermisos(Request $request)
     {
         $draw = $request->input('draw');

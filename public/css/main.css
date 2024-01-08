@@ -1779,13 +1779,13 @@ body.dark .switch2::before {
 }
 
 /* Perfil */
-#imagen-perfil {
+.imagen-perfil {
     object-fit: cover;
     width: 112px;
     height: 112px;
 }
 
-#icono-perfil {
+.icono-perfil {
     object-fit: cover;
     width: 40px;
     height: 40px;

@@ -36,8 +36,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/actualizar-usuario/{id}', [UsuarioController::class, 'update']);
     Route::delete('/eliminar-usuario/{id}', [UsuarioController::class, 'destroy']);
 
-    Route::get('/obtener-estadisticas-usuarios', [UsuarioController::class, 'obtenerEstadisticasUsuarios']);
-
     /* Página roles */
     Route::get('/roles', [RolController::class, 'index'])->name('pag.roles');
     Route::get('/obtener-roles', [RolController::class, 'obtenerRoles']);
@@ -121,7 +119,6 @@ Route::middleware(['auth'])->group(function () {
     /* Página mi cuenta */
     Route::get('/mi-cuenta', [CuentaController::class, 'index'])->name('pag.cuenta');
     Route::get('/obtener-usuario', [CuentaController::class, 'obtenerUsuario']);
-    Route::get('/obtener-perfil', [CuentaController::class, 'obtenerPerfil']);
     Route::post('/actualizar-clave', [CuentaController::class, 'actualizarClave']);
 
     /* Configuración */
