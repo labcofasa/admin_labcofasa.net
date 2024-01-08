@@ -12,43 +12,9 @@ class CuentaController extends Controller
 {
     public function index()
     {
-        $usuario = User::with('perfil', 'pais', 'departamento', 'municipio')->find(auth()->id());
+        $usuario = User::with('perfil', 'perfil.pais', 'perfil.departamento', 'perfil.municipio')->find(auth()->id());
 
         return view('auth.cuenta', compact('usuario'));
-    }
-
-    public function obtenerUsuario()
-    {
-        $user = Auth::user();
-        $perfil = $user->perfil;
-        $pais = $perfil->pais;
-        $departamento = $perfil->departamento;
-        $municipio = $perfil->municipio;
-
-        $imagenUrl = $perfil->imagen ? asset('images/usuarios/' . $perfil->imagen) : asset('images/defecto.png');
-
-        return response()->json([
-            'user' => $user,
-            'perfil' => $perfil,
-            'pais' => $pais,
-            'departamento' => $departamento,
-            'municipio' => $municipio,
-            'imagenUrl' => $imagenUrl,
-        ]);
-    }
-
-    public function obtenerPerfil()
-    {
-        $user = Auth::user();
-        $perfil = $user->perfil;
-
-        $imagenUrl = $perfil->imagen ? asset('images/usuarios/' . $perfil->imagen) : asset('images/defecto.png');
-
-        return response()->json([
-            'user' => $user,
-            'perfil' => $perfil,
-            'imagenUrl' => $imagenUrl,
-        ]);
     }
 
     public function actualizarClave(Request $request)

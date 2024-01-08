@@ -77,21 +77,6 @@ class User extends Authenticatable
         return $this->hasOne(Perfil::class);
     }
 
-    public function pais()
-    {
-        return $this->belongsTo(Pais::class);
-    }
-
-    public function departamento()
-    {
-        return $this->belongsTo(Departamento::class);
-    }
-
-    public function municipio()
-    {
-        return $this->belongsTo(Municipio::class);
-    }
-
     public function userCreated()
     {
         return $this->belongsTo(User::class, 'user_id');

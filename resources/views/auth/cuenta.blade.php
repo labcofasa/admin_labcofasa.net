@@ -91,16 +91,17 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="email" class="text-card">Apellidos</label>
-                                    <input disabled readonly id="apellido" value="{{ $usuario->perfil->apellido }}"
-                                        type="text" aria-label="Apellidos" class="form-control">
+                                    <input disabled readonly id="apellido"
+                                        value="{{ $usuario->perfil->apellido ?? 'No asignado' }}" type="text"
+                                        aria-label="Apellidos" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="telefono" class="text-card">Teléfono</label>
-                                    <input disabled id="telefono" value="{{ $usuario->perfil->telefono }}" type="tel"
-                                        class="form-control" placeholder="">
+                                    <input disabled id="telefono" value="{{ $usuario->perfil->telefono ?? 'No asignado' }}"
+                                        type="tel" class="form-control" placeholder="">
                                 </div>
                             </div>
 
@@ -115,8 +116,9 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="pais" class="text-card">País</label>
-                                    <input disabled readonly type="text" value="{{ $usuario->perfil->pais->nombre }}"
-                                        autocomplete="off" class="form-control" id="pais">
+                                    <input disabled readonly type="text"
+                                        value="{{ $usuario->perfil->pais->nombre ?? 'No asignado' }}" autocomplete="off"
+                                        class="form-control" id="pais">
                                 </div>
                             </div>
 
@@ -124,8 +126,8 @@
                                 <div class="form-group mb-3">
                                     <label for="departamento" class="text-card">Departamento</label>
                                     <input disabled readonly type="text"
-                                        value="{{ $usuario->perfil->departamento->nombre }}" autocomplete="off"
-                                        class="form-control" id="departamento">
+                                        value="{{ $usuario->perfil->departamento->nombre ?? 'No asignado' }}"
+                                        autocomplete="off" class="form-control" id="departamento">
                                 </div>
                             </div>
 
@@ -133,17 +135,16 @@
                                 <div class="form-group mb-3">
                                     <label for="municipio" class="text-card">Municipio</label>
                                     <input disabled readonly type="text"
-                                        value="{{ $usuario->perfil->municipio->nombre }}" autocomplete="off"
-                                        class="form-control" id="municipio">
+                                        value="{{ $usuario->perfil->municipio->nombre ?? 'No asignado' }}"
+                                        autocomplete="off" class="form-control" id="municipio">
                                 </div>
                             </div>
-
 
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <label for="direccion1" class="text-label">Dirección</label>
                                     <textarea disabled autocomplete="off" name="direccion1" class="form-control textarea-normal" id="direccion1"
-                                        maxlength="255">{{ $usuario->perfil->direccion }}
+                                        maxlength="255">{{ $usuario->perfil->direccion ?? 'No asignado' }}
                                     </textarea>
                                 </div>
                             </div>
