@@ -19,6 +19,8 @@ use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 
 Route::middleware(['auth'])->group(function () {
     /* Página inicio */
@@ -142,3 +144,13 @@ Route::middleware(['guest'])->group(function () {
 
 /* Logo de la empresa */
 Route::get('empresas/{id}/imagen', [EmpresaController::class, 'mostrarLogo']);
+
+Route::get('/probar-conexion', function () {
+    try {
+        $connection = DB::connection('sqlsrv')->getPdo();
+        return "Conexión exitosa!";
+    } catch (\Exception $e) {
+        return "Error de conexión: " . $e->getMessage();
+    }
+});
+
