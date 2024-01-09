@@ -9,7 +9,7 @@
         <x-skeleton />
 
         <div class="table-responsive rounded-3" id="tabla-papelera-container" style="display: none;">
-            <table id="tabla-papelera" class="table align-middle responsive display" width="100%">
+            <table id="tabla-papelera" class="table align-middle responsive display nowrap" width="100%">
                 <tbody></tbody>
             </table>
         </div>

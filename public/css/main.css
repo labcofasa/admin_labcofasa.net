@@ -109,6 +109,12 @@
     --tran-01: all 0.2s ease;
     --tran-02: all 0.3s ease;
     --tran-03: all 0.4s ease;
+
+    /* Contadores */
+    --contador-primary: #007bff;
+    --contador-info: #26c6da;
+    --contador-danger: #ef5350;
+    --contador-success: #66bb6a;
 }
 
 /* Colores para el diseño oscuro */
@@ -176,6 +182,12 @@ body.dark {
     --component: #666666;
     --component-bg: #333333;
     --component-hover: #999999;
+
+    /* Contadores */
+    --contador-primary: #222222;
+    --contador-info: #222222;
+    --contador-danger: #222222;
+    --contador-success: #222222;
 }
 
 /* Barra de desplazamiento */
@@ -1839,28 +1851,28 @@ body.dark .switch2::before {
     margin: 5px 0;
     background-color: #fff;
     height: 100px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     transition: 0.3s linear all;
 }
 
 .card-counter.primary {
-    background-color: #007bff;
+    background-color: var(--contador-primary);
     color: #fff;
 }
 
 .card-counter.danger {
-    background-color: #ef5350;
+    background-color: var(--contador-danger);
     color: #fff;
 }
 
 .card-counter.success {
-    background-color: #66bb6a;
+    background-color: var(--contador-success);
     color: #fff;
 }
 
 .card-counter.info {
-    background-color: #26c6da;
+    background-color: var(--contador-info);
     color: #fff;
 }
 
@@ -1875,25 +1887,4 @@ body.dark .switch2::before {
     fill: #ffffff;
     height: 75px;
     width: 75px;
-}
-
-.icono-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    border-radius: 50%;
-    height: 33px;
-    width: 33px;
-}
-.icono-container:hover,
-.icono-container:active {
-    background-color: #ebebeb;
-}
-.icono-container .icono {
-    position: relative;
-    cursor: pointer;
-    height: 22px;
 }

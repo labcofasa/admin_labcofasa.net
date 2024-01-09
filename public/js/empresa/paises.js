@@ -192,16 +192,29 @@ $(document).ready(function () {
                     data: null,
                     render: function (data, type, row) {
                         return `
-                                <div class="btn-group" role="group">
-                                    <button class="btn btn-primary ver-departamentos" data-id="${row.id}" data-toggle="tooltip" title="Ver departamentos">
-                                        <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
-                                    </button>
-                                    <button class="btn btn-warning editar-pais" data-id="${row.id}" data-toggle="tooltip" title="Editar país">
-                                        <svg class="icon-warning" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
-                                    </button>
-                                    <button class="btn btn-danger eliminar-pais" data-id="${row.id}" data-toggle="tooltip" title="Eliminar país">
-                                        <svg class="icon-danger" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/></svg>
-                                    </button>
+                                <div class="text-center">
+                                    <div class="btn-group">
+                                        <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                            <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                                            <li>
+                                                <button class="dropdown-item ver-departamentos" data-id="${row.id}" type="button">
+                                                    <span class="link">Ver departamentos</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item editar-pais" data-id="${row.id}" type="button">
+                                                    <span class="link">Editar país</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item eliminar-pais" data-id="${row.id}" type="button">
+                                                    <span class="link">Eliminar país</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             `;
                     },
@@ -603,16 +616,29 @@ $(document).ready(function () {
                     data: null,
                     render: function (data, type, row) {
                         return `
-                                <div class="btn-group" role="group">
-                                    <button class="btn btn-primary ver-municipios" data-id="${row.id}" data-toggle="tooltip" title="Ver municipios">
-                                        <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
-                                    </button>
-                                    <button class="btn btn-warning editar-departamento" data-id="${row.id}" data-toggle="tooltip" title="Editar departamento">
-                                        <svg class="icon-warning" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
-                                    </button>
-                                    <button class="btn btn-danger eliminar-departamento" data-id="${row.id}" data-toggle="tooltip" title="Eliminar departamento">
-                                        <svg class="icon-danger" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/></svg>
-                                    </button>
+                                <div class="text-center">
+                                    <div class="btn-group">
+                                        <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                            <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                                            <li>
+                                                <button class="dropdown-item ver-municipios" data-id="${row.id}" type="button">
+                                                    <span class="link">Ver municipios</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item editar-departamento" data-id="${row.id}" type="button">
+                                                    <span class="link">Editar departamento</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item eliminar-departamento" data-id="${row.id}" type="button">
+                                                    <span class="link">Eliminar departamento</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             `;
                     },
@@ -1038,13 +1064,24 @@ $(document).ready(function () {
                     data: null,
                     render: function (data, type, row) {
                         return `
-                                <div class="btn-group" role="group">
-                                    <button class="btn btn-warning editar-municipio" data-id="${row.id}" data-toggle="tooltip" title="Editar municipio">
-                                        <svg class="icon-warning" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
-                                    </button>
-                                    <button class="btn btn-danger eliminar-municipio" data-id="${row.id}" data-toggle="tooltip" title="Eliminar municipio">
-                                        <svg class="icon-danger" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/></svg>
-                                    </button>
+                                <div class="text-center">
+                                    <div class="btn-group">
+                                        <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                            <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                                            <li>
+                                                <button class="dropdown-item editar-municipio" data-id="${row.id}" type="button">
+                                                    <span class="link">Editar municipio</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item eliminar-municipio" data-id="${row.id}" type="button">
+                                                    <span class="link">Eliminar municipio</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             `;
                     },

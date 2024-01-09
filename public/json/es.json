@@ -41,8 +41,8 @@
     "paginate": {
         "first": "Primero",
         "last": "Último",
-        "next": "Siguiente >",
-        "previous": "< Anterior"
+        "next": "Siguiente",
+        "previous": "Anterior"
     },
     "processing": "Procesando...",
     "search": "Buscar:",

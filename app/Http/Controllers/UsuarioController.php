@@ -17,6 +17,15 @@ class UsuarioController extends Controller
     }
     public function tablaUsuarios(Request $request)
     {
+        $this->validate($request, [
+            'draw' => 'required',
+            'start' => 'required|numeric',
+            'length' => 'required|numeric',
+            'search.value' => 'nullable|string',
+            'order.0.column' => 'required|numeric',
+            'order.0.dir' => 'required|in:asc,desc',
+        ]);
+
         $draw = $request->input('draw');
         $start = $request->input('start');
         $length = $request->input('length');
@@ -26,9 +35,7 @@ class UsuarioController extends Controller
 
         $query = User::query()
             ->select(
-                'users.id',
-                'users.name',
-                'users.email',
+                'users.*',
                 'roles.name as rol',
                 'perfiles.nombre',
                 'perfiles.apellido',
@@ -43,8 +50,6 @@ class UsuarioController extends Controller
                 'departamentos.nombre as nombre_departamento',
                 'municipios.nombre as nombre_municipio',
                 'empresas.nombre as nombre_empresa',
-                'users.created_at',
-                'users.updated_at',
                 'created_user.name as user_name',
                 'modified_user.name as user_modified_name'
             )
@@ -56,7 +61,6 @@ class UsuarioController extends Controller
             ->leftJoin('paises', 'paises.id', '=', 'perfiles.pais_id')
             ->leftJoin('departamentos', 'departamentos.id', '=', 'perfiles.departamento_id')
             ->leftJoin('municipios', 'municipios.id', '=', 'perfiles.municipio_id');
-
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
@@ -100,8 +104,8 @@ class UsuarioController extends Controller
 
         if ($orderBy === 'rol') {
             $query->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
-                ->leftJoin('roles', 'model_has_roles.role_id', '=', 'roles.id')
-                ->orderBy('roles.name', $orderDirection);
+                ->leftJoin('roles as roles_nombre', 'model_has_roles.role_id', '=', 'roles_nombre.id')
+                ->orderBy('roles_nombre.name', $orderDirection);
         } else {
             $query->orderBy($orderBy, $orderDirection);
         }
@@ -161,6 +165,7 @@ class UsuarioController extends Controller
             'data' => $data,
         ]);
     }
+
     public function store(Request $request)
     {
         $this->validate($request, [
