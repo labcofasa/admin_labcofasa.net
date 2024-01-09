@@ -90,7 +90,7 @@ $(document).ready(function () {
                             filename:
                                 "Usuarios registrados - Laboratorios Cofasa",
                             action: function (e, dt, node, config) {
-                                printRoles();
+                                printUsuarios();
                             },
                         },
                     ],
@@ -695,4 +695,45 @@ function estadisticaUsuario() {
             );
         },
     });
+}
+
+/* Imprimir usuarios */
+function printUsuarios() {
+    const printWindow = window.open("", "_blank");
+    printWindow.document.title = "Usuarios - Laboratorios Cofasa";
+    printWindow.document.write(
+        "<html><head><title>Usuarios - Laboratorios Cofasa</title>"
+    );
+    printWindow.document.write(
+        "<style>" +
+            "body { font-family: Arial, sans-serif; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+            "tr:nth-child(even) { background-color: #f9f9f9; }" +
+            "tr:hover { background-color: #f5f5f5; }" +
+            "</style>"
+    );
+    printWindow.document.write("</head><body>");
+    printWindow.document.write(
+        '<h4 style="text-align: center;">Usuarios - Laboratorios Cofasa</h4>'
+    );
+    printWindow.document.write("<table>");
+
+    const headers = $("#tabla-usuarios thead tr").clone();
+    headers.find("th:last").remove();
+    printWindow.document.write("<thead>" + headers.html() + "</thead>");
+
+    const tbody = $("<tbody></tbody>");
+    $("#tabla-usuarios tbody tr").each(function () {
+        const row = $(this).clone();
+        row.find("td:last").remove();
+        tbody.append(row);
+    });
+    printWindow.document.write(tbody.html());
+
+    printWindow.document.write("</table>");
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.print();
 }
