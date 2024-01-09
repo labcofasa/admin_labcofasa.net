@@ -51,8 +51,8 @@
                                         {{ session('error') }}
                                     </span>
                                 @endif
-                                <span class="ojo-container" onclick="togglePasswordVisibility()">
-                                    <img class="eye" id="eye-icon" src="{{ asset('images/cerrado.svg') }}" />
+                                <span class="icono-container" onclick="togglePasswordVisibility()">
+                                    <img class="icono" id="eye-icon" src="{{ asset('images/cerrado.svg') }}" />
                                 </span>
                             </div>
                             <div class="input-field">

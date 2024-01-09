@@ -28,7 +28,7 @@
                             <tr>
                                 <th></th>
                                 <th data-priority="1">Nombre del permiso</th>
-                                <th data-priority="2" class="text-center">Eliminar permiso</th>
+                                <th data-priority="2">Eliminar permiso</th>
                             </tr>
                         </thead>
                         <tbody></tbody>

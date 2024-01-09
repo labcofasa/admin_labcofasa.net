@@ -253,7 +253,7 @@ span a:hover {
     text-decoration: underline;
     color: #000;
 }
-.ojo-container {
+.icono-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -264,11 +264,11 @@ span a:hover {
     height: 33px;
     width: 33px;
 }
-.ojo-container:hover,
-.ojo-container:active {
+.icono-container:hover,
+.icono-container:active {
     background-color: #ebebeb;
 }
-.eye {
+.icono-container .icono {
     position: relative;
     cursor: pointer;
     height: 22px;

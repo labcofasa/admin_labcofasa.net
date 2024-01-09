@@ -261,8 +261,8 @@ $(document).ready(function () {
                         return `
                             <div class="text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <svg class="icon-secondary" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+                                    <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                        <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end shadow">
                                         <li>
@@ -274,12 +274,12 @@ $(document).ready(function () {
                                         </li>
                                         <li>
                                             <button class="dropdown-item editar-empresa" data-id="${row.id}" type="button">
-                                                <span class="link">Editar</span>
+                                                <span class="link">Editar empresa</span>
                                             </button>
                                         </li>
                                         <li>
                                             <button class="dropdown-item eliminar-empresa" data-id="${row.id}" type="button">
-                                                <span class="link">Eliminar</span>
+                                                <span class="link">Eliminar empresa</span>
                                             </button>
                                         </li>
                                     </ul>
