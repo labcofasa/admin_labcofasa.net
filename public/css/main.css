@@ -757,7 +757,7 @@ hr {
     transition: var(--tran-03);
     overflow-x: inherit;
     padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 @media (max-width: 679px) {
@@ -1832,11 +1832,11 @@ body.dark .switch2::before {
 
 /* Cartas */
 .card-counter {
-    margin: 5px;
-    padding: 15px 10px;
+    margin: 5px 0;
     background-color: #fff;
     height: 100px;
     border-radius: 5px;
+    box-shadow: var(--box-shadow);
     transition: 0.3s linear all;
 }
 

@@ -12,10 +12,8 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuario = User::with('perfil')->find(auth()->id());
-        $regitrosMes = User::where('created_at', '>=', now()->subMonth())->count();
-        $usuarios = User::count();
 
-        return view('usuarios', compact('usuario', 'regitrosMes', 'usuarios'));
+        return view('usuarios', compact('usuario'));
     }
     public function tablaUsuarios(Request $request)
     {
@@ -360,5 +358,16 @@ class UsuarioController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'error' => 'Error al eliminar el usuario']);
         }
+    }
+    public function obtenerEstadisticasUsuarios()
+    {
+        $usuariosUltimoMes = User::where('created_at', '>=', now()->subMonth())->count();
+
+        $totalUsuarios = User::count();
+
+        return response()->json([
+            'usuariosUltimoMes' => $usuariosUltimoMes,
+            'totalUsuarios' => $totalUsuarios,
+        ]);
     }
 }
