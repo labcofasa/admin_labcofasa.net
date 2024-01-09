@@ -409,7 +409,6 @@ class EmpresaController extends Controller
             return response()->json(['success' => false, 'error' => '¡Actualización fallida!: ' . $e->getMessage()]);
         }
     }
-
     public function destroy(Request $request, $id)
     {
         $empresa = Empresa::find($id);
@@ -433,7 +432,6 @@ class EmpresaController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al eliminar la empresa']);
         }
     }
-
     public function mostrarLogo($id)
     {
         $empresa = Empresa::find($id);

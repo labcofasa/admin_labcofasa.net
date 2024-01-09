@@ -192,9 +192,9 @@
                                                 <label for="imagen-perfil-editar" class="text-label">Foto de
                                                     perfil</label>
                                                 <label for="imagen-perfil-editar" class="file-upload-image">
-                                                    <span class="text-label-image">Clic para seleccionar la nueva
+                                                    <span class="text-label-image-editar">Clic para seleccionar la nueva
                                                         imagen</span>
-                                                    <p class="image-perfil-name"></p>
+                                                    <p class="image-perfil-name-editar"></p>
                                                 </label>
                                                 <input type="file" name="imagen"
                                                     accept=".jpg, .jpeg, .png, .gif, .webp" id="imagen-perfil-editar"

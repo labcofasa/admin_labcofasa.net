@@ -115,23 +115,23 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="telefono-perfil" class="text-label">Teléfono</label>
-                                            <input autocomplete="off" type="tel" name="telefono"
-                                                pattern="^(\+\d{1,3}[\s\-]?)?(\d{1,4}[\s\-]?){2}\d{4}$" maxlength="15"
-                                                autofocus class="form-control" id="telefono-perfil">
-                                            <div class="invalid-feedback">
-                                                Ingrese un número de teléfono
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-3">
                                             <label for="apellido-input" class="text-label">Apellidos
                                                 <span class="obligatorio"> *</span></label>
                                             <input autocomplete="off" type="text" name="apellido"
                                                 class="form-control" id="apellido-input" required>
                                             <div class="invalid-feedback">
                                                 Ingrese los apellidos
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-3">
+                                            <label for="telefono-perfil" class="text-label">Teléfono</label>
+                                            <input autocomplete="off" type="tel" name="telefono"
+                                                pattern="^(\+\d{1,3}[\s\-]?)?(\d{1,4}[\s\-]?){2}\d{4}$" maxlength="15"
+                                                autofocus class="form-control" id="telefono-perfil">
+                                            <div class="invalid-feedback">
+                                                Ingrese un número de teléfono
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">

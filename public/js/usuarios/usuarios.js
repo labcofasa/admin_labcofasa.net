@@ -21,7 +21,7 @@ $(document).ready(function () {
             responsive: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
-            colReorder: true,
+/*             colReorder: true, */
             lengthMenu: [
                 [10, 25, 50, -1],
                 ["10 filas", "25 filas", "50 filas", "Todas las filas"],
@@ -342,18 +342,6 @@ $(document).ready(function () {
     });
 
     /* Editar usuario */
-    $("#imagen-perfil-editar").change(function () {
-        const fileName = $(this).val().split("\\").pop();
-
-        $(".image-perfil-name").text(fileName);
-
-        if (fileName) {
-            $(".text-label-image").hide();
-        } else {
-            $(".text-label-image").show();
-        }
-    });
-
     $("#tabla-usuarios").on("click", ".editar-usuario", function () {
         var usuarioId = $(this).data("id");
         var row = tabla_usuarios.row($(this).parents("tr")).data();
@@ -377,6 +365,7 @@ $(document).ready(function () {
         $("#editarUsuarioForm #nombre-usuario-editar").val(name);
         $("#editarUsuarioForm #email-usuario-editar").val(email);
         $("#editarUsuarioForm #nombre-input-editar").val(nombre);
+        $(".image-perfil-name-editar").text(row.imagen);
         $("#editarUsuarioForm #apellido-input-editar").val(apellido);
         $("#editarUsuarioForm #telefono-perfil-editar").val(telefono);
         $("#editarUsuarioForm #direccion-perfil-editar").val(direccion);
@@ -460,6 +449,18 @@ $(document).ready(function () {
         );
 
         $("#editarUsuario").modal("show");
+    });
+
+    $("#imagen-perfil-editar").change(function () {
+        const fileName = $(this).val().split("\\").pop();
+
+        $(".image-perfil-name-editar").text(fileName);
+
+        if (fileName) {
+            $(".text-label-image-editar").hide();
+        } else {
+            $(".text-label-image-editar").show();
+        }
     });
 
     $("#editarUsuarioForm").submit(function (e) {
