@@ -212,8 +212,6 @@ class UsuarioController extends Controller
 
             $usuario->save();
 
-            $usuarioId = $usuario->id;
-
             $perfil = new Perfil();
             $perfil->nombre = $request->input('nombre');
             $perfil->apellido = $request->input('apellido');
@@ -228,13 +226,13 @@ class UsuarioController extends Controller
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
                 $perfil->imagen = $imagen->getClientOriginalName();
+                $imagen->move(public_path('images/usuarios/' . $perfil->id), $imagen->getClientOriginalName());
             } else {
                 $perfil->imagen = null;
             }
 
             $perfil->save();
 
-            $imagen->move(public_path('images/usuarios/' . $perfil->id), $imagen->getClientOriginalName());
 
             $rolId = $request->input('rol');
             $role = Role::findById($rolId);
@@ -298,8 +296,6 @@ class UsuarioController extends Controller
             $usuario->save();
 
             $perfil = Perfil::where('user_id', $usuario->id)->first();
-
-            $usuarioId = $usuario->id;
 
             $perfil->nombre = $request->input('nombre');
             $perfil->apellido = $request->input('apellido');

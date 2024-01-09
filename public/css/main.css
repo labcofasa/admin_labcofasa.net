@@ -115,6 +115,7 @@
     --contador-info: #26c6da;
     --contador-danger: #ef5350;
     --contador-success: #66bb6a;
+    --counter-text: #ffffff;
 }
 
 /* Colores para el diseño oscuro */
@@ -188,6 +189,7 @@ body.dark {
     --contador-info: #222222;
     --contador-danger: #222222;
     --contador-success: #222222;
+    --counter-text: #bebebe;
 }
 
 /* Barra de desplazamiento */
@@ -369,7 +371,7 @@ hr {
     border-bottom-right-radius: var(--border-radius) !important;
     border-top-right-radius: var(--border-radius) !important;
     color: #121213 !important;
-    transition: 0ms;
+    transition: var(--tran-03);
     vertical-align: middle;
 }
 .btn-store:active {
@@ -1460,6 +1462,7 @@ body.dark .toggle-switch {
 .logotipo {
     width: 25px;
     fill: var(--primary);
+    transition: var(--tran-03);
 }
 .sidebar-logo {
     margin-left: 10px;
@@ -1849,31 +1852,31 @@ body.dark .switch2::before {
 /* Cartas */
 .card-counter {
     margin: 5px 0;
-    background-color: #fff;
+    background-color: var(--counter-text);;
     height: 100px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    transition: 0.3s linear all;
+    transition: var(--tran-03);
 }
 
 .card-counter.primary {
     background-color: var(--contador-primary);
-    color: #fff;
+    color: var(--counter-text);
 }
 
 .card-counter.danger {
     background-color: var(--contador-danger);
-    color: #fff;
+    color: var(--counter-text);
 }
 
 .card-counter.success {
     background-color: var(--contador-success);
-    color: #fff;
+    color: var(--counter-text);
 }
 
 .card-counter.info {
     background-color: var(--contador-info);
-    color: #fff;
+    color: var(--counter-text);
 }
 
 .card-counter .count-numbers {
@@ -1884,7 +1887,8 @@ body.dark .switch2::before {
 
 .card-counter .counter-icono {
     opacity: 0.2;
-    fill: #ffffff;
+    fill: var(--counter-text);
+    transition: var(--tran-03);
     height: 75px;
     width: 75px;
 }
