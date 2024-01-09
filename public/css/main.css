@@ -339,7 +339,6 @@ hr {
 .btn {
     font-size: var(--font-size);
     letter-spacing: var(--letter-spacing);
-    transition: var(--tran-03);
     font-weight: 500;
     border-radius: var(--border-radius);
 }
@@ -371,7 +370,6 @@ hr {
     border-bottom-right-radius: var(--border-radius) !important;
     border-top-right-radius: var(--border-radius) !important;
     color: #121213 !important;
-    transition: var(--tran-03);
     vertical-align: middle;
 }
 .btn-store:active {
