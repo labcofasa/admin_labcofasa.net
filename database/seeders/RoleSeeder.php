@@ -76,6 +76,8 @@ class RoleSeeder extends Seeder
 
             ['name' => 'admin_papelera_ver', 'descripcion' => 'Ver página de papelera'],
             ['name' => 'admin_papelera_recuperar', 'descripcion' => 'Recuperar registros'],
+
+            ['name' => 'admin_ver_aplicaciones', 'descripcion' => 'Ver aplicaciones'],
         ];
 
         foreach ($permissions as $permissionData) {

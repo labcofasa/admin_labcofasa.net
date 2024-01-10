@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AjustesController;
+use App\Http\Controllers\AplicacionesController;
 use App\Http\Controllers\Auth\AutenticacionController;
 use App\Http\Controllers\Auth\RestablecerController;
 use App\Http\Controllers\ClasificacionController;
@@ -125,6 +126,9 @@ Route::middleware(['auth'])->group(function () {
 
     /* Configuración */
     Route::get('/ajustes', [AjustesController::class, 'index'])->name('pag.ajustes');
+
+    /* Aplicaciones */
+    Route::get('/aplicaciones', [AplicacionesController::class, 'index'])->name('pag.aplicaciones');
 });
 
 Route::middleware(['guest'])->group(function () {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Perfil;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller
@@ -369,9 +370,14 @@ class UsuarioController extends Controller
 
         $totalUsuarios = User::count();
 
+        $totalRoles = Role::count();
+        $totalPermisos = Permission::count();
+
         return response()->json([
             'usuariosUltimoMes' => $usuariosUltimoMes,
             'totalUsuarios' => $totalUsuarios,
+            'totalRoles' => $totalRoles,
+            'totalPermisos' => $totalPermisos,
         ]);
     }
 }

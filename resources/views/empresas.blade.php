@@ -95,7 +95,7 @@
             </div>
         </div>
 
-        <h1 class="pb-3 d-xl-none">@yield('titulo')</h1>
+        <h1 class="py-3 d-xl-none">@yield('titulo')</h1>
 
         <x-skeleton />
 

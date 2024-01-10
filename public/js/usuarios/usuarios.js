@@ -683,11 +683,9 @@ function estadisticaUsuario() {
         dataType: "json",
         success: function (data) {
             $("#usuarioMes").text(data.usuariosUltimoMes);
-            $("#actualizacionMes").text(data.ultimaActualizacion);
             $("#totalUsuarios").text(data.totalUsuarios);
-            $("#totalUsuarioActualizacion").text(
-                data.totalUsuarioActualizacion
-            );
+            $("#totalRoles").text(data.totalRoles);
+            $("#totalPermisos").text(data.totalPermisos);
         },
         error: function (error) {
             console.log(

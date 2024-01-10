@@ -111,10 +111,10 @@
     --tran-03: all 0.4s ease;
 
     /* Contadores */
-    --contador-primary: #007bff;
-    --contador-info: #26c6da;
-    --contador-danger: #ef5350;
-    --contador-success: #66bb6a;
+    --contador-primary: #0D6EFD;
+    --contador-info: #17A2B8;
+    --contador-danger: #DC3545;
+    --contador-success: #28A745;
     --counter-text: #ffffff;
 }
 

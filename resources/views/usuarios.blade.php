@@ -6,7 +6,7 @@
     <div class="container-fluid main-container py-3">
 
         <!-- Contadores con información -->
-        <x-usuario.contadores />
+        <x-widgets.contadores />
 
         <!-- Título de la página -->
         <h1 class="pb-3">@yield('titulo')</h1>
