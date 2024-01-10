@@ -4,7 +4,7 @@
 
 @section('contenido')
     @if ($empresa->imagen)
-        <img src="{{ asset('images/empresas/' . $empresa->id . '/' . $empresa->imagen) }}" alt="Logo de la empresa">
+        <img src="{{ asset('images/empresas/logo/' . $empresa->id . '/' . $empresa->imagen) }}" alt="Logo de la empresa">
     @else
         <p>No hay imagen disponible</p>
     @endif

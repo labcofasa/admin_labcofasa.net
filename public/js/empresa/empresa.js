@@ -266,9 +266,16 @@ $(document).ready(function () {
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end shadow">
                                         <li>
-                                            <a class="btn-logo" href="empresas/${row.id}/imagen" target="_blank">
+                                            <a class="btn-logo" href="empresas/${row.id}/logo" target="_blank">
                                                 <button class="dropdown-item" type="button">
                                                     <span class="link">Ver logo</span>
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn-logo" href="empresas/${row.id}/leyenda" target="_blank">
+                                                <button class="dropdown-item" type="button">
+                                                    <span class="link">Leyenda de factura</span>
                                                 </button>
                                             </a>
                                         </li>
@@ -355,6 +362,18 @@ $(document).ready(function () {
         }
     });
 
+    $("#imagen-empresa-leyenda").change(function () {
+        const fileName = $(this).val().split("\\").pop();
+
+        $(".image-empresa-name-leyenda").text(fileName);
+
+        if (fileName) {
+            $(".text-label-image-leyenda").hide();
+        } else {
+            $(".text-label-image-leyenda").show();
+        }
+    });
+
     /* Formatear input de NIT */
     var nitInput = $("#nit-empresa-input");
     var nitInputHidden = $("#nit-empresa-input-hidden");
@@ -398,6 +417,7 @@ $(document).ready(function () {
         const departamentoId = $("#id-departamento-empresa").val();
         const municipioId = $("#id-municipio-empresa").val();
         const imagenInput = $("#imagen-empresa")[0];
+        const imagenLeyendaInput = $("#imagen-empresa-leyenda")[0];
 
         const nombreRS = document.querySelectorAll('input[name^="social"]');
         const enlaceRS = document.querySelectorAll('input[name^="enlace"]');
@@ -452,6 +472,10 @@ $(document).ready(function () {
 
         if (imagenInput.files.length > 0) {
             formData.append("imagen", imagenInput.files[0]);
+        }
+
+        if (imagenLeyendaInput.files.length > 0) {
+            formData.append("imagen_leyenda", imagenLeyendaInput.files[0]);
         }
 
         $.ajax({
@@ -581,6 +605,7 @@ $(document).ready(function () {
         $("#empresaEditarForm #id-giro-empresa-editar").val(giroId);
         $("#empresaEditarForm #giro-empresa-editar").val(nombreGiro);
         $(".image-empresa-name-editar").text(row.imagen);
+        $(".image-empresa-name-leyenda-editar").text(row.imagen_leyenda);
         $("#empresaEditarForm #id-entidad-empresa-editar").val(entidadId);
         $("#empresaEditarForm #id-clasificacion-empresa-editar").val(
             clasificacionId
@@ -706,6 +731,18 @@ $(document).ready(function () {
         }
     });
 
+    $("#imagen-empresa-leyenda-editar").change(function () {
+        const fileName = $(this).val().split("\\").pop();
+
+        $(".image-empresa-name-leyenda-editar").text(fileName);
+
+        if (fileName) {
+            $(".text-label-image-leyenda-editar").hide();
+        } else {
+            $(".text-label-image-leyenda-editar").show();
+        }
+    });
+
     giroTextoInput.on("input", function () {
         const giroTexto = $(this).val().trim();
 
@@ -774,6 +811,11 @@ $(document).ready(function () {
         const imagenInput = $("#imagen-empresa-editar")[0];
         if (imagenInput.files.length > 0) {
             formData.append("imagen", imagenInput.files[0]);
+        }
+
+        const imagenLeyendaInput = $("#imagen-empresa-leyenda-editar")[0];
+        if (imagenLeyendaInput.files.length > 0) {
+            formData.append("imagen_leyenda", imagenLeyendaInput.files[0]);
         }
 
         $.ajax({

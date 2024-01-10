@@ -16,7 +16,20 @@ return new class extends Migration
             $table->string('nombre_aplicacion');
             $table->string('imagen_aplicacion');
             $table->string('enlace_aplicacion');
-            $table->timestamps();
+            $table->string('nombre_tabla')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->timestamp('updated_at')->nullable();
+            $table->unsignedBigInteger('user_modified_id')->nullable();
+            $table->softDeletes();
+            $table->unsignedBigInteger('user_deleted_id')->nullable();
+            $table->timestamp('restored_at')->nullable();
+            $table->unsignedBigInteger('user_restored_id')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_modified_id')->references('id')->on('users');
+            $table->foreign('user_deleted_id')->references('id')->on('users');
+            $table->foreign('user_restored_id')->references('id')->on('users');
         });
     }
 

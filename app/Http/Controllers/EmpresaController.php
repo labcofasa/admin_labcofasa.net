@@ -15,13 +15,11 @@ class EmpresaController extends Controller
 
         return view('empresas', compact('usuario'));
     }
-
     public function obtenerEmpresas()
     {
         $empresas = Empresa::pluck('nombre', 'id');
         return response()->json($empresas);
     }
-
     public function tablaEmpresas(Request $request)
     {
         $this->validate($request, [
@@ -95,6 +93,7 @@ class EmpresaController extends Controller
             'nombre_dnm',
             'registro_dnm',
             'imagen',
+            'imagen_leyenda',
             'giro_nombre',
             'entidad_nombre',
             'clasificacion_nombre',
@@ -155,6 +154,7 @@ class EmpresaController extends Controller
                 'nombre_dnm' => $empresa->nombre_dnm,
                 'registro_dnm' => $empresa->registro_dnm,
                 'imagen' => $empresa->imagen,
+                'imagen_leyenda' => $empresa->imagen_leyenda,
                 'giro_id' => $empresa->giro_id,
                 'giro_nombre' => $empresa->giro_nombre,
                 'entidad_id' => $empresa->entidad_id,
@@ -184,13 +184,13 @@ class EmpresaController extends Controller
             'data' => $data,
         ]);
     }
-
     public function store(Request $request)
     {
         $this->validate($request, [
             'nombre' => 'required|string',
             'direccion' => 'required|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
+            'imagen_leyenda' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'telefono' => [
                 'nullable',
                 'regex:/^(\+\d{1,3}[\s\-]?)?(\d{1,4}[\s\-]?){2}\d{4}$/',
@@ -259,16 +259,34 @@ class EmpresaController extends Controller
             $empresa->departamento_id = $departamentoId;
             $empresa->municipio_id = $municipioId;
 
+            $empresa->save();
+
+            $empresaId = $empresa->id;
+
+            $rutaCarpetaLogo = public_path("images/empresas/logo/{$empresaId}");
+            $rutaCarpetaLeyenda = public_path("images/empresas/leyenda/{$empresaId}");
+
+            if (!file_exists($rutaCarpetaLogo)) {
+                mkdir($rutaCarpetaLogo, 0777, true);
+            }
+
+            if (!file_exists($rutaCarpetaLeyenda)) {
+                mkdir($rutaCarpetaLeyenda, 0777, true);
+            }
+
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
+                $imagen->move($rutaCarpetaLogo, $imagen->getClientOriginalName());
                 $empresa->imagen = $imagen->getClientOriginalName();
-            } else {
-                $empresa->imagen = null;
+            }
+
+            if ($request->hasFile('imagen_leyenda')) {
+                $imagenLeyenda = $request->file('imagen_leyenda');
+                $imagenLeyenda->move($rutaCarpetaLeyenda, $imagenLeyenda->getClientOriginalName());
+                $empresa->imagen_leyenda = $imagenLeyenda->getClientOriginalName();
             }
 
             $empresa->save();
-
-            $imagen->move(public_path('images/empresas/' . $empresa->id), $imagen->getClientOriginalName());
 
             $redesSociales = [];
             foreach ($request->input('social', []) as $key => $nombreRedSocial) {
@@ -285,7 +303,6 @@ class EmpresaController extends Controller
 
             $empresa->redesSociales()->saveMany($redesSociales);
 
-
             return response()->json(['success' => true, 'message' => 'Empresa registrada con éxito!', 'data' => $empresa]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'error' => '¡Guardado fallido!: ' . $e->getMessage()]);
@@ -298,6 +315,7 @@ class EmpresaController extends Controller
                 'nombre' => 'required|string',
                 'direccion' => 'required|string',
                 'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
+                'imagen_leyenda' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
                 'telefono' => [
                     'nullable',
                     'regex:/^(\+\d{1,3}[\s\-]?)?(\d{1,4}[\s\-]?){2}\d{4}$/',
@@ -323,66 +341,62 @@ class EmpresaController extends Controller
                 'enlace.*' => 'nullable|url',
             ]);
 
-            $nombreEmpresa = $request->input('nombre');
-            $direccionEmpresa = $request->input('direccion');
-            $giroId = $request->input('giro_id');
-            $entidadId = $request->input('entidad_id');
-            $clasificacionId = $request->input('clasificacion_id');
-            $paisId = $request->input('pais_id');
-            $departamentoId = $request->input('departamento_id');
-            $municipioId = $request->input('municipio_id');
-            $telefonoEmpresa = $request->input('telefono');
-            $emailEmpresa = $request->input('email');
-            $webEmpresa = $request->input('web');
-            $misionEmpresa = $request->input('mision');
-            $visionEmpresa = $request->input('vision');
-            $calidadEmpresa = $request->input('calidad');
-            $fundacionEmpresa = $request->input('fundacion');
-            $registroNitEmpresa = $request->input('registro_nit');
-            $registroIvaEmpresa = $request->input('registro_iva');
-            $nombreDnmEmpresa = $request->input('nombre_dnm');
-            $registroDnmEmpresa = $request->input('registro_dnm');
-
             $empresa = Empresa::findOrFail($id);
-            $empresa->nombre = $nombreEmpresa;
-            $empresa->direccion = $direccionEmpresa;
-            $empresa->telefono = $telefonoEmpresa;
-            $empresa->email = $emailEmpresa;
-            $empresa->web = $webEmpresa;
-            $empresa->mision = $misionEmpresa;
-            $empresa->vision = $visionEmpresa;
-            $empresa->calidad = $calidadEmpresa;
-            $empresa->fundacion = $fundacionEmpresa;
-            $empresa->registro_nit = $registroNitEmpresa;
-            $empresa->registro_iva = $registroIvaEmpresa;
-            $empresa->nombre_dnm = $nombreDnmEmpresa;
-            $empresa->registro_dnm = $registroDnmEmpresa;
-            $empresa->giro_id = $giroId;
-            $empresa->entidad_id = $entidadId;
-            $empresa->clasificacion_id = $clasificacionId;
-            $empresa->pais_id = $paisId;
-            $empresa->departamento_id = $departamentoId;
-            $empresa->municipio_id = $municipioId;
-            $empresa->user_modified_id = auth()->user()->id;
+
+            $empresa->nombre = $request->input('nombre');
+            $empresa->direccion = $request->input('direccion');
+            $empresa->telefono = $request->input('telefono');
+            $empresa->email = $request->input('email');
+            $empresa->web = $request->input('web');
+            $empresa->mision = $request->input('mision');
+            $empresa->vision = $request->input('vision');
+            $empresa->calidad = $request->input('calidad');
+            $empresa->fundacion = $request->input('fundacion');
+            $empresa->registro_nit = $request->input('registro_nit');
+            $empresa->registro_iva = $request->input('registro_iva');
+            $empresa->nombre_dnm = $request->input('nombre_dnm');
+            $empresa->registro_dnm = $request->input('registro_dnm');
+            $empresa->giro_id = $request->input('giro_id');
+            $empresa->entidad_id = $request->input('entidad_id');
+            $empresa->clasificacion_id = $request->input('clasificacion_id');
+            $empresa->pais_id = $request->input('pais_id');
+            $empresa->departamento_id = $request->input('departamento_id');
+            $empresa->municipio_id = $request->input('municipio_id');
+
+            $empresa->save();
+
+            $empresaId = $empresa->id;
+
+            $rutaCarpetaLogo = public_path("images/empresas/logo/{$empresaId}");
+            $rutaCarpetaLeyenda = public_path("images/empresas/leyenda/{$empresaId}");
 
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
-                $nombreImagen = $imagen->getClientOriginalName();
+                $rutaCarpetaLogo = public_path("images/empresas/logo/{$empresa->id}");
 
-                if ($empresa->imagen && file_exists(public_path('images/empresas/' . $empresa->id . '/' . $empresa->imagen))) {
-                    unlink(public_path('images/empresas/' . $empresa->id . '/' . $empresa->imagen));
+                if ($empresa->imagen && file_exists($rutaCarpetaLogo . '/' . $empresa->imagen)) {
+                    unlink($rutaCarpetaLogo . '/' . $empresa->imagen);
                 }
 
-                $imagen->move(public_path('images/empresas/' . $empresa->id), $nombreImagen);
-                $empresa->imagen = $nombreImagen;
-            } else {
-                $empresa->imagen = null;
+                $imagen->move($rutaCarpetaLogo, $imagen->getClientOriginalName());
+                $empresa->imagen = $imagen->getClientOriginalName();
+            }
+
+            if ($request->hasFile('imagen_leyenda')) {
+                $imagenLeyenda = $request->file('imagen_leyenda');
+                $rutaCarpetaLeyenda = public_path("images/empresas/leyenda/{$empresa->id}");
+
+                if ($empresa->imagen_leyenda && file_exists($rutaCarpetaLeyenda . '/' . $empresa->imagen_leyenda)) {
+                    unlink($rutaCarpetaLeyenda . '/' . $empresa->imagen_leyenda);
+                }
+
+                $imagenLeyenda->move($rutaCarpetaLeyenda, $imagenLeyenda->getClientOriginalName());
+                $empresa->imagen_leyenda = $imagenLeyenda->getClientOriginalName();
             }
 
             $empresa->save();
 
             $redesSociales = $empresa->redesSociales;
-
             $sociales = $request->input('social') ?? [];
             $enlaces = $request->input('enlace') ?? [];
 
@@ -393,7 +407,6 @@ class EmpresaController extends Controller
                     $redSocial = $redesSociales[$key];
                     $redSocial->nombre = $nombreRedSocial;
                     $redSocial->enlace = $enlaceRedSocial;
-                    $redSocial->user_modified_id = auth()->user()->id;
                     $redSocial->save();
                 } else {
                     $redSocial = new RedSocial();
@@ -437,5 +450,11 @@ class EmpresaController extends Controller
         $empresa = Empresa::find($id);
 
         return view('logo', compact('empresa'));
+    }
+    public function mostrarLeyenda($id)
+    {
+        $empresa = Empresa::find($id);
+
+        return view('leyenda-factura', compact('empresa'));
     }
 }

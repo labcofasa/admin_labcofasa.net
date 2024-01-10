@@ -1,11 +1,33 @@
 @extends('layouts.autenticado')
 
-@section('titulo', 'Aplicaciones')
+@section('titulo', 'Aplicaciones registradas')
 
 @section('contenido')
     <div class="container-fluid main-container py-3">
 
+        <!-- Título de la página -->
         <h1 class="py-3">@yield('titulo')</h1>
-        
+
+        <!-- Tabla fantasma -->
+        <x-skeleton />
+
+        <!-- Tabla aplicaciones -->
+        <div class="table-responsive rounded-3" id="tabla-aplicaciones-container" style="display: none;">
+            <table id="tabla-aplicaciones" class="table align-middle responsive display nowrap" width="100%">
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Botón que dispara el registro de aplicaciones -->
+        <span type="hidden" id="crearAplicacionBtn"></span>
+
     </div>
+
+    <!-- Notificaciones -->
+    <x-notificaciones />
+
+    <!-- Modal para registrar aplicaciones -->
+    <x-aplicaciones.crear_aplicacion />
+
+    <script async src="{{ asset('js/aplicaciones/aplicaciones.js') }}"></script>
 @endsection

@@ -326,6 +326,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="imagen-empresa-leyenda" class="text-label">Leyenda de la
+                                                factura electrónica</label>
+                                            <label for="imagen-empresa-leyenda" class="file-upload-image">
+                                                <span class="text-label-image-leyenda">Clic para seleccionar la imagen</span>
+                                                <p class="image-empresa-name-leyenda"></p>
+                                            </label>
+                                            <input type="file" name="imagen_leyenda"
+                                                accept=".jpg, .jpeg, .png, .gif, .webp" id="imagen-empresa-leyenda"
+                                                class="file-upload-input">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="dl-tab-pane" role="tabpanel" aria-labelledby="dl-tab"
@@ -694,6 +707,19 @@
                                             <div class="invalid-feedback">
                                                 Seleccione una clasificación
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="imagen-empresa-leyenda-editar" class="text-label">Leyenda de la
+                                                factura electrónica</label>
+                                            <label for="imagen-empresa-leyenda-editar" class="file-upload-image">
+                                                <span class="text-label-image-editar">Clic para seleccionar la nueva imagen</span>
+                                                <p class="image-empresa-name-leyenda-editar"></p>
+                                            </label>
+                                            <input type="file" name="imagen_leyenda"
+                                                accept=".jpg, .jpeg, .png, .gif, .webp" id="imagen-empresa-leyenda-editar"
+                                                class="file-upload-input">
                                         </div>
                                     </div>
                                 </div>

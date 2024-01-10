@@ -129,6 +129,7 @@ Route::middleware(['auth'])->group(function () {
 
     /* Aplicaciones */
     Route::get('/aplicaciones', [AplicacionesController::class, 'index'])->name('pag.aplicaciones');
+    Route::get('/tabla-aplicaciones', [AplicacionesController::class, 'tablaAplicaciones']);
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -146,14 +147,6 @@ Route::middleware(['guest'])->group(function () {
 });
 
 /* Logo de la empresa */
-Route::get('empresas/{id}/imagen', [EmpresaController::class, 'mostrarLogo']);
-
-Route::get('/probar-conexion', function () {
-    try {
-        $connection = DB::connection('sqlsrv')->getPdo();
-        return "Conexión exitosa!";
-    } catch (\Exception $e) {
-        return "Error de conexión: " . $e->getMessage();
-    }
-});
+Route::get('empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
+Route::get('empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);
 
