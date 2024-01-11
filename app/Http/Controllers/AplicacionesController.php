@@ -87,4 +87,33 @@ class AplicacionesController extends Controller
             'data' => $data,
         ]);
     }
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            "nombre_aplicacion" => 'required|string',
+            "enlace_aplicacion" => 'required|string',
+        ]);
+
+        try {
+
+            $nombreAplicacion = $request->input('nombre_aplicacion');
+            $enlaceAplicacion = $request->input('enlace_aplicacion');
+
+            $aplicacion = new Aplicacion();
+            $aplicacion->nombre_aplicacion = $nombreAplicacion;
+            $aplicacion->enlace_aplicacion = $enlaceAplicacion;
+            $aplicacion->user_id = auth()->user()->id;
+            $aplicacion->save();
+
+            return response()->json(['success' => true, 'message' => '¡Aplicació registrada con éxito!', 'data' => $aplicacion]);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json(['success' => false, 'error' => '¡Guardado fallido!: ' . $e->getMessage()]);
+        }
+    }
+    public function cargarRolesApps()
+    {
+        $rolesApps = Role::pluck('name', 'id');
+
+        return response()->json($rolesApps);
+    }
 }

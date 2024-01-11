@@ -14,14 +14,11 @@ use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\PaisController;
 use App\Http\Controllers\PapeleraController;
 use App\Http\Controllers\CuentaController;
-use App\Http\Controllers\LogoController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
-use App\Models\Aplicacion;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 
 
 Route::middleware(['auth'])->group(function () {
@@ -129,8 +126,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ajustes', [AjustesController::class, 'index'])->name('pag.ajustes');
 
     /* Aplicaciones */
+    Route::post('/crear-aplicaciones', [AplicacionesController::class, 'store']);
     Route::get('/aplicaciones', [AplicacionesController::class, 'index'])->name('pag.aplicaciones');
     Route::get('/tabla-aplicaciones', [AplicacionesController::class, 'tablaAplicaciones']);
+    Route::get('/obtener-roles-apps', [AplicacionesController::class, 'cargarRolesApps']);
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -150,4 +149,3 @@ Route::middleware(['guest'])->group(function () {
 /* Logo de la empresa */
 Route::get('empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
 Route::get('empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);
-

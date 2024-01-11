@@ -1952,7 +1952,6 @@ body.dark .switch2::before {
     padding: 5px;
 }
 .multiselect-dropdown-list input {
-    height: 1.15em;
     width: 1.15em;
     margin-right: 1em;
 }
@@ -1961,9 +1960,6 @@ body.dark .switch2::before {
 }
 .multiselect-dropdown span.maxselected {
     width: 100%;
-}
-.multiselect-dropdown-all-selector {
-    border-bottom: solid 1px #999;
 }
 
 .multiselect-dropdown span.optext,

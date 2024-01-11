@@ -6,9 +6,9 @@ function MultiselectDropdown(options) {
     var config = {
         search: true,
         height: "15rem",
-        placeholder: "Selecciona los roles",
-        txtSelected: "Roles seleccionados",
-        txtAll: "Seleccionar todos los roles",
+        placeholder: "Haz clic para seleccionar",
+        txtSelected: "Seleccionados",
+        txtAll: "Seleccionar todos",
         txtRemove: "Eliminar",
         txtSearch: "Buscar",
         ...options,

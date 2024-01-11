@@ -3,6 +3,7 @@ $(document).ready(function () {
     let tabla_aplicaciones = null;
 
     tablaAplicaciones();
+    /* manejarCambioSelect(); */
 
     function tablaAplicaciones() {
         if (tabla_aplicaciones) {
@@ -49,9 +50,7 @@ $(document).ready(function () {
                             filename:
                                 "Aplicaciones registradas - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [
-                                    1, 2, 3, 4, 5, 6, 7,
-                                ],
+                                columns: [1, 2, 3, 4, 5, 6, 7],
                             },
                         },
                         {
@@ -61,9 +60,7 @@ $(document).ready(function () {
                             filename:
                                 "Aplicaciones registradas - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [
-                                    1, 2, 3, 4, 5, 6, 7,
-                                ],
+                                columns: [1, 2, 3, 4, 5, 6, 7],
                             },
                         },
                         {
@@ -73,12 +70,10 @@ $(document).ready(function () {
                             filename:
                                 "Aplicaciones registradas - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [
-                                    1, 2, 3, 4, 5, 6, 7,
-                                ],
+                                columns: [1, 2, 3, 4, 5, 6, 7],
                             },
                         },
-                        {
+                        /* {
                             extend: "print",
                             text: "Imprimir",
                             title: "Aplicaciones registradas - Laboratorios Cofasa",
@@ -87,7 +82,7 @@ $(document).ready(function () {
                             action: function (e, dt, node, config) {
                                 printAplicaciones();
                             },
-                        },
+                        }, */
                     ],
                 },
                 {
@@ -124,9 +119,7 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
-                    targets: [
-                        1, 2, 3, 4, 5, 6, 7,
-                    ],
+                    targets: [1, 2, 3, 4, 5, 6, 7],
                     searchable: true,
                     orderable: true,
                 },
@@ -235,6 +228,107 @@ $(document).ready(function () {
     $.fn.DataTable.ext.pager.numbers_length = 4;
 
     $("#crearAplicacionBtn").click(function () {
+        /* obtenesRoles(); */
         $("#crearAplicacion").modal("show");
     });
+
+    $("#aplicacionForm").submit(function (event) {
+        event.preventDefault();
+
+        const form = $(this);
+        form.addClass("was-validated");
+
+        if (!form[0].checkValidity()) {
+            return;
+        }
+
+        const formData = new FormData(form[0]);
+
+        $.ajax({
+            url: "/crear-aplicaciones",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                tabla_aplicaciones.ajax.reload();
+
+                if (response.success) {
+                    mostrarToast(response.message, "success");
+                    $("#crearAplicacion").modal("hide");
+                } else {
+                    mostrarToast(response.error, "error");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                mostrarToast(
+                    "Error al crear la aplicación. Por favor, intente de nuevo.",
+                    "error"
+                );
+            },
+        });
+    });
+
+    $("#crearAplicacion").on("hidden.bs.modal", function () {
+        $("#aplicacionForm")
+            .removeClass("was-validated")
+            .find(":input")
+            .removeClass("is-invalid")
+            .end()[0]
+            .reset();
+    });
 });
+
+/* function obtenesRoles() {
+    $.ajax({
+        url: "/obtener-roles-apps",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            var select = $("#roles");
+
+            select.empty();
+
+            for (var roleId in data) {
+                if (data.hasOwnProperty(roleId)) {
+                    select.append(
+                        $("<option>", {
+                            value: roleId,
+                            text: data[roleId],
+                        })
+                    );
+                }
+            }
+
+            if (select[0].loadOptions) {
+                select[0].loadOptions();
+            }
+        },
+        error: function (error) {
+            console.error("Error al obtener datos desde el servidor:", error);
+        },
+    });
+}
+
+function manejarCambioSelect() {
+    var select = document.getElementById("roles");
+
+    select.addEventListener("change", function () {
+        var selectedOptions = Array.from(select.selectedOptions);
+
+        var selectedValues = selectedOptions.map((option) => option.value);
+        var selectedTexts = selectedOptions.map((option) => option.text);
+
+        console.log("Valores seleccionados:", selectedValues);
+        console.log("Textos seleccionados:", selectedTexts);
+
+        enviarSeleccionadosABaseDeDatos(selectedValues);
+    });
+}
+
+function enviarSeleccionadosABaseDeDatos(valoresSeleccionados) {
+    console.log("Enviando a la base de datos:", valoresSeleccionados);
+} */

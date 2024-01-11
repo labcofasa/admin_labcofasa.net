@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('aplicaciones', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_aplicacion');
-            $table->string('imagen_aplicacion');
+            $table->string('imagen_aplicacion')->nullable();
             $table->string('enlace_aplicacion');
             $table->string('nombre_tabla')->nullable();
             $table->timestamp('created_at')->nullable();

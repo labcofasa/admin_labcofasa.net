@@ -13,6 +13,7 @@ class Entidad extends Model
     protected $table = 'entidades';
     protected $dates = ['deleted_at'];
     protected $fillable = ['nombre', 'descripcion'];
+    
     public static function getTableName()
     {
         return with(new static)->getTable();

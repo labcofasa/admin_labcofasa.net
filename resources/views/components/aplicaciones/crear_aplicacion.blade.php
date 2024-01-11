@@ -13,27 +13,34 @@
                     </svg>
                 </button>
             </div>
-            <form id="aplicacionForm" class="form needs-validation" method="POST">
+            <form id="aplicacionForm" class="form needs-validation" novalidate method="POST">
                 @csrf
                 @method('POST')
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label for="aplicacion-nombre" class="text-label">Nombre <span class="obligatorio">
+                        <label for="nombre_aplicacion" class="text-label">Nombre <span class="obligatorio">
                                 *</span></label>
-                        <input autocomplete="off" type="text" name="nombre" class="form-control"
-                            id="aplicacion-nombre" required>
+                        <input autocomplete="off" type="text" name="nombre_aplicacion" class="form-control"
+                            id="nombre_aplicacion" required>
+                        <div class="invalid-feedback">
+                            Ingrese un nombre válido
+                        </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="aplicacion-url" class="text-label">Dirección URL <span class="obligatorio">
+                        <label for="enlace_aplicacion" class="text-label">Dirección URL <span class="obligatorio">
                                 *</span></label>
-                        <input autocomplete="off" type="url" name="aplicacion-url" class="form-control"
-                            id="aplicacion-url">
+                        <input autocomplete="off" type="url" name="enlace_aplicacion" class="form-control"
+                            id="enlace_aplicacion" required>
+                        <div class="invalid-feedback">
+                            Ingrese una dirección URL válida
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
+                    {{-- <div class="form-group mb-3">
                         <label for="roles" class="text-label">Roles de usuario <span class="obligatorio">
                                 *</span>
                         </label>
-                        <select class="form-control" name="roles" id="roles" multiple multiselect-select-all="true" required>
+                        <select class="form-control" name="roles" id="roles" multiple
+                            multiselect-select-all="true">
                         </select>
                         <div class="invalid-feedback">
                             Seleccione los roles
@@ -49,7 +56,7 @@
                         </label>
                         <input type="file" name="imagen" accept=".jpg, .jpeg, .png, .gif, .webp"
                             id="aplicacion-imagen" class="file-upload-input">
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-actions btn btn-lg btn-secondary"
