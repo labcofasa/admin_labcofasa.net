@@ -19,6 +19,7 @@ use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Aplicacion;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 

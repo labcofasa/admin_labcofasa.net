@@ -30,6 +30,16 @@
                             id="aplicacion-url">
                     </div>
                     <div class="form-group mb-3">
+                        <label for="roles" class="text-label">Roles de usuario <span class="obligatorio">
+                                *</span>
+                        </label>
+                        <select class="form-control" name="roles" id="roles" multiple multiselect-select-all="true" required>
+                        </select>
+                        <div class="invalid-feedback">
+                            Seleccione los roles
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
                         <label for="aplicacion-imagen" class="text-label">
                             Imagen de la aplicación
                         </label>
@@ -39,17 +49,6 @@
                         </label>
                         <input type="file" name="imagen" accept=".jpg, .jpeg, .png, .gif, .webp"
                             id="aplicacion-imagen" class="file-upload-input">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="aplicacion-rol" class="text-label">Roles de usuario <span class="obligatorio">
-                                *</span></label>
-                        <select name="rol" id="aplicacion-rol" class="form-control" required>
-                            <option value="">Seleccione los roles</option>
-                        </select>
-                        <input type="hidden" id="id-aplicacion-rol" name="id_rol" value="">
-                        <div class="invalid-feedback">
-                            Seleccione un rol
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

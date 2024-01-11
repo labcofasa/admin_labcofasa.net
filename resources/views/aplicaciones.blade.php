@@ -30,4 +30,5 @@
     <x-aplicaciones.crear_aplicacion />
 
     <script async src="{{ asset('js/aplicaciones/aplicaciones.js') }}"></script>
+    <script src="{{ asset('js/multiselect/multiselect.js') }}"></script>
 @endsection

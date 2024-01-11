@@ -111,10 +111,10 @@
     --tran-03: all 0.4s ease;
 
     /* Contadores */
-    --contador-primary: #0D6EFD;
-    --contador-info: #17A2B8;
-    --contador-danger: #DC3545;
-    --contador-success: #28A745;
+    --contador-primary: #0d6efd;
+    --contador-info: #17a2b8;
+    --contador-danger: #dc3545;
+    --contador-success: #28a745;
     --counter-text: #ffffff;
 }
 
@@ -747,6 +747,12 @@ hr {
     color: var(--text-color);
     margin: 0;
 }
+
+label {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+}
+
 .text-label {
     font-size: var(--font-size);
     letter-spacing: var(--letter-spacing);
@@ -1850,7 +1856,7 @@ body.dark .switch2::before {
 /* Cartas */
 .card-counter {
     margin: 5px 0;
-    background-color: var(--counter-text);;
+    background-color: var(--counter-text);
     height: 100px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -1889,4 +1895,86 @@ body.dark .switch2::before {
     transition: var(--tran-03);
     height: 75px;
     width: 75px;
+}
+
+.multiselect-dropdown {
+    display: inline-block;
+    padding: 15px;
+    margin: 10px 0 10px 0;
+    width: 100% !important;
+    border-radius: 4px;
+    background: var(--btn-secondary);
+    position: relative;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 20px 15px;
+}
+
+.multiselect-dropdown-list-wrapper {
+    z-index: 100;
+    padding: 2px;
+    border-radius: 4px;
+    display: none;
+    margin: -1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--btn-secondary);
+}
+
+.multiselect-dropdown span.optext {
+    background-color: lightgray;
+    padding: 1px 0.75em;
+}
+.multiselect-dropdown span.optext .optdel {
+    margin: 0 -6px 1px 5px;
+    font-size: .9em;
+    margin-top: 2px;
+    color: var(--color-invalido);
+    cursor: pointer;
+}
+.multiselect-dropdown span.optext .optdel:hover {
+    color: #c66;
+}
+.multiselect-dropdown-list-wrapper .multiselect-dropdown-search {
+    margin-bottom: 5px;
+}
+.multiselect-dropdown-list {
+    padding: 2px;
+    height: 15rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.multiselect-dropdown-list div {
+    padding: 5px;
+}
+.multiselect-dropdown-list input {
+    height: 1.15em;
+    width: 1.15em;
+    margin-right: 1em;
+}
+.multiselect-dropdown-list div:hover {
+    background-color: var(--btn-secondary-hover);
+}
+.multiselect-dropdown span.maxselected {
+    width: 100%;
+}
+.multiselect-dropdown-all-selector {
+    border-bottom: solid 1px #999;
+}
+
+.multiselect-dropdown span.optext,
+.multiselect-dropdown span.placeholder {
+    margin-right: 1em;
+    margin-bottom: 2px;
+    background: var(--sidebar-bg-hover);
+    padding: 1px 0;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 1;
+    border-radius: 4px;
+    display: inline-block;
 }
