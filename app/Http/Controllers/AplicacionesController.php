@@ -93,10 +93,10 @@ class AplicacionesController extends Controller
             "nombre_aplicacion" => 'required|string',
             "enlace_aplicacion" => 'required|string',
             'imagen_aplicacion' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
-        ]);
+            'roles' => 'required|array',
+        ]);        
 
         try {
-
             $nombreAplicacion = $request->input('nombre_aplicacion');
             $enlaceAplicacion = $request->input('enlace_aplicacion');
 
@@ -123,11 +123,16 @@ class AplicacionesController extends Controller
 
             $aplicacion->save();
 
-            return response()->json(['success' => true, 'message' => '¡Aplicació registrada con éxito!', 'data' => $aplicacion]);
+            $roles = $request->input('roles');
+            $aplicacion->roles()->sync($roles);
+
+
+            return response()->json(['success' => true, 'message' => '¡Aplicación registrada con éxito!', 'data' => $aplicacion]);
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json(['success' => false, 'error' => '¡Guardado fallido!: ' . $e->getMessage()]);
         }
     }
+
     public function cargarRolesApps()
     {
         $rolesApps = Role::pluck('name', 'id');

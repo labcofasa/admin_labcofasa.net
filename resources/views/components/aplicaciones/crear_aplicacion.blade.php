@@ -35,17 +35,17 @@
                             Ingrese una dirección URL válida
                         </div>
                     </div>
-                    {{-- <div class="form-group mb-3">
+                    <div class="form-group mb-3">
                         <label for="roles" class="text-label">Roles de usuario <span class="obligatorio">
                                 *</span>
                         </label>
-                        <select class="form-control" name="roles" id="roles" multiple
+                        <select class="form-control" name="roles" id="roles" required multiple
                             multiselect-select-all="true">
                         </select>
                         <div class="invalid-feedback">
                             Seleccione los roles
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="form-group mb-3">
                         <label for="aplicacion-imagen" class="text-label">
                             Imagen de la aplicación

@@ -3,7 +3,7 @@ $(document).ready(function () {
     let tabla_aplicaciones = null;
 
     tablaAplicaciones();
-    /* manejarCambioSelect(); */
+    manejarCambioSelect();
 
     function tablaAplicaciones() {
         if (tabla_aplicaciones) {
@@ -228,7 +228,7 @@ $(document).ready(function () {
     $.fn.DataTable.ext.pager.numbers_length = 4;
 
     $("#crearAplicacionBtn").click(function () {
-        /* obtenesRoles(); */
+        obtenesRoles();
         $("#crearAplicacion").modal("show");
     });
 
@@ -255,11 +255,18 @@ $(document).ready(function () {
         }
 
         const imagenInput = $("#aplicacion-imagen")[0];
-
         const formData = new FormData(form[0]);
 
         if (imagenInput.files.length > 0) {
             formData.append("imagen_aplicacion", imagenInput.files[0]);
+        }
+
+        const selectedRoles = $("#roles").val();
+
+        if (selectedRoles && selectedRoles.length > 0) {
+            selectedRoles.forEach((roleId) => {
+                formData.append("roles[]", roleId);
+            });
         }
 
         $.ajax({
@@ -300,7 +307,9 @@ $(document).ready(function () {
     });
 });
 
-/* function obtenesRoles() {
+var rolesData = {};
+
+function obtenesRoles() {
     $.ajax({
         url: "/obtener-roles-apps",
         type: "GET",
@@ -309,9 +318,11 @@ $(document).ready(function () {
             var select = $("#roles");
 
             select.empty();
+            rolesData = {};
 
             for (var roleId in data) {
                 if (data.hasOwnProperty(roleId)) {
+                    rolesData[roleId] = data[roleId];
                     select.append(
                         $("<option>", {
                             value: roleId,
@@ -348,5 +359,5 @@ function manejarCambioSelect() {
 }
 
 function enviarSeleccionadosABaseDeDatos(valoresSeleccionados) {
-    console.log("Enviando a la base de datos:", valoresSeleccionados);
-} */
+    return valoresSeleccionados;
+}
