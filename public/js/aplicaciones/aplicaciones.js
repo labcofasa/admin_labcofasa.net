@@ -232,6 +232,18 @@ $(document).ready(function () {
         $("#crearAplicacion").modal("show");
     });
 
+    $("#aplicacion-imagen").change(function () {
+        const fileName = $(this).val().split("\\").pop();
+
+        $(".nombre-aplicacion").text(fileName);
+
+        if (fileName) {
+            $(".text-label-image").hide();
+        } else {
+            $(".text-label-image").show();
+        }
+    });
+
     $("#aplicacionForm").submit(function (event) {
         event.preventDefault();
 
@@ -242,7 +254,13 @@ $(document).ready(function () {
             return;
         }
 
+        const imagenInput = $("#aplicacion-imagen")[0];
+
         const formData = new FormData(form[0]);
+
+        if (imagenInput.files.length > 0) {
+            formData.append("imagen_aplicacion", imagenInput.files[0]);
+        }
 
         $.ajax({
             url: "/crear-aplicaciones",

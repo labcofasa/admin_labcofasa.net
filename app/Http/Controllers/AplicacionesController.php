@@ -92,6 +92,7 @@ class AplicacionesController extends Controller
         $this->validate($request, [
             "nombre_aplicacion" => 'required|string',
             "enlace_aplicacion" => 'required|string',
+            'imagen_aplicacion' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
         ]);
 
         try {
@@ -103,6 +104,23 @@ class AplicacionesController extends Controller
             $aplicacion->nombre_aplicacion = $nombreAplicacion;
             $aplicacion->enlace_aplicacion = $enlaceAplicacion;
             $aplicacion->user_id = auth()->user()->id;
+
+            $aplicacion->save();
+
+            $aplicacionId = $aplicacion->id;
+
+            $rutaCarpetaImagen = public_path("images/aplicaciones/imagen/{$aplicacionId}");
+
+            if (!file_exists($rutaCarpetaImagen)) {
+                mkdir($rutaCarpetaImagen, 0777, true);
+            }
+
+            if ($request->hasFile('imagen_aplicacion')) {
+                $imagen_aplicacion = $request->file('imagen_aplicacion');
+                $imagen_aplicacion->move($rutaCarpetaImagen, $imagen_aplicacion->getClientOriginalName());
+                $aplicacion->imagen_aplicacion = $imagen_aplicacion->getClientOriginalName();
+            }
+
             $aplicacion->save();
 
             return response()->json(['success' => true, 'message' => '¡Aplicació registrada con éxito!', 'data' => $aplicacion]);

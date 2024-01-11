@@ -21,6 +21,11 @@ class UserRole extends SpatieRole
         return ['name', 'nombre_tabla'];
     }
 
+    public function aplicaciones()
+    {
+        return $this->belongsToMany(Aplicacion::class, 'aplicaciones_roles', 'role_id', 'aplicacion_id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

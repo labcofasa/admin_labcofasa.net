@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Contracts\Role;
 
 class Aplicacion extends Model
 {
@@ -22,6 +23,11 @@ class Aplicacion extends Model
     public static function getSearchableColumns()
     {
         return ['nombre', 'nombre_tabla'];
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'aplicaciones_roles', 'aplicacion_id', 'role_id');
     }
 
     public function user()

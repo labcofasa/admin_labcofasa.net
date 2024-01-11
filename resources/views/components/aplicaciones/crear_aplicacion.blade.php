@@ -45,18 +45,18 @@
                         <div class="invalid-feedback">
                             Seleccione los roles
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group mb-3">
                         <label for="aplicacion-imagen" class="text-label">
                             Imagen de la aplicación
                         </label>
                         <label for="aplicacion-imagen" class="file-upload-image">
                             <span class="text-label-image">Clic para seleccionar la imagen</span>
-                            <p class="aplicacion-imagen-nombre"></p>
+                            <p class="nombre-aplicacion"></p>
                         </label>
-                        <input type="file" name="imagen" accept=".jpg, .jpeg, .png, .gif, .webp"
+                        <input type="file" name="imagen_aplicacion" accept=".jpg, .jpeg, .png, .gif, .webp"
                             id="aplicacion-imagen" class="file-upload-input">
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-actions btn btn-lg btn-secondary"
