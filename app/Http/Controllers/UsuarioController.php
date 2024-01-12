@@ -224,16 +224,23 @@ class UsuarioController extends Controller
             $perfil->municipio_id = $request->input('municipio_id');
             $perfil->user_id = $usuario->id;
 
+            $perfil->save();
+
+            $perfilId = $perfil->id;
+
+            $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfilId}");
+
+            if (!file_exists($rutaCarpetaImagen)) {
+                mkdir($rutaCarpetaImagen, 0777, true);
+            }
+
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
+                $imagen->move($rutaCarpetaImagen, $imagen->getClientOriginalName());
                 $perfil->imagen = $imagen->getClientOriginalName();
-                $imagen->move(public_path('images/usuarios/' . $perfil->id), $imagen->getClientOriginalName());
-            } else {
-                $perfil->imagen = null;
             }
 
             $perfil->save();
-
 
             $rolId = $request->input('rol');
             $role = Role::findById($rolId);
@@ -307,18 +314,22 @@ class UsuarioController extends Controller
             $perfil->departamento_id = $request->input('departamento_id');
             $perfil->municipio_id = $request->input('municipio_id');
 
+            $perfil->save();
+
+            $perfilId = $perfil->id;
+
+            $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfilId}");
+
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
-                $nombreImagen = $imagen->getClientOriginalName();
+                $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfil->id}");
 
-                if ($perfil->imagen && file_exists(public_path('images/usuarios/' . $perfil->id . '/' . $perfil->imagen))) {
-                    unlink(public_path('images/usuarios/' . $perfil->id . '/' . $perfil->imagen));
+                if ($perfil->imagen && file_exists($rutaCarpetaImagen . '/' . $perfil->imagen)) {
+                    unlink($rutaCarpetaImagen . '/' . $perfil->imagen);
                 }
 
-                $imagen->move(public_path('images/usuarios/' . $perfil->id), $nombreImagen);
-                $perfil->imagen = $nombreImagen;
-            } else {
-                $perfil->imagen = null;
+                $imagen->move($rutaCarpetaImagen, $imagen->getClientOriginalName());
+                $perfil->imagen = $imagen->getClientOriginalName();
             }
 
             $perfil->save();

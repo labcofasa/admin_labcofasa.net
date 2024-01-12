@@ -34,10 +34,14 @@ class AplicacionesController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $query = Aplicacion::with('roles')
+        $query = Aplicacion::with(['roles' => function ($q) use ($search) {
+            $q->where('name', 'like', '%' . $search . '%');
+        }])
             ->select('aplicaciones.*', 'users.name as user_name', 'modified_users.name as user_modified_name')
             ->leftJoin('users', 'aplicaciones.user_id', '=', 'users.id')
-            ->leftJoin('users as modified_users', 'aplicaciones.user_modified_id', '=', 'modified_users.id');
+            ->leftJoin('users as modified_users', 'aplicaciones.user_modified_id', '=', 'modified_users.id')
+            ->leftJoin('aplicacion_role', 'aplicaciones.id', '=', 'aplicacion_role.aplicacion_id')
+            ->leftJoin('roles', 'aplicacion_role.role_id', '=', 'roles.id');
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
@@ -46,9 +50,11 @@ class AplicacionesController extends Controller
                     ->orWhere('aplicaciones.created_at', 'like', '%' . $search . '%')
                     ->orWhere('users.name', 'like', "%$search%")
                     ->orWhere('aplicaciones.updated_at', 'like', '%' . $search . '%')
-                    ->orWhere('modified_users.name', 'like', "%$search%");
+                    ->orWhere('modified_users.name', 'like', "%$search%")
+                    ->orWhere('roles.name', 'like', "%$search%");
             });
         }
+
 
         $columnNames = ['id', 'nombre_aplicacion', 'imagen_aplicacion', 'enlace_aplicacion', 'created_at', 'user_name', 'updated_at', 'user_modified_name'];
         $orderColumn = $columnNames[$orderColumnIndex];
@@ -171,7 +177,7 @@ class AplicacionesController extends Controller
 
             if ($request->hasFile('imagen_aplicacion')) {
                 $imagen_aplicacion = $request->file('imagen_aplicacion');
-                $rutaCarpetaImagen = public_path("images/empresas/logo/{$aplicacion->id}");
+                $rutaCarpetaImagen = public_path("images/aplicaciones/imagen/{$aplicacion->id}");
 
                 if ($aplicacion->imagen_aplicacion && file_exists($rutaCarpetaImagen . '/' . $aplicacion->imagen_aplicacion)) {
                     unlink($rutaCarpetaImagen . '/' . $aplicacion->imagen_aplicacion);
