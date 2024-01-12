@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Contracts\Role;
+use Spatie\Permission\Models\Role;
 
 class Aplicacion extends Model
 {
@@ -27,7 +27,7 @@ class Aplicacion extends Model
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'aplicaciones_roles', 'aplicacion_id', 'role_id');
+        return $this->belongsToMany(Role::class);
     }
 
     public function user()

@@ -3,7 +3,6 @@ $(document).ready(function () {
     let tabla_aplicaciones = null;
 
     tablaAplicaciones();
-    manejarCambioSelect();
 
     function tablaAplicaciones() {
         if (tabla_aplicaciones) {
@@ -159,6 +158,11 @@ $(document).ready(function () {
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
                                             <li>
+                                                <button class="dropdown-item ver-aplicacion" data-url="${row.enlace_aplicacion}" type="button">
+                                                    <span class="link">Ver aplicación</span>
+                                                </button>
+                                            </li>
+                                            <li>
                                                 <button class="dropdown-item editar-aplicacion" data-id="${row.id}" type="button">
                                                     <span class="link">Editar aplicación</span>
                                                 </button>
@@ -226,6 +230,11 @@ $(document).ready(function () {
     }
 
     $.fn.DataTable.ext.pager.numbers_length = 4;
+
+    $("#tabla-aplicaciones").on("click", ".ver-aplicacion", function () {
+        const url = $(this).data("url");
+        window.open(url, "_blank");
+    });
 
     $("#crearAplicacionBtn").click(function () {
         obtenesRoles();
@@ -340,24 +349,4 @@ function obtenesRoles() {
             console.error("Error al obtener datos desde el servidor:", error);
         },
     });
-}
-
-function manejarCambioSelect() {
-    var select = document.getElementById("roles");
-
-    select.addEventListener("change", function () {
-        var selectedOptions = Array.from(select.selectedOptions);
-
-        var selectedValues = selectedOptions.map((option) => option.value);
-        var selectedTexts = selectedOptions.map((option) => option.text);
-
-        console.log("Valores seleccionados:", selectedValues);
-        console.log("Textos seleccionados:", selectedTexts);
-
-        enviarSeleccionadosABaseDeDatos(selectedValues);
-    });
-}
-
-function enviarSeleccionadosABaseDeDatos(valoresSeleccionados) {
-    return valoresSeleccionados;
 }

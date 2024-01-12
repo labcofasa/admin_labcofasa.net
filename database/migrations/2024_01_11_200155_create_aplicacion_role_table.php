@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('aplicaciones_roles', function (Blueprint $table) {
+        Schema::create('aplicacion_role', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('aplicacion_id');
             $table->unsignedBigInteger('role_id');
-            $table->timestamps();
 
             $table->foreign('aplicacion_id')->references('id')->on('aplicaciones')->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('aplicaciones_roles');
+        Schema::dropIfExists('aplicacion_role');
     }
 };
