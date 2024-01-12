@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 titulo" id="editarAplicacionLabel">Registrar aplicación</h1>
+                <h1 class="modal-title fs-5 titulo" id="editarAplicacionLabel">Editar aplicación</h1>
                 <button class="btn-icon-close" data-bs-dismiss="modal">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                         width="24px" fill="#000000">
@@ -37,10 +37,10 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="roles" class="text-label">Roles de usuario <span class="obligatorio">
+                        <label for="roles-editar" class="text-label">Roles de usuario <span class="obligatorio">
                                 *</span>
                         </label>
-                        <select class="form-control" name="roles" id="roles" required multiple
+                        <select class="form-control" name="roles" id="roles-editar" required multiple
                             multiselect-select-all="true">
                         </select>
                         <div class="invalid-feedback">

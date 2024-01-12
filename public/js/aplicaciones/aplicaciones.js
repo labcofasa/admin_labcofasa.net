@@ -49,7 +49,7 @@ $(document).ready(function () {
                             filename:
                                 "Aplicaciones registradas - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6, 7],
+                                columns: [1, 2, 3, 4, 5, 6, 7, 8],
                             },
                         },
                         {
@@ -59,7 +59,7 @@ $(document).ready(function () {
                             filename:
                                 "Aplicaciones registradas - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6, 7],
+                                columns: [1, 2, 3, 4, 5, 6, 7, 8],
                             },
                         },
                         {
@@ -69,7 +69,7 @@ $(document).ready(function () {
                             filename:
                                 "Aplicaciones registradas - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6, 7],
+                                columns: [1, 2, 3, 4, 5, 6, 7, 8],
                             },
                         },
                         /* {
@@ -113,18 +113,18 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 8],
+                    targets: [0, 9],
                     searchable: false,
                     orderable: false,
                 },
                 {
-                    targets: [1, 2, 3, 4, 5, 6, 7],
+                    targets: [1, 2, 3, 4, 5, 6, 7, 8],
                     searchable: true,
                     orderable: true,
                 },
                 { responsivePriority: 1, targets: 1 },
                 { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 8 },
+                { responsivePriority: 3, targets: 9 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
@@ -133,6 +133,19 @@ $(document).ready(function () {
             columns: [
                 { data: "contador", title: "#" },
                 { data: "nombre_aplicacion", title: "Nombre" },
+                {
+                    data: "roles",
+                    title: "Roles permitidos",
+                    render: function (data, type, row) {
+                        var roles = data
+                            .map(function (rol) {
+                                return rol.name;
+                            })
+                            .join("<br>");
+
+                        return roles;
+                    },
+                },
                 { data: "imagen_aplicacion", title: "Imagen" },
                 { data: "enlace_aplicacion", title: "Url" },
                 { data: "created_at", title: "Fecha creación" },
@@ -237,7 +250,9 @@ $(document).ready(function () {
     });
 
     $("#crearAplicacionBtn").click(function () {
+        $("#roles-editar").empty();
         obtenesRoles();
+        window.MultiselectDropdown();
         $("#crearAplicacion").modal("show");
     });
 
@@ -313,6 +328,8 @@ $(document).ready(function () {
             .removeClass("is-invalid")
             .end()[0]
             .reset();
+
+        $(".multiselect-dropdown").remove();
     });
 
     /* Editar aplicación */
@@ -323,12 +340,64 @@ $(document).ready(function () {
         var nombre_aplicacion = row.nombre_aplicacion;
         var enlace_aplicacion = row.enlace_aplicacion;
 
-        $("#editarAplicacionForm #btn-editar-aplicacion").val(aplicacionId);
-        $("#editarAplicacionForm #nombre-aplicacion-editar").val(nombre_aplicacion);
-        $("#editarAplicacionForm #enlace-aplicacion-editar").val(enlace_aplicacion);
-        $(".imagen-aplicacion-nombre-editar").text(row.imagen_aplicacion);
+        $("#roles-editar").empty();
 
-        $("#editarAplicacion").modal("show");
+        $.ajax({
+            type: "GET",
+            url: "/obtener-roles-apps",
+            success: function (response) {
+                console.log("Respuesta de obtener roles:", response);
+
+                if (typeof response === "object" && response !== null) {
+                    var rolesCompletos = Object.entries(response).map(
+                        ([id, name]) => ({ id, name })
+                    );
+
+                    if (rolesCompletos.length > 0) {
+                        rolesCompletos.forEach(function (rol) {
+                            var selected =
+                                row.roles &&
+                                row.roles.some(function (appRole) {
+                                    return appRole.id == rol.id;
+                                });
+
+                            var option = $("<option>", {
+                                value: rol.id,
+                                text: rol.name,
+                                selected: selected,
+                            });
+
+                            $("#roles-editar").append(option);
+                        });
+                    } else {
+                        console.error(
+                            "La respuesta no contiene roles válidos."
+                        );
+                    }
+                } else {
+                    console.error("La respuesta no es un objeto válido.");
+                }
+
+                $("#editarAplicacionForm #btn-editar-aplicacion").val(
+                    aplicacionId
+                );
+                $("#editarAplicacionForm #nombre-aplicacion-editar").val(
+                    nombre_aplicacion
+                );
+                $("#editarAplicacionForm #enlace-aplicacion-editar").val(
+                    enlace_aplicacion
+                );
+                $(".imagen-aplicacion-nombre-editar").text(
+                    row.imagen_aplicacion
+                );
+
+                window.MultiselectDropdown();
+                $("#editarAplicacion").modal("show");
+            },
+            error: function (error) {
+                console.error("Error al obtener roles:", error);
+            },
+        });
     });
 
     $("#imagen-aplicacion-editar").change(function () {
@@ -341,6 +410,69 @@ $(document).ready(function () {
         } else {
             $(".text-label-imagen-editar").show();
         }
+    });
+
+    $("#editarAplicacionForm").submit(function (e) {
+        e.preventDefault();
+
+        const form = $(this);
+        form.addClass("was-validated");
+
+        if (!form[0].checkValidity()) {
+            return;
+        }
+
+        const formData = new FormData(form[0]);
+
+        const imagenInput = $("#imagen-aplicacion-editar")[0];
+        if (imagenInput.files.length > 0) {
+            formData.append("imagen_aplicacion", imagenInput.files[0]);
+        }
+
+        const selectedRoles = $("#roles-editar").val();
+        if (selectedRoles && selectedRoles.length > 0) {
+            selectedRoles.forEach((roleId) => {
+                formData.append("roles[]", roleId);
+            });
+        }
+
+        $.ajax({
+            url: "/actualizar-aplicacion/" + $("#btn-editar-aplicacion").val(),
+            method: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                tabla_aplicaciones.ajax.reload();
+
+                if (response.success) {
+                    mostrarToast(response.message, "success");
+                    $("#editarAplicacion").modal("hide");
+                } else {
+                    mostrarToast(response.error, "error");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                mostrarToast(
+                    "Error al editar la aplicación. Por favor, intente de nuevo.",
+                    "error"
+                );
+            },
+        });
+    });
+
+    $("#editarAplicacion").on("hidden.bs.modal", function () {
+        $("#editarAplicacionForm")
+            .removeClass("was-validated")
+            .find(":input")
+            .removeClass("is-invalid")
+            .end()[0]
+            .reset();
+
+        $(".multiselect-dropdown").remove();
     });
 
     /* Eliminar aplicación */
