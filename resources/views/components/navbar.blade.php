@@ -19,7 +19,8 @@
                c0-0.1-0.1-0.1-0.1-0.2l-7.9-22.2c-0.1-0.3-0.2-0.7-0.2-1L48.1,22c0-1.1,0.5-2.1,1.4-2.6c1.4-0.8,2-2.2,0.6-4.4
                c-1.3-1.7-5.8-3.9-10.3-5.9L24.3,1.7z" />
             </svg>
-            <span class="logo-nombre">Cofasa</span>
+            <span class="logo-nombre d-none d-sm-block">Laboratorios Cofasa</span>
+            <span class="logo-nombre d-block d-sm-none">Cofasa</span>
         </div>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2"
@@ -132,6 +133,18 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pag.aplicaciones') }}"
+                            class="nav-link {{ request()->routeIs('pag.aplicaciones') ? 'active' : '' }}">
+                            <svg class="icon pe-none" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 0 24 24" width="24px" fill="#000000">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path
+                                    d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" />
+                            </svg>
+                            <span class="link">Aplicaciones</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('pag.empresas') }}"
