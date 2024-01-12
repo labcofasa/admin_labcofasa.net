@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aplicacion;
 use App\Models\Clasificacion;
 use App\Models\Empresa;
 use App\Models\RedSocial;
@@ -44,6 +45,7 @@ class PapeleraController extends Controller
             'Redes sociales' => ['class' => RedSocial::class, 'column' => 'nombre'],
             'Clasificaciones' => ['class' => Clasificacion::class, 'column' => 'nombre'],
             'Usuarios' => ['class' => User::class, 'column' => 'name'],
+            'Aplicaciones' => ['class' => Aplicacion::class, 'column' => 'nombre_aplicacion'],
         ];
 
         $data = [];
@@ -140,6 +142,7 @@ class PapeleraController extends Controller
             'Redes sociales' => RedSocial::class,
             'Clasificaciones' => Clasificacion::class,
             'Usuarios' => User::class,
+            'Aplicaciones' => Aplicacion::class,
         ];
 
         return $modelMap[$table] ?? null;

@@ -3,6 +3,7 @@
 @section('titulo', 'Aplicaciones registradas')
 
 @section('contenido')
+
     <div class="container-fluid main-container py-3">
 
         <!-- Título de la página -->
@@ -29,6 +30,14 @@
     <!-- Modal para registrar aplicaciones -->
     <x-aplicaciones.crear_aplicacion />
 
+    <!-- Modal para editar aplicaciones -->
+    <x-aplicaciones.editar_aplicacion />
+
+    <!-- Modal para eliminar aplicaciones -->
+    <x-aplicaciones.eliminar_aplicacion />
+
+    <!-- Scripts -->
     <script async src="{{ asset('js/aplicaciones/aplicaciones.js') }}"></script>
     <script src="{{ asset('js/multiselect/multiselect.js') }}"></script>
+
 @endsection

@@ -314,6 +314,75 @@ $(document).ready(function () {
             .end()[0]
             .reset();
     });
+
+    /* Editar aplicación */
+    $("#tabla-aplicaciones").on("click", ".editar-aplicacion", function () {
+        var aplicacionId = $(this).data("id");
+        var row = tabla_aplicaciones.row($(this).parents("tr")).data();
+
+        var nombre_aplicacion = row.nombre_aplicacion;
+        var enlace_aplicacion = row.enlace_aplicacion;
+
+        $("#editarAplicacionForm #btn-editar-aplicacion").val(aplicacionId);
+        $("#editarAplicacionForm #nombre-aplicacion-editar").val(nombre_aplicacion);
+        $("#editarAplicacionForm #enlace-aplicacion-editar").val(enlace_aplicacion);
+        $(".imagen-aplicacion-nombre-editar").text(row.imagen_aplicacion);
+
+        $("#editarAplicacion").modal("show");
+    });
+
+    $("#imagen-aplicacion-editar").change(function () {
+        const fileName = $(this).val().split("\\").pop();
+
+        $(".imagen-aplicacion-nombre-editar").text(fileName);
+
+        if (fileName) {
+            $(".text-label-imagen-editar").hide();
+        } else {
+            $(".text-label-imagen-editar").show();
+        }
+    });
+
+    /* Eliminar aplicación */
+    $("#tabla-aplicaciones").on("click", ".eliminar-aplicacion", function () {
+        const aplicacionId = $(this).data("id");
+        const aplicacionNombre = $(this)
+            .closest("tr")
+            .find("td:nth-child(2)")
+            .text();
+
+        $("#nombre-aplicacion").text(aplicacionNombre);
+        $("#btn-eliminar-aplicacion").data("id", aplicacionId);
+        $("#eliminarAplicacion").modal("show");
+    });
+
+    $("#btn-eliminar-aplicacion").on("click", function () {
+        const aplicacionId = $(this).data("id");
+        $.ajax({
+            url: "/eliminar-aplicacion/" + aplicacionId,
+            method: "DELETE",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                tabla_aplicaciones.ajax.reload();
+
+                $("#eliminarAplicacion").modal("hide");
+
+                if (response.success) {
+                    mostrarToast(response.message, "success");
+                } else {
+                    mostrarToast(response.error, "error");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                mostrarToast(
+                    "Error al eliminar la aplicación. Por favor, intente de nuevo.",
+                    "error"
+                );
+            },
+        });
+    });
 });
 
 var rolesData = {};

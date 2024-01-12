@@ -130,6 +130,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/aplicaciones', [AplicacionesController::class, 'index'])->name('pag.aplicaciones');
     Route::get('/tabla-aplicaciones', [AplicacionesController::class, 'tablaAplicaciones']);
     Route::get('/obtener-roles-apps', [AplicacionesController::class, 'cargarRolesApps']);
+    Route::delete('/eliminar-aplicacion/{id}', [AplicacionesController::class, 'destroy']);
 });
 
 Route::middleware(['guest'])->group(function () {

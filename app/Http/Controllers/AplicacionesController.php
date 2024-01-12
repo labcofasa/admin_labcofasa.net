@@ -15,6 +15,7 @@ class AplicacionesController extends Controller
 
         return view('aplicaciones', compact('usuario'));
     }
+
     public function tablaAplicaciones(Request $request)
     {
         $this->validate($request, [
@@ -87,6 +88,7 @@ class AplicacionesController extends Controller
             'data' => $data,
         ]);
     }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -94,7 +96,7 @@ class AplicacionesController extends Controller
             "enlace_aplicacion" => 'required|string',
             'imagen_aplicacion' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'roles' => 'required|array',
-        ]);        
+        ]);
 
         try {
             $nombreAplicacion = $request->input('nombre_aplicacion');
@@ -130,6 +132,31 @@ class AplicacionesController extends Controller
             return response()->json(['success' => true, 'message' => '¡Aplicación registrada con éxito!', 'data' => $aplicacion]);
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json(['success' => false, 'error' => '¡Guardado fallido!: ' . $e->getMessage()]);
+        }
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $aplicacion = Aplicacion::find($id);
+
+        if (!$aplicacion) {
+            return response()->json([
+                'success' => false,
+                'error' => '¡Aplicación no encontrada!'
+            ]);
+        }
+
+        try {
+
+            $aplicacion->nombre_tabla = 'Aplicaciones';
+            $aplicacion->user_deleted_id = auth()->user()->id;
+            $aplicacion->save();
+
+            $aplicacion->delete();
+
+            return response()->json(['success' => true, 'message' => '¡Aplicación eliminado con éxito!']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => 'Error al eliminar la aplicación']);
         }
     }
 
