@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         tabla_usuarios = $("#tabla-usuarios").DataTable({
             dom:
-                "<'row'<'col-lg-8 col-md-8 col-sm-6 col-12 px-0'B><'col-lg-4 col-md-4 col-sm-6 col-12 px-0 mt-1'f>>" +
+                "<'row align-items-end'<'col-lg-9 col-md-8 col-sm-6 col-12 px-0'B><'col-lg-3 col-md-4 col-sm-6 col-12 px-0 mt-1'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
             serverSide: true,
@@ -688,6 +688,9 @@ function estadisticaUsuario() {
             $("#totalUsuarios").text(data.totalUsuarios);
             $("#totalRoles").text(data.totalRoles);
             $("#totalPermisos").text(data.totalPermisos);
+            $("#porcentajeUsuariosUltimoMes").text(data.porcentajeUsuariosUltimoMes);
+            $("#porcentajeRolesUltimoMes").text(data.porcentajeRolesUltimoMes);
+            $("#porcentajePermisosUltimoMes").text(data.porcentajePermisosUltimoMes);
         },
         error: function (error) {
             console.log(

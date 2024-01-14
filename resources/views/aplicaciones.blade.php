@@ -4,23 +4,23 @@
 
 @section('contenido')
 
-    <div class="container-fluid main-container py-3">
+    <div class="container-fluid content">
+        <div class="card-container">
 
-        <!-- Título de la página -->
-        <h1 class="py-3">@yield('titulo')</h1>
+            <!-- Tabla fantasma -->
+            <x-skeleton />
 
-        <!-- Tabla fantasma -->
-        <x-skeleton />
+            <!-- Tabla aplicaciones -->
+            <div class="table-responsive rounded-3" id="tabla-aplicaciones-container" style="display: none;">
+                <h1 class="pb-2">@yield('titulo')</h1>
+                <table id="tabla-aplicaciones" class="table align-middle responsive display nowrap" width="100%">
+                    <tbody></tbody>
+                </table>
+            </div>
 
-        <!-- Tabla aplicaciones -->
-        <div class="table-responsive rounded-3" id="tabla-aplicaciones-container" style="display: none;">
-            <table id="tabla-aplicaciones" class="table align-middle responsive display nowrap" width="100%">
-                <tbody></tbody>
-            </table>
+            <!-- Botón que dispara el registro de aplicaciones -->
+            <span type="hidden" id="crearAplicacionBtn"></span>
         </div>
-
-        <!-- Botón que dispara el registro de aplicaciones -->
-        <span type="hidden" id="crearAplicacionBtn"></span>
 
     </div>
 

@@ -16,6 +16,7 @@ class UsuarioController extends Controller
 
         return view('usuarios', compact('usuario'));
     }
+
     public function tablaUsuarios(Request $request)
     {
         $this->validate($request, [
@@ -256,6 +257,7 @@ class UsuarioController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al registrar el usuario: ' . $e->getMessage()]);
         }
     }
+
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -348,6 +350,7 @@ class UsuarioController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al actualizar el usuario: ' . $e->getMessage()]);
         }
     }
+
     public function destroy(Request $request, $id)
     {
         $usuario = User::find($id);
@@ -375,20 +378,29 @@ class UsuarioController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al eliminar el usuario']);
         }
     }
+
     public function obtenerEstadisticasUsuarios()
     {
         $usuariosUltimoMes = User::where('created_at', '>=', now()->subMonth())->count();
-
         $totalUsuarios = User::count();
-
         $totalRoles = Role::count();
         $totalPermisos = Permission::count();
+
+        $totalRolesAnterior = Role::where('created_at', '<', now()->startOfMonth())->count();
+        $totalPermisosAnterior = Permission::where('created_at', '<', now()->startOfMonth())->count();
+
+        $porcentajeUsuariosUltimoMes = ($totalUsuarios > 0) ? number_format(($usuariosUltimoMes / $totalUsuarios) * 100) : 0;
+        $porcentajeRolesUltimoMes = ($totalRoles > 0) ? number_format(($totalRolesAnterior / $totalRoles) * 100) : 0;
+        $porcentajePermisosUltimoMes = ($totalPermisos > 0) ? number_format(($totalPermisosAnterior / $totalPermisos) * 100) : 0;
 
         return response()->json([
             'usuariosUltimoMes' => $usuariosUltimoMes,
             'totalUsuarios' => $totalUsuarios,
             'totalRoles' => $totalRoles,
             'totalPermisos' => $totalPermisos,
+            'porcentajeUsuariosUltimoMes' => $porcentajeUsuariosUltimoMes . '%',
+            'porcentajeRolesUltimoMes' => $porcentajeRolesUltimoMes . '%',
+            'porcentajePermisosUltimoMes' => $porcentajePermisosUltimoMes . '%',
         ]);
     }
 }

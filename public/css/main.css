@@ -33,10 +33,10 @@
 /* Colores para el diseño claro */
 :root {
     /* Paleta de colores */
-    --primary: #4ac2c0;
-    --secondary: #ffe350;
+    --primary: #1FAB7F;
+    --secondary: #09525D;
     --secondary-hover: #ffd966;
-    --accent: #0a7581;
+    --accent: #006d4b;
     --positive: ;
     --negative: ;
     --info: #e0edfc;
@@ -45,7 +45,7 @@
     /* Botones */
     --btn-primary: #e8f0fe;
     --btn-primary-hover: #d0dffa;
-    --btn-secondary: #f5f5f5;
+    --btn-secondary: #ECECEC;
     --btn-secondary-hover: #e5e7e9;
     --btn-success: #ceead6;
     --btn-success-hover: #bde2c7;
@@ -58,16 +58,15 @@
     --color-tooltip: #6ea8fe;
 
     /* Paginación de las tablas */
-    --btn-paginacion-bg: #edf5f3;
-    --btn-paginacion-color: #2c3e50;
-    --btn-paginacion-bg-active: #006a60;
+    --btn-paginacion-bg: #ECECEC;
+    --btn-paginacion-bg-active: #172935;
     --btn-paginacion-color-active: #fff;
-    --btn-paginacion-bg-hover: #d9e8e1;
-    --btn-paginacion-color-hover: #2c3e50;
+    --btn-paginacion-bg-hover: #09525D;
+    --btn-paginacion-color-hover: #fff;
 
     /* Iconos */
     --icon-primary: #1967d2;
-    --icon-secondary: #3f3f46;
+    --icon-secondary: #4d4f51;
     --icon-success: #188038;
     --icon-danger: #ea4335;
     --icon-warning: #ffc107;
@@ -76,15 +75,15 @@
     /* Textos */
     --text-color: #3c4043;
     --span: #555555;
-    --font-size: 14px;
+    --font-size: 0.875rem;
     --letter-spacing: 0.0178571429em;
 
     /* Generales */
-    --body-bg: #fafafa;
-    --sidebar-bg: #ffffff;
-    --sidebar-bg-hover: #f4f4f5;
+    --body-bg: #FFFFFF;
+    --sidebar-bg: #FFFFFF;
+    --sidebar-bg-hover: #ECECEC;
     --sidebar-icon-hover: #4a4f53;
-    --sidebar-bg-active: #0b828f19;
+    --sidebar-bg-active: #B5E4CA;
     --card-bg: #ffffff;
     --toggle-shadow: #999999;
     --table-border: #dee2e6;
@@ -92,7 +91,7 @@
     --component-bg: #e9e9eb;
     --component-hover: #a0a0a0;
     --border-radius: 0.5rem;
-    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --dropdown-menu: #ffffff;
 
     /* Alertas */
@@ -122,9 +121,9 @@
 body.dark {
     /* Paleta de colores */
     --primary: #6edff6;
-    --secondary: #6edff6;
+    --secondary: #053340;
     --secondary-hover: #6edff6;
-    --accent: #00bac7;
+    --accent: #004832;
     --positive: ;
     --negative: ;
     --info: #172d3b;
@@ -146,8 +145,8 @@ body.dark {
     --color-tooltip: #6edff6;
 
     /* Paginación de las tablas */
-    --btn-paginacion-bg: #005048;
-    --btn-paginacion-color: #53dbc9;
+    --btn-paginacion-bg: #003634;
+    --btn-paginacion-color: #fff;
     --btn-paginacion-bg-active: #53dbc9;
     --btn-paginacion-color-active: #003731;
     --btn-paginacion-bg-hover: #005048;
@@ -172,11 +171,11 @@ body.dark {
 
     /* Generales */
     --body-bg: #1d1d1d;
-    --sidebar-bg: #222222;
+    --sidebar-bg: #1d1d1d;
     --sidebar-bg-hover: #2a2a2a;
     --sidebar-icon-hover: #adb2b6;
-    --sidebar-bg-active: #00bac71f;
-    --card-bg: #222222;
+    --sidebar-bg-active: #6FAE8E;
+    --card-bg: #1d1d1d;
     --toggle-shadow: #383838;
     --table-border: #373b3e;
     --dropdown-menu: #212121;
@@ -218,10 +217,6 @@ body {
     user-select: none;
 }
 
-main {
-    padding-top: 4rem;
-}
-
 span {
     font-size: var(--font-size);
     letter-spacing: var(--letter-spacing);
@@ -258,6 +253,11 @@ h3 {
     font-weight: 600 !important;
     color: var(--text-color) !important;
     margin: 10px 0;
+    transition: var(--tran-03);
+}
+
+h5 {
+    color: var(--text-color);
     transition: var(--tran-03);
 }
 
@@ -369,9 +369,14 @@ hr {
     border-color: var(--secondary) !important;
     border-bottom-right-radius: var(--border-radius) !important;
     border-top-right-radius: var(--border-radius) !important;
-    color: #121213 !important;
+    color: #ffffff;
     vertical-align: middle;
 }
+
+.btn-store:hover {
+    color: #ffffff;
+}
+
 .btn-store:active {
     background-color: var(--secondary) !important;
     border-color: var(--secondary) !important;
@@ -380,6 +385,7 @@ hr {
 .btn-focus-visible {
     background-color: var(--secondary);
     border-color: var(--secondary);
+    color: #ffffff !important;
 }
 .btn-primary {
     background-color: var(--btn-primary) !important;
@@ -600,7 +606,7 @@ hr {
     position: fixed;
     bottom: 16px;
     right: 12px;
-    width: 90px;
+    width: 70px;
     height: 60px;
     transition: var(--tran-03);
     display: flex;
@@ -797,7 +803,7 @@ label {
 .table-responsive {
     background-color: var(--card-bg);
     transition: var(--tran-03);
-    overflow-x: inherit;
+    overflow-x: visible;
     padding: 15px;
     box-shadow: var(--box-shadow);
 }
@@ -927,9 +933,6 @@ div.dataTables_wrapper div.dataTables_info {
 }
 
 /* Paginación */
-div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    gap: 5px;
-}
 .dataTables_paginate .pagination .paginate_button.active a {
     background-color: var(--btn-paginacion-bg-active);
     color: var(--btn-paginacion-color-active);
@@ -949,9 +952,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     letter-spacing: var(--letter-spacing);
     font-size: var(--font-size);
     transition: var(--tran-03);
-    border-radius: var(--border-radius);
     font-weight: 500;
-    box-shadow: var(--box-shadow);
 }
 
 /* Searchbuilder */
@@ -1111,9 +1112,6 @@ div.dt-datetime div.dt-datetime-label select {
     transition: var(--tran-03);
 }
 
-.dropdown-toggle::after {
-    display: none;
-}
 /* Perfil de usuario */
 .perfil-usuario .dropdown-toggle::after {
     display: none;
@@ -1148,13 +1146,6 @@ div.dt-datetime div.dt-datetime-label select {
 }
 
 /* Sidebar desktop */
-.sidebar-desktop {
-    position: fixed;
-    top: 0;
-    height: 100%;
-    width: 250px;
-    transition: var(--tran-03);
-}
 .sidebar-desktop .logo-detalles {
     height: 70px;
     display: flex;
@@ -1430,6 +1421,7 @@ div.dt-datetime div.dt-datetime-label select {
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active .link_name {
     fill: var(--accent);
     color: var(--accent);
+    font-weight: 600;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a svg,
@@ -1443,6 +1435,7 @@ div.dt-datetime div.dt-datetime-label select {
 .sidebar-desktop .menu-bar .menu .menu-links li .sub-menu li a.active .links {
     color: var(--accent);
     fill: var(--accent);
+    font-weight: 600;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a .imagen-container {
@@ -1567,7 +1560,6 @@ body.dark .toggle-switch {
 
     .table-responsive {
         box-shadow: none !important;
-        padding: 0;
     }
 
     .card-body {
@@ -1587,7 +1579,7 @@ body.dark .toggle-switch {
 /* Medias query para hacer entre
 @media screen and (min-width: 768px) and (max-width: 820px) {} */
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 450px) {
     .btn-actions {
         width: 130px;
     }
@@ -1644,12 +1636,6 @@ body.dark .toggle-switch {
 }
 
 @media screen and (min-width: 1441px) {
-    .main-container {
-        position: relative;
-        width: calc(100% - 280px);
-        left: 130px;
-    }
-
     .navbar-brand svg,
     .navbar-brand span {
         display: none;
@@ -1873,43 +1859,13 @@ body.dark .switch2::before {
 
 /* Cartas */
 .card-counter {
-    margin: 5px 0;
-    background-color: var(--counter-text);
-    height: 100px;
-    border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     transition: var(--tran-03);
 }
 
-.card-counter.primary {
-    background-color: var(--contador-primary);
-    color: var(--counter-text);
-}
-
-.card-counter.danger {
-    background-color: var(--contador-danger);
-    color: var(--counter-text);
-}
-
-.card-counter.success {
-    background-color: var(--contador-success);
-    color: var(--counter-text);
-}
-
-.card-counter.info {
-    background-color: var(--contador-info);
-    color: var(--counter-text);
-}
-
-.card-counter .count-numbers {
-    font-size: 24px;
-    font-weight: bold;
-    padding-left: 5px;
-}
-
 .card-counter .counter-icono {
-    opacity: 0.2;
-    fill: var(--counter-text);
+    opacity: 0.5;
+    fill: var(--text-color);
     transition: var(--tran-03);
     height: 75px;
     width: 75px;

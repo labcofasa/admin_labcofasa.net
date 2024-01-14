@@ -3,7 +3,7 @@
 @section('titulo', 'Mi cuenta')
 
 @section('contenido')
-    <div class="container-fluid main-container">
+    <div class="container-fluid content">
         <div class="row fila-fija">
             <div class="col-md-4 columna-fija">
                 <div class="card">

@@ -3,27 +3,27 @@
 @section('titulo', 'Usuarios registrados')
 
 @section('contenido')
-    <div class="container-fluid main-container py-3">
+    <div class="container-fluid content">
+        <div class="card-container">
 
-        <!-- Contadores con información -->
-        <x-widgets.contadores />
+            <!-- Contadores con información -->
+            <x-widgets.contadores />
 
-        <!-- Título de la página -->
-        <h1 class="pb-3">@yield('titulo')</h1>
+            <!-- Tabla fantasma -->
+            <x-skeleton />
 
-        <!-- Tabla fantasma -->
-        <x-skeleton />
+            <!-- Tabla usuarios -->
+            <div class="table-responsive rounded-3" id="tabla-usuarios-container" style="display: none;">
+                <h1 class="pb-2">@yield('titulo')</h1>
+                <table id="tabla-usuarios" class="table align-middle responsive display nowrap" width="100%">
+                    <tbody></tbody>
+                </table>
+            </div>
 
-        <!-- Tabla usuarios -->
-        <div class="table-responsive rounded-3" id="tabla-usuarios-container" style="display: none;">
-            <table id="tabla-usuarios" class="table align-middle responsive display nowrap" width="100%">
-                <tbody></tbody>
-            </table>
+            <!-- Botón que dispara el registro de usuarios -->
+            <span type="hidden" id="registrarUsuarioBtn"></span>
+
         </div>
-
-        <!-- Botón que dispara el registro de usuarios -->
-        <span type="hidden" id="registrarUsuarioBtn"></span>
-
     </div>
 
     <!-- Notificaciones -->

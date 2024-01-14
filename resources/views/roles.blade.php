@@ -3,18 +3,19 @@
 @section('titulo', 'Roles de usuarios')
 
 @section('contenido')
-    <div class="container-fluid main-container py-3">
+    <div class="container-fluid content">
+        <div class="card-container">
 
-        <h1 class="py-3">@yield('titulo')</h1>
+            <x-skeleton />
 
-        <x-skeleton />
-
-        <div class="table-responsive rounded-3" id="tabla-roles-container">
-            <table id="tabla-roles" class="table align-middle responsive display nowrap" width="100%">
-                <tbody></tbody>
-            </table>
+            <div class="table-responsive rounded-3" id="tabla-roles-container">
+                <h1 class="pb-2">@yield('titulo')</h1>
+                <table id="tabla-roles" class="table align-middle responsive display nowrap" width="100%">
+                    <tbody></tbody>
+                </table>
+            </div>
+            <span type="hidden" id="registrarRolBtn"></span>
         </div>
-        <span type="hidden" id="registrarRolBtn"></span>
     </div>
 
     <x-notificaciones />

@@ -32,7 +32,7 @@ $(document).ready(function () {
 
         tabla_empresas = $("#tabla-empresas").DataTable({
             dom:
-                "<'row'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-6 col-12 p-0 mt-1'f>>" +
+                "<'row align-items-end'<'col-md-9 col-sm-6 col-12 p-0'B><'col-md-3 col-sm-6 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
             serverSide: true,

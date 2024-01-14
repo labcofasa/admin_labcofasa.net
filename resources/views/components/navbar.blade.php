@@ -19,8 +19,7 @@
                c0-0.1-0.1-0.1-0.1-0.2l-7.9-22.2c-0.1-0.3-0.2-0.7-0.2-1L48.1,22c0-1.1,0.5-2.1,1.4-2.6c1.4-0.8,2-2.2,0.6-4.4
                c-1.3-1.7-5.8-3.9-10.3-5.9L24.3,1.7z" />
             </svg>
-            <span class="logo-nombre d-none d-sm-block">Laboratorios Cofasa</span>
-            <span class="logo-nombre d-block d-sm-none">Cofasa</span>
+            <span class="logo-nombre">Cofasa</span>
         </div>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2"
