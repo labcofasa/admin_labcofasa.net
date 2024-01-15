@@ -69,8 +69,17 @@ body.dark {
 }
 
 @media screen and (max-width: 450px) {
+    .navbar {
+        background-color: var(--body-bg);
+        height: 60px;
+    }
+
     .card-container {
         background-color: var(--body-bg);
         padding: 0;
+    }
+
+    .content {
+        padding: 3.5rem 0 0 0;
     }
 }
