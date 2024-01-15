@@ -32,9 +32,9 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:admin_usuarios_ver');
     Route::get('/tabla-usuarios', [UsuarioController::class, 'tablaUsuarios']);
     Route::post('/crear-usuario', [UsuarioController::class, 'store']);
+    Route::put('/cambiar-estado/{id}', [UsuarioController::class, 'cambiarEstadoUsuario']);
     Route::put('/actualizar-usuario/{id}', [UsuarioController::class, 'update']);
     Route::delete('/eliminar-usuario/{id}', [UsuarioController::class, 'destroy']);
-
     Route::get('/obtener-estadisticas-usuarios', [UsuarioController::class, 'obtenerEstadisticasUsuarios']);
 
     /* Página roles */

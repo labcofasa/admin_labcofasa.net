@@ -90,7 +90,7 @@
     --component: #c0c0c0;
     --component-bg: #e9e9eb;
     --component-hover: #a0a0a0;
-    --border-radius: 0.5rem;
+    --border-radius: 12px;
     --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --dropdown-menu: #ffffff;
 
@@ -1456,9 +1456,6 @@ div.dt-datetime div.dt-datetime-label select {
     fill: var(--accent);
 }
 
-body.dark .toggle-switch {
-    background-color: var(--accent);
-}
 .breadcrumb {
     align-items: end;
 }
@@ -1791,7 +1788,7 @@ body.dark .toggle-switch {
 }
 
 body.dark .toggle-switch2 .switch2 {
-    background-color: rgb(0, 221, 80);
+    background-color: var(--toggle-switch);
 }
 
 body.dark .switch2::before {

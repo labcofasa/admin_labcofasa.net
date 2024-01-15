@@ -124,20 +124,20 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 16],
+                    targets: [0, 3, 17],
                     searchable: false,
                     orderable: false,
                 },
                 {
                     targets: [
-                        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+                        1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                     ],
                     searchable: true,
                     orderable: true,
                 },
                 { responsivePriority: 1, targets: 1 },
                 { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 16 },
+                { responsivePriority: 3, targets: 17 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
@@ -151,6 +151,26 @@ $(document).ready(function () {
                     title: "Rol",
                     render: function (data, type, row) {
                         return data.map((role) => role.name).join(", ");
+                    },
+                },
+                {
+                    data: "estado",
+                    title: "Estado",
+                    render: function (data, type, row) {
+                        const isChecked = row.estado;
+
+                        return `
+                            <div class="form-check form-switch">
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${
+                                    row.id
+                                }" ${isChecked ? "checked" : ""} data-id="${
+                            row.id
+                        }">
+                                <label class="form-check-label estado-label" for="switch-${
+                                    row.id
+                                }"></label>
+                            </div>
+                        `;
                     },
                 },
                 { data: "nombre", title: "Nombres" },
@@ -351,6 +371,39 @@ $(document).ready(function () {
             .reset();
 
         $("#ia-tab").tab("show");
+    });
+
+    /* Editar el estado del usuario */
+    $("#tabla-usuarios").on("change", ".toggle-switch", function () {
+        const usuarioId = $(this).data("id");
+        const estado = $(this).prop("checked");
+
+        console.log("Estado del interruptor:", estado);
+
+        $.ajax({
+            url: "/cambiar-estado/" + usuarioId,
+            method: "PUT",
+            data: {
+                estado: estado,
+            },
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                if (response.success) {
+                    mostrarToast(response.message, "success");
+                } else {
+                    mostrarToast(response.error, "error");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                mostrarToast(
+                    "Error al cambiar el estado del usuario. Detalles: " +
+                        errorThrown,
+                    "error"
+                );
+            },
+        });
     });
 
     /* Editar usuario */
@@ -688,9 +741,13 @@ function estadisticaUsuario() {
             $("#totalUsuarios").text(data.totalUsuarios);
             $("#totalRoles").text(data.totalRoles);
             $("#totalPermisos").text(data.totalPermisos);
-            $("#porcentajeUsuariosUltimoMes").text(data.porcentajeUsuariosUltimoMes);
+            $("#porcentajeUsuariosUltimoMes").text(
+                data.porcentajeUsuariosUltimoMes
+            );
             $("#porcentajeRolesUltimoMes").text(data.porcentajeRolesUltimoMes);
-            $("#porcentajePermisosUltimoMes").text(data.porcentajePermisosUltimoMes);
+            $("#porcentajePermisosUltimoMes").text(
+                data.porcentajePermisosUltimoMes
+            );
         },
         error: function (error) {
             console.log(

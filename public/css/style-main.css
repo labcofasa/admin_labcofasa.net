@@ -1,9 +1,15 @@
 :root {
     --card-container: #f8f8f8;
+    --toggle-switch: rgb(0, 221, 80);
+    --toggle-switch-bg: #ffffff;
+    --toggle-switch-border: #dee2e6;
 }
 
 body.dark {
     --card-container: #222222;
+    --toggle-switch: rgb(0, 221, 80);
+    --toggle-switch-bg: #d0d0d0;
+    --toggle-switch-border: #d0d0d0;
 }
 
 .side-menu {
@@ -33,6 +39,90 @@ body.dark {
     transition: var(--tran-03);
     padding: 15px;
     border-radius: 15px;
+}
+
+/* Inicio - cartas */
+.btn-app .card {
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: var(--tran-03);
+    box-shadow: var(--box-shadow);
+}
+
+.btn-app a {
+    text-decoration: none;
+}
+
+.btn-app .card:hover {
+    transform: scale(1.03);
+}
+
+.btn-app .card .app-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-app .card .app-image img {
+    padding: 5px;
+    object-fit: cover;
+    height: 100px;
+}
+
+.btn-app .app-name {
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-app .app-name .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: white;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* Tabla usuarios */
+.form-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+.form-switch .form-check-input {
+    margin-left: 0;
+    width: 2.7em;
+}
+
+.form-check-input {
+    height: 1.5em;
+    margin-top: 0;
+    background-color: var(--toggle-switch-bg);
+    border-color: var(--toggle-switch-border);
+}
+
+.form-check-input:checked {
+    background-color: var(--toggle-switch);
+    border-color: var(--toggle-switch);
+}
+
+.form-check-input:focus {
+    border-color: var(--toggle-switch);
+    box-shadow: none;
+}
+
+.form-switch .form-check-input:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
 }
 
 /* Dropdown toggle */

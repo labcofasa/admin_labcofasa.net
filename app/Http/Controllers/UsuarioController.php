@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
@@ -136,6 +137,7 @@ class UsuarioController extends Controller
                 'id' => $usuario->id,
                 'contador' => $contador++,
                 'name' => $usuario->name,
+                'estado' => $usuario->estado,
                 'nombre' => $usuario->perfil->nombre ?? null,
                 'apellido' => $usuario->perfil->apellido ?? null,
                 'telefono' => $usuario->perfil->telefono ?? null,
@@ -350,6 +352,28 @@ class UsuarioController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al actualizar el usuario: ' . $e->getMessage()]);
         }
     }
+
+    public function cambiarEstadoUsuario(Request $request, $id)
+    {
+        try {
+            $usuario = User::findOrFail($id);
+
+            $estado = $request->input('estado');
+
+            $usuario->update([
+                'estado' => (bool) $estado,
+                'user_modified_id' => auth()->user()->id,
+            ]);
+
+            return response()->json(['success' => true, 'message' => 'Estado del usuario actualizado con éxito'], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        } catch (\Exception $e) {
+            Log::error('Error al cambiar el estado del usuario: ' . $e->getMessage());
+            return response()->json(['error' => 'Error interno del servidor'], 500);
+        }
+    }
+
 
     public function destroy(Request $request, $id)
     {
