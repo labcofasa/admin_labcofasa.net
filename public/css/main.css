@@ -54,8 +54,8 @@
     --btn-warning: #fff3cd;
     --btn-warning-hover: #ffe5b4;
     --btn-info: ;
-    --bg-tooltip: #031633;
-    --color-tooltip: #6ea8fe;
+    --bg-tooltip: #006d4b;
+    --color-tooltip: #fff;
 
     /* Paginación de las tablas */
     --btn-paginacion-bg: #ECECEC;
@@ -814,7 +814,7 @@ label {
 
 /* Tooltips */
 .icon-btn-info {
-    fill: var(--accent);
+    fill: var(--input-caret);
     transition: var(--tran-03);
     height: 18px;
 }
@@ -1031,7 +1031,7 @@ div.dt-datetime div.dt-datetime-label select {
     transition: none;
 }
 .nav-tabs .nav-link.active {
-    color: var(--accent) !important;
+    color: var(--input-caret) !important;
     background-color: var(--sidebar-bg);
     border-color: var(--table-border);
 }
