@@ -40,6 +40,11 @@ body.dark {
 }
 
 /* Inicio - cartas */
+
+.cartas {
+    padding-bottom: 60px;
+}
+
 .btn-app .card {
     padding: 20px;
     border-radius: 12px;
@@ -66,7 +71,7 @@ body.dark {
 }
 
 .btn-app .card .app-image img {
-    padding: 5px;
+    padding: 12px;
     object-fit: cover;
     height: 100px;
 }

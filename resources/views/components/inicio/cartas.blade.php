@@ -1,6 +1,6 @@
-<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 cartas">
     @foreach ($aplicaciones as $aplicacion)
-        <div class="col pb-3">
+        <div class="col">
             <div class="btn-app">
                 <a href="{{ $aplicacion->enlace_aplicacion }}" target="_blank">
                     <div class="card">
