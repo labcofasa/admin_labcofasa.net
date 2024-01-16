@@ -15,19 +15,13 @@
                     <tbody></tbody>
                 </table>
             </div>
+
+            <x-widgets.roles.permisos />
         </div>
     </div>
 
     <!-- Modal -->
     <x-empresa.empresa />
-    <x-empresa.giro-empresa />
-    <x-empresa.entidad-empresa />
-    <x-empresa.pais-empresa />
-    <x-empresa.departamento-empresa />
-    <x-empresa.municipio-empresa />
-    <x-empresa.clasificaciones-empresa />
-
-    <x-notificaciones />
 
     <script src="{{ asset('js/empresa/empresa.js') }}"></script>
 @endsection

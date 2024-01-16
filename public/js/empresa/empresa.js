@@ -258,6 +258,10 @@ $(document).ready(function () {
                 {
                     data: null,
                     render: function (data, type, row) {
+                        var userPermissions = JSON.parse(
+                            document.getElementById("userPermissions").value
+                        );
+
                         return `
                             <div class="text-center">
                                 <div class="btn-group">
@@ -266,33 +270,54 @@ $(document).ready(function () {
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end shadow">
                                         <li>
-                                            <a class="btn-logo" href="empresas/${row.id}/logo" target="_blank">
+                                            <a class="btn-logo" href="empresas/${
+                                                row.id
+                                            }/logo" target="_blank">
                                                 <button class="dropdown-item" type="button">
                                                     <span class="link">Ver logo</span>
                                                 </button>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="btn-logo" href="empresas/${row.id}/leyenda" target="_blank">
+                                            <a class="btn-logo" href="empresas/${
+                                                row.id
+                                            }/leyenda" target="_blank">
                                                 <button class="dropdown-item" type="button">
                                                     <span class="link">Leyenda de factura</span>
                                                 </button>
                                             </a>
                                         </li>
-                                        <li>
-                                            <button class="dropdown-item editar-empresa" data-id="${row.id}" type="button">
-                                                <span class="link">Editar empresa</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item eliminar-empresa" data-id="${row.id}" type="button">
-                                                <span class="link">Eliminar empresa</span>
-                                            </button>
-                                        </li>
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_empresas_editar"
+                                            )
+                                                ? `
+                                            <li>
+                                                <button class="dropdown-item editar-empresa" data-id="${row.id}" type="button">
+                                                    <span class="link">Editar empresa</span>
+                                                </button>
+                                            </li>`
+                                                : ""
+                                        }
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_empresas_eliminar"
+                                            )
+                                                ? `
+                                            <li>
+                                                <button class="dropdown-item eliminar-empresa" data-id="${row.id}" type="button">
+                                                    <span class="link">Eliminar empresa</span>
+                                                </button>
+                                            </li>`
+                                                : ""
+                                        }
                                     </ul>
                                 </div>
-                            </div>
-                            `;
+                            </div>`;
                     },
                 },
             ],

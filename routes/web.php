@@ -56,24 +56,22 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/asignar-permisos-masa', [PermisoController::class, 'asignarPermisosMasa']);
 
     /* Página empresas */
-    Route::get('/empresas', [EmpresaController::class, 'index'])
-        ->name('pag.empresas')
-        ->middleware('can:admin_empresas_ver');
-
-
-    Route::get('/obtener-empresas', [EmpresaController::class, 'obtenerEmpresas']);
-    Route::get('/tabla-empresas', [EmpresaController::class, 'tablaEmpresas']);
-    Route::post('/crear-empresa', [EmpresaController::class, 'store']);
-    Route::put('/actualizar-empresa/{id}', [EmpresaController::class, 'update']);
-    Route::delete('/eliminar-empresa/{id}', [EmpresaController::class, 'destroy']);
-
-    /* Redes sociales */
-    Route::delete('/redes-sociales/{redSocial}', [RedSocialController::class, 'destroy']);
+    Route::middleware(['can:admin_empresas_ver'])->group(function () {
+        Route::get('/empresas', [EmpresaController::class, 'index'])->name('pag.empresas');
+        Route::get('/obtener-empresas', [EmpresaController::class, 'obtenerEmpresas']);
+        Route::get('/tabla-empresas', [EmpresaController::class, 'tablaEmpresas']);
+        Route::post('/crear-empresa', [EmpresaController::class, 'store']);
+        Route::put('/actualizar-empresa/{id}', [EmpresaController::class, 'update']);
+        Route::delete('/eliminar-empresa/{id}', [EmpresaController::class, 'destroy']);
+        Route::delete('/redes-sociales/{redSocial}', [RedSocialController::class, 'destroy']);
+    });
 
     /* Papelera */
-    Route::get('/papelera', [PapeleraController::class, 'index'])->name('pag.papelera');
-    Route::get('/obtener-eliminados', [PapeleraController::class, 'obtenerEliminados']);
-    Route::get('/restore/{table}/{id}', [PapeleraController::class, 'restoreRecord']);
+    Route::middleware(['can:admin_papelera_ver'])->group(function () {
+        Route::get('/papelera', [PapeleraController::class, 'index'])->name('pag.papelera');
+        Route::get('/obtener-eliminados', [PapeleraController::class, 'obtenerEliminados']);
+        Route::get('/restore/{table}/{id}', [PapeleraController::class, 'restoreRecord']);
+    });
 
     /* Entidades de empresas */
     Route::post('/crear-entidad', [EntidadController::class, 'store']);

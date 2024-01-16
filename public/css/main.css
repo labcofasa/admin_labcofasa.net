@@ -351,7 +351,7 @@ hr {
 .btn-store2 {
     background-color: var(--secondary) !important;
     border-color: var(--secondary) !important;
-    color: #121213 !important;
+    color: #ffffff;
     transition: 0ms;
     vertical-align: middle;
 }
