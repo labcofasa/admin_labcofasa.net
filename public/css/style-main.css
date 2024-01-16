@@ -35,11 +35,8 @@ body.dark {
 }
 
 .card-container {
-    background-color: var(--card-container);
     transition: var(--tran-03);
-    overflow: auto;
     padding: 15px;
-    border-radius: 15px;
 }
 
 /* Inicio - cartas */
@@ -133,21 +130,26 @@ body.dark {
 
 @media screen and (min-width: 1920px) {
     .card-container {
+        background-color: var(--card-container);
         height: 91vh;
+        overflow: auto;
+        border-radius: 15px;
     }
 }
 
 @media screen and (min-width: 1441px) and (max-width: 1919px) {
     .card-container {
+        background-color: var(--card-container);
         height: 88vh;
+        overflow: auto;
+        border-radius: 15px;
     }
 }
 
 @media screen and (max-width: 1440px) {
     .card-container {
-        height: 90vh;
+        padding: 0;
     }
-
     .main-content {
         margin-left: 0;
     }
