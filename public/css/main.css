@@ -808,11 +808,11 @@ label {
     box-shadow: var(--box-shadow);
 }
 
-@media (max-width: 679px) {
+@media (max-width: 1024px) {
     .table-responsive {
         background-color: var(--body-color);
         box-shadow: none;
-        padding: 0;
+        padding: 15px 0;
     }
 }
 
@@ -1470,6 +1470,7 @@ div.dt-datetime div.dt-datetime-label select {
 
 /* NavBar */
 .navbar {
+    background-color: var(--sidebar-bg);
     transition: var(--tran-03);
     height: 60px;
 }
@@ -1571,9 +1572,6 @@ div.dt-datetime div.dt-datetime-label select {
         background-color: var(--sidebar-bg);
     }
 }
-
-/* Medias query para hacer entre
-@media screen and (min-width: 768px) and (max-width: 820px) {} */
 
 @media screen and (max-width: 450px) {
     .btn-actions {
