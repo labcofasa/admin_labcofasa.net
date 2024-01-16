@@ -5,9 +5,9 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="datos-usuarios">
-                            <p class="text-sm mb-0">Total de usuarios registrados</p>
-                            <h1 class="px-2 font-weight-bolder" id="totalUsuarios">
-                            </h1>
+                            <p class="text-sm mb-0">Total de usuarios</p>
+                            <h5 class="px-2 font-weight-bolder" id="totalUsuarios">
+                            </h5>
                         </div>
                     </div>
                     <div class="col-4 text-end">
@@ -33,12 +33,11 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="datos-usuarios">
-                            <p class="text-sm mb-0">Usuarios del último mes</p>
+                            <p class="text-sm mb-0">En el último mes</p>
                             <h5 class="font-weight-bolder" id="usuarioMes"></h5>
                             <p class="mb-0">
                                 <span class="text-success text-sm font-weight-bolder"
                                     id="porcentajeUsuariosUltimoMes"></span>
-                                mes pasado
                             </p>
                         </div>
                     </div>
@@ -67,7 +66,6 @@
                             <p class="mb-0">
                                 <span class="text-success text-sm font-weight-bolder"
                                     id="porcentajeRolesUltimoMes"></span>
-                                mes pasado
                             </p>
                         </div>
                     </div>
@@ -107,7 +105,6 @@
                             <p class="mb-0">
                                 <span class="text-success text-sm font-weight-bolder"
                                     id="porcentajePermisosUltimoMes"></span>
-                                mes pasado
                             </p>
                         </div>
                     </div>

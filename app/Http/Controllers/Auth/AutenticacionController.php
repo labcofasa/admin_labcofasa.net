@@ -39,12 +39,16 @@ class AutenticacionController extends Controller
             try {
                 $user = User::where('email', $username)->orWhere('name', $username)->firstOrFail();
 
-                if (Hash::check($password, $user->password)) {
-                    Auth::login($user);
+                if ($user->estado) {
+                    if (Hash::check($password, $user->password)) {
+                        Auth::login($user);
 
-                    return redirect()->route('inicio');
+                        return redirect()->route('inicio');
+                    } else {
+                        $errors = ['username' => 'Credenciales incorrectas'];
+                    }
                 } else {
-                    $errors = ['username' => 'Credenciales incorrectas'];
+                    $errors = ['username' => 'Tu cuenta está desactivada'];
                 }
             } catch (\Exception $e) {
                 $errors = ['username' => 'Credenciales incorrectas'];
@@ -53,7 +57,6 @@ class AutenticacionController extends Controller
             return redirect()->route('autenticarme')->withErrors($errors)->withInput();
         }
     }
-
 
     public function cerrarSesion(Request $request): RedirectResponse
     {

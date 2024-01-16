@@ -374,7 +374,6 @@ class UsuarioController extends Controller
         }
     }
 
-
     public function destroy(Request $request, $id)
     {
         $usuario = User::find($id);

@@ -376,14 +376,13 @@ $(document).ready(function () {
     /* Editar el estado del usuario */
     $("#tabla-usuarios").on("change", ".toggle-switch", function () {
         const usuarioId = $(this).data("id");
-        const estado = $(this).prop("checked");
-
-        console.log("Estado del interruptor:", estado);
+        const estado = $(this).prop("checked") ? 1 : 0;
 
         $.ajax({
             url: "/cambiar-estado/" + usuarioId,
             method: "PUT",
             data: {
+                id: usuarioId,
                 estado: estado,
             },
             headers: {
