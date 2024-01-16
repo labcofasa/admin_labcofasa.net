@@ -1471,7 +1471,7 @@ div.dt-datetime div.dt-datetime-label select {
 /* NavBar */
 .navbar {
     transition: var(--tran-03);
-    height: 50px;
+    height: 60px;
 }
 .logotipo {
     width: 25px;

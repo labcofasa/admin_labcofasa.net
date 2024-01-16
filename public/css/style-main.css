@@ -31,12 +31,13 @@ body.dark {
 }
 
 .content {
-    padding: 3rem 0 0 0;
+    padding: 3.5rem 0 0 0;
 }
 
 .card-container {
     background-color: var(--card-container);
     transition: var(--tran-03);
+    overflow: auto;
     padding: 15px;
     border-radius: 15px;
 }
@@ -130,19 +131,25 @@ body.dark {
     display: none !important;
 }
 
-@media screen and (min-width: 1441px) {
+@media screen and (min-width: 1920px) {
     .card-container {
-        padding: 20px;
+        height: 91vh;
+    }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 1919px) {
+    .card-container {
+        height: 88vh;
     }
 }
 
 @media screen and (max-width: 1440px) {
-    .main-content {
-        margin-left: 0;
+    .card-container {
+        height: 90vh;
     }
 
-    .content {
-        padding: 2.9rem 0 0 0;
+    .main-content {
+        margin-left: 0;
     }
 
     .side-menu {
@@ -150,26 +157,14 @@ body.dark {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
     .card-container {
-        position: relative;
-        overflow: auto;
         height: 90vh;
     }
 }
 
-@media screen and (max-width: 450px) {
-    .navbar {
-        background-color: var(--body-bg);
-        height: 60px;
-    }
-
+@media screen and (max-width: 500px) {
     .card-container {
-        background-color: var(--body-bg);
-        padding: 0;
-    }
-
-    .content {
-        padding: 3.5rem 0 0 0;
+        height: 88vh;
     }
 }
