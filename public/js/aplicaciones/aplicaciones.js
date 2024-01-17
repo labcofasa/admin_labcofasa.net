@@ -346,8 +346,6 @@ $(document).ready(function () {
             type: "GET",
             url: "/obtener-roles-apps",
             success: function (response) {
-                console.log("Respuesta de obtener roles:", response);
-
                 if (typeof response === "object" && response !== null) {
                     var rolesCompletos = Object.entries(response).map(
                         ([id, name]) => ({ id, name })
@@ -457,7 +455,7 @@ $(document).ready(function () {
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
-                    "Error al editar la aplicación. Por favor, intente de nuevo.",
+                    "Error al editar la aplicación. Detalles: " + errorThrown,
                     "error"
                 );
             },

@@ -9,8 +9,7 @@
                                 <img src="{{ asset('images/aplicaciones/imagen/' . $aplicacion->id . '/' . $aplicacion->imagen_aplicacion) }}"
                                     alt="Icono aplicación">
                             @else
-                                <img class="icono-perfil rounded-circle" src="{{ asset('images/defecto.png') }}"
-                                    alt="Imagen por defecto">
+                                <img src="{{ asset('images/logo.svg') }}" alt="Imagen por defecto">
                             @endif
                         </div>
                         <div class="app-name">

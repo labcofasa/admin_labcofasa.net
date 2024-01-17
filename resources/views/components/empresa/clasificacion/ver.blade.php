@@ -20,7 +20,7 @@
             </div>
             <div class="modal-body">
                 <div id="tabla-clasificaciones-container" style="display: none;">
-                    <table id="tabla-clasificaciones" class="table table-sm align-middle responsive display"
+                    <table id="tabla-clasificaciones" class="table align-middle responsive display nowrap"
                         width="100%">
                         <thead>
                             <tr>
@@ -31,7 +31,7 @@
                                 <th>Usuario creador</th>
                                 <th>Fecha actualización</th>
                                 <th>Usuario modificador</th>
-                                <th>Acciones</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody></tbody>

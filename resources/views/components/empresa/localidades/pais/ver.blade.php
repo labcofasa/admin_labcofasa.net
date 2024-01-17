@@ -20,7 +20,7 @@
             </div>
             <div class="modal-body">
                 <div id="tabla-paises-container" style="display: none;">
-                    <table id="tabla-paises" class="table table-sm align-middle responsive display" width="100%">
+                    <table id="tabla-paises" class="table align-middle responsive display nowrap" width="100%">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -31,7 +31,7 @@
                                 <th>Usuario creador</th>
                                 <th>Fecha actualización</th>
                                 <th>Usuario modificador</th>
-                                <th>Acciones</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody></tbody>

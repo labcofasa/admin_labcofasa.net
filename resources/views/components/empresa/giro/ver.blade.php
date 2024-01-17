@@ -20,7 +20,7 @@
             </div>
             <div class="modal-body">
                 <div id="tabla-giros-container" style="display: none;">
-                    <table id="tabla-giros" class="table table-sm align-middle responsive display" width="100%">
+                    <table id="tabla-giros" class="table align-middle responsive display" width="100%">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -30,7 +30,7 @@
                                 <th>Usuario creador</th>
                                 <th>Fecha actualización</th>
                                 <th>Usuario modificador</th>
-                                <th>Acciones</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody></tbody>

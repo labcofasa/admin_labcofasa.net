@@ -26,17 +26,8 @@
         </div>
     </div>
 
-    <!-- Notificaciones -->
-    <x-notificaciones />
-
-    <!-- Modal para registrar usuarios -->
-    <x-usuario.crear_usuario />
-
-    <!-- Modal para editar usuarios -->
-    <x-usuario.editar_usuario />
-
-    <!-- Modal para confirmar la eliminación de usuarios -->
-    <x-usuario.eliminar_usuario />
+    <!-- Modal -->
+    <x-usuario.usuario />
 
     <script async src="{{ asset('js/usuarios/usuarios.js') }}"></script>
     <script async src="{{ asset('js/roles_permisos/roles.js') }}"></script>

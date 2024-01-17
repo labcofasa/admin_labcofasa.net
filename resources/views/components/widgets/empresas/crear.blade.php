@@ -4,7 +4,13 @@
             <h1>@yield('titulo')</h1>
         </div>
         <div class="col-md-4 d-flex justify-content-end">
-            @can('admin_empresas_crear')
+            @if (auth()->user()->hasAnyPermission([
+                        'admin_empresas_crear',
+                        'admin_entidades_ver',
+                        'admin_clasificaciones_ver',
+                        'admin_giros_ver',
+                        'admin_paises_ver',
+                    ]))
                 <button class="btn btn-lg btn-store gap-2 dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false" ata-bs-auto-close="outside" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
@@ -16,7 +22,7 @@
                         Crear registro
                     </span>
                 </button>
-            @endcan
+            @endif
             <ul class="dropdown-menu dropdown-menu-end">
                 @can('admin_empresas_crear')
                     <li data-bs-toggle="modal" data-bs-target="#empresaModal">

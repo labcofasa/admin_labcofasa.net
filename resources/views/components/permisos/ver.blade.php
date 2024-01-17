@@ -1,14 +1,10 @@
-<!-- Modal de departamentos por pais -->
-<div class="modal" id="departamentoModal" tabindex="-1" aria-labelledby="departamentoModalLabel" aria-hidden="true">
+<!-- Modal de permisos por rol -->
+<div class="modal" id="permisoModal" tabindex="-1" aria-labelledby="permisoModalLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div id="spinnerDepartamento" class="text-center spinner">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
             <div class="modal-header">
-                <h4 class="modal-title" id="departamentoModalLabel"></h4>
+                <h4 class="modal-title" id="permisoModalLabel"></h4>
                 <button class="btn-icon-close" data-bs-dismiss="modal">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                         width="24px" fill="#000000">
@@ -19,25 +15,26 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div id="tabla-departamentos-container" style="display: none;">
-                    <table id="tabla-departamentos" class="table align-middle responsive display nowrap" width="100%">
+                <div id="spinnerRolesPermiso" class="text-center spinner-table">
+                    <div class="spinner-border-table" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div id="tabla-roles-permisos-container" style="display: none;">
+                    <table id="tabla-roles-permisos" class="table table-sm align-middle responsive display"
+                        width="100%">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Código MH</th>
-                                <th>Fecha creación</th>
-                                <th>Usuario creador</th>
-                                <th>Fecha actualización</th>
-                                <th>Usuario modificador</th>
                                 <th></th>
+                                <th data-priority="1">Nombre del permiso</th>
+                                <th data-priority="2">Eliminar permiso</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                 </div>
             </div>
-            <span type="hidden" id="registrarDepartamentoBtn"></span>
+            <span type="hidden" id="asignarPermisoBtn"></span>
         </div>
     </div>
 </div>

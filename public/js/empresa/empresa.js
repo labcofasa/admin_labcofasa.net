@@ -172,7 +172,7 @@ $(document).ready(function () {
             ],
             language: {
                 url: "/json/es.json",
-                searchPlaceholder: "Buscar empresa",
+                searchPlaceholder: "Buscar",
                 emptyTable: "No hay empresas registradas",
             },
             ajax: {
@@ -261,7 +261,6 @@ $(document).ready(function () {
                         var userPermissions = JSON.parse(
                             document.getElementById("userPermissions").value
                         );
-
                         return `
                             <div class="text-center">
                                 <div class="btn-group">
@@ -296,7 +295,7 @@ $(document).ready(function () {
                                                 ? `
                                             <li>
                                                 <button class="dropdown-item editar-empresa" data-id="${row.id}" type="button">
-                                                    <span class="link">Editar empresa</span>
+                                                    <span class="link">Editar</span>
                                                 </button>
                                             </li>`
                                                 : ""
@@ -310,7 +309,7 @@ $(document).ready(function () {
                                                 ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-empresa" data-id="${row.id}" type="button">
-                                                    <span class="link">Eliminar empresa</span>
+                                                    <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
                                                 : ""

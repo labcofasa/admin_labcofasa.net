@@ -12,7 +12,10 @@
 
             <!-- Tabla aplicaciones -->
             <div class="table-responsive rounded-3" id="tabla-aplicaciones-container" style="display: none;">
+
+                <!-- Titulo-->
                 <h1 class="pb-2">@yield('titulo')</h1>
+
                 <table id="tabla-aplicaciones" class="table align-middle responsive display nowrap" width="100%">
                     <tbody></tbody>
                 </table>
@@ -24,17 +27,8 @@
 
     </div>
 
-    <!-- Notificaciones -->
-    <x-notificaciones />
-
-    <!-- Modal para registrar aplicaciones -->
-    <x-aplicaciones.crear_aplicacion />
-
-    <!-- Modal para editar aplicaciones -->
-    <x-aplicaciones.editar_aplicacion />
-
-    <!-- Modal para eliminar aplicaciones -->
-    <x-aplicaciones.eliminar_aplicacion />
+    <!-- Modal -->
+    <x-aplicaciones.aplicacion />
 
     <!-- Scripts -->
     <script async src="{{ asset('js/aplicaciones/aplicaciones.js') }}"></script>

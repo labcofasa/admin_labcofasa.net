@@ -121,7 +121,7 @@
 /* Colores para el diseño oscuro */
 body.dark {
     /* Paleta de colores */
-    --primary: #6edff6;
+    --primary: #1FAB7F;
     --secondary: #053340;
     --secondary-hover: #6edff6;
     --accent: #004832;
@@ -368,8 +368,6 @@ hr {
 .btn-store {
     background-color: var(--secondary) !important;
     border-color: var(--secondary) !important;
-    border-bottom-right-radius: var(--border-radius) !important;
-    border-top-right-radius: var(--border-radius) !important;
     color: #ffffff;
     vertical-align: middle;
 }

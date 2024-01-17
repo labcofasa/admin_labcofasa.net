@@ -315,7 +315,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item nav-link {{ request()->routeIs('pag.ajustes') ? 'active' : '' }}"
                             href="{{ route('pag.ajustes') }}">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px"
@@ -326,7 +326,7 @@
                             </svg>
                             <span class="link">Configuración</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <hr class="dropdown-divider">
                     </li>

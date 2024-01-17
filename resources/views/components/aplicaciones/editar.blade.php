@@ -1,3 +1,4 @@
+<!-- Modal para editar aplicaciones -->
 <div class="modal fade" id="editarAplicacion" tabindex="-1" role="dialog" aria-labelledby="editarAplicacionLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
@@ -28,7 +29,8 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="enlace-aplicacion-editar" class="text-label">Dirección URL <span class="obligatorio">
+                        <label for="enlace-aplicacion-editar" class="text-label">Dirección URL <span
+                                class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="url" name="enlace_aplicacion" class="form-control"
                             id="enlace-aplicacion-editar" required>

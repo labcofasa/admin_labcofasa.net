@@ -41,7 +41,9 @@ class AplicacionesController extends Controller
             ->leftJoin('users', 'aplicaciones.user_id', '=', 'users.id')
             ->leftJoin('users as modified_users', 'aplicaciones.user_modified_id', '=', 'modified_users.id')
             ->leftJoin('aplicacion_role', 'aplicaciones.id', '=', 'aplicacion_role.aplicacion_id')
-            ->leftJoin('roles', 'aplicacion_role.role_id', '=', 'roles.id');
+            ->leftJoin('roles', 'aplicacion_role.role_id', '=', 'roles.id')
+            ->distinct();
+
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
@@ -210,18 +212,18 @@ class AplicacionesController extends Controller
         }
 
         try {
-
             $aplicacion->nombre_tabla = 'Aplicaciones';
             $aplicacion->user_deleted_id = auth()->user()->id;
             $aplicacion->save();
 
             $aplicacion->delete();
 
-            return response()->json(['success' => true, 'message' => '¡Aplicación eliminado con éxito!']);
+            return response()->json(['success' => true, 'message' => '¡Aplicación eliminada con éxito!']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'error' => 'Error al eliminar la aplicación']);
         }
     }
+
 
     public function cargarRolesApps()
     {

@@ -1,10 +1,10 @@
-<!-- Modal para restaurar los registros eliminados -->
-<div class="modal fade" id="restaurarRegistro" tabindex="-1" role="dialog" aria-labelledby="restaurarRegistroLabel"
+<!-- Modal para confirmar la eliminación de la aplicación -->
+<div class="modal fade" id="eliminarAplicacion" tabindex="-1" role="dialog" aria-labelledby="eliminarAplicacionLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 titulo" id="restaurarRegistroLabel">Confirmar restauración</h1>
+                <h1 class="modal-title fs-5 titulo" id="eliminarAplicacionLabel">Confirmar eliminación</h1>
                 <button class="btn-icon-close" data-bs-dismiss="modal">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                         width="24px" fill="#000000">
@@ -15,15 +15,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p class="text-center mt-3">
-                    ¿Está seguro de que desea restaurar el registro: "<span id="nombre-registro"></span>"?
-                </p>
+                <div class="modal-body">
+                    <p class="mt-3 text-center">
+                        ¿Está seguro de que desea eliminar la aplicación: "<span id="nombre-aplicacion"></span>"?
+                    </p>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn-actions btn btn-lg btn-secondary"
                     data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn-actions btn btn-lg btn-success"
-                    id="btn-restaurar-registro">Restaurar</button>
+                <button type="button" class="btn-actions btn btn-lg btn-danger"
+                    id="btn-eliminar-aplicacion">Eliminar</button>
             </div>
         </div>
     </div>
