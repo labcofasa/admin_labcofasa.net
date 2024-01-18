@@ -211,4 +211,5 @@
     <x-notificaciones />
 
     <script src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
+    <script src="{{ asset('js/usuarios/perfil.js') }}"></script>
 @endsection
