@@ -105,18 +105,18 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 9],
+                    targets: [0, 10],
                     searchable: false,
                     orderable: false,
                 },
                 {
-                    targets: [1, 2, 3, 4, 5, 6, 7, 8],
+                    targets: [1, 2, 3, 4, 5, 6, 7, 8 ,9],
                     searchable: true,
                     orderable: true,
                 },
                 { responsivePriority: 1, targets: 1 },
                 { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 9 },
+                { responsivePriority: 3, targets: 10 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
@@ -140,6 +140,7 @@ $(document).ready(function () {
                 },
                 { data: "imagen_aplicacion", title: "Imagen" },
                 { data: "enlace_aplicacion", title: "Url" },
+                { data: "nombre_empresa", title: "Empresa" },
                 { data: "created_at", title: "Fecha creación" },
                 {
                     data: "user_name",
@@ -300,6 +301,7 @@ $(document).ready(function () {
     $("#crearAplicacionBtn").click(function () {
         $("#roles-editar").empty();
         obtenesRoles();
+        cargarEmpresas("#empresa-aplicacion-select", "#id-empresa-aplicacion", false);
         window.MultiselectDropdown();
         $("#crearAplicacion").modal("show");
     });
@@ -332,6 +334,14 @@ $(document).ready(function () {
         if (imagenInput.files.length > 0) {
             formData.append("imagen_aplicacion", imagenInput.files[0]);
         }
+
+        const empresaId = $("#id-empresa-aplicacion").val();
+        if (!empresaId) {
+            mostrarToast("Por favor, seleccione una empresa válida", "error");
+            return;
+        }
+
+        formData.append("empresa_id", empresaId);
 
         const selectedRoles = $("#roles").val();
 
@@ -387,8 +397,19 @@ $(document).ready(function () {
 
         var nombre_aplicacion = row.nombre_aplicacion;
         var enlace_aplicacion = row.enlace_aplicacion;
+        var empresaId = row.id_empresa;
+        var nombreEmpresa = row.nombre_empresa;
 
         $("#roles-editar").empty();
+        $("#editarAplicacionForm #empresa-aplicacion-editar").empty();
+
+        $("#editarAplicacionForm #empresa-aplicacion-editar").append(
+            $("<option>", {
+                value: empresaId,
+                text: nombreEmpresa,
+                selected: true,
+            })
+        );
 
         $.ajax({
             type: "GET",
@@ -438,6 +459,14 @@ $(document).ready(function () {
                 );
 
                 window.MultiselectDropdown();
+
+                cargarEmpresas(
+                    "#empresa-aplicacion-editar",
+                    "#id-empresa-aplicacion-editar",
+                    true,
+                    empresaId
+                );
+
                 $("#editarAplicacion").modal("show");
             },
             error: function (error) {
@@ -474,6 +503,9 @@ $(document).ready(function () {
         if (imagenInput.files.length > 0) {
             formData.append("imagen_aplicacion", imagenInput.files[0]);
         }
+
+        const empresaId = $("#id-empresa-aplicacion-editar").val();
+        formData.append("empresa_id", empresaId);
 
         const selectedRoles = $("#roles-editar").val();
         if (selectedRoles && selectedRoles.length > 0) {

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre_aplicacion');
             $table->string('imagen_aplicacion')->nullable();
             $table->string('enlace_aplicacion');
+            $table->unsignedBigInteger('empresa_id')->nullable();
             $table->string('nombre_tabla')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('user_id');
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_restored_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->foreign('user_modified_id')->references('id')->on('users');
             $table->foreign('user_deleted_id')->references('id')->on('users');
             $table->foreign('user_restored_id')->references('id')->on('users');

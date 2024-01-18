@@ -37,6 +37,18 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
+                        <label for="empresa-aplicacion-select" class="text-label">Empresa
+                            <span class="obligatorio"> *</span>
+                        </label>
+                        <select name="empresa" id="empresa-aplicacion-select" class="form-control" required>
+                            <option value="">Seleccione una empresa</option>
+                        </select>
+                        <input type="hidden" id="id-empresa-aplicacion" name="id_empresa" value="">
+                        <div class="invalid-feedback">
+                            Seleccione una empresa
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
                         <label for="roles" class="text-label">Roles de usuario <span class="obligatorio">
                                 *</span>
                         </label>

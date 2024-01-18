@@ -721,50 +721,6 @@ function cargarRoles(rolSelectId, idRolInputId, editar, rolActual) {
     });
 }
 
-// Cargar empresas */
-function cargarEmpresas(
-    empresaSelectId,
-    idEmpresaInputId,
-    editar,
-    empresaActual
-) {
-    $.ajax({
-        url: "/obtener-empresas",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            const empresaSelect = $(empresaSelectId);
-            empresaSelect.empty();
-            empresaSelect.append(
-                $("<option>", {
-                    value: "",
-                    text: "Selecciona una empresa",
-                })
-            );
-
-            $.each(data, function (key, value) {
-                empresaSelect.append(
-                    '<option value="' + key + '">' + value + "</option>"
-                );
-            });
-
-            if (editar && empresaActual) {
-                empresaSelect.val(empresaActual);
-            }
-
-            $(idEmpresaInputId).val(empresaSelect.val());
-        },
-        error: function (error) {
-            console.log("Error al obtener las empresas");
-        },
-    });
-
-    $(empresaSelectId).on("change", function () {
-        var selectEmpresaId = $(this).val();
-        $(idEmpresaInputId).val(selectEmpresaId);
-    });
-}
-
 // Cargar estadisticas
 function estadisticaUsuario() {
     $.ajax({

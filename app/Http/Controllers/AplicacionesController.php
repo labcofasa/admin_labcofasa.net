@@ -37,11 +37,12 @@ class AplicacionesController extends Controller
         $query = Aplicacion::with(['roles' => function ($q) use ($search) {
             $q->where('name', 'like', '%' . $search . '%');
         }])
-            ->select('aplicaciones.*', 'users.name as user_name', 'modified_users.name as user_modified_name')
+            ->select('aplicaciones.*', 'users.name as user_name', 'modified_users.name as user_modified_name', 'empresas.nombre as nombre_empresa')
             ->leftJoin('users', 'aplicaciones.user_id', '=', 'users.id')
             ->leftJoin('users as modified_users', 'aplicaciones.user_modified_id', '=', 'modified_users.id')
             ->leftJoin('aplicacion_role', 'aplicaciones.id', '=', 'aplicacion_role.aplicacion_id')
             ->leftJoin('roles', 'aplicacion_role.role_id', '=', 'roles.id')
+            ->leftJoin('empresas', 'empresas.id', '=', 'aplicaciones.empresa_id')
             ->distinct();
 
 
@@ -53,12 +54,13 @@ class AplicacionesController extends Controller
                     ->orWhere('users.name', 'like', "%$search%")
                     ->orWhere('aplicaciones.updated_at', 'like', '%' . $search . '%')
                     ->orWhere('modified_users.name', 'like', "%$search%")
+                    ->orWhere('empresas.nombre', 'like', '%' . $search . '%')
                     ->orWhere('roles.name', 'like', "%$search%");
             });
         }
 
 
-        $columnNames = ['id', 'nombre_aplicacion', 'imagen_aplicacion', 'enlace_aplicacion', 'created_at', 'user_name', 'updated_at', 'user_modified_name'];
+        $columnNames = ['id', 'nombre_aplicacion', 'imagen_aplicacion', 'enlace_aplicacion', 'nombre_empresa', 'created_at', 'user_name', 'updated_at', 'user_modified_name'];
         $orderColumn = $columnNames[$orderColumnIndex];
         $query->orderBy($orderColumn, $orderDirection);
 
@@ -88,6 +90,8 @@ class AplicacionesController extends Controller
                 'nombre_aplicacion' => $aplicacion->nombre_aplicacion,
                 'imagen_aplicacion' => $aplicacion->imagen_aplicacion,
                 'enlace_aplicacion' => $aplicacion->enlace_aplicacion,
+                'id_empresa' => $aplicacion->empresa_id ?? null,
+                'nombre_empresa' => $aplicacion->empresa->nombre ?? null,
                 'created_at' => $aplicacion->created_at->format('Y-m-d H:i:s'),
                 'user_name' => $aplicacion->user_name,
                 'updated_at' => $aplicacion->updated_at->format('Y-m-d H:i:s'),
@@ -112,16 +116,20 @@ class AplicacionesController extends Controller
             "nombre_aplicacion" => 'required|string',
             "enlace_aplicacion" => 'required|string',
             'imagen_aplicacion' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
+            'empresa_id' => 'required|exists:empresas,id',
             'roles' => 'required|array',
         ]);
 
         try {
             $nombreAplicacion = $request->input('nombre_aplicacion');
             $enlaceAplicacion = $request->input('enlace_aplicacion');
+            $nombreEmpresa = $request->input('empresa_id');
 
             $aplicacion = new Aplicacion();
             $aplicacion->nombre_aplicacion = $nombreAplicacion;
             $aplicacion->enlace_aplicacion = $enlaceAplicacion;
+            $aplicacion->empresa_id = $nombreEmpresa;
+
             $aplicacion->user_id = auth()->user()->id;
 
             $aplicacion->save();
@@ -158,6 +166,7 @@ class AplicacionesController extends Controller
             "nombre_aplicacion" => 'required|string',
             "enlace_aplicacion" => 'required|string',
             'imagen_aplicacion' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
+            'empresa_id' => 'required|exists:empresas,id',
             'roles' => 'required|array',
         ]);
 
@@ -166,9 +175,11 @@ class AplicacionesController extends Controller
 
             $nombreAplicacion = $request->input('nombre_aplicacion');
             $enlaceAplicacion = $request->input('enlace_aplicacion');
+            $nombreEmpresa = $request->input('empresa_id');
 
             $aplicacion->nombre_aplicacion = $nombreAplicacion;
             $aplicacion->enlace_aplicacion = $enlaceAplicacion;
+            $aplicacion->empresa_id = $nombreEmpresa;
             $aplicacion->user_modified_id = auth()->user()->id;
 
             $aplicacion->save();

@@ -56,4 +56,9 @@ class Aplicacion extends Model
             $this->save();
         }
     }
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'empresa_id');
+    }
 }
