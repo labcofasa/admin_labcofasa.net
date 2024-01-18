@@ -1,5 +1,4 @@
 <nav class="sidebar-desktop">
-    <div class="logo-detalles"></div>
     <div class="menu-bar">
         <div class="menu">
             <ul class="menu-links">

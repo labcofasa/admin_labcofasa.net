@@ -12,9 +12,13 @@ body.dark {
     --toggle-switch-border: #d0d0d0;
 }
 
+nav {
+    height: 100%;
+    padding: 75px 0 30px 0;
+}
+
 .side-menu {
     width: 250px;
-    padding: 20px 0 20px 0px;
     position: fixed;
     height: 100%;
     left: 0;

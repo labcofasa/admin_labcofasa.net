@@ -15,7 +15,7 @@ $(document).ready(function () {
 
         tabla_roles = $("#tabla-roles").DataTable({
             dom:
-                "<'row align-items-end'<'col-lg-9 col-md-8 col-sm-6 col-12 px-0'B><'col-lg-3 col-md-4 col-sm-6 col-12 px-0 mt-1'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
             serverSide: true,
@@ -248,7 +248,7 @@ $(document).ready(function () {
 
         tabla_roles_permisos = $("#tabla-roles-permisos").DataTable({
             dom:
-                "<'row'<'col-lg-8 col-md-8 col-sm-6 col-12 mt-1'B><'col-lg-4 col-md-4 col-sm-6 col-12 mt-1'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
@@ -454,7 +454,7 @@ $(document).ready(function () {
 
         tabla_asignar_permisos = $("#tabla-asignar-permisos").DataTable({
             dom:
-                "<'row'<'col-lg-8 col-md-8 col-sm-6 col-12 mt-1'B><'col-lg-4 col-md-4 col-sm-6 col-12 mt-1'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,

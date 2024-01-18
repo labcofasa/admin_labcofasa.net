@@ -16,7 +16,7 @@ $(document).ready(function () {
 
         tabla_paises = $("#tabla-paises").DataTable({
             dom:
-                "<'row'<'col-md-8 col-sm-6 col-12'B><'col-md-4 col-sm-6 col-12 mt-1'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
@@ -437,7 +437,7 @@ $(document).ready(function () {
 
         tabla_departamentos = $("#tabla-departamentos").DataTable({
             dom:
-                "<'row'<'col-md-8 col-sm-6 col-12'B><'col-md-4 col-sm-6 col-12 mt-1'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
@@ -885,7 +885,7 @@ $(document).ready(function () {
 
         tabla_municipios = $("#tabla-municipios").DataTable({
             dom:
-                "<'row'<'col-md-8 col-sm-6 col-12'B><'col-md-4 col-sm-6 col-12 mt-1'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
