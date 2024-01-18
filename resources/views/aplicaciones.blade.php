@@ -23,6 +23,9 @@
 
             <!-- Botón que dispara el registro de aplicaciones -->
             <span type="hidden" id="crearAplicacionBtn"></span>
+
+            <!-- Permisos -->
+            <x-widgets.roles.permisos />
         </div>
 
     </div>

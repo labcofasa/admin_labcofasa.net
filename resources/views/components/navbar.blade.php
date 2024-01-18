@@ -135,7 +135,7 @@
                             </ul>
                         </li>
                     @endcan
-                    @can('admin_ver_aplicaciones')
+                    @can('admin_aplicaciones_ver')
                         <li class="nav-item">
                             <a href="{{ route('pag.aplicaciones') }}"
                                 class="nav-link {{ request()->routeIs('pag.aplicaciones') ? 'active' : '' }}">

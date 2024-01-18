@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         tabla_clasificaciones = $("#tabla-clasificaciones").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12'B><'col-md-4 col-sm-6 col-12 mt-1'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
@@ -170,7 +170,7 @@ $(document).ready(function () {
                                             userPermissions.some(
                                                 (permission) =>
                                                     permission.name ===
-                                                    "admin_clasificaciones_editar"
+                                                    "admin_clasificaciones_eliminar"
                                             )
                                                 ? `
                                             <li>

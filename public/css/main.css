@@ -355,12 +355,19 @@ hr {
     transition: 0ms;
     vertical-align: middle;
 }
+
+.btn-store2:hover {
+    color: #ffffff;
+}
+
 .btn-store2:active {
+    color: #ffffff !important;
     background-color: var(--secondary) !important;
     border-color: var(--secondary) !important;
 }
 .btn-store2:focus,
 .btn-focus-visible {
+    color: #ffffff !important;
     background-color: var(--secondary);
     border-color: var(--secondary);
 }
@@ -504,6 +511,7 @@ hr {
     background-color: var(--btn-warning);
     border-color: var(--btn-warning);
 }
+
 .btn-border-right {
     border-top-right-radius: var(--border-radius) !important;
     border-bottom-right-radius: var(--border-radius) !important;

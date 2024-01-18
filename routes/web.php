@@ -27,33 +27,37 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cerrar-sesion', [AutenticacionController::class, 'cerrarSesion'])->name('cerrar.sesion');
 
     /* Página usuarios */
-    Route::get('/usuarios', [UsuarioController::class, 'index'])
-        ->name('pag.usuarios')
-        ->middleware('can:admin_usuarios_ver');
-    Route::get('/tabla-usuarios', [UsuarioController::class, 'tablaUsuarios']);
-    Route::post('/crear-usuario', [UsuarioController::class, 'store']);
-    Route::put('/cambiar-estado/{id}', [UsuarioController::class, 'cambiarEstadoUsuario']);
-    Route::put('/actualizar-usuario/{id}', [UsuarioController::class, 'update']);
-    Route::delete('/eliminar-usuario/{id}', [UsuarioController::class, 'destroy']);
-    Route::get('/obtener-estadisticas-usuarios', [UsuarioController::class, 'obtenerEstadisticasUsuarios']);
+    Route::middleware(['can:admin_usuarios_ver'])->group(function () {
+        Route::get('/usuarios', [UsuarioController::class, 'index'])->name('pag.usuarios');
+        Route::get('/tabla-usuarios', [UsuarioController::class, 'tablaUsuarios']);
+        Route::post('/crear-usuario', [UsuarioController::class, 'store']);
+        Route::put('/cambiar-estado/{id}', [UsuarioController::class, 'cambiarEstadoUsuario']);
+        Route::put('/actualizar-usuario/{id}', [UsuarioController::class, 'update']);
+        Route::delete('/eliminar-usuario/{id}', [UsuarioController::class, 'destroy']);
+        Route::get('/obtener-estadisticas-usuarios', [UsuarioController::class, 'obtenerEstadisticasUsuarios']);
+    });
 
     /* Página roles */
-    Route::get('/roles', [RolController::class, 'index'])->name('pag.roles');
-    Route::get('/obtener-roles', [RolController::class, 'obtenerRoles']);
-    Route::get('/obtener-roles-usuario', [RolController::class, 'obtenerRolesUsuarios']);
-    Route::post('/crear-rol', [RolController::class, 'store']);
-    Route::put('/actualizar-rol/{id}', [RolController::class, 'update']);
-    Route::delete('/eliminar-rol/{id}', [RolController::class, 'destroy']);
+    Route::middleware(['can:admin_roles_ver'])->group(function () {
+        Route::get('/roles', [RolController::class, 'index'])->name('pag.roles');
+        Route::get('/obtener-roles', [RolController::class, 'obtenerRoles']);
+        Route::get('/obtener-roles-usuario', [RolController::class, 'obtenerRolesUsuarios']);
+        Route::post('/crear-rol', [RolController::class, 'store']);
+        Route::put('/actualizar-rol/{id}', [RolController::class, 'update']);
+        Route::delete('/eliminar-rol/{id}', [RolController::class, 'destroy']);
+    });
 
     /* Página permisos */
-    Route::get('/permisos', [PermisoController::class, 'index'])->name('pag.permisos');
-    Route::get('/obtener-permisos', [PermisoController::class, 'obtenerPermisos']);
-    Route::get('/permisos/{rolId}', [PermisoController::class, 'permisosRol']);
-    Route::post('/eliminar-permiso/{rolId}/{permisoId}', [PermisoController::class, 'eliminarPermiso']);
-    Route::post('/eliminar-permisos-masa', [PermisoController::class, 'eliminarPermisosMasa']);
-    Route::get('/permisos-asignar/{rolId}', [PermisoController::class, 'permisosAsignar']);
-    Route::post('/asignar-permiso/{rolId}/{permisoId}', [PermisoController::class, 'asignarPermisoARol']);
-    Route::post('/asignar-permisos-masa', [PermisoController::class, 'asignarPermisosMasa']);
+    Route::middleware(['can:admin_permisos_ver', 'can:admin_roles_ver'])->group(function () {
+        Route::get('/permisos', [PermisoController::class, 'index'])->name('pag.permisos');
+        Route::get('/obtener-permisos', [PermisoController::class, 'obtenerPermisos']);
+        Route::get('/permisos/{rolId}', [PermisoController::class, 'permisosRol']);
+        Route::post('/eliminar-permiso/{rolId}/{permisoId}', [PermisoController::class, 'eliminarPermiso']);
+        Route::post('/eliminar-permisos-masa', [PermisoController::class, 'eliminarPermisosMasa']);
+        Route::get('/permisos-asignar/{rolId}', [PermisoController::class, 'permisosAsignar']);
+        Route::post('/asignar-permiso/{rolId}/{permisoId}', [PermisoController::class, 'asignarPermisoARol']);
+        Route::post('/asignar-permisos-masa', [PermisoController::class, 'asignarPermisosMasa']);
+    });
 
     /* Página empresas */
     Route::middleware(['can:admin_empresas_ver'])->group(function () {
@@ -74,46 +78,58 @@ Route::middleware(['auth'])->group(function () {
     });
 
     /* Entidades de empresas */
-    Route::post('/crear-entidad', [EntidadController::class, 'store']);
-    Route::get('/obtener-entidades', [EntidadController::class, 'obtenerEntidades']);
-    Route::get('/tabla-entidades', [EntidadController::class, 'tablaEntidades']);
-    Route::put('/actualizar-entidad/{id}', [EntidadController::class, 'update']);
-    Route::delete('/eliminar-entidad/{id}', [EntidadController::class, 'destroy']);
+    Route::middleware(['can:admin_entidades_ver'])->group(function () {
+        Route::post('/crear-entidad', [EntidadController::class, 'store']);
+        Route::get('/obtener-entidades', [EntidadController::class, 'obtenerEntidades']);
+        Route::get('/tabla-entidades', [EntidadController::class, 'tablaEntidades']);
+        Route::put('/actualizar-entidad/{id}', [EntidadController::class, 'update']);
+        Route::delete('/eliminar-entidad/{id}', [EntidadController::class, 'destroy']);
+    });
 
     /* Clasificaciones de empresas */
-    Route::get('/obtener-clasificaciones', [ClasificacionController::class, 'obtenerClasificaciones']);
-    Route::post('/crear-clasificacion', [ClasificacionController::class, 'store']);
-    Route::get('/tabla-clasificaciones', [ClasificacionController::class, 'tablaClasificaciones']);
-    Route::put('/actualizar-clasificacion/{id}', [ClasificacionController::class, 'update']);
-    Route::delete('/eliminar-clasificacion/{id}', [ClasificacionController::class, 'destroy']);
+    Route::middleware(['can:admin_clasificaciones_ver'])->group(function () {
+        Route::get('/obtener-clasificaciones', [ClasificacionController::class, 'obtenerClasificaciones']);
+        Route::post('/crear-clasificacion', [ClasificacionController::class, 'store']);
+        Route::get('/tabla-clasificaciones', [ClasificacionController::class, 'tablaClasificaciones']);
+        Route::put('/actualizar-clasificacion/{id}', [ClasificacionController::class, 'update']);
+        Route::delete('/eliminar-clasificacion/{id}', [ClasificacionController::class, 'destroy']);
+    });
 
     /* Giros de empresas */
-    Route::get('/obtener-giros', [GiroController::class, 'obtenerGiros']);
-    Route::get('/tabla-giros', [GiroController::class, 'tablaGiros']);
-    Route::post('/crear-giro', [GiroController::class, 'store']);
-    Route::put('/actualizar-giro/{id}', [GiroController::class, 'update']);
-    Route::delete('/eliminar-giro/{id}', [GiroController::class, 'destroy']);
+    Route::middleware(['can:admin_giros_ver'])->group(function () {
+        Route::get('/obtener-giros', [GiroController::class, 'obtenerGiros']);
+        Route::get('/tabla-giros', [GiroController::class, 'tablaGiros']);
+        Route::post('/crear-giro', [GiroController::class, 'store']);
+        Route::put('/actualizar-giro/{id}', [GiroController::class, 'update']);
+        Route::delete('/eliminar-giro/{id}', [GiroController::class, 'destroy']);
+    });
 
     /* Paises */
-    Route::get('/obtener-paises', [PaisController::class, 'index']);
-    Route::get('/tabla-paises', [PaisController::class, 'tablaPaises']);
-    Route::post('/crear-pais', [PaisController::class, 'store']);
-    Route::put('/actualizar-pais/{id}', [PaisController::class, 'update']);
-    Route::delete('/eliminar-pais/{id}', [PaisController::class, 'destroy']);
+    Route::middleware(['can:admin_paises_ver'])->group(function () {
+        Route::get('/obtener-paises', [PaisController::class, 'index']);
+        Route::get('/tabla-paises', [PaisController::class, 'tablaPaises']);
+        Route::post('/crear-pais', [PaisController::class, 'store']);
+        Route::put('/actualizar-pais/{id}', [PaisController::class, 'update']);
+        Route::delete('/eliminar-pais/{id}', [PaisController::class, 'destroy']);
+    });
 
     /* Departamentos */
-    Route::get('/obtener-departamentos/{pais_id}', [DepartamentoController::class, 'index']);
-    Route::get('/departamentos/{paisId}', [DepartamentoController::class, 'tablaDepartamentos']);
-    Route::post('/crear-departamento/{paisId}', [DepartamentoController::class, 'store']);
-    Route::put('/actualizar-departamento/{id}', [DepartamentoController::class, 'update']);
-    Route::delete('/eliminar-departamento/{id}', [DepartamentoController::class, 'destroy']);
+    Route::middleware(['can:admin_departamentos_ver'])->group(function () {
+        Route::get('/obtener-departamentos/{pais_id}', [DepartamentoController::class, 'index']);
+        Route::get('/departamentos/{paisId}', [DepartamentoController::class, 'tablaDepartamentos']);
+        Route::post('/crear-departamento/{paisId}', [DepartamentoController::class, 'store']);
+        Route::put('/actualizar-departamento/{id}', [DepartamentoController::class, 'update']);
+        Route::delete('/eliminar-departamento/{id}', [DepartamentoController::class, 'destroy']);
+    });
 
     /* Municipios */
-    Route::get('/obtener-municipios/{departamento_id}', [MunicipioController::class, 'index']);
-    Route::get('/municipios/{departamentoId}', [MunicipioController::class, 'tablaMunicipios']);
-    Route::post('/crear-municipio/{municipioId}', [MunicipioController::class, 'store']);
-    Route::put('/actualizar-municipio/{id}', [MunicipioController::class, 'update']);
-    Route::delete('/eliminar-municipio/{id}', [MunicipioController::class, 'destroy']);
+    Route::middleware(['can:admin_municipios_ver'])->group(function () {
+        Route::get('/obtener-municipios/{departamento_id}', [MunicipioController::class, 'index']);
+        Route::get('/municipios/{departamentoId}', [MunicipioController::class, 'tablaMunicipios']);
+        Route::post('/crear-municipio/{municipioId}', [MunicipioController::class, 'store']);
+        Route::put('/actualizar-municipio/{id}', [MunicipioController::class, 'update']);
+        Route::delete('/eliminar-municipio/{id}', [MunicipioController::class, 'destroy']);
+    });
 
     /* Página mi cuenta */
     Route::get('/mi-cuenta', [CuentaController::class, 'index'])->name('pag.cuenta');
@@ -124,12 +140,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ajustes', [AjustesController::class, 'index'])->name('pag.ajustes');
 
     /* Aplicaciones */
-    Route::post('/crear-aplicaciones', [AplicacionesController::class, 'store']);
-    Route::get('/aplicaciones', [AplicacionesController::class, 'index'])->name('pag.aplicaciones');
-    Route::get('/tabla-aplicaciones', [AplicacionesController::class, 'tablaAplicaciones']);
-    Route::get('/obtener-roles-apps', [AplicacionesController::class, 'cargarRolesApps']);
-    Route::put('/actualizar-aplicacion/{id}', [AplicacionesController::class, 'update']);
-    Route::delete('/eliminar-aplicacion/{id}', [AplicacionesController::class, 'destroy']);
+    Route::middleware(['can:admin_aplicaciones_ver'])->group(function () {
+        Route::post('/crear-aplicaciones', [AplicacionesController::class, 'store']);
+        Route::get('/aplicaciones', [AplicacionesController::class, 'index'])->name('pag.aplicaciones');
+        Route::get('/tabla-aplicaciones', [AplicacionesController::class, 'tablaAplicaciones']);
+        Route::get('/obtener-roles-apps', [AplicacionesController::class, 'cargarRolesApps']);
+        Route::put('/actualizar-aplicacion/{id}', [AplicacionesController::class, 'update']);
+        Route::delete('/eliminar-aplicacion/{id}', [AplicacionesController::class, 'destroy']);
+    });
 });
 
 Route::middleware(['guest'])->group(function () {

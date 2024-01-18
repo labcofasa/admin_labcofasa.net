@@ -37,10 +37,16 @@ $(document).ready(function () {
                     text: "Editar columnas",
                 },
                 {
+                    text: "Crear registro",
+                    className: "btn btn-lg btn-store aplicacion",
+                    action: function (e, dt, node, config) {
+                        document.getElementById("crearAplicacionBtn").click();
+                    },
+                },
+                {
                     extend: "collection",
-                    text: "Exportar datos",
-                    className:
-                        "btn btn-lg btn-group-secondary d-none d-lg-block",
+                    text: "Exportar",
+                    className: "btn btn-lg btn-group-secondary",
                     buttons: [
                         {
                             extend: "copy",
@@ -83,20 +89,6 @@ $(document).ready(function () {
                             },
                         },
                     ],
-                },
-                {
-                    text: "Registrar aplicación",
-                    className: "btn btn-lg btn-store d-none d-lg-block",
-                    action: function (e, dt, node, config) {
-                        document.getElementById("crearAplicacionBtn").click();
-                    },
-                },
-                {
-                    text: "Registrar",
-                    className: "btn btn-lg btn-store d-lg-none",
-                    action: function (e, dt, node, config) {
-                        document.getElementById("crearAplicacionBtn").click();
-                    },
                 },
             ],
             language: {
@@ -163,30 +155,73 @@ $(document).ready(function () {
                 {
                     data: null,
                     render: function (data, type, row) {
+                        var userPermissions = JSON.parse(
+                            document.getElementById("userPermissions").value
+                        );
                         return `
                                 <div class="text-center">
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                                "admin_aplicaciones_ver" ||
+                                            permission.name ===
+                                                "admin_aplicaciones_editar" ||
+                                            permission.name ===
+                                                "admin_aplicaciones_eliminar"
+                                    )
+                                        ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_aplicaciones_ver"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item ver-aplicacion" data-url="${row.enlace_aplicacion}" type="button">
                                                     <span class="link">Ver aplicación</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                                : ""
+                                        }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_aplicaciones_editar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item editar-aplicacion" data-id="${row.id}" type="button">
-                                                    <span class="link">Editar aplicación</span>
+                                                    <span class="link">Editar</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                            : ""
+                                    }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_aplicaciones_eliminar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-aplicacion" data-id="${row.id}" type="button">
-                                                    <span class="link">Eliminar aplicación</span>
+                                                    <span class="link">Eliminar</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                            : ""
+                                    }
                                         </ul>
-                                    </div>
+                                    </div>`
+                                        : ""
+                                }
                                 </div>
                             `;
                     },
@@ -200,6 +235,19 @@ $(document).ready(function () {
                 const btnSecondaryElements = $(
                     ".dt-buttons .btn.btn-secondary"
                 );
+
+                var userPermissions = JSON.parse(
+                    document.getElementById("userPermissions").value
+                );
+
+                if (
+                    !userPermissions.some(
+                        (permission) =>
+                            permission.name === "admin_aplicaciones_crear"
+                    )
+                ) {
+                    $(".aplicacion").addClass("d-none");
+                }
 
                 btnSecondaryElements.removeClass("btn-secondary");
 

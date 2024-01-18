@@ -108,7 +108,13 @@
 </div>
 
 <div class="dropup d-xl-none">
-    @can('admin_empresas_crear')
+    @if (auth()->user()->hasAnyPermission([
+                'admin_empresas_crear',
+                'admin_entidades_ver',
+                'admin_clasificaciones_ver',
+                'admin_giros_ver',
+                'admin_paises_ver',
+            ]))
         <button class="btn btn-lg gap-2 btn-float dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-expanded="false" data-bs-offset="0,7">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff">
@@ -174,7 +180,8 @@
         @endcan
         @can('admin_entidades_ver')
             <li>
-                <a class="dropdown-item nav-link" href="#" data-bs-toggle="modal" data-bs-target="#entidadModal">
+                <a class="dropdown-item nav-link" href="#" data-bs-toggle="modal"
+                    data-bs-target="#entidadModal">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                         width="24px" fill="#000000">
                         <path d="M0 0h24v24H0V0z" fill="none" />
@@ -187,7 +194,8 @@
         @endcan
         @can('admin_empresas_crear')
             <li>
-                <a class="dropdown-item nav-link" href="#" data-bs-toggle="modal" data-bs-target="#empresaModal">
+                <a class="dropdown-item nav-link" href="#" data-bs-toggle="modal"
+                    data-bs-target="#empresaModal">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                         width="24px" fill="#000000">
                         <path d="M0 0h24v24H0V0z" fill="none" />

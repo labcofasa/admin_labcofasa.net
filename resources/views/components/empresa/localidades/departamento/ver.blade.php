@@ -20,7 +20,7 @@
             </div>
             <div class="modal-body">
                 <div id="tabla-departamentos-container" style="display: none;">
-                    <table id="tabla-departamentos" class="table align-middle responsive display nowrap" width="100%">
+                    <table id="tabla-departamentos" class="table align-middle responsive display" width="100%">
                         <thead>
                             <tr>
                                 <th>#</th>

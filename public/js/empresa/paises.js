@@ -16,7 +16,7 @@ $(document).ready(function () {
 
         tabla_paises = $("#tabla-paises").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12'B><'col-md-4 col-sm-6 col-12 mt-1'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
@@ -40,9 +40,16 @@ $(document).ready(function () {
                     text: "Editar columnas",
                 },
                 {
+                    text: "Crear registro",
+                    className: "btn btn-lg btn-store pais",
+                    action: function (e, dt, node, config) {
+                        document.getElementById("registrarPaisBtn").click();
+                    },
+                },
+                {
                     extend: "collection",
                     text: "Exportar",
-                    className: "btn btn-lg btn-group-secondary d-lg-none",
+                    className: "btn btn-lg btn-group-secondary",
                     buttons: [
                         {
                             extend: "copy",
@@ -85,73 +92,11 @@ $(document).ready(function () {
                             },
                         },
                     ],
-                },
-                {
-                    extend: "collection",
-                    text: "Exportar datos",
-                    className:
-                        "btn btn-lg btn-group-secondary d-none d-lg-block",
-                    buttons: [
-                        {
-                            extend: "copy",
-                            text: "Copiar",
-                            title: "Departamentos registrados - Laboratorios Cofasa",
-                            filename:
-                                "Departamentos registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6, 7],
-                            },
-                        },
-                        {
-                            extend: "csv",
-                            text: "CSV",
-                            title: "Departamentos registrados - Laboratorios Cofasa",
-                            filename:
-                                "Departamentos registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6, 7],
-                            },
-                        },
-                        {
-                            extend: "excel",
-                            text: "Excel",
-                            title: "Departamentos registrados - Laboratorios Cofasa",
-                            filename:
-                                "Departamentos registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6, 7],
-                            },
-                        },
-                        {
-                            extend: "print",
-                            text: "Imprimir",
-                            title: "Departamentos registrados - Laboratorios Cofasa",
-                            filename:
-                                "Departamentos registrados - Laboratorios Cofasa",
-                            action: function (e, dt, node, config) {
-                                printPaises();
-                            },
-                        },
-                    ],
-                },
-                {
-                    text: "Registrar país",
-                    className: "btn btn-lg btn-store d-none d-lg-block",
-                    action: function (e, dt, node, config) {
-                        document.getElementById("registrarPaisBtn").click();
-                    },
-                },
-                {
-                    text: "Registrar",
-                    className: "btn btn-lg btn-store d-lg-none",
-                    action: function (e, dt, node, config) {
-                        document.getElementById("registrarPaisBtn").click();
-                    },
                 },
             ],
             language: {
                 url: "/json/es.json",
-                searchPlaceholder: "Buscar país",
+                searchPlaceholder: "Buscar",
                 emptyTable: "No hay paises registrados",
             },
             ajax: {
@@ -191,30 +136,74 @@ $(document).ready(function () {
                 {
                     data: null,
                     render: function (data, type, row) {
+                        var userPermissions = JSON.parse(
+                            document.getElementById("userPermissions").value
+                        );
                         return `
                                 <div class="text-center">
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                                "admin_departamentos_ver" ||
+                                            permission.name ===
+                                                "admin_paises_editar" ||
+                                            permission.name ===
+                                                "admin_paises_eliminar"
+                                    )
+                                        ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_departamentos_ver"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item ver-departamentos" data-id="${row.id}" type="button">
                                                     <span class="link">Ver departamentos</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                                : ""
+                                        }
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_paises_editar"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item editar-pais" data-id="${row.id}" type="button">
-                                                    <span class="link">Editar país</span>
+                                                    <span class="link">Editar</span>
                                                 </button>
                                             </li>
+                                            `
+                                                : ""
+                                        }
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_paises_eliminar"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-pais" data-id="${row.id}" type="button">
-                                                    <span class="link">Eliminar país</span>
+                                                    <span class="link">Eliminar</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                                : ""
+                                        }
                                         </ul>
-                                    </div>
+                                    </div>`
+                                        : ""
+                                }
                                 </div>
                             `;
                     },
@@ -228,6 +217,18 @@ $(document).ready(function () {
                 const btnSecondaryElements = $(
                     ".dt-buttons .btn.btn-secondary"
                 );
+
+                var userPermissions = JSON.parse(
+                    document.getElementById("userPermissions").value
+                );
+
+                if (
+                    !userPermissions.some(
+                        (permission) => permission.name === "admin_paises_crear"
+                    )
+                ) {
+                    $(".pais").addClass("d-none");
+                }
 
                 btnSecondaryElements.removeClass("btn-secondary");
                 inputPais.attr("id", "buscar-pais");
@@ -437,7 +438,7 @@ $(document).ready(function () {
 
         tabla_departamentos = $("#tabla-departamentos").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12'B><'col-md-4 col-sm-6 col-12 mt-1'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
@@ -461,9 +462,18 @@ $(document).ready(function () {
                     text: "Editar columnas",
                 },
                 {
+                    text: "Crear registro",
+                    className: "btn btn-lg btn-store departamento",
+                    action: function (e, dt, node, config) {
+                        document
+                            .getElementById("registrarDepartamentoBtn")
+                            .click();
+                    },
+                },
+                {
                     extend: "collection",
                     text: "Exportar",
-                    className: "btn btn-lg btn-group-secondary d-lg-none",
+                    className: "btn btn-lg btn-group-secondary",
                     buttons: [
                         {
                             extend: "copy",
@@ -506,77 +516,11 @@ $(document).ready(function () {
                             },
                         },
                     ],
-                },
-                {
-                    extend: "collection",
-                    text: "Exportar datos",
-                    className:
-                        "btn btn-lg btn-group-secondary d-none d-lg-block",
-                    buttons: [
-                        {
-                            extend: "copy",
-                            text: "Copiar",
-                            title: "Departamentos registrados - Laboratorios Cofasa",
-                            filename:
-                                "Departamentos registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6],
-                            },
-                        },
-                        {
-                            extend: "csv",
-                            text: "CSV",
-                            title: "Departamentos registrados - Laboratorios Cofasa",
-                            filename:
-                                "Departamentos registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6],
-                            },
-                        },
-                        {
-                            extend: "excel",
-                            text: "Excel",
-                            title: "Departamentos registrados - Laboratorios Cofasa",
-                            filename:
-                                "Departamentos registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6],
-                            },
-                        },
-                        {
-                            extend: "print",
-                            text: "Imprimir",
-                            title: "Departamentos registrados - Laboratorios Cofasa",
-                            filename:
-                                "Departamentos registrados - Laboratorios Cofasa",
-                            action: function (e, dt, node, config) {
-                                printDepartamentos();
-                            },
-                        },
-                    ],
-                },
-                {
-                    text: "Registrar departamento",
-                    className: "btn btn-lg btn-store d-none d-lg-block",
-                    action: function (e, dt, node, config) {
-                        document
-                            .getElementById("registrarDepartamentoBtn")
-                            .click();
-                    },
-                },
-                {
-                    text: "Registrar",
-                    className: "btn btn-lg btn-store d-lg-none",
-                    action: function (e, dt, node, config) {
-                        document
-                            .getElementById("registrarDepartamentoBtn")
-                            .click();
-                    },
                 },
             ],
             language: {
                 url: "/json/es.json",
-                searchPlaceholder: "Buscar departamento",
+                searchPlaceholder: "Buscar",
                 emptyTable: "No hay departamentos registrados",
             },
             ajax: {
@@ -615,30 +559,73 @@ $(document).ready(function () {
                 {
                     data: null,
                     render: function (data, type, row) {
+                        var userPermissions = JSON.parse(
+                            document.getElementById("userPermissions").value
+                        );
                         return `
                                 <div class="text-center">
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                                "admin_municipios_ver" ||
+                                            permission.name ===
+                                                "admin_departamentos_editar" ||
+                                            permission.name ===
+                                                "admin_departamentos_eliminar"
+                                    )
+                                        ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_municipios_ver"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item ver-municipios" data-id="${row.id}" type="button">
                                                     <span class="link">Ver municipios</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                                : ""
+                                        }
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_departamentos_editar"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item editar-departamento" data-id="${row.id}" type="button">
-                                                    <span class="link">Editar departamento</span>
+                                                    <span class="link">Editar</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                                : ""
+                                        }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_departamentos_eliminar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-departamento" data-id="${row.id}" type="button">
-                                                    <span class="link">Eliminar departamento</span>
+                                                    <span class="link">Eliminar</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                            : ""
+                                    }
                                         </ul>
-                                    </div>
+                                    </div>`
+                                        : ""
+                                }
                                 </div>
                             `;
                     },
@@ -655,6 +642,19 @@ $(document).ready(function () {
                 const btnSecondaryElements = $(
                     ".dt-buttons .btn.btn-secondary"
                 );
+
+                var userPermissions = JSON.parse(
+                    document.getElementById("userPermissions").value
+                );
+
+                if (
+                    !userPermissions.some(
+                        (permission) =>
+                            permission.name === "admin_departamentos_crear"
+                    )
+                ) {
+                    $(".departamento").addClass("d-none");
+                }
 
                 btnSecondaryElements.removeClass("btn-secondary");
                 inputDepartamento.attr("id", "buscar-departamentos");
@@ -885,7 +885,7 @@ $(document).ready(function () {
 
         tabla_municipios = $("#tabla-municipios").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
+                "<'row align-items-end'<'col-md-8 col-sm-6 col-12'B><'col-md-4 col-sm-6 col-12 mt-1'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
@@ -909,9 +909,18 @@ $(document).ready(function () {
                     text: "Editar columnas",
                 },
                 {
+                    text: "Crear registro",
+                    className: "btn btn-lg btn-store municipio",
+                    action: function (e, dt, node, config) {
+                        document
+                            .getElementById("registrarMunicipioBtn")
+                            .click();
+                    },
+                },
+                {
                     extend: "collection",
                     text: "Exportar",
-                    className: "btn btn-lg btn-group-secondary d-lg-none",
+                    className: "btn btn-lg btn-group-secondary",
                     buttons: [
                         {
                             extend: "copy",
@@ -954,72 +963,6 @@ $(document).ready(function () {
                             },
                         },
                     ],
-                },
-                {
-                    extend: "collection",
-                    text: "Exportar datos",
-                    className:
-                        "btn btn-lg btn-group-secondary d-none d-lg-block",
-                    buttons: [
-                        {
-                            extend: "copy",
-                            text: "Copiar",
-                            title: "Municipios registrados - Laboratorios Cofasa",
-                            filename:
-                                "Municipios registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6],
-                            },
-                        },
-                        {
-                            extend: "csv",
-                            text: "CSV",
-                            title: "Municipios registrados - Laboratorios Cofasa",
-                            filename:
-                                "Municipios registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6],
-                            },
-                        },
-                        {
-                            extend: "excel",
-                            text: "Excel",
-                            title: "Municipios registrados - Laboratorios Cofasa",
-                            filename:
-                                "Municipios registrados - Laboratorios Cofasa",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6],
-                            },
-                        },
-                        {
-                            extend: "print",
-                            text: "Imprimir",
-                            title: "Municipios registrados - Laboratorios Cofasa",
-                            filename:
-                                "Municipios registrados - Laboratorios Cofasa",
-                            action: function (e, dt, node, config) {
-                                printMunicipios();
-                            },
-                        },
-                    ],
-                },
-                {
-                    text: "Registrar Municipio",
-                    className: "btn btn-lg btn-store d-none d-lg-block",
-                    action: function (e, dt, node, config) {
-                        document
-                            .getElementById("registrarMunicipioBtn")
-                            .click();
-                    },
-                },
-                {
-                    text: "Registrar",
-                    className: "btn btn-lg btn-store d-lg-none",
-                    action: function (e, dt, node, config) {
-                        document
-                            .getElementById("registrarMunicipioBtn")
-                            .click();
-                    },
                 },
             ],
             language: {
@@ -1063,25 +1006,57 @@ $(document).ready(function () {
                 {
                     data: null,
                     render: function (data, type, row) {
+                        var userPermissions = JSON.parse(
+                            document.getElementById("userPermissions").value
+                        );
                         return `
                                 <div class="text-center">
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                                "admin_municipios_editar" ||
+                                            permission.name ===
+                                                "admin_municipios_eliminar"
+                                    )
+                                        ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_municipios_editar"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item editar-municipio" data-id="${row.id}" type="button">
-                                                    <span class="link">Editar municipio</span>
+                                                    <span class="link">Editar</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                                : ""
+                                        }
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_municipios_eliminar"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-municipio" data-id="${row.id}" type="button">
-                                                    <span class="link">Eliminar municipio</span>
+                                                    <span class="link">Eliminar</span>
                                                 </button>
-                                            </li>
+                                            </li>`
+                                                : ""
+                                        }
                                         </ul>
-                                    </div>
+                                    </div>`
+                                        : ""
+                                }
                                 </div>
                             `;
                     },
@@ -1097,6 +1072,19 @@ $(document).ready(function () {
                 );
 
                 btnSecondaryElements.removeClass("btn-secondary");
+
+                var userPermissions = JSON.parse(
+                    document.getElementById("userPermissions").value
+                );
+
+                if (
+                    !userPermissions.some(
+                        (permission) =>
+                            permission.name === "admin_municipios_crear"
+                    )
+                ) {
+                    $(".municipio").addClass("d-none");
+                }
 
                 inputMunicipio.attr("id", "buscar-municipios");
                 inputMunicipio.attr("name", "buscar_municipios");

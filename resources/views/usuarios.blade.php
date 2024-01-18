@@ -23,6 +23,8 @@
             <!-- Botón que dispara el registro de usuarios -->
             <span type="hidden" id="registrarUsuarioBtn"></span>
 
+            <!-- Permisos -->
+            <x-widgets.roles.permisos />
         </div>
     </div>
 

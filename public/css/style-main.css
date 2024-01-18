@@ -168,14 +168,19 @@ nav {
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .card-container {
-        height: 90vh;
+@media screen and (min-width: 767px) {
+    .ordenar {
+        display: none;
     }
+
 }
 
-@media screen and (max-width: 500px) {
-    .card-container {
-        height: 88vh;
+@media screen and (max-width: 767px) {
+    .permiso-eliminar {
+        display: none;
+    }
+
+    .permiso-asignar {
+        display: none;
     }
 }

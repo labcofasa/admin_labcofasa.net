@@ -40,8 +40,7 @@ class RoleSeeder extends Seeder
             ['name' => 'admin_roles_eliminar', 'descripcion' => 'Eliminar roles'],
 
             ['name' => 'admin_permisos_ver', 'descripcion' => 'Ver página de permisos'],
-            ['name' => 'admin_permisos_crear', 'descripcion' => 'Crear permisos'],
-            ['name' => 'admin_permisos_editar', 'descripcion' => 'Editar permisos'],
+            ['name' => 'admin_permisos_asignar', 'descripcion' => 'Asignar permisos'],
             ['name' => 'admin_permisos_eliminar', 'descripcion' => 'Eliminar permisos'],
 
             ['name' => 'admin_empresas_ver', 'descripcion' => 'Ver página de empresas'],
@@ -82,7 +81,10 @@ class RoleSeeder extends Seeder
             ['name' => 'admin_papelera_ver', 'descripcion' => 'Ver página de papelera'],
             ['name' => 'admin_papelera_recuperar', 'descripcion' => 'Recuperar registros'],
 
-            ['name' => 'admin_ver_aplicaciones', 'descripcion' => 'Ver aplicaciones'],
+            ['name' => 'admin_aplicaciones_ver', 'descripcion' => 'Ver aplicaciones'],
+            ['name' => 'admin_aplicaciones_crear', 'descripcion' => 'Crear aplicaciones'],
+            ['name' => 'admin_aplicaciones_editar', 'descripcion' => 'Editar aplicaciones'],
+            ['name' => 'admin_aplicaciones_eliminar', 'descripcion' => 'Eliminar aplicaciones'],
         ];
 
         foreach ($permissions as $permissionData) {

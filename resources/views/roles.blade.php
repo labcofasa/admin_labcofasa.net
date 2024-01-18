@@ -19,7 +19,11 @@
                     <tbody></tbody>
                 </table>
             </div>
+
             <span type="hidden" id="registrarRolBtn"></span>
+
+            <!-- Permisos -->
+            <x-widgets.roles.permisos />
         </div>
     </div>
 
