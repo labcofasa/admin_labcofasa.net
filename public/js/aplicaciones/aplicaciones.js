@@ -110,7 +110,7 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
-                    targets: [1, 2, 3, 4, 5, 6, 7, 8 ,9],
+                    targets: [1, 2, 3, 4, 5, 6, 7, 8, 9],
                     searchable: true,
                     orderable: true,
                 },
@@ -301,7 +301,11 @@ $(document).ready(function () {
     $("#crearAplicacionBtn").click(function () {
         $("#roles-editar").empty();
         obtenesRoles();
-        window.cargarEmpresas("#empresa-aplicacion-select", "#id-empresa-aplicacion", false);
+        cargarEmpresas(
+            "#empresa-aplicacion-select",
+            "#id-empresa-aplicacion",
+            false
+        );
         window.MultiselectDropdown();
         $("#crearAplicacion").modal("show");
     });
@@ -460,7 +464,7 @@ $(document).ready(function () {
 
                 window.MultiselectDropdown();
 
-                window.cargarEmpresas(
+                cargarEmpresas(
                     "#empresa-aplicacion-editar",
                     "#id-empresa-aplicacion-editar",
                     true,
@@ -594,6 +598,50 @@ $(document).ready(function () {
         });
     });
 });
+
+// Cargar empresas */
+function cargarEmpresas(
+    empresaSelectId,
+    idEmpresaInputId,
+    editar,
+    empresaActual
+) {
+    $.ajax({
+        url: "/obtener-empresas",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            const empresaSelect = $(empresaSelectId);
+            empresaSelect.empty();
+            empresaSelect.append(
+                $("<option>", {
+                    value: "",
+                    text: "Selecciona una empresa",
+                })
+            );
+
+            $.each(data, function (key, value) {
+                empresaSelect.append(
+                    '<option value="' + key + '">' + value + "</option>"
+                );
+            });
+
+            if (editar && empresaActual) {
+                empresaSelect.val(empresaActual);
+            }
+
+            $(idEmpresaInputId).val(empresaSelect.val());
+        },
+        error: function (error) {
+            console.log("Error al obtener las empresas");
+        },
+    });
+
+    $(empresaSelectId).on("change", function () {
+        var selectEmpresaId = $(this).val();
+        $(idEmpresaInputId).val(selectEmpresaId);
+    });
+}
 
 var rolesData = {};
 
