@@ -301,7 +301,7 @@ $(document).ready(function () {
     $("#crearAplicacionBtn").click(function () {
         $("#roles-editar").empty();
         obtenesRoles();
-        cargarEmpresas("#empresa-aplicacion-select", "#id-empresa-aplicacion", false);
+        window.cargarEmpresas("#empresa-aplicacion-select", "#id-empresa-aplicacion", false);
         window.MultiselectDropdown();
         $("#crearAplicacion").modal("show");
     });
@@ -460,7 +460,7 @@ $(document).ready(function () {
 
                 window.MultiselectDropdown();
 
-                cargarEmpresas(
+                window.cargarEmpresas(
                     "#empresa-aplicacion-editar",
                     "#id-empresa-aplicacion-editar",
                     true,
