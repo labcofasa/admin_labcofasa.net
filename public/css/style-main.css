@@ -43,17 +43,18 @@ nav {
     padding: 15px;
 }
 
-.cartas-inicio {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
+/* Inicio - cartas */
+.cartas {
+    padding-bottom: 60px;
 }
 
 .btn-app .card {
     padding: 15px;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     transition: var(--tran-03);
     box-shadow: var(--box-shadow);
 }
