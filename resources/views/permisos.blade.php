@@ -16,7 +16,7 @@
                 <!-- Titulo -->
                 <h1 class="pb-2">@yield('titulo')</h1>
 
-                <table id="tabla-permisos" class="table align-middle responsive display nowrap" width="100%">
+                <table id="tabla-permisos" class="table align-middle responsive display" width="100%">
                     <tbody></tbody>
                 </table>
             </div>

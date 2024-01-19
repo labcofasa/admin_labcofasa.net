@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Artisan;
 use App\Models\User;
 
 class PermisoController extends Controller
@@ -75,6 +76,7 @@ class PermisoController extends Controller
             'data' => $data,
         ]);
     }
+
     public function permisosRol(Request $request, $rolId)
     {
         $draw = $request->input('draw');
@@ -122,6 +124,7 @@ class PermisoController extends Controller
             'data' => $data,
         ]);
     }
+
     public function eliminarPermiso(Request $request, $rolId, $permisoId)
     {
         try {
@@ -130,6 +133,11 @@ class PermisoController extends Controller
 
             $role->revokePermissionTo($permission);
 
+            Artisan::call('cache:clear');
+            Artisan::call('route:clear');
+            Artisan::call('config:clear');
+            Artisan::call('optimize:clear');
+
             return response()->json(['success' => true, 'message' => 'El permiso se ha eliminado exitosamente']);
         } catch (ModelNotFoundException $e) {
             return response()->json(['success' => false, 'error' => 'El rol o permiso no existen'], 404);
@@ -137,6 +145,7 @@ class PermisoController extends Controller
             return response()->json(['error' => true, 'message' => 'No se pudo eliminar el permiso'], 500);
         }
     }
+
     public function eliminarPermisosMasa(Request $request)
     {
         try {
@@ -148,6 +157,11 @@ class PermisoController extends Controller
                 $role->revokePermissionTo($permission);
             }
 
+            Artisan::call('cache:clear');
+            Artisan::call('route:clear');
+            Artisan::call('config:clear');
+            Artisan::call('optimize:clear');
+
             return response()->json(['success' => true, 'message' => 'Los permisos se han eliminado exitosamente']);
         } catch (ModelNotFoundException $e) {
             return response()->json(['success' => false, 'error' => 'El rol o permiso no existen'], 404);
@@ -155,6 +169,7 @@ class PermisoController extends Controller
             return response()->json(['error' => true, 'message' => 'No se pudieron eliminar los permisos'], 500);
         }
     }
+
     public function permisosAsignar(Request $request, $rolId)
     {
         $draw = $request->input('draw');
@@ -203,6 +218,7 @@ class PermisoController extends Controller
             'data' => $data,
         ]);
     }
+
     public function asignarPermisoARol(Request $request, $rolId, $permisoId)
     {
         try {
@@ -211,6 +227,11 @@ class PermisoController extends Controller
 
             $role->givePermissionTo($permission);
 
+            Artisan::call('cache:clear');
+            Artisan::call('route:clear');
+            Artisan::call('config:clear');
+            Artisan::call('optimize:clear');
+
             return response()->json(['success' => true, 'message' => 'El permiso se ha asignado exitosamente']);
         } catch (ModelNotFoundException $e) {
             return response()->json(['success' => false, 'error' => 'El rol o permiso no existen'], 404);
@@ -218,6 +239,7 @@ class PermisoController extends Controller
             return response()->json(['error' => true, 'message' => 'No se pudo asignar el permiso'], 500);
         }
     }
+
     public function asignarPermisosMasa(Request $request)
     {
         try {
@@ -228,6 +250,11 @@ class PermisoController extends Controller
                 $permission = Permission::findOrFail($permiso['permisoId']);
                 $role->givePermissionTo($permission);
             }
+
+            Artisan::call('cache:clear');
+            Artisan::call('route:clear');
+            Artisan::call('config:clear');
+            Artisan::call('optimize:clear');
 
             return response()->json(['success' => true, 'message' => 'Los permisos se han asignado exitosamente']);
         } catch (ModelNotFoundException $e) {

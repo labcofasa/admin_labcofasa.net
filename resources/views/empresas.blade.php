@@ -16,7 +16,7 @@
                 <x-widgets.empresas.crear />
                 <h1 class="d-xl-none pb-2">@yield('titulo')</h1>
 
-                <table id="tabla-empresas" class="table align-middle responsive display nowrap" width="100%">
+                <table id="tabla-empresas" class="table align-middle responsive display" width="100%">
                     <tbody></tbody>
                 </table>
             </div>
