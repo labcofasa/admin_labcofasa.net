@@ -44,7 +44,6 @@ nav {
 }
 
 /* Inicio - cartas */
-
 .cartas {
     padding-bottom: 60px;
 }
@@ -172,7 +171,6 @@ nav {
     .ordenar {
         display: none;
     }
-
 }
 
 @media screen and (max-width: 767px) {
