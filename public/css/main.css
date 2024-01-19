@@ -35,7 +35,7 @@
     /* Paleta de colores */
     --primary: #1FAB7F;
     --secondary: #09525D;
-    --secondary-hover: #ffd966;
+    --secondary-hover: #0A6E7C;
     --accent: #006d4b;
     --positive: ;
     --negative: ;
@@ -123,7 +123,7 @@ body.dark {
     /* Paleta de colores */
     --primary: #1FAB7F;
     --secondary: #053340;
-    --secondary-hover: #6edff6;
+    --secondary-hover: #07475A;
     --accent: #004832;
     --positive: ;
     --negative: ;
