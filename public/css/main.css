@@ -33,9 +33,9 @@
 /* Colores para el diseño claro */
 :root {
     /* Paleta de colores */
-    --primary: #1FAB7F;
-    --secondary: #09525D;
-    --secondary-hover: #0A6E7C;
+    --primary: #1fab7f;
+    --secondary: #bbebeb;
+    --secondary-hover: #bbebeb;
     --accent: #006d4b;
     --positive: ;
     --negative: ;
@@ -45,7 +45,7 @@
     /* Botones */
     --btn-primary: #e8f0fe;
     --btn-primary-hover: #d0dffa;
-    --btn-secondary: #ECECEC;
+    --btn-secondary: #ececec;
     --btn-secondary-hover: #e5e7e9;
     --btn-success: #ceead6;
     --btn-success-hover: #bde2c7;
@@ -54,14 +54,16 @@
     --btn-warning: #fff3cd;
     --btn-warning-hover: #ffe5b4;
     --btn-info: ;
+
+    --icon-svg: #002021;
     --bg-tooltip: #006d4b;
     --color-tooltip: #fff;
 
     /* Paginación de las tablas */
-    --btn-paginacion-bg: #ECECEC;
+    --btn-paginacion-bg: #ececec;
     --btn-paginacion-bg-active: #172935;
     --btn-paginacion-color-active: #fff;
-    --btn-paginacion-bg-hover: #09525D;
+    --btn-paginacion-bg-hover: #09525d;
     --btn-paginacion-color-hover: #fff;
 
     /* Iconos */
@@ -80,11 +82,11 @@
     --input-caret: #006d4b;
 
     /* Generales */
-    --body-bg: #FFFFFF;
-    --sidebar-bg: #FFFFFF;
-    --sidebar-bg-hover: #ECECEC;
+    --body-bg: #ffffff;
+    --sidebar-bg: #ffffff;
+    --sidebar-bg-hover: #ececec;
     --sidebar-icon-hover: #4a4f53;
-    --sidebar-bg-active: #B5E4CA;
+    --sidebar-bg-active: #b5e4ca;
     --card-bg: #ffffff;
     --toggle-shadow: #999999;
     --table-border: #dee2e6;
@@ -121,9 +123,9 @@
 /* Colores para el diseño oscuro */
 body.dark {
     /* Paleta de colores */
-    --primary: #1FAB7F;
-    --secondary: #053340;
-    --secondary-hover: #07475A;
+    --primary: #1fab7f;
+    --secondary: #5ddddd;
+    --secondary-hover: #5ddddd;
     --accent: #004832;
     --positive: ;
     --negative: ;
@@ -142,6 +144,8 @@ body.dark {
     --btn-warning: #7a5f00;
     --btn-warning-hover: #8a6f10;
     --btn-info: ;
+
+    --icon-svg: #002021;
     --bg-tooltip: #032830;
     --color-tooltip: #6edff6;
 
@@ -176,7 +180,7 @@ body.dark {
     --sidebar-bg: #1d1d1d;
     --sidebar-bg-hover: #2a2a2a;
     --sidebar-icon-hover: #adb2b6;
-    --sidebar-bg-active: #6FAE8E;
+    --sidebar-bg-active: #6fae8e;
     --card-bg: #1d1d1d;
     --toggle-shadow: #383838;
     --table-border: #373b3e;
@@ -222,7 +226,6 @@ body {
 span {
     font-size: var(--font-size);
     letter-spacing: var(--letter-spacing);
-    font-weight: 500;
 }
 
 .date-notificacion {
@@ -375,12 +378,13 @@ hr {
 .btn-store {
     background-color: var(--secondary) !important;
     border-color: var(--secondary) !important;
-    color: #ffffff;
+    color: var(--icon-svg);
+    font-weight: 500;
     vertical-align: middle;
 }
 
 .btn-store:hover {
-    color: #ffffff;
+    color: var(--icon-svg);
 }
 
 .btn-store:active {
@@ -391,7 +395,7 @@ hr {
 .btn-focus-visible {
     background-color: var(--secondary);
     border-color: var(--secondary);
-    color: #ffffff !important;
+    color: var(--icon-svg) !important;
 }
 .btn-primary {
     background-color: var(--btn-primary) !important;
@@ -630,6 +634,10 @@ hr {
     --bs-btn-active-color: #121213;
     --bs-btn-active-bg: var(--secondary);
     --bs-btn-active-border-color: var(--secondary);
+}
+
+.icon-add-empresa {
+    fill: var(--icon-svg);
 }
 
 /* .btn-info {} */
