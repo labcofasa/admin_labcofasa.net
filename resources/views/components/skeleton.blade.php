@@ -1,4 +1,4 @@
-<div class="table-responsive rounded-3 placeholder-glow" id="placeholder">
+<div class="table-responsive placeholder-glow" id="placeholder">
     <table class="table align-middle">
         <div class="row justify-content-between">
             <div class="col-md-6">

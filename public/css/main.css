@@ -34,8 +34,8 @@
 :root {
     /* Paleta de colores */
     --primary: #1fab7f;
-    --secondary: #bbebeb;
-    --secondary-hover: #bbebeb;
+    --secondary: #b5e4ca;
+    --secondary-hover: #b5e4ca;
     --accent: #006d4b;
     --positive: ;
     --negative: ;
@@ -55,7 +55,6 @@
     --btn-warning-hover: #ffe5b4;
     --btn-info: ;
 
-    --icon-svg: #002021;
     --bg-tooltip: #006d4b;
     --color-tooltip: #fff;
 
@@ -82,9 +81,9 @@
     --input-caret: #006d4b;
 
     /* Generales */
-    --body-bg: #ffffff;
-    --sidebar-bg: #ffffff;
-    --sidebar-bg-hover: #ececec;
+    --body-bg: #f0f9f6;
+    --sidebar-bg: #f0f9f6;
+    --sidebar-bg-hover: #ededed;
     --sidebar-icon-hover: #4a4f53;
     --sidebar-bg-active: #b5e4ca;
     --card-bg: #ffffff;
@@ -145,7 +144,6 @@ body.dark {
     --btn-warning-hover: #8a6f10;
     --btn-info: ;
 
-    --icon-svg: #002021;
     --bg-tooltip: #032830;
     --color-tooltip: #6edff6;
 
@@ -176,12 +174,12 @@ body.dark {
     --input-caret: #6edff6;
 
     /* Generales */
-    --body-bg: #1d1d1d;
-    --sidebar-bg: #1d1d1d;
+    --body-bg: #1e1f20;
+    --sidebar-bg: #1e1f20;
     --sidebar-bg-hover: #2a2a2a;
     --sidebar-icon-hover: #adb2b6;
     --sidebar-bg-active: #6fae8e;
-    --card-bg: #1d1d1d;
+    --card-bg: #1e1f20;
     --toggle-shadow: #383838;
     --table-border: #373b3e;
     --dropdown-menu: #212121;
@@ -226,6 +224,7 @@ body {
 span {
     font-size: var(--font-size);
     letter-spacing: var(--letter-spacing);
+    font-weight: 500;
 }
 
 .date-notificacion {
@@ -378,13 +377,13 @@ hr {
 .btn-store {
     background-color: var(--secondary) !important;
     border-color: var(--secondary) !important;
-    color: var(--icon-svg);
-    font-weight: 500;
+    color: var(--accent);
+    font-weight: 600;
     vertical-align: middle;
 }
 
 .btn-store:hover {
-    color: var(--icon-svg);
+    color: var(--accent);
 }
 
 .btn-store:active {
@@ -395,7 +394,7 @@ hr {
 .btn-focus-visible {
     background-color: var(--secondary);
     border-color: var(--secondary);
-    color: var(--icon-svg) !important;
+    color: var(--accent) !important;
 }
 .btn-primary {
     background-color: var(--btn-primary) !important;
@@ -547,8 +546,8 @@ hr {
 }
 
 .offcanvas-body .dropdown-menu {
-    background-color: var(--body-bg);
-    padding: 0 25px;
+    background-color: var(--card-container);
+    padding: 0 15px;
     width: auto;
     border: none;
     border-radius: 0;
@@ -566,7 +565,7 @@ hr {
 
 .offcanvas-body .dropdown-item {
     margin: 5px 0;
-    padding: 10px 20px;
+    padding: 8px 20px;
     border-radius: 25px;
     color: var(--text-color);
     transition: var(--tran-03);
@@ -637,7 +636,7 @@ hr {
 }
 
 .icon-add-empresa {
-    fill: var(--icon-svg);
+    fill: var(--accent);
 }
 
 /* .btn-info {} */
@@ -815,15 +814,8 @@ label {
     transition: var(--tran-03);
     overflow-x: visible;
     padding: 15px;
+    border-radius: 16px;
     box-shadow: var(--box-shadow);
-}
-
-@media (max-width: 1024px) {
-    .table-responsive {
-        background-color: var(--body-color);
-        box-shadow: none;
-        padding: 15px 0;
-    }
 }
 
 /* Tooltips */
@@ -898,7 +890,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
     margin-left: 0 !important;
     height: 43px;
     width: 100% !important;
-    background-color: var(--sidebar-bg);
+    background-color: var(--card-container);
     transition: background-color 0.4s ease;
     border-radius: var(--border-radius);
     border-color: var(--table-border);
@@ -1081,7 +1073,7 @@ div.dt-datetime div.dt-datetime-label select {
 .modal-content,
 .modal-footer {
     border: none;
-    background-color: var(--sidebar-bg);
+    background-color: var(--card-container);
     color: var(--text-color);
 }
 .modal-header {
@@ -1558,7 +1550,7 @@ div.dt-datetime div.dt-datetime-label select {
     }
 
     .table-responsive {
-        box-shadow: none !important;
+        padding: 10px;
     }
 
     .card-body {
@@ -1693,7 +1685,7 @@ div.dt-datetime div.dt-datetime-label select {
 }
 
 .offcanvas {
-    background-color: var(--body-bg);
+    background-color: var(--card-container);
     transition: var(--tran-03);
 }
 

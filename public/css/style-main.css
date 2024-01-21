@@ -1,12 +1,12 @@
 :root {
-    --card-container: #f8f8f8;
+    --card-container: #FFFFFF;
     --toggle-switch: rgb(0, 221, 80);
     --toggle-switch-bg: #ffffff;
     --toggle-switch-border: #dee2e6;
 }
 
 body.dark {
-    --card-container: #222222;
+    --card-container: #131314;
     --toggle-switch: rgb(0, 221, 80);
     --toggle-switch-bg: #d0d0d0;
     --toggle-switch-border: #d0d0d0;
@@ -40,7 +40,7 @@ nav {
 
 .card-container {
     transition: var(--tran-03);
-    padding: 15px;
+    padding: 24px;
 }
 
 /* Inicio - cartas */
@@ -141,7 +141,7 @@ nav {
         background-color: var(--card-container);
         height: 91vh;
         overflow: auto;
-        border-radius: 15px;
+        border-radius: 24px;
     }
 }
 
@@ -150,7 +150,7 @@ nav {
         background-color: var(--card-container);
         height: 88vh;
         overflow: auto;
-        border-radius: 15px;
+        border-radius: 24px;
     }
 }
 
@@ -180,5 +180,9 @@ nav {
 
     .permiso-asignar {
         display: none;
+    }
+
+    .main-content {
+        padding: 10px;
     }
 }

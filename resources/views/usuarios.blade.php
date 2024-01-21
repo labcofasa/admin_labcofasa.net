@@ -13,7 +13,7 @@
             <x-skeleton />
 
             <!-- Tabla usuarios -->
-            <div class="table-responsive rounded-3" id="tabla-usuarios-container" style="display: none;">
+            <div class="table-responsive" id="tabla-usuarios-container" style="display: none;">
                 <h1 class="pb-2">@yield('titulo')</h1>
                 <table id="tabla-usuarios" class="table align-middle responsive display" width="100%">
                     <tbody></tbody>

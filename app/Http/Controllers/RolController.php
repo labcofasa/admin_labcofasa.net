@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Artisan;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
@@ -166,6 +167,11 @@ class RolController extends Controller
             $rol->user_modified_id = auth()->user()->id;
 
             $rol->save();
+
+            Artisan::call('cache:clear');
+            Artisan::call('route:clear');
+            Artisan::call('config:clear');
+            Artisan::call('optimize:clear');
 
             return $this->sendResponse(true, '¡Rol actualizado con éxito!', $rol);
         } catch (\Exception $e) {

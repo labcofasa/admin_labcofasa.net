@@ -10,7 +10,7 @@
             <x-skeleton />
 
             <!-- Tabla empresas -->
-            <div class="table-responsive rounded-3" id="tabla-empresas-container" style="display: none;">
+            <div class="table-responsive" id="tabla-empresas-container" style="display: none;">
 
                 <!-- Titulos y botón de acción -->
                 <x-widgets.empresas.crear />
