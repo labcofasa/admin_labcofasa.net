@@ -262,7 +262,7 @@
                     aria-expanded="false" data-bs-auto-close="outside">
                     @if ($usuario->perfil->imagen)
                         <img class="icono-perfil rounded-circle"
-                            src="{{ asset('images/usuarios/' . $usuario->perfil->id . '/' . $usuario->perfil->imagen) }}"
+                            src="{{ asset('images/usuarios/imagen/' . $usuario->perfil->id . '/' . $usuario->perfil->imagen) }}"
                             alt="Foto de perfil">
                     @else
                         <img class="icono-perfil rounded-circle" src="{{ asset('images/defecto.png') }}"

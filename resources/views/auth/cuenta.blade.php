@@ -12,7 +12,7 @@
                             <div class="py-3" id="foto">
                                 @if ($usuario->perfil->imagen)
                                     <img class="imagen-perfil rounded-circle"
-                                        src="{{ asset('images/usuarios/' . $usuario->perfil->id . '/' . $usuario->perfil->imagen) }}"
+                                        src="{{ asset('images/usuarios/imagen/' . $usuario->perfil->id . '/' . $usuario->perfil->imagen) }}"
                                         alt="Foto de perfil">
                                 @else
                                     <img class="imagen-perfil rounded-circle" src="{{ asset('images/defecto.png') }}"
