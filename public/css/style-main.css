@@ -158,6 +158,7 @@ nav {
 @media screen and (max-width: 1440px) {
     .card-container {
         padding: 0;
+        box-shadow: none;
     }
     .main-content {
         margin-left: 0;
