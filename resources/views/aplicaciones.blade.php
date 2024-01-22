@@ -11,7 +11,7 @@
             <x-skeleton />
 
             <!-- Tabla aplicaciones -->
-            <div class="table-responsive rounded-3" id="tabla-aplicaciones-container" style="display: none;">
+            <div class="table-responsive" id="tabla-aplicaciones-container" style="display: none;">
 
                 <!-- Titulo-->
                 <h1 class="pb-2">@yield('titulo')</h1>

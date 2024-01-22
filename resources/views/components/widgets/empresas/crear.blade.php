@@ -13,7 +13,7 @@
                     ]))
                 <button class="btn btn-lg btn-store gap-2 dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false" ata-bs-auto-close="outside" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    <svg class="icon-add-empresa" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
                         fill="#ffffff">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
@@ -117,7 +117,7 @@
             ]))
         <button class="btn btn-lg gap-2 btn-float dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-expanded="false" data-bs-offset="0,7">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff">
+            <svg class="icon-add-empresa" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff">
                 <path d="M0 0h24v24H0V0z" fill="none" />
                 <path
                     d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />

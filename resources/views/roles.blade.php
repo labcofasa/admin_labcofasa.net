@@ -10,7 +10,7 @@
             <x-skeleton />
 
             <!-- Tabla roles -->
-            <div class="table-responsive rounded-3" id="tabla-roles-container">
+            <div class="table-responsive" id="tabla-roles-container">
 
                 <!-- Titulo-->
                 <h1 class="pb-2">@yield('titulo')</h1>
