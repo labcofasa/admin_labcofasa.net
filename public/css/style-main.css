@@ -40,6 +40,7 @@ nav {
 
 .card-container {
     transition: var(--tran-03);
+    box-shadow: var(--box-shadow);
     padding: 24px;
 }
 
@@ -157,7 +158,6 @@ nav {
 @media screen and (max-width: 1440px) {
     .card-container {
         padding: 0;
-        box-shadow: none;
     }
     .main-content {
         margin-left: 0;
