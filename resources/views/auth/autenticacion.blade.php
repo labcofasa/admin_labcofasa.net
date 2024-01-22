@@ -3,14 +3,14 @@
 @section('titulo', 'Inicio de sesión')
 
 @section('contenido')
-    <div class="formulario">
+    <div class="container px-3">
         <x-fondo-animado />
         <div class="login">
             <div class="row form">
-                <div class="col-md-6 d-none d-md-block px-0">
+                <div class="col d-none d-lg-block px-0">
                     <x-carrusel />
                 </div>
-                <div class="col-md-6 derecha">
+                <div class="col form-group">
                     <div class="input-box">
                         <div class="logo">
                             <img src="{{ asset('images/cofasa.svg') }}" alt="logo">
@@ -22,9 +22,9 @@
                             @method('POST')
                             <div class="input-field">
                                 <input type="text" id="username" name="username"
-                                    class="input @error('username') is-invalid @enderror" required autocomplete="off" autofocus
-                                    value="{{ old('username') }}" />
-                                <label for="username">{{ __('Correo electrónico o nombre de usuario') }}</label>
+                                    class="input @error('username') is-invalid @enderror" required autocomplete="off"
+                                    autofocus value="{{ old('username') }}" />
+                                <label for="username">Correo electrónico</label>
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -35,7 +35,7 @@
                                 <input type="password" name="password"
                                     class="input input-password @error('password') is-invalid @enderror" id="pass"
                                     required autocomplete="off" />
-                                <label for="pass">{{ __('Contraseña') }}</label>
+                                <label for="pass">Contraseña</label>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         {{ $message }}

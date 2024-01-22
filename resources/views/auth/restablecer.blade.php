@@ -3,14 +3,14 @@
 @section('titulo', 'Restablecer contraseña')
 
 @section('contenido')
-    <div class="formulario">
+    <div class="container px-3">
         <x-fondo-animado />
         <div class="login">
-            <div class="row form-restablecer">
-                <div class="col-md-6 d-none d-md-block px-0">
+            <div class="row form">
+                <div class="col d-none d-lg-block px-0">
                     <x-carrusel />
                 </div>
-                <div class="col-md-6 derecha">
+                <div class="col form-group">
                     <div class="input-box">
                         <header>¿Tiene problemas para iniciar sesión en su cuenta?</header>
                         <p class="header-restablecer">Proporcione su correo electrónico institucional para recibir un enlace
