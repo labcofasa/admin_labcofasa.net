@@ -6,7 +6,7 @@
 }
 :root {
     --body-bg: #f0f5f8;
-    --accent: #00a990;
+    --accent: #1DCCC3;
 
     --color-valido: #198754;
     --color-invalido: #dd0025;
@@ -39,6 +39,13 @@
     font-style: normal;
 }
 
+body {
+    display: none;
+    background-color: #50e3c2;
+    background-image: radial-gradient(at 47% 33%, hsl(162, 77%, 40%) 0, transparent 59%),
+        radial-gradient(at 82% 65%, hsl(198, 100%, 50%) 0, transparent 55%);
+}
+
 p {
     font-weight: 400;
 }
@@ -61,14 +68,6 @@ span {
 
 .formulario {
     padding: 0 20px 0 20px;
-    background-image: linear-gradient(
-        to right top,
-        #aef197,
-        #98eca6,
-        #86e5b3,
-        #7bdebe,
-        #76d6c5
-    );
 }
 .login {
     display: flex;

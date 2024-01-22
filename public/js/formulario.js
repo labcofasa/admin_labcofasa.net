@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+    document.body.style.display = "block";
+});
+
 function togglePasswordVisibility() {
     var passwordInput = document.getElementById("pass");
     var eyeIcon = document.getElementById("eye-icon");
