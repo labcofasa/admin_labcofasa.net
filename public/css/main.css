@@ -92,7 +92,7 @@
     --component: #c0c0c0;
     --component-bg: #e9e9eb;
     --component-hover: #a0a0a0;
-    --border-radius: 0.5rem;
+    --border-radius: 15px;
     --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --dropdown-menu: #ffffff;
 
@@ -813,9 +813,8 @@ label {
     background-color: var(--card-bg);
     transition: var(--tran-03);
     overflow-x: visible;
-    padding: 15px;
+    padding: 15px 0;
     border-radius: 16px;
-    box-shadow: var(--box-shadow);
 }
 
 /* Tooltips */

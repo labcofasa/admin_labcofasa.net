@@ -1,6 +1,6 @@
-<div class="row pb-3">
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card card-counter rounded-3">
+<div class="row pb-2">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-2">
+        <div class="card card-counter">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
@@ -27,8 +27,8 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card card-counter rounded-3">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-2">
+        <div class="card card-counter">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
@@ -55,8 +55,8 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card card-counter rounded-3">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-2">
+        <div class="card card-counter">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
@@ -94,8 +94,8 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6">
-        <div class="card card-counter rounded-3">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-2">
+        <div class="card card-counter">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
