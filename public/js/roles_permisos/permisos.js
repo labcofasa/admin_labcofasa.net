@@ -143,7 +143,7 @@ $(document).ready(function () {
             ],
             language: {
                 url: "/json/es.json",
-                searchPlaceholder: "Buscar permisos",
+                searchPlaceholder: "Buscar",
                 emptyTable: "No hay permisos registrados",
             },
             ajax: {

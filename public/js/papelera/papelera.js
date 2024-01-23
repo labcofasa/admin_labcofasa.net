@@ -153,7 +153,7 @@ $(document).ready(function () {
             ],
             language: {
                 url: "/json/es.json",
-                searchPlaceholder: "Buscar eliminados",
+                searchPlaceholder: "Buscar",
                 emptyTable: "No hay registros eliminados",
             },
             ajax: {

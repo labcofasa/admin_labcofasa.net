@@ -93,7 +93,7 @@ $(document).ready(function () {
             ],
             language: {
                 url: "/json/es.json",
-                searchPlaceholder: "Buscar aplicaciones",
+                searchPlaceholder: "Buscar",
                 emptyTable: "No hay aplicaciones registradas",
             },
             ajax: {
