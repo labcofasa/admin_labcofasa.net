@@ -19,8 +19,8 @@ $(document).ready(function () {
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [10, 25, 50, -1],
-                ["10 filas", "25 filas", "50 filas", "Todas las filas"],
+                [7, 25, 50, -1],
+                ["7 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
