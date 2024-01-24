@@ -390,6 +390,11 @@ class UsuarioController extends Controller
                 return response()->json(['success' => false, 'error' => 'No eliminar este usuario']);
             }
 
+            if ($usuario->id === auth()->user()->id) {
+                return response()->json(['success' => false, 'error' => 'No puedes eliminar tu propio usuario']);
+                auth()->logout();
+            }
+
             $usuario->nombre_tabla = 'Usuarios';
             $usuario->user_deleted_id = auth()->user()->id;
             $usuario->save();
