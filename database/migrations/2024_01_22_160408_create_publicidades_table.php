@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('publicidades', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_publicidad');
-            $table->string('imagen_publicidad');
+            $table->string('imagen_publicidad')->nullable();
             $table->string('nombre_tabla')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('user_id');

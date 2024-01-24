@@ -36,7 +36,7 @@
                             <span class="text-label-imagen-editar">Clic para seleccionar la nueva imagen</span>
                             <p class="imagen-publicidad-nombre-editar"></p>
                         </label>
-                        <input type="file" name="imagen_publicidad" required accept=".jpg, .jpeg, .png, .gif, .webp"
+                        <input type="file" name="imagen_publicidad" accept=".jpg, .jpeg, .png, .gif, .webp"
                             id="imagen-publicidad-editar" class="file-upload-input">
                     </div>
                 </div>

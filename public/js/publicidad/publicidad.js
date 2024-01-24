@@ -19,7 +19,6 @@ $(document).ready(function () {
             responsive: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
-            /*             colReorder: true, */
             lengthMenu: [
                 [6, 25, 50, -1],
                 ["6 filas", "25 filas", "50 filas", "Todas las filas"],
@@ -123,13 +122,25 @@ $(document).ready(function () {
                 $("#tabla-publicidades-container").show();
             },
             columns: [
-                { targets: [0], data: "contador", title: "#" },
-                { targets: [1], data: "nombre_publicidad", title: "Nombre" },
-                { targets: [2], data: "imagen_publicidad", title: "Imagen" },
-                { targets: [3], data: "created_at", title: "Fecha creación" },
-                { targets: [4], data: "user_name", title: "Usuario creador", defaultContent: "" },
-                { targets: [5], data: "updated_at", title: "Fecha modificación", defaultContent: "" },
-                { targets: [6], data: "user_modified_name", title: "Usuario modificador", defaultContent: "" },
+                { data: "contador", title: "#" },
+                { data: "nombre_publicidad", title: "Nombre" },
+                { data: "imagen_publicidad", title: "Imagen" },
+                { data: "created_at", title: "Fecha creación" },
+                {
+                    data: "user_name",
+                    title: "Usuario creador",
+                    defaultContent: "",
+                },
+                {
+                    data: "updated_at",
+                    title: "Fecha modificación",
+                    defaultContent: "",
+                },
+                {
+                    data: "user_modified_name",
+                    title: "Usuario modificador",
+                    defaultContent: "",
+                },
                 {
                     targets: [7],
                     data: null,
@@ -137,16 +148,15 @@ $(document).ready(function () {
                         var userPermissions = JSON.parse(
                             document.getElementById("userPermissions").value
                         );
-                        if (!userPermissions || !userPermissions.length) {
-                            return "";  // No hay permisos, no mostrar nada
-                        }
                         return `
                             <div class="text-center">
                                 ${
                                     userPermissions.some(
                                         (permission) =>
-                                            permission.name === "admin_publicidades_editar" ||
-                                            permission.name === "admin_publicidades_eliminar"
+                                            permission.name ===
+                                                "admin_publicidades_editar" ||
+                                            permission.name ===
+                                                "admin_publicidades_eliminar"
                                     )
                                         ? `
                                         <div class="btn-group">
@@ -157,7 +167,8 @@ $(document).ready(function () {
                                                 ${
                                                     userPermissions.some(
                                                         (permission) =>
-                                                            permission.name === "admin_publicidades_editar"
+                                                            permission.name ===
+                                                            "admin_publicidades_editar"
                                                     )
                                                         ? `
                                                         <li>
@@ -170,7 +181,8 @@ $(document).ready(function () {
                                                 ${
                                                     userPermissions.some(
                                                         (permission) =>
-                                                            permission.name === "admin_publicidades_eliminar"
+                                                            permission.name ===
+                                                            "admin_publicidades_eliminar"
                                                     )
                                                         ? `
                                                         <li>
@@ -193,7 +205,7 @@ $(document).ready(function () {
 
             initComplete: function () {
                 let searchTimeout;
-                const inputpublicidades = $("#tabla-publicidades_filter input");
+                const inputPublicidades = $("#tabla-publicidades_filter input");
                 const btnSecondaryElements = $(
                     ".dt-buttons .btn.btn-secondary"
                 );
@@ -213,16 +225,16 @@ $(document).ready(function () {
 
                 btnSecondaryElements.removeClass("btn-secondary");
 
-                inputpublicidades.attr("id", "buscar-publicidad");
-                inputpublicidades.attr("name", "buscar_publicidad");
-                inputpublicidades.attr("autocomplete", "off");
+                inputPublicidades.attr("id", "buscar-publicidad");
+                inputPublicidades.attr("name", "buscar_publicidad");
+                inputPublicidades.attr("autocomplete", "off");
 
                 const iconSvg =
                     '<svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#888"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>';
 
-                inputpublicidades.before(iconSvg);
+                inputPublicidades.before(iconSvg);
 
-                inputpublicidades.off().on("input", function (e) {
+                inputPublicidades.off().on("input", function (e) {
                     clearTimeout(searchTimeout);
                     const inputValue = this.value;
                     searchTimeout = setTimeout(function () {
@@ -230,7 +242,7 @@ $(document).ready(function () {
                     }, 500);
                 });
 
-                inputpublicidades.on("keydown", function (e) {
+                inputPublicidades.on("keydown", function (e) {
                     if (e.key === "Escape") {
                         this.value = "";
                         tabla_publicidades.search("").draw();
@@ -254,15 +266,7 @@ $(document).ready(function () {
 
     $.fn.DataTable.ext.pager.numbers_length = 4;
 
-    $("#tabla-publicidades").on("click", ".ver-publicidad", function () {
-        const url = $(this).data("url");
-        window.open(url, "_blank");
-    });
-
     $("#crearPublicidadBtn").click(function () {
-
-
-        window.MultiselectDropdown();
         $("#crearPublicidad").modal("show");
     });
 
@@ -294,8 +298,6 @@ $(document).ready(function () {
         if (imagenInput.files.length > 0) {
             formData.append("imagen_publicidad", imagenInput.files[0]);
         }
-
-
 
         $.ajax({
             url: "/crear-publicidades",
@@ -332,17 +334,19 @@ $(document).ready(function () {
             .removeClass("is-invalid")
             .end()[0]
             .reset();
-
-        $(".multiselect-dropdown").remove();
     });
 
-    /* Editar publicidad */
-  /*   $("#tabla-publicidades").on("click", ".editar-publicidad", function () {
+    $("#tabla-publicidades").on("click", ".editar-publicidad", function () {
         var publicidadId = $(this).data("id");
         var row = tabla_publicidades.row($(this).parents("tr")).data();
-
         var nombre_publicidad = row.nombre_publicidad;
 
+        $("#editarPublicidadForm #btn-editar-publicidad").val(publicidadId);
+        $("#editarPublicidadForm #nombre-publicidad-editar").val(
+            nombre_publicidad
+        );
+        $(".imagen-publicidad-nombre-editar").text(row.imagen_publicidad);
+        $("#editarPublicidad").modal("show");
     });
 
     $("#imagen-publicidad-editar").change(function () {
@@ -355,90 +359,7 @@ $(document).ready(function () {
         } else {
             $(".text-label-imagen-editar").show();
         }
-    }); */
-        /* Editar aplicación */
-        
-        $(document).ready(function () {
-            $("#tabla-publicidades").on("click", ".editar-publicidad", function () {
-                var publicidadId = $(this).data("id");
-                var row = tabla_publicidades.row($(this).parents("tr")).data();       
-                var nombre_publicidad = row.nombre_publicidad;
-        
-                $("#editarPublicidadForm #btn-editar-publicidad").val(publicidadId);
-                $("#editarPublicidadForm #nombre-publicidad-editar").val(nombre_publicidad);
-                $(".imagen-publicidad-nombre-editar").text(row.imagen_publicidad);
-                $("#editarPublicidad").modal("show");
-            });
-        });
-        
-        $("#imagen-publicidad-editar").change(function () {
-            const fileName = $(this).val().split("\\").pop();
-    
-            $(".imagen-publicidad-nombre-editar").text(fileName);
-    
-            if (fileName) {
-                $(".text-label-imagen-editar").hide();
-            } else {
-                $(".text-label-imagen-editar").show();
-            }
-        });
-    
-        $("#editarPublicidadForm").submit(function (e) {
-            e.preventDefault();
-    
-            const form = $(this);
-            form.addClass("was-validated");
-    
-            if (!form[0].checkValidity()) {
-                return;
-            }
-    
-            const formData = new FormData(form[0]);
-    
-            const imagenInput = $("#imagen-publicidad-editar")[0];
-            if (imagenInput.files.length > 0) {
-                formData.append("imagen_publicidad", imagenInput.files[0]);
-            }
-    
-    
-            $.ajax({
-                url: "/actualizar-publicidad/" + $("#btn-editar-publicidad").val(),
-                method: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                headers: {
-                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-                },
-                success: function (response) {
-                    tabla_publicidades.ajax.reload();
-    
-                    if (response.success) {
-                        mostrarToast(response.message, "success");
-                        $("#editarPublicidad").modal("hide");
-                    } else {
-                        mostrarToast(response.error, "error");
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    mostrarToast(
-                        "Error al editar la aplicación. Detalles: " + errorThrown,
-                        "error"
-                    );
-                },
-            });
-        });
-    
-        $("#editarPublicidad").on("hidden.bs.modal", function () {
-            $("#editarPublicidadnForm")
-                .removeClass("was-validated")
-                .find(":input")
-                .removeClass("is-invalid")
-                .end()[0]
-                .reset();
-    
-            $(".multiselect-dropdown").remove();
-        });
+    });
 
     $("#editarPublicidadForm").submit(function (e) {
         e.preventDefault();
@@ -457,7 +378,32 @@ $(document).ready(function () {
             formData.append("imagen_publicidad", imagenInput.files[0]);
         }
 
+        $.ajax({
+            url: "/actualizar-publicidad/" + $("#btn-editar-publicidad").val(),
+            method: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                tabla_publicidades.ajax.reload();
 
+                if (response.success) {
+                    mostrarToast(response.message, "success");
+                    $("#editarPublicidad").modal("hide");
+                } else {
+                    mostrarToast(response.error, "error");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                mostrarToast(
+                    "Error al editar la aplicación. Detalles: " + errorThrown,
+                    "error"
+                );
+            },
+        });
     });
 
     $("#editarPublicidad").on("hidden.bs.modal", function () {
@@ -467,8 +413,6 @@ $(document).ready(function () {
             .removeClass("is-invalid")
             .end()[0]
             .reset();
-
-        $(".multiselect-dropdown").remove();
     });
 
     /* Eliminar publicidad */
@@ -512,8 +456,6 @@ $(document).ready(function () {
         });
     });
 });
-
-
 
 /* Imprimir publicidad */
 function printpublicidades() {

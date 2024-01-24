@@ -30,7 +30,8 @@
 
                     <div class="form-group mb-3">
                         <label for="publicidad-imagen" class="text-label">
-                            Imagen de la aplicación
+                            Imagen<span class="obligatorio">
+                                *</span>
                         </label>
                         <label for="publicidad-imagen" class="file-upload-image">
                             <span class="text-label-image">Clic para seleccionar la imagen</span>
@@ -38,6 +39,9 @@
                         </label>
                         <input type="file" name="imagen_publicidad" required accept=".jpg, .jpeg, .png, .gif, .webp"
                             id="publicidad-imagen" class="file-upload-input">
+                        <div class="invalid-feedback">
+                            Seleccione una imagen
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

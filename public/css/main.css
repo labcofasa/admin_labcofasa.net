@@ -353,23 +353,23 @@ hr {
 .btn-store2 {
     background-color: var(--secondary) !important;
     border-color: var(--secondary) !important;
-    color: #ffffff;
+    color: var(--accent);
     transition: 0ms;
     vertical-align: middle;
 }
 
 .btn-store2:hover {
-    color: #ffffff;
+    color: var(--accent);
 }
 
 .btn-store2:active {
-    color: #ffffff !important;
+    color: var(--accent);
     background-color: var(--secondary) !important;
     border-color: var(--secondary) !important;
 }
 .btn-store2:focus,
 .btn-focus-visible {
-    color: #ffffff !important;
+    color: var(--accent);
     background-color: var(--secondary);
     border-color: var(--secondary);
 }

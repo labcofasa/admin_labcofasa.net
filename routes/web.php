@@ -151,11 +151,11 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/eliminar-aplicacion/{id}', [AplicacionesController::class, 'destroy']);
     });
 
+    /* Publicidades */
     Route::middleware(['can:admin_publicidades_ver'])->group(function () {
         Route::post('/crear-publicidades', [PublicidadController::class, 'store']);
         Route::get('/publicidades', [PublicidadController::class, 'index'])->name('pag.publicidad');
         Route::get('/tabla-publicidades', [PublicidadController::class, 'tablaPublicidades']);
-        Route::get('/obtener-roles-apps', [PublicidadController::class, 'cargarRolesApps']);
         Route::put('/actualizar-publicidad/{id}', [PublicidadController::class, 'update']);
         Route::delete('/eliminar-publicidad/{id}', [PublicidadController::class, 'destroy']);
     });
@@ -176,5 +176,5 @@ Route::middleware(['guest'])->group(function () {
 });
 
 /* Logo de la empresa */
-Route::get('empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
-Route::get('empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);
+Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
+Route::get('/empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);

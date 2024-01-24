@@ -15,6 +15,7 @@ use App\Models\Giro;
 use App\Models\Pais;
 use App\Models\Departamento;
 use App\Models\Municipio;
+use App\Models\Publicidad;
 
 class PapeleraController extends Controller
 {
@@ -46,6 +47,7 @@ class PapeleraController extends Controller
             'Clasificaciones' => ['class' => Clasificacion::class, 'column' => 'nombre'],
             'Usuarios' => ['class' => User::class, 'column' => 'name'],
             'Aplicaciones' => ['class' => Aplicacion::class, 'column' => 'nombre_aplicacion'],
+            'Publicidades' => ['class' => Publicidad::class, 'column' => 'nombre_publicidad'],
         ];
 
         $data = [];
@@ -105,8 +107,6 @@ class PapeleraController extends Controller
         ]);
     }
 
-
-
     public function restoreRecord($table, $id)
     {
         $modelClass = $this->resolveModel($table);
@@ -143,6 +143,7 @@ class PapeleraController extends Controller
             'Clasificaciones' => Clasificacion::class,
             'Usuarios' => User::class,
             'Aplicaciones' => Aplicacion::class,
+            'Publicidades' => Publicidad::class,
         ];
 
         return $modelMap[$table] ?? null;
