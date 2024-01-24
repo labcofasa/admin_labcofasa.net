@@ -18,6 +18,8 @@ use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PublicidadController;
+use App\Models\Publicidad;
 use Illuminate\Support\Facades\Route;
 
 
@@ -147,6 +149,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/obtener-roles-apps', [AplicacionesController::class, 'cargarRolesApps']);
         Route::put('/actualizar-aplicacion/{id}', [AplicacionesController::class, 'update']);
         Route::delete('/eliminar-aplicacion/{id}', [AplicacionesController::class, 'destroy']);
+    });
+
+    Route::middleware(['can:admin_publicidades_ver'])->group(function () {
+        Route::post('/crear-publicidades', [PublicidadController::class, 'store']);
+        Route::get('/publicidades', [PublicidadController::class, 'index'])->name('pag.publicidad');
+        Route::get('/tabla-publicidades', [PublicidadController::class, 'tablaPublicidades']);
+        Route::get('/obtener-roles-apps', [PublicidadController::class, 'cargarRolesApps']);
+        Route::put('/actualizar-publicidad/{id}', [PublicidadController::class, 'update']);
+        Route::delete('/eliminar-publicidad/{id}', [PublicidadController::class, 'destroy']);
     });
 });
 

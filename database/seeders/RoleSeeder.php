@@ -85,6 +85,11 @@ class RoleSeeder extends Seeder
             ['name' => 'admin_aplicaciones_crear', 'descripcion' => 'Crear aplicaciones'],
             ['name' => 'admin_aplicaciones_editar', 'descripcion' => 'Editar aplicaciones'],
             ['name' => 'admin_aplicaciones_eliminar', 'descripcion' => 'Eliminar aplicaciones'],
+
+            ['name' => 'admin_publicidades_ver', 'descripcion' => 'Ver publicidades'],
+            ['name' => 'admin_publicidades_crear', 'descripcion' => 'Crear publicidades'],
+            ['name' => 'admin_publicidades_editar', 'descripcion' => 'Editar publicidades'],
+            ['name' => 'admin_publicidades_eliminar', 'descripcion' => 'Eliminar publicidades'],
         ];
 
         foreach ($permissions as $permissionData) {

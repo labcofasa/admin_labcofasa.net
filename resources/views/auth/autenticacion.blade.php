@@ -8,7 +8,7 @@
         <div class="login">
             <div class="row form">
                 <div class="col d-none d-lg-block px-0">
-                    <x-carrusel />
+                    <x-carrusel :publicidades="$publicidades"/>
                 </div>
                 <div class="col form-group">
                     <div class="input-box">
@@ -52,7 +52,7 @@
                                     </span>
                                 @endif
                                 <span class="icono-container" onclick="togglePasswordVisibility()">
-                                    <img class="icono" id="eye-icon" src="{{ asset('images/cerrado.svg') }}" />
+                                    <img class="icono" id="eye-icon" src="{{ asset('images/cerrado.svg') }}" alt="ojo"/>
                                 </span>
                             </div>
                             <div class="input-field">

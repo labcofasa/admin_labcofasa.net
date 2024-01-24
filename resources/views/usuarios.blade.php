@@ -1,6 +1,6 @@
 @extends('layouts.autenticado')
 
-@section('titulo', 'Usuarios registrados')
+@section('titulo', 'Usuarios')
 
 @section('contenido')
     <div class="container-fluid content">

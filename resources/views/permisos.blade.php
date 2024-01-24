@@ -1,6 +1,6 @@
 @extends('layouts.autenticado')
 
-@section('titulo', 'Permisos para usuarios')
+@section('titulo', 'Permisos')
 
 @section('contenido')
 
