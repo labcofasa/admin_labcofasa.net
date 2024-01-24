@@ -41,7 +41,7 @@ nav {
 .card-container {
     transition: var(--tran-03);
     box-shadow: var(--box-shadow);
-    padding: 24px;
+    padding: 15px;
 }
 
 /* Inicio - cartas */
@@ -51,7 +51,7 @@ nav {
 
 .btn-app .card {
     padding: 15px;
-    border-radius: 12px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -23,8 +23,8 @@ $(document).ready(function () {
             fixedHeader: true,
             /*             colReorder: true, */
             lengthMenu: [
-                [10, 25, 50, -1],
-                ["10 filas", "25 filas", "50 filas", "Todas las filas"],
+                [5, 50, 100 -1],
+                ["5 filas", "50 filas", "100 filas", "Todas las filas"],
             ],
             buttons: [
                 {
