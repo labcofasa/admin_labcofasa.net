@@ -387,11 +387,11 @@ class UsuarioController extends Controller
 
         try {
             if ($usuario->id === 1) {
-                return response()->json(['success' => false, 'error' => 'No eliminar este usuario']);
+                return response()->json(['success' => false, 'error' => 'No se puede eliminar al administrador.']);
             }
 
             if ($usuario->id === auth()->user()->id) {
-                return response()->json(['success' => false, 'error' => 'No puedes eliminar tu propio usuario']);
+                return response()->json(['success' => false, 'error' => 'No tienes autorización para eliminar tu usuario']);
                 auth()->logout();
             }
 
