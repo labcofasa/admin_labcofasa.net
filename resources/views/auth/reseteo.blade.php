@@ -8,9 +8,9 @@
         <div class="login">
             <div class="row form">
                 <div class="col d-none d-lg-block px-0">
-                    <x-carrusel />
+                    <x-carrusel :publicidades="$publicidades"/>
                 </div>
-                <div class="col form-group">
+                <div class="col">
                     <div class="input-box">
                         <header>Recupere su contraseña</header>
                         <form action="{{ route('actualizar.clave') }}" method="POST">

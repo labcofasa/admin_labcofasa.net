@@ -69,7 +69,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 950px;
+    max-width: 1000px;
     background-color: #ffffff;
     padding: 0px;
     border-radius: 12px;
@@ -79,7 +79,7 @@ form-restablecer {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 950px;
+    max-width: 1000px;
     background-color: #ffffff;
     padding: 0px;
     border-radius: 12px;
@@ -114,7 +114,7 @@ i {
 }
 
 .input-box {
-    padding: 50px 70px;
+    padding: 50px 55px;
     width: auto;
     box-sizing: border-box;
 }

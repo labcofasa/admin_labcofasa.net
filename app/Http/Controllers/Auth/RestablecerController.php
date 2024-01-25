@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\PasswordResetToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Publicidad;
 use App\Models\User;
 
 class RestablecerController extends Controller
@@ -19,7 +20,9 @@ class RestablecerController extends Controller
         if (auth()->check()) {
             return redirect()->route('inicio');
         } else {
-            $response = response()->view('auth.restablecer');
+            $publicidades = Publicidad::all();
+
+            $response = response()->view('auth.restablecer', compact('publicidades'));
 
             $response->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
             $response->header('Pragma', 'no-cache');
@@ -83,7 +86,8 @@ class RestablecerController extends Controller
         if (!$passwordResetToken || $passwordResetToken->expires_at < now()) {
             return redirect()->route('form.restablecer')->withErrors(['email' => 'El enlace ha expirado o es inválido. Solicite un nuevo enlace de restablecimiento de contraseña.'])->withInput();
         } else {
-            return view('auth.reseteo', ['token' => $token]);
+            $publicidades = Publicidad::all();
+            return view('auth.reseteo', ['token' => $token], compact('publicidades'));
         }
     }
 
@@ -91,7 +95,7 @@ class RestablecerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email',
-            'password' => 'required|string|confirmed|min:8|regex:/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}|:<>?~-])[A-Za-z\d!@#$%^&*()_+{}|:<>?~-]{8,}$/',
+            'password' => ['required','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_@#$%^*()<>+-]).{8,}$/'],
             'password_confirmation' => 'required|same:password',
         ]);
 
@@ -114,6 +118,7 @@ class RestablecerController extends Controller
     {
         return preg_match('/[A-Z]/', $password) && preg_match('/[!@#$%^&*]/', $password);
     }
+
 
     public function restablecerNuevaClave(Request $request)
     {
