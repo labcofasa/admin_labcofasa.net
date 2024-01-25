@@ -175,6 +175,10 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/restablecer/nueva-clave', [RestablecerController::class, 'restablecerNuevaClave'])->name('actualizar.clave');
 });
 
+Route::get('/api/publicidades', [PublicidadController::class, 'obtenerPublicidades']);
+Route::get('/obtener-publicidades', [PublicidadController::class, 'obtenerPublicidades'])
+    ->middleware('cors');
+
 /* Logo de la empresa */
 Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
 Route::get('/empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);

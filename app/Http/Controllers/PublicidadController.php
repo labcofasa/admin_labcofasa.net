@@ -110,8 +110,14 @@ class PublicidadController extends Controller
 
             if ($request->hasFile('imagen_publicidad')) {
                 $imagen_publicidad = $request->file('imagen_publicidad');
-                $imagen_publicidad->move($rutaCarpetaImagen, $imagen_publicidad->getClientOriginalName());
-                $publicidad->imagen_publicidad = $imagen_publicidad->getClientOriginalName();
+                $nombreImagen = $imagen_publicidad->getClientOriginalName();
+                $imagen_publicidad->move($rutaCarpetaImagen, $nombreImagen);
+
+                $urlBase = url('/');
+                $ubicacionImagen = "{$urlBase}/images/publicidades/imagen/{$publicidadId}/{$nombreImagen}";
+
+                $publicidad->imagen_publicidad = $nombreImagen;
+                $publicidad->ubicacion_imagen = $ubicacionImagen;
             }
 
             $publicidad->save();
@@ -184,5 +190,14 @@ class PublicidadController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'error' => 'Error al eliminar la Publicidad']);
         }
+    }
+
+    public function obtenerPublicidades(Request $request)
+    {
+        $publicidades = Publicidad::all();
+
+        return response()->json($publicidades)
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET');
     }
 }

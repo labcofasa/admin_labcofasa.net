@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_publicidad');
             $table->string('imagen_publicidad')->nullable();
+            $table->string('ubicacion_imagen')->nullable();
             $table->string('nombre_tabla')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('user_id');
