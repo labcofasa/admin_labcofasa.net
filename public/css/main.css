@@ -179,7 +179,7 @@ body.dark {
     --sidebar-bg-hover: #2a2a2a;
     --sidebar-icon-hover: #adb2b6;
     --sidebar-bg-active: #6fae8e;
-    --card-bg: #1e1f20;
+    --card-bg: #131314;
     --toggle-shadow: #383838;
     --table-border: #373b3e;
     --dropdown-menu: #212121;
@@ -1619,6 +1619,18 @@ div.dt-datetime div.dt-datetime-label select {
 @media screen and (max-width: 1440px) {
     .sidebar-desktop {
         display: none;
+    }
+
+    body {
+        background-color: var(--card-bg);
+    }
+
+    .navbar {
+        background-color: var(--card-bg);
+    }
+
+    .table-responsive {
+        padding: 0;
     }
 }
 
