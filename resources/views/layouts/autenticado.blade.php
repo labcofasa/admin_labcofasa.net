@@ -17,8 +17,6 @@
         <link rel="stylesheet" href="{{ asset('css/style-main.css') }}">
         <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-
         <!-- Titulo del sitio -->
         <title>@yield('titulo') - {{ config('app.name') }}</title>
     </head>
