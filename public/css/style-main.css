@@ -3,6 +3,18 @@
     --toggle-switch: rgb(0, 221, 80);
     --toggle-switch-bg: #ffffff;
     --toggle-switch-border: #dee2e6;
+
+    /* Contadores */
+    --carta-primary: #c8e6fc;
+    --carta-secondary: #e3e3e3;
+    --carta-success: #ccecd1;
+    --carta-info: #d7e2fc;
+
+    /* Iconos */
+    --icon-carta-primary: #245779;
+    --icon-carta-secondary: #535252;
+    --icon-carta-success: #4e9558;
+    --icon-carta-info: #3062a5;
 }
 
 body.dark {
@@ -10,6 +22,18 @@ body.dark {
     --toggle-switch: rgb(0, 221, 80);
     --toggle-switch-bg: #d0d0d0;
     --toggle-switch-border: #d0d0d0;
+
+    /* Contadores */
+    --carta-primary: #1e1f20;
+    --carta-secondary: #1e1f20;
+    --carta-success: #1e1f20;
+    --carta-info: #1e1f20;
+
+    /* Iconos */
+    --icon-carta-primary: #bebebe;
+    --icon-carta-secondary: #bebebe;
+    --icon-carta-success: #bebebe;
+    --icon-carta-info: #bebebe;
 }
 
 nav {
@@ -47,6 +71,55 @@ nav {
 /* Inicio - cartas */
 .cartas {
     padding-bottom: 60px;
+}
+
+.carta-primary {
+    background-color: var(--carta-primary);
+    transition: var(--tran-03);
+}
+
+.carta-primary .icon {
+    fill: var(--icon-carta-primary);
+    transition: var(--tran-03);
+}
+
+.carta-secondary {
+    background-color: var(--carta-secondary);
+    transition: var(--tran-03);
+}
+
+.carta-secondary .icon {
+    fill: var(--icon-carta-secondary);
+    transition: var(--tran-03);
+}
+
+.carta-success {
+    background-color: var(--carta-success);
+    transition: var(--tran-03);
+}
+
+.carta-success .icon {
+    fill: var(--icon-carta-success);
+    transition: var(--tran-03);
+}
+
+.carta-info {
+    background-color: var(--carta-info);
+    transition: var(--tran-03);
+}
+
+.carta-info .icon {
+    fill: var(--icon-carta-info);
+    transition: var(--tran-03);
+}
+
+.link_name {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--text-color);
+    transition: var(--tran-03);
 }
 
 .btn-app .card {

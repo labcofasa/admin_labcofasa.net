@@ -732,13 +732,6 @@ function estadisticaUsuario() {
             $("#totalUsuarios").text(data.totalUsuarios);
             $("#totalRoles").text(data.totalRoles);
             $("#totalPermisos").text(data.totalPermisos);
-            $("#porcentajeUsuariosUltimoMes").text(
-                data.porcentajeUsuariosUltimoMes
-            );
-            $("#porcentajeRolesUltimoMes").text(data.porcentajeRolesUltimoMes);
-            $("#porcentajePermisosUltimoMes").text(
-                data.porcentajePermisosUltimoMes
-            );
         },
         error: function (error) {
             console.log(

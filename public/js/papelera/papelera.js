@@ -181,8 +181,8 @@ $(document).ready(function () {
                     searchable: true,
                     orderable: true,
                 },
-                { responsivePriority: 1, targets: -1 },
-                { responsivePriority: 2, targets: -2 },
+                { responsivePriority: 1, targets: 1 },
+                { responsivePriority: 2, targets: 5 },
             ],
             columns: [
                 { data: "contador", title: "#" },

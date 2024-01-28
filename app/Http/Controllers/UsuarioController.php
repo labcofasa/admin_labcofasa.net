@@ -414,21 +414,11 @@ class UsuarioController extends Controller
         $totalRoles = Role::count();
         $totalPermisos = Permission::count();
 
-        $totalRolesAnterior = Role::where('created_at', '<', now()->startOfMonth())->count();
-        $totalPermisosAnterior = Permission::where('created_at', '<', now()->startOfMonth())->count();
-
-        $porcentajeUsuariosUltimoMes = ($totalUsuarios > 0) ? number_format(($usuariosUltimoMes / $totalUsuarios) * 100) : 0;
-        $porcentajeRolesUltimoMes = ($totalRoles > 0) ? number_format(($totalRolesAnterior / $totalRoles) * 100) : 0;
-        $porcentajePermisosUltimoMes = ($totalPermisos > 0) ? number_format(($totalPermisosAnterior / $totalPermisos) * 100) : 0;
-
         return response()->json([
             'usuariosUltimoMes' => $usuariosUltimoMes,
             'totalUsuarios' => $totalUsuarios,
             'totalRoles' => $totalRoles,
             'totalPermisos' => $totalPermisos,
-            'porcentajeUsuariosUltimoMes' => $porcentajeUsuariosUltimoMes . '%',
-            'porcentajeRolesUltimoMes' => $porcentajeRolesUltimoMes . '%',
-            'porcentajePermisosUltimoMes' => $porcentajePermisosUltimoMes . '%',
         ]);
     }
 }

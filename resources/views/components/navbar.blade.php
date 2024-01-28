@@ -320,7 +320,7 @@
                             </svg>
                             <div class="toggle-switch2" id="toggle-switch-nav2">
                                 <div class="toggle-container d-flex align-items-center">
-                                    <span class="mode-text mr-1">Tema oscuro</span>
+                                    <span class="link">Tema oscuro</span>
                                     <span class="switch2"></span>
                                 </div>
                             </div>

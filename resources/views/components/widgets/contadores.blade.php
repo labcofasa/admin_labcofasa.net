@@ -1,18 +1,18 @@
 <div class="row pb-3">
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-2">
-        <div class="card card-counter">
+        <div class="card card-counter carta-primary">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
                         <div class="datos-usuarios">
-                            <p class="text-sm mb-0">Total de usuarios</p>
-                            <h5 class="px-2 font-weight-bolder" id="totalUsuarios">
-                            </h5>
+                            <p class="mb-0 link_name">Total de usuarios</p>
+                            <h1 class="px-2 font-weight-bolder" id="totalUsuarios">
+                            </h1>
                         </div>
                     </div>
                     <div class="col-4 text-end">
                         <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                            <svg class="counter-icono primary" xmlns="http://www.w3.org/2000/svg"
+                            <svg class="counter-icono icon" xmlns="http://www.w3.org/2000/svg"
                                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"
                                 fill="#000000">
                                 <rect fill="none" height="24" width="24" />
@@ -28,22 +28,18 @@
         </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-2">
-        <div class="card card-counter">
+        <div class="card card-counter carta-secondary">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
                         <div class="datos-usuarios">
-                            <p class="text-sm mb-0">En el último mes</p>
-                            <h5 class="font-weight-bolder" id="usuarioMes"></h5>
-                            <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder"
-                                    id="porcentajeUsuariosUltimoMes"></span>
-                            </p>
+                            <p class="mb-0 link_name">En el último mes</p>
+                            <h1 class="font-weight-bolder" id="usuarioMes"></h1>
                         </div>
                     </div>
                     <div class="col-4 text-end">
                         <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                            <svg class="counter-icono" xmlns="http://www.w3.org/2000/svg" height="24px"
+                            <svg class="counter-icono icon" xmlns="http://www.w3.org/2000/svg" height="24px"
                                 viewBox="0 0 24 24" width="24px" fill="#000000">
                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path
@@ -56,22 +52,18 @@
         </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-2">
-        <div class="card card-counter">
+        <div class="card card-counter carta-info">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
                         <div class="datos-usuarios">
-                            <p class="text-sm mb-0">Roles registrados</p>
-                            <h5 class="font-weight-bolder" id="totalRoles"></h5>
-                            <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder"
-                                    id="porcentajeRolesUltimoMes"></span>
-                            </p>
+                            <p class="mb-0 link_name">Roles registrados</p>
+                            <h1 class="font-weight-bolder" id="totalRoles"></h1>
                         </div>
                     </div>
                     <div class="col-4 text-end">
                         <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                            <svg class="counter-icono" xmlns="http://www.w3.org/2000/svg"
+                            <svg class="counter-icono icon" xmlns="http://www.w3.org/2000/svg"
                                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"
                                 fill="#000000">
                                 <g>
@@ -95,22 +87,18 @@
         </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-2">
-        <div class="card card-counter">
+        <div class="card card-counter carta-success">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
                         <div class="datos-usuarios">
-                            <p class="text-sm mb-0">Permisos para roles</p>
-                            <h5 class="font-weight-bolder" id="totalPermisos"></h5>
-                            <p class="mb-0">
-                                <span class="text-success text-sm font-weight-bolder"
-                                    id="porcentajePermisosUltimoMes"></span>
-                            </p>
+                            <p class="mb-0 link_name">Permisos para roles</p>
+                            <h1 class="font-weight-bolder" id="totalPermisos"></h1>
                         </div>
                     </div>
                     <div class="col-4 text-end">
                         <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                            <svg class="counter-icono" xmlns="http://www.w3.org/2000/svg"
+                            <svg class="counter-icono icon" xmlns="http://www.w3.org/2000/svg"
                                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"
                                 fill="#000000">
                                 <g>
