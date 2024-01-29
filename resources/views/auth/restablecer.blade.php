@@ -8,7 +8,7 @@
         <div class="login">
             <div class="row form">
                 <div class="col d-none d-lg-block px-0">
-                    <x-carrusel :publicidades="$publicidades"/>
+                    <x-carrusel :publicidades="$publicidades" />
                 </div>
                 <div class="col form-group">
                     <div class="input-box">
@@ -30,7 +30,11 @@
                                 @enderror
                             </div>
                             <div class="input-field">
-                                <input type="submit" class="submit" value="Solicitar enlace" />
+                                <button class="btn-submit" type="submit">
+                                    <i class="animation"></i>
+                                    Solicitar enlace
+                                    <i class="animation"></i>
+                                </button>
                             </div>
                             <div class="recuperar">
                                 <span>Volver a <a href="{{ route('autenticarme') }}">Inicio de sesión</a></span>

@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style-main.css') }}">
         <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
+        
+        <link rel="stylesheet" href="{{ asset('css/app_theme.css') }}">
 
         <!-- Titulo del sitio -->
         <title>@yield('titulo') - {{ config('app.name') }}</title>

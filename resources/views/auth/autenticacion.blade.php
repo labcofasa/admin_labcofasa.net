@@ -56,7 +56,11 @@
                                 </span>
                             </div>
                             <div class="input-field">
-                                <input type="submit" class="submit" value="Ingresar al sistema" />
+                                <button class="btn-submit" type="submit">
+                                    <i class="animation"></i>
+                                    Ingresar al sistema
+                                    <i class="animation"></i>
+                                </button>
                             </div>
                             <div class="recuperar">
                                 <span>¿Olvidó su contraseña? <a href="{{ route('form.restablecer') }}">Recuperar</a></span>

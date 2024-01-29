@@ -8,7 +8,7 @@
         <div class="login">
             <div class="row form">
                 <div class="col d-none d-lg-block px-0">
-                    <x-carrusel :publicidades="$publicidades"/>
+                    <x-carrusel :publicidades="$publicidades" />
                 </div>
                 <div class="col">
                     <div class="input-box">
@@ -51,7 +51,11 @@
                                 @enderror
                             </div>
                             <div class="input-field">
-                                <input type="submit" class="submit" value="Cambiar contraseña" />
+                                <button class="btn-submit" type="submit">
+                                    <i class="animation"></i>
+                                    Cambiar contraseña
+                                    <i class="animation"></i>
+                                </button>
                             </div>
                         </form>
                     </div>
