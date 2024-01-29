@@ -38,10 +38,10 @@ class UsuarioController extends Controller
 
         $query = User::query()
             ->select(
-                'users.*',
+                'usuarios.*',
                 'roles.name as rol',
-                'perfiles.nombre',
-                'perfiles.apellido',
+                'perfiles.nombres',
+                'perfiles.apellidos',
                 'perfiles.telefono',
                 'perfiles.imagen',
                 'perfiles.direccion',
@@ -53,13 +53,13 @@ class UsuarioController extends Controller
                 'departamentos.nombre as nombre_departamento',
                 'municipios.nombre as nombre_municipio',
                 'empresas.nombre as nombre_empresa',
-                'created_user.name as user_name',
-                'modified_user.name as user_modified_name'
+                'created_user.nombre as user_name',
+                'modified_user.nombre as user_modified_name'
             )
-            ->leftJoin('roles', 'users.id', '=', 'roles.id')
-            ->leftJoin('perfiles', 'users.id', '=', 'perfiles.user_id')
-            ->leftJoin('users as created_user', 'users.user_id', '=', 'created_user.id')
-            ->leftJoin('users as modified_user', 'users.user_modified_id', '=', 'modified_user.id')
+            ->leftJoin('roles', 'usuarios.id', '=', 'roles.id')
+            ->leftJoin('perfiles', 'usuarios.id', '=', 'perfiles.user_id')
+            ->leftJoin('usuarios as created_user', 'usuarios.user_id', '=', 'created_user.id')
+            ->leftJoin('usuarios as modified_user', 'usuarios.user_modified_id', '=', 'modified_user.id')
             ->leftJoin('empresas', 'empresas.id', '=', 'perfiles.empresa_id')
             ->leftJoin('paises', 'paises.id', '=', 'perfiles.pais_id')
             ->leftJoin('departamentos', 'departamentos.id', '=', 'perfiles.departamento_id')
@@ -67,19 +67,19 @@ class UsuarioController extends Controller
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
-                $q->where('users.name', 'like', '%' . $search . '%')
-                    ->orWhere('users.email', 'like', '%' . $search . '%')
+                $q->where('usuarios.nombre', 'like', '%' . $search . '%')
+                    ->orWhere('usuarios.email', 'like', '%' . $search . '%')
                     ->orWhere('roles.name', 'like', '%' . $search . '%')
-                    ->orWhere('perfiles.nombre', 'like', '%' . $search . '%')
-                    ->orWhere('perfiles.apellido', 'like', '%' . $search . '%')
+                    ->orWhere('perfiles.nombres', 'like', '%' . $search . '%')
+                    ->orWhere('perfiles.apellidos', 'like', '%' . $search . '%')
                     ->orWhere('perfiles.telefono', 'like', '%' . $search . '%')
                     ->orWhere('perfiles.direccion', 'like', '%' . $search . '%')
                     ->orWhere('paises.nombre', 'like', '%' . $search . '%')
                     ->orWhere('departamentos.nombre', 'like', '%' . $search . '%')
                     ->orWhere('municipios.nombre', 'like', '%' . $search . '%')
                     ->orWhere('empresas.nombre', 'like', '%' . $search . '%')
-                    ->orWhere('users.created_at', 'like', "%$search%")
-                    ->orWhere('users.updated_at', 'like', "%$search%");
+                    ->orWhere('usuarios.created_at', 'like', "%$search%")
+                    ->orWhere('usuarios.updated_at', 'like', "%$search%");
             });
         }
 
@@ -87,8 +87,8 @@ class UsuarioController extends Controller
             'id',
             'name',
             'rol',
-            'nombre',
-            'apellido',
+            'nombres',
+            'apellidos',
             'telefono',
             'email',
             'nombre_empresa',
@@ -106,7 +106,7 @@ class UsuarioController extends Controller
         $orderBy = $columnNames[$orderColumnIndex];
 
         if ($orderBy === 'rol') {
-            $query->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            $query->leftJoin('model_has_roles', 'usuarios.id', '=', 'model_has_roles.model_id')
                 ->leftJoin('roles as roles_nombre', 'model_has_roles.role_id', '=', 'roles_nombre.id')
                 ->orderBy('roles_nombre.name', $orderDirection);
         } else {
@@ -136,10 +136,10 @@ class UsuarioController extends Controller
             $data[] = [
                 'id' => $usuario->id,
                 'contador' => $contador++,
-                'name' => $usuario->name,
+                'nombre' => $usuario->nombre,
                 'estado' => $usuario->estado,
-                'nombre' => $usuario->perfil->nombre ?? null,
-                'apellido' => $usuario->perfil->apellido ?? null,
+                'nombres' => $usuario->perfil->nombres ?? null,
+                'apellidos' => $usuario->perfil->apellidos ?? null,
                 'telefono' => $usuario->perfil->telefono ?? null,
                 'email' => $usuario->email,
                 'imagen' => $usuario->perfil->imagen,
@@ -173,10 +173,10 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
             'nombre' => 'required|string',
-            'apellido' => 'nullable|string',
+            'email' => 'required|email|unique:usuarios,email',
+            'nombres' => 'required|string',
+            'apellidos' => 'nullable|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'telefono' => [
                 'nullable',
@@ -193,7 +193,7 @@ class UsuarioController extends Controller
 
         try {
             $usuario = new User();
-            $usuario->name = $request->input('name');
+            $usuario->nombre = $request->input('nombre');
             $usuario->email = $request->input('email');
             $usuario->user_id = auth()->user()->id;
 
@@ -217,8 +217,8 @@ class UsuarioController extends Controller
             $usuario->save();
 
             $perfil = new Perfil();
-            $perfil->nombre = $request->input('nombre');
-            $perfil->apellido = $request->input('apellido');
+            $perfil->nombres = $request->input('nombres');
+            $perfil->apellidos = $request->input('apellidos');
             $perfil->telefono = $request->input('telefono');
             $perfil->direccion = $request->input('direccion');
             $perfil->empresa_id = $request->input('empresa_id');
@@ -263,10 +263,10 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . $id,
             'nombre' => 'required|string',
-            'apellido' => 'nullable|string',
+            'email' => 'required|email|unique:usuarios,email,' . $id,
+            'nombres' => 'required|string',
+            'apellidos' => 'nullable|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
             'telefono' => [
                 'nullable',
@@ -284,7 +284,7 @@ class UsuarioController extends Controller
         try {
             $usuario = User::findOrFail($id);
 
-            $usuario->name = $request->input('name');
+            $usuario->nombre = $request->input('nombre');
             $usuario->email = $request->input('email');
             $usuario->user_modified_id = auth()->user()->id;
 
@@ -309,8 +309,8 @@ class UsuarioController extends Controller
 
             $perfil = Perfil::where('user_id', $usuario->id)->first();
 
-            $perfil->nombre = $request->input('nombre');
-            $perfil->apellido = $request->input('apellido');
+            $perfil->nombres = $request->input('nombres');
+            $perfil->apellidos = $request->input('apellidos');
             $perfil->telefono = $request->input('telefono');
             $perfil->direccion = $request->input('direccion');
             $perfil->empresa_id = $request->input('empresa_id');
@@ -387,11 +387,11 @@ class UsuarioController extends Controller
 
         try {
             if ($usuario->id === 1) {
-                return response()->json(['success' => false, 'error' => 'No se puede eliminar al administrador.']);
+                return response()->json(['success' => false, 'error' => 'No se puede eliminar al usuario administrador']);
             }
 
             if ($usuario->id === auth()->user()->id) {
-                return response()->json(['success' => false, 'error' => 'No tienes autorización para eliminar tu usuario']);
+                return response()->json(['success' => false, 'error' => 'No tienes autorización para eliminar tu propio usuario']);
                 auth()->logout();
             }
 

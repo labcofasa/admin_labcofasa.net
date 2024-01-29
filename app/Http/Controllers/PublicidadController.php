@@ -33,17 +33,17 @@ class PublicidadController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $query = Publicidad::select('publicidades.*', 'users.name as user_name', 'modified_users.name as user_modified_name')
-            ->leftJoin('users', 'publicidades.user_id', '=', 'users.id')
-            ->leftJoin('users as modified_users', 'publicidades.user_modified_id', '=', 'modified_users.id');
+        $query = Publicidad::select('publicidades.*', 'usuarios.nombre as user_name', 'modified_users.nombre as user_modified_name')
+            ->leftJoin('usuarios', 'publicidades.user_id', '=', 'usuarios.id')
+            ->leftJoin('usuarios as modified_users', 'publicidades.user_modified_id', '=', 'modified_users.id');
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('publicidades.nombre_publicidad', 'like', '%' . $search . '%')
                     ->orWhere('publicidades.created_at', 'like', '%' . $search . '%')
-                    ->orWhere('users.name', 'like', "%$search%")
+                    ->orWhere('usuarios.nombre', 'like', "%$search%")
                     ->orWhere('publicidades.updated_at', 'like', '%' . $search . '%')
-                    ->orWhere('modified_users.name', 'like', "%$search%");
+                    ->orWhere('modified_users.nombre', 'like', "%$search%");
             });
         }
 

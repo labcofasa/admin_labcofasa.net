@@ -23,7 +23,7 @@ $(document).ready(function () {
             fixedHeader: true,
             /*             colReorder: true, */
             lengthMenu: [
-                [5, 50, 100 -1],
+                [5, 50, 100 - 1],
                 ["5 filas", "50 filas", "100 filas", "Todas las filas"],
             ],
             buttons: [
@@ -137,7 +137,7 @@ $(document).ready(function () {
             },
             columns: [
                 { data: "contador", title: "#" },
-                { data: "name", title: "Usuario" },
+                { data: "nombre", title: "Usuario" },
                 {
                     data: "roles",
                     title: "Rol",
@@ -152,20 +152,17 @@ $(document).ready(function () {
                         const isChecked = row.estado;
                         return `
                             <div class="form-check form-switch">
-                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${
-                                    row.id
-                                }" ${isChecked ? "checked" : ""} data-id="${
-                            row.id
-                        }">
-                                <label class="form-check-label estado-label" for="switch-${
-                                    row.id
-                                }"></label>
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id
+                            }" ${isChecked ? "checked" : ""} data-id="${row.id
+                            }">
+                                <label class="form-check-label estado-label" for="switch-${row.id
+                            }"></label>
                             </div>
                         `;
                     },
                 },
-                { data: "nombre", title: "Nombres" },
-                { data: "apellido", title: "Apellidos" },
+                { data: "nombres", title: "Nombres" },
+                { data: "apellidos", title: "Apellidos" },
                 { data: "telefono", title: "Teléfono" },
                 { data: "email", title: "Correo electrónico" },
                 { data: "direccion", title: "Dirección" },
@@ -193,51 +190,48 @@ $(document).ready(function () {
                         );
                         return `
                                 <div class="text-center">
-                                ${
-                                    userPermissions.some(
-                                        (permission) =>
-                                            permission.name ===
-                                                "admin_usuarios_editar" ||
-                                            permission.name ===
-                                                "admin_usuarios_eliminar"
-                                    )
-                                        ? `
+                                ${userPermissions.some(
+                            (permission) =>
+                                permission.name ===
+                                "admin_usuarios_editar" ||
+                                permission.name ===
+                                "admin_usuarios_eliminar"
+                        )
+                                ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
-                                        ${
-                                            userPermissions.some(
-                                                (permission) =>
-                                                    permission.name ===
-                                                    "admin_usuarios_editar"
-                                            )
-                                                ? `
+                                        ${userPermissions.some(
+                                    (permission) =>
+                                        permission.name ===
+                                        "admin_usuarios_editar"
+                                )
+                                    ? `
                                             <li>
                                                 <button class="dropdown-item editar-usuario" data-id="${row.id}" type="button">
                                                     <span class="link">Editar</span>
                                                 </button>
                                             </li>`
-                                                : ""
-                                        }
-                                    ${
-                                        userPermissions.some(
-                                            (permission) =>
-                                                permission.name ===
-                                                "admin_usuarios_eliminar"
-                                        )
-                                            ? `
+                                    : ""
+                                }
+                                    ${userPermissions.some(
+                                    (permission) =>
+                                        permission.name ===
+                                        "admin_usuarios_eliminar"
+                                )
+                                    ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-usuario" data-id="${row.id}" type="button">
                                                     <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
-                                            : ""
-                                    }
-                                        </ul>`
-                                        : ""
+                                    : ""
                                 }
+                                        </ul>`
+                                : ""
+                            }
                                     </div>
                                 </div>
                             `;
@@ -413,7 +407,6 @@ $(document).ready(function () {
     $("#tabla-usuarios").on("change", ".toggle-switch", function () {
         const usuarioId = $(this).data("id");
         const estado = $(this).prop("checked") ? 1 : 0;
-
         $.ajax({
             url: "/cambiar-estado/" + usuarioId,
             method: "PUT",
@@ -434,7 +427,7 @@ $(document).ready(function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
                     "Error al cambiar el estado del usuario. Detalles: " +
-                        errorThrown,
+                    errorThrown,
                     "error"
                 );
             },
@@ -445,10 +438,10 @@ $(document).ready(function () {
     $("#tabla-usuarios").on("click", ".editar-usuario", function () {
         var usuarioId = $(this).data("id");
         var row = tabla_usuarios.row($(this).parents("tr")).data();
-        var name = row.name;
-        var email = row.email;
         var nombre = row.nombre;
-        var apellido = row.apellido;
+        var email = row.email;
+        var nombres = row.nombres;
+        var apellidos = row.apellidos;
         var telefono = row.telefono;
         var direccion = row.direccion;
         var roles = row.roles;
@@ -462,11 +455,11 @@ $(document).ready(function () {
         var nombreMunicipio = row.nombre_municipio;
 
         $("#editarUsuarioForm #btn-editar-usuario").val(usuarioId);
-        $("#editarUsuarioForm #nombre-usuario-editar").val(name);
+        $("#editarUsuarioForm #nombre-usuario-editar").val(nombre);
         $("#editarUsuarioForm #email-usuario-editar").val(email);
-        $("#editarUsuarioForm #nombre-input-editar").val(nombre);
+        $("#editarUsuarioForm #nombre-input-editar").val(nombres);
+        $("#editarUsuarioForm #apellido-input-editar").val(apellidos);
         $(".image-perfil-name-editar").text(row.imagen);
-        $("#editarUsuarioForm #apellido-input-editar").val(apellido);
         $("#editarUsuarioForm #telefono-perfil-editar").val(telefono);
         $("#editarUsuarioForm #direccion-perfil-editar").val(direccion);
 
@@ -643,7 +636,7 @@ $(document).ready(function () {
     /* Eliminar usuario */
     $("#tabla-usuarios").on("click", ".eliminar-usuario", function () {
         const usuarioId = $(this).data("id");
-        nombreUsuario = tabla_usuarios.row($(this).closest("tr")).data().name;
+        nombreUsuario = tabla_usuarios.row($(this).closest("tr")).data().nombre;
 
         const modal = $("#eliminarUsuario");
         modal.modal("show");
@@ -750,13 +743,13 @@ function printUsuarios() {
     );
     printWindow.document.write(
         "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(

@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('perfiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('nombre')->nullable();
-            $table->string('apellido')->nullable();
+            $table->string('nombres')->nullable();
+            $table->string('apellidos')->nullable();
             $table->string('imagen')->nullable();
             $table->string('telefono')->nullable();
             $table->text('direccion')->nullable();
@@ -25,7 +25,7 @@ return new class extends Migration {
 
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->foreign('pais_id')->references('id')->on('paises');
             $table->foreign('departamento_id')->references('id')->on('departamentos');

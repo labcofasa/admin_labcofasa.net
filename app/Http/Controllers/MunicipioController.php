@@ -22,9 +22,9 @@ class MunicipioController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $query = Municipio::select('municipios.*', 'users.name as user_name', 'modified_users.name as user_modified_name')
-            ->leftJoin('users', 'municipios.user_id', '=', 'users.id')
-            ->leftJoin('users as modified_users', 'municipios.user_modified_id', '=', 'modified_users.id')
+        $query = Municipio::select('municipios.*', 'usuarios.nombre as user_name', 'modified_users.nombre as user_modified_name')
+            ->leftJoin('usuarios', 'municipios.user_id', '=', 'usuarios.id')
+            ->leftJoin('usuarios as modified_users', 'municipios.user_modified_id', '=', 'modified_users.id')
             ->where('departamento_id', $departamentoId);
 
         if (!empty($search)) {
@@ -32,9 +32,9 @@ class MunicipioController extends Controller
                 $q->where('municipios.nombre', 'like', "%$search%")
                     ->orWhere('municipios.codigo_mh', 'like', "%$search%")
                     ->orWhere('municipios.created_at', 'like', "%$search%")
-                    ->orWhere('users.name', 'like', "%$search%")
+                    ->orWhere('usuarios.nombre', 'like', "%$search%")
                     ->orWhere('municipios.updated_at', 'like', "%$search%")
-                    ->orWhere('modified_users.name', 'like', "%$search%");
+                    ->orWhere('modified_users.nombre', 'like', "%$search%");
             });
         }
 

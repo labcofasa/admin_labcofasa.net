@@ -31,18 +31,18 @@ class EntidadController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $query = Entidad::select('entidades.*', 'users.name as user_name', 'modified_users.name as user_modified_name')
-            ->leftJoin('users', 'entidades.user_id', '=', 'users.id')
-            ->leftJoin('users as modified_users', 'entidades.user_modified_id', '=', 'modified_users.id');
+        $query = Entidad::select('entidades.*', 'usuarios.nombre as user_name', 'modified_users.nombre as user_modified_name')
+            ->leftJoin('usuarios', 'entidades.user_id', '=', 'usuarios.id')
+            ->leftJoin('usuarios as modified_users', 'entidades.user_modified_id', '=', 'modified_users.id');
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('entidades.nombre', 'like', "%$search%")
                     ->orWhere('entidades.descripcion', 'like', "%$search%")
                     ->orWhere('entidades.created_at', 'like', "%$search%")
-                    ->orWhere('users.name', 'like', "%$search%")
+                    ->orWhere('usuarios.nombre', 'like', "%$search%")
                     ->orWhere('entidades.updated_at', 'like', "%$search%")
-                    ->orWhere('modified_users.name', 'like', "%$search%");
+                    ->orWhere('modified_users.nombre', 'like', "%$search%");
             });
         }
 
@@ -84,108 +84,7 @@ class EntidadController extends Controller
             'data' => $data,
         ]);
     }
-    /* private function searchBuilderFiltros($query, $criteria, $logic)
-    {
-        $applyConditions = function ($query, $filter) {
-            $column = $filter['origData'];
-            $condition = $filter['condition'];
-            $type = $filter['type'] ?? 'string';
-            $value = $filter['value1'];
 
-            switch ($type) {
-                case 'date':
-                    switch ($condition) {
-                        case 'equals':
-                            $query->whereDate('entidades.' . $column, $value);
-                            break;
-                        case 'before':
-                            $query->orWhere('entidades.' . $column, '<', $value);
-                            break;
-                        case 'after':
-                            $query->orWhere('entidades.' . $column, '>', $value);
-                            break;
-                        case 'between':
-                            $query->orWhereBetween('entidades.' . $column, [$value, $filter['value2']]);
-                            break;
-                        case 'notBetween':
-                            $query->orWhereNotBetween('entidades.' . $column, [$value, $filter['value2']]);
-                            break;
-                        case 'not':
-                            $query->orWhere('entidades.' . $column, '!=', $value);
-                            break;
-                        case 'empty':
-                            $query->orWhereNull('entidades.' . $column);
-                            break;
-                        case 'notEmpty':
-                            $query->orWhereNotNull('entidades.' . $column);
-                            break;
-                    }
-                    break;
-
-                case 'number':
-                    break;
-
-                case 'string':
-                    switch ($condition) {
-                        case 'contains':
-                            $query->orWhere($column, 'LIKE', "%$value%");
-                            break;
-                        case 'empty':
-                            $query->orWhere(function ($query) use ($column) {
-                                $query->whereNull($column)->orWhere($column, '');
-                            });
-                            break;
-                        case 'endsWith':
-                            $query->orWhere($column, 'LIKE', "%$value");
-                            break;
-                        case 'equals':
-                            $query->orWhere($column, $value);
-                            break;
-                        case 'not':
-                            $query->orWhere($column, '!=', $value);
-                            break;
-                        case 'startsWith':
-                            $query->orWhere($column, 'LIKE', "$value%");
-                            break;
-                        case 'notEmpty':
-                            $query->orWhere(function ($query) use ($column) {
-                                $query->whereNotNull($column)->where($column, '!=', '');
-                            });
-                            break;
-                        case 'notContains':
-                            $query->orWhere($column, 'NOT LIKE', "%$value%");
-                            break;
-                        case 'notEndsWith':
-                            $query->orWhere($column, 'NOT LIKE', "%$value");
-                            break;
-                        case 'notStartsWith':
-                            $query->orWhere($column, 'NOT LIKE', "$value%");
-                            break;
-                    }
-                    break;
-
-                case 'array':
-
-                    break;
-            }
-        };
-
-        if ($logic === 'AND') {
-            foreach ($criteria as $filter) {
-                $query->where(function ($q) use ($filter, $applyConditions) {
-                    $applyConditions($q, $filter);
-                });
-            }
-        } else if ($logic === 'OR') {
-            $query->where(function ($q) use ($criteria, $applyConditions) {
-                foreach ($criteria as $filter) {
-                    $applyConditions($q, $filter);
-                }
-            });
-        }
-
-        return $query;
-    } */
     public function store(Request $request)
     {
         $this->validate($request, [

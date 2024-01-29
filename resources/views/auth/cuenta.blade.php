@@ -83,7 +83,7 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="nombre" class="text-card">Nombres</label>
-                                    <input disabled readonly id="nombre" value="{{ $usuario->perfil->nombre }}"
+                                    <input disabled readonly id="nombre" value="{{ $usuario->perfil->nombres }}"
                                         type="text" aria-label="Nombres" class="form-control">
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                                 <div class="form-group mb-3">
                                     <label for="email" class="text-card">Apellidos</label>
                                     <input disabled readonly id="apellido"
-                                        value="{{ $usuario->perfil->apellido ?? 'No asignado' }}" type="text"
+                                        value="{{ $usuario->perfil->apellidos ?? 'No asignado' }}" type="text"
                                         aria-label="Apellidos" class="form-control">
                                 </div>
                             </div>

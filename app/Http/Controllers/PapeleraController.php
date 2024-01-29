@@ -45,7 +45,7 @@ class PapeleraController extends Controller
             'Empresas' => ['class' => Empresa::class, 'column' => 'nombre'],
             'Redes sociales' => ['class' => RedSocial::class, 'column' => 'nombre'],
             'Clasificaciones' => ['class' => Clasificacion::class, 'column' => 'nombre'],
-            'Usuarios' => ['class' => User::class, 'column' => 'name'],
+            'Usuarios' => ['class' => User::class, 'column' => 'nombre'],
             'Aplicaciones' => ['class' => Aplicacion::class, 'column' => 'nombre_aplicacion'],
             'Publicidades' => ['class' => Publicidad::class, 'column' => 'nombre_publicidad'],
         ];
@@ -64,9 +64,9 @@ class PapeleraController extends Controller
                     $model->getTable() . '.' . $columnName,
                     $model->getTable() . '.nombre_tabla',
                     $model->getTable() . '.deleted_at',
-                    'user_deleted.name as user_deleted_name',
+                    'user_deleted.nombre as user_deleted_name',
                 ])
-                ->leftJoin('users as user_deleted', $model->getTable() . '.user_deleted_id', '=', 'user_deleted.id');
+                ->leftJoin('usuarios as user_deleted', $model->getTable() . '.user_deleted_id', '=', 'user_deleted.id');
 
             if (!empty($search)) {
                 $query->where(function ($q) use ($search, $model, $columnName) {
@@ -74,7 +74,7 @@ class PapeleraController extends Controller
                         $q->orWhere($model->getTable() . '.' . $column, 'like', "%$search%");
                     }
                     $q->orWhere($model->getTable() . '.' . $columnName, 'like', "%$search%");
-                    $q->orWhere('user_deleted.name', 'like', "%$search%");
+                    $q->orWhere('user_deleted.nombre', 'like', "%$search%");
                 });
             }
 

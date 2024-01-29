@@ -22,9 +22,9 @@ class DepartamentoController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $query = Departamento::select('departamentos.*', 'users.name as user_name', 'modified_users.name as user_modified_name')
-            ->leftJoin('users', 'departamentos.user_id', '=', 'users.id')
-            ->leftJoin('users as modified_users', 'departamentos.user_modified_id', '=', 'modified_users.id')
+        $query = Departamento::select('departamentos.*', 'usuarios.nombre as user_name', 'modified_users.nombre as user_modified_name')
+            ->leftJoin('usuarios', 'departamentos.user_id', '=', 'usuarios.id')
+            ->leftJoin('usuarios as modified_users', 'departamentos.user_modified_id', '=', 'modified_users.id')
             ->where('pais_id', $paisId);
 
         if (!empty($search)) {
@@ -32,9 +32,9 @@ class DepartamentoController extends Controller
                 $q->where('departamentos.nombre', 'like', "%$search%")
                     ->orWhere('departamentos.codigo_mh', 'like', "%$search%")
                     ->orWhere('departamentos.created_at', 'like', "%$search%")
-                    ->orWhere('users.name', 'like', "%$search%")
+                    ->orWhere('usuarios.nombre', 'like', "%$search%")
                     ->orWhere('departamentos.updated_at', 'like', "%$search%")
-                    ->orWhere('modified_users.name', 'like', "%$search%");
+                    ->orWhere('modified_users.nombre', 'like', "%$search%");
             });
         }
 

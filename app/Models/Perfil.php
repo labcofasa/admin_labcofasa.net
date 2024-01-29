@@ -11,7 +11,7 @@ class Perfil extends Model
 
     protected $table = 'perfiles';
 
-    protected $fillable = ['nombre', 'apellido', 'imagen', 'telefono', 'direccion'];
+    protected $fillable = ['nombres', 'apellidos', 'imagen', 'telefono', 'direccion'];
 
     public function user()
     {

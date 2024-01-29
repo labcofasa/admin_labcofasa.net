@@ -19,7 +19,7 @@ class CreatePasswordResetTokensTable extends Migration
             $table->string('token', 100);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('expires_at')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('usuarios')->onDelete('cascade');
         });
     }
 

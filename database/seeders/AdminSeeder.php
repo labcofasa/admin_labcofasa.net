@@ -15,12 +15,12 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         $adminUserName = env('ADMIN_USERNAME', 'Cofasa');
-        $adminName = env('ADMIN_NAME', 'Laboratorios Cofasa');
+        $adminName = env('ADMIN_NAME', 'Laboratorios');
         $adminEmail = env('ADMIN_MAIL', 'informatica@labcofasa.com');
         $adminPassword = env('ADMIN_PASSWORD', 'cofa$a123');
 
         $user = User::create([
-            'name' => $adminUserName,
+            'nombre' => $adminUserName,
             'email' => $adminEmail,
             'password' => bcrypt($adminPassword),
         ]);
@@ -32,7 +32,8 @@ class AdminSeeder extends Seeder
         }
 
         $perfil = new Perfil([
-            'nombre' => $adminName,
+            'nombres' => $adminName,
+            'apellidos' => $adminUserName,
         ]);
 
         $user->perfil()->save($perfil);

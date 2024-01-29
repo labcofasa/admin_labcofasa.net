@@ -56,7 +56,7 @@
                                             <label for="nombre-usuario" class="text-label">Nombre de usuario
                                                 <span class="obligatorio"> *</span>
                                             </label>
-                                            <input autocomplete="new-username" type="text" name="name"
+                                            <input autocomplete="new-username" type="text" name="nombre"
                                                 class="form-control" id="nombre-usuario" required>
                                             <div class="invalid-feedback">
                                                 Ingrese un nombre válido
@@ -108,7 +108,7 @@
                                         <div class="form-group mb-3">
                                             <label for="nombre-input" class="text-label">Nombres
                                                 <span class="obligatorio"> *</span></label>
-                                            <input autocomplete="off" type="text" name="nombre"
+                                            <input autocomplete="off" type="text" name="nombres"
                                                 class="form-control" id="nombre-input" required>
                                             <div class="invalid-feedback">
                                                 Ingrese los nombres
@@ -117,7 +117,7 @@
                                         <div class="form-group mb-3">
                                             <label for="apellido-input" class="text-label">Apellidos
                                                 <span class="obligatorio"> *</span></label>
-                                            <input autocomplete="off" type="text" name="apellido"
+                                            <input autocomplete="off" type="text" name="apellidos"
                                                 class="form-control" id="apellido-input" required>
                                             <div class="invalid-feedback">
                                                 Ingrese los apellidos
