@@ -21,7 +21,6 @@ $(document).ready(function () {
             responsive: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
-            /*             colReorder: true, */
             lengthMenu: [
                 [5, 50, 100 - 1],
                 ["5 filas", "50 filas", "100 filas", "Todas las filas"],
@@ -149,17 +148,15 @@ $(document).ready(function () {
                     data: "estado",
                     title: "Estado",
                     render: function (data, type, row) {
-                        const isChecked = row.estado;
+                        const isChecked = row.estado === 1;
                         return `
                             <div class="form-check form-switch">
-                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id
-                            }" ${isChecked ? "checked" : ""} data-id="${row.id
-                            }">
-                                <label class="form-check-label estado-label" for="switch-${row.id
-                            }"></label>
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id}" ${isChecked ? "checked" : ""} data-id="${row.id}">
+                                <label class="form-check-label estado-label" for="switch-${row.id}"></label>
                             </div>
                         `;
                     },
+
                 },
                 { data: "nombres", title: "Nombres" },
                 { data: "apellidos", title: "Apellidos" },

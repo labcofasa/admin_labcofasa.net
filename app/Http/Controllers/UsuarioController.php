@@ -87,6 +87,7 @@ class UsuarioController extends Controller
             'id',
             'name',
             'rol',
+            'estado',
             'nombres',
             'apellidos',
             'telefono',
