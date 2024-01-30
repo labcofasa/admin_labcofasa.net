@@ -148,7 +148,7 @@ $(document).ready(function () {
                     data: "estado",
                     title: "Estado",
                     render: function (data, type, row) {
-                        const isChecked = row.estado === 1;
+                        const isChecked = row.estado == 1;
                         return `
                             <div class="form-check form-switch">
                                 <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id}" ${isChecked ? "checked" : ""} data-id="${row.id}">
