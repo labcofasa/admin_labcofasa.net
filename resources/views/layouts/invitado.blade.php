@@ -16,6 +16,7 @@
     <!-- Estilos -->
     <link rel="stylesheet" href="{{ asset('css/formulario.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app_theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
 
     <!-- Titulo del sitio -->
     <title>@yield('titulo') - {{ config('app.name') }}</title>

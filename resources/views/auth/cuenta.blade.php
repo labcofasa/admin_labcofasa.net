@@ -20,7 +20,7 @@
                                 @endif
                             </div>
 
-                            <h2>{{ $usuario->name }}</h2>
+                            <h2>{{ $usuario->nombre }}</h2>
                             <span class="small text-secondary fw-semibold">
                                 {{ auth()->user()->getRoleNames()->implode(', ') }}</span>
                         </div>
@@ -72,8 +72,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="name" class="text-card">Nombre de usuario</label>
-                                    <input id="name" value="{{ $usuario->name }}" disabled readonly autocomplete="off"
+                                    <label for="nombre" class="text-card">Nombre de usuario</label>
+                                    <input id="nombre" value="{{ $usuario->nombre }}" disabled readonly autocomplete="off"
                                         type="text" class="form-control">
                                 </div>
                             </div>
@@ -82,8 +82,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="nombre" class="text-card">Nombres</label>
-                                    <input disabled readonly id="nombre" value="{{ $usuario->perfil->nombres }}"
+                                    <label for="nombres" class="text-card">Nombres</label>
+                                    <input disabled readonly id="nombres" value="{{ $usuario->perfil->nombres }}"
                                         type="text" aria-label="Nombres" class="form-control">
                                 </div>
                             </div>
