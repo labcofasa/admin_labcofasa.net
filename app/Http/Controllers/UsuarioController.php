@@ -366,10 +366,9 @@ class UsuarioController extends Controller
             ]);
 
             return response()->json(['success' => true, 'message' => 'Estado del usuario actualizado con éxito'], 200);
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        } catch (\Exception $e) {
             return response()->json(['error' => 'Usuario no encontrado'], 404);
         } catch (\Exception $e) {
-            Log::error('Error al cambiar el estado del usuario: ' . $e->getMessage());
             return response()->json(['error' => 'Error interno del servidor'], 500);
         }
     }
