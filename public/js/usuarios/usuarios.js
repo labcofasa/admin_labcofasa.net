@@ -162,11 +162,11 @@ $(document).ready(function () {
                 { data: "apellidos", title: "Apellidos" },
                 { data: "telefono", title: "Teléfono" },
                 { data: "email", title: "Correo electrónico" },
-                { data: "direccion", title: "Dirección" },
                 { data: "nombre_empresa", title: "Empresa" },
                 { data: "nombre_pais", title: "País" },
                 { data: "nombre_departamento", title: "Departamento" },
                 { data: "nombre_municipio", title: "Municipio" },
+                { data: "direccion", title: "Dirección" },
                 { data: "created_at", title: "Fecha creación" },
                 {
                     data: "user_name",
