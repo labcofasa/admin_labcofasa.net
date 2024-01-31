@@ -172,7 +172,7 @@
                                             <label for="imagen-empresa-editar" class="text-label">Logo de la
                                                 empresa</label>
                                             <label for="imagen-empresa-editar" class="file-upload-image">
-                                                <span class="text-label-image-editar">Clic para seleccionar la nueva
+                                                <span class="text-label-image-editar">Hacer clic para seleccionar la
                                                     imagen</span>
                                                 <p class="image-empresa-name-editar"></p>
                                             </label>
@@ -329,8 +329,8 @@
                                                 la
                                                 factura electrónica</label>
                                             <label for="imagen-empresa-leyenda-editar" class="file-upload-image">
-                                                <span class="text-label-image-editar">Clic para seleccionar la nueva
-                                                    imagen</span>
+                                                <span class="text-label-image-editar">Hacer clic para seleccionar la
+                                                    nueva imagen</span>
                                                 <p class="image-empresa-name-leyenda-editar"></p>
                                             </label>
                                             <input type="file" name="imagen_leyenda"

@@ -184,9 +184,9 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="imagen-perfil" class="text-label">Foto de perfil</label>
+                                            <label for="imagen-perfil" class="text-label">Foto de perfil <small>(500x500 píxeles)</small></label>
                                             <label for="imagen-perfil" class="file-upload-image">
-                                                <span class="text-label-image">Clic para seleccionar la imagen</span>
+                                                <span class="text-label-image">Hacer clic para seleccionar la imagen</span>
                                                 <p class="image-perfil-name"></p>
                                             </label>
                                             <input type="file" name="imagen"

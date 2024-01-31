@@ -6,7 +6,7 @@
                     <div class="col-8">
                         <div class="datos-usuarios">
                             <p class="mb-0 link_name">Total de usuarios</p>
-                            <h1 class="px-2 font-weight-bolder" id="totalUsuarios">
+                            <h1 class="font-weight-bolder" id="totalUsuarios">
                             </h1>
                         </div>
                     </div>

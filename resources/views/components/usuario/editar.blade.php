@@ -191,10 +191,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="imagen-perfil-editar" class="text-label">Foto de
-                                                perfil</label>
+                                                perfil<small>(500x500 píxeles)</small></label>
                                             <label for="imagen-perfil-editar" class="file-upload-image">
-                                                <span class="text-label-image-editar">Clic para seleccionar la nueva
-                                                    imagen</span>
+                                                <span class="text-label-image-editar">Hacer clic para seleccionar la nueva imagen</span>
                                                 <p class="image-perfil-name-editar"></p>
                                             </label>
                                             <input type="file" name="imagen"

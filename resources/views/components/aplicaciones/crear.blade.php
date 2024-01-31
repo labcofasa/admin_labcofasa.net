@@ -61,10 +61,10 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="aplicacion-imagen" class="text-label">
-                            Imagen de la aplicación
+                            Imagen <small>(500x500 píxeles)</small>
                         </label>
                         <label for="aplicacion-imagen" class="file-upload-image">
-                            <span class="text-label-image">Clic para seleccionar la imagen</span>
+                            <span class="text-label-image">Hacer clic para seleccionar la imagen</span>
                             <p class="nombre-aplicacion"></p>
                         </label>
                         <input type="file" name="imagen_aplicacion" accept=".jpg, .jpeg, .png, .gif, .webp"

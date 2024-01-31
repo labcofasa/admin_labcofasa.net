@@ -63,10 +63,10 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="imagen-aplicacion-editar" class="text-label">
-                            Imagen de la aplicación
+                            Imagen <small>(500x500 píxeles)</small>
                         </label>
                         <label for="imagen-aplicacion-editar" class="file-upload-image">
-                            <span class="text-label-imagen-editar">Clic para seleccionar la nueva imagen</span>
+                            <span class="text-label-imagen-editar">Hacer clic para seleccionar la nueva imagen</span>
                             <p class="imagen-aplicacion-nombre-editar"></p>
                         </label>
                         <input type="file" name="imagen_aplicacion" accept=".jpg, .jpeg, .png, .gif, .webp"

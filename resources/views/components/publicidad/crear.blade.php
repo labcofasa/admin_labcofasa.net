@@ -31,10 +31,10 @@
                     <div class="form-group mb-3">
                         <label for="publicidad-imagen" class="text-label">
                             Imagen<span class="obligatorio">
-                                *</span>
+                                * </span><small>(960x1200 píxeles)</small>
                         </label>
                         <label for="publicidad-imagen" class="file-upload-image">
-                            <span class="text-label-image">Clic para seleccionar la imagen</span>
+                            <span class="text-label-image">Hacer clic para seleccionar la imagen</span>
                             <p class="nombre-publicidad"></p>
                         </label>
                         <input type="file" name="imagen_publicidad" required accept=".jpg, .jpeg, .png, .gif, .webp"

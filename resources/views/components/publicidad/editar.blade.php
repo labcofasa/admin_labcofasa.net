@@ -30,10 +30,11 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="imagen-publicidad-editar" class="text-label">
-                            Imagen de la aplicación
+                            Imagen <span class="obligatorio">
+                                * </span><small>(960x1200 píxeles)</small>
                         </label>
                         <label for="imagen-publicidad-editar" class="file-upload-image">
-                            <span class="text-label-imagen-editar">Clic para seleccionar la nueva imagen</span>
+                            <span class="text-label-imagen-editar">Hacer clic para seleccionar la nueva imagen</span>
                             <p class="imagen-publicidad-nombre-editar"></p>
                         </label>
                         <input type="file" name="imagen_publicidad" accept=".jpg, .jpeg, .png, .gif, .webp"
