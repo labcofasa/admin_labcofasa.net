@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use App\Models\PasswordResetToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Publicidad;
+use App\Models\Aviso;
 use App\Models\User;
 
 class RestablecerController extends Controller
@@ -20,9 +20,9 @@ class RestablecerController extends Controller
         if (auth()->check()) {
             return redirect()->route('inicio');
         } else {
-            $publicidades = Publicidad::all();
+            $avisos = Aviso::all();
 
-            $response = response()->view('auth.restablecer', compact('publicidades'));
+            $response = response()->view('auth.restablecer', compact('avisos'));
 
             $response->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
             $response->header('Pragma', 'no-cache');
@@ -86,8 +86,8 @@ class RestablecerController extends Controller
         if (!$passwordResetToken || $passwordResetToken->expires_at < now()) {
             return redirect()->route('form.restablecer')->withErrors(['email' => 'El enlace ha expirado o es inválido. Solicite un nuevo enlace de restablecimiento de contraseña.'])->withInput();
         } else {
-            $publicidades = Publicidad::all();
-            return view('auth.reseteo', ['token' => $token], compact('publicidades'));
+            $avisos = Aviso::all();
+            return view('auth.reseteo', ['token' => $token], compact('avisos'));
         }
     }
 

@@ -1,0 +1,26 @@
+/* Tabs */
+.nav-tabs {
+    border-color: var(--table-border);
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-color);
+    transition: none;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--input-caret) !important;
+    background-color: var(--card-container);
+    border-color: var(--table-border);
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--text-color);
+    background-color: var(--card-container);
+    border-color: var(--table-border);
+}
+
+.nav-link.has-validation-errors {
+    border-color: #dc3545 !important;
+    color: #dc3545 !important;
+}

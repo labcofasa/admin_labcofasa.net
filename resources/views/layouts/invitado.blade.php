@@ -5,24 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/logo.svg') }}" type="image/x-icon">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('css/invitado.css') }}">
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Estilos -->
-    <link rel="stylesheet" href="{{ asset('css/formulario.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app_theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
 
     <!-- Titulo del sitio -->
     <title>@yield('titulo') - {{ config('app.name') }}</title>
 </head>
 
-<body>
+<body class="fondo">
     <main>
         @yield('contenido')
     </main>

@@ -1,0 +1,115 @@
+.card .menu-bar ul {
+    padding-left: 0;
+}
+
+.card .menu-bar li {
+    list-style-type: none;
+    margin: 10px;
+}
+
+.card .menu-bar li:hover {
+    background-color: var(--sidebar-bg-hover);
+    margin: 10px;
+    border-radius: 1.875rem;
+}
+
+.card .menu-bar li svg {
+    height: 25px;
+    min-width: 78px;
+    fill: var(--icon-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card .menu-bar li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.card .menu-bar li .link_name {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.card .image-edit {
+    position: absolute;
+    right: 25%;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+.card {
+    border: 0;
+    border-radius: var(--border-radius);
+    transition: var(--tran-03);
+}
+
+.card-header {
+    background-color: var(--card-bg);
+    transition: var(--tran-03);
+    border-bottom: 0;
+}
+
+.card .text-card {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.card-counter .counter-icono {
+    transition: var(--tran-03);
+    height: 75px;
+    width: 75px;
+}
+
+.cartas {
+    padding-bottom: 60px;
+}
+
+.carta-primary {
+    background-color: var(--carta-primary);
+    transition: var(--tran-03);
+}
+
+.carta-primary .icon {
+    fill: var(--icon-carta-primary);
+    transition: var(--tran-03);
+}
+
+.carta-secondary {
+    background-color: var(--carta-secondary);
+    transition: var(--tran-03);
+}
+
+.carta-secondary .icon {
+    fill: var(--icon-carta-secondary);
+    transition: var(--tran-03);
+}
+
+.carta-success {
+    background-color: var(--carta-success);
+    transition: var(--tran-03);
+}
+
+.carta-success .icon {
+    fill: var(--icon-carta-success);
+    transition: var(--tran-03);
+}
+
+.carta-info {
+    background-color: var(--carta-info);
+    transition: var(--tran-03);
+}
+
+.carta-info .icon {
+    fill: var(--icon-carta-info);
+    transition: var(--tran-03);
+}

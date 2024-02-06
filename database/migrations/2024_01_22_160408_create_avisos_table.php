@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('publicidades', function (Blueprint $table) {
+        Schema::create('avisos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_publicidad');
-            $table->string('imagen_publicidad')->nullable();
-            $table->string('ubicacion_imagen')->nullable();
+            $table->string('nombre');
+            $table->string('imagen')->nullable();
+            $table->string('ubicacion')->nullable();
             $table->string('nombre_tabla')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('user_id');
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('publicidades');
+        Schema::dropIfExists('avisos');
     }
 };

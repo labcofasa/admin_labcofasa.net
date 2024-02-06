@@ -1,0 +1,132 @@
+/* NavBar */
+nav {
+    height: 100%;
+    padding: 75px 0 30px 0;
+}
+
+.navbar {
+    transition: var(--tran-03);
+    height: 60px;
+}
+
+.logotipo {
+    width: 25px;
+    fill: var(--primary);
+    transition: var(--tran-03);
+}
+
+.sidebar-logo {
+    margin-left: 10px;
+}
+
+.brand {
+    margin-top: 2px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.navbar-brand {
+    margin-right: 0;
+}
+
+.navbar-brand a {
+    text-decoration: none;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+.btn-container svg {
+    fill: var(--icon-secondary);
+    transition: var(--tran-03);
+    width: 30px;
+    height: 30px;
+}
+
+.nav-link .link {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    margin-left: 12px;
+    font-weight: 500;
+}
+
+.offcanvas.offcanvas-start {
+    width: 290px;
+}
+
+.offcanvas {
+    background-color: var(--card-container);
+    transition: var(--tran-03);
+}
+
+.logo-nombre {
+    font-size: 22px;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: var(--tran-03);
+}
+
+.offcanvas-header {
+    padding: 1.5rem 1rem;
+}
+
+.offcanvas .dropdown .dropdown-item:hover {
+    background-color: var(--sidebar-bg-hover);
+    color: var(--text-color);
+}
+
+.offcanvas .dropdown .dropdown-item.active {
+    background-color: var(--sidebar-bg-active);
+    color: var(--accent);
+}
+
+.offcanvas .dropdown .dropdown-item.active .icon {
+    fill: var(--accent);
+}
+
+.offcanvas .offcanvas-body .nav-item .nav-link {
+    color: var(--text-color);
+    margin: 0.2rem 0;
+    padding: 0.5rem 1rem;
+    border-bottom-right-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
+}
+
+.offcanvas .offcanvas-body .nav-item .nav-link:hover {
+    background-color: var(--sidebar-bg-hover);
+}
+
+.offcanvas .offcanvas-body .nav-item .nav-link.active {
+    color: var(--accent);
+    background-color: var(--sidebar-bg-active);
+}
+
+.offcanvas .offcanvas-body .nav-item .nav-link.active .icon {
+    fill: var(--accent);
+}
+
+.offcanvas-header .btn-close {
+    margin-right: 0;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.dropdown-icon {
+    margin-right: 15px;
+    color: var(--sidebar-icon);
+    vertical-align: middle;
+}

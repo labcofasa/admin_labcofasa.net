@@ -1,0 +1,108 @@
+/* Dropdown menu */
+.offcanvas-body {
+    padding: 1rem 0;
+}
+
+.offcanvas-body .dropdown-menu {
+    background-color: var(--card-container);
+    padding: 0 15px;
+    width: auto;
+    border: none;
+    border-radius: 0;
+    box-shadow: none !important;
+}
+
+.dropdown-menu {
+    background-color: var(--dropdown-menu);
+    padding: 5px;
+    width: auto;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.offcanvas-body .dropdown-item {
+    margin: 5px 0;
+    padding: 8px 20px;
+    border-radius: 25px;
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.dropdown-item {
+    padding: 5px 10px;
+    margin: 5px 0;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.dropdown-item.active {
+    background-color: var(--sidebar-bg-active) !important;
+    color: var(--accent) !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--sidebar-bg-hover);
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.dropdown-item.active .icon {
+    fill: var(--accent);
+}
+
+.dropdown-item:hover {
+    background-color: var(--sidebar-bg-hover);
+    color: var(--text-color);
+}
+
+.dropdown-item:focus {
+    background-color: var(--sidebar-bg-hover);
+    color: var(--text-color);
+}
+
+.dt-buttons .dropdown-toggle::after {
+    color: var(--icon-secondary);
+    transition: var(--tran-03);
+}
+
+/* Perfil de usuario */
+.perfil-usuario .dropdown-toggle::after {
+    display: none;
+}
+
+.perfil-usuario .dropdown-divider {
+    border-top: 1px solid var(--table-border);
+    transition: var(--tran-03);
+}
+
+/* Listas */
+.list-group-item {
+    background-color: var(--sidebar-bg);
+    color: var(--text-color);
+    border: none;
+    align-items: center;
+    transition: var(--tran-03);
+}
+
+.list-group-item-action:hover {
+    color: var(--text-color);
+    background-color: var(--sidebar-bg-hover);
+    border-radius: 5px;
+}
+
+.list-group-item-action:active {
+    color: var(--text-color);
+    background-color: var(--sidebar-bg);
+}
+
+.list-group-item-action:focus {
+    color: var(--text-color);
+    background-color: var(--sidebar-bg);
+}

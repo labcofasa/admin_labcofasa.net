@@ -18,8 +18,8 @@ use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\PublicidadController;
-use App\Models\Publicidad;
+use App\Http\Controllers\AvisoController;
+use App\Models\Aviso;
 use Illuminate\Support\Facades\Route;
 
 
@@ -75,8 +75,8 @@ Route::middleware(['auth'])->group(function () {
     /* Papelera */
     Route::middleware(['can:admin_papelera_ver'])->group(function () {
         Route::get('/papelera', [PapeleraController::class, 'index'])->name('pag.papelera');
-        Route::get('/obtener-eliminados', [PapeleraController::class, 'obtenerEliminados']);
-        Route::get('/restore/{table}/{id}', [PapeleraController::class, 'restoreRecord']);
+        Route::get('/obtener-eliminados', [PapeleraController::class, 'obtener_eliminados']);
+        Route::get('/restore/{table}/{id}', [PapeleraController::class, 'restaurar_registro']);
     });
 
     /* Entidades de empresas */
@@ -151,13 +151,13 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/eliminar-aplicacion/{id}', [AplicacionesController::class, 'destroy']);
     });
 
-    /* Publicidades */
-    Route::middleware(['can:admin_publicidades_ver'])->group(function () {
-        Route::post('/crear-publicidades', [PublicidadController::class, 'store']);
-        Route::get('/publicidades', [PublicidadController::class, 'index'])->name('pag.publicidad');
-        Route::get('/tabla-publicidades', [PublicidadController::class, 'tablaPublicidades']);
-        Route::put('/actualizar-publicidad/{id}', [PublicidadController::class, 'update']);
-        Route::delete('/eliminar-publicidad/{id}', [PublicidadController::class, 'destroy']);
+    /* Avisos */
+    Route::middleware(['can:admin_avisos_ver'])->group(function () {
+        Route::post('/crear-avisos', [AvisoController::class, 'store']);
+        Route::get('/avisos', [AvisoController::class, 'index'])->name('pag.aviso');
+        Route::get('/tabla-avisos', [AvisoController::class, 'tablaAvisos']);
+        Route::put('/actualizar-aviso/{id}', [AvisoController::class, 'update']);
+        Route::delete('/eliminar-aviso/{id}', [AvisoController::class, 'destroy']);
     });
 });
 
@@ -175,8 +175,8 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/restablecer/nueva-clave', [RestablecerController::class, 'restablecerNuevaClave'])->name('actualizar.clave');
 });
 
-Route::get('/api/publicidades', [PublicidadController::class, 'obtenerPublicidades']);
-Route::get('/obtener-publicidades', [PublicidadController::class, 'obtenerPublicidades'])
+Route::get('/api/avisos', [AvisoController::class, 'obteneravisos']);
+Route::get('/obtener-avisos', [AvisoController::class, 'obteneravisos'])
     ->middleware('cors');
 
 /* Logo de la empresa */

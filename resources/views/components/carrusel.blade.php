@@ -1,10 +1,10 @@
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        @if (count($publicidades) > 0)
-            @foreach ($publicidades as $index => $publicidad)
+        @if (count($avisos) > 0)
+            @foreach ($avisos as $index => $aviso)
                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}" datba-bs-interval="3000">
                     <div class="image-container">
-                        <img src="{{ asset('images/publicidades/imagen/' . $publicidad->id . '/' . $publicidad->imagen_publicidad) }}" alt="Icono publicidad">
+                        <img src="{{ asset('images/avisos/imagen/' . $aviso->id . '/' . $aviso->imagen) }}" alt="Icono aviso">
                     </div>
                 </div>
             @endforeach
@@ -17,7 +17,7 @@
         @endif
     </div>
     <div class="carousel-indicators">
-        @for ($i = 0; $i < count($publicidades); $i++) <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="{{ $i }}" class="{{ $i === 0 ? 'active' : '' }}" aria-current="true" aria-label="Slide {{ $i + 1 }}"></button>
+        @for ($i = 0; $i < count($avisos); $i++) <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="{{ $i }}" class="{{ $i === 0 ? 'active' : '' }}" aria-current="true" aria-label="Slide {{ $i + 1 }}"></button>
             @endfor
     </div>
     <button class="carousel-control-prev custom-carousel-control" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

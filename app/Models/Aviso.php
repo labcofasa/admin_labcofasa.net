@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Publicidad extends Model
+class Aviso extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'publicidades';
+    protected $table = 'avisos';
     protected $dates = ['deleted_at'];
-    protected $fillable = ['nombre_publicidad', 'imagen_publicidad'];
+    protected $fillable = ['nombre', 'imagen'];
 
     public static function getTableName()
     {

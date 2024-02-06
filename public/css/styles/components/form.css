@@ -1,0 +1,298 @@
+/* Form inputs */
+.form input {
+    outline: 0;
+    background-color: var(--btn-secondary);
+    color: var(--text-color);
+    border: 0;
+    margin: 10px 0 10px 0;
+    padding: 15px;
+    transition: background-color 0.4s ease;
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    caret-color: var(--input-caret);
+}
+
+.form-control:disabled {
+    outline: 0;
+    background: var(--btn-secondary);
+    color: var(--text-color);
+    border: 0;
+    margin: 10px 0 10px 0;
+    transition: background-color 0.4s ease;
+    padding: 15px;
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+}
+
+.form input:focus {
+    color: var(--text-color) !important;
+}
+
+.form input::placeholder {
+    color: var(--text-color);
+}
+
+.form .input-group-text {
+    outline: 0;
+    background: var(--primary);
+    border: 0;
+    margin: 10px 0 10px 0;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.form select {
+    outline: 0;
+    background: var(--btn-secondary);
+    transition: background-color 0.4s ease;
+    border: 0;
+    margin: 10px 0 10px 0;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.form select::placeholder {
+    color: var(--text-color);
+}
+
+.form textarea {
+    outline: 0;
+    background: var(--btn-secondary);
+    transition: background-color 0.4s ease;
+    width: 100%;
+    border: 0;
+    color: var(--p);
+    margin: 10px 0 10px 0;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.textarea-normal {
+    height: auto;
+    min-height: 40px;
+    resize: none;
+}
+
+.form textarea::placeholder {
+    color: var(--text-color);
+}
+
+.form-control {
+    color: var(--text-color);
+    background-color: var(--btn-secondary);
+}
+
+.form-control:focus {
+    border-color: var(--input-caret);
+    background-color: var(--card-container);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.1rem var(--input-caret);
+}
+
+.file-upload-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 74px;
+    background-color: var(--btn-secondary);
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 8.5px 0 8px 0;
+}
+
+.file-upload-input {
+    display: none;
+}
+
+.file-upload-image p {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    font-weight: 500;
+    color: var(--text-color);
+    margin: 0;
+}
+
+label {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+}
+
+.text-label {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    font-weight: 500;
+    color: var(--text-color);
+    display: table;
+}
+
+.text-label-image {
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-container {
+    position: relative;
+}
+
+.sugerencia {
+    list-style: none;
+    background-color: var(--dropdown-menu);
+    border: 0;
+    border-radius: 5px;
+    position: absolute;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.sugerencia .sugerencia-item {
+    font-size: var(--font-size);
+    margin: 5px;
+    padding: 10px;
+    color: var(--text-color);
+}
+
+.sugerencia .sin-resultados {
+    font-size: var(--font-size);
+    margin: 5px;
+    padding: 10px;
+    color: var(--text-color);
+}
+
+.sugerencia-item:hover {
+    background-color: var(--sidebar-bg-hover);
+    border-radius: 4px;
+}
+
+.sugerencia.visible {
+    display: block;
+}
+
+.obligatorio {
+    color: var(--color-invalido);
+}
+
+.multiselect-dropdown {
+    display: inline-block;
+    padding: 15px;
+    margin: 10px 0 10px 0;
+    width: 100% !important;
+    border-radius: 4px;
+    background: var(--btn-secondary);
+    position: relative;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 20px 15px;
+}
+
+.multiselect-dropdown-list-wrapper {
+    z-index: 100;
+    padding: 2px;
+    border-radius: 4px;
+    display: none;
+    margin: -1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--btn-secondary);
+}
+
+.multiselect-dropdown span.optext {
+    background-color: lightgray;
+    padding: 1px 0.75em;
+}
+
+.multiselect-dropdown span.optext .optdel {
+    margin: 0 -6px 1px 5px;
+    font-size: 0.9em;
+    margin-top: 2px;
+    color: var(--color-invalido);
+    cursor: pointer;
+}
+
+.multiselect-dropdown span.optext .optdel:hover {
+    color: #c66;
+}
+
+.multiselect-dropdown-list-wrapper .multiselect-dropdown-search {
+    margin-bottom: 5px;
+}
+
+.multiselect-dropdown-list {
+    padding: 2px;
+    height: 15rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.multiselect-dropdown-list div {
+    padding: 5px;
+}
+
+.multiselect-dropdown-list input {
+    width: 1.15em;
+    margin-right: 1em;
+}
+
+.multiselect-dropdown-list div:hover {
+    background-color: var(--btn-secondary-hover);
+}
+
+.multiselect-dropdown span.maxselected {
+    width: 100%;
+}
+
+.multiselect-dropdown span.optext,
+.multiselect-dropdown span.placeholder {
+    margin-right: 1em;
+    margin-bottom: 2px;
+    background: var(--sidebar-bg-hover);
+    padding: 1px 0;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 1;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.form-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+.form-switch .form-check-input {
+    margin-left: 0;
+    width: 2.7em;
+}
+
+.form-check-input {
+    height: 1.5em;
+    margin-top: 0;
+    background-color: var(--toggle-switch-bg);
+    border-color: var(--toggle-switch-border);
+}
+
+.form-check-input:checked {
+    background-color: var(--toggle-switch);
+    border-color: var(--toggle-switch);
+}
+
+.form-check-input:focus {
+    border-color: var(--toggle-switch);
+    box-shadow: none;
+}
+
+.form-switch .form-check-input:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+}

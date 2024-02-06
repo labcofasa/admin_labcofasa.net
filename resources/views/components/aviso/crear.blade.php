@@ -1,10 +1,10 @@
-<!-- Modal para registrar empresas -->
-<div class="modal fade" id="crearPublicidad" tabindex="-1" role="dialog" aria-labelledby="crearPublicidadLabel"
+<!-- Modal para registrar avisos -->
+<div class="modal fade" id="crearAviso" tabindex="-1" role="dialog" aria-labelledby="crearAvisoLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 titulo" id="crearPublicidadLabel">Registrar publicidad</h1>
+                <h1 class="modal-title fs-5 titulo" id="crearAvisoLabel">Registrar publicidad</h1>
                 <button class="btn-icon-close" data-bs-dismiss="modal">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                         width="24px" fill="#000000">
@@ -14,31 +14,31 @@
                     </svg>
                 </button>
             </div>
-            <form id="publicidadForm" class="form needs-validation" novalidate method="POST">
+            <form id="avisoForm" class="form needs-validation" novalidate method="POST">
                 @csrf
                 @method('POST')
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label for="nombre_publicidad" class="text-label">Nombre <span class="obligatorio">
+                        <label for="nombre" class="text-label">Nombre <span class="obligatorio">
                                 *</span></label>
-                        <input autocomplete="off" type="text" name="nombre_publicidad" class="form-control"
-                            id="nombre_publicidad" required>
+                        <input autocomplete="off" type="text" name="nombre" class="form-control"
+                            id="nombre" required>
                         <div class="invalid-feedback">
                             Ingrese un nombre válido
                         </div>
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="publicidad-imagen" class="text-label">
+                        <label for="aviso-imagen" class="text-label">
                             Imagen<span class="obligatorio">
                                 * </span><small>(960x1200 píxeles)</small>
                         </label>
-                        <label for="publicidad-imagen" class="file-upload-image">
+                        <label for="aviso-imagen" class="file-upload-image">
                             <span class="text-label-image">Hacer clic para seleccionar la imagen</span>
-                            <p class="nombre-publicidad"></p>
+                            <p class="nombre-aviso"></p>
                         </label>
-                        <input type="file" name="imagen_publicidad" required accept=".jpg, .jpeg, .png, .gif, .webp"
-                            id="publicidad-imagen" class="file-upload-input">
+                        <input type="file" name="imagen" required accept=".jpg, .jpeg, .png, .gif, .webp"
+                            id="aviso-imagen" class="file-upload-input">
                         <div class="invalid-feedback">
                             Seleccione una imagen
                         </div>

@@ -8,7 +8,7 @@
         <div class="login">
             <div class="row form">
                 <div class="col d-none d-lg-block px-0">
-                    <x-carrusel :publicidades="$publicidades"/>
+                    <x-carrusel :avisos="$avisos"/>
                 </div>
                 <div class="col form-group">
                     <div class="input-box">
@@ -56,7 +56,7 @@
                                 </span>
                             </div>
                             <div class="input-field">
-                                <button class="btn-submit" type="submit">
+                                <button class="btn-animado" type="submit">
                                     <i class="animation"></i>
                                     Ingresar al sistema
                                     <i class="animation"></i>

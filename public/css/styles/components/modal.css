@@ -1,0 +1,59 @@
+/* Modal */
+.modal {
+    background-color: #00000050;
+}
+
+.custom-modal {
+    width: auto;
+    max-width: 450px;
+}
+
+.modal-header,
+.modal-body,
+.modal-content,
+.modal-footer {
+    border: none;
+    background-color: var(--card-container);
+    color: var(--text-color);
+}
+
+.modal-header {
+    padding: 1rem 1rem;
+    border-bottom: none !important;
+}
+
+.modal-title {
+    flex: 0 0 70%;
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing);
+}
+
+.modal-body {
+    padding-top: 0;
+}
+
+.modal-footer {
+    justify-content: space-between;
+}
+
+/* Icono cerrar modal */
+.btn-icon-close {
+    justify-content: flex-end;
+    align-items: center;
+    width: 2.5em;
+    height: 2.5em;
+    background: var(--btn-secondary);
+    border: 0;
+    transition: var(--tran-03);
+    border-radius: 50%;
+}
+
+.btn-icon-close:hover {
+    transform: scale(1.1);
+}
+
+/* Color del icono cerrar modal */
+.icon-close {
+    fill: var(--icon-secondary);
+    transition: var(--tran-03);
+}

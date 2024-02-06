@@ -1,10 +1,10 @@
-<!-- Modal para editar publicidades -->
-<div class="modal fade" id="editarPublicidad" tabindex="-1" role="dialog" aria-labelledby="editarPublicidadLabel"
+<!-- Modal para editar avisos -->
+<div class="modal fade" id="editarAviso" tabindex="-1" role="dialog" aria-labelledby="editarAvisoLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 titulo" id="editarPublicidadLabel">Editar aplicación</h1>
+                <h1 class="modal-title fs-5 titulo" id="editarAvisoLabel">Editar publicidad</h1>
                 <button class="btn-icon-close" data-bs-dismiss="modal">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                         width="24px" fill="#000000">
@@ -14,31 +14,31 @@
                     </svg>
                 </button>
             </div>
-            <form id="editarPublicidadForm" class="form needs-validation" novalidate method="POST">
+            <form id="editarAvisoForm" class="form needs-validation" novalidate method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
-                    <input type="hidden" id="btn-editar-publicidad" name="publicidad_id">
+                    <input type="hidden" id="btn-editar-aviso" name="aviso_id">
                     <div class="form-group mb-3">
-                        <label for="nombre-publicidad-editar" class="text-label">Nombre <span class="obligatorio">
+                        <label for="nombre-aviso-editar" class="text-label">Nombre <span class="obligatorio">
                                 *</span></label>
-                        <input autocomplete="off" type="text" name="nombre_publicidad" class="form-control"
-                            id="nombre-publicidad-editar" required>
+                        <input autocomplete="off" type="text" name="nombre" class="form-control"
+                            id="nombre-aviso-editar" required>
                         <div class="invalid-feedback">
                             Ingrese un nombre válido
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="imagen-publicidad-editar" class="text-label">
+                        <label for="imagen-aviso-editar" class="text-label">
                             Imagen <span class="obligatorio">
                                 * </span><small>(960x1200 píxeles)</small>
                         </label>
-                        <label for="imagen-publicidad-editar" class="file-upload-image">
+                        <label for="imagen-aviso-editar" class="file-upload-image">
                             <span class="text-label-imagen-editar">Hacer clic para seleccionar la nueva imagen</span>
-                            <p class="imagen-publicidad-nombre-editar"></p>
+                            <p class="imagen-aviso-nombre-editar"></p>
                         </label>
-                        <input type="file" name="imagen_publicidad" accept=".jpg, .jpeg, .png, .gif, .webp"
-                            id="imagen-publicidad-editar" class="file-upload-input">
+                        <input type="file" name="imagen" accept=".jpg, .jpeg, .png, .gif, .webp"
+                            id="imagen-aviso-editar" class="file-upload-input">
                     </div>
                 </div>
                 <div class="modal-footer">

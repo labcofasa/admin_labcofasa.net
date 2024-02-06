@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use App\Models\Aviso;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
-use App\Models\Publicidad;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class AutenticacionController extends Controller
 {
@@ -17,9 +17,9 @@ class AutenticacionController extends Controller
         if (auth()->check()) {
             return redirect()->route('inicio');
         } else {
-            $publicidades = Publicidad::all(); 
+            $avisos = Aviso::all(); 
 
-            $response = response()->view('auth.autenticacion', compact('publicidades'));
+            $response = response()->view('auth.autenticacion', compact('avisos'));
 
             $response->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
             $response->header('Pragma', 'no-cache');

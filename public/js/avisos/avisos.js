@@ -1,16 +1,16 @@
 $(document).ready(function () {
-    const obtenerPublicidades = "/tabla-publicidades";
-    let tabla_publicidades = null;
+    const obtenerAvisos = "/tabla-avisos";
+    let tabla_avisos = null;
 
-    tablaPublicidades();
+    tablaAvisos();
 
-    function tablaPublicidades() {
-        if (tabla_publicidades) {
-            tabla_publicidades.destroy();
+    function tablaAvisos() {
+        if (tabla_avisos) {
+            tabla_avisos.destroy();
         }
-        $("#tabla-publicidades-container").hide();
+        $("#tabla-avisos-container").hide();
 
-        tabla_publicidades = $("#tabla-publicidades").DataTable({
+        tabla_avisos = $("#tabla-avisos").DataTable({
             dom:
                 "<'row align-items-end'<'col-md-8 col-sm-9 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
@@ -37,9 +37,9 @@ $(document).ready(function () {
                 },
                 {
                     text: "Crear registro",
-                    className: "btn btn-lg btn-store publicidad",
+                    className: "btn btn-lg btn-store aviso",
                     action: function (e, dt, node, config) {
-                        document.getElementById("crearPublicidadBtn").click();
+                        document.getElementById("crearAvisoBtn").click();
                     },
                 },
                 {
@@ -50,9 +50,9 @@ $(document).ready(function () {
                         {
                             extend: "copy",
                             text: "Copiar",
-                            title: "publicidades registradas - Laboratorios Cofasa",
+                            title: "Avisos registrados - Laboratorios Cofasa",
                             filename:
-                                "publicidades registradas - Laboratorios Cofasa",
+                                "Avisos registrados - Laboratorios Cofasa",
                             exportOptions: {
                                 columns: [1, 2, 3, 4, 5, 6],
                             },
@@ -60,9 +60,9 @@ $(document).ready(function () {
                         {
                             extend: "csv",
                             text: "CSV",
-                            title: "publicidades registradas - Laboratorios Cofasa",
+                            title: "Avisos registrados - Laboratorios Cofasa",
                             filename:
-                                "publicidades registradas - Laboratorios Cofasa",
+                                "Avisos registrados - Laboratorios Cofasa",
                             exportOptions: {
                                 columns: [1, 2, 3, 4, 5, 6],
                             },
@@ -70,9 +70,9 @@ $(document).ready(function () {
                         {
                             extend: "excel",
                             text: "Excel",
-                            title: "publicidades registradas - Laboratorios Cofasa",
+                            title: "Avisos registrados - Laboratorios Cofasa",
                             filename:
-                                "publicidades registradas - Laboratorios Cofasa",
+                                "Avisos registrados - Laboratorios Cofasa",
                             exportOptions: {
                                 columns: [1, 2, 3, 4, 5, 6],
                             },
@@ -80,11 +80,11 @@ $(document).ready(function () {
                         {
                             extend: "print",
                             text: "Imprimir",
-                            title: "publicidades registradas - Laboratorios Cofasa",
+                            title: "Avisos registrados - Laboratorios Cofasa",
                             filename:
-                                "publicidades registradas - Laboratorios Cofasa",
+                                "Avisos registrados - Laboratorios Cofasa",
                             action: function (e, dt, node, config) {
-                                printpublicidades();
+                                printAvisos();
                             },
                         },
                     ],
@@ -93,10 +93,10 @@ $(document).ready(function () {
             language: {
                 url: "/json/es.json",
                 searchPlaceholder: "Buscar",
-                emptyTable: "No hay publicidades registradas",
+                emptyTable: "No hay avisos registrados",
             },
             ajax: {
-                url: obtenerPublicidades,
+                url: obtenerAvisos,
                 type: "GET",
                 headers: {
                     "X-CSRF-TOKEN": "{{ csrf_token() }}",
@@ -119,23 +119,19 @@ $(document).ready(function () {
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
-                $("#tabla-publicidades-container").show();
+                $("#tabla-avisos-container").show();
             },
             columns: [
                 { data: "contador", title: "#" },
-                { data: "nombre_publicidad", title: "Nombre" },
-                { data: "imagen_publicidad", title: "Imagen" },
+                { data: "nombre", title: "Nombre" },
+                { data: "imagen", title: "Imagen" },
                 { data: "created_at", title: "Fecha creación" },
                 {
                     data: "user_name",
                     title: "Usuario creador",
                     defaultContent: "",
                 },
-                {
-                    data: "updated_at",
-                    title: "Fecha modificación",
-                    defaultContent: "",
-                },
+                { data: "updated_at", title: "Fecha modificación" },
                 {
                     data: "user_modified_name",
                     title: "Usuario modificador",
@@ -154,9 +150,9 @@ $(document).ready(function () {
                                     userPermissions.some(
                                         (permission) =>
                                             permission.name ===
-                                                "admin_publicidades_editar" ||
+                                                "admin_avisos_editar" ||
                                             permission.name ===
-                                                "admin_publicidades_eliminar"
+                                                "admin_avisos_eliminar"
                                     )
                                         ? `
                                         <div class="btn-group">
@@ -168,11 +164,11 @@ $(document).ready(function () {
                                                     userPermissions.some(
                                                         (permission) =>
                                                             permission.name ===
-                                                            "admin_publicidades_editar"
+                                                            "admin_avisos_editar"
                                                     )
                                                         ? `
                                                         <li>
-                                                            <button class="dropdown-item editar-publicidad" data-id="${row.id}" type="button">
+                                                            <button class="dropdown-item editar-aviso" data-id="${row.id}" type="button">
                                                                 <span class="link">Editar</span>
                                                             </button>
                                                         </li>`
@@ -182,11 +178,11 @@ $(document).ready(function () {
                                                     userPermissions.some(
                                                         (permission) =>
                                                             permission.name ===
-                                                            "admin_publicidades_eliminar"
+                                                            "admin_avisos_eliminar"
                                                     )
                                                         ? `
                                                         <li>
-                                                            <button class="dropdown-item eliminar-publicidad" data-id="${row.id}" type="button">
+                                                            <button class="dropdown-item eliminar-aviso" data-id="${row.id}" type="button">
                                                                 <span class="link">Eliminar</span>
                                                             </button>
                                                         </li>`
@@ -205,7 +201,7 @@ $(document).ready(function () {
 
             initComplete: function () {
                 let searchTimeout;
-                const inputPublicidades = $("#tabla-publicidades_filter input");
+                const inputAvisos = $("#tabla-avisos_filter input");
                 const btnSecondaryElements = $(
                     ".dt-buttons .btn.btn-secondary"
                 );
@@ -217,63 +213,63 @@ $(document).ready(function () {
                 if (
                     !userPermissions.some(
                         (permission) =>
-                            permission.name === "admin_publicidades_crear"
+                            permission.name === "admin_avisos_crear"
                     )
                 ) {
-                    $(".publicidad").addClass("d-none");
+                    $(".aviso").addClass("d-none");
                 }
 
                 btnSecondaryElements.removeClass("btn-secondary");
 
-                inputPublicidades.attr("id", "buscar-publicidad");
-                inputPublicidades.attr("name", "buscar_publicidad");
-                inputPublicidades.attr("autocomplete", "off");
+                inputAvisos.attr("id", "buscar-aviso");
+                inputAvisos.attr("name", "buscar_aviso");
+                inputAvisos.attr("autocomplete", "off");
 
                 const iconSvg =
                     '<svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#888"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>';
 
-                inputPublicidades.before(iconSvg);
+                inputAvisos.before(iconSvg);
 
-                inputPublicidades.off().on("input", function (e) {
+                inputAvisos.off().on("input", function (e) {
                     clearTimeout(searchTimeout);
                     const inputValue = this.value;
                     searchTimeout = setTimeout(function () {
-                        tabla_publicidades.search(inputValue).draw();
+                        tabla_avisos.search(inputValue).draw();
                     }, 500);
                 });
 
-                inputPublicidades.on("keydown", function (e) {
+                inputAvisos.on("keydown", function (e) {
                     if (e.key === "Escape") {
                         this.value = "";
-                        tabla_publicidades.search("").draw();
+                        tabla_avisos.search("").draw();
                         e.preventDefault();
                     }
                 });
             },
         });
 
-        tabla_publicidades.on("draw.dt", function () {
-            $("#tabla-publicidades_filter label")
+        tabla_avisos.on("draw.dt", function () {
+            $("#tabla-avisos_filter label")
                 .addClass("label-search")
                 .contents()
                 .filter(function () {
                     return this.nodeType === 3;
                 })
                 .remove();
-            $("#tabla-publicidades-container").show();
+            $("#tabla-avisos-container").show();
         });
     }
 
     $.fn.DataTable.ext.pager.numbers_length = 4;
 
-    $("#crearPublicidadBtn").click(function () {
-        $("#crearPublicidad").modal("show");
+    $("#crearAvisoBtn").click(function () {
+        $("#crearAviso").modal("show");
     });
 
-    $("#publicidad-imagen").change(function () {
+    $("#aviso-imagen").change(function () {
         const fileName = $(this).val().split("\\").pop();
 
-        $(".nombre-publicidad").text(fileName);
+        $(".nombre-aviso").text(fileName);
 
         if (fileName) {
             $(".text-label-image").hide();
@@ -282,7 +278,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#publicidadForm").submit(function (event) {
+    $("#avisoForm").submit(function (event) {
         event.preventDefault();
 
         const form = $(this);
@@ -292,15 +288,15 @@ $(document).ready(function () {
             return;
         }
 
-        const imagenInput = $("#publicidad-imagen")[0];
+        const imagenInput = $("#aviso-imagen")[0];
         const formData = new FormData(form[0]);
 
         if (imagenInput.files.length > 0) {
-            formData.append("imagen_publicidad", imagenInput.files[0]);
+            formData.append("imagen", imagenInput.files[0]);
         }
 
         $.ajax({
-            url: "/crear-publicidades",
+            url: "/crear-avisos",
             type: "POST",
             data: formData,
             processData: false,
@@ -309,26 +305,26 @@ $(document).ready(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                tabla_publicidades.ajax.reload();
+                tabla_avisos.ajax.reload();
 
                 if (response.success) {
                     mostrarToast(response.message, "success");
-                    $("#crearPublicidad").modal("hide");
+                    $("#crearAviso").modal("hide");
                 } else {
                     mostrarToast(response.error, "error");
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
-                    "Error al crear la publicidad. Por favor, intente de nuevo.",
+                    "Error al crear el aviso. Por favor, intente de nuevo.",
                     "error"
                 );
             },
         });
     });
 
-    $("#crearPublicidad").on("hidden.bs.modal", function () {
-        $("#publicidadForm")
+    $("#crearAviso").on("hidden.bs.modal", function () {
+        $("#avisoForm")
             .removeClass("was-validated")
             .find(":input")
             .removeClass("is-invalid")
@@ -336,23 +332,23 @@ $(document).ready(function () {
             .reset();
     });
 
-    $("#tabla-publicidades").on("click", ".editar-publicidad", function () {
-        var publicidadId = $(this).data("id");
-        var row = tabla_publicidades.row($(this).parents("tr")).data();
-        var nombre_publicidad = row.nombre_publicidad;
+    $("#tabla-avisos").on("click", ".editar-aviso", function () {
+        var avisoId = $(this).data("id");
+        var row = tabla_avisos.row($(this).parents("tr")).data();
+        var nombre = row.nombre;
 
-        $("#editarPublicidadForm #btn-editar-publicidad").val(publicidadId);
-        $("#editarPublicidadForm #nombre-publicidad-editar").val(
-            nombre_publicidad
+        $("#editarAvisoForm #btn-editar-aviso").val(avisoId);
+        $("#editarAvisoForm #nombre-aviso-editar").val(
+            nombre
         );
-        $(".imagen-publicidad-nombre-editar").text(row.imagen_publicidad);
-        $("#editarPublicidad").modal("show");
+        $(".imagen-aviso-nombre-editar").text(row.imagen);
+        $("#editarAviso").modal("show");
     });
 
-    $("#imagen-publicidad-editar").change(function () {
+    $("#imagen-aviso-editar").change(function () {
         const fileName = $(this).val().split("\\").pop();
 
-        $(".imagen-publicidad-nombre-editar").text(fileName);
+        $(".imagen-aviso-nombre-editar").text(fileName);
 
         if (fileName) {
             $(".text-label-imagen-editar").hide();
@@ -361,7 +357,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#editarPublicidadForm").submit(function (e) {
+    $("#editarAvisoForm").submit(function (e) {
         e.preventDefault();
 
         const form = $(this);
@@ -373,13 +369,13 @@ $(document).ready(function () {
 
         const formData = new FormData(form[0]);
 
-        const imagenInput = $("#imagen-publicidad-editar")[0];
+        const imagenInput = $("#imagen-aviso-editar")[0];
         if (imagenInput.files.length > 0) {
-            formData.append("imagen_publicidad", imagenInput.files[0]);
+            formData.append("imagen", imagenInput.files[0]);
         }
 
         $.ajax({
-            url: "/actualizar-publicidad/" + $("#btn-editar-publicidad").val(),
+            url: "/actualizar-aviso/" + $("#btn-editar-aviso").val(),
             method: "POST",
             data: formData,
             processData: false,
@@ -388,26 +384,26 @@ $(document).ready(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                tabla_publicidades.ajax.reload();
+                tabla_avisos.ajax.reload();
 
                 if (response.success) {
                     mostrarToast(response.message, "success");
-                    $("#editarPublicidad").modal("hide");
+                    $("#editarAviso").modal("hide");
                 } else {
                     mostrarToast(response.error, "error");
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
-                    "Error al editar la aplicación. Detalles: " + errorThrown,
+                    "Error al editar el aviso. Detalles: " + errorThrown,
                     "error"
                 );
             },
         });
     });
 
-    $("#editarPublicidad").on("hidden.bs.modal", function () {
-        $("#editarPublicidadForm")
+    $("#editarAviso").on("hidden.bs.modal", function () {
+        $("#editarAvisoForm")
             .removeClass("was-validated")
             .find(":input")
             .removeClass("is-invalid")
@@ -415,31 +411,31 @@ $(document).ready(function () {
             .reset();
     });
 
-    /* Eliminar publicidad */
-    $("#tabla-publicidades").on("click", ".eliminar-publicidad", function () {
-        const publicidadId = $(this).data("id");
-        const publicidadNombre = $(this)
+    /* Eliminar aviso */
+    $("#tabla-avisos").on("click", ".eliminar-aviso", function () {
+        const avisoId = $(this).data("id");
+        const avisoNombre = $(this)
             .closest("tr")
             .find("td:nth-child(2)")
             .text();
 
-        $("#nombre-publicidad").text(publicidadNombre);
-        $("#btn-eliminar-publicidad").data("id", publicidadId);
-        $("#eliminarPublicidad").modal("show");
+        $("#nombre-aviso").text(avisoNombre);
+        $("#btn-eliminar-aviso").data("id", avisoId);
+        $("#eliminarAviso").modal("show");
     });
 
-    $("#btn-eliminar-publicidad").on("click", function () {
-        const publicidadId = $(this).data("id");
+    $("#btn-eliminar-aviso").on("click", function () {
+        const avisoId = $(this).data("id");
         $.ajax({
-            url: "/eliminar-publicidad/" + publicidadId,
+            url: "/eliminar-aviso/" + avisoId,
             method: "DELETE",
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                tabla_publicidades.ajax.reload();
+                tabla_avisos.ajax.reload();
 
-                $("#eliminarPublicidad").modal("hide");
+                $("#eliminarAviso").modal("hide");
 
                 if (response.success) {
                     mostrarToast(response.message, "success");
@@ -449,7 +445,7 @@ $(document).ready(function () {
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
-                    "Error al eliminar la publicidad. Por favor, intente de nuevo.",
+                    "Error al eliminar el aviso. Por favor, intente de nuevo.",
                     "error"
                 );
             },
@@ -457,12 +453,12 @@ $(document).ready(function () {
     });
 });
 
-/* Imprimir publicidad */
-function printpublicidades() {
+/* Imprimir aviso */
+function printAvisos() {
     const printWindow = window.open("", "_blank");
-    printWindow.document.title = "publicidades - Laboratorios Cofasa";
+    printWindow.document.title = "Avisos- Laboratorios Cofasa";
     printWindow.document.write(
-        "<html><head><title>publicidades - Laboratorios Cofasa</title>"
+        "<html><head><title>Avisos- Laboratorios Cofasa</title>"
     );
     printWindow.document.write(
         "<style>" +
@@ -476,16 +472,16 @@ function printpublicidades() {
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(
-        '<h4 style="text-align: center;">publicidades - Laboratorios Cofasa</h4>'
+        '<h4 style="text-align: center;">Avisos- Laboratorios Cofasa</h4>'
     );
     printWindow.document.write("<table>");
 
-    const headers = $("#tabla-publicidades thead tr").clone();
+    const headers = $("#tabla-avisos thead tr").clone();
     headers.find("th:last").remove();
     printWindow.document.write("<thead>" + headers.html() + "</thead>");
 
     const tbody = $("<tbody></tbody>");
-    $("#tabla-publicidades tbody tr").each(function () {
+    $("#tabla-avisos tbody tr").each(function () {
         const row = $(this).clone();
         row.find("td:last").remove();
         tbody.append(row);
