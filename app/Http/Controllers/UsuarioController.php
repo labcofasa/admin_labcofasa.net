@@ -359,6 +359,10 @@ class UsuarioController extends Controller
         try {
             $usuario = User::findOrFail($id);
 
+            if ($usuario->id === 1) {
+                return response()->json(['success' => false, 'error' => 'No se puede cambiar el estado del administrador.']);
+            }
+
             if ($usuario->id === auth()->user()->id) {
                 return response()->json(['success' => false, 'error' => 'No tienes autorización para cambiar tu propio estado.']);
             }
