@@ -19,6 +19,7 @@
     border: none;
     border-radius: var(--border-radius);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    transition: var(--tran-03);
 }
 
 .offcanvas-body .dropdown-item {
@@ -38,7 +39,6 @@
     margin: 5px 0;
     border-radius: var(--border-radius);
     color: var(--text-color);
-    transition: var(--tran-03);
 }
 
 .dropdown-item.active {
@@ -78,7 +78,7 @@
 }
 
 .perfil-usuario .dropdown-divider {
-    border-top: 1px solid var(--table-border);
+    border-top: 1px solid var(--dropdown-divider);
     transition: var(--tran-03);
 }
 
