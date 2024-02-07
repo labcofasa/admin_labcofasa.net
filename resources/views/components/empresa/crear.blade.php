@@ -161,7 +161,7 @@
                                             <label for="imagen-empresa" class="text-label">Logo de la
                                                 empresa</label>
                                             <label for="imagen-empresa" class="file-upload-image">
-                                                <span class="text-label-image">Hacer clic para seleccionar la imagen</span>
+                                                <span class="text-label-image">Clic para seleccionar la imagen</span>
                                                 <p class="image-empresa-name"></p>
                                             </label>
                                             <input type="file" name="imagen"
@@ -331,7 +331,8 @@
                                             <label for="imagen-empresa-leyenda" class="text-label">Leyenda de la
                                                 factura electrónica</label>
                                             <label for="imagen-empresa-leyenda" class="file-upload-image">
-                                                <span class="text-label-image-leyenda">Hacer clic para seleccionar la imagen</span>
+                                                <span class="text-label-image-leyenda">Clic para seleccionar la
+                                                    imagen</span>
                                                 <p class="image-empresa-name-leyenda"></p>
                                             </label>
                                             <input type="file" name="imagen_leyenda"
@@ -377,7 +378,7 @@
                     <button type="button" class="btn btn-actions btn-secondary" id="btnCancelar"
                         data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-actions btn-lg btn-success"
-                        id="btnRegistrarEmpresa">Guardar</button>
+                        id="btnRegistrarEmpresa">Registrar empresa</button>
                 </div>
             </form>
         </div>
