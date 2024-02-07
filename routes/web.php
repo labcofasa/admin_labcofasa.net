@@ -75,8 +75,8 @@ Route::middleware(['auth'])->group(function () {
     /* Papelera */
     Route::middleware(['can:admin_papelera_ver'])->group(function () {
         Route::get('/papelera', [PapeleraController::class, 'index'])->name('pag.papelera');
-        Route::get('/obtener-eliminados', [PapeleraController::class, 'obtener_eliminados']);
-        Route::get('/restore/{table}/{id}', [PapeleraController::class, 'restaurar_registro']);
+        Route::get('/obtener-eliminados', [PapeleraController::class, 'obtenerEliminados']);
+        Route::get('/restore/{table}/{id}', [PapeleraController::class, 'restoreRecord']);
     });
 
     /* Entidades de empresas */

@@ -1,4 +1,4 @@
-@extends('layouts.invitado')
+@extends('layouts.visor')
 
 @section('titulo', 'Logo de la empresa')
 

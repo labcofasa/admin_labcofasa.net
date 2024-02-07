@@ -27,11 +27,11 @@ return new class extends Migration
             $table->timestamp('restored_at')->nullable();
             $table->unsignedBigInteger('user_restored_id')->nullable();
 
-            $table->foreign('user_id')->references('id')->on('usuarios');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
-            $table->foreign('user_modified_id')->references('id')->on('usuarios');
-            $table->foreign('user_deleted_id')->references('id')->on('usuarios');
-            $table->foreign('user_restored_id')->references('id')->on('usuarios');
+            $table->foreign('user_modified_id')->references('id')->on('users');
+            $table->foreign('user_deleted_id')->references('id')->on('users');
+            $table->foreign('user_restored_id')->references('id')->on('users');
         });
     }
 

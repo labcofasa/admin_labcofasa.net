@@ -10,12 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('name');
             $table->boolean('estado')->default(true);
             $table->string('email');
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('nombre_tabla')->nullable();
             $table->timestamp('created_at')->nullable();
@@ -28,7 +27,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_restored_id')->nullable();
             $table->rememberToken();
 
-            $table->index('nombre');
+            $table->index('name');
             $table->index('email');
         });
     }
@@ -38,6 +37,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('users');
     }
 };

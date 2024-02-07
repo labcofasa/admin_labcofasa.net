@@ -30,18 +30,18 @@ class ClasificacionController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $query = Clasificacion::select('clasificaciones.*', 'usuarios.nombre as user_name', 'modified_users.nombre as user_modified_name')
-            ->leftJoin('usuarios', 'clasificaciones.user_id', '=', 'usuarios.id')
-            ->leftJoin('usuarios as modified_users', 'clasificaciones.user_modified_id', '=', 'modified_users.id');
+        $query = Clasificacion::select('clasificaciones.*', 'users.name as user_name', 'modified_users.name as user_modified_name')
+            ->leftJoin('users', 'clasificaciones.user_id', '=', 'users.id')
+            ->leftJoin('users as modified_users', 'clasificaciones.user_modified_id', '=', 'modified_users.id');
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('clasificaciones.nombre', 'like', "%$search%")
                     ->orWhere('clasificaciones.codigo', 'like', "%$search%")
                     ->orWhere('clasificaciones.created_at', 'like', "%$search%")
-                    ->orWhere('usuarios.nombre', 'like', "%$search%")
+                    ->orWhere('users.name', 'like', "%$search%")
                     ->orWhere('clasificaciones.updated_at', 'like', "%$search%")
-                    ->orWhere('modified_users.nombre', 'like', "%$search%");
+                    ->orWhere('modified_users.name', 'like', "%$search%");
             });
         }
 

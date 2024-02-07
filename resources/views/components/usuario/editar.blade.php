@@ -54,13 +54,13 @@
                                 <div class="row pt-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="nombre-usuario-editar" class="text-label">Nombre de usuario
+                                            <label for="nombre-usuario-editar" class="text-label">Código de usuario
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <input autocomplete="new-username" type="text" name="nombre"
                                                 class="form-control" id="nombre-usuario-editar" required>
                                             <div class="invalid-feedback">
-                                                Ingrese un nombre válido
+                                                Ingrese un código válido
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">

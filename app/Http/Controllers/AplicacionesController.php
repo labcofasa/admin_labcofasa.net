@@ -37,9 +37,9 @@ class AplicacionesController extends Controller
         $query = Aplicacion::with(['roles' => function ($q) use ($search) {
             $q->where('name', 'like', '%' . $search . '%');
         }])
-            ->select('aplicaciones.*', 'usuarios.nombre as user_name', 'modified_users.nombre as user_modified_name', 'empresas.nombre as nombre_empresa')
-            ->leftJoin('usuarios', 'aplicaciones.user_id', '=', 'usuarios.id')
-            ->leftJoin('usuarios as modified_users', 'aplicaciones.user_modified_id', '=', 'modified_users.id')
+            ->select('aplicaciones.*', 'users.name as user_name', 'modified_users.name as user_modified_name', 'empresas.nombre as nombre_empresa')
+            ->leftJoin('users', 'aplicaciones.user_id', '=', 'users.id')
+            ->leftJoin('users as modified_users', 'aplicaciones.user_modified_id', '=', 'modified_users.id')
             ->leftJoin('aplicacion_role', 'aplicaciones.id', '=', 'aplicacion_role.aplicacion_id')
             ->leftJoin('roles', 'aplicacion_role.role_id', '=', 'roles.id')
             ->leftJoin('empresas', 'empresas.id', '=', 'aplicaciones.empresa_id')
@@ -51,9 +51,9 @@ class AplicacionesController extends Controller
                 $q->where('aplicaciones.nombre_aplicacion', 'like', '%' . $search . '%')
                     ->orWhere('aplicaciones.enlace_aplicacion', 'like', '%' . $search . '%')
                     ->orWhere('aplicaciones.created_at', 'like', '%' . $search . '%')
-                    ->orWhere('usuarios.nombre', 'like', "%$search%")
+                    ->orWhere('users.name', 'like', "%$search%")
                     ->orWhere('aplicaciones.updated_at', 'like', '%' . $search . '%')
-                    ->orWhere('modified_users.nombre', 'like', "%$search%")
+                    ->orWhere('modified_users.name', 'like', "%$search%")
                     ->orWhere('empresas.nombre', 'like', '%' . $search . '%')
                     ->orWhere('roles.name', 'like', "%$search%");
             });

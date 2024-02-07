@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
         $adminPassword = env('ADMIN_PASSWORD', 'cofa$a123');
 
         $user = User::create([
-            'nombre' => $adminUserName,
+            'name' => $adminUserName,
             'email' => $adminEmail,
             'password' => bcrypt($adminPassword),
         ]);

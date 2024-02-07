@@ -39,9 +39,9 @@ class EmpresaController extends Controller
         $orderDirection = $request->input('order.0.dir');
 
         $query = Empresa::with('redesSociales')
-            ->select('empresas.*', 'municipios.nombre as municipio_nombre', 'departamentos.nombre as departamento_nombre', 'paises.nombre as pais_nombre', 'clasificaciones.nombre as clasificacion_nombre', 'entidades.nombre as entidad_nombre', 'giros.nombre as giro_nombre', 'usuarios.nombre as user_name', 'modified_users.nombre as user_modified_name')
-            ->leftJoin('usuarios', 'empresas.user_id', '=', 'usuarios.id')
-            ->leftJoin('usuarios as modified_users', 'empresas.user_modified_id', '=', 'modified_users.id')
+            ->select('empresas.*', 'municipios.nombre as municipio_nombre', 'departamentos.nombre as departamento_nombre', 'paises.nombre as pais_nombre', 'clasificaciones.nombre as clasificacion_nombre', 'entidades.nombre as entidad_nombre', 'giros.nombre as giro_nombre', 'users.name as user_name', 'modified_users.name as user_modified_name')
+            ->leftJoin('users', 'empresas.user_id', '=', 'users.id')
+            ->leftJoin('users as modified_users', 'empresas.user_modified_id', '=', 'modified_users.id')
             ->leftJoin('giros', 'empresas.giro_id', '=', 'giros.id')
             ->leftJoin('entidades', 'empresas.entidad_id', '=', 'entidades.id')
             ->leftJoin('clasificaciones', 'empresas.clasificacion_id', '=', 'clasificaciones.id')
@@ -71,9 +71,9 @@ class EmpresaController extends Controller
                     ->orWhere('departamentos.nombre', 'like', "%$search%")
                     ->orWhere('municipios.nombre', 'like', "%$search%")
                     ->orWhere('empresas.created_at', 'like', "%$search%")
-                    ->orWhere('usuarios.nombre', 'like', "%$search%")
+                    ->orWhere('users.name', 'like', "%$search%")
                     ->orWhere('empresas.updated_at', 'like', "%$search%")
-                    ->orWhere('modified_users.nombre', 'like', "%$search%");
+                    ->orWhere('modified_users.name', 'like', "%$search%");
             });
         }
 

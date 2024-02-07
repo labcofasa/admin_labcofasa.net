@@ -38,7 +38,7 @@ class UsuarioController extends Controller
 
         $query = User::query()
             ->select(
-                'usuarios.*',
+                'users.*',
                 'roles.name as rol',
                 'perfiles.nombres',
                 'perfiles.apellidos',
@@ -53,13 +53,13 @@ class UsuarioController extends Controller
                 'departamentos.nombre as nombre_departamento',
                 'municipios.nombre as nombre_municipio',
                 'empresas.nombre as nombre_empresa',
-                'created_user.nombre as user_name',
-                'modified_user.nombre as user_modified_name'
+                'created_user.name as user_name',
+                'modified_user.name as user_modified_name'
             )
-            ->leftJoin('roles', 'usuarios.id', '=', 'roles.id')
-            ->leftJoin('perfiles', 'usuarios.id', '=', 'perfiles.user_id')
-            ->leftJoin('usuarios as created_user', 'usuarios.user_id', '=', 'created_user.id')
-            ->leftJoin('usuarios as modified_user', 'usuarios.user_modified_id', '=', 'modified_user.id')
+            ->leftJoin('roles', 'users.id', '=', 'roles.id')
+            ->leftJoin('perfiles', 'users.id', '=', 'perfiles.user_id')
+            ->leftJoin('users as created_user', 'users.user_id', '=', 'created_user.id')
+            ->leftJoin('users as modified_user', 'users.user_modified_id', '=', 'modified_user.id')
             ->leftJoin('empresas', 'empresas.id', '=', 'perfiles.empresa_id')
             ->leftJoin('paises', 'paises.id', '=', 'perfiles.pais_id')
             ->leftJoin('departamentos', 'departamentos.id', '=', 'perfiles.departamento_id')
@@ -67,8 +67,8 @@ class UsuarioController extends Controller
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
-                $q->where('usuarios.nombre', 'like', '%' . $search . '%')
-                    ->orWhere('usuarios.email', 'like', '%' . $search . '%')
+                $q->where('users.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.email', 'like', '%' . $search . '%')
                     ->orWhere('roles.name', 'like', '%' . $search . '%')
                     ->orWhere('perfiles.nombres', 'like', '%' . $search . '%')
                     ->orWhere('perfiles.apellidos', 'like', '%' . $search . '%')
@@ -78,8 +78,8 @@ class UsuarioController extends Controller
                     ->orWhere('departamentos.nombre', 'like', '%' . $search . '%')
                     ->orWhere('municipios.nombre', 'like', '%' . $search . '%')
                     ->orWhere('empresas.nombre', 'like', '%' . $search . '%')
-                    ->orWhere('usuarios.created_at', 'like', "%$search%")
-                    ->orWhere('usuarios.updated_at', 'like', "%$search%");
+                    ->orWhere('users.created_at', 'like', "%$search%")
+                    ->orWhere('users.updated_at', 'like', "%$search%");
             });
         }
 
@@ -107,7 +107,7 @@ class UsuarioController extends Controller
         $orderBy = $columnNames[$orderColumnIndex];
 
         if ($orderBy === 'rol') {
-            $query->leftJoin('model_has_roles', 'usuarios.id', '=', 'model_has_roles.model_id')
+            $query->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
                 ->leftJoin('roles as roles_nombre', 'model_has_roles.role_id', '=', 'roles_nombre.id')
                 ->orderBy('roles_nombre.name', $orderDirection);
         } else {
@@ -122,11 +122,11 @@ class UsuarioController extends Controller
             $query->skip($start)->take($length);
         }
 
-        $usuarios = $query->get();
+        $users = $query->get();
 
         $data = [];
         $contador = $start + 1;
-        foreach ($usuarios as $key => $usuario) {
+        foreach ($users as $key => $usuario) {
             $roles = $usuario->roles->map(function ($role) {
                 return [
                     'id' => $role->id,
@@ -137,7 +137,7 @@ class UsuarioController extends Controller
             $data[] = [
                 'id' => $usuario->id,
                 'contador' => $contador++,
-                'nombre' => $usuario->nombre,
+                'nombre' => $usuario->name,
                 'estado' => $usuario->estado,
                 'nombres' => $usuario->perfil->nombres ?? null,
                 'apellidos' => $usuario->perfil->apellidos ?? null,
@@ -175,7 +175,7 @@ class UsuarioController extends Controller
     {
         $this->validate($request, [
             'nombre' => 'required|string',
-            'email' => 'required|email|unique:usuarios,email',
+            'email' => 'required|email|unique:users,email',
             'nombres' => 'required|string',
             'apellidos' => 'nullable|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
@@ -232,7 +232,7 @@ class UsuarioController extends Controller
 
             $perfilId = $perfil->id;
 
-            $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfilId}");
+            $rutaCarpetaImagen = public_path("images/users/imagen/{$perfilId}");
 
             if (!file_exists($rutaCarpetaImagen)) {
                 mkdir($rutaCarpetaImagen, 0777, true);
@@ -265,7 +265,7 @@ class UsuarioController extends Controller
     {
         $this->validate($request, [
             'nombre' => 'required|string',
-            'email' => 'required|email|unique:usuarios,email,' . $id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'nombres' => 'required|string',
             'apellidos' => 'nullable|string',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
@@ -323,11 +323,11 @@ class UsuarioController extends Controller
 
             $perfilId = $perfil->id;
 
-            $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfilId}");
+            $rutaCarpetaImagen = public_path("images/users/imagen/{$perfilId}");
 
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
-                $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfil->id}");
+                $rutaCarpetaImagen = public_path("images/users/imagen/{$perfil->id}");
 
                 if ($perfil->imagen && file_exists($rutaCarpetaImagen . '/' . $perfil->imagen)) {
                     unlink($rutaCarpetaImagen . '/' . $perfil->imagen);
@@ -395,7 +395,7 @@ class UsuarioController extends Controller
                 auth()->logout();
             }
 
-            $usuario->nombre_tabla = 'Usuarios';
+            $usuario->nombre_tabla = 'users';
             $usuario->user_deleted_id = auth()->user()->id;
             $usuario->save();
 

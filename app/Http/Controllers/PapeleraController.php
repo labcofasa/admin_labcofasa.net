@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aplicacion;
+use App\Models\Aviso;
 use App\Models\Clasificacion;
 use App\Models\Empresa;
 use App\Models\RedSocial;
@@ -45,9 +46,9 @@ class PapeleraController extends Controller
             'Empresas' => ['class' => Empresa::class, 'column' => 'nombre'],
             'Redes sociales' => ['class' => RedSocial::class, 'column' => 'nombre'],
             'Clasificaciones' => ['class' => Clasificacion::class, 'column' => 'nombre'],
-            'Usuarios' => ['class' => User::class, 'column' => 'nombre'],
+            'Usuarios' => ['class' => User::class, 'column' => 'name'],
             'Aplicaciones' => ['class' => Aplicacion::class, 'column' => 'nombre_aplicacion'],
-            'Publicidades' => ['class' => Publicidad::class, 'column' => 'nombre_publicidad'],
+            'Avisos' => ['class' => Aviso::class, 'column' => 'nombre'],
         ];
 
         $data = [];
@@ -64,9 +65,9 @@ class PapeleraController extends Controller
                     $model->getTable() . '.' . $columnName,
                     $model->getTable() . '.nombre_tabla',
                     $model->getTable() . '.deleted_at',
-                    'user_deleted.nombre as user_deleted_name',
+                    'user_deleted.name as user_deleted_name',
                 ])
-                ->leftJoin('usuarios as user_deleted', $model->getTable() . '.user_deleted_id', '=', 'user_deleted.id');
+                ->leftJoin('users as user_deleted', $model->getTable() . '.user_deleted_id', '=', 'user_deleted.id');
 
             if (!empty($search)) {
                 $query->where(function ($q) use ($search, $model, $columnName) {
@@ -74,7 +75,7 @@ class PapeleraController extends Controller
                         $q->orWhere($model->getTable() . '.' . $column, 'like', "%$search%");
                     }
                     $q->orWhere($model->getTable() . '.' . $columnName, 'like', "%$search%");
-                    $q->orWhere('user_deleted.nombre', 'like', "%$search%");
+                    $q->orWhere('user_deleted.name', 'like', "%$search%");
                 });
             }
 
@@ -107,6 +108,8 @@ class PapeleraController extends Controller
         ]);
     }
 
+
+
     public function restoreRecord($table, $id)
     {
         $modelClass = $this->resolveModel($table);
@@ -127,7 +130,7 @@ class PapeleraController extends Controller
         } else {
             return response()->json(['success' => false, 'error' => 'Tabla no válida']);
         }
-    }
+    }   
 
     private function resolveModel($table)
     {
@@ -143,7 +146,7 @@ class PapeleraController extends Controller
             'Clasificaciones' => Clasificacion::class,
             'Usuarios' => User::class,
             'Aplicaciones' => Aplicacion::class,
-            'Publicidades' => Publicidad::class,
+            'Avisos' => Aviso::class,
         ];
 
         return $modelMap[$table] ?? null;

@@ -48,7 +48,7 @@
 
 .dropdown-item.active,
 .dropdown-item:active {
-    background-color: var(--sidebar-bg-hover);
+    background-color: var(--dropdown-item-hover);
     color: var(--text-color);
     transition: var(--tran-03);
 }
@@ -58,12 +58,12 @@
 }
 
 .dropdown-item:hover {
-    background-color: var(--sidebar-bg-hover);
+    background-color: var(--dropdown-item-hover);
     color: var(--text-color);
 }
 
 .dropdown-item:focus {
-    background-color: var(--sidebar-bg-hover);
+    background-color: var(--dropdown-item-hover);
     color: var(--text-color);
 }
 

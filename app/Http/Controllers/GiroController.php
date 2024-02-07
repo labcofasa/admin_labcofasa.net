@@ -38,18 +38,18 @@ class GiroController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $query = Giro::select('giros.*', 'usuarios.nombre as user_name', 'modified_users.nombre as user_modified_name')
-            ->leftJoin('usuarios', 'giros.user_id', '=', 'usuarios.id')
-            ->leftJoin('usuarios as modified_users', 'giros.user_modified_id', '=', 'modified_users.id');
+        $query = Giro::select('giros.*', 'users.name as user_name', 'modified_users.name as user_modified_name')
+            ->leftJoin('users', 'giros.user_id', '=', 'users.id')
+            ->leftJoin('users as modified_users', 'giros.user_modified_id', '=', 'modified_users.id');
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('giros.nombre', 'like', "%$search%")
                     ->orWhere('giros.codigo_mh', 'like', "%$search%")
                     ->orWhere('giros.created_at', 'like', "%$search%")
-                    ->orWhere('usuarios.nombre', 'like', "%$search%")
+                    ->orWhere('users.name', 'like', "%$search%")
                     ->orWhere('giros.updated_at', 'like', "%$search%")
-                    ->orWhere('modified_users.nombre', 'like', "%$search%");
+                    ->orWhere('modified_users.name', 'like', "%$search%");
             });
         }
 
