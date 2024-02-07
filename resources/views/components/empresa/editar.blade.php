@@ -329,7 +329,7 @@
                                                 la
                                                 factura electrónica</label>
                                             <label for="imagen-empresa-leyenda-editar" class="file-upload-image">
-                                                <span class="text-label-image-editar">Clic para seleccionar la nueva
+                                                <span class="text-label-image-leyenda-editar">Clic para seleccionar la nueva
                                                     imagen</span>
                                                 <p class="image-empresa-name-leyenda-editar"></p>
                                             </label>
