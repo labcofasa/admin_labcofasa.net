@@ -23,7 +23,7 @@ class Empresa extends Model
         'web',
         'fundacion',
         'registro_nit',
-        'registro_iva',
+        'registro_nrc',
         'nombre_dnm',
         'registro_dnm',
         'nombre_tabla',

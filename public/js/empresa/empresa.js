@@ -221,7 +221,7 @@ $(document).ready(function () {
                 { data: "web", title: "Sitio web" },
                 { data: "direccion", title: "Dirección" },
                 { data: "registro_nit", title: "Registro NIT" },
-                { data: "registro_iva", title: "Registro IVA" },
+                { data: "registro_nrc", title: "Registro NRC" },
                 { data: "nombre_dnm", title: "Nombre DNM" },
                 { data: "registro_dnm", title: "Registro DNM" },
                 {
@@ -576,7 +576,7 @@ $(document).ready(function () {
         emailEmpresa = row.email;
         webEmpresa = row.web;
         registroNitEmpresa = row.registro_nit;
-        registroIVaEmpresa = row.registro_iva;
+        registroNrcEmpresa = row.registro_nrc;
         nombreDnmEmpresa = row.nombre_dnm;
         registroDnmEmpresa = row.registro_dnm;
         fundacionEmpresa = row.fundacion;
@@ -614,8 +614,8 @@ $(document).ready(function () {
         $("#empresaEditarForm #web-empresa-editar").val(webEmpresa);
         $("#empresaEditarForm #fundacion-empresa-editar").val(fundacionEmpresa);
         $("#empresaEditarForm #nit-empresa-editar").val(registroNitEmpresa);
-        $("#empresaEditarForm #registro-iva-empresa-editar").val(
-            registroIVaEmpresa
+        $("#empresaEditarForm #registro-nrc-empresa-editar").val(
+            registroNrcEmpresa
         );
         $("#empresaEditarForm #mision-textarea-editar").val(misionEmpresa);
         $("#empresaEditarForm #vision-textarea-editar").val(visionEmpresa);

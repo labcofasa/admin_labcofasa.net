@@ -253,8 +253,8 @@
                                         </div>
                                         <div class="form-group mb-3">
                                             <label data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
-                                                data-bs-placement="top" data-bs-title="Impuesto al Valor Agregado"
-                                                for="registro-iva-empresa-editar" class="text-label">Registro IVA
+                                                data-bs-placement="top" data-bs-title="Número de Registro de Contribuyente"
+                                                for="registro-nrc-empresa-editar" class="text-label">Registro NRC
                                                 <svg class="icon-btn-info" xmlns="http://www.w3.org/2000/svg"
                                                     height="24px" viewBox="0 0 24 24" width="24px"
                                                     fill="#000000">
@@ -263,8 +263,8 @@
                                                         d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
                                                 </svg>
                                             </label>
-                                            <input autocomplete="off" type="text" name="registro_iva"
-                                                class="form-control" id="registro-iva-empresa-editar">
+                                            <input autocomplete="off" type="text" name="registro_nrc"
+                                                class="form-control" id="registro-nrc-empresa-editar">
                                         </div>
                                     </div>
                                     <div class="col-md-4">

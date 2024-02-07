@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('web')->nullable();
             $table->date('fundacion')->nullable();
             $table->string('registro_nit')->nullable();
-            $table->string('registro_iva')->nullable();
+            $table->string('registro_nrc')->nullable();
             $table->string('nombre_dnm')->nullable();
             $table->string('registro_dnm')->nullable();
             $table->string('nombre_tabla')->nullable();

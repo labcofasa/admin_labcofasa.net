@@ -61,7 +61,7 @@ class EmpresaController extends Controller
                     ->orWhere('empresas.calidad', 'like', "%$search%")
                     ->orWhere('empresas.fundacion', 'like', "%$search%")
                     ->orWhere('empresas.registro_nit', 'like', "%$search%")
-                    ->orWhere('empresas.registro_iva', 'like', "%$search%")
+                    ->orWhere('empresas.registro_nrc', 'like', "%$search%")
                     ->orWhere('empresas.nombre_dnm', 'like', "%$search%")
                     ->orWhere('empresas.registro_dnm', 'like', "%$search%")
                     ->orWhere('giros.nombre', 'like', "%$search%")
@@ -89,7 +89,7 @@ class EmpresaController extends Controller
             'calidad',
             'fundacion',
             'registro_nit',
-            'registro_iva',
+            'registro_nrc',
             'nombre_dnm',
             'registro_dnm',
             'imagen',
@@ -150,7 +150,7 @@ class EmpresaController extends Controller
                 'calidad' => $empresa->calidad,
                 'fundacion' => $empresa->fundacion,
                 'registro_nit' => formatNIT($empresa->registro_nit),
-                'registro_iva' => $empresa->registro_iva,
+                'registro_nrc' => $empresa->registro_nrc,
                 'nombre_dnm' => $empresa->nombre_dnm,
                 'registro_dnm' => $empresa->registro_dnm,
                 'imagen' => $empresa->imagen,
@@ -203,7 +203,7 @@ class EmpresaController extends Controller
             'vision' => 'nullable|string',
             'calidad' => 'nullable|string',
             'registro_nit' => 'nullable|string',
-            'registro_iva' => 'nullable|string',
+            'registro_nrc' => 'nullable|string',
             'nombre_dnm' => 'nullable|string',
             'registro_dnm' => 'nullable|string',
             'giro_id' => 'required|exists:giros,id',
@@ -230,7 +230,7 @@ class EmpresaController extends Controller
             $webEmpresa = $request->input('web');
             $fundacionEmpresa = $request->input('fundacion');
             $registroNitEmpresa = $request->input('registro_nit');
-            $registroIvaEmpresa = $request->input('registro_iva');
+            $registroNrcEmpresa = $request->input('registro_nrc');
             $nombreDnmEmpresa = $request->input('nombre_dnm');
             $registroDnmEmpresa = $request->input('registro_dnm');
             $misionEmpresa = $request->input('mision');
@@ -248,7 +248,7 @@ class EmpresaController extends Controller
             $empresa->calidad = $calidadEmpresa;
             $empresa->fundacion = $fundacionEmpresa;
             $empresa->registro_nit = $registroNitEmpresa;
-            $empresa->registro_iva = $registroIvaEmpresa;
+            $empresa->registro_nrc = $registroNrcEmpresa;
             $empresa->nombre_dnm = $nombreDnmEmpresa;
             $empresa->registro_dnm = $registroDnmEmpresa;
             $empresa->user_id = auth()->user()->id;
@@ -328,7 +328,7 @@ class EmpresaController extends Controller
                 'vision' => 'nullable|string',
                 'calidad' => 'nullable|string',
                 'registro_nit' => 'nullable|string',
-                'registro_iva' => 'nullable|string',
+                'registro_nrc' => 'nullable|string',
                 'nombre_dnm' => 'nullable|string',
                 'registro_dnm' => 'nullable|string',
                 'giro_id' => 'required|exists:giros,id',
@@ -353,7 +353,7 @@ class EmpresaController extends Controller
             $empresa->calidad = $request->input('calidad');
             $empresa->fundacion = $request->input('fundacion');
             $empresa->registro_nit = $request->input('registro_nit');
-            $empresa->registro_iva = $request->input('registro_iva');
+            $empresa->registro_nrc = $request->input('registro_nrc');
             $empresa->nombre_dnm = $request->input('nombre_dnm');
             $empresa->registro_dnm = $request->input('registro_dnm');
             $empresa->user_modified_id = auth()->user()->id;
