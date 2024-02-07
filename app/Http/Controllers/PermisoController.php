@@ -129,6 +129,11 @@ class PermisoController extends Controller
     {
         try {
             $role = Role::findOrFail($rolId);
+
+            if ($role->id === 1) {
+                return response()->json(['success' => false, 'error' => 'No se puede eliminar permisos del rol administrador.']);
+            }
+
             $permission = Permission::findOrFail($permisoId);
 
             $role->revokePermissionTo($permission);
@@ -153,6 +158,11 @@ class PermisoController extends Controller
 
             foreach ($permisos as $permiso) {
                 $role = Role::findOrFail($permiso['rolId']);
+
+                if ($role->id === 1) {
+                    return response()->json(['success' => false, 'error' => 'No se puede eliminar permisos del rol administrador.']);
+                }
+
                 $permission = Permission::findOrFail($permiso['permisoId']);
                 $role->revokePermissionTo($permission);
             }
