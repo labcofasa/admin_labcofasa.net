@@ -117,3 +117,7 @@
     fill: var(--icon-carta-info);
     transition: var(--tran-03);
 }
+
+.card-enlace {
+    text-decoration: none;
+}
