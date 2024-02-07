@@ -105,6 +105,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
     caret-color: var(--input-caret);
 }
 
+div.dataTables_scrollBody {
+    border-left: 0 !important;
+}
+
 /* Total de registros en la tabla */
 div.dataTables_wrapper div.dataTables_info {
     font-size: var(--font-size);

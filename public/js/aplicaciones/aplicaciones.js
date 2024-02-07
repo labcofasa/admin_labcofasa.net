@@ -19,7 +19,6 @@ $(document).ready(function () {
             responsive: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
-            /*             colReorder: true, */
             lengthMenu: [
                 [6, 25, 50, -1],
                 ["6 filas", "25 filas", "50 filas", "Todas las filas"],

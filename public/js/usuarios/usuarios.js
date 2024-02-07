@@ -22,8 +22,8 @@ $(document).ready(function () {
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [5, 50, 100 - 1],
-                ["5 filas", "50 filas", "100 filas", "Todas las filas"],
+                [5, 25, 50, -1],
+                ["5 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -136,7 +136,7 @@ $(document).ready(function () {
             },
             columns: [
                 { data: "contador", title: "#" },
-                { data: "nombre", title: "Usuario" },
+                { data: "name", title: "Usuario" },
                 {
                     data: "roles",
                     title: "Rol",
@@ -437,7 +437,7 @@ $(document).ready(function () {
     $("#tabla-usuarios").on("click", ".editar-usuario", function () {
         var usuarioId = $(this).data("id");
         var row = tabla_usuarios.row($(this).parents("tr")).data();
-        var nombre = row.nombre;
+        var name = row.name;
         var email = row.email;
         var nombres = row.nombres;
         var apellidos = row.apellidos;
@@ -454,7 +454,7 @@ $(document).ready(function () {
         var nombreMunicipio = row.nombre_municipio;
 
         $("#editarUsuarioForm #btn-editar-usuario").val(usuarioId);
-        $("#editarUsuarioForm #nombre-usuario-editar").val(nombre);
+        $("#editarUsuarioForm #nombre-usuario-editar").val(name);
         $("#editarUsuarioForm #email-usuario-editar").val(email);
         $("#editarUsuarioForm #nombre-input-editar").val(nombres);
         $("#editarUsuarioForm #apellido-input-editar").val(apellidos);

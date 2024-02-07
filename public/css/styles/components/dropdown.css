@@ -19,7 +19,6 @@
     border: none;
     border-radius: var(--border-radius);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    transition: var(--tran-03);
 }
 
 .offcanvas-body .dropdown-item {

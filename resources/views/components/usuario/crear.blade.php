@@ -56,7 +56,7 @@
                                             <label for="nombre-usuario" class="text-label">Código de usuario
                                                 <span class="obligatorio"> *</span>
                                             </label>
-                                            <input autocomplete="new-username" type="text" name="nombre"
+                                            <input autocomplete="new-username" type="text" name="name"
                                                 class="form-control" id="nombre-usuario" required>
                                             <div class="invalid-feedback">
                                                 Ingrese un código válido

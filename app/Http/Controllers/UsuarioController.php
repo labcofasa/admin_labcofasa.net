@@ -137,7 +137,7 @@ class UsuarioController extends Controller
             $data[] = [
                 'id' => $usuario->id,
                 'contador' => $contador++,
-                'nombre' => $usuario->name,
+                'name' => $usuario->name,
                 'estado' => $usuario->estado,
                 'nombres' => $usuario->perfil->nombres ?? null,
                 'apellidos' => $usuario->perfil->apellidos ?? null,
@@ -174,7 +174,7 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nombre' => 'required|string',
+            'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'nombres' => 'required|string',
             'apellidos' => 'nullable|string',
@@ -194,7 +194,7 @@ class UsuarioController extends Controller
 
         try {
             $usuario = new User();
-            $usuario->nombre = $request->input('nombre');
+            $usuario->name = $request->input('name');
             $usuario->email = $request->input('email');
             $usuario->user_id = auth()->user()->id;
 
@@ -264,7 +264,7 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nombre' => 'required|string',
+            'name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $id,
             'nombres' => 'required|string',
             'apellidos' => 'nullable|string',
@@ -285,7 +285,7 @@ class UsuarioController extends Controller
         try {
             $usuario = User::findOrFail($id);
 
-            $usuario->nombre = $request->input('nombre');
+            $usuario->name = $request->input('name');
             $usuario->email = $request->input('email');
             $usuario->user_modified_id = auth()->user()->id;
 

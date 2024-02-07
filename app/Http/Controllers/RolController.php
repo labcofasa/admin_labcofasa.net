@@ -19,7 +19,7 @@ class RolController extends Controller
         return view('roles', compact('usuario'));
     }
 
-    public function obtenerRolesusers()
+    public function obtenerRolesUsuarios()
     {
         $rolesusers = Role::pluck('name', 'id');
         return response()->json($rolesusers);
