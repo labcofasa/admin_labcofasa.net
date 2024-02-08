@@ -378,7 +378,7 @@
                     <button type="button" class="btn btn-actions btn-secondary" id="btnCancelar"
                         data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-actions btn-lg btn-success"
-                        id="btnRegistrarEmpresa">Registrar empresa</button>
+                        id="btnRegistrarEmpresa">Guardar</button>
                 </div>
             </form>
         </div>
