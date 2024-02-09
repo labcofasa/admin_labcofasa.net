@@ -86,6 +86,14 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
     color: var(--text-color);
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
+.wrap {
+    white-space: normal;
+}
+
 /* Icono de búsqueda */
 .search-icon {
     position: absolute;

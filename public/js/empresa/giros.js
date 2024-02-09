@@ -212,13 +212,20 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
+                    targets: [0, 2, 3, 4, 5, 6, 7],
+                    className: "nowrap",
+                },
+                {
+                    targets: [1],
+                    className: "wrap",
+                },
+                {
                     targets: [1, 2, 3, 4, 5, 6],
                     searchable: true,
                     orderable: true,
                 },
                 { responsivePriority: 1, targets: 1 },
-                { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 7 },
+                { responsivePriority: 2, targets: 7 },
             ],
             columns: [
                 { data: "contador" },

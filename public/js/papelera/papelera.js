@@ -177,11 +177,19 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
+                    targets: [0, 2, 3, 4, 5],
+                    className: "nowrap",
+                },
+                {
+                    targets: [1],
+                    className: "wrap",
+                },
+                {
                     targets: [1, 2, 3, 4],
                     searchable: true,
                     orderable: true,
                 },
-                { responsivePriority: 1, targets: 1 },
+                { responsivePriority: 1, targets: 2 },
                 { responsivePriority: 2, targets: 5 },
             ],
             columns: [
@@ -204,19 +212,18 @@ $(document).ready(function () {
                         return `
                                 <div class="btn-toolbar">
                                     <div class="btn-group" role="group">
-                                    ${
-                                        userPermissions.some(
-                                            (permission) =>
-                                                permission.name ===
-                                                "admin_papelera_recuperar"
-                                        )
-                                            ? `
+                                    ${userPermissions.some(
+                            (permission) =>
+                                permission.name ===
+                                "admin_papelera_recuperar"
+                        )
+                                ? `
                                         <button class="btn btn-success restaurar-registro" data-table="${row.nombre_tabla}" data-id="${row.id}">
                                             <svg class="icon-success" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M13 3c-4.97 0-9 4.03-9 9H1l4 3.99L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8z"/></svg>
                                         </button>
                                         `
-                                            : ""
-                                    }
+                                : ""
+                            }
                                     </div>
                                 </div>
                             `;
@@ -347,13 +354,13 @@ $(document).ready(function () {
         );
         printWindow.document.write(
             "<style>" +
-                "body { font-family: Arial, sans-serif; }" +
-                "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-                "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-                "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-                "tr:nth-child(even) { background-color: #f9f9f9; }" +
-                "tr:hover { background-color: #f5f5f5; }" +
-                "</style>"
+            "body { font-family: Arial, sans-serif; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+            "tr:nth-child(even) { background-color: #f9f9f9; }" +
+            "tr:hover { background-color: #f5f5f5; }" +
+            "</style>"
         );
         printWindow.document.write("</head><body>");
         printWindow.document.write(

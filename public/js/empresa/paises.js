@@ -116,6 +116,14 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                    className: "nowrap",
+                },
+                {
+                    targets: [],
+                    className: "wrap",
+                },
+                {
                     targets: [1, 2, 3, 4, 5, 6, 7],
                     searchable: true,
                     orderable: true,
@@ -537,6 +545,14 @@ $(document).ready(function () {
                     targets: [0, 7],
                     searchable: false,
                     orderable: false,
+                },
+                {
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7],
+                    className: "nowrap",
+                },
+                {
+                    targets: [],
+                    className: "wrap",
                 },
                 {
                     targets: [1, 2, 3, 4, 5, 6],
@@ -983,6 +999,14 @@ $(document).ready(function () {
                     targets: [0, 7],
                     searchable: false,
                     orderable: false,
+                },
+                {
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7],
+                    className: "nowrap",
+                },
+                {
+                    targets: [],
+                    className: "wrap",
                 },
                 {
                     targets: [1, 2, 3, 4, 5, 6],

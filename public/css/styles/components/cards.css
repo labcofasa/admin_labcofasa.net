@@ -77,7 +77,7 @@
 .carta-primary {
     background-color: var(--carta-primary);
     transition: var(--tran-03);
-    border-radius: 12px;
+    border-radius: 0.75rem;
 }
 
 .carta-primary .icon {
@@ -88,7 +88,7 @@
 .carta-secondary {
     background-color: var(--carta-secondary);
     transition: var(--tran-03);
-    border-radius: 12px;
+    border-radius: 0.75rem;
 }
 
 .carta-secondary .icon {
@@ -99,7 +99,7 @@
 .carta-success {
     background-color: var(--carta-success);
     transition: var(--tran-03);
-    border-radius: 12px;
+    border-radius: 0.75rem;
 }
 
 .carta-success .icon {
@@ -110,7 +110,7 @@
 .carta-info {
     background-color: var(--carta-info);
     transition: var(--tran-03);
-    border-radius: 12px;
+    border-radius: 0.75rem;
 }
 
 .carta-info .icon {

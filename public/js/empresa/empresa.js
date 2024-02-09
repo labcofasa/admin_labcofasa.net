@@ -189,11 +189,16 @@ $(document).ready(function () {
                 $("#placeholder").hide();
                 $("#tabla-empresas-container").show();
             },
+
             columnDefs: [
                 {
                     targets: [0, 25],
                     searchable: false,
                     orderable: false,
+                },
+                {
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14],
+                    className: "nowrap",
                 },
                 {
                     targets: [
@@ -219,11 +224,11 @@ $(document).ready(function () {
                 { data: "telefono", title: "Teléfono" },
                 { data: "email", title: "Correo electrónico" },
                 { data: "web", title: "Sitio web" },
-                { data: "direccion", title: "Dirección" },
                 { data: "registro_nit", title: "Registro NIT" },
                 { data: "registro_nrc", title: "Registro NRC" },
                 { data: "nombre_dnm", title: "Nombre DNM" },
                 { data: "registro_dnm", title: "Registro DNM" },
+                { data: "direccion", title: "Dirección" },
                 {
                     data: "redes_sociales",
                     title: "Redes sociales",

@@ -121,6 +121,14 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
+                    targets: [0, 1, 3, 4, 5, 6, 7],
+                    className: "nowrap",
+                },
+                {
+                    targets: [2],
+                    className: "wrap",
+                },
+                {
                     targets: [1, 2, 3, 4, 5, 6],
                     searchable: true,
                     orderable: true,
@@ -420,6 +428,14 @@ $(document).ready(function () {
                     targets: [0, 2],
                     searchable: false,
                     orderable: false,
+                },
+                {
+                    targets: [],
+                    className: "nowrap",
+                },
+                {
+                    targets: [],
+                    className: "wrap",
                 },
                 {
                     targets: [1],

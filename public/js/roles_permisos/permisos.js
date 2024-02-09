@@ -167,6 +167,14 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
+                    targets: [0, 3, 4],
+                    className: "nowrap",
+                },
+                {
+                    targets: [1, 2],
+                    className: "wrap",
+                },
+                {
                     targets: [1, 2, 3, 4],
                     searchable: true,
                     orderable: true,

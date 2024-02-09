@@ -1,7 +1,7 @@
 <!-- Modal para editar aplicaciones -->
 <div class="modal fade" id="editarAplicacion" tabindex="-1" role="dialog" aria-labelledby="editarAplicacionLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
+    <div class="modal-dialog modal-dialog-centered custom-modal modal-fullscreen-md-down" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5 titulo" id="editarAplicacionLabel">Editar aplicación</h1>

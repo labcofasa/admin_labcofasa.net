@@ -580,7 +580,7 @@ hr {
         background-color: var(--card-container);
         height: 91vh;
         overflow: auto;
-        border-radius: 24px;
+        border-radius: 1rem;
     }
 }
 
@@ -589,7 +589,7 @@ hr {
         background-color: var(--card-container);
         height: 88vh;
         overflow: auto;
-        border-radius: 24px;
+        border-radius: 1rem;
     }
 }
 
