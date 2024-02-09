@@ -41,7 +41,7 @@
     /* Botones */
     --btn-primary: #e8f0fe;
     --btn-primary-hover: #d0dffa;
-    --btn-secondary: #ececec;
+    --btn-secondary: #f6f6f6;
     --btn-secondary-hover: #e5e7e9;
     --btn-success: #ceead6;
     --btn-success-hover: #bde2c7;
@@ -55,7 +55,7 @@
     --color-tooltip: #fff;
 
     /* Paginación de las tablas */
-    --btn-paginacion-bg: #ececec;
+    --btn-paginacion-bg: #f6f6f6;
     --btn-paginacion-bg-active: #172935;
     --btn-paginacion-color-active: #fff;
     --btn-paginacion-bg-hover: #09525d;
