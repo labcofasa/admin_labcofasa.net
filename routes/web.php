@@ -19,7 +19,6 @@ use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AvisoController;
-use App\Models\Aviso;
 use Illuminate\Support\Facades\Route;
 
 
@@ -164,7 +163,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['guest'])->group(function () {
     /* Página inicio de sesión */
     Route::get('/', [AutenticacionController::class, 'mostrarFormulario'])->name('autenticarme');
-    Route::post('/autenticar', [AutenticacionController::class, 'autenticaUsuario'])->name('autenticar.usuario');
+    Route::post('/autenticar', [AutenticacionController::class, 'autenticacionUsuario'])->name('autenticar.usuario');
 
     /* Página restablecer contraseña */
     Route::get('/restablecer', [RestablecerController::class, 'formularioRestablecer'])->name('form.restablecer');
@@ -175,8 +174,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/restablecer/nueva-clave', [RestablecerController::class, 'restablecerNuevaClave'])->name('actualizar.clave');
 });
 
-Route::get('/api/avisos', [AvisoController::class, 'obteneravisos']);
-Route::get('/obtener-avisos', [AvisoController::class, 'obteneravisos'])
+Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])
     ->middleware('cors');
 
 /* Logo de la empresa */

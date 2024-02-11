@@ -15,6 +15,19 @@ return [
     |
     */
 
+    'tokens' => [
+        'expiration' => 60 * 24,
+        'personal_access' => [
+            'expiration' => 60 * 24,
+        ],
+        'abilities' => [
+            'create' => true,
+            'delete' => true,
+            'view' => true,
+        ],
+    ],
+
+
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
         'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1',

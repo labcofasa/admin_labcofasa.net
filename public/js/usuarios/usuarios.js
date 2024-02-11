@@ -643,7 +643,7 @@ $(document).ready(function () {
     /* Eliminar usuario */
     $("#tabla-usuarios").on("click", ".eliminar-usuario", function () {
         const usuarioId = $(this).data("id");
-        nombreUsuario = tabla_usuarios.row($(this).closest("tr")).data().nombre;
+        nombreUsuario = tabla_usuarios.row($(this).closest("tr")).data().name;
 
         const modal = $("#eliminarUsuario");
         modal.modal("show");

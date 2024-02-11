@@ -3,14 +3,14 @@
         <div class="card card-counter carta-primary">
             <div class="card-body p-3">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-7">
                         <div class="datos-usuarios">
                             <p class="mb-0 link_name">Total de usuarios</p>
                             <h1 class="font-weight-bolder" id="totalUsuarios">
                             </h1>
                         </div>
                     </div>
-                    <div class="col-4 text-end">
+                    <div class="col-5 text-end">
                         <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
                             <svg class="counter-icono icon" xmlns="http://www.w3.org/2000/svg"
                                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"
@@ -31,13 +31,13 @@
         <div class="card card-counter carta-secondary">
             <div class="card-body p-3">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-7">
                         <div class="datos-usuarios">
                             <p class="mb-0 link_name">En el último mes</p>
                             <h1 class="font-weight-bolder" id="usuarioMes"></h1>
                         </div>
                     </div>
-                    <div class="col-4 text-end">
+                    <div class="col-5 text-end">
                         <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
                             <svg class="counter-icono icon" xmlns="http://www.w3.org/2000/svg" height="24px"
                                 viewBox="0 0 24 24" width="24px" fill="#000000">
@@ -56,13 +56,13 @@
             <div class="card card-counter carta-info">
                 <div class="card-body p-3">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-7">
                             <div class="datos-usuarios">
                                 <p class="mb-0 link_name">Roles registrados</p>
                                 <h1 class="font-weight-bolder" id="totalRoles"></h1>
                             </div>
                         </div>
-                        <div class="col-4 text-end">
+                        <div class="col-5 text-end">
                             <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
                                 <svg class="counter-icono icon" xmlns="http://www.w3.org/2000/svg"
                                     enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"
@@ -93,13 +93,13 @@
             <div class="card card-counter carta-success">
                 <div class="card-body p-3">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-7">
                             <div class="datos-usuarios">
                                 <p class="mb-0 link_name">Permisos para roles</p>
                                 <h1 class="font-weight-bolder" id="totalPermisos"></h1>
                             </div>
                         </div>
-                        <div class="col-4 text-end">
+                        <div class="col-5 text-end">
                             <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
                                 <svg class="counter-icono icon" xmlns="http://www.w3.org/2000/svg"
                                     enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"

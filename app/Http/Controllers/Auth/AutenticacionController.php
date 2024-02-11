@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\ValidationException;
 
 class AutenticacionController extends Controller
 {
@@ -17,7 +18,7 @@ class AutenticacionController extends Controller
         if (auth()->check()) {
             return redirect()->route('inicio');
         } else {
-            $avisos = Aviso::all(); 
+            $avisos = Aviso::all();
 
             $response = response()->view('auth.autenticacion', compact('avisos'));
 
@@ -29,7 +30,7 @@ class AutenticacionController extends Controller
         }
     }
 
-    public function autenticaUsuario(Request $request)
+    public function autenticacionUsuario(Request $request)
     {
         if (Auth::check()) {
             return redirect()->route('inicio');
@@ -48,16 +49,37 @@ class AutenticacionController extends Controller
 
                         return redirect()->route('inicio');
                     } else {
-                        $errors = ['username' => 'Credenciales incorrectas'];
+                        $errors = ['username' => 'Credenciales incorrectas.'];
                     }
                 } else {
-                    $errors = ['username' => 'Tu cuenta está desactivada'];
+                    $errors = ['username' => 'Tu cuenta está desactivada.'];
                 }
             } catch (\Exception $e) {
-                $errors = ['username' => 'Credenciales incorrectas'];
+                $errors = ['username' => 'Credenciales incorrectas.'];
             }
 
             return redirect()->route('autenticarme')->withErrors($errors)->withInput();
+        }
+    }
+
+    public function autenticacionApi(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $token = $user->createToken('laboratorios-cofasa')->accessToken;
+
+            return response()->json(['token' => $token, 'user' => $user], 200);
+        } else {
+            throw ValidationException::withMessages([
+                'email' => ['Credenciales incorrectas.'],
+            ]);
         }
     }
 

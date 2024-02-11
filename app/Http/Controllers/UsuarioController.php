@@ -374,11 +374,11 @@ class UsuarioController extends Controller
                 'user_modified_id' => auth()->user()->id,
             ]);
 
-            return response()->json(['success' => true, 'message' => 'Estado del usuario actualizado con éxito'], 200);
+            return response()->json(['success' => true, 'message' => 'Estado del usuario actualizado con éxito.'], 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
+            return response()->json(['error' => 'Usuario no encontrado.'], 404);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Error interno del servidor'], 500);
+            return response()->json(['error' => 'Error interno del servidor.'], 500);
         }
     }
 
@@ -395,11 +395,11 @@ class UsuarioController extends Controller
 
         try {
             if ($usuario->id === 1) {
-                return response()->json(['success' => false, 'error' => 'No se puede eliminar al usuario administrador']);
+                return response()->json(['success' => false, 'error' => 'No se puede eliminar al usuario administrador.']);
             }
 
             if ($usuario->id === auth()->user()->id) {
-                return response()->json(['success' => false, 'error' => 'No tienes autorización para eliminar tu propio usuario']);
+                return response()->json(['success' => false, 'error' => 'No tienes autorización para eliminar tu propio usuario.']);
                 auth()->logout();
             }
 
@@ -411,7 +411,7 @@ class UsuarioController extends Controller
 
             return response()->json(['success' => true, 'message' => '¡Usuario eliminado con éxito!']);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'error' => 'Error al eliminar el usuario']);
+            return response()->json(['success' => false, 'error' => 'Error al eliminar el usuario.']);
         }
     }
 

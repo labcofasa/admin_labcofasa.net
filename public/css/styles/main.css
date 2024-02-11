@@ -117,7 +117,6 @@
     --contador-success: #28a745;
     --counter-text: #ffffff;
 
-
     /* Archivo style main */
 
     --btn-card-bg: #ffffff;
@@ -155,7 +154,7 @@ body.dark {
     /* Botones */
     --btn-primary: #2a4d7c;
     --btn-primary-hover: #3a5f8c;
-    --btn-secondary: #1E1F20;
+    --btn-secondary: #1e1f20;
     --btn-secondary-hover: #333333;
     --btn-success: #2a5739;
     --btn-success-hover: #3a6f49;
@@ -219,8 +218,6 @@ body.dark {
     --contador-success: #222222;
     --counter-text: #bebebe;
 
-
-
     /* Archivo style main */
     --btn-card-bg: #1e1f20;
 
@@ -230,10 +227,10 @@ body.dark {
     --toggle-switch-border: #d0d0d0;
 
     /* Contadores */
-    --carta-primary: #1E1F20;
-    --carta-secondary: #1E1F20;
-    --carta-success: #1E1F20;
-    --carta-info: #1E1F20;
+    --carta-primary: #1e1f20;
+    --carta-secondary: #1e1f20;
+    --carta-success: #1e1f20;
+    --carta-info: #1e1f20;
 
     /* Iconos */
     --icon-carta-primary: #bebebe;
@@ -347,6 +344,7 @@ hr {
 .card-container {
     transition: var(--tran-03);
     box-shadow: var(--box-shadow);
+    border-radius: 1rem;
     padding: 15px;
 }
 
@@ -460,7 +458,6 @@ hr {
 }
 
 @media (max-width: 1024px) {
-
     table.table-bordered.dataTable th,
     table.table-bordered.dataTable td {
         border-left-width: 1px;
@@ -543,28 +540,12 @@ hr {
 }
 
 @media screen and (max-width: 1440px) {
-    .sidebar-desktop {
-        display: none;
-    }
-
-    body {
-        background-color: var(--card-bg);
-    }
-
-    .navbar {
-        background-color: var(--card-bg);
-    }
-
     .table-responsive {
         padding: 0;
     }
 }
 
-@media screen and (min-width: 1441px) {
-    .navbar {
-        background-color: var(--body-bg);
-    }
-
+@media screen and (min-width: 1440px) {
     .navbar-brand svg,
     .navbar-brand span {
         display: none;
@@ -584,7 +565,7 @@ hr {
     }
 }
 
-@media screen and (min-width: 1441px) and (max-width: 1919px) {
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
     .card-container {
         background-color: var(--card-container);
         height: 88vh;
@@ -593,7 +574,15 @@ hr {
     }
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
+    .navbar {
+        background-color: var(--card-bg);
+    }
+    
+    body {
+        background-color: var(--card-bg);
+    }
+
     .card-container {
         padding: 0;
         box-shadow: none;
