@@ -101,6 +101,13 @@ $(document).ready(function () {
                 headers: {
                     "X-CSRF-TOKEN": "{{ csrf_token() }}",
                 },
+                error: function (xhr, status, error) {
+                    if (xhr.status === 401) {
+                        window.location.href = "/";
+                    } else {
+                        console.error("Error en la solicitud Ajax:", error);
+                    }
+                },
             },
             columnDefs: [
                 {
@@ -222,8 +229,7 @@ $(document).ready(function () {
 
                 if (
                     !userPermissions.some(
-                        (permission) =>
-                            permission.name === "admin_avisos_crear"
+                        (permission) => permission.name === "admin_avisos_crear"
                     )
                 ) {
                     $(".aviso").addClass("d-none");
@@ -348,9 +354,7 @@ $(document).ready(function () {
         var nombre = row.nombre;
 
         $("#editarAvisoForm #btn-editar-aviso").val(avisoId);
-        $("#editarAvisoForm #nombre-aviso-editar").val(
-            nombre
-        );
+        $("#editarAvisoForm #nombre-aviso-editar").val(nombre);
         $(".imagen-aviso-nombre-editar").text(row.imagen);
         $("#editarAviso").modal("show");
     });

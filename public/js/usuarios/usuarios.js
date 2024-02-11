@@ -112,6 +112,13 @@ $(document).ready(function () {
                 headers: {
                     "X-CSRF-TOKEN": "{{ csrf_token() }}",
                 },
+                error: function (xhr, status, error) {
+                    if (xhr.status === 401) {
+                        window.location.href = "/";
+                    } else {
+                        console.error("Error en la solicitud Ajax:", error);
+                    }
+                },
             },
             columnDefs: [
                 {
@@ -120,7 +127,10 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17],
+                    targets: [
+                        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16,
+                        17,
+                    ],
                     className: "nowrap",
                 },
                 {
@@ -159,12 +169,17 @@ $(document).ready(function () {
                         const isChecked = row.estado == 1;
                         return `
                             <div class="form-check form-switch">
-                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id}" ${isChecked ? "checked" : ""} data-id="${row.id}">
-                                <label class="form-check-label estado-label" for="switch-${row.id}"></label>
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${
+                                    row.id
+                                }" ${isChecked ? "checked" : ""} data-id="${
+                            row.id
+                        }">
+                                <label class="form-check-label estado-label" for="switch-${
+                                    row.id
+                                }"></label>
                             </div>
                         `;
                     },
-
                 },
                 { data: "nombres", title: "Nombres" },
                 { data: "apellidos", title: "Apellidos" },
@@ -195,50 +210,53 @@ $(document).ready(function () {
                         );
                         return `
                                 <div class="text-center">
-                                ${userPermissions.some(
-                            (permission) =>
-                                permission.name ===
-                                "admin_usuarios_editar" ||
-                                permission.name ===
-                                "admin_usuarios_eliminar"
-                        )
-                                ? `
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                                "admin_usuarios_editar" ||
+                                            permission.name ===
+                                                "admin_usuarios_eliminar"
+                                    )
+                                        ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
-                                        ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_usuarios_editar"
-                                )
-                                    ? `
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_usuarios_editar"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item editar-usuario nav-link" data-id="${row.id}" type="button">
                                                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
                                                     <span class="link">Editar</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
-                                    ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_usuarios_eliminar"
-                                )
-                                    ? `
+                                                : ""
+                                        }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_usuarios_eliminar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-usuario nav-link" data-id="${row.id}" type="button">
                                                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/></svg>
                                                     <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
+                                            : ""
+                                    }
                                         </ul>`
-                                : ""
-                            }
+                                        : ""
+                                }
                                     </div>
                                 </div>
                             `;
@@ -434,7 +452,7 @@ $(document).ready(function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
                     "Error al cambiar el estado del usuario. Detalles: " +
-                    errorThrown,
+                        errorThrown,
                     "error"
                 );
             },
@@ -750,13 +768,13 @@ function printUsuarios() {
     );
     printWindow.document.write(
         "<style>" +
-        "body { font-family: Arial, sans-serif; }" +
-        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-        "tr:nth-child(even) { background-color: #f9f9f9; }" +
-        "tr:hover { background-color: #f5f5f5; }" +
-        "</style>"
+            "body { font-family: Arial, sans-serif; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+            "tr:nth-child(even) { background-color: #f9f9f9; }" +
+            "tr:hover { background-color: #f5f5f5; }" +
+            "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(

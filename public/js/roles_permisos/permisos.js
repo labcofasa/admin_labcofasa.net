@@ -150,10 +150,14 @@ $(document).ready(function () {
                 url: apiPermisos,
                 type: "GET",
                 headers: {
-                    "X-Requested-With": "XMLHttpRequest",
-                    "X-CSRF-TOKEN": document
-                        .querySelector('meta[name="csrf-token"]')
-                        .getAttribute("content"),
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                },
+                error: function (xhr, status, error) {
+                    if (xhr.status === 401) {
+                        window.location.href = "/";
+                    } else {
+                        console.error("Error en la solicitud Ajax:", error);
+                    }
                 },
             },
             drawCallback: function (settings) {
