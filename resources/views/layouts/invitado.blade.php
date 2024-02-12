@@ -12,6 +12,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/invitado.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Titulo del sitio -->

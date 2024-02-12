@@ -12,24 +12,25 @@
                 </div>
                 <div class="col form-group">
                     <div class="input-box">
-                        <header>¿Tiene problemas para iniciar sesión en su cuenta?</header>
-                        <p class="header-restablecer">Proporcione su correo electrónico institucional para recibir un enlace
-                            y recuperar el acceso a su cuenta.</p>
+                        <h6 class="titulo-rest py-3">¿Tiene problemas para iniciar sesión en su cuenta?</h6>
+                        <small>Proporcione su correo electrónico institucional para recibir un enlace
+                            y recuperar el acceso a su cuenta.</small>
                         <form action="{{ route('enviar.enlace') }}" method="POST">
                             @csrf
                             @method('POST')
-                            <div class="input-field">
-                                <input type="email" id="email" name="email"
-                                    class="input @error('email') is-invalid @enderror" required autocomplete="off"
-                                    autofocus />
-                                <label for="email">{{ __('Correo electrónico institucional') }}</label>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
+                            <div class="textbox email">
+                                <input id="email" name="email" type="email"
+                                    class="@error('email') is-invalid @enderror" autocomplete="off" autofocus
+                                    value="{{ old('username') }}" required />
+                                <label for="email">Correo electrónico</label>
+                                <span class="material-symbols-outlined"> mail </span>
                             </div>
-                            <div class="input-field">
+                            @error('email')
+                                <span class="invalid-feedback py-2" role="alert">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                            <div class="input-field py-4">
                                 <button class="btn-animado" type="submit">
                                     <i class="animation"></i>
                                     Solicitar enlace
