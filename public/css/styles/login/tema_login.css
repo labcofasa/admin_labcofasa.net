@@ -1,11 +1,9 @@
 /* Fondo */
 .fondo {
     background-color: #50e3c2;
-    background-image: radial-gradient(
-            at 47% 33%,
+    background-image: radial-gradient(at 47% 33%,
             hsl(162, 77%, 40%) 0,
-            transparent 59%
-        ),
+            transparent 59%),
         radial-gradient(at 82% 65%, hsl(198, 100%, 50%) 0, transparent 55%);
 }
 
@@ -285,7 +283,6 @@ button,
 input {
     border: 0;
     width: 100%;
-    height: 60px;
     background: transparent;
     font-family: inherit;
     font-size: 16px;
@@ -304,14 +301,14 @@ input {
     margin-bottom: 16px;
 }
 
-.textbox > span {
+.textbox>span {
     position: absolute;
     top: 50%;
     translate: 0 -50%;
     left: 0;
     font-size: 22px;
     pointer-events: none;
-    color: var(--text-color);
+    fill: var(--text-color);
 }
 
 .textbox input {
@@ -321,12 +318,12 @@ input {
     height: 62px;
 }
 
-:is(input:focus, input:valid) ~ label {
+:is(input:focus, input:valid)~label {
     translate: -40px -40px;
     scale: 0.875;
 }
 
-input:focus ~ label {
+input:focus~label {
     color: var(--accent);
 }
 
@@ -356,11 +353,10 @@ input:focus ~ label {
     position: absolute;
     top: 50%;
     right: 0;
-    display: grid;
     place-items: center;
     padding: 0;
-    height: 36px;
-    width: 36px;
+    height: 22px;
+    width: 22px;
     translate: 0 -50%;
     cursor: pointer;
 }
@@ -387,18 +383,17 @@ input:focus ~ label {
 .password button {
     position: absolute;
     top: 50%;
-    right: 0;
-    display: grid;
+    right: 5px;
     place-items: center;
     padding: 0;
-    height: 36px;
-    width: 36px;
+    height: 22px;
+    width: 22px;
     translate: 0 -50%;
     cursor: pointer;
 }
 
 .password button span {
-    color: var(--text-color);
+    fill: var(--text-color);
     transition: 0.3s;
 }
 
@@ -414,11 +409,10 @@ input:focus ~ label {
     position: absolute;
     top: 50%;
     right: 0;
-    display: grid;
     place-items: center;
     padding: 0;
-    height: 36px;
-    width: 36px;
+    height: 22px;
+    width: 22px;
     translate: 0 -50%;
     cursor: pointer;
 }
@@ -443,5 +437,9 @@ input:focus ~ label {
 
     .input-box {
         padding: 0 20px;
+    }
+
+    .confirm input {
+        padding: 0px 80px 0 36px;
     }
 }

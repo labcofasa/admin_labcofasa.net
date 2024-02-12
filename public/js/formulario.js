@@ -3,31 +3,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function verClave() {
-    if (passwordIcon.innerText === "visibility") {
-        passwordIcon.innerText = "visibility_off";
-        password.type = "text";
+    var passwordInput = document.getElementById("password");
+    var eyeIcon = document.getElementById("eye-icon");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.src = abiertoSvgUrl;
     } else {
-        passwordIcon.innerText = "visibility";
-        password.type = "password";
+        passwordInput.type = "password";
+        eyeIcon.src = cerradoSvgUrl;
     }
 }
 
 function verClaveRest() {
-    if (passwordIconRest.innerText === "visibility") {
-        passwordIconRest.innerText = "visibility_off";
-        password.type = "text";
+    var passwordInput = document.getElementById("password");
+    var eyeIcon = document.getElementById("eye-icon");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.src = abiertoSvgUrl;
     } else {
-        passwordIconRest.innerText = "visibility";
-        password.type = "password";
+        passwordInput.type = "password";
+        eyeIcon.src = cerradoSvgUrl;
     }
 }
 
 function verClaveRestConfirm() {
-    if (passwordIconRestConfirm.innerText === "visibility") {
-        passwordIconRestConfirm.innerText = "visibility_off";
-        password_confirmation.type = "text";
+    var passwordInput = document.getElementById("password_confirmation");
+    var eyeIcon = document.getElementById("eye-icon-confirm");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.src = abiertoSvgUrl;
     } else {
-        passwordIconRestConfirm.innerText = "visibility";
-        password_confirmation.type = "password";
+        passwordInput.type = "password";
+        eyeIcon.src = cerradoSvgUrl;
     }
 }
