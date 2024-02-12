@@ -71,16 +71,32 @@ class AutenticacionController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            $token = $user->createToken('laboratorios-cofasa')->accessToken;
+        try {
+            $user = User::where('email', $credentials['email'])->firstOrFail();
 
-            return response()->json(['token' => $token, 'user' => $user], 200);
-        } else {
-            throw ValidationException::withMessages([
-                'email' => ['Credenciales incorrectas.'],
-            ]);
+            if ($user->estado) {
+                if (Auth::attempt($credentials)) {
+                    $user = Auth::user();
+                    $token = $user->createToken('laboratorios-cofasa')->accessToken;
+
+                    return response()->json(['token' => $token, 'user' => $user], 200);
+                } else {
+                    return response()->json(['message' => 'Credenciales incorrectas.'], 404);
+                }
+            } else {
+                return response()->json(['message' => 'Tu cuenta está desactivada.']);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Credenciales incorrectas.'], 404);
         }
+    }
+
+
+    public function cerrarSesionApi()
+    {
+        Auth::logout();
+
+        return response()->json(['message' => 'Se cerro la sesión exitosamente'], 200);
     }
 
     public function cerrarSesion(Request $request): RedirectResponse
