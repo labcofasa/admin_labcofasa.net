@@ -93,6 +93,48 @@ return [
                 PDO::ATTR_EMULATE_PREPARES => true,
             ],
         ],
+        'DB_CONNECTION_COFASA' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_COFASA', 'localhost'),
+            'port' => env('DB_PORT_COFASA', '1433'),
+            'database' => env('DB_DATABASE_COFASA', 'forge'),
+            'username' => env('DB_USERNAME_COFASA', 'forge'),
+            'password' => env('DB_PASSWORD_COFASA', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'options' => [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ],
+        ],
+        'DB_CONNECTION_OMEGA' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_OMEGA', 'localhost'),
+            'port' => env('DB_PORT_OMEGA', '1433'),
+            'database' => env('DB_DATABASE_OMEGA', 'forge'),
+            'username' => env('DB_USERNAME_OMEGA', 'forge'),
+            'password' => env('DB_PASSWORD_OMEGA', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'options' => [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ],
+        ],
+        'DB_CONNECTION_NEMULL' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_NEMULL', 'localhost'),
+            'port' => env('DB_PORT_NEMULL', '1433'),
+            'database' => env('DB_DATABASE_NEMULL', 'forge'),
+            'username' => env('DB_USERNAME_NEMULL', 'forge'),
+            'password' => env('DB_PASSWORD_NEMULL', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'options' => [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ],
+        ],
 
 
     ],

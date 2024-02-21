@@ -91,7 +91,6 @@ class AutenticacionController extends Controller
         }
     }
 
-
     public function cerrarSesionApi()
     {
         Auth::logout();
@@ -107,10 +106,5 @@ class AutenticacionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
-    }
-
-    public function noPermitido(Request $request)
-    {
-        return redirect()->back();
     }
 }

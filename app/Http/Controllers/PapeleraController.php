@@ -9,14 +9,12 @@ use App\Models\Empresa;
 use App\Models\RedSocial;
 use App\Models\User;
 use App\Models\UserRole;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Entidad;
 use App\Models\Giro;
 use App\Models\Pais;
 use App\Models\Departamento;
 use App\Models\Municipio;
-use App\Models\Publicidad;
 
 class PapeleraController extends Controller
 {
@@ -107,9 +105,6 @@ class PapeleraController extends Controller
             'data' => $data,
         ]);
     }
-
-
-
     public function restoreRecord($table, $id)
     {
         $modelClass = $this->resolveModel($table);

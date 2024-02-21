@@ -19,6 +19,7 @@ use App\Http\Controllers\RedSocialController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AvisoController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -158,6 +159,11 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/actualizar-aviso/{id}', [AvisoController::class, 'update']);
         Route::delete('/eliminar-aviso/{id}', [AvisoController::class, 'destroy']);
     });
+
+    // Clientes
+    Route::get('/clientes', [ClienteController::class, 'index'])->name('pag.cliente');
+    Route::get('/obtener-clientes', [ClienteController::class, 'verClientes']);
+    Route::get('/tabla-clientes', [ClienteController::class, 'tablaClientes']);
 });
 
 Route::middleware(['guest'])->group(function () {

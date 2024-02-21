@@ -7,7 +7,7 @@
         <div class="card-container">
 
             <!-- Titulo-->
-            <h1 class="py-3">@yield('titulo')</h1>
+            <h1 class="pb-2">@yield('titulo')</h1>
 
         </div>
     </div>
