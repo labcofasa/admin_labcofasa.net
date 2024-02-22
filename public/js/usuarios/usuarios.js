@@ -18,6 +18,7 @@ $(document).ready(function () {
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
             serverSide: true,
+            processing: true,
             responsive: true,
             pagingType: "simple_numbers",
             fixedHeader: true,

@@ -45,6 +45,7 @@ table.table-bordered.dataTable td {
 }
 
 .table> :not(caption)>*>* {
+    padding: 0.2rem 0.5rem;
     color: var(--text-color);
     background-color: var(--card-bg);
     font-size: var(--font-size);

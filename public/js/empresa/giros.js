@@ -121,6 +121,7 @@ $(document).ready(function () {
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
             responsive: true,
+            processing: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [

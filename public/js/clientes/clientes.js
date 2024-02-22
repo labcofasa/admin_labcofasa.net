@@ -17,11 +17,12 @@ $(document).ready(function () {
                 "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
             serverSide: true,
             responsive: true,
+            processing: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [10, 25, 50, 100],
-                ["10 filas", "25 filas", "50 filas", "100 filas"],
+                [10, 25, 100, -1],
+                ["10 filas", "25 filas", "100 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -34,6 +35,13 @@ $(document).ready(function () {
                         "btn btn-lg btn-group-secondary d-none d-lg-block",
                     postfixButtons: ["colvisRestore"],
                     text: "Editar columnas",
+                },
+                {
+                    text: "Crear registro",
+                    className: "btn btn-lg btn-store cliente",
+                    action: function (e, dt, node, config) {
+                        document.getElementById("crearClienteBtn").click();
+                    },
                 },
                 {
                     extend: "collection",
@@ -219,19 +227,20 @@ $(document).ready(function () {
 
     $.fn.DataTable.ext.pager.numbers_length = 4;
 
-    /* Eliminar cliente */
+    /* Registrar cliente */
+    $("#crearClienteBtn").click(function () {
+        $("#crearCliente").modal("show");
+    });
+
+    /* Eliminar usuario */
     $("#tabla-clientes").on("click", ".eliminar-cliente", function () {
         const clienteId = $(this).data("id");
-        const clienteNombre = $(this)
-            .closest("tr")
-            .find("td:nth-child(2)")
-            .text();
+        clienteNombre = tabla_clientes.row($(this).closest("tr")).data().establecimiento;
 
-        console.log("Id cliente: ", clienteId);
-        console.log("Nombre: ", clienteNombre);
+        const modal = $("#eliminarCliente");
+        modal.modal("show");
 
-        // $("#nombre-cliente").text(clienteNombre);
-        // $("#btn-eliminar-cliente").data("id", clienteId);
-        // $("#eliminarCliente").modal("show");
+        modal.find(".nombre-cliente").text(clienteNombre);
+        $("#btn-eliminar-cliente").data("id", clienteId);
     });
 });

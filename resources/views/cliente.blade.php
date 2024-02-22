@@ -20,6 +20,9 @@
                 </table>
             </div>
 
+            <!-- Botón que dispara el registro de clientes -->
+            <span type="hidden" id="crearClienteBtn"></span>
+
         </div>
     </div>
 

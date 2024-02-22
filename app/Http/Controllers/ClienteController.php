@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\ClienteCofasa;
 use App\Models\ClienteNemull;
-use Illuminate\Support\Facades\DB;
 use App\Models\ClienteOmega;
 use App\Models\User;
 use Carbon\Carbon;
@@ -26,7 +25,6 @@ class ClienteController extends Controller
             ->header('Access-Control-Allow-Origin', '*')
             ->header('Access-Control-Allow-Methods', 'GET');
     }
-
     public function tablaClientes(Request $request)
     {
         $this->validate($request, [
@@ -39,9 +37,6 @@ class ClienteController extends Controller
         ]);
 
         $draw = $request->input('draw');
-        $start = $request->input('start');
-        $length = $request->input('length');
-        $search = $request->input('search.value');
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
@@ -58,44 +53,72 @@ class ClienteController extends Controller
 
         foreach ($models as $tableName => $modelInfo) {
             $modelClass = $modelInfo['class'];
-
             $model = new $modelClass;
 
-            $currentQuery = $model->select([
-                $model->getTable() . '.idCliente',
-                $model->getTable() . '.codigo',
-                $model->getTable() . '.regIVA',
-                $model->getTable() . '.propietario',
-                $model->getTable() . '.establecimiento',
-                $model->getTable() . '.fecha',
-                $model->getTable() . '.usuarioReg',
-            ]);
+            $query = $this->buildQuery($model, $request->input('search.value'));
 
-            if (!empty($search)) {
-                $currentQuery->orWhere('codigo', 'like', '%' . $search . '%')
-                    ->orWhere('regIVA', 'like', '%' . $search . '%')
-                    ->orWhere('propietario', 'like', '%' . $search . '%')
-                    ->orWhere('establecimiento', 'like', '%' . $search . '%')
-                    ->orWhere('fecha', 'like', '%' . $search . '%')
-                    ->orWhere('usuarioReg', 'like', '%' . $search . '%');
-            }
+            $totalRegistros += $query->count();
 
-            $totalRegistros += $currentQuery->count();
+            $paginatedData = $query->skip($request->input('start'))->take($request->input('length'))->get()->toArray();
 
-            if ($length != -1) {
-                $currentQuery->skip($start)->take($length);
-            }
-
-            $data = array_merge($data, $currentQuery->get()->toArray());
+            $data[$tableName] = $this->sortData($paginatedData, $columnNames[$orderColumnIndex], $orderDirection);
         }
 
-        usort($data, function ($a, $b) use ($columnNames, $orderColumnIndex, $orderDirection) {
-            $column = $columnNames[$orderColumnIndex];
-            return ($orderDirection == 'asc') ? strnatcmp($a[$column], $b[$column]) : strnatcmp($b[$column], $a[$column]);
+        $combinedData = [];
+        foreach ($data as $tableName => $modelData) {
+            $combinedData = array_merge($combinedData, $modelData);
+        }
+
+        $combinedData = array_slice($combinedData, 0, $request->input('length'));
+
+        $transformedData = $this->transformData($combinedData, $request->input('start'));
+
+        $recordsFiltered = $totalRegistros;
+
+        return response()->json([
+            'draw' => $draw,
+            'recordsTotal' => $totalRegistros,
+            'recordsFiltered' => $recordsFiltered,
+            'data' => $transformedData,
+        ]);
+    }
+
+    private function buildQuery($modelClass, $search)
+    {
+        $model = new $modelClass;
+
+        $query = $model->select([
+            $model->getTable() . '.idCliente',
+            $model->getTable() . '.codigo',
+            $model->getTable() . '.regIVA',
+            $model->getTable() . '.propietario',
+            $model->getTable() . '.establecimiento',
+            $model->getTable() . '.fecha',
+            $model->getTable() . '.usuarioReg',
+        ]);
+
+        if (!empty($search)) {
+            $query->where(function ($query) use ($search) {
+                foreach (['codigo', 'regIVA', 'propietario', 'establecimiento', 'fecha', 'usuarioReg'] as $column) {
+                    $query->orWhere($column, 'like', '%' . $search . '%');
+                }
+            });
+        }
+
+        return $query;
+    }
+
+    private function sortData($data, $column, $direction)
+    {
+        usort($data, function ($a, $b) use ($column, $direction) {
+            return ($direction == 'asc') ? strnatcmp($a[$column], $b[$column]) : strnatcmp($b[$column], $a[$column]);
         });
 
-        $data = array_slice($data, $start, $length);
+        return $data;
+    }
 
+    private function transformData($data, $start)
+    {
         $contador = $start + 1;
         $transformedData = [];
 
@@ -112,13 +135,7 @@ class ClienteController extends Controller
             ];
         }
 
-        $recordsFiltered = $totalRegistros;
-
-        return response()->json([
-            'draw' => $draw,
-            'recordsTotal' => $totalRegistros,
-            'recordsFiltered' => $recordsFiltered,
-            'data' => $transformedData,
-        ]);
+        return $transformedData;
     }
+
 }

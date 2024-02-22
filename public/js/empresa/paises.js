@@ -21,6 +21,7 @@ $(document).ready(function () {
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
             responsive: true,
+            processing: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
@@ -457,6 +458,7 @@ $(document).ready(function () {
                 "<'row py-2'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
+            processing: true,
             responsive: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
@@ -920,6 +922,7 @@ $(document).ready(function () {
                 "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
             serverSide: true,
             responsive: true,
+            processing: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
