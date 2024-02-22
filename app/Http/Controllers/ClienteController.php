@@ -46,7 +46,7 @@ class ClienteController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $columnNames = ['codigo', 'regIVA', 'propietario', 'establecimiento', 'fechaReg', 'email', 'usuarioReg'];
+        $columnNames = ['codigo', 'regIVA', 'propietario', 'establecimiento', 'fecha', 'email', 'usuarioReg'];
 
         $models = [
             'Cofasa' => ['class' => ClienteCofasa::class],
@@ -69,7 +69,7 @@ class ClienteController extends Controller
                 $model->getTable() . '.regIVA',
                 $model->getTable() . '.propietario',
                 $model->getTable() . '.establecimiento',
-                $model->getTable() . '.fechaReg',
+                $model->getTable() . '.fecha',
                 $model->getTable() . '.email',
                 $model->getTable() . '.usuarioReg',
             ]);
@@ -80,7 +80,7 @@ class ClienteController extends Controller
                         ->orWhere('regIVA', 'like', '%' . $search . '%')
                         ->orWhere('propietario', 'like', '%' . $search . '%')
                         ->orWhere('establecimiento', 'like', '%' . $search . '%')
-                        ->orWhere('fechaReg', 'like', '%' . $search . '%')
+                        ->orWhere('fecha', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%')
                         ->orWhere('usuarioReg', 'like', '%' . $search . '%');
                 });
@@ -111,7 +111,7 @@ class ClienteController extends Controller
                 'nrc' => $cliente->regIVA,
                 'propietario' => $cliente->propietario,
                 'establecimiento' => $cliente->establecimiento,
-                'fecha_registro' => Carbon::parse($cliente->fechaReg)->format('Y-m-d'),
+                'fecha_registro' => Carbon::parse($cliente->fecha)->format('Y-m-d'),
                 'usuario_registro' => $cliente->usuarioReg,
                 'email' => $cliente->email,
             ];
