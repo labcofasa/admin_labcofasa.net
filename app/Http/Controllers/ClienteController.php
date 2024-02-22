@@ -100,7 +100,7 @@ class ClienteController extends Controller
         }
 
         $query->orderBy($columnNames[$orderColumnIndex], $orderDirection);
-        
+
         $contador = $start + 1;
         $data = [];
 
@@ -111,7 +111,7 @@ class ClienteController extends Controller
                 'nrc' => $cliente->regIVA,
                 'propietario' => $cliente->propietario,
                 'establecimiento' => $cliente->establecimiento,
-                'fecha_registro' => Carbon::parse($cliente->fechaReg)->format('Y-m-d H:i:s'),
+                'fecha_registro' => Carbon::parse($cliente->fechaReg)->format('Y-m-d'),
                 'usuario_registro' => $cliente->usuarioReg,
                 'email' => $cliente->email,
             ];

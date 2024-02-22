@@ -20,8 +20,8 @@ $(document).ready(function () {
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [10, 25, 50, -1],
-                ["10 filas", "25 filas", "50 filas", "Todas las filas"],
+                [10, 25, 50, 100, -1],
+                ["10 filas", "25 filas", "50 filas", "100 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -104,13 +104,18 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
+                    targets: [0],
+                    searchable: false,
+                    orderable: false,
+                },
+                {
                     targets: [0, 1, 2, 3, 4, 5, 6, 7],
                     className: "nowrap",
                 },
                 {
-                    targets: [0, 1, 2, 3, 4, 5, 6, 7],
+                    targets: [1, 2, 3, 4, 5, 6, 7],
                     searchable: true,
-                    orderable: false,
+                    orderable: true,
                 },
                 { responsivePriority: 1, targets: 1 },
                 { responsivePriority: 2, targets: 2 },
@@ -129,7 +134,7 @@ $(document).ready(function () {
                 { data: "usuario_registro", title: "Usuario creador" },
                 { data: "email", title: "Correo" },
             ],
-            order: [[3, "desc"]],
+            order: [[5, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;
