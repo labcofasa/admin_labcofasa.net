@@ -23,6 +23,9 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <x-cliente.cliente />
+
     <!-- Scripts -->
     <script async src="{{ asset('js/clientes/clientes.js') }}"></script>
 @endsection

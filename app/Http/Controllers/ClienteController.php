@@ -18,7 +18,6 @@ class ClienteController extends Controller
 
         return view('cliente', compact('usuario'));
     }
-
     public function verClientes()
     {
         $clientes = ClienteOmega::select('codigo', 'propietario', 'establecimiento')->paginate(5);
@@ -46,7 +45,7 @@ class ClienteController extends Controller
         $orderColumnIndex = $request->input('order.0.column');
         $orderDirection = $request->input('order.0.dir');
 
-        $columnNames = ['codigo', 'regIVA', 'propietario', 'establecimiento', 'fecha', 'email', 'usuarioReg'];
+        $columnNames = ['idCliente', 'codigo', 'regIVA', 'propietario', 'establecimiento', 'fecha', 'usuarioReg'];
 
         $models = [
             'Cofasa' => ['class' => ClienteCofasa::class],
@@ -57,33 +56,28 @@ class ClienteController extends Controller
         $data = [];
         $totalRegistros = 0;
 
-        $query = null;
-
         foreach ($models as $tableName => $modelInfo) {
             $modelClass = $modelInfo['class'];
 
             $model = new $modelClass;
 
             $currentQuery = $model->select([
+                $model->getTable() . '.idCliente',
                 $model->getTable() . '.codigo',
                 $model->getTable() . '.regIVA',
                 $model->getTable() . '.propietario',
                 $model->getTable() . '.establecimiento',
                 $model->getTable() . '.fecha',
-                $model->getTable() . '.email',
                 $model->getTable() . '.usuarioReg',
             ]);
 
             if (!empty($search)) {
-                $currentQuery->where(function ($query) use ($search) {
-                    $query->orWhere('codigo', 'like', '%' . $search . '%')
-                        ->orWhere('regIVA', 'like', '%' . $search . '%')
-                        ->orWhere('propietario', 'like', '%' . $search . '%')
-                        ->orWhere('establecimiento', 'like', '%' . $search . '%')
-                        ->orWhere('fecha', 'like', '%' . $search . '%')
-                        ->orWhere('email', 'like', '%' . $search . '%')
-                        ->orWhere('usuarioReg', 'like', '%' . $search . '%');
-                });
+                $currentQuery->orWhere('codigo', 'like', '%' . $search . '%')
+                    ->orWhere('regIVA', 'like', '%' . $search . '%')
+                    ->orWhere('propietario', 'like', '%' . $search . '%')
+                    ->orWhere('establecimiento', 'like', '%' . $search . '%')
+                    ->orWhere('fecha', 'like', '%' . $search . '%')
+                    ->orWhere('usuarioReg', 'like', '%' . $search . '%');
             }
 
             $totalRegistros += $currentQuery->count();
@@ -92,28 +86,29 @@ class ClienteController extends Controller
                 $currentQuery->skip($start)->take($length);
             }
 
-            if ($query === null) {
-                $query = $currentQuery;
-            } else {
-                $query->union($currentQuery);
-            }
+            $data = array_merge($data, $currentQuery->get()->toArray());
         }
 
-        $query->orderBy($columnNames[$orderColumnIndex], $orderDirection);
+        usort($data, function ($a, $b) use ($columnNames, $orderColumnIndex, $orderDirection) {
+            $column = $columnNames[$orderColumnIndex];
+            return ($orderDirection == 'asc') ? strnatcmp($a[$column], $b[$column]) : strnatcmp($b[$column], $a[$column]);
+        });
+
+        $data = array_slice($data, $start, $length);
 
         $contador = $start + 1;
-        $data = [];
+        $transformedData = [];
 
-        foreach ($query->get() as $cliente) {
-            $data[] = [
+        foreach ($data as $cliente) {
+            $transformedData[] = [
+                'id' => $cliente['idCliente'],
                 'contador' => $contador++,
-                'codigo' => $cliente->codigo,
-                'nrc' => $cliente->regIVA,
-                'propietario' => $cliente->propietario,
-                'establecimiento' => $cliente->establecimiento,
-                'fecha_registro' => Carbon::parse($cliente->fecha)->format('Y-m-d'),
-                'usuario_registro' => $cliente->usuarioReg,
-                'email' => $cliente->email,
+                'codigo' => $cliente['codigo'],
+                'nrc' => $cliente['regIVA'],
+                'propietario' => $cliente['propietario'],
+                'establecimiento' => $cliente['establecimiento'],
+                'fecha_registro' => Carbon::parse($cliente['fecha'])->format('Y-m-d'),
+                'usuario_registro' => $cliente['usuarioReg'],
             ];
         }
 
@@ -123,7 +118,7 @@ class ClienteController extends Controller
             'draw' => $draw,
             'recordsTotal' => $totalRegistros,
             'recordsFiltered' => $recordsFiltered,
-            'data' => $data,
+            'data' => $transformedData,
         ]);
     }
 }
