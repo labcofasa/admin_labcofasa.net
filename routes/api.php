@@ -6,5 +6,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/cerrar-sesion', [AutenticacionController::class, 'cerrarSesionApi']);
-Route::post('/autenticar', [AutenticacionController::class, 'autenticacionApi'])->middleware('auth:sanctum');
+Route::post('/autenticar', [AutenticacionController::class, 'autenticacionApi']);
 
