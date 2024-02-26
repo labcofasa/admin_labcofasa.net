@@ -76,9 +76,12 @@ class AutenticacionController extends Controller
             if ($user->estado) {
                 if (Auth::attempt($credentials)) {
                     $user = Auth::user();
+
                     $token = $user->createToken('laboratorios-cofasa');
 
-                    return response()->json(['token' => $token->plainTextToken, 'user' => $user], 200);
+                    $rol = $user->getRoleNames()->first();
+
+                    return response()->json(['token' => $token->plainTextToken, 'user' => $user, 'rol' => $rol], 200);
                 } else {
                     return response()->json(['message' => 'Credenciales incorrectas.'], 404);
                 }
