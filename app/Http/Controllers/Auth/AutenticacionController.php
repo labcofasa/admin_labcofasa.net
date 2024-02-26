@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Validation\ValidationException;
 
 class AutenticacionController extends Controller
 {
@@ -77,9 +76,9 @@ class AutenticacionController extends Controller
             if ($user->estado) {
                 if (Auth::attempt($credentials)) {
                     $user = Auth::user();
-                    $token = $user->createToken('laboratorios-cofasa')->accessToken;
+                    $token = $user->createToken('laboratorios-cofasa');
 
-                    return response()->json(['token' => $token, 'user' => $user], 200);
+                    return response()->json(['token' => $token->plainTextToken, 'user' => $user], 200);
                 } else {
                     return response()->json(['message' => 'Credenciales incorrectas.'], 404);
                 }
@@ -88,6 +87,21 @@ class AutenticacionController extends Controller
             }
         } catch (\Exception $e) {
             return response()->json(['message' => 'Credenciales incorrectas.'], 404);
+        }
+    }
+
+    public function verificarToken(Request $request)
+    {
+        try {
+            $user = $request->user();
+
+            if ($user) {
+                return response()->json(['message' => 'Token válido.', 'user' => $user], 200);
+            } else {
+                return response()->json(['message' => 'Token inválido.'], 401);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error al verificar el token. Detalles: ' . $e->getMessage()], 500);
         }
     }
 
