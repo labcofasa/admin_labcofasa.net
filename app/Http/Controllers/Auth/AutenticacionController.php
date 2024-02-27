@@ -15,7 +15,7 @@ class AutenticacionController extends Controller
     public function mostrarFormulario(Request $request)
     {
         if (auth()->check()) {
-            return redirect()->route('inicio');
+            return redirect()->route('dashboard');
         } else {
             $avisos = Aviso::all();
 
@@ -32,7 +32,7 @@ class AutenticacionController extends Controller
     public function autenticacionUsuario(Request $request)
     {
         if (Auth::check()) {
-            return redirect()->route('inicio');
+            return redirect()->route('dashboard');
         }
 
         $username = $request->input('username');
@@ -46,7 +46,7 @@ class AutenticacionController extends Controller
                     if (Hash::check($password, $user->password)) {
                         Auth::login($user);
 
-                        return redirect()->route('inicio');
+                        return redirect()->route('dashboard');
                     } else {
                         $errors = ['username' => 'Credenciales incorrectas.'];
                     }
