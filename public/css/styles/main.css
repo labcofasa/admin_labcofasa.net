@@ -29,10 +29,10 @@
 /* Colores para el diseño claro */
 :root {
     /* Paleta de colores */
-    --primary: #1fab7f;
+    --primary: #6ad5c2;
     --secondary: #b5e4ca;
     --secondary-hover: #b5e4ca;
-    --accent: #006d4b;
+    --accent: #111827;
     --positive: ;
     --negative: ;
     --info: #e0edfc;
@@ -63,7 +63,7 @@
 
     /* Iconos */
     --icon-primary: #1967d2;
-    --icon-secondary: #4d4f51;
+    --icon-secondary: #515660;
     --icon-success: #188038;
     --icon-danger: #ea4335;
     --icon-warning: #ffc107;
@@ -77,11 +77,18 @@
     --input-caret: #006d4b;
 
     /* Generales */
-    --body-bg: #f0f4f9;
+    --bg-sidebar: #FAFBFB;
+    --title-color: #000000;
+    --sidebar-text-hover: #111827;
+
+    --border: ;
+
+
+    --body-bg: #FFFFFF;
     --sidebar-bg: #f0f4f9;
-    --sidebar-bg-hover: #e7eaef;
-    --sidebar-icon-hover: #4a4f53;
-    --sidebar-bg-active: #b5e4ca;
+    --sidebar-bg-hover: #F3F4F6;
+    /* --sidebar-icon-hover: #4a4f53; */
+    --sidebar-bg-active: #F3F4F6;
     --card-bg: #ffffff;
     --toggle-shadow: #999999;
     --table-border: #dee2e6;
@@ -142,10 +149,10 @@
 /* Colores para el diseño oscuro */
 body.dark {
     /* Paleta de colores */
-    --primary: #1fab7f;
-    --secondary: #5ddddd;
-    --secondary-hover: #5ddddd;
-    --accent: #004832;
+    --primary: #76D6C5;
+    --secondary: #0C352D;
+    --secondary-hover: #0C352D;
+    --accent: #fff;
     --positive: ;
     --negative: ;
     --info: #172d3b;
@@ -168,7 +175,7 @@ body.dark {
     --color-tooltip: #6edff6;
 
     /* Paginación de las tablas */
-    --btn-paginacion-bg: #003634;
+    --btn-paginacion-bg: #282a2c;
     --btn-paginacion-color: #fff;
     --btn-paginacion-bg-active: #53dbc9;
     --btn-paginacion-color-active: #003731;
@@ -194,11 +201,15 @@ body.dark {
     --input-caret: #6edff6;
 
     /* Generales */
-    --body-bg: #1e1f20;
+    --bg-sidebar: #1E1F20;
+    --border: ;
+    --title-color: #bebebe;
+
+    --body-bg: #131314;
     --sidebar-bg: #1e1f20;
-    --sidebar-bg-hover: #333537;
+    --sidebar-bg-hover: #282a2c;
     --sidebar-icon-hover: #adb2b6;
-    --sidebar-bg-active: #6fae8e;
+    --sidebar-bg-active: #282a2c;
     --card-bg: #131314;
     --toggle-shadow: #383838;
     --table-border: #373b3e;
@@ -244,7 +255,7 @@ body {
     background-color: var(--body-bg);
     transition: var(--tran-03);
     display: none;
-    /* user-select: none; */
+    user-select: none;
 }
 
 /* Texto */
@@ -298,9 +309,9 @@ p {
 }
 
 span {
-    font-size: var(--font-size);
     letter-spacing: var(--letter-spacing);
     font-weight: 500;
+    font-size: 0.875rem;
 }
 
 hr {
@@ -314,7 +325,6 @@ hr {
 .link_name {
     font-size: var(--font-size);
     letter-spacing: var(--letter-spacing);
-    font-weight: 500;
     white-space: nowrap;
     color: var(--text-color);
     transition: var(--tran-03);
@@ -332,13 +342,12 @@ hr {
 .main-content {
     flex: 1;
     z-index: inherit;
-    padding: 10px 15px;
     margin-left: 250px;
     z-index: 1;
 }
 
 .content {
-    padding: 3.5rem 0 0 0;
+    padding: 4.5rem 1rem 1.5rem 1rem;
 }
 
 .card-container {
@@ -610,9 +619,5 @@ hr {
 
     .permiso-asignar {
         display: none;
-    }
-
-    .main-content {
-        padding: 10px;
     }
 }

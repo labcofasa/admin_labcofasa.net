@@ -1,7 +1,7 @@
 /* NavBar */
 nav {
     height: 100%;
-    padding: 75px 0 30px 0;
+    padding: 60px 0 30px 0;
 }
 
 .navbar {
@@ -67,8 +67,8 @@ nav {
 }
 
 .logo-nombre {
-    font-size: 22px;
-    color: var(--text-color);
+    font-size: 16px;
+    color: var(--title-color);
     font-weight: 600;
     transition: var(--tran-03);
 }

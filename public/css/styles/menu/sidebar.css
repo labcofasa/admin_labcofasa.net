@@ -1,3 +1,8 @@
+.sidebar-desktop {
+    background-color: var(--bg-sidebar);
+    transition: var(--tran-03);
+}
+
 .sidebar-desktop .logo-detalles {
     height: 70px;
     display: flex;
@@ -37,12 +42,8 @@
     transition: var(--tran-03);
 }
 
-
-
 .sidebar-desktop .link_name {
-    font-size: var(--font-size);
-    letter-spacing: var(--letter-spacing);
-    font-weight: 500;
+    font-size: 0.875rem;
     white-space: nowrap;
     color: var(--text-color);
     transition: var(--tran-03);
@@ -62,8 +63,8 @@
 }
 
 .sidebar-desktop .menu-bar li svg {
-    height: 25px;
-    min-width: 78px;
+    height: 23px;
+    min-width: 60px;
     fill: var(--icon-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -73,11 +74,10 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    height: 33px;
 }
 
 .sidebar-desktop .menu-bar .menu {
-    margin-top: 2px;
+    padding: 10px;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links {
@@ -109,10 +109,6 @@
     display: block;
 }
 
-.sidebar-desktop .menu-bar li.showMenu .sub-menu a span {
-    transition: var(--tran-03);
-}
-
 .sidebar-desktop.open .menu-bar li.showMenu .sub-menu a span {
     opacity: 1;
 }
@@ -141,8 +137,7 @@
 
 .sidebar-desktop .menu-bar .bottom-content .menu .menu-links li:hover {
     background-color: var(--sidebar-bg-hover);
-    border-bottom-right-radius: 1.875rem;
-    border-top-right-radius: 1.875rem;
+    border-radius: 0.5rem;
 }
 
 .sidebar-desktop .menu-bar .bottom-content .menu .menu-links .mode:hover,
@@ -163,40 +158,38 @@
     border-radius: var(--border-radius);
 }
 
-.sidebar-desktop .menu-bar .menu .menu-links li a {
-    margin: 4px 0;
-}
-
 .sidebar-desktop .menu-bar .menu .menu-links .nav-link:hover {
     background-color: var(--sidebar-bg-hover);
-    padding: 1.3rem 0;
-    border-bottom-right-radius: 1.875rem;
-    border-top-right-radius: 1.875rem;
+    padding: 0.5rem 0 0.5rem 0;
+    border-radius: 0.5rem;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .nav-link {
-    padding: 1.3rem 0;
-    border-bottom-right-radius: 1.875rem;
-    border-top-right-radius: 1.875rem;
+    padding: 0.5rem 0 0.5rem 0;
+    margin: 4px 0 4px 0;
+    border-radius: 0.5rem;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .nav-link.active {
     background-color: var(--sidebar-bg-active);
-    padding: 1.3rem 0;
-    border-bottom-right-radius: 1.875rem;
-    border-top-right-radius: 1.875rem;
+    padding: 0.5rem 0 0.5rem 0;
+    border-radius: 0.5rem;
+}
+
+.sidebar-desktop .menu-bar .menu .menu-links .menus {
+    padding: 0.5rem 0 0.5rem 0;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .menus:hover {
     background-color: var(--sidebar-bg-hover);
-    border-bottom-right-radius: 1.875rem;
-    border-top-right-radius: 1.875rem;
+    border-radius: 0.5rem;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active {
     background-color: var(--sidebar-bg-active);
-    border-bottom-right-radius: 1.875rem;
-    border-top-right-radius: 1.875rem;
+    transition: var(--tran-03);
+    padding: 0.5rem 0 0.5rem 0;
+    border-radius: 0.5rem;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active .icon,
@@ -204,7 +197,8 @@
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active .link_name {
     fill: var(--accent);
     color: var(--accent);
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.875rem;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a svg,
@@ -218,7 +212,6 @@
 .sidebar-desktop .menu-bar .menu .menu-links li .sub-menu li a.active .links {
     color: var(--accent);
     fill: var(--accent);
-    font-weight: 600;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a .imagen-container {

@@ -5,21 +5,18 @@
 @section('contenido')
 
     <div class="container-fluid content">
-        <div class="card-container">
+        <!-- Tabla fantasma -->
+        <x-skeleton />
 
-            <!-- Tabla fantasma -->
-            <x-skeleton />
+        <!-- Tabla permisos -->
+        <div class="table-responsive" id="tabla-permisos-container" style="display: none;">
 
-            <!-- Tabla permisos -->
-            <div class="table-responsive" id="tabla-permisos-container" style="display: none;">
+            <!-- Titulo -->
+            <h1 class="pb-2">@yield('titulo')</h1>
 
-                <!-- Titulo -->
-                <h1 class="pb-2">@yield('titulo')</h1>
-
-                <table id="tabla-permisos" class="table align-middle responsive display" width="100%">
-                    <tbody></tbody>
-                </table>
-            </div>
+            <table id="tabla-permisos" class="table align-middle responsive display" width="100%">
+                <tbody></tbody>
+            </table>
         </div>
     </div>
 
