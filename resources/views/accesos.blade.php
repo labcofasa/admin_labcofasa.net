@@ -8,6 +8,6 @@
         <h1 class="pb-3">@yield('titulo')</h1>
 
         <!-- Botones para aplicaciones registradas -->
-        <x-inicio.cartas :aplicaciones="$aplicaciones" />
+        <x-dashboard.cartas :aplicaciones="$aplicaciones" />
     </div>
 @endsection

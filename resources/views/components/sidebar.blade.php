@@ -1,14 +1,25 @@
 <div class="offcanvas-body">
     <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
         <li class="nav-item">
-            <a href="{{ route('inicio') }}" class="nav-link {{ request()->routeIs('inicio') ? 'active' : '' }}"
+            <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
                 aria-current="page">
-                <svg class="icon pe-none" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                    width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" />
+                <svg class="icon pe-none" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                    width="24">
+                    <path
+                        d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h240v-560H200v560Zm320 0h240v-280H520v280Zm0-360h240v-200H520v200Z" />
                 </svg>
-                <span class="link">Inicio</span>
+                <span class="link">Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('accesos') }}" class="nav-link {{ request()->routeIs('accesos') ? 'active' : '' }}"
+                aria-current="page">
+                <svg class="icon pe-none" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                    width="24">
+                    <path
+                        d="M240-160q-33 0-56.5-23.5T160-240q0-33 23.5-56.5T240-320q33 0 56.5 23.5T320-240q0 33-23.5 56.5T240-160Zm240 0q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm240 0q-33 0-56.5-23.5T640-240q0-33 23.5-56.5T720-320q33 0 56.5 23.5T800-240q0 33-23.5 56.5T720-160ZM240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400ZM240-640q-33 0-56.5-23.5T160-720q0-33 23.5-56.5T240-800q33 0 56.5 23.5T320-720q0 33-23.5 56.5T240-640Zm240 0q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Zm240 0q-33 0-56.5-23.5T640-720q0-33 23.5-56.5T720-800q33 0 56.5 23.5T800-720q0 33-23.5 56.5T720-640Z" />
+                </svg>
+                <span class="link">Aplicaciones</span>
             </a>
         </li>
         @can('admin_usuarios_ver')
@@ -120,7 +131,8 @@
         @endcan
         @can('admin_avisos_ver')
             <li class="nav-item">
-                <a href="{{ route('pag.aviso') }}" class="nav-link {{ request()->routeIs('pag.aviso') ? 'active' : '' }}">
+                <a href="{{ route('pag.aviso') }}"
+                    class="nav-link {{ request()->routeIs('pag.aviso') ? 'active' : '' }}">
                     <svg class="icon pe-none" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
                         width="24">
                         <path d="M0 0h24v24H0V0z" fill="none" />

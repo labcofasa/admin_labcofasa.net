@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Aplicacion;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class InicioController extends Controller
+class AccesosController extends Controller
 {
     public function index()
     {
@@ -18,6 +19,6 @@ class InicioController extends Controller
 
         $usuario = User::with('perfil')->find(auth()->id());
 
-        return view('inicio', compact('usuario', 'aplicaciones'));
+        return view('accesos', compact('usuario', 'aplicaciones'));
     }
 }

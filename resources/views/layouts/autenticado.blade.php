@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/autenticado.css') }}">
 
         <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
+        <script src="{{ asset('js/graficas/chart.js') }}"></script>
 
         <!-- Titulo del sitio -->
         <title>@yield('titulo') - {{ config('app.name') }}</title>

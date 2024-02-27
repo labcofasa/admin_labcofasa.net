@@ -1,0 +1,31 @@
+.card-chart {
+    background: var(--body-color);
+    width: 400px;
+    box-shadow: var(--box-shadow-2);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card-chart header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.card-chart button {
+    background: transparent;
+    border: 0;
+    color: var(--text-color);
+    width: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card-chart button.active {
+    background:  #8f44fd;
+    font-family: inherit;
+}
+
+.card-chart button.active span {
+    color: #fff;
+}

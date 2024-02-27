@@ -77,7 +77,7 @@
 }
 
 .sidebar-desktop .menu-bar .menu {
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links {
@@ -230,4 +230,8 @@
 .sidebar .sidebar-content .lists a.active .link {
     color: var(--accent);
     fill: var(--accent);
+}
+
+.subtitle {
+    padding-left: 10px;
 }

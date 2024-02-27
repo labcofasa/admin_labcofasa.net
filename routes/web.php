@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccesosController;
 use App\Http\Controllers\AjustesController;
 use App\Http\Controllers\AplicacionesController;
 use App\Http\Controllers\Auth\AutenticacionController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EntidadController;
 use App\Http\Controllers\GiroController;
-use App\Http\Controllers\InicioController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\PaisController;
 use App\Http\Controllers\PapeleraController;
@@ -25,7 +26,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
     /* Página inicio */
-    Route::get('/inicio', [InicioController::class, 'index'])->name('inicio');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/accesos-directos', [AccesosController::class, 'index'])->name('accesos');
     Route::get('/cerrar-sesion', [AutenticacionController::class, 'cerrarSesion'])->name('cerrar.sesion');
 
     /* Página usuarios */
