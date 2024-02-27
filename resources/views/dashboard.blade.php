@@ -8,7 +8,7 @@
         <h1 class="pb-3">@yield('titulo')</h1>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <div class="card-chart">
                     <header class="card-chart-header">
                         <div>
@@ -27,8 +27,8 @@
                     <canvas id="areaTableChart" width="400" height="220"></canvas>
                 </div>
             </div>
-            <div class="col-md-6"></div>
-            <div class="col-md-6"></div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6"></div>
         </div>
 
 

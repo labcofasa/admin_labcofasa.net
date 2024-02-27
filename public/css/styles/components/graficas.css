@@ -1,6 +1,6 @@
 .card-chart {
     background: var(--body-color);
-    width: 400px;
+    width: 100%;
     box-shadow: var(--box-shadow-2);
     padding: 20px;
     border-radius: 10px;
