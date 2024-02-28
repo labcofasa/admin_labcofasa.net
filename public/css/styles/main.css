@@ -317,6 +317,10 @@ span {
     font-size: 0.875rem;
 }
 
+li {
+    list-style: none;
+}
+
 hr {
     border-top: var(--bs-border-width) solid var(--text-color);
 }
@@ -350,7 +354,7 @@ hr {
 }
 
 .content {
-    padding: 4.5rem 1rem 1.5rem 1rem;
+    padding: 4.5rem 1.5rem;
 }
 
 .card-container {
@@ -590,7 +594,7 @@ hr {
     .navbar {
         background-color: var(--card-bg);
     }
-    
+
     body {
         background-color: var(--card-bg);
     }
