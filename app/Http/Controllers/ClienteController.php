@@ -48,7 +48,7 @@ class ClienteController extends Controller
             'Nemull' => ['class' => ClienteNemull::class],
         ];
 
-        $data = [];
+        $combinedData = [];
         $totalRegistros = 0;
 
         foreach ($models as $tableName => $modelInfo) {
@@ -59,17 +59,19 @@ class ClienteController extends Controller
 
             $totalRegistros += $query->count();
 
-            $paginatedData = $query->skip($request->input('start'))->take($request->input('length'))->get()->toArray();
+            $data = $query->orderBy($columnNames[$orderColumnIndex], $orderDirection)
+                ->get()
+                ->toArray();
 
-            $data[$tableName] = $this->sortData($paginatedData, $columnNames[$orderColumnIndex], $orderDirection);
+            // $combinedData = array_merge($combinedData, $data);
+
+            foreach ($data as $row) {
+                $row['conexion'] = $tableName;
+                $combinedData[] = $row;
+            }
         }
 
-        $combinedData = [];
-        foreach ($data as $tableName => $modelData) {
-            $combinedData = array_merge($combinedData, $modelData);
-        }
-
-        $combinedData = array_slice($combinedData, 0, $request->input('length'));
+        $combinedData = array_slice($combinedData, $request->input('start'), $request->input('length'));
 
         $transformedData = $this->transformData($combinedData, $request->input('start'));
 
@@ -83,10 +85,8 @@ class ClienteController extends Controller
         ]);
     }
 
-    private function buildQuery($modelClass, $search)
+    private function buildQuery($model, $search)
     {
-        $model = new $modelClass;
-
         $query = $model->select([
             $model->getTable() . '.idCliente',
             $model->getTable() . '.codigo',
@@ -108,15 +108,6 @@ class ClienteController extends Controller
         return $query;
     }
 
-    private function sortData($data, $column, $direction)
-    {
-        usort($data, function ($a, $b) use ($column, $direction) {
-            return ($direction == 'asc') ? strnatcmp($a[$column], $b[$column]) : strnatcmp($b[$column], $a[$column]);
-        });
-
-        return $data;
-    }
-
     private function transformData($data, $start)
     {
         $contador = $start + 1;
@@ -126,6 +117,7 @@ class ClienteController extends Controller
             $transformedData[] = [
                 'id' => $cliente['idCliente'],
                 'contador' => $contador++,
+                'conexion' => $cliente['conexion'],
                 'codigo' => $cliente['codigo'],
                 'nrc' => $cliente['regIVA'],
                 'propietario' => $cliente['propietario'],
@@ -137,5 +129,4 @@ class ClienteController extends Controller
 
         return $transformedData;
     }
-
 }

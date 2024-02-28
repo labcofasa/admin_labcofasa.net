@@ -159,7 +159,7 @@ body.dark {
     /* Botones */
     --btn-primary: #2a4d7c;
     --btn-primary-hover: #3a5f8c;
-    --btn-secondary: #1e1f20;
+    --btn-secondary: #1E1F20;
     --btn-secondary-hover: #333333;
     --btn-success: #2a5739;
     --btn-success-hover: #3a6f49;
@@ -173,7 +173,7 @@ body.dark {
     --color-tooltip: #6edff6;
 
     /* Paginación de las tablas */
-    --btn-paginacion-bg: #282a2c;
+    --btn-paginacion-bg: #1E1F20;
     --btn-paginacion-color: #fff;
     --btn-paginacion-bg-active: #53dbc9;
     --btn-paginacion-color-active: #003731;
@@ -354,7 +354,7 @@ hr {
 }
 
 .content {
-    padding: 4.7rem 1.5rem;
+    padding: 4.7rem 1rem 0 1rem;
 }
 
 .card-container {

@@ -140,6 +140,7 @@ $(document).ready(function () {
             columns: [
                 { data: "contador", title: "#" },
                 { data: "codigo", title: "Codigo" },
+                { data: "conexion", title: "Empresa" },
                 { data: "nrc", title: "NRC" },
                 { data: "establecimiento", title: "Establecimiento" },
                 { data: "propietario", title: "Propietario" },
