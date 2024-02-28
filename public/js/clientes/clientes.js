@@ -117,11 +117,11 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 5, 6, 7],
+                    targets: [0, 1, 2, 3, 6, 7],
                     className: "nowrap",
                 },
                 {
-                    targets: [3, 4],
+                    targets: [4, 5],
                     className: "wrap",
                 },
                 {
