@@ -72,8 +72,21 @@
                         </ul>
                     </li>
                 @endcan
+                @can('admin_empresas_ver')
+                    <li>
+                        <a href="{{ route('pag.empresas') }}"
+                            class="nav-link {{ request()->routeIs('pag.empresas') ? 'active' : '' }}">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                                width="24">
+                                <path
+                                    d="M160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm0-80h640v-440H160v440Zm240-520h160v-80H400v80ZM160-200v-440 440Z" />
+                            </svg>
+                            <span class="link_name">Empresas</span>
+                        </a>
+                    </li>
+                @endcan
                 @can('admin_aplicaciones_ver')
-                    <li class="pb-2">
+                    <li>
                         <a href="{{ route('pag.aplicaciones') }}"
                             class="nav-link {{ request()->routeIs('pag.aplicaciones') ? 'active' : '' }}">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
@@ -82,6 +95,19 @@
                                     d="M240-160q-33 0-56.5-23.5T160-240q0-33 23.5-56.5T240-320q33 0 56.5 23.5T320-240q0 33-23.5 56.5T240-160Zm240 0q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm240 0q-33 0-56.5-23.5T640-240q0-33 23.5-56.5T720-320q33 0 56.5 23.5T800-240q0 33-23.5 56.5T720-160ZM240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400ZM240-640q-33 0-56.5-23.5T160-720q0-33 23.5-56.5T240-800q33 0 56.5 23.5T320-720q0 33-23.5 56.5T240-640Zm240 0q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Zm240 0q-33 0-56.5-23.5T640-720q0-33 23.5-56.5T720-800q33 0 56.5 23.5T800-720q0 33-23.5 56.5T720-640Z" />
                             </svg>
                             <span class="link_name">Aplicaciones</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('admin_papelera_ver')
+                    <li class="pb-2">
+                        <a href="{{ route('pag.papelera') }}"
+                            class="nav-link {{ request()->routeIs('pag.papelera') ? 'active' : '' }}">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                                width="24">
+                                <path
+                                    d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                            </svg>
+                            <span class="link_name">Papelera</span>
                         </a>
                     </li>
                 @endcan
@@ -98,8 +124,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('pag.cliente') }}"
-                        class="nav-link {{ request()->routeIs('pag.cliente') ? 'active' : '' }}">
+                    <a href="{{ route('pag.articulo') }}"
+                        class="nav-link {{ request()->routeIs('pag.articulo') ? 'active' : '' }}">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
                             width="24">
                             <path
@@ -112,37 +138,11 @@
                     <li>
                         <a href="{{ route('pag.aviso') }}"
                             class="nav-link {{ request()->routeIs('pag.aviso') ? 'active' : '' }}">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
-                                width="24">
-                                <path
-                                    d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm80 240v-80h400v80H280Zm0 160v-80h280v80H280Z" />
-                            </svg> <span class="link_name">Publicidad</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('admin_empresas_ver')
-                    <li>
-                        <a href="{{ route('pag.empresas') }}"
-                            class="nav-link {{ request()->routeIs('pag.empresas') ? 'active' : '' }}">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
-                                width="24">
-                                <path
-                                    d="M160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm0-80h640v-440H160v440Zm240-520h160v-80H400v80ZM160-200v-440 440Z" />
-                            </svg>
-                            <span class="link_name">Empresas</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('admin_papelera_ver')
-                    <li>
-                        <a href="{{ route('pag.papelera') }}"
-                            class="nav-link {{ request()->routeIs('pag.papelera') ? 'active' : '' }}">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24"
                                 viewBox="0 -960 960 960" width="24">
                                 <path
-                                    d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
-                            </svg>
-                            <span class="link_name">Papelera</span>
+                                    d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm80 240v-80h400v80H280Zm0 160v-80h280v80H280Z" />
+                            </svg> <span class="link_name">Publicidad</span>
                         </a>
                     </li>
                 @endcan

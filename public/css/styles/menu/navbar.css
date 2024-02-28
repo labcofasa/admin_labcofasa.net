@@ -4,6 +4,11 @@ nav {
     padding: 60px 0 30px 0;
 }
 
+nav.visible {
+    top: 0;
+    translate: 0;
+}
+
 .navbar {
     transition: var(--tran-03);
     height: 60px;

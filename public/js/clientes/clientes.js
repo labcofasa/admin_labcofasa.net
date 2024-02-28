@@ -112,12 +112,12 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 7],
+                    targets: [0, 8],
                     searchable: false,
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 5, 6],
+                    targets: [0, 1, 2, 5, 6, 7],
                     className: "nowrap",
                 },
                 {
@@ -125,13 +125,13 @@ $(document).ready(function () {
                     className: "wrap",
                 },
                 {
-                    targets: [1, 2, 3, 4, 5, 6],
+                    targets: [1, 2, 3, 4, 5, 6, 7],
                     searchable: true,
                     orderable: true,
                 },
                 { responsivePriority: 1, targets: 1 },
                 { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 7 },
+                { responsivePriority: 3, targets: 8 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
@@ -147,7 +147,6 @@ $(document).ready(function () {
                 { data: "fecha_registro", title: "Fecha de registro" },
                 { data: "usuario_registro", title: "Usuario creador" },
                 {
-                    targets: [7],
                     data: null,
                     render: function (data, type, row) {
                         return `
@@ -176,7 +175,7 @@ $(document).ready(function () {
                     },
                 },
             ],
-            order: [[5, "desc"]],
+            order: [[6, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;

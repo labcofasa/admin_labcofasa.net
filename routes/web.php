@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccesosController;
 use App\Http\Controllers\AjustesController;
 use App\Http\Controllers\AplicacionesController;
+use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\Auth\AutenticacionController;
 use App\Http\Controllers\Auth\RestablecerController;
 use App\Http\Controllers\ClasificacionController;
@@ -153,7 +154,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/eliminar-aplicacion/{id}', [AplicacionesController::class, 'destroy']);
     });
 
-    /* Avisos */
+    // Avisos
     Route::middleware(['can:admin_avisos_ver'])->group(function () {
         Route::post('/crear-avisos', [AvisoController::class, 'store']);
         Route::get('/avisos', [AvisoController::class, 'index'])->name('pag.aviso');
@@ -161,6 +162,9 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/actualizar-aviso/{id}', [AvisoController::class, 'update']);
         Route::delete('/eliminar-aviso/{id}', [AvisoController::class, 'destroy']);
     });
+
+    // Articulos
+    Route::get('/articulos', [ArticuloController::class, 'index'])->name('pag.articulo');
 
     // Clientes
     Route::get('/clientes', [ClienteController::class, 'index'])->name('pag.cliente');

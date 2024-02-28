@@ -15,7 +15,7 @@ class ClienteController extends Controller
     {
         $usuario = User::with('perfil')->find(auth()->id());
 
-        return view('cliente', compact('usuario'));
+        return view('clientes', compact('usuario'));
     }
     public function verClientes()
     {
@@ -62,8 +62,6 @@ class ClienteController extends Controller
             $data = $query->orderBy($columnNames[$orderColumnIndex], $orderDirection)
                 ->get()
                 ->toArray();
-
-            // $combinedData = array_merge($combinedData, $data);
 
             foreach ($data as $row) {
                 $row['conexion'] = $tableName;
