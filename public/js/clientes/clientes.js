@@ -127,7 +127,7 @@ $(document).ready(function () {
                 {
                     targets: [1, 2, 3, 4, 5, 6, 7],
                     searchable: true,
-                    orderable: true,
+                    orderable: false,
                 },
                 { responsivePriority: 1, targets: 1 },
                 { responsivePriority: 2, targets: 2 },

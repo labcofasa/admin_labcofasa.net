@@ -23,51 +23,6 @@ class ClienteController extends Controller
 
         return view('clientes', compact('usuario'));
     }
-    public function verClientes(Request $request)
-    {
-        $perPage = 10;
-
-        $page = $request->input('page', 1);
-
-        $allClients = $this->obtenerClientes($page, $perPage);
-
-        return response()->json($allClients);
-    }
-    private function obtenerClientes($page, $perPage)
-    {
-        $combinedData = [];
-        $totalRegistros = 0;
-
-        Paginator::currentPageResolver(function () use ($page) {
-            return $page;
-        });
-
-        foreach ($this->models as $tableName => $modelInfo) {
-            $modelClass = $modelInfo['class'];
-            $model = new $modelClass;
-
-            $query = $this->buildQuery($model, '');
-
-            $totalRegistros += $query->count();
-
-            $data = $query->orderBy('idCliente', 'asc')
-                ->paginate($perPage, ['*'], 'page', $page);
-
-            foreach ($data->items() as $row) {
-                $row['conexion'] = $tableName;
-                $combinedData[] = $row;
-            }
-        }
-
-        return [
-            'data' => $this->transformData($combinedData, ($page - 1) * $perPage),
-            'current_page' => $page,
-            'per_page' => $perPage,
-            'total' => $totalRegistros,
-            'next_page_url' => $data->nextPageUrl(),
-            'prev_page_url' => $data->previousPageUrl(),
-        ];
-    }
     public function tablaClientes(Request $request)
     {
         $this->validate($request, [
@@ -102,9 +57,9 @@ class ClienteController extends Controller
 
             $totalRegistros += $query->count();
 
-            $data = $query->orderBy($columnNames[$orderColumnIndex], $orderDirection)
-                ->get()
-                ->toArray();
+            $data = $query->orderBy('fecha', 'desc')
+            ->get()
+            ->toArray();
 
             foreach ($data as $row) {
                 $row['conexion'] = $tableName;
@@ -167,6 +122,51 @@ class ClienteController extends Controller
         }
 
         return $transformedData;
+    }
+    public function verClientes(Request $request)
+    {
+        $perPage = 10;
+
+        $page = $request->input('page', 1);
+
+        $allClients = $this->obtenerClientes($page, $perPage);
+
+        return response()->json($allClients);
+    }
+    private function obtenerClientes($page, $perPage)
+    {
+        $combinedData = [];
+        $totalRegistros = 0;
+
+        Paginator::currentPageResolver(function () use ($page) {
+            return $page;
+        });
+
+        foreach ($this->models as $tableName => $modelInfo) {
+            $modelClass = $modelInfo['class'];
+            $model = new $modelClass;
+
+            $query = $this->buildQuery($model, '');
+
+            $totalRegistros += $query->count();
+
+            $data = $query->orderBy('idCliente', 'asc')
+                ->paginate($perPage, ['*'], 'page', $page);
+
+            foreach ($data->items() as $row) {
+                $row['conexion'] = $tableName;
+                $combinedData[] = $row;
+            }
+        }
+
+        return [
+            'data' => $this->transformData($combinedData, ($page - 1) * $perPage),
+            'current_page' => $page,
+            'per_page' => $perPage,
+            'total' => $totalRegistros,
+            'next_page_url' => $data->nextPageUrl(),
+            'prev_page_url' => $data->previousPageUrl(),
+        ];
     }
     public function buscarClientePorId($idCliente)
     {
