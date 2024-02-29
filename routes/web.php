@@ -168,7 +168,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Clientes
     Route::get('/clientes', [ClienteController::class, 'index'])->name('pag.cliente');
-    Route::get('/obtener-clientes', [ClienteController::class, 'verClientes']);
     Route::get('/tabla-clientes', [ClienteController::class, 'tablaClientes']);
 });
 

@@ -8,22 +8,65 @@ use App\Models\ClienteOmega;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class ClienteController extends Controller
 {
+    protected $models = [
+        'Cofasa' => ['class' => ClienteCofasa::class],
+        'Omega' => ['class' => ClienteOmega::class],
+        'Nemull' => ['class' => ClienteNemull::class],
+    ];
     public function index()
     {
         $usuario = User::with('perfil')->find(auth()->id());
 
         return view('clientes', compact('usuario'));
     }
-    public function verClientes()
+    public function verClientes(Request $request)
     {
-        $clientes = ClienteOmega::select('codigo', 'propietario', 'establecimiento')->paginate(5);
+        $perPage = 10;
 
-        return response()->json($clientes)
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET');
+        $page = $request->input('page', 1);
+
+        $allClients = $this->obtenerClientes($page, $perPage);
+
+        return response()->json($allClients);
+    }
+    private function obtenerClientes($page, $perPage)
+    {
+        $combinedData = [];
+        $totalRegistros = 0;
+
+        Paginator::currentPageResolver(function () use ($page) {
+            return $page;
+        });
+
+        foreach ($this->models as $tableName => $modelInfo) {
+            $modelClass = $modelInfo['class'];
+            $model = new $modelClass;
+
+            $query = $this->buildQuery($model, '');
+
+            $totalRegistros += $query->count();
+
+            $data = $query->orderBy('idCliente', 'asc')
+                ->paginate($perPage, ['*'], 'page', $page);
+
+            foreach ($data->items() as $row) {
+                $row['conexion'] = $tableName;
+                $combinedData[] = $row;
+            }
+        }
+
+        return [
+            'data' => $this->transformData($combinedData, ($page - 1) * $perPage),
+            'current_page' => $page,
+            'per_page' => $perPage,
+            'total' => $totalRegistros,
+            'next_page_url' => $data->nextPageUrl(),
+            'prev_page_url' => $data->previousPageUrl(),
+        ];
     }
     public function tablaClientes(Request $request)
     {
@@ -82,7 +125,6 @@ class ClienteController extends Controller
             'data' => $transformedData,
         ]);
     }
-
     private function buildQuery($model, $search)
     {
         $query = $model->select([
@@ -105,7 +147,6 @@ class ClienteController extends Controller
 
         return $query;
     }
-
     private function transformData($data, $start)
     {
         $contador = $start + 1;
@@ -126,5 +167,36 @@ class ClienteController extends Controller
         }
 
         return $transformedData;
+    }
+    public function buscarClientePorId($idCliente)
+    {
+        $clienteEncontrado = $this->buscarClienteEnConexiones($idCliente);
+
+        if ($clienteEncontrado) {
+            return response()->json([
+                'data' => $clienteEncontrado,
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'Cliente no encontrado',
+            ], 404);
+        }
+    }
+
+    private function buscarClienteEnConexiones($idCliente)
+    {
+        foreach ($this->models as $tableName => $modelInfo) {
+            $modelClass = $modelInfo['class'];
+            $model = new $modelClass;
+
+            $clienteEncontrado = $model->where('idCliente', $idCliente)->first();
+
+            if ($clienteEncontrado) {
+                $clienteEncontrado['conexion'] = $tableName;
+                return $clienteEncontrado;
+            }
+        }
+
+        return null;
     }
 }
