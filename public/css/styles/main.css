@@ -205,7 +205,7 @@ body.dark {
     --box-shadow-2: 0;
 
     --body-bg: #131314;
-    --sidebar-bg: #1e1f20;
+    --sidebar-bg: #1C1C1C;
     --sidebar-bg-hover: #323232;
     --sidebar-icon-hover: #adb2b6;
     --sidebar-bg-active: #323232;
@@ -229,7 +229,7 @@ body.dark {
     --counter-text: #bebebe;
 
     /* Archivo style main */
-    --btn-card-bg: #1e1f20;
+    --btn-card-bg: #1C1C1C;
 
     --card-container: #131314;
     --toggle-switch: rgb(0, 221, 80);
@@ -237,10 +237,10 @@ body.dark {
     --toggle-switch-border: #d0d0d0;
 
     /* Contadores */
-    --carta-primary: #1e1f20;
-    --carta-secondary: #1e1f20;
-    --carta-success: #1e1f20;
-    --carta-info: #1e1f20;
+    --carta-primary: #1C1C1C;
+    --carta-secondary: #1C1C1C;
+    --carta-success: #1C1C1C;
+    --carta-info: #1C1C1C;
 
     /* Iconos */
     --icon-carta-primary: #bebebe;
@@ -561,7 +561,7 @@ hr {
     }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1366px) {
     .navbar-brand svg,
     .navbar-brand span {
         display: none;
@@ -590,7 +590,7 @@ hr {
     }
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 1366px) {
     .navbar {
         background-color: var(--card-bg);
     }
