@@ -182,7 +182,6 @@ class ClienteController extends Controller
             ], 404);
         }
     }
-
     private function buscarClienteEnConexiones($idCliente)
     {
         foreach ($this->models as $tableName => $modelInfo) {

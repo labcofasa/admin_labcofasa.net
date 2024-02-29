@@ -17,13 +17,7 @@
                 <tbody></tbody>
             </table>
         </div>
-
-        <!-- Botón que dispara el registro de clientes -->
-        <span type="hidden" id="crearClienteBtn"></span>
     </div>
-
-    <!-- Modal -->
-    <x-cliente.cliente />
 
     <!-- Scripts -->
     <script async src="{{ asset('js/clientes/clientes.js') }}"></script>

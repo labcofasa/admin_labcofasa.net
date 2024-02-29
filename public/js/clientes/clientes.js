@@ -37,13 +37,6 @@ $(document).ready(function () {
                     text: "Editar columnas",
                 },
                 {
-                    text: "Crear registro",
-                    className: "btn btn-lg btn-store cliente",
-                    action: function (e, dt, node, config) {
-                        document.getElementById("crearClienteBtn").click();
-                    },
-                },
-                {
                     extend: "collection",
                     text: "Exportar",
                     className: "btn btn-lg btn-group-secondary",
@@ -226,21 +219,4 @@ $(document).ready(function () {
     }
 
     $.fn.DataTable.ext.pager.numbers_length = 4;
-
-    /* Registrar cliente */
-    $("#crearClienteBtn").click(function () {
-        $("#crearCliente").modal("show");
-    });
-
-    /* Eliminar usuario */
-    $("#tabla-clientes").on("click", ".eliminar-cliente", function () {
-        const clienteId = $(this).data("id");
-        clienteNombre = tabla_clientes.row($(this).closest("tr")).data().establecimiento;
-
-        const modal = $("#eliminarCliente");
-        modal.modal("show");
-
-        modal.find(".nombre-cliente").text(clienteNombre);
-        $("#btn-eliminar-cliente").data("id", clienteId);
-    });
 });
