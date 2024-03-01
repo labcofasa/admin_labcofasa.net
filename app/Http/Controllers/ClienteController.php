@@ -58,8 +58,8 @@ class ClienteController extends Controller
             $totalRegistros += $query->count();
 
             $data = $query->orderBy('fecha', 'desc')
-            ->get()
-            ->toArray();
+                ->get()
+                ->toArray();
 
             foreach ($data as $row) {
                 $row['conexion'] = $tableName;
@@ -126,21 +126,16 @@ class ClienteController extends Controller
     public function verClientes(Request $request)
     {
         $perPage = 10;
-
         $page = $request->input('page', 1);
-
         $allClients = $this->obtenerClientes($page, $perPage);
 
         return response()->json($allClients);
     }
+
     private function obtenerClientes($page, $perPage)
     {
         $combinedData = [];
         $totalRegistros = 0;
-
-        Paginator::currentPageResolver(function () use ($page) {
-            return $page;
-        });
 
         foreach ($this->models as $tableName => $modelInfo) {
             $modelClass = $modelInfo['class'];
@@ -150,23 +145,38 @@ class ClienteController extends Controller
 
             $totalRegistros += $query->count();
 
-            $data = $query->orderBy('idCliente', 'asc')
-                ->paginate($perPage, ['*'], 'page', $page);
+            $data = $query->orderBy('idCliente', 'asc')->get();
 
-            foreach ($data->items() as $row) {
+            foreach ($data as $row) {
                 $row['conexion'] = $tableName;
                 $combinedData[] = $row;
             }
         }
 
+        $start = ($page - 1) * $perPage;
+        $paginatedData = array_slice($combinedData, $start, $perPage);
+
         return [
-            'data' => $this->transformData($combinedData, ($page - 1) * $perPage),
-            'current_page' => $page,
-            'per_page' => $perPage,
+            'data' => $this->transformData($paginatedData, $start),
+            'pagina_actual' => $page,
+            'por_pagina' => $perPage,
             'total' => $totalRegistros,
-            'next_page_url' => $data->nextPageUrl(),
-            'prev_page_url' => $data->previousPageUrl(),
+            'url_siguiente' => $this->obtenerSiguienteUrl($combinedData, $page, $perPage),
+            'url_anterior' => $this->obtenerAnteriorUrl($page),
         ];
+    }
+
+    private function obtenerSiguienteUrl($data, $currentPage, $perPage)
+    {
+        $start = $currentPage * $perPage;
+        $nextPage = array_slice($data, $start, $perPage);
+
+        return count($nextPage) > 0 ? url()->current() . '?page=' . ($currentPage + 1) : null;
+    }
+
+    private function obtenerAnteriorUrl($currentPage)
+    {
+        return $currentPage > 1 ? url()->current() . '?page=' . ($currentPage - 1) : null;
     }
     public function buscarClientePorId($idCliente)
     {
