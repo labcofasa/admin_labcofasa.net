@@ -5,7 +5,7 @@
 @section('contenido')
     <div class="container">
         <div class="text-center">
-            <img class="logo" src="http://127.0.0.1:8000/images/cofasa.svg" alt="logo">
+            <img class="logo" src="{{ asset('images/cofasa.svg')}}" alt="logo">
         </div>
 
         <div class="titulo">Formulario Conozca a su Cliente y Contraparte</div>
