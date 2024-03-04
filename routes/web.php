@@ -186,8 +186,9 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/restablecer/nueva-clave', [RestablecerController::class, 'restablecerNuevaClave'])->name('actualizar.clave');
 
     // Formulario
-    Route::get('/formulario-conozca-a-su-cliente-y-contraparte', [FormsController::class, 'index'])->name('formulario');
 });
+
+Route::get('/formulario-conozca-a-su-cliente-y-contraparte', [FormsController::class, 'index'])->name('formulario');
 
 Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])
     ->middleware('cors');
