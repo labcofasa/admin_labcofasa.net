@@ -11,26 +11,18 @@
     <link rel="shortcut icon" href="{{ asset('images/logo.svg') }}" type="image/x-icon">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('css/invitado.css') }}">
-
-    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/publico.css') }}">
 
     <!-- Titulo del sitio -->
     <title>@yield('titulo') - {{ config('app.name') }}</title>
 </head>
 
-<body class="fondo">
+<body>
     <main>
         @yield('contenido')
     </main>
 
-    <!-- Scripts -->
-    <script>
-        var abiertoSvgUrl = "{{ asset('images/abierto.svg') }}";
-        var cerradoSvgUrl = "{{ asset('images/cerrado.svg') }}";
-    </script>
-    <script src="{{ asset('js/formulario.js') }}"></script>
-
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>

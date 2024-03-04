@@ -22,6 +22,7 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AvisoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FormsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -183,6 +184,9 @@ Route::middleware(['guest'])->group(function () {
     /* Página actualizar contraseña */
     Route::get('/restablecer/clave/{token}', [RestablecerController::class, 'formularioNuevaClave'])->name('form.reseteo');
     Route::post('/restablecer/nueva-clave', [RestablecerController::class, 'restablecerNuevaClave'])->name('actualizar.clave');
+
+    // Formulario
+    Route::get('/formulario-conozca-a-su-cliente-y-contraparte', [FormsController::class, 'index'])->name('formulario');
 });
 
 Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])
