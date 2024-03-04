@@ -188,7 +188,7 @@ Route::middleware(['guest'])->group(function () {
     // Formulario
 });
 
-Route::get('/formulario-conozca-a-su-cliente-y-contraparte', [FormsController::class, 'index'])->name('formulario');
+Route::get('/formulario-conozca-a-su-cliente-y-contraparte', [FormsController::class, 'index'])->name('formulario')->middleware('cors');
 
 Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])
     ->middleware('cors');
