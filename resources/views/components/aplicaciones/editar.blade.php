@@ -20,7 +20,7 @@
                 <div class="modal-body">
                     <input type="hidden" id="btn-editar-aplicacion" name="aplicacion_id">
                     <div class="form-group mb-3">
-                        <label for="nombre-aplicacion-editar" class="text-label">Nombre <span class="obligatorio">
+                        <label for="nombre-aplicacion-editar" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre_aplicacion" class="form-control"
                             id="nombre-aplicacion-editar" required>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="enlace-aplicacion-editar" class="text-label">Dirección URL <span
+                        <label for="enlace-aplicacion-editar" class="form-label">Dirección URL <span
                                 class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="url" name="enlace_aplicacion" class="form-control"
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="empresa-aplicacion-editar" class="text-label">Empresa
+                        <label for="empresa-aplicacion-editar" class="form-label">Empresa
                             <span class="obligatorio"> *</span>
                         </label>
                         <select name="empresa" id="empresa-aplicacion-editar" class="form-control" required>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="roles-editar" class="text-label">Roles de usuario <span class="obligatorio">
+                        <label for="roles-editar" class="form-label">Roles de usuario <span class="obligatorio">
                                 *</span>
                         </label>
                         <select class="form-control" name="roles" id="roles-editar" required multiple
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="imagen-aplicacion-editar" class="text-label">
+                        <label for="imagen-aplicacion-editar" class="form-label">
                             Imagen <small>(500x500 píxeles)</small>
                         </label>
                         <label for="imagen-aplicacion-editar" class="file-upload-image">

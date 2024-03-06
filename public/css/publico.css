@@ -13,6 +13,139 @@
     font-family: "Poppins", sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--component-bg);
+    border-radius: 5px;
+    transition: var(--tran-03);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--component);
+    border-radius: 5px;
+    transition: var(--tran-03);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--component-hover);
+}
+
+/* Colores para el diseño claro */
+:root {
+    /* Paleta de colores */
+    --primary: #6ad5c2;
+    --secondary: #b5e4ca;
+    --secondary-hover: #b5e4ca;
+    --accent: #1C1C1C;
+    --positive: #1C1C1C;
+    --negative: ;
+    --info: #e0edfc;
+    --warning: ;
+
+    /* Botones */
+    --btn-primary: #e8f0fe;
+    --btn-primary-hover: #d0dffa;
+    --btn-secondary: #f6f6f6;
+    --btn-secondary-hover: #e5e7e9;
+    --btn-success: #ceead6;
+    --btn-success-hover: #bde2c7;
+    --btn-danger: #fce8e6;
+    --btn-danger-hover: #f8d8d5;
+    --btn-warning: #fff3cd;
+    --btn-warning-hover: #ffe5b4;
+    --btn-info: ;
+
+    --bg-tooltip: #006d4b;
+    --color-tooltip: #fff;
+
+
+    /* Iconos */
+    --icon-primary: #1967d2;
+    --icon-secondary: #3c4043;
+    --icon-success: #188038;
+    --icon-danger: #ea4335;
+    --icon-warning: #ffc107;
+    --icon-info: ;
+
+    /* Textos */
+    --text-color: #3c4043;
+    --span: #555555;
+    --font-size: 0.875rem;
+    --letter-spacing: 0.0178571429em;
+    --input-caret: #1DCCC3;
+
+    /* Generales */
+    --bg-sidebar: #fcfcfc;
+    --title-color: #000000;
+    --sidebar-text-hover: #111827;
+    --box-shadow-2: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    --body-bg: #FFFFFF;
+    --sidebar-bg: #f0f4f9;
+    --sidebar-bg-hover: #F3F3F3;
+    /* --sidebar-icon-hover: #4a4f53; */
+    --sidebar-bg-active: #F3F3F3;
+    --card-bg: #FFFFFF;
+    --toggle-shadow: #999999;
+    --table-border: #dee2e6;
+    --component: #c0c0c0;
+    --component-bg: #e9e9eb;
+    --component-hover: #a0a0a0;
+    --border-radius: 0.5rem;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    --dropdown-menu: #ffffff;
+    --dropdown-item-hover: #0000000a;
+    --dropdown-divider: #eeeeee;
+
+    /* Alertas */
+    --alert-primary: #cfe2ff;
+    --alert-primary-color: #052c65;
+    --alert-primary-border: #9ec5fe;
+
+    /* Viejos estilos */
+    --color-enfoque: #1a73e8;
+    --color-valido: #198754;
+    --color-invalido: #dd0025;
+
+    /* Trancisiones */
+    --tran-01: all 0.2s ease;
+    --tran-02: all 0.3s ease;
+    --tran-03: all 0.4s ease;
+
+    /* Contadores */
+    --contador-primary: #0d6efd;
+    --contador-info: #17a2b8;
+    --contador-danger: #dc3545;
+    --contador-success: #28a745;
+    --counter-text: #ffffff;
+
+    /* Archivo style main */
+
+    --btn-card-bg: #ffffff;
+
+    --card-container: #ffffff;
+    --toggle-switch: rgb(0, 221, 80);
+    --toggle-switch-bg: #ffffff;
+    --toggle-switch-border: #dee2e6;
+
+    /* Contadores */
+    --carta-primary: #c8e6fc;
+    --carta-secondary: #e3e3e3;
+    --carta-success: #ccecd1;
+    --carta-info: #d7e2fc;
+
+    /* Iconos */
+    --icon-carta-primary: #245779;
+    --icon-carta-secondary: #535252;
+    --icon-carta-success: #4e9558;
+    --icon-carta-info: #3062a5;
+}
+
+
 body {
     background: #c8e8e9;
     display: flex;
@@ -21,10 +154,13 @@ body {
 }
 
 .container {
+    margin: auto;
+    width: 80%;
     background: #fff;
     border-radius: 6px;
     margin-top: 40px;
-    padding: 40px;
+    margin-bottom: 40px;
+    padding: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -51,35 +187,45 @@ span {
 
 .button {
     display: inline-block;
-    margin-top: 12px;
+    margin-top: 25px;
 }
 
-.button input[type="button"] {
+.button {
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
+    width: 40%;
+    font-weight: 500;
     border: none;
-    padding: 8px 16px;
+    padding: 16px;
     border-radius: 6px;
     background: #3e2093;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.button input[type="button"]:hover {
-    background: #5029bc;
+.button:hover,
+.button:focus,
+.button:active {
+    color: #fff !important;
+    background: #5029bc !important;
 }
 
 @media screen and (max-width: 768px) {
     .container {
-        padding: 20px;
+        width: 100%;
     }
 }
 
 @media screen and (max-width: 450px) {
     .container {
-        padding: 20px;
+        width: 100%;
         box-shadow: none;
+    }
+
+    .button {
+        width: 100%;
+        padding: 16px; 
     }
 
     body {

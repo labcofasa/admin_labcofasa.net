@@ -20,7 +20,7 @@
                 <div class="modal-body">
                     <input type="hidden" id="btn-editar-pais" name="pais_id">
                     <div class="form-group mb-3">
-                        <label for="pais-editar-nombre" class="text-label">Nombre <span class="obligatorio">
+                        <label for="pais-editar-nombre" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="pais-editar-nombre" required>
@@ -28,18 +28,16 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group mb-3">
-                                <label for="pais-editar-codigo_mh" class="text-label">Código MH <span
-                                        class="obligatorio"> *</span></label>
+                                <label for="pais-editar-codigo_mh" class="form-label">Código MH</label>
                                 <input autocomplete="off" type="text" name="codigo_mh" class="form-control"
-                                    id="pais-editar-codigo_mh" required>
+                                    id="pais-editar-codigo_mh">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group mb-3">
-                                <label for="pais-editar-codigo_iso" class="text-label">Código ISO <span
-                                        class="obligatorio"> *</span></label>
+                                <label for="pais-editar-codigo_iso" class="form-label">Código ISO</label>
                                 <input autocomplete="off" type="text" name="codigo_iso" class="form-control"
-                                    id="pais-editar-codigo_iso" required>
+                                    id="pais-editar-codigo_iso">
                             </div>
                         </div>
                     </div>

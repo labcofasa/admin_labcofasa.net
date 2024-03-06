@@ -14,10 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->string('nombre');
             $table->string('nombre_tabla')->nullable();
-            $table->string('codigo_mh');
-            $table->unsignedBigInteger('departamento_id');
+            $table->string('codigo_mh')->nullable();
+            $table->unsignedBigInteger('departamento_id')->nullable();
             $table->timestamp('created_at')->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->unsignedBigInteger('user_modified_id')->nullable();
             $table->softDeletes();

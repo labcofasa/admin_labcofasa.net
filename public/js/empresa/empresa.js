@@ -1006,13 +1006,13 @@ $(document).ready(function () {
         div.innerHTML = `
             <div class="col-md-5">
                 <div class="form-group my-1">
-                    <label for="nombre-rs-${contadorCampos}" class="text-label">Nombre</label>
+                    <label for="nombre-rs-${contadorCampos}" class="form-label">Nombre</label>
                     <input autocomplete="off" id="nombre-rs-${contadorCampos}" type="text" name="social[]" class="form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group my-1">
-                    <label for="enlace-rs-${contadorCampos}" class="text-label">Enlace URL del perfil</label>
+                    <label for="enlace-rs-${contadorCampos}" class="form-label">Enlace URL del perfil</label>
                     <input autocomplete="off" id="enlace-rs-${contadorCampos}" type="url" name="enlace[]" class="form-control">
                 </div>
             </div>
@@ -1046,7 +1046,7 @@ $(document).ready(function () {
         div.innerHTML = `
             <div class="col-md-5">
                 <div class="form-group my-1">
-                    <label for="nombre-editar-${contadorCamposEditar}" class="text-label">Nombre</label>
+                    <label for="nombre-editar-${contadorCamposEditar}" class="form-label">Nombre</label>
                     <input autocomplete="off" id="nombre-editar-${contadorCamposEditar}" type="text" name="socialEditar[]" class="form-control" required>
                     <div class="invalid-feedback">
                         Ingrese un nombre válido
@@ -1055,7 +1055,7 @@ $(document).ready(function () {
             </div>
             <div class="col-md-5">
                 <div class="form-group my-1">
-                    <label for="enlace-editar-${contadorCamposEditar}" class="text-label">Enlace URL del perfil</label>
+                    <label for="enlace-editar-${contadorCamposEditar}" class="form-label">Enlace URL del perfil</label>
                     <input autocomplete="off" id="enlace-editar-${contadorCamposEditar}" type="url" name="enlaceEditar[]" class="form-control" required>
                     <div class="invalid-feedback">
                         Ingrese un enlace válido
@@ -1129,57 +1129,13 @@ function cargarEntidades(
     });
 }
 
-/* Cargar clasificaciones */
-function cargarClasificaciones(
-    clasificacionSelectId,
-    idClasificacionInputId,
-    editar,
-    clasificacionActual
-) {
-    $.ajax({
-        url: "/obtener-clasificaciones",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            const clasificacionSelect = $(clasificacionSelectId);
-            clasificacionSelect.empty();
-            clasificacionSelect.append(
-                $("<option>", {
-                    value: "",
-                    text: "Seleccione una clasificación",
-                })
-            );
-
-            $.each(data, function (key, value) {
-                clasificacionSelect.append(
-                    '<option value="' + key + '">' + value + "</option>"
-                );
-            });
-
-            if (editar && clasificacionActual) {
-                clasificacionSelect.val(clasificacionActual);
-            }
-
-            $(idClasificacionInputId).val(clasificacionSelect.val());
-        },
-        error: function (error) {
-            console.log("Error al obtener las clasificaciones");
-        },
-    });
-
-    $(clasificacionSelectId).on("change", function () {
-        var selectClasificacionId = $(this).val();
-        $(idClasificacionInputId).val(selectClasificacionId);
-    });
-}
-
 /* Cargar redes sociales */
 function agregarRedSocialHtml(empresaId, contadorCamposEditar, redSocial) {
     let redSocialHtml = `
         <div class="row g-3 pt-1 align-items-center justify-content-center">
             <div class="col-md-5">
                 <div class="form-group text-center">
-                    <label for="nombre-editar-${empresaId}-${contadorCamposEditar}" class="text-label">Nombre</label>
+                    <label for="nombre-editar-${empresaId}-${contadorCamposEditar}" class="form-label">Nombre</label>
                     <input autocomplete="off" id="nombre-editar-${empresaId}-${contadorCamposEditar}" type="text" name="socialEditar[]" class="form-control" value="${redSocial.nombre}" required>
                     <div class="invalid-feedback">
                         Ingrese un nombre válido
@@ -1188,7 +1144,7 @@ function agregarRedSocialHtml(empresaId, contadorCamposEditar, redSocial) {
             </div>
             <div class="col-md-5">
                 <div class="form-group text-center">
-                    <label for="enlace-editar-${empresaId}-${contadorCamposEditar}" class="text-label">Enlace URL del perfil</label>
+                    <label for="enlace-editar-${empresaId}-${contadorCamposEditar}" class="form-label">Enlace URL del perfil</label>
                     <input autocomplete="off" id="enlace-editar-${empresaId}-${contadorCamposEditar}" type="url" name="enlaceEditar[]" class="form-control" value="${redSocial.enlace}" required>
                     <div class="invalid-feedback">
                         Ingrese un enlace válido

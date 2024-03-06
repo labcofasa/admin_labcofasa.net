@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('nombre');
             $table->string('nombre_tabla')->nullable();
-            $table->string('codigo_mh');
-            $table->string('codigo_iso');
+            $table->string('codigo_mh')->nullable();
+            $table->string('codigo_iso')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamp('updated_at')->nullable();

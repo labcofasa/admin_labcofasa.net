@@ -20,13 +20,13 @@
                 <div class="modal-body">
                     <input type="hidden" id="btn-editar-clasificacion" name="clasificacion_id">
                     <div class="form-group mb-3">
-                        <label for="clasificacion-editar-nombre" class="text-label">Nombre <span class="obligatorio">
+                        <label for="clasificacion-editar-nombre" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="clasificacion-editar-nombre" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="clasificacion-editar-codigo" class="text-label">Código</label>
+                        <label for="clasificacion-editar-codigo" class="form-label">Código</label>
                         <input autocomplete="off" type="text" name="codigo" class="form-control"
                             id="clasificacion-editar-codigo" required>
                     </div>

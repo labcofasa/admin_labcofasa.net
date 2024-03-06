@@ -20,16 +20,15 @@
                 <div class="modal-body">
                     <input type="hidden" id="editar-departamento-id" name="departamentos_id">
                     <div class="form-group mb-3">
-                        <label for="departamento-editar-nombre" class="text-label">Nombre <span class="obligatorio">
+                        <label for="departamento-editar-nombre" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="departamento-editar-nombre" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="departamento-editar-codigo_mh" class="text-label">Código MH <span
-                                class="obligatorio"> *</span></label>
+                        <label for="departamento-editar-codigo_mh" class="form-label">Código MH</label>
                         <input autocomplete="off" type="text" name="codigo_mh" class="form-control"
-                            id="departamento-editar-codigo_mh" required>
+                            id="departamento-editar-codigo_mh">
                     </div>
                 </div>
                 <div class="modal-footer">

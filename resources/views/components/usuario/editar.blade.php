@@ -54,7 +54,7 @@
                                 <div class="row pt-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="nombre-usuario-editar" class="text-label">Código de usuario
+                                            <label for="nombre-usuario-editar" class="form-label">Código de usuario
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <input autocomplete="new-username" type="text" name="name"
@@ -64,7 +64,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="rol-usuario-select-editar" class="text-label">Rol de usuario
+                                            <label for="rol-usuario-select-editar" class="form-label">Rol de usuario
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <select name="rol" id="rol-usuario-select-editar" class="form-control"
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="email-usuario-editar" class="text-label">Correo electrónico
+                                            <label for="email-usuario-editar" class="form-label">Correo electrónico
                                                 <span class="obligatorio"> *</span></label>
                                             <input autocomplete="off" type="email" name="email"
                                                 class="form-control" id="email-usuario-editar" required>
@@ -90,12 +90,12 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="new-password-input" class="text-label">Contraseña</label>
+                                            <label for="new-password-input" class="form-label">Contraseña</label>
                                             <input autocomplete="new-password" type="text" name="password"
                                                 class="form-control" id="new-password-input">
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="password_confirmation" class="text-label">Confirmar
+                                            <label for="password_confirmation" class="form-label">Confirmar
                                                 Contraseña</label>
                                             <input autocomplete="new-password" type="text"
                                                 name="password_confirmation" class="form-control"
@@ -109,7 +109,7 @@
                                 <div class="row py-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="nombre-input-editar" class="text-label">Nombres
+                                            <label for="nombre-input-editar" class="form-label">Nombres
                                                 <span class="obligatorio"> *</span></label>
                                             <input autocomplete="off" type="text" name="nombres"
                                                 class="form-control" id="nombre-input-editar" required>
@@ -118,7 +118,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="apellido-input-editar" class="text-label">Apellidos
+                                            <label for="apellido-input-editar" class="form-label">Apellidos
                                                 <span class="obligatorio"> *</span></label>
                                             <input autocomplete="off" type="text" name="apellidos"
                                                 class="form-control" id="apellido-input-editar">
@@ -130,7 +130,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="telefono-perfil-editar" class="text-label">Teléfono</label>
+                                            <label for="telefono-perfil-editar" class="form-label">Teléfono</label>
                                             <input autocomplete="off" type="tel" name="telefono"
                                                 pattern="^(\+\d{1,3}[\s\-]?)?(\d{1,4}[\s\-]?){2}\d{4}$" maxlength="15"
                                                 autofocus class="form-control" id="telefono-perfil-editar">
@@ -139,7 +139,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="editar-pais-perfil-select" class="text-label">País
+                                            <label for="editar-pais-perfil-select" class="form-label">País
                                             </label>
                                             <select name="pais" id="editar-pais-perfil-select"
                                                 class="form-control">
@@ -155,7 +155,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
                                             <label for="editar-departamento-perfil-select"
-                                                class="text-label">Departamento
+                                                class="form-label">Departamento
                                             </label>
                                             <select name="departamento" id="editar-departamento-perfil-select"
                                                 class="form-control">
@@ -168,7 +168,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="editar-municipio-perfil-select" class="text-label">Municipio
+                                            <label for="editar-municipio-perfil-select" class="form-label">Municipio
                                             </label>
                                             <select name="municipio" id="editar-municipio-perfil-select"
                                                 class="form-control">
@@ -183,14 +183,14 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="direccion-perfil-editar" class="text-label">Dirección</label>
+                                            <label for="direccion-perfil-editar" class="form-label">Dirección</label>
                                             <textarea autocomplete="off" name="direccion" class="form-control textarea-normal" id="direccion-perfil-editar"
                                                 maxlength="255"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="imagen-perfil-editar" class="text-label">Foto de
+                                            <label for="imagen-perfil-editar" class="form-label">Foto de
                                                 perfil<small>(500x500 píxeles)</small></label>
                                             <label for="imagen-perfil-editar" class="file-upload-image">
                                                 <span class="text-label-image-editar">Hacer clic para seleccionar la nueva imagen</span>
@@ -208,7 +208,7 @@
                                 <div class="row py-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="empresa-usuario-editar" class="text-label">Empresa
+                                            <label for="empresa-usuario-editar" class="form-label">Empresa
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <select name="empresa" id="empresa-usuario-editar" class="form-control"

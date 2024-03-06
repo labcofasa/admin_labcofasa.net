@@ -22,7 +22,7 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AvisoController;
 use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\FormsController;
+use App\Http\Controllers\FormsConozcaClienteController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -112,7 +112,6 @@ Route::middleware(['auth'])->group(function () {
 
     /* Paises */
     Route::middleware(['can:admin_paises_ver'])->group(function () {
-        Route::get('/obtener-paises', [PaisController::class, 'index']);
         Route::get('/tabla-paises', [PaisController::class, 'tablaPaises']);
         Route::post('/crear-pais', [PaisController::class, 'store']);
         Route::put('/actualizar-pais/{id}', [PaisController::class, 'update']);
@@ -121,7 +120,6 @@ Route::middleware(['auth'])->group(function () {
 
     /* Departamentos */
     Route::middleware(['can:admin_departamentos_ver'])->group(function () {
-        Route::get('/obtener-departamentos/{pais_id}', [DepartamentoController::class, 'index']);
         Route::get('/departamentos/{paisId}', [DepartamentoController::class, 'tablaDepartamentos']);
         Route::post('/crear-departamento/{paisId}', [DepartamentoController::class, 'store']);
         Route::put('/actualizar-departamento/{id}', [DepartamentoController::class, 'update']);
@@ -130,7 +128,6 @@ Route::middleware(['auth'])->group(function () {
 
     /* Municipios */
     Route::middleware(['can:admin_municipios_ver'])->group(function () {
-        Route::get('/obtener-municipios/{departamento_id}', [MunicipioController::class, 'index']);
         Route::get('/municipios/{departamentoId}', [MunicipioController::class, 'tablaMunicipios']);
         Route::post('/crear-municipio/{municipioId}', [MunicipioController::class, 'store']);
         Route::put('/actualizar-municipio/{id}', [MunicipioController::class, 'update']);
@@ -184,15 +181,21 @@ Route::middleware(['guest'])->group(function () {
     /* Página actualizar contraseña */
     Route::get('/restablecer/clave/{token}', [RestablecerController::class, 'formularioNuevaClave'])->name('form.reseteo');
     Route::post('/restablecer/nueva-clave', [RestablecerController::class, 'restablecerNuevaClave'])->name('actualizar.clave');
-
-    // Formulario
 });
 
-Route::get('/formulario-conozca-a-su-cliente-y-contraparte', [FormsController::class, 'index'])->name('formulario');
+Route::middleware(['web'])->group(function () {
+    // Formularios
+    Route::get('/formulario-01', [FormsConozcaClienteController::class, 'index'])->name('formulario');
+    Route::post('/enviar-formulario', [FormsConozcaClienteController::class, 'store'])->name('enviar.formulario.ccc');
+    Route::get('/obtener-paises', [PaisController::class, 'index']);
+    Route::get('/obtener-departamentos/{pais_id}', [DepartamentoController::class, 'index']);
+    Route::get('/obtener-municipios/{departamento_id}', [MunicipioController::class, 'index']);
+    Route::get('/obtener-giros', [GiroController::class, 'obtenerGiros']);
+    Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])->middleware('cors');
+    
+    /* Logo de la empresa */
+    Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
+    Route::get('/empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);
+});
 
-Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])
-    ->middleware('cors');
 
-/* Logo de la empresa */
-Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
-Route::get('/empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);

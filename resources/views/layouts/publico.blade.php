@@ -12,6 +12,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/publico.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles/components/form.css') }}">
+
+    <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
 
     <!-- Titulo del sitio -->
     <title>@yield('titulo') - {{ config('app.name') }}</title>

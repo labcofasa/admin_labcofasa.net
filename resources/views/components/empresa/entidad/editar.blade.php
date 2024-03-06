@@ -20,13 +20,13 @@
                 <div class="modal-body">
                     <input type="hidden" id="btn-editar-entidad" name="entidad_id">
                     <div class="form-group mb-3">
-                        <label for="entidad-editar-nombre" class="text-label">Siglas <span class="obligatorio">
+                        <label for="entidad-editar-nombre" class="form-label">Siglas <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="entidad-editar-nombre" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="entidad-editar-descripcion" class="text-label">Descripción <span
+                        <label for="entidad-editar-descripcion" class="form-label">Descripción <span
                                 class="obligatorio"> *</span></label>
                         <textarea autocomplete="off" name="descripcion" class="form-control textarea-normal" id="entidad-editar-descripcion"
                             required maxlength="255"></textarea>

@@ -20,7 +20,7 @@
                 <div class="modal-body">
                     <input type="hidden" id="btn-editar-aviso" name="aviso_id">
                     <div class="form-group mb-3">
-                        <label for="nombre-aviso-editar" class="text-label">Nombre <span class="obligatorio">
+                        <label for="nombre-aviso-editar" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="nombre-aviso-editar" required>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="imagen-aviso-editar" class="text-label">
+                        <label for="imagen-aviso-editar" class="form-label">
                             Imagen <span class="obligatorio">
                                 * </span><small>(960x1200 píxeles)</small>
                         </label>

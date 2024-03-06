@@ -19,13 +19,13 @@
                 @method('POST')
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label for="entidad-nombre-input" class="text-label">Siglas <span class="obligatorio">
+                        <label for="entidad-nombre-input" class="form-label">Siglas <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="entidad-nombre-input" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="entidad-descripcion-textarea" class="text-label">Descripción <span
+                        <label for="entidad-descripcion-textarea" class="form-label">Descripción <span
                                 class="obligatorio"> *</span></label>
                         <textarea autocomplete="off" name="descripcion" class="form-control textarea-normal" id="entidad-descripcion-textarea"
                             required maxlength="255"></textarea>

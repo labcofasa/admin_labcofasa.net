@@ -19,13 +19,13 @@
                 @method('POST')
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label for="giro-nombre-input" class="text-label">Nombre <span class="obligatorio">
+                        <label for="giro-nombre-input" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="giro-nombre-input" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="giro-codigo-mh" class="text-label">Código MH<span class="obligatorio">
+                        <label for="giro-codigo-mh" class="form-label">Código MH<span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="codigo_mh" class="form-control"
                             id="giro-codigo-mh" required>

@@ -19,7 +19,7 @@
                 @method('POST')
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label for="nombre" class="text-label">Nombre <span class="obligatorio">
+                        <label for="nombre" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="nombre" required>
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="aviso-imagen" class="text-label">
+                        <label for="aviso-imagen" class="form-label">
                             Imagen<span class="obligatorio">
                                 * </span><small>(960x1200 píxeles)</small>
                         </label>

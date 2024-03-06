@@ -20,16 +20,15 @@
                 <div class="modal-body">
                     <input type="hidden" id="registrar-municipio" name="departamentos_id">
                     <div class="form-group mb-3">
-                        <label for="municipio-nombre-input" class="text-label">Nombre <span class="obligatorio">
+                        <label for="municipio-nombre-input" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="municipio-nombre-input" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="municipio-codigo_mh-input" class="text-label">Código MH <span class="obligatorio">
-                                *</span></label>
+                        <label for="municipio-codigo_mh-input" class="form-label">Código MH</label>
                         <input autocomplete="off" type="text" name="codigo_mh" class="form-control"
-                            id="municipio-codigo_mh-input" required>
+                            id="municipio-codigo_mh-input">
                     </div>
                 </div>
                 <div class="modal-footer">

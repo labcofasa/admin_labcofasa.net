@@ -19,7 +19,7 @@
                 @method('POST')
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label for="pais-nombre-input" class="text-label">Nombre <span class="obligatorio">
+                        <label for="pais-nombre-input" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre" class="form-control"
                             id="pais-nombre-input" required>
@@ -27,18 +27,16 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group mb-3">
-                                <label for="pais-codigo_mh-input" class="text-label">Código MH <span
-                                        class="obligatorio"> *</span></label>
+                                <label for="pais-codigo_mh-input" class="form-label">Código MH</label>
                                 <input autocomplete="off" type="text" name="codigo_mh" class="form-control"
-                                    id="pais-codigo_mh-input" required>
+                                    id="pais-codigo_mh-input">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group mb-3">
-                                <label for="pais-codigo_iso-input" class="text-label">Código ISO <span
-                                        class="obligatorio"> *</span></label>
+                                <label for="pais-codigo_iso-input" class="form-label">Código ISO</label>
                                 <input autocomplete="off" type="text" name="codigo_iso" class="form-control"
-                                    id="pais-codigo_iso-input" required>
+                                    id="pais-codigo_iso-input">
                             </div>
                         </div>
                     </div>

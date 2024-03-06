@@ -19,7 +19,7 @@
                 @method('POST')
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label for="nombre_aplicacion" class="text-label">Nombre <span class="obligatorio">
+                        <label for="nombre_aplicacion" class="form-label">Nombre <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="text" name="nombre_aplicacion" class="form-control"
                             id="nombre_aplicacion" required>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="enlace_aplicacion" class="text-label">Dirección URL <span class="obligatorio">
+                        <label for="enlace_aplicacion" class="form-label">Dirección URL <span class="obligatorio">
                                 *</span></label>
                         <input autocomplete="off" type="url" name="enlace_aplicacion" class="form-control"
                             id="enlace_aplicacion" required>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="empresa-aplicacion-select" class="text-label">Empresa
+                        <label for="empresa-aplicacion-select" class="form-label">Empresa
                             <span class="obligatorio"> *</span>
                         </label>
                         <select name="empresa" id="empresa-aplicacion-select" class="form-control" required>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="roles" class="text-label">Roles de usuario <span class="obligatorio">
+                        <label for="roles" class="form-label">Roles de usuario <span class="obligatorio">
                                 *</span>
                         </label>
                         <select class="form-control" name="roles" id="roles" required multiple
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="aplicacion-imagen" class="text-label">
+                        <label for="aplicacion-imagen" class="form-label">
                             Imagen <small>(500x500 píxeles)</small>
                         </label>
                         <label for="aplicacion-imagen" class="file-upload-image">

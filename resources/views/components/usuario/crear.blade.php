@@ -53,7 +53,7 @@
                                 <div class="row pt-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="nombre-usuario" class="text-label">Código de usuario
+                                            <label for="nombre-usuario" class="form-label">Código de usuario
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <input autocomplete="new-username" type="text" name="name"
@@ -63,7 +63,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="rol-usuario-select" class="text-label">Rol de usuario
+                                            <label for="rol-usuario-select" class="form-label">Rol de usuario
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <select name="rol" id="rol-usuario-select" class="form-control"
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="email-usuario" class="text-label">Correo electrónico
+                                            <label for="email-usuario" class="form-label">Correo electrónico
                                                 <span class="obligatorio"> *</span></label>
                                             <input autocomplete="off" type="email" name="email"
                                                 class="form-control" id="email-usuario" required>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="password" class="text-label">Contraseña
+                                            <label for="password" class="form-label">Contraseña
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <input autocomplete="new-password" type="text" name="password"
@@ -106,7 +106,7 @@
                                 <div class="row py-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="nombre-input" class="text-label">Nombres
+                                            <label for="nombre-input" class="form-label">Nombres
                                                 <span class="obligatorio"> *</span></label>
                                             <input autocomplete="off" type="text" name="nombres"
                                                 class="form-control" id="nombre-input" required>
@@ -115,7 +115,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="apellido-input" class="text-label">Apellidos
+                                            <label for="apellido-input" class="form-label">Apellidos
                                                 <span class="obligatorio"> *</span></label>
                                             <input autocomplete="off" type="text" name="apellidos"
                                                 class="form-control" id="apellido-input" required>
@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="telefono-perfil" class="text-label">Teléfono</label>
+                                            <label for="telefono-perfil" class="form-label">Teléfono</label>
                                             <input autocomplete="off" type="tel" name="telefono"
                                                 pattern="^(\+\d{1,3}[\s\-]?)?(\d{1,4}[\s\-]?){2}\d{4}$" maxlength="15"
                                                 autofocus class="form-control" id="telefono-perfil">
@@ -135,7 +135,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="pais-perfil-select" class="text-label">País
+                                            <label for="pais-perfil-select" class="form-label">País
                                             </label>
                                             <select name="pais" id="pais-perfil-select" class="form-control">
                                                 <option value="">Seleccione el país</option>
@@ -149,7 +149,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="departamento-perfil-select" class="text-label">Departamento
+                                            <label for="departamento-perfil-select" class="form-label">Departamento
                                             </label>
                                             <select name="departamento" id="departamento-perfil-select"
                                                 class="form-control">
@@ -162,7 +162,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="municipio-perfil-select" class="text-label">Municipio
+                                            <label for="municipio-perfil-select" class="form-label">Municipio
                                             </label>
                                             <select name="municipio" id="municipio-perfil-select"
                                                 class="form-control">
@@ -177,14 +177,14 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="direccion-perfil" class="text-label">Dirección</label>
+                                            <label for="direccion-perfil" class="form-label">Dirección</label>
                                             <textarea autocomplete="off" name="direccion" class="form-control textarea-normal" id="direccion-perfil"
                                                 maxlength="255"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="imagen-perfil" class="text-label">Foto de perfil <small>(500x500 píxeles)</small></label>
+                                            <label for="imagen-perfil" class="form-label">Foto de perfil <small>(500x500 píxeles)</small></label>
                                             <label for="imagen-perfil" class="file-upload-image">
                                                 <span class="text-label-image">Hacer clic para seleccionar la imagen</span>
                                                 <p class="image-perfil-name"></p>
@@ -201,7 +201,7 @@
                                 <div class="row py-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="empresa-usuario-select" class="text-label">Empresa
+                                            <label for="empresa-usuario-select" class="form-label">Empresa
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <select name="empresa" id="empresa-usuario-select" class="form-control"

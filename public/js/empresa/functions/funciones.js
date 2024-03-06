@@ -1,3 +1,48 @@
+// Cargar tipos de contribuyente
+function cargarClasificaciones(
+    clasificacionSelectId,
+    idClasificacionInputId,
+    editar,
+    clasificacionActual
+) {
+    $.ajax({
+        url: "/obtener-clasificaciones",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            const clasificacionSelect = $(clasificacionSelectId);
+            clasificacionSelect.empty();
+            clasificacionSelect.append(
+                $("<option>", {
+                    value: "",
+                    text: "Seleccione una clasificación",
+                })
+            );
+
+            $.each(data, function (key, value) {
+                clasificacionSelect.append(
+                    '<option value="' + key + '">' + value + "</option>"
+                );
+            });
+
+            if (editar && clasificacionActual) {
+                clasificacionSelect.val(clasificacionActual);
+            }
+
+            $(idClasificacionInputId).val(clasificacionSelect.val());
+        },
+        error: function (error) {
+            console.log("Error al obtener las clasificaciones");
+        },
+    });
+
+    $(clasificacionSelectId).on("change", function () {
+        var selectClasificacionId = $(this).val();
+        $(idClasificacionInputId).val(selectClasificacionId);
+    });
+}
+
+
 /* Cargar paises */
 function cargarPaises(
     paisSelectId,
@@ -89,6 +134,100 @@ function cargarPaises(
     $(municipioSelectId).on("change", function () {
         var selectedMunicipioId = $(this).val();
         $(idMunicipioInputId).val(selectedMunicipioId);
+    });
+}
+
+// Cargar actividades económicas
+function setupGiroSearch(inputId, suggestionsId, hiddenInputId) {
+    const input = document.getElementById(inputId);
+    const suggestionsContainer = document.getElementById(suggestionsId);
+    const hiddenInput = document.getElementById(hiddenInputId);
+    let currentSuggestions = new Set();
+    let noResultsDisplayed = false;
+    let timer;
+
+    input.addEventListener("input", async function () {
+        const inputValue = input.value.trim();
+
+        currentSuggestions.clear();
+
+        suggestionsContainer.innerHTML = "";
+        noResultsDisplayed = false;
+
+        if (inputValue.length === 0) {
+            suggestionsContainer.classList.remove("visible");
+            return;
+        }
+
+        clearTimeout(timer);
+
+        timer = setTimeout(async function () {
+            try {
+                const response = await fetch(
+                    `/obtener-giros?query=${inputValue}`
+                );
+                const data = await response.json();
+
+                if (data && data.giros && data.giros.length > 0) {
+                    data.giros.forEach((giro) => {
+                        if (!currentSuggestions.has(giro.nombre)) {
+                            const suggestionItem =
+                                document.createElement("div");
+                            suggestionItem.classList.add("sugerencia-item");
+                            suggestionItem.textContent = giro.nombre;
+
+                            suggestionItem.addEventListener(
+                                "click",
+                                function () {
+                                    hiddenInput.value = giro.id;
+                                    input.value = giro.nombre;
+
+                                    suggestionsContainer.innerHTML = "";
+                                    suggestionsContainer.classList.remove(
+                                        "visible"
+                                    );
+                                }
+                            );
+
+                            suggestionsContainer.appendChild(
+                                suggestionItem
+                            );
+                            currentSuggestions.add(giro.nombre);
+                        }
+                    });
+
+                    suggestionsContainer.classList.add("visible");
+                } else {
+                    if (!noResultsDisplayed) {
+                        const noResultsItem = document.createElement("div");
+                        noResultsItem.classList.add("sin-resultados");
+                        noResultsItem.textContent = "No hay resultados";
+                        suggestionsContainer.appendChild(noResultsItem);
+
+                        suggestionsContainer.classList.add("visible");
+                        noResultsDisplayed = true;
+                    }
+                }
+            } catch (error) {
+                console.error("Error obteniendo datos:", error);
+            }
+        }, 500);
+    });
+
+    document.addEventListener("click", function (event) {
+        const isInputOrSuggestions =
+            input.contains(event.target) ||
+            suggestionsContainer.contains(event.target);
+
+        if (!isInputOrSuggestions) {
+            suggestionsContainer.classList.remove("visible");
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            suggestionsContainer.classList.remove("visible");
+        }
     });
 }
 
@@ -208,13 +347,13 @@ function printPaises() {
     );
     printWindow.document.write(
         "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(
@@ -249,13 +388,13 @@ function printDepartamentos() {
     );
     printWindow.document.write(
         "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(
@@ -290,13 +429,13 @@ function printMunicipios() {
     );
     printWindow.document.write(
         "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(
