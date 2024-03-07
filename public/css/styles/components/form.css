@@ -61,6 +61,7 @@
     color: var(--p);
     padding: 15px;
     font-size: 14px;
+    caret-color: var(--input-caret);
 }
 
 .textarea-normal {

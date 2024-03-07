@@ -94,7 +94,6 @@ Route::middleware(['auth'])->group(function () {
 
     /* Clasificaciones de empresas */
     Route::middleware(['can:admin_clasificaciones_ver'])->group(function () {
-        Route::get('/obtener-clasificaciones', [ClasificacionController::class, 'obtenerClasificaciones']);
         Route::post('/crear-clasificacion', [ClasificacionController::class, 'store']);
         Route::get('/tabla-clasificaciones', [ClasificacionController::class, 'tablaClasificaciones']);
         Route::put('/actualizar-clasificacion/{id}', [ClasificacionController::class, 'update']);
@@ -192,6 +191,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/obtener-municipios/{departamento_id}', [MunicipioController::class, 'index']);
     Route::get('/obtener-giros', [GiroController::class, 'obtenerGiros']);
     Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])->middleware('cors');
+    Route::get('/obtener-clasificaciones', [ClasificacionController::class, 'obtenerClasificaciones']);
     
     /* Logo de la empresa */
     Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);

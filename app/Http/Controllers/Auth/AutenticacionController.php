@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Aplicacion;
 use App\Models\User;
 use App\Models\Aviso;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\UserRole;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -81,7 +83,16 @@ class AutenticacionController extends Controller
 
                     $rol = $user->getRoleNames()->first();
 
-                    return response()->json(['token' => $token->plainTextToken, 'user' => $user, 'rol' => $rol], 200);
+                    $aplicaciones = Aplicacion::whereHas('roles', function ($query) use ($rol) {
+                        $query->where('name', $rol);
+                    })->get();
+
+                    return response()->json([
+                        'token' => $token->plainTextToken,
+                        'user' => $user,
+                        'rol' => $rol,
+                        'aplicaciones' => $aplicaciones,
+                    ], 200);
                 } else {
                     return response()->json(['message' => 'Credenciales incorrectas.'], 404);
                 }
@@ -92,6 +103,8 @@ class AutenticacionController extends Controller
             return response()->json(['message' => 'Credenciales incorrectas.'], 404);
         }
     }
+
+
 
     public function verificarToken(Request $request)
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FormConozcaCliente;
 use App\Models\FormConozcaClienteAccionitas;
+use App\Models\FormConozcaClienteMiembros;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -52,6 +53,10 @@ class FormsConozcaClienteController extends Controller
             'nacionalidad_a.*' => 'required|string',
             'numero_identidad.*' => 'required|string',
             'porcentaje_participacion.*' => 'required|string',
+            'nombre_miembro.*' => 'required|string',
+            'nacionalidad_miembro.*' => 'required|string',
+            'numero_identidad_miembro.*' => 'required|string',
+            'cargo_miembro.*' => 'required|string',
         ]);
 
         try {
@@ -110,6 +115,25 @@ class FormsConozcaClienteController extends Controller
             }
 
             $formsccc->conozcaClienteAccionistas()->saveMany($accionistas);
+
+            $miembros = [];
+
+            foreach ($request->input('nombre_miembro', []) as $key => $nombreMiembro) {
+                $nacionalidadMiembro = $request->input('nacionalidad_miembro.' . $key);
+                $noIdentificacionMiembro = str_replace('-', '', $request->input('numero_identidad_miembro.' . $key));
+                $cargoMiembro = $request->input('cargo_miembro.' . $key);
+
+                if ($nombreMiembro !== null && $nacionalidadMiembro !== null && $noIdentificacionMiembro !== null && $cargoMiembro !== null) {
+                    $miembro = new FormConozcaClienteMiembros();
+                    $miembro->nombre_miembro = $nombreMiembro;
+                    $miembro->nacionalidad_miembro = $nacionalidadMiembro;
+                    $miembro->numero_identidad_miembro = $noIdentificacionMiembro;
+                    $miembro->cargo_miembro = $cargoMiembro;
+                    $miembros[] = $miembro;
+                }
+            }
+
+            $formsccc->conozcaClienteMiembros()->saveMany($miembros);
 
             return redirect()->back()->with('success', 'Tu formulario ha sido enviado con éxito.');
         } catch (\Illuminate\Database\QueryException $e) {

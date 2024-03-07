@@ -4,11 +4,31 @@
 
 @section('contenido')
     <div class="container">
-        <div class="text-center">
-            <img class="logo" src="{{ asset('images/cofasa.svg') }}" alt="logo">
+        <div class="d-none d-lg-block">
+            <div class="row">
+                <div class="col-4">
+                </div>
+                <div class="col-4 text-center">
+                    <img class="logo" src="{{ asset('images/cofasa.svg') }}" alt="logo">
+                </div>
+                <div class="col-4 text-end">
+                    <span class="badge rounded-pill text-bg-light">Vigencia: dic-23</span>
+                    <span class="badge rounded-pill text-bg-primary">Versión: 1</span>
+                </div>
+            </div>
         </div>
 
-        <div class="titulo">Formulario "Conozca a su Cliente - Contraparte"</div>
+        <div class="d-block d-lg-none">
+            <div class="text-center mb-3">
+                <img class="logo" src="{{ asset('images/cofasa.svg') }}" alt="logo">
+            </div>
+            <div class="text-center">
+                <span class="badge rounded-pill text-bg-light">Vigencia: dic-23</span>
+                <span class="badge rounded-pill text-bg-primary">Versión: 1</span>
+            </div>
+        </div>
+
+        <h1 class="titulo">Formulario "Conozca a su Cliente - Contraparte"</h1>
 
         @if (session('success'))
             <div class="alert alert-success" role="alert">
@@ -406,7 +426,8 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="numero_identidad" class="form-label">No. Identidad</label>
-                        <input type="text" class="form-control" id="numero_identidad" name="numero_identidad[]" required>
+                        <input type="text" class="form-control" id="numero_identidad" name="numero_identidad[]"
+                            required>
                         <div class="invalid-feedback">
                             Por favor ingrese el número de identificación.
                         </div>
@@ -415,7 +436,8 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="porcentaje_participacion" class="form-label">Porcentaje de participación</label>
-                        <input type="text" class="form-control" id="porcentaje_participacion" name="porcentaje_participacion[]" required>
+                        <input type="text" class="form-control" id="porcentaje_participacion"
+                            name="porcentaje_participacion[]" required>
                         <div class="invalid-feedback">
                             Por favor ingrese el porcentaje.
                         </div>
@@ -424,8 +446,58 @@
 
                 <div id="campos_form"></div>
 
-                <div class="col-md-6">
-                    <button type="button" id="agregar_campos" class="btn btn-success">
+                <div class="col-md-6 mb-3">
+                    <button type="button" id="agregar_campos" class="btn btn-secondary">
+                        Añadir más campos
+                    </button>
+                </div>
+
+                <p>II. Detallar a los miembros de la Junta Directiva, administrador único, alta gerencia o máximo órgano
+                    de control en la sociedad.</p>
+
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="nombre_miembro" class="form-label">Nombre completo</label>
+                        <input type="text" class="form-control" id="nombre_miembro" name="nombre_miembro[]" required>
+                        <div class="invalid-feedback">
+                            Por favor ingrese el nombre.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="nacionalidad_miembro" class="form-label">Nacionalidad</label>
+                        <input type="text" class="form-control" id="nacionalidad_miembro" name="nacionalidad_miembro[]" required>
+                        <div class="invalid-feedback">
+                            Por favor ingrese la nacionalidad.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="numero_identidad_miembro" class="form-label">No. Identidad</label>
+                        <input type="text" class="form-control" id="numero_identidad_miembro" name="numero_identidad_miembro[]"
+                            required>
+                        <div class="invalid-feedback">
+                            Por favor ingrese el número de identificación.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="cargo_miembro" class="form-label">Cargo</label>
+                        <input type="text" class="form-control" id="cargo_miembro"
+                            name="cargo_miembro[]" required>
+                        <div class="invalid-feedback">
+                            Por favor ingrese el cargo.
+                        </div>
+                    </div>
+                </div>
+
+                <div id="campos_miembros"></div>
+
+                <div class="col-md-6 mb-3">
+                    <button type="button" id="agregar_campos_miembros" class="btn btn-secondary">
                         Añadir más campos
                     </button>
                 </div>

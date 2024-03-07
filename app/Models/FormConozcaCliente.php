@@ -67,7 +67,13 @@ class FormConozcaCliente extends Model
 
     public function conozcaClienteAccionistas()
     {
-        return $this->hasMany(RedSocial::class, 'forms_conozca_cliente_id');
+        return $this->hasMany(FormConozcaClienteAccionitas::class, 'forms_conozca_cliente_id');
+
+    }
+
+    public function conozcaClienteMiembros()
+    {
+        return $this->hasMany(FormConozcaClienteMiembros::class, 'forms_conozca_cliente_id');
 
     }
 }
