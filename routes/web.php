@@ -184,7 +184,7 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['web'])->group(function () {
     // Formularios
-    Route::get('/formulario-01', [FormsConozcaClienteController::class, 'index'])->name('formulario');
+    Route::get('/formulario-conozca-cliente', [FormsConozcaClienteController::class, 'index'])->name('formulario');
     Route::post('/enviar-formulario', [FormsConozcaClienteController::class, 'store'])->name('enviar.formulario.ccc');
     Route::get('/obtener-paises', [PaisController::class, 'index']);
     Route::get('/obtener-departamentos/{pais_id}', [DepartamentoController::class, 'index']);
