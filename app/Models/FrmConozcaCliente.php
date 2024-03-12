@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FormConozcaCliente extends Model
+class FrmConozcaCliente extends Model
 {
     use HasFactory;
 
-    protected $table = 'forms_conozca_cliente';
-
+    protected $table = 'frm_conozca_cliente';
     public $timestamps = false;
     protected $dates = ['fecha_de_creacion', 'fecha_de_modificacion'];
     protected $fillable = [
@@ -27,17 +26,9 @@ class FormConozcaCliente extends Model
         'telefono',
         'fecha_de_nombramiento',
         'direccion',
-        'nombre_comercial',
-        'nacionalidad_persona_juridica',
-        'numero_de_nit',
-        'fecha_de_constitucion',
-        'registro_nrc_persona_juridica',
-        'telefono_persona_juridica',
-        'sitio_web',
-        'numero_de_fax',
-        'direccion_persona_juridica',
+        // 'documento_identidad',
         'fecha_de_creacion',
-        'fecha_de_modificacion',
+        'fecha_de_modificacion'
     ];
 
     public function clasificacion()
@@ -67,13 +58,26 @@ class FormConozcaCliente extends Model
 
     public function conozcaClienteAccionistas()
     {
-        return $this->hasMany(FormConozcaClienteAccionitas::class, 'forms_conozca_cliente_id');
-
+        return $this->hasMany(FrmConocaClienteAccionista::class, 'frm_conozca_cliente_id');
     }
 
     public function conozcaClienteMiembros()
     {
-        return $this->hasMany(FormConozcaClienteMiembros::class, 'forms_conozca_cliente_id');
+        return $this->hasMany(FrmConozcaClienteMiembro::class, 'frm_conozca_cliente_id');
+    }
 
+    public function conozcaClientePoliticos()
+    {
+        return $this->hasMany(FrmConozcaClientePolitico::class, 'frm_conozca_cliente_id');
+    }
+
+    public function conozcaClienteParientes()
+    {
+        return $this->hasMany(FrmConozcaClientePariente::class, 'frm_conozca_cliente_id');
+    }
+
+    public function conozcaClienteSocios()
+    {
+        return $this->hasMany(FrmConozcaClienteSocio::class, 'frm_conozca_cliente_id');
     }
 }

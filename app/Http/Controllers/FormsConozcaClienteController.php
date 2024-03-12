@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FormConozcaCliente;
-use App\Models\FormConozcaClienteAccionitas;
-use App\Models\FormConozcaClienteMiembros;
+
+use App\Models\FrmConocaClienteAccionista;
+use App\Models\FrmConozcaCliente;
+use App\Models\FrmConozcaClienteJuridico;
+use App\Models\FrmConozcaClienteMiembro;
+use App\Models\FrmConozcaClientePariente;
+use App\Models\FrmConozcaClientePolitico;
+use App\Models\FrmConozcaClienteSocio;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use Carbon\Carbon;
+
+use function PHPUnit\Framework\fileExists;
 
 class FormsConozcaClienteController extends Controller
 {
     public function index()
     {
-        return view('formularios.formulario');
+        return view('formularios.formulario_conozca_cliente');
     }
 
     public function store(Request $request)
@@ -35,35 +44,53 @@ class FormsConozcaClienteController extends Controller
             'giro_id' => 'required|exists:giros,id',
             'fecha_de_nombramiento' => 'required|date',
             'direccion' => 'required|string',
-            'nombre_comercial' => 'required|string',
-            'clasificacion_id' => 'required|exists:clasificaciones,id',
-            'nacionalidad_persona_juridica' => 'required|string',
-            'numero_de_nit' => 'required|string',
-            'fecha_de_constitucion' => 'required|date',
-            'registro_nrc_persona_juridica' => 'required|string',
-            'giro_persona_juridica_id' => 'required|exists:giros,id',
-            'pais_persona_juridica_id' => 'required|exists:paises,id',
-            'departamento_persona_juridica_id' => 'required|exists:departamentos,id',
-            'municipio_persona_juridica_id' => 'required|exists:municipios,id',
-            'telefono_persona_juridica' => 'required|string',
-            'sitio_web' => 'required|url',
-            'numero_de_fax' => 'required|string',
-            'direccion_persona_juridica' => 'required|string',
-            'nombre_a.*' => 'required|string',
-            'nacionalidad_a.*' => 'required|string',
-            'numero_identidad.*' => 'required|string',
-            'porcentaje_participacion.*' => 'required|string',
+            'nombre_comercial_juridico' => 'required|string',
+            'clasificacion_juridico_id' => 'required|exists:clasificaciones,id',
+            'nacionalidad_juridico' => 'required|string',
+            'numero_de_nit_juridico' => 'required|string',
+            'fecha_de_constitucion_juridico' => 'required|date',
+            'registro_nrc_juridico' => 'required|string',
+            'giro_juridico_id' => 'required|exists:giros,id',
+            'pais_juridico_id' => 'required|exists:paises,id',
+            'departamento_juridico_id' => 'required|exists:departamentos,id',
+            'municipio_juridico_id' => 'required|exists:municipios,id',
+            'telefono_juridico' => 'required|string',
+            'sitio_web_juridico' => 'required|url',
+            'numero_de_fax_juridico' => 'required|string',
+            'direccion_juridico' => 'required|string',
+            'monto_proyectado' => 'required|string',
+            'nombre_accionista.*' => 'required|string',
+            'nacionalidad_accionista.*' => 'required|string',
+            'numero_identidad_accionista.*' => 'required|string',
+            'porcentaje_participacion_accionista.*' => 'required|string',
             'nombre_miembro.*' => 'required|string',
             'nacionalidad_miembro.*' => 'required|string',
             'numero_identidad_miembro.*' => 'required|string',
             'cargo_miembro.*' => 'required|string',
+            'nombre_politico' => 'nullable|string',
+            'nombre_cargo_politico' => 'nullable|string',
+            'fecha_desde_politico' => 'nullable|date',
+            'fecha_hasta_politico' => 'nullable|date',
+            'pais_politico_id' => 'nullable|exists:paises,id',
+            'departamento_politico_id' => 'nullable|exists:departamentos,id',
+            'municipio_politico_id' => 'nullable|exists:municipios,id',
+            'nombre_cliente_politico' => 'nullable|string',
+            'porcentaje_participacion_politico' => 'nullable|string',
+            'nombre_pariente.*' => 'nullable|string',
+            'parentesco.*' => 'nullable|string',
+            'nombre_socio.*' => 'nullable|string',
+            'porcentaje_participacion_socio.*' => 'nullable|string',
+            'fuente_ingreso' => 'nullable|string',
+            'monto_mensual' => 'nullable|string',
+            // 'documento_identidad' => 'nullable|mimes:jpeg,png,jpg,gif,webp,docx,pdf',
         ]);
 
         try {
-            $formsccc = new FormConozcaCliente();
+            $formsccc = new FrmConozcaCliente();
+
             $formsccc->nombre = $request->input('nombre');
             $formsccc->apellido = $request->input('apellido');
-            $formsccc->fecha_de_nacimiento = Carbon::parse($request->input('fecha_de_nacimiento'));
+            $formsccc->fecha_de_nacimiento = Carbon::parse($request->input('fecha_de_nacimiento'))->toDateString();
             $formsccc->nacionalidad = $request->input('nacionalidad');
             $formsccc->profesion_u_oficicio = $request->input('profesion_u_oficicio');
             $formsccc->pais_id = $request->input('pais_id');
@@ -71,45 +98,72 @@ class FormsConozcaClienteController extends Controller
             $formsccc->municipio_id = $request->input('municipio_id');
             $formsccc->tipo_de_documento = $request->input('tipo_de_documento');
             $formsccc->numero_de_documento = str_replace('-', '', $request->input('numero_de_documento'));
-            $formsccc->fecha_de_vencimiento = Carbon::parse($request->input('fecha_de_vencimiento'));
+            $formsccc->fecha_de_vencimiento = Carbon::parse($request->input('fecha_de_vencimiento'))->toDateString();
             $formsccc->registro_iva_nrc = str_replace('-', '', $request->input('registro_iva_nrc'));
             $formsccc->email = $request->input('email');
             $formsccc->telefono = str_replace(['+', '-'], '', $request->input('telefono'));
             $formsccc->giro_id = $request->input('giro_id');
-            $formsccc->fecha_de_nombramiento = Carbon::parse($request->input('fecha_de_nombramiento'));
+            $formsccc->fecha_de_nombramiento = Carbon::parse($request->input('fecha_de_nombramiento'))->toDateString();
             $formsccc->direccion = $request->input('direccion');
-            $formsccc->nombre_comercial = $request->input('nombre_comercial');
-            $formsccc->clasificacion_id = $request->input('clasificacion_id');
-            $formsccc->nacionalidad_persona_juridica = $request->input('nacionalidad_persona_juridica');
-            $formsccc->numero_de_nit = str_replace('-', '', $request->input('numero_de_nit'));
-            $formsccc->fecha_de_constitucion = Carbon::parse($request->input('fecha_de_constitucion'));
-            $formsccc->registro_nrc_persona_juridica = str_replace('-', '', $request->input('registro_nrc_persona_juridica'));
-            $formsccc->giro_persona_juridica_id = $request->input('giro_persona_juridica_id');
-            $formsccc->pais_persona_juridica_id = $request->input('pais_persona_juridica_id');
-            $formsccc->departamento_persona_juridica_id = $request->input('departamento_persona_juridica_id');
-            $formsccc->municipio_persona_juridica_id = $request->input('municipio_persona_juridica_id');
-            $formsccc->telefono_persona_juridica = str_replace(['+', '-'], '', $request->input('telefono_persona_juridica'));
-            $formsccc->sitio_web = $request->input('sitio_web');
-            $formsccc->numero_de_fax = str_replace(['+', '-'], '', $request->input('numero_de_fax'));
-            $formsccc->direccion_persona_juridica = $request->input('direccion_persona_juridica');
             $formsccc->fecha_de_creacion = now();
             $formsccc->fecha_de_modificacion = now();
 
             $formsccc->save();
 
+            // $formscccId = $formsccc->id;
+
+            // $rutaCarpeta = public_path("documentos/formularios/cc/{$formscccId}");
+
+            // if (!file_exists($rutaCarpeta)) {
+            //     mkdir($rutaCarpeta, 0777, true);
+            // }
+
+            // if ($request->hasFile('documento_identidad')) {
+            //     $documento = $request->file('documento_identidad');
+            //     $documento->move($rutaCarpeta, $documento->getClientOriginalName());
+            //     $formsccc->documento_identidad = $documento->getClientOriginalName();
+
+            //     $formsccc->save();
+            // }
+
+            $formsccj = new FrmConozcaClienteJuridico();
+
+            $formsccj->nombre_comercial_juridico = $request->input('nombre_comercial_juridico');
+            $formsccj->frm_conozca_cliente_id = $formsccc->id;
+            $formsccj->clasificacion_id = $request->input('clasificacion_juridico_id');
+            $formsccj->nacionalidad_juridico = $request->input('nacionalidad_juridico');
+            $formsccj->numero_de_nit_juridico = str_replace('-', '', $request->input('numero_de_nit_juridico'));
+            $formsccj->fecha_de_constitucion_juridico = Carbon::parse($request->input('fecha_de_constitucion_juridico'));
+            $formsccj->registro_nrc_juridico = str_replace('-', '', $request->input('registro_nrc_juridico'));
+            $formsccj->pais_id = $request->input('pais_juridico_id');
+            $formsccj->departamento_id = $request->input('departamento_juridico_id');
+            $formsccj->municipio_id = $request->input('municipio_juridico_id');
+            $formsccj->giro_id = $request->input('giro_juridico_id');
+            $formsccj->telefono_juridico = str_replace(['+', '-'], '', $request->input('telefono_juridico'));
+            $formsccj->sitio_web_juridico = $request->input('sitio_web_juridico');
+            $formsccj->numero_de_fax_juridico = str_replace(['+', '-'], '', $request->input('numero_de_fax_juridico'));
+            $formsccj->direccion_juridico = $request->input('direccion_juridico');
+            $formsccj->monto_proyectado = $request->input('monto_proyectado');
+            $formsccj->fecha_de_creacion = now();
+            $formsccj->fecha_de_modificacion = now();
+
+            $formsccj->save();
+
             $accionistas = [];
 
-            foreach ($request->input('nombre_a', []) as $key => $nombreAccionista) {
-                $nacionalidadAccionista = $request->input('nacionalidad_a.' . $key);
-                $noIdentificacion = str_replace('-', '', $request->input('numero_identidad.' . $key));
-                $porcentajeParticipacion = $request->input('porcentaje_participacion.' . $key);
+            foreach ($request->input('nombre_accionista', []) as $key => $nombreAccionista) {
+                $nacionalidadAccionista = $request->input('nacionalidad_accionista.' . $key);
+                $noIdentificacion = str_replace('-', '', $request->input('numero_identidad_accionista.' . $key));
+                $porcentajeParticipacion = $request->input('porcentaje_participacion_accionista.' . $key);
 
                 if ($nombreAccionista !== null && $nacionalidadAccionista !== null && $noIdentificacion !== null && $porcentajeParticipacion !== null) {
-                    $accionista = new FormConozcaClienteAccionitas();
-                    $accionista->nombre = $nombreAccionista;
-                    $accionista->nacionalidad = $nacionalidadAccionista;
-                    $accionista->numero_identidad = $noIdentificacion;
-                    $accionista->porcentaje_participacion = $porcentajeParticipacion;
+                    $accionista = new FrmConocaClienteAccionista();
+                    $accionista->nombre_accionista = $nombreAccionista;
+                    $accionista->nacionalidad_accionista = $nacionalidadAccionista;
+                    $accionista->numero_identidad_accionista = $noIdentificacion;
+                    $accionista->porcentaje_participacion_accionista = $porcentajeParticipacion;
+                    $accionista->fecha_de_creacion = now();
+                    $accionista->fecha_de_modificacion = now();
                     $accionistas[] = $accionista;
                 }
             }
@@ -124,21 +178,80 @@ class FormsConozcaClienteController extends Controller
                 $cargoMiembro = $request->input('cargo_miembro.' . $key);
 
                 if ($nombreMiembro !== null && $nacionalidadMiembro !== null && $noIdentificacionMiembro !== null && $cargoMiembro !== null) {
-                    $miembro = new FormConozcaClienteMiembros();
+                    $miembro = new FrmConozcaClienteMiembro();
                     $miembro->nombre_miembro = $nombreMiembro;
                     $miembro->nacionalidad_miembro = $nacionalidadMiembro;
                     $miembro->numero_identidad_miembro = $noIdentificacionMiembro;
                     $miembro->cargo_miembro = $cargoMiembro;
+                    $miembro->fecha_de_creacion = now();
+                    $miembro->fecha_de_modificacion = now();
                     $miembros[] = $miembro;
                 }
             }
 
             $formsccc->conozcaClienteMiembros()->saveMany($miembros);
 
-            return redirect()->back()->with('success', 'Tu formulario ha sido enviado con éxito.');
-        } catch (\Illuminate\Database\QueryException $e) {
-            return redirect()->back()->with('error', 'Hubo un error al procesar tu formulario');
+
+
+            $formsccp = new FrmConozcaClientePolitico();
+
+            if ($request->filled(['nombre_politico', 'nombre_cargo_politico', 'fecha_desde_politico', 'fecha_hasta_politico', 'pais_politico_id', 'departamento_politico_id', 'municipio_politico_id', 'nombre_cliente_politico', 'porcentaje_participacion_politico', 'fuente_ingreso', 'monto_mensual'])) {
+                $formsccp->nombre_politico = $request->input('nombre_politico');
+                $formsccp->nombre_cargo_politico = $request->input('nombre_cargo_politico');
+                $formsccp->fecha_desde_politico = $request->input('fecha_desde_politico');
+                $formsccp->fecha_hasta_politico = $request->input('fecha_hasta_politico');
+                $formsccp->pais_id = $request->input('pais_politico_id');
+                $formsccp->departamento_id = $request->input('departamento_politico_id');
+                $formsccp->municipio_id = $request->input('municipio_politico_id');
+                $formsccp->nombre_cliente_politico = $request->input('nombre_cliente_politico');
+                $formsccp->porcentaje_participacion_politico = $request->input('porcentaje_participacion_politico');
+                $formsccp->fuente_ingreso = $request->input('fuente_ingreso');
+                $formsccp->monto_mensual = $request->input('monto_mensual');
+                $formsccp->frm_conozca_cliente_id = $formsccc->id;
+                $formsccp->fecha_de_creacion = now();
+                $formsccp->fecha_de_modificacion = now();
+
+                $formsccp->save();
+            }
+
+            $parientes = [];
+
+            foreach ($request->input('nombre_pariente', []) as $key => $nombrePariente) {
+                $parentesco = $request->input('parentesco.' . $key);
+
+                if ($nombrePariente !== null && $parentesco !== null) {
+                    $pariente = new FrmConozcaClientePariente();
+                    $pariente->nombre_pariente = $nombrePariente;
+                    $pariente->parentesco = $parentesco;
+                    $pariente->fecha_de_creacion = now();
+                    $pariente->fecha_de_modificacion = now();
+                    $parientes[] = $pariente;
+                }
+            }
+
+            $formsccc->conozcaClienteParientes()->saveMany($parientes);
+
+            $socios = [];
+
+            foreach ($request->input('nombre_socio', []) as $key => $nombreSocio) {
+                $porcentajeSocio = $request->input('porcentaje_participacion_socio.' . $key);
+
+                if ($nombreSocio !== null && $porcentajeSocio !== null) {
+                    $socio = new FrmConozcaClienteSocio();
+                    $socio->nombre_socio = $nombreSocio;
+                    $socio->porcentaje_participacion_socio = $porcentajeSocio;
+                    $socio->fecha_de_creacion = now();
+                    $socio->fecha_de_modificacion = now();
+                    $socios[] = $socio;
+                }
+            }
+
+            $formsccc->conozcaClienteSocios()->saveMany($socios);
+
+            return redirect()->back()->with('success', 'Hemos recibido exitosamente su formulario.');
+        } catch (QueryException $e) {
+            dd($e);
+            return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
         }
     }
-
 }

@@ -90,12 +90,39 @@ class RoleSeeder extends Seeder
             ['name' => 'admin_avisos_crear', 'descripcion' => 'Crear avisos'],
             ['name' => 'admin_avisos_editar', 'descripcion' => 'Editar avisos'],
             ['name' => 'admin_avisos_eliminar', 'descripcion' => 'Eliminar avisos'],
+
+            // Clientes permisos
+            ['name' => 'admin_clientes_ver', 'descripcion' => 'Ver clientes'],
+            ['name' => 'admin_clientes_crear', 'descripcion' => 'Crear clientes'],
+            ['name' => 'admin_clientes_editar', 'descripcion' => 'Editar clientes'],
+
+            // Articulos Permisos
+            ['name' => 'admin_articulos_ver', 'descripcion' => 'Ver articulos'],
+            ['name' => 'admin_articulos_crear', 'descripcion' => 'Crear articulos'],
+            ['name' => 'admin_articulos_editar', 'descripcion' => 'Editar articulos'],
+            ['name' => 'admin_articulos_eliminar', 'descripcion' => 'Eliminar articulos'],
+
+            // Formularios Permisos
+            ['name' => 'admin_formularios_ver', 'descripcion' => 'Ver formularios'],
+
+            // Candidatos Permisos
+            ['name' => 'admin_candidatos_ver', 'descripcion' => 'Ver candidatos'],
+            ['name' => 'admin_candidatos_crear', 'descripcion' => 'Crear candidatos'],
+            ['name' => 'admin_candidatos_editar', 'descripcion' => 'Editar candidatos'],
+            ['name' => 'admin_candidatos_descartar', 'descripcion' => 'descartar candidatos'],
+
+            // Vacantes Permsisos
+            ['name' => 'admin_vacantes_ver', 'descripcion' => 'Ver vacantes'],
+            ['name' => 'admin_vacantes_crear', 'descripcion' => 'Crear vacantes'],
+            ['name' => 'admin_vacantes_editar', 'descripcion' => 'Editar vacantes'],
+            ['name' => 'admin_vacantes_eliminar', 'descripcion' => 'Eliminar vacantes'],
         ];
 
         foreach ($permissions as $permissionData) {
             $permission = Permission::firstOrCreate(['name' => $permissionData['name']]);
             $permission->update(['descripcion' => $permissionData['descripcion']]);
             $permission->assignRole([$admin]);
-        };
+        }
+        ;
     }
 }

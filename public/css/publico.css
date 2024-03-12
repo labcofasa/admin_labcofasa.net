@@ -5,6 +5,10 @@
 /* Fuentes */
 @import url(fonts.css);
 
+.campos-adicionales {
+    display: none;
+}
+
 
 * {
     margin: 0;
@@ -225,7 +229,7 @@ span {
 
     .button {
         width: 100%;
-        padding: 16px; 
+        padding: 16px;
     }
 
     body {

@@ -1,16 +1,73 @@
 $(document).ready(function () {
+    const forms = document.querySelectorAll('.needs-validation')
+
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    });
+
     const body = document.querySelector("body");
+    body.style.display = "flex";
+
+    cargarPaises(
+        "#pais",
+        "#id_pais",
+        "#departamento",
+        "#id_departamento",
+        "#municipio",
+        "#id_municipio",
+        false
+    );
+
+    setupGiroSearch(
+        "actividad_economica",
+        "sugerencia-filter",
+        "id_actividad_economica",
+    );
+
+    cargarClasificaciones(
+        "#clasificacion_juridico_id",
+        "#id_clasificacion_juridico",
+        false
+    );
+
+    setupGiroSearch(
+        "giro_juridico",
+        "sugerencia_filter_juridico",
+        "id_giro_juridico",
+    );
+
+    cargarPaises(
+        "#pais_juridico",
+        "#id_pais_juridico",
+        "#departamento_juridico",
+        "#id_departamento_juridico",
+        "#municipio_juridico",
+        "#id_municipio_juridico",
+        false
+    );
+
+    cargarPaises(
+        "#pais_politico",
+        "#id_pais_politico",
+        "#departamento_politico",
+        "#id_departamento_politico",
+        "#municipio_politico",
+        "#id_municipio_politico",
+        false
+    );
 
     const contenedorcampos = document.querySelector("#campos_form");
     const btnAgregarCampos = document.querySelector("#agregar_campos");
     const botonEliminar = document.querySelector(".btn-danger");
 
-    const contenedorCamposMiembros = document.querySelector("#campos_miembros");
-    const btnAgregarCamposMiembros = document.querySelector("#agregar_campos_miembros");
-    const botonEliminarMiembros = document.querySelector(".btn-danger");
-
     let camposContador = 0;
-    let camposContadorMiembros = 0;
 
     btnAgregarCampos.addEventListener("click", (e) => {
         camposContador++;
@@ -21,8 +78,8 @@ $(document).ready(function () {
         div.innerHTML = `
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="nombre_a${camposContador}" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="nombre_a${camposContador}" name="nombre_a[]" required>
+                    <label for="nombre_accionista${camposContador}" class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" id="nombre_accionista${camposContador}" name="nombre_accionista[]" required>
                     <div class="invalid-feedback">
                         Por favor ingrese el nombre.
                     </div>
@@ -30,8 +87,8 @@ $(document).ready(function () {
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="nacionalidad_a${camposContador}" class="form-label">Nacionalidad</label>
-                    <input type="text" class="form-control" id="nacionalidad_a${camposContador}" name="nacionalidad_a[]" required>
+                    <label for="nacionalidad_accionista${camposContador}" class="form-label">Nacionalidad</label>
+                    <input type="text" class="form-control" id="nacionalidad_accionista${camposContador}" name="nacionalidad_accionista[]" required>
                     <div class="invalid-feedback">
                         Por favor ingrese la nacionalidad.
                     </div>
@@ -39,8 +96,8 @@ $(document).ready(function () {
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="numero_identidad${camposContador}" class="form-label">No. Identidad</label>
-                    <input type="text" class="form-control" id="numero_identidad${camposContador}" name="numero_identidad[]" required>
+                    <label for="numero_identidad_accionista${camposContador}" class="form-label">No. Identidad</label>
+                    <input type="text" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]" required>
                     <div class="invalid-feedback">
                         Por favor ingrese el número de identificación.
                     </div>
@@ -48,8 +105,8 @@ $(document).ready(function () {
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="porcentaje_participacion${camposContador}" class="form-label">Porcentaje de participación</label>
-                    <input type="text" class="form-control" id="porcentaje_participacion${camposContador}" name="porcentaje_participacion[]" required>
+                    <label for="porcentaje_participacion_accionista${camposContador}" class="form-label">Porcentaje de participación</label>
+                    <input type="text" class="form-control" id="porcentaje_participacion_accionista${camposContador}" name="porcentaje_participacion_accionista[]" required>
                     <div class="invalid-feedback">
                         Por favor ingrese el porcentaje.
                     </div>
@@ -77,60 +134,11 @@ $(document).ready(function () {
         }
     });
 
-    (() => {
-        'use strict'
+    const contenedorCamposMiembros = document.querySelector("#campos_miembros");
+    const btnAgregarCamposMiembros = document.querySelector("#agregar_campos_miembros");
+    const botonEliminarMiembros = document.querySelector(".btn-danger");
 
-        const forms = document.querySelectorAll('.needs-validation')
-
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-
-    cargarPaises(
-        "#pais-form",
-        "#id-pais-form",
-        "#departamento-form",
-        "#id-departamento-form",
-        "#municipio-form",
-        "#id-municipio-form",
-        false
-    );
-
-    setupGiroSearch(
-        "actividad_economica",
-        "sugerencia-filter",
-        "id_actividad_economica",
-    );
-
-    cargarClasificaciones(
-        "#tipo_de_contribuyente",
-        "#id-tipo-de-contribuyente",
-        false
-    );
-
-    setupGiroSearch(
-        "actividad_economica_pj",
-        "sugerencia-filter-pj",
-        "id_actividad_economica_pj",
-    );
-
-    cargarPaises(
-        "#pais_persona_juridica",
-        "#id_pais_persona_juridica",
-        "#departamento_persona_juridica",
-        "#id_departamento_persona_juridica",
-        "#municipio_persona_juridica",
-        "#id_municipio_persona_juridica",
-        false
-    );
+    let camposContadorMiembros = 0;
 
     btnAgregarCamposMiembros.addEventListener("click", (e) => {
         camposContadorMiembros++;
@@ -197,19 +205,152 @@ $(document).ready(function () {
         }
     });
 
+    const contenedorParientes = document.querySelector("#campos_parientes");
+    const btnAgregarParientes = document.querySelector("#agregar_campos_parientes");
+    const botonEliminarParientes = document.querySelector(".btn-danger");
+
+    let camposContadorParientes = 0;
+
+    btnAgregarParientes.addEventListener("click", (e) => {
+        camposContadorParientes++;
+
+        let div = document.createElement("div");
+        div.className =
+            "row pb-3 align-items-center";
+        div.innerHTML = `
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="nombre_pariente${camposContadorParientes}" class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" id="nombre_pariente${camposContadorParientes}" name="nombre_pariente[]">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="parentesco${camposContadorParientes}" class="form-label">Parentesco</label>
+                    <input type="text" class="form-control" id="parentesco${camposContadorParientes}" name="parentesco[]">
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <button type="button" class="btn-redes btn btn-danger botonEliminar">Eliminar</button>
+            </div>
+        `;
+
+        contenedorParientes.appendChild(div);
+
+        if (botonEliminarParientes) {
+            botonEliminarParientes.style.display = "block";
+        }
+    });
+
+    contenedorParientes.addEventListener("click", (e) => {
+        if (e.target && e.target.classList.contains("botonEliminar")) {
+            const divPadre = e.target.parentNode.parentNode;
+            contenedorParientes.removeChild(divPadre);
+            if (contenedorParientes.children.length === 0 && botonEliminarParientes) {
+                botonEliminarParientes.style.display = "none";
+            }
+        }
+    });
+
+    const contenedorSocios = document.querySelector("#campos_socios");
+    const btnAgregarSocios = document.querySelector("#agregar_campos_socios");
+    const botonEliminarSocios = document.querySelector(".btn-danger");
+
+    let camposContadorSocios = 0;
+
+    btnAgregarSocios.addEventListener("click", (e) => {
+        camposContadorSocios++;
+
+        let div = document.createElement("div");
+        div.className =
+            "row pb-3 align-items-center";
+        div.innerHTML = `
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="nombre_socio${camposContadorSocios}" class="form-label">Nombre de la entidad</label>
+                    <input type="text" class="form-control" id="nombre_socio${camposContadorSocios}" name="nombre_socio[]">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="porcentaje_participacion_socio${camposContadorSocios}" class="form-label">Porcentaje de participación</label>
+                    <input type="text" class="form-control" id="porcentaje_participacion_socio${camposContadorSocios}" name="porcentaje_participacion_socio[]">
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <button type="button" class="btn-redes btn btn-danger botonEliminar">Eliminar</button>
+            </div>
+        `;
+
+        contenedorSocios.appendChild(div);
+
+        if (botonEliminarSocios) {
+            botonEliminarSocios.style.display = "block";
+        }
+    });
+
+    contenedorSocios.addEventListener("click", (e) => {
+        if (e.target && e.target.classList.contains("botonEliminar")) {
+            const divPadre = e.target.parentNode.parentNode;
+            contenedorSocios.removeChild(divPadre);
+            if (contenedorSocios.children.length === 0 && botonEliminarSocios) {
+                botonEliminarSocios.style.display = "none";
+            }
+        }
+    });
+
     document.getElementById('forms_ccc').addEventListener('submit', function (event) {
         var valorActividadEconomica = document.getElementById('id_actividad_economica').value;
-        var valorActividadEconomica = document.getElementById('id_actividad_economica_pj').value;
+        var valorActividadEconomica = document.getElementById('id_giro_juridico').value;
 
         if (valorActividadEconomica === '') {
             event.preventDefault();
             document.getElementById('id_actividad_economica').classList.add('is-invalid');
-            document.getElementById('id_actividad_economica_pj').classList.add('is-invalid');
+            document.getElementById('id_giro_juridico').classList.add('is-invalid');
         } else {
             document.getElementById('id_actividad_economica').classList.remove('is-invalid');
-            document.getElementById('id_actividad_economica_pj').classList.remove('is-invalid');
+            document.getElementById('id_giro_juridico').classList.remove('is-invalid');
         }
     });
 
-    body.style.display = "flex";
+    var cargoPublicoSi = document.getElementById("cargoPublicoSI");
+    var cargoPublicoNo = document.getElementById("cargoPublicoNO");
+    var capitalAccionarioSi = document.getElementById("capitalAccionarioSI");
+    var capitalAccionarioNO = document.getElementById("capitalAccionarioNO");
+    var camposAdicionales = document.querySelectorAll(".campos-adicionales");
+
+
+    cargoPublicoSi.addEventListener("change", function () {
+        if (cargoPublicoSi.checked || capitalAccionarioSi.checked) {
+            camposAdicionales.forEach(function (campo) {
+                campo.style.display = "block";
+            });
+        }
+    });
+
+    cargoPublicoNo.addEventListener("change", function () {
+        if (cargoPublicoNo.checked && capitalAccionarioNO.checked) {
+            camposAdicionales.forEach(function (campo) {
+                campo.style.display = "";
+            });
+        }
+    });
+
+    capitalAccionarioSi.addEventListener("change", function () {
+        if (cargoPublicoSi.checked || capitalAccionarioSi.checked) {
+            camposAdicionales.forEach(function (campo) {
+                campo.style.display = "block";
+            });
+        }
+    });
+
+    capitalAccionarioNO.addEventListener("change", function () {
+        if (cargoPublicoNo.checked && capitalAccionarioNO.checked) {
+            camposAdicionales.forEach(function (campo) {
+                campo.style.display = "";
+            });
+        }
+    });
 });

@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {

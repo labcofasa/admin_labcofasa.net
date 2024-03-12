@@ -88,11 +88,11 @@ function MultiselectDropdown(options) {
                 if (k === "class") {
                     Array.isArray(attrs[k])
                         ? attrs[k].forEach((o) =>
-                              o !== "" ? e.classList.add(o) : 0
-                          )
+                            o !== "" ? e.classList.add(o) : 0
+                        )
                         : attrs[k] !== ""
-                        ? e.classList.add(attrs[k])
-                        : 0;
+                            ? e.classList.add(attrs[k])
+                            : 0;
                 } else if (k === "style") {
                     Object.keys(attrs[k]).forEach((ks) => {
                         e.style[ks] = attrs[k][ks];

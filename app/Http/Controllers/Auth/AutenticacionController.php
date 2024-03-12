@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Aviso;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\UserRole;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -104,8 +103,6 @@ class AutenticacionController extends Controller
         }
     }
 
-
-
     public function verificarToken(Request $request)
     {
         try {
@@ -135,6 +132,8 @@ class AutenticacionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        $response = redirect('/');
+
+        return $response;
     }
 }
