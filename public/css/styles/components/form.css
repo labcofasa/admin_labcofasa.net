@@ -259,7 +259,7 @@ label {
 .multiselect-dropdown span.placeholder {
     margin-right: 1em;
     margin-bottom: 2px;
-    background: var(--sidebar-bg-hover);
+    background: var(--btn-secondary);
     padding: 1px 0;
     cursor: pointer;
     color: var(--text-color);
