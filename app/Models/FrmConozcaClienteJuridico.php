@@ -23,6 +23,13 @@ class FrmConozcaClienteJuridico extends Model
         'numero_de_fax_juridico',
         'direccion_juridico',
         'monto_proyectado',
+        'documento_escritura',
+        'documento_acuerdo',
+        'documento_nit',
+        'documento_credencial',
+        'documento_identificacion_representante',
+        'documento_matricula',
+        'documento_domicilio_juridico',
         'fecha_de_creacion',
         'fecha_de_modificacion'
     ];

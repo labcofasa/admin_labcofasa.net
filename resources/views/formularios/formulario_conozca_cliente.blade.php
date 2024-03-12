@@ -25,7 +25,7 @@
             Contraparte", de acuerdo con los Arts. 9-B, 10 literal A, Romano I y II de la Ley Contra el Lavado de Dinero y
             de Activos, y el Art. 4 del Reglamento de la Ley.</p>
         <form id="forms_ccc" class="form needs-validation" novalidate action="{{ route('enviar.formulario.ccc') }}"
-            method="POST">
+            method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
             <span>A. Información persona natural - representante legal</span>
@@ -563,21 +563,21 @@
 
                 <span class="mb-2">Documentos anexos a este formulario</span>
                 <span class="mb-2 text-center">Persona natural</span>
-                {{-- <div class="col-sm-6">
+                <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="documento_identidad" class="form-label">Copia de DUI, Pasaporte o Carnet de
                             Residente</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_identidad" name="documento_identidad">
-                        </div>
+                        <input type="file" class="form-control" id="documento_identidad" name="documento_identidad"
+                            accept=".pdf, .docx, .jpg, .png, .jpeg">
                     </div>
-                </div> --}}
-                {{-- <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
                     <div class="mb-3">
-                        <label for="documento_tajeta_registro" class="form-label">Copia Tarjeta de Registro de
+                        <label for="documento_tarjeta_registro" class="form-label">Copia Tarjeta de Registro de
                             Contribuyente (Si aplica)</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_tajeta_registro">
+                            <input type="file" class="form-control" id="documento_tarjeta_registro"
+                                name="documento_tarjeta_registro" accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
                 </div>
@@ -586,7 +586,8 @@
                         <label for="documento_domicilio" class="form-label">Copia de comprobante de
                             domicilio</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_domicilio">
+                            <input type="file" class="form-control" id="documento_domicilio"
+                                name="documento_domicilio" accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
                 </div>
@@ -596,7 +597,8 @@
                         <label for="documento_escritura" class="form-label">Copia de Escritura de Constitución (Para
                             Sociedades)</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_escritura">
+                            <input type="file" class="form-control" id="documento_escritura"
+                                name="documento_escritura" accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
                 </div>
@@ -605,7 +607,8 @@
                         <label for="documento_acuerdo" class="form-label">Acuerdo ejecutivo, Decreto o Acta de
                             Constitución (para asociaciones, cooperativas, ONG's, Otros)</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_acuerdo">
+                            <input type="file" class="form-control" id="documento_acuerdo" name="documento_acuerdo"
+                                accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
                 </div>
@@ -614,7 +617,8 @@
                         <label for="documento_nit" class="form-label">Copia de NIT y Número de Registro
                             Contribuyente</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_nit">
+                            <input type="file" class="form-control" id="documento_nit" name="documento_nit"
+                                accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
                 </div>
@@ -623,7 +627,8 @@
                         <label for="documento_credencial" class="form-label">Copia credencial de elección del
                             Representante Legal</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_credencial">
+                            <input type="file" class="form-control" id="documento_credencial"
+                                name="documento_credencial" accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
                 </div>
@@ -633,7 +638,8 @@
                             Representante
                             Legal</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_identificacion_representante">
+                            <input type="file" class="form-control" id="documento_identificacion_representante"
+                                name="documento_identificacion_representante" accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
                 </div>
@@ -642,7 +648,8 @@
                         <label for="documento_matricula" class="form-label">Matrícula de Comercio
                             vigente</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_matricula">
+                            <input type="file" class="form-control" id="documento_matricula"
+                                name="documento_matricula" accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
                 </div>
@@ -651,10 +658,11 @@
                         <label for="documento_domicilio_juridico" class="form-label">Copia de comprobante de
                             domicilio</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_domicilio_juridico">
+                            <input type="file" class="form-control" id="documento_domicilio_juridico"
+                                name="documento_domicilio_juridico" accept=".pdf, .docx, .jpg, .png, .jpeg">
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
                 <div class="campos-adicionales pt-5">
                     <x-formularios.formulario_personas_expuestas />

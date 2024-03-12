@@ -22,6 +22,13 @@ return new class extends Migration {
             $table->string('numero_de_fax_juridico');
             $table->text('direccion_juridico');
             $table->string('monto_proyectado');
+            $table->string('documento_escritura')->nullable();
+            $table->string('documento_acuerdo')->nullable();
+            $table->string('documento_nit')->nullable();
+            $table->string('documento_credencial')->nullable();
+            $table->string('documento_identificacion_representante')->nullable();
+            $table->string('documento_matricula')->nullable();
+            $table->string('documento_domicilio_juridico')->nullable();
             $table->unsignedBigInteger('frm_conozca_cliente_id');
             $table->unsignedBigInteger('clasificacion_id');
             $table->unsignedBigInteger('giro_id')->nullable();

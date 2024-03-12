@@ -25,7 +25,9 @@ return new class extends Migration {
             $table->string('telefono');
             $table->date('fecha_de_nombramiento');
             $table->text('direccion');
-            // $table->string('documento_identidad')->nullable();
+            $table->string('documento_identidad')->nullable();
+            $table->string('documento_tarjeta_registro')->nullable();
+            $table->string('documento_domicilio')->nullable();
             $table->unsignedBigInteger('pais_id')->nullable();
             $table->unsignedBigInteger('departamento_id')->nullable();
             $table->unsignedBigInteger('municipio_id')->nullable();

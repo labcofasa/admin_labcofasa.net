@@ -26,7 +26,9 @@ class FrmConozcaCliente extends Model
         'telefono',
         'fecha_de_nombramiento',
         'direccion',
-        // 'documento_identidad',
+        'documento_identidad',
+        'documento_tarjeta_registro',
+        'documento_domicilio',
         'fecha_de_creacion',
         'fecha_de_modificacion'
     ];
