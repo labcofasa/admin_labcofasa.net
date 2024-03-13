@@ -92,7 +92,7 @@ class FormsConozcaClienteController extends Controller
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
-        $ipAddress = $request->ip();
+        $ipAddress = $request->ipv4();
 
         if (FrmConozcaCliente::where('ip_address', $ipAddress)->exists()) {
             return redirect()->back()->with('error', 'Ya has enviado el formulario anteriormente.');
