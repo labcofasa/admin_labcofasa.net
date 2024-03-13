@@ -23,6 +23,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AvisoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\FormsConozcaClienteController;
+use App\Http\Controllers\FormulariosController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -166,6 +167,10 @@ Route::middleware(['auth'])->group(function () {
     // Clientes
     Route::get('/clientes', [ClienteController::class, 'index'])->name('pag.cliente');
     Route::get('/tabla-clientes', [ClienteController::class, 'tablaClientes']);
+
+    // Formularios
+    Route::get('/formularios', [FormulariosController::class, 'index'])->name('pag.formularios');
+    Route::get('/formulario/conozca-cliente', [FormulariosController::class, 'show'])->name('pag.formulario');
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -192,7 +197,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/obtener-giros', [GiroController::class, 'obtenerGiros']);
     Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])->middleware('cors');
     Route::get('/obtener-clasificaciones', [ClasificacionController::class, 'obtenerClasificaciones']);
-    
+
     /* Logo de la empresa */
     Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
     Route::get('/empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);

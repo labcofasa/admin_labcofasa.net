@@ -309,6 +309,11 @@ p {
     transition: var(--tran-03);
 }
 
+small {
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
 span {
     letter-spacing: var(--letter-spacing);
     font-weight: 500;
@@ -474,6 +479,7 @@ hr {
 }
 
 @media (max-width: 1024px) {
+
     table.table-bordered.dataTable th,
     table.table-bordered.dataTable td {
         border-left-width: 1px;
@@ -562,6 +568,7 @@ hr {
 }
 
 @media screen and (min-width: 1366px) {
+
     .navbar-brand svg,
     .navbar-brand span {
         display: none;

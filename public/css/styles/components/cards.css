@@ -121,3 +121,10 @@
 .card-enlace {
     text-decoration: none;
 }
+
+/* Formularios */
+.card-form {
+    box-shadow: var(--box-shadow);
+    transition: var(--tran-03);
+    background-color: var(--card-bg);
+}

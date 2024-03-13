@@ -214,7 +214,7 @@ span {
     background: #5029bc !important;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1440px) {
     .container {
         width: 100%;
     }
