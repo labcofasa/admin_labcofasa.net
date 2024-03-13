@@ -171,6 +171,8 @@ Route::middleware(['auth'])->group(function () {
     // Formularios
     Route::get('/formularios', [FormulariosController::class, 'index'])->name('pag.formularios');
     Route::get('/formulario/conozca-cliente', [FormulariosController::class, 'show'])->name('pag.formulario');
+    Route::get('/tabla-conozca-cliente', [FormulariosController::class, 'tablaConozcaCliente']);
+
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -202,5 +204,3 @@ Route::middleware(['web'])->group(function () {
     Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
     Route::get('/empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);
 });
-
-

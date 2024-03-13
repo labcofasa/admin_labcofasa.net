@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('nacionalidad_accionista')->nullable();
             $table->string('numero_identidad_accionista')->nullable();
             $table->string('porcentaje_participacion_accionista')->nullable();
-            $table->unsignedBigInteger('frm_conozca_cliente_id');
+            $table->unsignedBigInteger('frm_conozca_cliente_id')->nullable();
             $table->timestamp('fecha_de_creacion')->nullable();
             $table->timestamp('fecha_de_modificacion')->nullable();
 

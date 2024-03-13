@@ -79,37 +79,25 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nombre_accionista${camposContador}" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="nombre_accionista${camposContador}" name="nombre_accionista[]" required>
-                    <div class="invalid-feedback">
-                        Por favor ingrese el nombre.
-                    </div>
+                    <input type="text" class="form-control" id="nombre_accionista${camposContador}" name="nombre_accionista[]">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nacionalidad_accionista${camposContador}" class="form-label">Nacionalidad</label>
-                    <input type="text" class="form-control" id="nacionalidad_accionista${camposContador}" name="nacionalidad_accionista[]" required>
-                    <div class="invalid-feedback">
-                        Por favor ingrese la nacionalidad.
-                    </div>
+                    <input type="text" class="form-control" id="nacionalidad_accionista${camposContador}" name="nacionalidad_accionista[]">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="numero_identidad_accionista${camposContador}" class="form-label">No. Identidad</label>
-                    <input type="text" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]" required>
-                    <div class="invalid-feedback">
-                        Por favor ingrese el número de identificación.
-                    </div>
+                    <input type="text" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="porcentaje_participacion_accionista${camposContador}" class="form-label">Porcentaje de participación</label>
-                    <input type="text" class="form-control" id="porcentaje_participacion_accionista${camposContador}" name="porcentaje_participacion_accionista[]" required>
-                    <div class="invalid-feedback">
-                        Por favor ingrese el porcentaje.
-                    </div>
+                    <input type="text" class="form-control" id="porcentaje_participacion_accionista${camposContador}" name="porcentaje_participacion_accionista[]">
                 </div>
             </div>
             <div class="col-sm-6">
@@ -150,37 +138,25 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nombre_miembro${camposContadorMiembros}" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="nombre_miembro${camposContadorMiembros}" name="nombre_miembro[]" required>
-                    <div class="invalid-feedback">
-                        Por favor ingrese el nombre.
-                    </div>
+                    <input type="text" class="form-control" id="nombre_miembro${camposContadorMiembros}" name="nombre_miembro[]">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nacionalidad_miembro${camposContadorMiembros}" class="form-label">Nacionalidad</label>
-                    <input type="text" class="form-control" id="nacionalidad_miembro${camposContadorMiembros}" name="nacionalidad_miembro[]" required>
-                    <div class="invalid-feedback">
-                        Por favor ingrese la nacionalidad.
-                    </div>
+                    <input type="text" class="form-control" id="nacionalidad_miembro${camposContadorMiembros}" name="nacionalidad_miembro[]">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="numero_identidad_miembro${camposContadorMiembros}" class="form-label">No. Identidad</label>
-                    <input type="text" class="form-control" id="numero_identidad_miembro${camposContadorMiembros}" name="numero_identidad_miembro[]" required>
-                    <div class="invalid-feedback">
-                        Por favor ingrese el número de identificación.
-                    </div>
+                    <input type="text" class="form-control" id="numero_identidad_miembro${camposContadorMiembros}" name="numero_identidad_miembro[]">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="cargo_miembro${camposContadorMiembros}" class="form-label">Cargo</label>
-                    <input type="text" class="form-control" id="cargo_miembro${camposContadorMiembros}" name="cargo_miembro[]" required>
-                    <div class="invalid-feedback">
-                        Por favor ingrese el cargo.
-                    </div>
+                    <input type="text" class="form-control" id="cargo_miembro${camposContadorMiembros}" name="cargo_miembro[]">
                 </div>
             </div>
             <div class="col-sm-6">
@@ -298,20 +274,6 @@ $(document).ready(function () {
             if (contenedorSocios.children.length === 0 && botonEliminarSocios) {
                 botonEliminarSocios.style.display = "none";
             }
-        }
-    });
-
-    document.getElementById('forms_ccc').addEventListener('submit', function (event) {
-        var valorActividadEconomica = document.getElementById('id_actividad_economica').value;
-        var valorActividadEconomica = document.getElementById('id_giro_juridico').value;
-
-        if (valorActividadEconomica === '') {
-            event.preventDefault();
-            document.getElementById('id_actividad_economica').classList.add('is-invalid');
-            document.getElementById('id_giro_juridico').classList.add('is-invalid');
-        } else {
-            document.getElementById('id_actividad_economica').classList.remove('is-invalid');
-            document.getElementById('id_giro_juridico').classList.remove('is-invalid');
         }
     });
 

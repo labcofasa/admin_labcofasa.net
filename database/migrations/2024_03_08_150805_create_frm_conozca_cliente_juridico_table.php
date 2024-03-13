@@ -12,16 +12,16 @@ return new class extends Migration {
     {
         Schema::create('frm_conozca_cliente_juridico', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_comercial_juridico');
-            $table->string('nacionalidad_juridico');
-            $table->string('numero_de_nit_juridico');
-            $table->date('fecha_de_constitucion_juridico');
-            $table->string('registro_nrc_juridico');
-            $table->string('telefono_juridico');
-            $table->string('sitio_web_juridico');
-            $table->string('numero_de_fax_juridico');
-            $table->text('direccion_juridico');
-            $table->string('monto_proyectado');
+            $table->string('nombre_comercial_juridico')->nullable();
+            $table->string('nacionalidad_juridico')->nullable();
+            $table->string('numero_de_nit_juridico')->nullable();
+            $table->date('fecha_de_constitucion_juridico')->nullable();
+            $table->string('registro_nrc_juridico')->nullable();
+            $table->string('telefono_juridico')->nullable();
+            $table->string('sitio_web_juridico')->nullable();
+            $table->string('numero_de_fax_juridico')->nullable();
+            $table->text('direccion_juridico')->nullable();
+            $table->string('monto_proyectado')->nullable();
             $table->string('documento_escritura')->nullable();
             $table->string('documento_acuerdo')->nullable();
             $table->string('documento_nit')->nullable();
@@ -29,8 +29,8 @@ return new class extends Migration {
             $table->string('documento_identificacion_representante')->nullable();
             $table->string('documento_matricula')->nullable();
             $table->string('documento_domicilio_juridico')->nullable();
-            $table->unsignedBigInteger('frm_conozca_cliente_id');
-            $table->unsignedBigInteger('clasificacion_id');
+            $table->unsignedBigInteger('frm_conozca_cliente_id')->nullable();
+            $table->unsignedBigInteger('clasificacion_id')->nullable();
             $table->unsignedBigInteger('giro_id')->nullable();
             $table->unsignedBigInteger('pais_id')->nullable();
             $table->unsignedBigInteger('departamento_id')->nullable();

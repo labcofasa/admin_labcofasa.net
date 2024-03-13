@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('nacionalidad_miembro')->nullable();
             $table->string('numero_identidad_miembro')->nullable();
             $table->string('cargo_miembro')->nullable();
-            $table->unsignedBigInteger('frm_conozca_cliente_id');
+            $table->unsignedBigInteger('frm_conozca_cliente_id')->nullable();
             $table->timestamp('fecha_de_creacion')->nullable();
             $table->timestamp('fecha_de_modificacion')->nullable();
 

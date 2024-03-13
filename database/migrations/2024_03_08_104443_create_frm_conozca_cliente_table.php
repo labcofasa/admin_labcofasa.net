@@ -8,30 +8,35 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
+
+    // php artisan migrate:rollback --step=7
+
+
     public function up(): void
     {
         Schema::create('frm_conozca_cliente', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->date('fecha_de_nacimiento');
-            $table->string('nacionalidad');
-            $table->string('profesion_u_oficicio');
-            $table->string('tipo_de_documento');
-            $table->string('numero_de_documento');
-            $table->date('fecha_de_vencimiento');
-            $table->string('registro_iva_nrc');
-            $table->string('email');
-            $table->string('telefono');
-            $table->date('fecha_de_nombramiento');
-            $table->text('direccion');
+            $table->string('nombre')->nullable();
+            $table->string('apellido')->nullable();
+            $table->date('fecha_de_nacimiento')->nullable();
+            $table->string('nacionalidad')->nullable();
+            $table->string('profesion_u_oficicio')->nullable();
+            $table->string('tipo_de_documento')->nullable();
+            $table->string('numero_de_documento')->nullable();
+            $table->date('fecha_de_vencimiento')->nullable();
+            $table->string('registro_iva_nrc')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telefono')->nullable();
+            $table->date('fecha_de_nombramiento')->nullable();
+            $table->text('direccion')->nullable();
+            $table->text('ip_address')->nullable();
             $table->string('documento_identidad')->nullable();
             $table->string('documento_tarjeta_registro')->nullable();
             $table->string('documento_domicilio')->nullable();
             $table->unsignedBigInteger('pais_id')->nullable();
             $table->unsignedBigInteger('departamento_id')->nullable();
             $table->unsignedBigInteger('municipio_id')->nullable();
-            $table->unsignedBigInteger('giro_id');
+            $table->unsignedBigInteger('giro_id')->nullable();
 
             $table->timestamp('fecha_de_creacion')->nullable();
             $table->timestamp('fecha_de_modificacion')->nullable();

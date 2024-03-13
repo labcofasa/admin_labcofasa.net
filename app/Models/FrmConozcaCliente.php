@@ -29,6 +29,7 @@ class FrmConozcaCliente extends Model
         'documento_identidad',
         'documento_tarjeta_registro',
         'documento_domicilio',
+        'ip_address',
         'fecha_de_creacion',
         'fecha_de_modificacion'
     ];
@@ -56,6 +57,11 @@ class FrmConozcaCliente extends Model
     public function municipio()
     {
         return $this->belongsTo(Municipio::class, 'municipio_id');
+    }
+
+    public function conozcaClienteJuridico()
+    {
+        return $this->hasMany(FrmConozcaClienteJuridico::class, 'frm_conozca_cliente_id');
     }
 
     public function conozcaClienteAccionistas()

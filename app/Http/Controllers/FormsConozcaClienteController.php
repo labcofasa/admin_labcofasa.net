@@ -23,47 +23,48 @@ class FormsConozcaClienteController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
-            'nombre' => 'required|string',
-            'apellido' => 'required|string',
-            'fecha_de_nacimiento' => 'required|date',
-            'nacionalidad' => 'required|string',
-            'profesion_u_oficicio' => 'required|string',
-            'pais_id' => 'required|exists:paises,id',
-            'departamento_id' => 'required|exists:departamentos,id',
-            'municipio_id' => 'required|exists:municipios,id',
-            'tipo_de_documento' => 'required|string',
-            'numero_de_documento' => 'required|string',
-            'fecha_de_vencimiento' => 'required|date',
-            'registro_iva_nrc' => 'required|string',
-            'email' => 'required|email',
-            'telefono' => 'required|string',
-            'giro_id' => 'required|exists:giros,id',
-            'fecha_de_nombramiento' => 'required|date',
-            'direccion' => 'required|string',
-            'nombre_comercial_juridico' => 'required|string',
-            'clasificacion_juridico_id' => 'required|exists:clasificaciones,id',
-            'nacionalidad_juridico' => 'required|string',
-            'numero_de_nit_juridico' => 'required|string',
-            'fecha_de_constitucion_juridico' => 'required|date',
-            'registro_nrc_juridico' => 'required|string',
-            'giro_juridico_id' => 'required|exists:giros,id',
-            'pais_juridico_id' => 'required|exists:paises,id',
-            'departamento_juridico_id' => 'required|exists:departamentos,id',
-            'municipio_juridico_id' => 'required|exists:municipios,id',
-            'telefono_juridico' => 'required|string',
-            'sitio_web_juridico' => 'required|url',
-            'numero_de_fax_juridico' => 'required|string',
-            'direccion_juridico' => 'required|string',
-            'monto_proyectado' => 'required|string',
-            'nombre_accionista.*' => 'required|string',
-            'nacionalidad_accionista.*' => 'required|string',
-            'numero_identidad_accionista.*' => 'required|string',
-            'porcentaje_participacion_accionista.*' => 'required|string',
-            'nombre_miembro.*' => 'required|string',
-            'nacionalidad_miembro.*' => 'required|string',
-            'numero_identidad_miembro.*' => 'required|string',
-            'cargo_miembro.*' => 'required|string',
+            'nombre' => 'nullable|string',
+            'apellido' => 'nullable|string',
+            'fecha_de_nacimiento' => 'nullable|date',
+            'nacionalidad' => 'nullable|string',
+            'profesion_u_oficicio' => 'nullable|string',
+            'pais_id' => 'nullable|exists:paises,id',
+            'departamento_id' => 'nullable|exists:departamentos,id',
+            'municipio_id' => 'nullable|exists:municipios,id',
+            'tipo_de_documento' => 'nullable|string',
+            'numero_de_documento' => 'nullable|string',
+            'fecha_de_vencimiento' => 'nullable|date',
+            'registro_iva_nrc' => 'nullable|string',
+            'email' => 'nullable|email',
+            'telefono' => 'nullable|string',
+            'giro_id' => 'nullable|exists:giros,id',
+            'fecha_de_nombramiento' => 'nullable|date',
+            'direccion' => 'nullable|string',
+            'nombre_comercial_juridico' => 'nullable|string',
+            'clasificacion_juridico_id' => 'nullable|exists:clasificaciones,id',
+            'nacionalidad_juridico' => 'nullable|string',
+            'numero_de_nit_juridico' => 'nullable|string',
+            'fecha_de_constitucion_juridico' => 'nullable|date',
+            'registro_nrc_juridico' => 'nullable|string',
+            'giro_juridico_id' => 'nullable|exists:giros,id',
+            'pais_juridico_id' => 'nullable|exists:paises,id',
+            'departamento_juridico_id' => 'nullable|exists:departamentos,id',
+            'municipio_juridico_id' => 'nullable|exists:municipios,id',
+            'telefono_juridico' => 'nullable|string',
+            'sitio_web_juridico' => 'nullable|url',
+            'numero_de_fax_juridico' => 'nullable|string',
+            'direccion_juridico' => 'nullable|string',
+            'monto_proyectado' => 'nullable|string',
+            'nombre_accionista.*' => 'nullable|string',
+            'nacionalidad_accionista.*' => 'nullable|string',
+            'numero_identidad_accionista.*' => 'nullable|string',
+            'porcentaje_participacion_accionista.*' => 'nullable|string',
+            'nombre_miembro.*' => 'nullable|string',
+            'nacionalidad_miembro.*' => 'nullable|string',
+            'numero_identidad_miembro.*' => 'nullable|string',
+            'cargo_miembro.*' => 'nullable|string',
             'nombre_politico' => 'nullable|string',
             'nombre_cargo_politico' => 'nullable|string',
             'fecha_desde_politico' => 'nullable|date',
@@ -91,12 +92,18 @@ class FormsConozcaClienteController extends Controller
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
+        $ipAddress = $request->ip();
+
+        if (FrmConozcaCliente::where('ip_address', $ipAddress)->exists()) {
+            return redirect()->back()->with('error', 'Ya has enviado el formulario anteriormente.');
+        }
+
         try {
             $formsccc = new FrmConozcaCliente();
 
             $formsccc->nombre = $request->input('nombre');
             $formsccc->apellido = $request->input('apellido');
-            $formsccc->fecha_de_nacimiento = Carbon::parse($request->input('fecha_de_nacimiento'))->toDateString();
+            $formsccc->fecha_de_nacimiento = $request->input('fecha_de_nacimiento');
             $formsccc->nacionalidad = $request->input('nacionalidad');
             $formsccc->profesion_u_oficicio = $request->input('profesion_u_oficicio');
             $formsccc->pais_id = $request->input('pais_id');
@@ -104,13 +111,14 @@ class FormsConozcaClienteController extends Controller
             $formsccc->municipio_id = $request->input('municipio_id');
             $formsccc->tipo_de_documento = $request->input('tipo_de_documento');
             $formsccc->numero_de_documento = str_replace('-', '', $request->input('numero_de_documento'));
-            $formsccc->fecha_de_vencimiento = Carbon::parse($request->input('fecha_de_vencimiento'))->toDateString();
+            $formsccc->fecha_de_vencimiento = $request->input('fecha_de_vencimiento');
             $formsccc->registro_iva_nrc = str_replace('-', '', $request->input('registro_iva_nrc'));
             $formsccc->email = $request->input('email');
             $formsccc->telefono = str_replace(['+', '-'], '', $request->input('telefono'));
             $formsccc->giro_id = $request->input('giro_id');
-            $formsccc->fecha_de_nombramiento = Carbon::parse($request->input('fecha_de_nombramiento'))->toDateString();
+            $formsccc->fecha_de_nombramiento = $request->input('fecha_de_nombramiento');
             $formsccc->direccion = $request->input('direccion');
+            $formsccc->ip_address = $ipAddress;
             $formsccc->fecha_de_creacion = now();
             $formsccc->fecha_de_modificacion = now();
 
@@ -175,7 +183,7 @@ class FormsConozcaClienteController extends Controller
             $formsccj->clasificacion_id = $request->input('clasificacion_juridico_id');
             $formsccj->nacionalidad_juridico = $request->input('nacionalidad_juridico');
             $formsccj->numero_de_nit_juridico = str_replace('-', '', $request->input('numero_de_nit_juridico'));
-            $formsccj->fecha_de_constitucion_juridico = Carbon::parse($request->input('fecha_de_constitucion_juridico'));
+            $formsccj->fecha_de_constitucion_juridico = $request->input('fecha_de_constitucion_juridico');
             $formsccj->registro_nrc_juridico = str_replace('-', '', $request->input('registro_nrc_juridico'));
             $formsccj->pais_id = $request->input('pais_juridico_id');
             $formsccj->departamento_id = $request->input('departamento_juridico_id');
