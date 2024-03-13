@@ -92,9 +92,9 @@ class FormsConozcaClienteController extends Controller
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
-        $ipAddress = $request->ip();
+        $direccionIp = $request->ip();
 
-        if (FrmConozcaCliente::where('ip_address', $ipAddress)->exists()) {
+        if (FrmConozcaCliente::where('direccion_ip', $direccionIp)->exists()) {
             return redirect()->back()->with('error', 'Ya has enviado el formulario anteriormente.');
         }
 
@@ -118,7 +118,7 @@ class FormsConozcaClienteController extends Controller
             $formsccc->giro_id = $request->input('giro_id');
             $formsccc->fecha_de_nombramiento = $request->input('fecha_de_nombramiento');
             $formsccc->direccion = $request->input('direccion');
-            $formsccc->ip_address = $ipAddress;
+            $formsccc->direccion_ip = $direccionIp;
             $formsccc->fecha_de_creacion = now();
             $formsccc->fecha_de_modificacion = now();
 

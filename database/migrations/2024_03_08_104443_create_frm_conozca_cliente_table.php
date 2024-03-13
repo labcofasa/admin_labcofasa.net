@@ -29,7 +29,7 @@ return new class extends Migration {
             $table->string('telefono')->nullable();
             $table->date('fecha_de_nombramiento')->nullable();
             $table->text('direccion')->nullable();
-            $table->text('ip_address')->nullable();
+            $table->text('direccion_ip')->nullable();
             $table->string('documento_identidad')->nullable();
             $table->string('documento_tarjeta_registro')->nullable();
             $table->string('documento_domicilio')->nullable();
