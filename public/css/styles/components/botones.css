@@ -486,3 +486,8 @@ button {
 .small-button:hover::before {
     opacity: 1;
 }
+
+.options {
+    display: flex;
+    justify-content: space-between;
+}

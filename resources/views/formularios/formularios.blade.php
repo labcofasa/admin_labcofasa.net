@@ -14,12 +14,12 @@
                 <small class="mb-1">Vigencia dic 23, Version 1</small>
             </div>
             <span>Descripcion del formulario.</span>
-            <div class="mt-3">
+            <div class="mt-3 options">
                 <a href="{{ route('pag.formulario') }}" class="btn btn-success">
-                    Respuestas
+                    Ver respuestas
                 </a>
                 <a href="{{ route('formulario') }}" target="_blank" class="btn btn-secondary">
-                    Formulario
+                    Ver formulario
                 </a>
                 <button id="botonCopiar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copiar enlace"
                     class="btn btn-secondary">

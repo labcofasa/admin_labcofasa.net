@@ -124,11 +124,17 @@
 
 /* Formularios */
 .card-form {
-    max-width: 320px;
+    width: 360px;
     padding: 1rem;
     box-shadow: var(--box-shadow);
     transition: var(--tran-03);
     background-color: var(--card-bg);
     border-radius: 10px;
     box-shadow: var(--box-shadow);
+}
+
+@media screen and (max-width: 450px) {
+    .card-form {
+        width: 100%;
+    }
 }
