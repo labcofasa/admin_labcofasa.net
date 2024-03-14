@@ -8,40 +8,42 @@
         <!-- Titulo-->
         <h1 class="pb-3">@yield('titulo')</h1>
 
-        <div class="row mb-2">
-            <div class="col-md-6">
-                <div class="row g-0 card-form rounded overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
-                    <div class="col px-3 pt-3 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary">Ventas</strong>
-                        <h3 class="mb-0">Conozca a su cliente</h3>
-                        <small class="mb-1">Vigencia dic 23, Version 1</small>
-                        <p class="card-text mb-auto">Descripción del formulario</p>
-                        <div class="d-inline-flex gap-2 my-3">
-                            <a href="{{ route('pag.formulario') }}"
-                                class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"
-                                type="button">
-                                Respuestas
-                            </a>
-                            <a href="{{ route('formulario') }}" target="_blank"
-                                class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
-                                Ver formulario
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <img src="{{ asset('images/form.png') }}" width="200" height="200" alt="">
-                    </div>
-                </div>
+        <div class="card-form">
+            <h6 class="link_name">📜 Conozca a su cliente</h6>
+            <div>
+                <small class="mb-1">Vigencia dic 23, Version 1</small>
+            </div>
+            <span>Descripcion del formulario.</span>
+            <div class="mt-3">
+                <a href="{{ route('pag.formulario') }}" class="btn btn-success">
+                    Respuestas
+                </a>
+                <a href="{{ route('formulario') }}" target="_blank" class="btn btn-secondary">
+                    Formulario
+                </a>
+                <button id="botonCopiar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copiar enlace"
+                    class="btn btn-secondary">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 -960 960 960"
+                        width="18">
+                        <path
+                            d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z" />
+                    </svg>
+                </button>
             </div>
         </div>
-
     </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-        <symbol id="chevron-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-        </symbol>
-    </svg>
+    <script>
+        document.getElementById("botonCopiar").addEventListener("click", function() {
+            var enlace = "http://app.labcofasa.net/formulario-conozca-cliente";
+            var inputTemp = document.createElement("input");
+            inputTemp.setAttribute("value", enlace);
+            document.body.appendChild(inputTemp);
+            inputTemp.select();
+            document.execCommand("copy");
+            document.body.removeChild(inputTemp);
+            alert("¡Enlace copiado al portapapeles!");
+        });
+    </script>
 
 @endsection
