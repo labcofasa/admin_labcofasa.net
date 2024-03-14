@@ -126,9 +126,8 @@
 .card-form {
     width: 360px;
     padding: 1rem;
-    box-shadow: var(--box-shadow);
     transition: var(--tran-03);
-    background-color: var(--bg-sidebar);
+    background-color: var(--btn-card-bg);
     border-radius: 10px;
     box-shadow: var(--box-shadow);
 }
