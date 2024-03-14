@@ -128,7 +128,7 @@
     padding: 1rem;
     box-shadow: var(--box-shadow);
     transition: var(--tran-03);
-    background-color: var(--card-bg);
+    background-color: var(--bg-sidebar);
     border-radius: 10px;
     box-shadow: var(--box-shadow);
 }
