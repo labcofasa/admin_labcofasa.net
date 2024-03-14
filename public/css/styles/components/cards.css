@@ -133,7 +133,7 @@
     box-shadow: var(--box-shadow);
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
     .card-form {
         width: 100%;
     }
