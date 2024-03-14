@@ -20,7 +20,7 @@
                                 @endif
                             </div>
 
-                            <h2>{{ $usuario->name }}</h2>
+                            <h2>{{ $usuario->perfil->nombres }}</h2>
                             <span class="small text-secondary fw-semibold">
                                 {{ auth()->user()->getRoleNames()->implode(', ') }}</span>
                         </div>
