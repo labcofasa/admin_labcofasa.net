@@ -72,7 +72,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="nombre" class="text-card">Nombre de usuario</label>
+                                    <label for="nombre" class="form-label">Código de usuario</label>
                                     <input id="nombre" value="{{ $usuario->name }}" disabled readonly autocomplete="off"
                                         type="text" class="form-control">
                                 </div>
@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="nombres" class="text-card">Nombres</label>
+                                    <label for="nombres" class="form-label">Nombres</label>
                                     <input disabled readonly id="nombres" value="{{ $usuario->perfil->nombres }}"
                                         type="text" aria-label="Nombres" class="form-control">
                                 </div>
@@ -90,7 +90,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="email" class="text-card">Apellidos</label>
+                                    <label for="email" class="form-label">Apellidos</label>
                                     <input disabled readonly id="apellido"
                                         value="{{ $usuario->perfil->apellidos ?? 'No asignado' }}" type="text"
                                         aria-label="Apellidos" class="form-control">
@@ -99,7 +99,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="telefono" class="text-card">Teléfono</label>
+                                    <label for="telefono" class="form-label">Teléfono</label>
                                     <input disabled id="telefono" value="{{ $usuario->perfil->telefono ?? 'No asignado' }}"
                                         type="tel" class="form-control" placeholder="">
                                 </div>
@@ -107,7 +107,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="email" class="text-card">Correo electrónico</label>
+                                    <label for="email" class="form-label">Correo electrónico</label>
                                     <input disabled readonly type="email" value="{{ $usuario->email }}" autocomplete="off"
                                         class="form-control" id="email">
                                 </div>
@@ -115,7 +115,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="pais" class="text-card">País</label>
+                                    <label for="pais" class="form-label">País</label>
                                     <input disabled readonly type="text"
                                         value="{{ $usuario->perfil->pais->nombre ?? 'No asignado' }}" autocomplete="off"
                                         class="form-control" id="pais">
@@ -124,7 +124,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="departamento" class="text-card">Departamento</label>
+                                    <label for="departamento" class="form-label">Departamento</label>
                                     <input disabled readonly type="text"
                                         value="{{ $usuario->perfil->departamento->nombre ?? 'No asignado' }}"
                                         autocomplete="off" class="form-control" id="departamento">
@@ -133,7 +133,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="municipio" class="text-card">Municipio</label>
+                                    <label for="municipio" class="form-label">Municipio</label>
                                     <input disabled readonly type="text"
                                         value="{{ $usuario->perfil->municipio->nombre ?? 'No asignado' }}"
                                         autocomplete="off" class="form-control" id="municipio">
@@ -142,7 +142,7 @@
 
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
-                                    <label for="direccion1" class="text-label">Dirección</label>
+                                    <label for="direccion1" class="form-label">Dirección</label>
                                     <textarea disabled autocomplete="off" name="direccion1" class="form-control textarea-normal" id="direccion1"
                                         maxlength="255">{{ $usuario->perfil->direccion ?? 'No asignado' }}
                                     </textarea>
@@ -164,7 +164,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="current" class="text-card">Contraseña actual</label>
+                                        <label for="current" class="form-label">Contraseña actual</label>
                                         <input type="text" name="current" autocomplete="off" class="form-control"
                                             id="current" required>
                                         <div class="invalid-feedback">Ingrese su contraseña actual</div>
@@ -172,7 +172,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="newPassword" class="text-card">Nueva contraseña</label>
+                                        <label for="newPassword" class="form-label">Nueva contraseña</label>
                                         <input id="newPassword" name="newPassword" autocomplete="off" type="text"
                                             class="form-control" required>
                                         <div class="invalid-feedback">Ingrese su nueva contraseña</div>
@@ -180,7 +180,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="confirm_password" class="text-card">Confirmar contraseña</label>
+                                        <label for="confirm_password" class="form-label">Confirmar contraseña</label>
                                         <input id="confirm_password" name="confirm_password" autocomplete="off"
                                             type="text" class="form-control" required>
                                         <div class="invalid-feedback">Confirme su nueva contraseña</div>
