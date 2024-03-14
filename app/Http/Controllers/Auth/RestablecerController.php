@@ -18,7 +18,7 @@ class RestablecerController extends Controller
     public function formularioRestablecer(Request $request)
     {
         if (auth()->check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('accesos');
         } else {
             $avisos = Aviso::all();
 
@@ -146,6 +146,6 @@ class RestablecerController extends Controller
         $user->save();
 
         Auth::login($user);
-        return redirect()->route('dashboard')->with('success', 'Su contraseña ha sido restablecida exitosamente.');
+        return redirect()->route('accesos')->with('success', 'Su contraseña ha sido restablecida exitosamente.');
     }
 }

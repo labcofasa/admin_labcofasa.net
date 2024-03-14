@@ -145,7 +145,9 @@ $(document).ready(function () {
                 $("#tabla-formulario-conozca-cliente-container").show();
             },
             columns: [
-                { data: "nombre", title: "Nombre" },
+                { data: "contador", title: "#" },
+                { data: "nombre", title: "Persona natural o representante legal" },
+                { data: "nombre_juridico", title: "Persona jurídica" },
                 { data: "pais", title: "Pais" },
             ],
             // order: [[12, "desc"]],

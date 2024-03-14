@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const INICIO = '/dashboard';
+    public const INICIO = '/accesos-directos';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
