@@ -1,6 +1,6 @@
 @extends('layouts.autenticado')
 
-@section('titulo', 'Formularios')
+@section('titulo', 'Formulario conozca a su cliente')
 
 @section('contenido')
 
@@ -20,7 +20,9 @@
         </div>
     </div>
 
+    <x-formularios.ver />
+
     <!-- Scripts -->
-    <script async src="{{ asset('js/forms/tabla.js') }}"></script>
+    <script async src="{{ asset('js/forms/conozca_cliente/tabla.js') }}"></script>
 
 @endsection

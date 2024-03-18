@@ -17,7 +17,7 @@ class FrmConozcaCliente extends Model
         'apellido',
         'fecha_de_nacimiento',
         'nacionalidad',
-        'profesion_u_oficicio',
+        'profesion_u_oficio',
         'tipo_de_documento',
         'numero_de_documento',
         'fecha_de_vencimiento',
@@ -29,6 +29,7 @@ class FrmConozcaCliente extends Model
         'documento_identidad',
         'documento_tarjeta_registro',
         'documento_domicilio',
+        'carta_responsabilidad',
         'direccion_ip',
         'fecha_de_creacion',
         'fecha_de_modificacion'

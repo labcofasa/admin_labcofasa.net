@@ -118,7 +118,7 @@ $(document).ready(function () {
             dom:
                 "<'row align-items-end'<'col-md-8 col-sm-6 col-12'B><'col-md-4 col-sm-6 col-12 mt-1'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
+                "<'row'<'col-md-5 pb-2'i><'col-md-7 mb-4'p>>",
             serverSide: true,
             responsive: true,
             processing: true,

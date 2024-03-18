@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('apellido')->nullable();
             $table->date('fecha_de_nacimiento')->nullable();
             $table->string('nacionalidad')->nullable();
-            $table->string('profesion_u_oficicio')->nullable();
+            $table->string('profesion_u_oficio')->nullable();
             $table->string('tipo_de_documento')->nullable();
             $table->string('numero_de_documento')->nullable();
             $table->date('fecha_de_vencimiento')->nullable();
@@ -33,6 +33,7 @@ return new class extends Migration {
             $table->string('documento_identidad')->nullable();
             $table->string('documento_tarjeta_registro')->nullable();
             $table->string('documento_domicilio')->nullable();
+            $table->string('carta_responsabilidad')->nullable();
             $table->unsignedBigInteger('pais_id')->nullable();
             $table->unsignedBigInteger('departamento_id')->nullable();
             $table->unsignedBigInteger('municipio_id')->nullable();

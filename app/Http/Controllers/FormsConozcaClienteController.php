@@ -29,7 +29,7 @@ class FormsConozcaClienteController extends Controller
             'apellido' => 'nullable|string',
             'fecha_de_nacimiento' => 'nullable|date',
             'nacionalidad' => 'nullable|string',
-            'profesion_u_oficicio' => 'nullable|string',
+            'profesion_u_oficio' => 'nullable|string',
             'pais_id' => 'nullable|exists:paises,id',
             'departamento_id' => 'nullable|exists:departamentos,id',
             'municipio_id' => 'nullable|exists:municipios,id',
@@ -90,6 +90,7 @@ class FormsConozcaClienteController extends Controller
             'documento_identificacion_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_matricula' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'carta_responsabilidad' => 'required|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
         $direccionIp = $request->ip();
@@ -105,7 +106,7 @@ class FormsConozcaClienteController extends Controller
             $formsccc->apellido = $request->input('apellido');
             $formsccc->fecha_de_nacimiento = $request->input('fecha_de_nacimiento');
             $formsccc->nacionalidad = $request->input('nacionalidad');
-            $formsccc->profesion_u_oficicio = $request->input('profesion_u_oficicio');
+            $formsccc->profesion_u_oficio = $request->input('profesion_u_oficio');
             $formsccc->pais_id = $request->input('pais_id');
             $formsccc->departamento_id = $request->input('departamento_id');
             $formsccc->municipio_id = $request->input('municipio_id');
@@ -126,7 +127,7 @@ class FormsConozcaClienteController extends Controller
 
             $formscccId = $formsccc->id;
 
-            $rutaCarpeta = public_path("documentos/formularios/ccc/{$formscccId}");
+            $rutaCarpeta = public_path("docs/forms/fccc/{$formscccId}");
 
             if (!file_exists($rutaCarpeta)) {
                 mkdir($rutaCarpeta, 0777, true);
@@ -174,6 +175,20 @@ class FormsConozcaClienteController extends Controller
                 }
             }
 
+            if ($request->hasFile('carta_responsabilidad')) {
+                $cartaResponsabilidad = $request->file('carta_responsabilidad');
+
+                if ($cartaResponsabilidad->isValid()) {
+                    $nombreCartaResponsabilidad = time() . '_' . $cartaResponsabilidad->getClientOriginalName();
+
+                    $cartaResponsabilidad->move($rutaCarpeta, $nombreCartaResponsabilidad);
+
+                    $formsccc->carta_responsabilidad = $nombreCartaResponsabilidad;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
             $formsccc->save();
 
             $formsccj = new FrmConozcaClienteJuridico();
@@ -201,7 +216,7 @@ class FormsConozcaClienteController extends Controller
 
             $formsccjId = $formsccj->id;
 
-            $rutaCarpetaJuridico = public_path("documentos/formularios/ccc/ccj/{$formsccjId}");
+            $rutaCarpetaJuridico = public_path("docs/forms/fccc/ccj/{$formsccjId}");
 
             if (!file_exists($rutaCarpetaJuridico)) {
                 mkdir($rutaCarpetaJuridico, 0777, true);
@@ -348,8 +363,6 @@ class FormsConozcaClienteController extends Controller
             }
 
             $formsccc->conozcaClienteMiembros()->saveMany($miembros);
-
-
 
             $formsccp = new FrmConozcaClientePolitico();
 

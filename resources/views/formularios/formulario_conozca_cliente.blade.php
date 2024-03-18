@@ -65,8 +65,8 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
-                        <label for="profesion_u_oficicio" class="form-label">Profesión u oficio</label>
-                        <input type="text" class="form-control" id="profesion_u_oficicio" name="profesion_u_oficicio">
+                        <label for="profesion_u_oficio" class="form-label">Profesión u oficio</label>
+                        <input type="text" class="form-control" id="profesion_u_oficio" name="profesion_u_oficio">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -103,6 +103,7 @@
                             <option value="">Seleccione el documento</option>
                             <option value="DUI">DUI</option>
                             <option value="NIT">NIT</option>
+                            <option value="CARNÉ DE RESIDENTE">CARNÉ DE RESIDENTE</option>
                         </select>
                     </div>
                 </div>
@@ -427,7 +428,7 @@
                     actividad ilícita. Asimismo, me declaro en la disposición de permitir cualquier procedimiento de
                     investigación por parte de las autoridades correspondientes y eximo a COMPAÑÍA FARMACÉUTICA S.A. de
                     C.V., de toda responsabilidad que se derive por información errónea, falsa o inexacta que yo hubiere
-                    proporcionado en este documento.</p>
+                    proporcionado en este formulario.</p>
 
                 <span class="mb-2">Documentos anexos a este formulario</span>
                 <span class="mb-2 text-center">Persona natural</span>
@@ -531,7 +532,19 @@
                         </div>
                     </div>
                 </div>
-
+                <span class="mb-2">Por favor, adjunte su carta de responsabilidad, la cual descargó al inicio.</span>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="carta_responsabilidad" class="form-label">Carta de responsabilidad</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="carta_responsabilidad"
+                                name="carta_responsabilidad" required accept=".pdf, .docx, .jpg, .png, .jpeg">
+                            <div class="invalid-feedback">
+                                Por favor adjunte su carta de responsabilidad.
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="campos-adicionales pt-5">
                     <x-formularios.formulario_personas_expuestas />
                 </div>
@@ -547,7 +560,9 @@
         </form>
     </div>
 
+    <x-formularios.modal />
+
     <script async src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
-    <script async src="{{ asset('js/forms/forms_ccc.js') }}"></script>
+    <script async src="{{ asset('js/forms/conozca_cliente/forms_ccc.js') }}"></script>
 
 @endsection
