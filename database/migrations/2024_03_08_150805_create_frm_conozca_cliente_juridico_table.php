@@ -29,7 +29,7 @@ return new class extends Migration {
             $table->string('documento_identificacion_representante')->nullable();
             $table->string('documento_matricula')->nullable();
             $table->string('documento_domicilio_juridico')->nullable();
-            $table->unsignedBigInteger('frm_conozca_cliente_id')->nullable();
+            $table->unsignedBigInteger('frm_conozca_cliente_id');
             $table->unsignedBigInteger('clasificacion_id')->nullable();
             $table->unsignedBigInteger('giro_id')->nullable();
             $table->unsignedBigInteger('pais_id')->nullable();

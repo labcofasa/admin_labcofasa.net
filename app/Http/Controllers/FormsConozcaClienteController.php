@@ -329,16 +329,14 @@ class FormsConozcaClienteController extends Controller
                 $noIdentificacion = str_replace('-', '', $request->input('numero_identidad_accionista.' . $key));
                 $porcentajeParticipacion = $request->input('porcentaje_participacion_accionista.' . $key);
 
-                if ($nombreAccionista !== null && $nacionalidadAccionista !== null && $noIdentificacion !== null && $porcentajeParticipacion !== null) {
-                    $accionista = new FrmConocaClienteAccionista();
-                    $accionista->nombre_accionista = $nombreAccionista;
-                    $accionista->nacionalidad_accionista = $nacionalidadAccionista;
-                    $accionista->numero_identidad_accionista = $noIdentificacion;
-                    $accionista->porcentaje_participacion_accionista = $porcentajeParticipacion;
-                    $accionista->fecha_de_creacion = now();
-                    $accionista->fecha_de_modificacion = now();
-                    $accionistas[] = $accionista;
-                }
+                $accionista = new FrmConocaClienteAccionista();
+                $accionista->nombre_accionista = $nombreAccionista;
+                $accionista->nacionalidad_accionista = $nacionalidadAccionista;
+                $accionista->numero_identidad_accionista = $noIdentificacion;
+                $accionista->porcentaje_participacion_accionista = $porcentajeParticipacion;
+                $accionista->fecha_de_creacion = now();
+                $accionista->fecha_de_modificacion = now();
+                $accionistas[] = $accionista;
             }
 
             $formsccc->conozcaClienteAccionistas()->saveMany($accionistas);
@@ -350,54 +348,48 @@ class FormsConozcaClienteController extends Controller
                 $noIdentificacionMiembro = str_replace('-', '', $request->input('numero_identidad_miembro.' . $key));
                 $cargoMiembro = $request->input('cargo_miembro.' . $key);
 
-                if ($nombreMiembro !== null && $nacionalidadMiembro !== null && $noIdentificacionMiembro !== null && $cargoMiembro !== null) {
-                    $miembro = new FrmConozcaClienteMiembro();
-                    $miembro->nombre_miembro = $nombreMiembro;
-                    $miembro->nacionalidad_miembro = $nacionalidadMiembro;
-                    $miembro->numero_identidad_miembro = $noIdentificacionMiembro;
-                    $miembro->cargo_miembro = $cargoMiembro;
-                    $miembro->fecha_de_creacion = now();
-                    $miembro->fecha_de_modificacion = now();
-                    $miembros[] = $miembro;
-                }
+                $miembro = new FrmConozcaClienteMiembro();
+                $miembro->nombre_miembro = $nombreMiembro;
+                $miembro->nacionalidad_miembro = $nacionalidadMiembro;
+                $miembro->numero_identidad_miembro = $noIdentificacionMiembro;
+                $miembro->cargo_miembro = $cargoMiembro;
+                $miembro->fecha_de_creacion = now();
+                $miembro->fecha_de_modificacion = now();
+                $miembros[] = $miembro;
             }
 
             $formsccc->conozcaClienteMiembros()->saveMany($miembros);
 
             $formsccp = new FrmConozcaClientePolitico();
 
-            if ($request->filled(['nombre_politico', 'nombre_cargo_politico', 'fecha_desde_politico', 'fecha_hasta_politico', 'pais_politico_id', 'departamento_politico_id', 'municipio_politico_id', 'nombre_cliente_politico', 'porcentaje_participacion_politico', 'fuente_ingreso', 'monto_mensual'])) {
-                $formsccp->nombre_politico = $request->input('nombre_politico');
-                $formsccp->nombre_cargo_politico = $request->input('nombre_cargo_politico');
-                $formsccp->fecha_desde_politico = $request->input('fecha_desde_politico');
-                $formsccp->fecha_hasta_politico = $request->input('fecha_hasta_politico');
-                $formsccp->pais_id = $request->input('pais_politico_id');
-                $formsccp->departamento_id = $request->input('departamento_politico_id');
-                $formsccp->municipio_id = $request->input('municipio_politico_id');
-                $formsccp->nombre_cliente_politico = $request->input('nombre_cliente_politico');
-                $formsccp->porcentaje_participacion_politico = $request->input('porcentaje_participacion_politico');
-                $formsccp->fuente_ingreso = $request->input('fuente_ingreso');
-                $formsccp->monto_mensual = $request->input('monto_mensual');
-                $formsccp->frm_conozca_cliente_id = $formsccc->id;
-                $formsccp->fecha_de_creacion = now();
-                $formsccp->fecha_de_modificacion = now();
+            $formsccp->nombre_politico = $request->input('nombre_politico');
+            $formsccp->nombre_cargo_politico = $request->input('nombre_cargo_politico');
+            $formsccp->fecha_desde_politico = $request->input('fecha_desde_politico');
+            $formsccp->fecha_hasta_politico = $request->input('fecha_hasta_politico');
+            $formsccp->pais_id = $request->input('pais_politico_id');
+            $formsccp->departamento_id = $request->input('departamento_politico_id');
+            $formsccp->municipio_id = $request->input('municipio_politico_id');
+            $formsccp->nombre_cliente_politico = $request->input('nombre_cliente_politico');
+            $formsccp->porcentaje_participacion_politico = $request->input('porcentaje_participacion_politico');
+            $formsccp->fuente_ingreso = $request->input('fuente_ingreso');
+            $formsccp->monto_mensual = $request->input('monto_mensual');
+            $formsccp->frm_conozca_cliente_id = $formsccc->id;
+            $formsccp->fecha_de_creacion = now();
+            $formsccp->fecha_de_modificacion = now();
 
-                $formsccp->save();
-            }
+            $formsccp->save();
 
             $parientes = [];
 
             foreach ($request->input('nombre_pariente', []) as $key => $nombrePariente) {
                 $parentesco = $request->input('parentesco.' . $key);
 
-                if ($nombrePariente !== null && $parentesco !== null) {
-                    $pariente = new FrmConozcaClientePariente();
-                    $pariente->nombre_pariente = $nombrePariente;
-                    $pariente->parentesco = $parentesco;
-                    $pariente->fecha_de_creacion = now();
-                    $pariente->fecha_de_modificacion = now();
-                    $parientes[] = $pariente;
-                }
+                $pariente = new FrmConozcaClientePariente();
+                $pariente->nombre_pariente = $nombrePariente;
+                $pariente->parentesco = $parentesco;
+                $pariente->fecha_de_creacion = now();
+                $pariente->fecha_de_modificacion = now();
+                $parientes[] = $pariente;
             }
 
             $formsccc->conozcaClienteParientes()->saveMany($parientes);
@@ -407,14 +399,12 @@ class FormsConozcaClienteController extends Controller
             foreach ($request->input('nombre_socio', []) as $key => $nombreSocio) {
                 $porcentajeSocio = $request->input('porcentaje_participacion_socio.' . $key);
 
-                if ($nombreSocio !== null && $porcentajeSocio !== null) {
-                    $socio = new FrmConozcaClienteSocio();
-                    $socio->nombre_socio = $nombreSocio;
-                    $socio->porcentaje_participacion_socio = $porcentajeSocio;
-                    $socio->fecha_de_creacion = now();
-                    $socio->fecha_de_modificacion = now();
-                    $socios[] = $socio;
-                }
+                $socio = new FrmConozcaClienteSocio();
+                $socio->nombre_socio = $nombreSocio;
+                $socio->porcentaje_participacion_socio = $porcentajeSocio;
+                $socio->fecha_de_creacion = now();
+                $socio->fecha_de_modificacion = now();
+                $socios[] = $socio;
             }
 
             $formsccc->conozcaClienteSocios()->saveMany($socios);

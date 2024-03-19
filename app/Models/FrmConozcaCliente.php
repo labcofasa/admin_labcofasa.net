@@ -13,6 +13,7 @@ class FrmConozcaCliente extends Model
     public $timestamps = false;
     protected $dates = ['fecha_de_creacion', 'fecha_de_modificacion'];
     protected $fillable = [
+        'estado',
         'nombre',
         'apellido',
         'fecha_de_nacimiento',

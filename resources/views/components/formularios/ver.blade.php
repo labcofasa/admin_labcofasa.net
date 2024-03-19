@@ -264,14 +264,14 @@
                         <div class="col-sm-3">
                             <div class="mb-3">
                                 <label for="fecha_desde_politico" class="form-label">Fecha de nombramiento</label>
-                                <input type="date" class="form-control" id="fecha_desde_politico"
+                                <input type="text" class="form-control" id="fecha_desde_politico"
                                     name="fecha_desde_politico" disabled>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="mb-3">
                                 <label for="fecha_hasta_politico" class="form-label">Período de nombramiento</label>
-                                <input type="date" class="form-control" id="fecha_hasta_politico"
+                                <input type="text" class="form-control" id="fecha_hasta_politico"
                                     name="fecha_hasta_politico" disabled>
                             </div>
                         </div>
@@ -323,14 +323,14 @@
                             <div class="mb-3">
                                 <label for="fuente_ingreso" class="form-label">Principales fuentes de
                                     ingresos</label>
-                                <textarea class="form-control" id="fuente_ingreso" name="fuente_ingreso" style="height: 100px"></textarea>
+                                <textarea class="form-control" id="fuente_ingreso" name="fuente_ingreso" style="height: 100px" disabled></textarea>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="mb-3">
                                 <label for="monto_mensual" class="form-label">Monto aproximado de ingresos
                                     mensuales</label>
-                                <input type="text" class="form-control" id="monto_mensual" name="monto_mensual">
+                                <input type="text" class="form-control" id="monto_mensual" name="monto_mensual" disabled>
                             </div>
                         </div>
                         <span class="mb-3">Archivos adjuntos</span>

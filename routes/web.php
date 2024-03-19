@@ -175,6 +175,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formularios', [FormulariosController::class, 'index'])->name('pag.formularios');
     Route::get('/formulario/conozca-cliente', [FormulariosController::class, 'show'])->name('pag.formulario');
     Route::get('/tabla-conozca-cliente', [FormulariosController::class, 'tablaConozcaCliente']);
+    Route::put('/cambiar-estado-form/{id}', [FormulariosController::class, 'cambiarEstadoFormulario']);
 
 });
 

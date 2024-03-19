@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('nombre_socio')->nullable();
             $table->string('porcentaje_participacion_socio')->nullable();
-            $table->unsignedBigInteger('frm_conozca_cliente_id')->nullable();
+            $table->unsignedBigInteger('frm_conozca_cliente_id');
             $table->timestamp('fecha_de_creacion')->nullable();
             $table->timestamp('fecha_de_modificacion')->nullable();
 

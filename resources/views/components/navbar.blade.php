@@ -57,13 +57,15 @@
                 <a href="#" id="dropdown-perfil"
                     class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false" data-bs-auto-close="outside">
-                    @if ($usuario->perfil->imagen)
+                    @if ($usuario->perfil && $usuario->perfil->imagen)
                         <img class="icono-perfil rounded-circle"
                             src="{{ asset('images/usuarios/imagen/' . $usuario->perfil->id . '/' . $usuario->perfil->imagen) }}"
                             alt="Foto de perfil">
                     @else
-                        <img class="icono-perfil rounded-circle" src="{{ asset('images/defecto.png') }}" alt="">
+                        <img class="icono-perfil rounded-circle" src="{{ asset('images/defecto.png') }}"
+                            alt="Foto de perfil">
                     @endif
+
                 </a>
 
                 <x-auth.menu-usuario />

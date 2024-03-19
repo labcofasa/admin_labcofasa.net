@@ -4,6 +4,7 @@
 
 /* Fuentes */
 @import url(fonts.css);
+@import url(styles/components/modal.css);
 
 .campos-adicionales {
     display: none;

@@ -83,6 +83,22 @@ $(document).ready(function () {
             },
             columns: [
                 { data: "contador", title: "#" },
+                {
+                    data: "estado",
+                    title: "Estado",
+                    render: function (data, type, row) {
+                        const isChecked = row.estado == 1;
+                        return `
+                            <div class="form-check form-switch">
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id
+                            }" ${isChecked ? "checked" : ""} data-id="${row.id
+                            }">
+                                <label class="form-check-label estado-label" for="switch-${row.id
+                            }"></label>
+                            </div>
+                        `;
+                    },
+                },
                 { data: "nombre", title: "Nombre" },
                 { data: "apellido", title: "Apellidos" },
                 { data: "nombre_juridico", title: "Persona jurídica" },
@@ -290,34 +306,72 @@ $(document).ready(function () {
 
         $("#verRespuestaFcc").modal("show");
     });
+
+    /* Editar el estado del formulario */
+    $("#tabla-conozca-cliente").on("change", ".toggle-switch", function () {
+        fccId = $(this).data("id");
+        const estado = $(this).prop("checked") ? 1 : 0;
+
+        $.ajax({
+            url: "/cambiar-estado-form/" + fccId,
+            method: "PUT",
+            data: {
+                id: fccId,
+                estado: estado,
+            },
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                if (response.success) {
+                    mostrarToast(response.message, "success");
+                } else {
+                    mostrarToast(response.error, "error");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                mostrarToast(
+                    "Error al cambiar el estado del formulario. Detalles: " +
+                    errorThrown,
+                    "error"
+                );
+            },
+        });
+    });
+
 });
 
 /* Cargar cliente accionista */
 function verAccionistas(fccId, contadorCampos, clienteAccionista) {
+    let nombre_accionista = clienteAccionista.nombre_accionista !== null ? clienteAccionista.nombre_accionista : "";
+    let nacionalidad_accionista = clienteAccionista.nacionalidad_accionista !== null ? clienteAccionista.nacionalidad_accionista : "";
+    let numero_identidad_accionista = clienteAccionista.numero_identidad_accionista !== null ? clienteAccionista.numero_identidad_accionista : "";
+    let porcentaje_participacion_accionista = clienteAccionista.porcentaje_participacion_accionista !== null ? clienteAccionista.porcentaje_participacion_accionista : "";
+
     let clienteAccionistaHtml = `
     <div class="row">
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="nombre_accionista${fccId}-${contadorCampos}" class="form-label">Nombre completo</label>
-                    <input disabled type="text" class="form-control" id="nombre_accionista${fccId}-${contadorCampos}" name="nombre_accionista[]" value="${clienteAccionista.nombre_accionista}">
+                <input disabled type="text" class="form-control" id="nombre_accionista${fccId}-${contadorCampos}" name="nombre_accionista[]" value="${nombre_accionista}">
             </div>
         </div> 
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="nacionalidad_accionista${fccId}-${contadorCampos}" class="form-label">Nacionalidad</label>
-                    <input disabled type="text" class="form-control" id="nacionalidad_accionista${fccId}-${contadorCampos}" name="nacionalidad_accionista[]" value="${clienteAccionista.nacionalidad_accionista}">
+                <input disabled type="text" class="form-control" id="nacionalidad_accionista${fccId}-${contadorCampos}" name="nacionalidad_accionista[]" value="${nacionalidad_accionista}">
             </div>
         </div>
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="numero_identidad_accionista${fccId}-${contadorCampos}" class="form-label">No. Identidad</label>
-                    <input disabled type="text" class="form-control" id="numero_identidad_accionista${fccId}-${contadorCampos}" name="numero_identidad_accionista[]" value="${clienteAccionista.numero_identidad_accionista}">
+                <input disabled type="text" class="form-control" id="numero_identidad_accionista${fccId}-${contadorCampos}" name="numero_identidad_accionista[]" value="${numero_identidad_accionista}">
             </div>
         </div> 
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="porcentaje_participacion_accionista${fccId}-${contadorCampos}" class="form-label">Porcentaje de participación</label>
-                    <input disabled type="text" class="form-control" id="porcentaje_participacion_accionista${fccId}-${contadorCampos}" name="porcentaje_participacion_accionista[]" value="${clienteAccionista.porcentaje_participacion_accionista}">
+                <input disabled type="text" class="form-control" id="porcentaje_participacion_accionista${fccId}-${contadorCampos}" name="porcentaje_participacion_accionista[]" value="${porcentaje_participacion_accionista}">
             </div>
         </div>
     </div>
@@ -326,32 +380,38 @@ function verAccionistas(fccId, contadorCampos, clienteAccionista) {
     $("#camposAccionista").append(clienteAccionistaHtml);
 }
 
+
 /* Cargar cliente miembro */
 function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
+    let nombre_miembro = clienteMiembro.nombre_miembro !== null ? clienteMiembro.nombre_miembro : "";
+    let nacionalidad_miembro = clienteMiembro.nacionalidad_miembro !== null ? clienteMiembro.nacionalidad_miembro : "";
+    let numero_identidad_miembro = clienteMiembro.numero_identidad_miembro !== null ? clienteMiembro.numero_identidad_miembro : "";
+    let cargo_miembro = clienteMiembro.cargo_miembro !== null ? clienteMiembro.cargo_miembro : "";
+
     let clienteMiembroHtml = `
     <div class="row">
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="nombre_miembro${fccId}-${contadorCamposMiembro}" class="form-label">Nombre completo</label>
-                    <input disabled type="text" class="form-control" id="nombre_miembro${fccId}-${contadorCamposMiembro}" name="nombre_miembro[]" value="${clienteMiembro.nombre_miembro}">
+                <input disabled type="text" class="form-control" id="nombre_miembro${fccId}-${contadorCamposMiembro}" name="nombre_miembro[]" value="${nombre_miembro}">
             </div>
         </div> 
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="nacionalidad_miembro${fccId}-${contadorCamposMiembro}" class="form-label">Nacionalidad</label>
-                    <input disabled type="text" class="form-control" id="nacionalidad_miembro${fccId}-${contadorCamposMiembro}" name="nacionalidad_miembro[]" value="${clienteMiembro.nacionalidad_miembro}">
+                <input disabled type="text" class="form-control" id="nacionalidad_miembro${fccId}-${contadorCamposMiembro}" name="nacionalidad_miembro[]" value="${nacionalidad_miembro}">
             </div>
         </div>
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="numero_identidad_miembro${fccId}-${contadorCamposMiembro}" class="form-label">No. Identidad</label>
-                    <input disabled type="text" class="form-control" id="numero_identidad_miembro${fccId}-${contadorCamposMiembro}" name="numero_identidad_miembro[]" value="${clienteMiembro.numero_identidad_miembro}">
+                <input disabled type="text" class="form-control" id="numero_identidad_miembro${fccId}-${contadorCamposMiembro}" name="numero_identidad_miembro[]" value="${numero_identidad_miembro}">
             </div>
         </div> 
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="cargo_miembro${fccId}-${contadorCamposMiembro}" class="form-label">Cargo</label>
-                    <input disabled type="text" class="form-control" id="cargo_miembro${fccId}-${contadorCamposMiembro}" name="cargo_miembro[]" value="${clienteMiembro.cargo_miembro}">
+                <input disabled type="text" class="form-control" id="cargo_miembro${fccId}-${contadorCamposMiembro}" name="cargo_miembro[]" value="${cargo_miembro}">
             </div>
         </div>
     </div>
@@ -360,20 +420,24 @@ function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
     $("#camposMiembro").append(clienteMiembroHtml);
 }
 
+
 /* Cargar cliente miembro */
 function verParientes(fccId, contadorCamposPariente, clientePariente) {
+    let nombre_pariente = clientePariente.nombre_pariente !== null ? clientePariente.nombre_pariente : "";
+    let parentesco = clientePariente.parentesco !== null ? clientePariente.parentesco : "";
+
     let clienteParienteHtml = `
     <div class="row">
         <div class="col-sm-6">
             <div class="mb-3">
                 <label for="nombre_pariente${fccId}-${contadorCamposPariente}" class="form-label">Nombre completo</label>
-                    <input disabled type="text" class="form-control" id="nombre_pariente${fccId}-${contadorCamposPariente}" name="nombre_pariente[]" value="${clientePariente.nombre_pariente}">
+                <input disabled type="text" class="form-control" id="nombre_pariente${fccId}-${contadorCamposPariente}" name="nombre_pariente[]" value="${nombre_pariente}">
             </div>
         </div> 
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="parentesco${fccId}-${contadorCamposPariente}" class="form-label">Parentesco</label>
-                    <input disabled type="text" class="form-control" id="parentesco${fccId}-${contadorCamposPariente}" name="parentesco[]" value="${clientePariente.parentesco}">
+                <input disabled type="text" class="form-control" id="parentesco${fccId}-${contadorCamposPariente}" name="parentesco[]" value="${parentesco}">
             </div>
         </div>
     </div>
@@ -382,20 +446,24 @@ function verParientes(fccId, contadorCamposPariente, clientePariente) {
     $("#camposPariente").append(clienteParienteHtml);
 }
 
+
 /* Cargar cliente miembro */
 function verSocios(fccId, contadorCamposSocio, clienteSocio) {
+    let nombre_socio = clienteSocio.nombre_socio !== null ? clienteSocio.nombre_socio : "";
+    let porcentaje_participacion_socio = clienteSocio.porcentaje_participacion_socio !== null ? clienteSocio.porcentaje_participacion_socio : "";
+
     let clienteSocioHtml = `
     <div class="row">
         <div class="col-sm-6">
             <div class="mb-3">
                 <label for="nombre_socio${fccId}-${contadorCamposSocio}" class="form-label">Nombre completo</label>
-                    <input disabled type="text" class="form-control" id="nombre_socio${fccId}-${contadorCamposSocio}" name="nombre_socio[]" value="${clienteSocio.nombre_socio}">
+                <input disabled type="text" class="form-control" id="nombre_socio${fccId}-${contadorCamposSocio}" name="nombre_socio[]" value="${nombre_socio}">
             </div>
         </div> 
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="porcentaje_participacion_socio${fccId}-${contadorCamposSocio}" class="form-label">Porcentaje de participación</label>
-                    <input disabled type="text" class="form-control" id="porcentaje_participacion_socio${fccId}-${contadorCamposSocio}" name="porcentaje_participacion_socio[]" value="${clienteSocio.porcentaje_participacion_socio}">
+                <input disabled type="text" class="form-control" id="porcentaje_participacion_socio${fccId}-${contadorCamposSocio}" name="porcentaje_participacion_socio[]" value="${porcentaje_participacion_socio}">
             </div>
         </div>
     </div>
@@ -403,6 +471,7 @@ function verSocios(fccId, contadorCamposSocio, clienteSocio) {
 
     $("#camposSocio").append(clienteSocioHtml);
 }
+
 
 
 

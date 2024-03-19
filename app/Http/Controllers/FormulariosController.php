@@ -51,7 +51,6 @@ class FormulariosController extends Controller
                 'paises.nombre as nombre_pais',
                 'departamentos.nombre as departamento_nombre',
                 'municipios.nombre as municipio_nombre',
-                'municipios.nombre as municipio_nombre',
                 'giros.nombre as giro_nombre',
                 'frm_conozca_cliente_juridico.*',
                 'clasificaciones.nombre as clasificacion_nombre',
@@ -68,7 +67,7 @@ class FormulariosController extends Controller
             ->leftJoin('departamentos', 'frm_conozca_cliente.departamento_id', '=', 'departamentos.id')
             ->leftJoin('municipios', 'frm_conozca_cliente.municipio_id', '=', 'municipios.id')
             ->leftJoin('giros', 'frm_conozca_cliente.giro_id', '=', 'giros.id')
-            ->leftJoin('frm_conozca_cliente_juridico', 'frm_conozca_cliente.id', '=', 'frm_conozca_cliente_id')
+            ->leftJoin('frm_conozca_cliente_juridico', 'frm_conozca_cliente.id', '=', 'frm_conozca_cliente_juridico.frm_conozca_cliente_id')
             ->leftJoin('clasificaciones', 'frm_conozca_cliente_juridico.clasificacion_id', '=', 'clasificaciones.id')
             ->leftJoin('paises as paises_juridico', 'frm_conozca_cliente_juridico.pais_id', '=', 'paises_juridico.id')
             ->leftJoin('departamentos as departamentos_juridico', 'frm_conozca_cliente_juridico.departamento_id', '=', 'departamentos_juridico.id')
@@ -131,6 +130,7 @@ class FormulariosController extends Controller
             $data[] = [
                 'id' => $form->id,
                 'contador' => $contador++,
+                'estado' => $form->estado,
                 'nombre' => $form->nombre,
                 'apellido' => $form->apellido,
                 'fecha_de_nacimiento' => $form->fecha_de_nacimiento,
@@ -194,5 +194,24 @@ class FormulariosController extends Controller
             'recordsFiltered' => $recordsFiltered,
             'data' => $data,
         ]);
+    }
+
+    public function cambiarEstadoFormulario(Request $request, $id)
+    {
+        try {
+            $form = FrmConozcaCliente::findOrFail($id);
+
+            $estado = $request->input('estado');
+
+            $form->update([
+                'estado' => (bool) $estado,
+            ]);
+
+            return response()->json(['success' => true, 'message' => 'Se ha cambiado el estado del formulario.'], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json(['error' => 'Formulario no encontrado.'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error interno del servidor.'], 500);
+        }
     }
 }

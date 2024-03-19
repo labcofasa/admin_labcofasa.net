@@ -9,12 +9,12 @@
         <h1 class="titulo">Formulario "Conozca a su Cliente"</h1>
 
         @if (session('success'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success text-center" role="alert">
                 {{ session('success') }}
             </div>
         @endif
         @if (session('error'))
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger text-center" role="alert">
                 {{ session('error') }}
             </div>
         @endif
@@ -548,16 +548,17 @@
                 <div class="campos-adicionales pt-5">
                     <x-formularios.formulario_personas_expuestas />
                 </div>
-
             </div>
 
-            <div class="row text-center">
-                <div class="col">
-                    <button type="submit" class="btn button">Enviar formulario</button>
-                </div>
-            </div>
-
+            <x-formularios.enviar />
         </form>
+
+        <div class="row text-center">
+            <div class="col">
+                <button class="btn button" data-bs-toggle="modal" data-bs-target="#enviarFormulario">Enviar
+                    formulario</button>
+            </div>
+        </div>
     </div>
 
     <x-formularios.modal />

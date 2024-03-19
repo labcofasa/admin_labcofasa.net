@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('nombre_pariente')->nullable();
             $table->string('parentesco')->nullable();
-            $table->unsignedBigInteger('frm_conozca_cliente_id')->nullable();
+            $table->unsignedBigInteger('frm_conozca_cliente_id');
             $table->timestamp('fecha_de_creacion')->nullable();
             $table->timestamp('fecha_de_modificacion')->nullable();
 

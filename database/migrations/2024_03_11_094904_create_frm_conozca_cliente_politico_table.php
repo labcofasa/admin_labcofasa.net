@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('porcentaje_participacion_politico')->nullable();
             $table->string('fuente_ingreso')->nullable();
             $table->string('monto_mensual')->nullable();
-            $table->unsignedBigInteger('frm_conozca_cliente_id')->nullable();
+            $table->unsignedBigInteger('frm_conozca_cliente_id');
             $table->unsignedBigInteger('pais_id')->nullable();
             $table->unsignedBigInteger('departamento_id')->nullable();
             $table->unsignedBigInteger('municipio_id')->nullable();

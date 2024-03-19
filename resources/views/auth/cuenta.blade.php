@@ -10,17 +10,23 @@
                     <div class="card-body">
                         <div class="text-center">
                             <div class="py-3" id="foto">
-                                @if ($usuario->perfil->imagen)
-                                    <img class="imagen-perfil rounded-circle"
+                                @if ($usuario->perfil && $usuario->perfil->imagen)
+                                    <img class="imagen-perfil  rounded-circle"
                                         src="{{ asset('images/usuarios/imagen/' . $usuario->perfil->id . '/' . $usuario->perfil->imagen) }}"
                                         alt="Foto de perfil">
                                 @else
-                                    <img class="imagen-perfil rounded-circle" src="{{ asset('images/defecto.png') }}"
-                                        alt="">
+                                    <img class="imagen-perfil  rounded-circle" src="{{ asset('images/defecto.png') }}"
+                                        alt="Foto de perfil">
                                 @endif
+
                             </div>
 
-                            <h2>{{ $usuario->perfil->nombres }}</h2>
+                            @if ($usuario->perfil)
+                                <h2>{{ $usuario->perfil->nombres }}</h2>
+                            @else
+                                <p>Perfil no disponible</p>
+                            @endif
+
                             <span class="small text-secondary fw-semibold">
                                 {{ auth()->user()->getRoleNames()->implode(', ') }}</span>
                         </div>

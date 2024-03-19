@@ -16,7 +16,6 @@ class UsuarioController extends Controller
 
         return view('usuarios', compact('usuario'));
     }
-
     public function tablaUsuarios(Request $request)
     {
         $this->validate($request, [
@@ -169,7 +168,6 @@ class UsuarioController extends Controller
             'data' => $data,
         ]);
     }
-
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -259,7 +257,6 @@ class UsuarioController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al registrar el usuario: ' . $e->getMessage()]);
         }
     }
-
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -352,7 +349,6 @@ class UsuarioController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al actualizar el usuario: ' . $e->getMessage()]);
         }
     }
-
     public function cambiarEstadoUsuario(Request $request, $id)
     {
         try {
@@ -380,7 +376,6 @@ class UsuarioController extends Controller
             return response()->json(['error' => 'Error interno del servidor.'], 500);
         }
     }
-
     public function destroy(Request $request, $id)
     {
         $usuario = User::find($id);
@@ -413,7 +408,6 @@ class UsuarioController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al eliminar el usuario.']);
         }
     }
-
     public function obtenerEstadisticasUsuarios()
     {
         $usuariosUltimoMes = User::where('created_at', '>=', now()->subMonth())->count();
