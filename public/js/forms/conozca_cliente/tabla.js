@@ -22,8 +22,8 @@ $(document).ready(function () {
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [5, 25, 50, -1],
-                ["5 filas", "25 filas", "50 filas", "Todas las filas"],
+                [10, 25, 50, -1],
+                ["10 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -52,8 +52,7 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 8],
-                    searchable: false,
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 9],
                     orderable: false,
                 },
                 {
@@ -68,14 +67,13 @@ $(document).ready(function () {
                 },
                 {
                     targets: [
-                        1, 2, 4, 5, 6, 7
+                        2, 3, 4, 5, 6, 7, 8
                     ],
                     searchable: true,
-                    orderable: true,
                 },
-                { responsivePriority: 1, targets: 1 },
+                { responsivePriority: 1, targets: 0 },
                 { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 8 },
+                { responsivePriority: 3, targets: 9 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
@@ -121,7 +119,7 @@ $(document).ready(function () {
                     },
                 },
             ],
-            order: [[7, "desc"]],
+            order: [[8, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;
@@ -380,7 +378,6 @@ function verAccionistas(fccId, contadorCampos, clienteAccionista) {
     $("#camposAccionista").append(clienteAccionistaHtml);
 }
 
-
 /* Cargar cliente miembro */
 function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
     let nombre_miembro = clienteMiembro.nombre_miembro !== null ? clienteMiembro.nombre_miembro : "";
@@ -420,7 +417,6 @@ function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
     $("#camposMiembro").append(clienteMiembroHtml);
 }
 
-
 /* Cargar cliente miembro */
 function verParientes(fccId, contadorCamposPariente, clientePariente) {
     let nombre_pariente = clientePariente.nombre_pariente !== null ? clientePariente.nombre_pariente : "";
@@ -445,7 +441,6 @@ function verParientes(fccId, contadorCamposPariente, clientePariente) {
 
     $("#camposPariente").append(clienteParienteHtml);
 }
-
 
 /* Cargar cliente miembro */
 function verSocios(fccId, contadorCamposSocio, clienteSocio) {

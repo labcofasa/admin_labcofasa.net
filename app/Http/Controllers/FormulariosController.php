@@ -35,9 +35,9 @@ class FormulariosController extends Controller
         $draw = $request->input('draw');
         $start = $request->input('start');
         $length = $request->input('length');
-        // $search = $request->input('search.value');
-        // $orderColumnIndex = $request->input('order.0.column');
-        // $orderDirection = $request->input('order.0.dir');
+        $search = $request->input('search.value');
+        $orderColumnIndex = $request->input('order.0.column');
+        $orderDirection = $request->input('order.0.dir');
 
         $query = FrmConozcaCliente::with(
             'conozcaClienteMiembros',
@@ -76,7 +76,23 @@ class FormulariosController extends Controller
             ->leftJoin('frm_conozca_cliente_politico', 'frm_conozca_cliente.id', '=', 'frm_conozca_cliente_politico.frm_conozca_cliente_id')
             ->leftJoin('paises as paises_politico', 'frm_conozca_cliente_politico.pais_id', '=', 'paises_politico.id')
             ->leftJoin('departamentos as departamento_politico', 'frm_conozca_cliente_politico.departamento_id', '=', 'departamento_politico.id')
-            ->leftJoin('municipios as municipio_politico', 'frm_conozca_cliente_politico.municipio_id', '=', 'municipio_politico.id');
+            ->leftJoin('municipios as municipio_politico', 'frm_conozca_cliente_politico.municipio_id', '=', 'municipio_politico.id')
+            ->orderBy('frm_conozca_cliente.fecha_de_creacion', 'desc');
+
+        if (!empty ($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('frm_conozca_cliente.nombre', 'like', '%' . $search . '%')
+                    ->orWhere('frm_conozca_cliente.apellido', 'like', '%' . $search . '%')
+                    ->orWhere('frm_conozca_cliente.registro_iva_nrc', 'like', '%' . $search . '%')
+
+                    ->orWhere('frm_conozca_cliente_juridico.nombre_comercial_juridico', 'like', '%' . $search . '%')
+                    ->orWhere('frm_conozca_cliente_juridico.numero_de_nit_juridico', 'like', '%' . $search . '%')
+                    ->orWhere('frm_conozca_cliente_juridico.registro_nrc_juridico', 'like', '%' . $search . '%')
+                    ->orWhere('frm_conozca_cliente_juridico.monto_proyectado', 'like', '%' . $search . '%')
+
+                    ->orWhere('frm_conozca_cliente.tipo_de_documento', 'like', '%' . $search . '%');
+            });
+        }
 
         $filteredQuery = clone $query;
 

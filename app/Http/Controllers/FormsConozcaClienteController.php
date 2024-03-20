@@ -93,11 +93,11 @@ class FormsConozcaClienteController extends Controller
             'carta_responsabilidad' => 'required|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
-        $direccionIp = $request->ip();
+        // $direccionIp = $request->ip();
 
-        if (FrmConozcaCliente::where('direccion_ip', $direccionIp)->exists()) {
-            return redirect()->back()->with('error', 'Ya has enviado el formulario anteriormente.');
-        }
+        // if (FrmConozcaCliente::where('direccion_ip', $direccionIp)->exists()) {
+        //     return redirect()->back()->with('error', 'Ya has enviado el formulario anteriormente.');
+        // }
 
         try {
             $formsccc = new FrmConozcaCliente();
@@ -119,7 +119,7 @@ class FormsConozcaClienteController extends Controller
             $formsccc->giro_id = $request->input('giro_id');
             $formsccc->fecha_de_nombramiento = $request->input('fecha_de_nombramiento');
             $formsccc->direccion = $request->input('direccion');
-            $formsccc->direccion_ip = $direccionIp;
+            // $formsccc->direccion_ip = $direccionIp;
             $formsccc->fecha_de_creacion = now();
             $formsccc->fecha_de_modificacion = now();
 

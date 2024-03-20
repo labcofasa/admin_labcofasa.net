@@ -38,7 +38,7 @@ class EntidadController extends Controller
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('entidades.nombre', 'like', "%$search%")
-                    ->orWhere('entidades.descripcion', 'like', "%$search%")
+                    ->orWhere('entidades.descripcion', 'like', "%$search%") 
                     ->orWhere('entidades.created_at', 'like', "%$search%")
                     ->orWhere('users.name', 'like', "%$search%")
                     ->orWhere('entidades.updated_at', 'like', "%$search%")
