@@ -105,12 +105,12 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 8],
+                    targets: [0, 14],
                     searchable: false,
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 6, 7],
+                    targets: [0, 1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13],
                     className: "nowrap",
                 },
                 {
@@ -124,7 +124,7 @@ $(document).ready(function () {
                 },
                 { responsivePriority: 1, targets: 1 },
                 { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 8 },
+                { responsivePriority: 3, targets: 14 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
@@ -133,11 +133,17 @@ $(document).ready(function () {
             columns: [
                 { data: "contador", title: "#" },
                 { data: "codigo", title: "Codigo" },
-                { data: "conexion", title: "Empresa" },
+                { data: "empresa", title: "Empresa" },
                 { data: "nrc", title: "NRC" },
+                { data: "nit", title: "NIT" },
+                { data: "dui", title: "DUI" },
                 { data: "establecimiento", title: "Establecimiento" },
-                { data: "propietario", title: "Propietario" },
                 { data: "fecha_registro", title: "Fecha de registro" },
+                { data: "propietario", title: "Propietario" },
+                { data: "giro", title: "Actividad económica" },
+                { data: "telefono", title: "Teléfono" },
+                { data: "correo", title: "Correo electrónico" },
+                { data: "direccion", title: "Dirección" },
                 { data: "usuario_registro", title: "Usuario creador" },
                 {
                     data: null,
@@ -168,7 +174,7 @@ $(document).ready(function () {
                     },
                 },
             ],
-            order: [[6, "desc"]],
+            order: [[7, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;

@@ -29,11 +29,11 @@
 /* Colores para el diseño claro */
 :root {
     /* Paleta de colores */
-    --primary: #6ad5c2;
+    --primary: #07d7b4;
     --secondary: #b5e4ca;
     --secondary-hover: #b5e4ca;
-    --accent: #1C1C1C;
-    --positive: #1C1C1C;
+    --accent: #000000;
+    --positive: #000000;
     --negative: ;
     --info: #e0edfc;
     --warning: ;
@@ -63,7 +63,7 @@
 
     /* Iconos */
     --icon-primary: #1967d2;
-    --icon-secondary: #3c4043;
+    --icon-secondary: #454545;
     --icon-success: #188038;
     --icon-danger: #ea4335;
     --icon-warning: #ffc107;
@@ -77,16 +77,16 @@
     --input-caret: #1DCCC3;
 
     /* Generales */
-    --bg-sidebar: #fcfcfc;
+    --bg-sidebar: #F1F3F2;
     --title-color: #000000;
     --sidebar-text-hover: #111827;
     --box-shadow-2: 0 2px 10px rgba(0, 0, 0, 0.1);
 
     --body-bg: #FFFFFF;
     --sidebar-bg: #f0f4f9;
-    --sidebar-bg-hover: #F3F3F3;
+    --sidebar-bg-hover: #DBDCDE;
     /* --sidebar-icon-hover: #4a4f53; */
-    --sidebar-bg-active: #F3F3F3;
+    --sidebar-bg-active: #DBDCDE;
     --card-bg: #FFFFFF;
     --toggle-shadow: #999999;
     --table-border: #dee2e6;
@@ -147,7 +147,7 @@
 /* Colores para el diseño oscuro */
 body.dark {
     /* Paleta de colores */
-    --primary: #76D6C5;
+    --primary: #07d7b4;
     --secondary: #0C352D;
     --secondary-hover: #0C352D;
     --accent: #e1e1e1;
@@ -567,18 +567,6 @@ hr {
     }
 }
 
-@media screen and (min-width: 1366px) {
-
-    .navbar-brand svg,
-    .navbar-brand span {
-        display: none;
-    }
-
-    .menu-btn {
-        display: none;
-    }
-}
-
 @media screen and (min-width: 1920px) {
     .card-container {
         background-color: var(--card-container);
@@ -597,7 +585,19 @@ hr {
     }
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (min-width: 1200px) {
+
+    .navbar-brand svg,
+    .navbar-brand span {
+        display: none;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
     .navbar {
         background-color: var(--card-bg);
     }

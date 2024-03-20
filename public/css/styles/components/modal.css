@@ -42,14 +42,13 @@
     align-items: center;
     width: 2.5em;
     height: 2.5em;
-    background: var(--btn-secondary);
     border: 0;
     transition: var(--tran-03);
     border-radius: 50%;
 }
 
 .btn-icon-close:hover {
-    transform: scale(1.1);
+    background: var(--btn-secondary);
 }
 
 /* Color del icono cerrar modal */

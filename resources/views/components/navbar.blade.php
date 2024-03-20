@@ -1,8 +1,8 @@
 <nav class="navbar fixed-top" aria-label="Menu">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
+        <button class="navbar-toggler menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
             aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
-            <svg class="icon menu-btn" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                 width="24px" fill="#000000">
                 <path d="M0 0h24v24H0V0z" fill="none" />
                 <path

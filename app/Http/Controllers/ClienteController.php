@@ -17,12 +17,14 @@ class ClienteController extends Controller
         'Omega' => ['class' => ClienteOmega::class],
         'Nemull' => ['class' => ClienteNemull::class],
     ];
+
     public function index()
     {
         $usuario = User::with('perfil')->find(auth()->id());
 
         return view('clientes', compact('usuario'));
     }
+
     public function tablaClientes(Request $request)
     {
         $this->validate($request, [
@@ -35,10 +37,10 @@ class ClienteController extends Controller
         ]);
 
         $draw = $request->input('draw');
-        $orderColumnIndex = $request->input('order.0.column');
-        $orderDirection = $request->input('order.0.dir');
+        // $orderColumnIndex = $request->input('order.0.column');
+        // $orderDirection = $request->input('order.0.dir');
 
-        $columnNames = ['idCliente', 'codigo', 'regIVA', 'propietario', 'establecimiento', 'fecha', 'usuarioReg'];
+        // $columnNames = ['idCliente', 'codigo', 'regIVA', 'propietario', 'establecimiento', 'fecha', 'usuarioReg'];
 
         $models = [
             'Cofasa' => ['class' => ClienteCofasa::class],
@@ -80,6 +82,7 @@ class ClienteController extends Controller
             'data' => $transformedData,
         ]);
     }
+
     private function buildQuery($model, $search)
     {
         $query = $model->select([
@@ -88,13 +91,19 @@ class ClienteController extends Controller
             $model->getTable() . '.regIVA',
             $model->getTable() . '.propietario',
             $model->getTable() . '.establecimiento',
+            $model->getTable() . '.nit',
+            $model->getTable() . '.dui',
+            $model->getTable() . '.giroIVA',
+            $model->getTable() . '.telefono',
+            $model->getTable() . '.email',
+            $model->getTable() . '.direccion',
             $model->getTable() . '.fecha',
             $model->getTable() . '.usuarioReg',
         ]);
 
-        if (!empty($search)) {
+        if (!empty ($search)) {
             $query->where(function ($query) use ($search) {
-                foreach (['codigo', 'regIVA', 'propietario', 'establecimiento', 'fecha', 'usuarioReg'] as $column) {
+                foreach (['codigo', 'regIVA', 'propietario', 'nit', 'dui', 'giroIVA', 'telefono', 'email', 'direccion', 'establecimiento', 'fecha', 'usuarioReg'] as $column) {
                     $query->orWhere($column, 'like', '%' . $search . '%');
                 }
             });
@@ -102,6 +111,7 @@ class ClienteController extends Controller
 
         return $query;
     }
+
     private function transformData($data, $start)
     {
         $contador = $start + 1;
@@ -109,13 +119,19 @@ class ClienteController extends Controller
 
         foreach ($data as $cliente) {
             $transformedData[] = [
-                'id' => $cliente['idCliente'],
+                'id' => intval($cliente['idCliente']),
                 'contador' => $contador++,
-                'conexion' => $cliente['conexion'],
-                'codigo' => $cliente['codigo'],
-                'nrc' => $cliente['regIVA'],
+                'empresa' => $cliente['conexion'],
+                'codigo' => trim($cliente['codigo']),
+                'nrc' => str_replace('-', '', trim($cliente['regIVA'])),
                 'propietario' => $cliente['propietario'],
                 'establecimiento' => $cliente['establecimiento'],
+                'giro' => $cliente['giroIVA'],
+                'nit' => str_replace('-', '', trim($cliente['nit'])),
+                'dui' => str_replace('-', '', trim($cliente['dui'])),
+                'correo' => $cliente['email'],
+                'telefono' => str_replace('-', '', trim($cliente['telefono'])),
+                'direccion' => $cliente['direccion'],
                 'fecha_registro' => Carbon::parse($cliente['fecha'])->format('Y-m-d'),
                 'usuario_registro' => $cliente['usuarioReg'],
             ];
@@ -123,6 +139,7 @@ class ClienteController extends Controller
 
         return $transformedData;
     }
+
     public function verClientes(Request $request)
     {
         $perPage = 10;
@@ -145,7 +162,7 @@ class ClienteController extends Controller
 
             $totalRegistros += $query->count();
 
-            $data = $query->orderBy('idCliente', 'asc')->get();
+            $data = $query->orderBy('fecha', 'desc')->get();
 
             foreach ($data as $row) {
                 $row['conexion'] = $tableName;
@@ -178,6 +195,7 @@ class ClienteController extends Controller
     {
         return $currentPage > 1 ? url()->current() . '?page=' . ($currentPage - 1) : null;
     }
+
     public function buscarClientePorId($idCliente)
     {
         $clienteEncontrado = $this->buscarClienteEnConexiones($idCliente);
@@ -192,6 +210,7 @@ class ClienteController extends Controller
             ], 404);
         }
     }
+
     private function buscarClienteEnConexiones($idCliente)
     {
         foreach ($this->models as $tableName => $modelInfo) {
@@ -201,7 +220,7 @@ class ClienteController extends Controller
             $clienteEncontrado = $model->where('idCliente', $idCliente)->first();
 
             if ($clienteEncontrado) {
-                $clienteEncontrado['conexion'] = $tableName;
+                $clienteEncontrado['empresa'] = $tableName;
                 return $clienteEncontrado;
             }
         }
