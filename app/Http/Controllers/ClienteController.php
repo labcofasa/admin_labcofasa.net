@@ -8,7 +8,6 @@ use App\Models\ClienteOmega;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
 
 class ClienteController extends Controller
 {
@@ -37,10 +36,6 @@ class ClienteController extends Controller
         ]);
 
         $draw = $request->input('draw');
-        // $orderColumnIndex = $request->input('order.0.column');
-        // $orderDirection = $request->input('order.0.dir');
-
-        // $columnNames = ['idCliente', 'codigo', 'regIVA', 'propietario', 'establecimiento', 'fecha', 'usuarioReg'];
 
         $models = [
             'Cofasa' => ['class' => ClienteCofasa::class],

@@ -166,6 +166,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Articulos
     Route::get('/articulos', [ArticuloController::class, 'index'])->name('pag.articulo');
+    Route::get('/tabla-articulos', [ArticuloController::class, 'tablaArticulos']);
 
     // Clientes
     Route::get('/clientes', [ClienteController::class, 'index'])->name('pag.cliente');
