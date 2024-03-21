@@ -229,7 +229,7 @@ class UsuarioController extends Controller
 
             $perfilId = $perfil->id;
 
-            $rutaCarpetaImagen = public_path("images/users/imagen/{$perfilId}");
+            $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfilId}");
 
             if (!file_exists($rutaCarpetaImagen)) {
                 mkdir($rutaCarpetaImagen, 0777, true);
@@ -319,11 +319,11 @@ class UsuarioController extends Controller
 
             $perfilId = $perfil->id;
 
-            $rutaCarpetaImagen = public_path("images/users/imagen/{$perfilId}");
+            $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfilId}");
 
             if ($request->hasFile('imagen')) {
                 $imagen = $request->file('imagen');
-                $rutaCarpetaImagen = public_path("images/users/imagen/{$perfil->id}");
+                $rutaCarpetaImagen = public_path("images/usuarios/imagen/{$perfil->id}");
 
                 if ($perfil->imagen && file_exists($rutaCarpetaImagen . '/' . $perfil->imagen)) {
                     unlink($rutaCarpetaImagen . '/' . $perfil->imagen);
