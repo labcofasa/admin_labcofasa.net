@@ -523,15 +523,15 @@ hr {
     }
 
     .card .menu-bar li svg {
-        min-width: 55px;
+        min-width: 55px !important;
     }
 
     .card .menu-bar li {
-        margin: 10px 5px;
+        margin: 10px 0 !important;
     }
 
     .card .menu-bar li:hover {
-        margin: 10px 5px;
+        margin: 10px 0 !important;
     }
 }
 
