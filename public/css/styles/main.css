@@ -323,7 +323,6 @@ small {
 span {
     letter-spacing: var(--letter-spacing);
     font-weight: 500;
-    color: var(--text-color);
     transition: var(--tran-03);
     font-size: 0.875rem;
 }

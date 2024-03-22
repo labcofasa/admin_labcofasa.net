@@ -13,7 +13,7 @@
             <div>
                 <small class="mb-1">Vigencia dic 23, Version 1</small>
             </div>
-            <span>Descripcion del formulario.</span>
+            <span class="link_name">Descripcion del formulario.</span>
             <div class="mt-3 options">
                 <a href="{{ route('pag.formulario') }}" class="btn btn-success">
                     Ver respuestas

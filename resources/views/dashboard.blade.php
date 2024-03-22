@@ -14,7 +14,7 @@
                         <div class="row justify-content-between">
                             <div class="col-6">
                                 <h2>Ventas</h2>
-                                <span>Seleccionar por año</h3>
+                                <span class="link_name">Seleccionar por año</h3>
                             </div>
                             <div class="col-6 text-end">
                                 <button type="button" onclick="selectYear(this, 2023)">
@@ -35,7 +35,7 @@
                         <div class="row justify-content-between">
                             <div class="col-6">
                                 <h2>Pedidos</h2>
-                                <span>Seleccionar por año</h3>
+                                <span class="link_name">Seleccionar por año</h3>
                             </div>
                             <div class="col-6 text-end">
                                 <button type="button" onclick="selectMonth(this, 2023)">
