@@ -5,57 +5,60 @@
     font-weight: 500;
 }
 
+.action-title {
+    color: var(--action-title);
+}
+
 .btn-logo {
     text-decoration: none;
 }
 
 .btn-store2 {
-    background-color: var(--secondary) !important;
-    border-color: var(--secondary) !important;
-    color: var(--accent);
+    background-color: var(--action) !important;
+    border-color: var(--action) !important;
+    color: var(--text-color);
     transition: 0ms;
     vertical-align: middle;
 }
 
 .btn-store2:hover {
-    color: var(--accent);
+    color: var(--text-color);
 }
 
 .btn-store2:active {
-    color: var(--accent);
-    background-color: var(--secondary) !important;
-    border-color: var(--secondary) !important;
+    color: var(--text-color);
+    background-color: var(--action) !important;
+    border-color: var(--action) !important;
 }
 
 .btn-store2:focus,
 .btn-focus-visible {
-    color: var(--accent);
-    background-color: var(--secondary);
-    border-color: var(--secondary);
+    color: var(--text-color);
+    background-color: var(--action);
+    border-color: var(--action);
 }
 
 .btn-store {
-    background-color: var(--secondary) !important;
-    border-color: var(--secondary) !important;
-    color: var(--accent);
-    font-weight: 600;
+    background-color: var(--action) !important;
+    border-color: var(--action) !important;
+    color: var(--action-title) !important;
     vertical-align: middle;
 }
 
 .btn-store:hover {
-    color: var(--accent);
+    color: var(--action-title);
 }
 
 .btn-store:active {
-    background-color: var(--secondary) !important;
-    border-color: var(--secondary) !important;
+    background-color: var(--action) !important;
+    border-color: var(--action) !important;
 }
 
 .btn-store:focus,
 .btn-focus-visible {
-    background-color: var(--secondary);
-    border-color: var(--secondary);
-    color: var(--accent) !important;
+    background-color: var(--action);
+    border-color: var(--action);
+    color: var(--text-color) !important;
 }
 
 .btn-primary {
@@ -238,16 +241,16 @@
     align-items: center;
     justify-content: space-evenly;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    background-color: var(--secondary);
+    background-color: var(--action);
     --bs-btn-color: #121213;
-    --bs-btn-border-color: var(--secondary);
-    --bs-btn-hover-color: var(--secondary-hover);
-    --bs-btn-hover-bg: var(--secondary-hover);
-    --bs-btn-hover-border-color: var(--secondary-hover);
-    --bs-btn-focus-shadow: var(--secondary);
+    --bs-btn-border-color: var(--action);
+    --bs-btn-hover-color: var(--action-hover);
+    --bs-btn-hover-bg: var(--action-hover);
+    --bs-btn-hover-border-color: var(--action-hover);
+    --bs-btn-focus-shadow: var(--action);
     --bs-btn-active-color: #121213;
-    --bs-btn-active-bg: var(--secondary);
-    --bs-btn-active-border-color: var(--secondary);
+    --bs-btn-active-bg: var(--action);
+    --bs-btn-active-border-color: var(--action);
 }
 
 .btn-app .card {
@@ -343,7 +346,8 @@
 }
 
 .icon-add-empresa {
-    fill: var(--accent);
+    fill: var(--action-title);
+    margin-right: 10px;
 }
 
 .icon {

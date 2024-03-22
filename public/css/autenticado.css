@@ -16,9 +16,9 @@
 /* Componentes */
 @import url(styles/components/form.css);
 @import url(styles/components/botones.css);
+@import url(styles/components/modal.css);
 @import url(styles/components/graficas.css);
 @import url(styles/components/cards.css);
 @import url(styles/components/dropdown.css);
 @import url(styles/components/tabla.css);
 @import url(styles/components/tabs.css);
-@import url(styles/components/modal.css);

@@ -38,10 +38,13 @@
     --info: #e0edfc;
     --warning: ;
 
+    --action: #9FEDAA;
+    --action-title: #000000; 
+
     /* Botones */
     --btn-primary: #e8f0fe;
     --btn-primary-hover: #d0dffa;
-    --btn-secondary: #f6f6f6;
+    --btn-secondary: #EEEEEE;
     --btn-secondary-hover: #e5e7e9;
     --btn-success: #ceead6;
     --btn-success-hover: #bde2c7;
@@ -77,7 +80,7 @@
     --input-caret: #1DCCC3;
 
     /* Generales */
-    --bg-sidebar: #F1F3F2;
+    --bg-sidebar: #F9F9F9;
     --title-color: #000000;
     --sidebar-text-hover: #111827;
     --box-shadow-2: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -86,7 +89,7 @@
     --sidebar-bg: #f0f4f9;
     --sidebar-bg-hover: #DBDCDE;
     /* --sidebar-icon-hover: #4a4f53; */
-    --sidebar-bg-active: #DBDCDE;
+    --sidebar-bg-active: #9FEDAA;
     --card-bg: #FFFFFF;
     --toggle-shadow: #999999;
     --table-border: #dee2e6;
@@ -155,6 +158,9 @@ body.dark {
     --negative: ;
     --info: #172d3b;
     --warning: ;
+
+    --action: #92ffa1;
+    --action-title: #000000; 
 
     /* Botones */
     --btn-primary: #2a4d7c;
