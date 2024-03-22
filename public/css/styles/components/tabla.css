@@ -3,6 +3,7 @@
     background-color: var(--card-bg);
     transition: var(--tran-03);
     overflow-x: visible;
+    padding: 15px;
     border-radius: 16px;
 }
 
@@ -228,4 +229,10 @@ div.dt-datetime div.dt-datetime-label select {
     opacity: 0;
     color: var(--text-color);
     background-color: var(--sidebar-bg);
+}
+
+@media screen and (max-width: 900px) {
+    .table-responsive {
+        padding: 15px 0;
+    }
 }

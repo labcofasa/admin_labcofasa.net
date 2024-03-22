@@ -29,11 +29,11 @@
 /* Colores para el diseño claro */
 :root {
     /* Paleta de colores */
-    --primary: #07d7b4;
+    --primary: #27d06e;
     --secondary: #b5e4ca;
     --secondary-hover: #b5e4ca;
-    --accent: #000000;
-    --positive: #000000;
+    --accent: #348754;
+    --positive: #348754;
     --negative: ;
     --info: #e0edfc;
     --warning: ;
@@ -80,16 +80,17 @@
     --input-caret: #009688;
 
     /* Generales */
-    --bg-sidebar: #F9F9F9;
+    --bg-sidebar: #FFFFFF;
     --title-color: #000000;
     --sidebar-text-hover: #111827;
     --box-shadow-2: 0 2px 10px rgba(0, 0, 0, 0.1);
 
-    --body-bg: #FFFFFF;
+    --body-bg: #F8F8F8;
     --sidebar-bg: #f0f4f9;
-    --sidebar-bg-hover: #DBDCDE;
+    --sidebar-bg-hover: #f1f1f1;
     /* --sidebar-icon-hover: #4a4f53; */
-    --sidebar-bg-active: #9FEDAA;
+    --sidebar-bg-active: #F4FAF6;
+    --border-radius-sidebar: 25px;
     --card-bg: #FFFFFF;
     --toggle-shadow: #999999;
     --table-border: #dee2e6;
@@ -215,7 +216,7 @@ body.dark {
     --sidebar-bg-hover: #323232;
     --sidebar-icon-hover: #adb2b6;
     --sidebar-bg-active: #323232;
-    --card-bg: #131314;
+    --card-bg: #1C1C1C;
     --toggle-shadow: #383838;
     --table-border: #373b3e;
 

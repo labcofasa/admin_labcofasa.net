@@ -161,19 +161,19 @@
 .sidebar-desktop .menu-bar .menu .menu-links .nav-link:hover {
     background-color: var(--sidebar-bg-hover);
     padding: 0.5rem 0 0.5rem 0;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius-sidebar);
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .nav-link {
     padding: 0.5rem 0 0.5rem 0;
     margin: 4px 0 4px 0;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius-sidebar)
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .nav-link.active {
     background-color: var(--sidebar-bg-active);
     padding: 0.5rem 0 0.5rem 0;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius-sidebar);
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .menus {
@@ -182,14 +182,14 @@
 
 .sidebar-desktop .menu-bar .menu .menu-links .menus:hover {
     background-color: var(--sidebar-bg-hover);
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius-sidebar);
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active {
     background-color: var(--sidebar-bg-active);
     transition: var(--tran-03);
     padding: 0.5rem 0 0.5rem 0;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius-sidebar);
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active .icon,

@@ -15,7 +15,7 @@ $(document).ready(function () {
             dom:
                 "<'row align-items-end'<'col-md-8 col-sm-8 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
                 "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 mb-4 px-0'p>>",
+                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
             serverSide: true,
             processing: true,
             responsive: true,
