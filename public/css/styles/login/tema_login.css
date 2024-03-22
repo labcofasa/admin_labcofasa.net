@@ -423,7 +423,7 @@ input:focus~label {
     transition: 0.3s;
 }
 
-@media screen and (min-width: 501px) and (max-width: 768px) {
+@media screen and (min-width: 501px) and (max-width: 900px) {
     .input-box {
         padding: 30px;
         width: 375px;
