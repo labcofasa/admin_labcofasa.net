@@ -11,7 +11,7 @@ nav.visible {
 
 .navbar {
     transition: var(--tran-03);
-    height: 60px;
+    height: 55px;
 }
 
 .logotipo {
@@ -67,7 +67,7 @@ nav.visible {
 }
 
 .offcanvas {
-    background-color: var(--card-container);
+    background-color: var(--bg-sidebar);
     transition: var(--tran-03);
 }
 

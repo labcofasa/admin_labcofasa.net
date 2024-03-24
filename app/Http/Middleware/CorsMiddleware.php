@@ -10,9 +10,11 @@ class CorsMiddleware
     {
         $response = $next($request);
 
-        $response->header('Access-Control-Allow-Origin', '*');
-        $response->header('Access-Control-Allow-Methods', 'GET');
-        $response->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, X-Token');
+        if (!$response instanceof \Symfony\Component\HttpFoundation\BinaryFileResponse) {
+            $response->header('Access-Control-Allow-Origin', '*');
+            $response->header('Access-Control-Allow-Methods', 'GET');
+            $response->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, X-Token');
+        }
 
         return $response;
     }

@@ -22,10 +22,16 @@
                             </div>
 
                             @if ($usuario->perfil)
-                                <h2>{{ $usuario->perfil->nombres }}</h2>
+                                @php
+                                    $nombres = explode(' ', $usuario->perfil->nombres);
+                                    $apellidos = explode(' ', $usuario->perfil->apellidos);
+                                @endphp
+
+                                <h2>{{ $nombres[0] }} {{ $apellidos[0] }}</h2>
                             @else
                                 <p>Perfil no disponible</p>
                             @endif
+
 
                             <span class="small text-secondary fw-semibold">
                                 {{ auth()->user()->getRoleNames()->implode(', ') }}</span>
@@ -37,7 +43,7 @@
                     <div class="menu-bar">
                         <ul id="informacionBasica">
                             <li>
-                                <a href="#informacion-basica" class="d-flex align-items-center py-3">
+                                <a href="#informacion-basica" class="d-flex align-items-center">
                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px"
                                         viewBox="0 0 24 24" width="24px" fill="#000000">
                                         <path d="M0 0h24v24H0V0z" fill="none" />
@@ -49,7 +55,7 @@
                             </li>
 
                             <li>
-                                <a href="#contraseña" class="d-flex align-items-center py-3">
+                                <a href="#contraseña" class="d-flex align-items-center">
                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
                                         height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                         <g>
@@ -71,7 +77,7 @@
             <div class="col-md-8 columna-scroll">
                 <div class="card" id="informacion-basica">
                     <div class="card-header">
-                        <h1 class="py-2">Información básica</h1>
+                        <h1>Información básica</h1>
                     </div>
 
                     <div class="card-body">

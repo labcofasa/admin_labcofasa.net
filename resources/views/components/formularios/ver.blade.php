@@ -22,6 +22,13 @@
                         <input type="hidden" id="frm_cccid" name="frm_conozca_cliente_id">
                         <div class="col-md-3">
                             <div class="form-group mb-3">
+                                <label for="tipo_persona" class="form-label">Tipo de cliente</label>
+                                <input type="text" id="tipo_persona" name="tipo_persona" class="form-control"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-3">
                                 <label for="nombre_cliente" class="form-label">Nombres</label>
                                 <input type="text" id="nombre_cliente" name="nombre_cliente" class="form-control"
                                     disabled>

@@ -34,6 +34,22 @@
             <div class="row pt-3">
                 <div class="col-sm-6">
                     <div class="mb-3">
+                        <label for="tipo_persona" class="form-label">Tipo de persona</label>
+                        <select class="form-select" id="tipo_persona" name="tipo_persona" required>
+                            <option value="">Seleccione el tipo</option>
+                            <option value="Persona natural">Persona natural</option>
+                            <option value="Representante legal">Representante legal</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, seleccione el tipo de persona.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
                         <label for="nombre" class="form-label">Nombres</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" autofocus
                             aria-describedby="ayuda">
@@ -540,7 +556,7 @@
                             <input type="file" class="form-control" id="carta_responsabilidad"
                                 name="carta_responsabilidad" required accept=".pdf, .docx, .jpg, .png, .jpeg">
                             <div class="invalid-feedback">
-                                Por favor adjunte su carta de responsabilidad.
+                                Por favor, adjunte su carta de responsabilidad.
                             </div>
                         </div>
                     </div>

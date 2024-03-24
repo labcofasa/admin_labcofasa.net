@@ -23,6 +23,7 @@
 
 .card .menu-bar li a {
     display: flex;
+    padding: 10px;
     align-items: center;
     text-decoration: none;
 }
@@ -47,12 +48,19 @@
     border: 0;
     transition: var(--tran-03);
     background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.card-header:first-child {
+    border-radius: var(--border-radius);
 }
 
 .card-header {
     background-color: var(--card-bg);
     transition: var(--tran-03);
     border-bottom: 0;
+    border-radius: var(--border-radius);
 }
 
 .card .text-card {
@@ -77,7 +85,7 @@
 .carta-primary {
     background-color: var(--carta-primary);
     transition: var(--tran-03);
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius);
 }
 
 .carta-primary .icon {
@@ -88,7 +96,7 @@
 .carta-secondary {
     background-color: var(--carta-secondary);
     transition: var(--tran-03);
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius);
 }
 
 .carta-secondary .icon {
@@ -99,7 +107,7 @@
 .carta-success {
     background-color: var(--carta-success);
     transition: var(--tran-03);
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius);
 }
 
 .carta-success .icon {
@@ -110,7 +118,7 @@
 .carta-info {
     background-color: var(--carta-info);
     transition: var(--tran-03);
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius);
 }
 
 .carta-info .icon {
@@ -132,8 +140,23 @@
     box-shadow: var(--box-shadow);
 }
 
+@media screen and (min-width: 900px) {
+    .card-header:first-child {
+        padding: 20px;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .card-form {
         width: 100%;
+        padding: 0;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .card-header {
+        padding: 15px 0;
     }
 }

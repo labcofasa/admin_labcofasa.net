@@ -175,9 +175,8 @@ Route::middleware(['auth'])->group(function () {
     // Formularios
     Route::get('/formularios', [FormulariosController::class, 'index'])->name('pag.formularios');
     Route::get('/formulario/conozca-cliente', [FormulariosController::class, 'show'])->name('pag.formulario');
-    Route::get('/tabla-conozca-cliente', [FormulariosController::class, 'tablaConozcaCliente']);
-    Route::put('/cambiar-estado-form/{id}', [FormulariosController::class, 'cambiarEstadoFormulario']);
-
+    Route::get('/tabla-conozca-cliente', [FormsConozcaClienteController::class, 'tablaConozcaCliente']);
+    Route::put('/cambiar-estado-form/{id}', [FormsConozcaClienteController::class, 'cambiarEstadoFormulario']);
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -204,6 +203,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/obtener-giros', [GiroController::class, 'obtenerGiros']);
     Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])->middleware('cors');
     Route::get('/obtener-clasificaciones', [ClasificacionController::class, 'obtenerClasificaciones']);
+    Route::get('/descargar-pdf', [FormsConozcaClienteController::class, 'descargarPdf'])->name('descargar.carta')->middleware('cors');
 
     /* Logo de la empresa */
     Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);

@@ -19,15 +19,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
-                        <span class="mt-3">
-                            ¿Está seguro de enviar el formulario?
-                        </span>
+                        <small class="mt-3">
+                            Antes de enviar el formulario, ¿podría confirmar si ha adjuntado la carta de
+                            responsabilidad?
+                        </small>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-actions btn btn-secondary"
-                        data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn-actions btn btn-success">Enviar formulario</button>
+                        data-bs-dismiss="modal">No, cancelar</button>
+                    <button type="submit" class="btn-actions btn btn-success">Si, enviar formulario</button>
                 </div>
             </form>
         </div>

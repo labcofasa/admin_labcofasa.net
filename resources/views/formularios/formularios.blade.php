@@ -9,13 +9,13 @@
         <h1 class="pb-3">@yield('titulo')</h1>
 
         <div class="card-form">
-            <h6 class="link_name">📜 Conozca a su cliente</h6>
+            <h6 class="link_name">Conozca a su cliente</h6>
             <div>
                 <small class="mb-1">Vigencia dic 23, Version 1</small>
             </div>
             <span class="link_name">Descripcion del formulario.</span>
-            <div class="mt-3 options">
-                <a href="{{ route('pag.formulario') }}" class="btn btn-success">
+            <div class="mt-3">
+                <a href="{{ route('pag.formulario') }}" class="btn btn-primary">
                     Ver respuestas
                 </a>
                 <a href="{{ route('formulario') }}" target="_blank" class="btn btn-secondary">

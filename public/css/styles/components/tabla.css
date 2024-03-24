@@ -4,7 +4,8 @@
     transition: var(--tran-03);
     overflow-x: visible;
     padding: 15px;
-    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
 }
 
 table {
@@ -16,19 +17,19 @@ table th {
 }
 
 table#tabla-roles-permisos.dataTable tbody tr.selected>* {
-    box-shadow: inset 0 0 0 9999px var(--btn-danger);
+    box-shadow: none;
     color: var(--icon-danger);
     transition: var(--tran-03);
 }
 
 table.dataTable tbody tr.selected>* {
-    box-shadow: inset 0 0 0 9999px var(--btn-primary);
+    box-shadow: none;
     color: var(--icon-primary);
     transition: var(--tran-03);
 }
 
 table.dataTable.table-hover>tbody>tr.selected:hover>* {
-    box-shadow: inset 0 0 0 9999px var(--btn-primary);
+    box-shadow: none;
 }
 
 table.dataTable.table-sm tbody td.select-checkbox::before {
@@ -70,7 +71,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
     margin-left: 0 !important;
     height: 43px;
     width: 100% !important;
-    background-color: var(--card-container);
+    background-color: var(--card-bg);
     transition: background-color 0.4s ease;
     border-radius: var(--border-radius);
     border-color: var(--table-border);
@@ -151,7 +152,6 @@ div.dataTables_wrapper div.dataTables_info {
     border-color: var(--btn-paginacion-bg);
     letter-spacing: var(--letter-spacing);
     font-size: var(--font-size);
-    transition: var(--tran-03);
     font-weight: 500;
 }
 
@@ -234,5 +234,6 @@ div.dt-datetime div.dt-datetime-label select {
 @media screen and (max-width: 900px) {
     .table-responsive {
         padding: 15px 0;
+        box-shadow: none;
     }
 }

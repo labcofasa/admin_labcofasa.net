@@ -1,6 +1,7 @@
 .sidebar-desktop {
     background-color: var(--bg-sidebar);
     transition: var(--tran-03);
+    box-shadow: var(--box-shadow);
 }
 
 .sidebar-desktop .logo-detalles {

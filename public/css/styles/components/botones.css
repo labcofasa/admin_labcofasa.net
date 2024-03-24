@@ -16,24 +16,23 @@
 .btn-store2 {
     background-color: var(--action) !important;
     border-color: var(--action) !important;
-    color: var(--text-color);
-    transition: 0ms;
+    color: var(--action-title) !important;
     vertical-align: middle;
 }
 
 .btn-store2:hover {
-    color: var(--text-color);
+    color: var(--action-title);
 }
 
 .btn-store2:active {
-    color: var(--text-color);
+    color: var(--action-title) !important;
     background-color: var(--action) !important;
     border-color: var(--action) !important;
 }
 
 .btn-store2:focus,
 .btn-focus-visible {
-    color: var(--text-color);
+    color: var(--action-title) !important;
     background-color: var(--action);
     border-color: var(--action);
 }
@@ -58,7 +57,6 @@
 .btn-focus-visible {
     background-color: var(--action);
     border-color: var(--action);
-    color: var(--text-color) !important;
 }
 
 .btn-primary {
@@ -311,8 +309,8 @@
 
 .icono-perfil {
     object-fit: cover;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
 
 /* Iconos */
@@ -489,9 +487,4 @@ button {
 
 .small-button:hover::before {
     opacity: 1;
-}
-
-.options {
-    display: flex;
-    justify-content: space-between;
 }

@@ -97,12 +97,12 @@ $(document).ready(function () {
                         `;
                     },
                 },
+                { data: "tipo_persona", title: "Tipo persona" },
                 { data: "nombre", title: "Nombre" },
                 { data: "apellido", title: "Apellidos" },
                 { data: "nombre_juridico", title: "Persona jurídica" },
                 { data: "registro_nrc_juridico", title: "Registro NRC" },
                 { data: "numero_nit_juridico", title: "Número de NIT" },
-                { data: "pais", title: "Pais" },
                 { data: "fecha_creacion", title: "Fecha de creación" },
                 {
                     data: null,
@@ -184,10 +184,15 @@ $(document).ready(function () {
             .row($(this).closest("tr"))
             .data().tipo_de_documento;
 
+        clienteTipoPersona = tabla_conozca_cliente
+            .row($(this).closest("tr"))
+            .data().tipo_persona;
+
         const modal = $("#verRespuestaFcc");
 
-        modal.find(".modal-title").text("Cliente con el documento " + clienteTipoDoc + ": " + clienteDocumento);
+        modal.find(".modal-title").text(clienteTipoPersona + " con el documento " + clienteTipoDoc + ": " + clienteDocumento);
 
+        var tipo_persona = row.tipo_persona;
         var nombre = row.nombre;
         var apellido = row.apellido;
         var fecha_nacimiento = row.fecha_de_nacimiento;
@@ -236,6 +241,7 @@ $(document).ready(function () {
         var monto_mensual = row.monto_mensual;
 
         $("#frm_cccid").val(fccId);
+        $("#tipo_persona").val(tipo_persona);
         $("#nombre_cliente").val(nombre);
         $("#apellido_cliente").val(apellido);
         $("#fecha_de_nacimiento").val(fecha_nacimiento);
@@ -353,7 +359,7 @@ function verAccionistas(fccId, contadorCampos, clienteAccionista) {
                 <label for="nombre_accionista${fccId}-${contadorCampos}" class="form-label">Nombre completo</label>
                 <input disabled type="text" class="form-control" id="nombre_accionista${fccId}-${contadorCampos}" name="nombre_accionista[]" value="${nombre_accionista}">
             </div>
-        </div> 
+        </div>
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="nacionalidad_accionista${fccId}-${contadorCampos}" class="form-label">Nacionalidad</label>
@@ -365,7 +371,7 @@ function verAccionistas(fccId, contadorCampos, clienteAccionista) {
                 <label for="numero_identidad_accionista${fccId}-${contadorCampos}" class="form-label">No. Identidad</label>
                 <input disabled type="text" class="form-control" id="numero_identidad_accionista${fccId}-${contadorCampos}" name="numero_identidad_accionista[]" value="${numero_identidad_accionista}">
             </div>
-        </div> 
+        </div>
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="porcentaje_participacion_accionista${fccId}-${contadorCampos}" class="form-label">Porcentaje de participación</label>
@@ -392,7 +398,7 @@ function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
                 <label for="nombre_miembro${fccId}-${contadorCamposMiembro}" class="form-label">Nombre completo</label>
                 <input disabled type="text" class="form-control" id="nombre_miembro${fccId}-${contadorCamposMiembro}" name="nombre_miembro[]" value="${nombre_miembro}">
             </div>
-        </div> 
+        </div>
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="nacionalidad_miembro${fccId}-${contadorCamposMiembro}" class="form-label">Nacionalidad</label>
@@ -404,7 +410,7 @@ function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
                 <label for="numero_identidad_miembro${fccId}-${contadorCamposMiembro}" class="form-label">No. Identidad</label>
                 <input disabled type="text" class="form-control" id="numero_identidad_miembro${fccId}-${contadorCamposMiembro}" name="numero_identidad_miembro[]" value="${numero_identidad_miembro}">
             </div>
-        </div> 
+        </div>
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="cargo_miembro${fccId}-${contadorCamposMiembro}" class="form-label">Cargo</label>
@@ -429,7 +435,7 @@ function verParientes(fccId, contadorCamposPariente, clientePariente) {
                 <label for="nombre_pariente${fccId}-${contadorCamposPariente}" class="form-label">Nombre completo</label>
                 <input disabled type="text" class="form-control" id="nombre_pariente${fccId}-${contadorCamposPariente}" name="nombre_pariente[]" value="${nombre_pariente}">
             </div>
-        </div> 
+        </div>
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="parentesco${fccId}-${contadorCamposPariente}" class="form-label">Parentesco</label>
@@ -454,7 +460,7 @@ function verSocios(fccId, contadorCamposSocio, clienteSocio) {
                 <label for="nombre_socio${fccId}-${contadorCamposSocio}" class="form-label">Nombre completo</label>
                 <input disabled type="text" class="form-control" id="nombre_socio${fccId}-${contadorCamposSocio}" name="nombre_socio[]" value="${nombre_socio}">
             </div>
-        </div> 
+        </div>
         <div class="col-sm-3">
             <div class="mb-3">
                 <label for="porcentaje_participacion_socio${fccId}-${contadorCamposSocio}" class="form-label">Porcentaje de participación</label>

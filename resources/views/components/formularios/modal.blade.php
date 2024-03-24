@@ -19,8 +19,7 @@
             </div>
             <div class="modal-footer">
                 <button data-bs-dismiss="modal" aria-label="Close" class="btn btn-secondary">Cerrar</button>
-                <a href="{{ asset('docs/forms/fccc/COMPANIA-FARMACEUTICA-CARTA-DE-RESPONSABILIDAD.pdf') }}"
-                    download="COMPANIA-FARMACEUTICA-CARTA-DE-RESPONSABILIDAD.pdf" class="btn btn-primary">Descargar</a>
+                <a href="{{ route('descargar.carta') }}" class="btn btn-primary">Descargar</a>
             </div>
         </div>
     </div>

@@ -32,21 +32,21 @@
     --primary: #27d06e;
     --secondary: #b5e4ca;
     --secondary-hover: #b5e4ca;
-    --accent: #348754;
-    --positive: #348754;
+    --accent: #27d06e;
+    --positive: #27d06e;
     --negative: ;
     --info: #e0edfc;
     --warning: ;
 
-    --action: #9FEDAA;
-    --action-title: #000000; 
+    --action: #27d06e;
+    --action-title: #fff;
 
     /* Botones */
     --btn-primary: #e8f0fe;
     --btn-primary-hover: #d0dffa;
     --btn-secondary: #EEEEEE;
     --btn-secondary-hover: #e5e7e9;
-    --btn-success: #ceead6;
+    --btn-success: #e7f9ed;
     --btn-success-hover: #bde2c7;
     --btn-danger: #fce8e6;
     --btn-danger-hover: #f8d8d5;
@@ -54,20 +54,20 @@
     --btn-warning-hover: #ffe5b4;
     --btn-info: ;
 
-    --bg-tooltip: #006d4b;
+    --bg-tooltip: #27d06e;
     --color-tooltip: #fff;
 
     /* Paginación de las tablas */
-    --btn-paginacion-bg: #f6f6f6;
-    --btn-paginacion-bg-active: #172935;
+    --btn-paginacion-bg: #e5e7e9;
+    --btn-paginacion-bg-active: #27d06e;
     --btn-paginacion-color-active: #fff;
-    --btn-paginacion-bg-hover: #09525d;
+    --btn-paginacion-bg-hover: #27d06e;
     --btn-paginacion-color-hover: #fff;
 
     /* Iconos */
     --icon-primary: #1967d2;
     --icon-secondary: #454545;
-    --icon-success: #188038;
+    --icon-success: #27d06e;
     --icon-danger: #ea4335;
     --icon-warning: #ffc107;
     --icon-info: ;
@@ -77,7 +77,7 @@
     --span: #555555;
     --font-size: 0.875rem;
     --letter-spacing: 0.0178571429em;
-    --input-caret: #009688;
+    --input-caret: #27d06e;
 
     /* Generales */
     --bg-sidebar: #FFFFFF;
@@ -87,9 +87,9 @@
 
     --body-bg: #F8F8F8;
     --sidebar-bg: #f0f4f9;
-    --sidebar-bg-hover: #f1f1f1;
+    --sidebar-bg-hover: #3c404314;
     /* --sidebar-icon-hover: #4a4f53; */
-    --sidebar-bg-active: #F4FAF6;
+    --sidebar-bg-active: #e7f9ed;
     --border-radius-sidebar: 25px;
     --card-bg: #FFFFFF;
     --toggle-shadow: #999999;
@@ -97,8 +97,8 @@
     --component: #c0c0c0;
     --component-bg: #e9e9eb;
     --component-hover: #a0a0a0;
-    --border-radius: 0.5rem;
-    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --border-radius: 0.75rem;
+    --box-shadow: 0 1px 4px rgba(18, 22, 33, .12);
 
     --dropdown-menu: #ffffff;
     --dropdown-item-hover: #0000000a;
@@ -131,7 +131,7 @@
     --btn-card-bg: #ffffff;
 
     --card-container: #ffffff;
-    --toggle-switch: rgb(0, 221, 80);
+    --toggle-switch: #27d06e;
     --toggle-switch-bg: #ffffff;
     --toggle-switch-border: #dee2e6;
 
@@ -151,7 +151,7 @@
 /* Colores para el diseño oscuro */
 body.dark {
     /* Paleta de colores */
-    --primary: #07d7b4;
+    --primary: #27d06e;
     --secondary: #0C352D;
     --secondary-hover: #0C352D;
     --accent: #e1e1e1;
@@ -160,14 +160,14 @@ body.dark {
     --info: #172d3b;
     --warning: ;
 
-    --action: #92ffa1;
-    --action-title: #000000; 
+    --action: #27d06e;
+    --action-title: #000000;
 
     /* Botones */
     --btn-primary: #2a4d7c;
     --btn-primary-hover: #3a5f8c;
-    --btn-secondary: #1E1F20;
-    --btn-secondary-hover: #333333;
+    --btn-secondary: #323232;
+    --btn-secondary-hover: #3d3d3d;
     --btn-success: #2a5739;
     --btn-success-hover: #3a6f49;
     --btn-danger: #7a3030;
@@ -176,16 +176,16 @@ body.dark {
     --btn-warning-hover: #8a6f10;
     --btn-info: ;
 
-    --bg-tooltip: #032830;
-    --color-tooltip: #6edff6;
+    --bg-tooltip: #27d06e;
+    --color-tooltip: #fff;
 
     /* Paginación de las tablas */
-    --btn-paginacion-bg: #1E1F20;
+    --btn-paginacion-bg: #323232;
     --btn-paginacion-color: #fff;
-    --btn-paginacion-bg-active: #53dbc9;
-    --btn-paginacion-color-active: #003731;
-    --btn-paginacion-bg-hover: #005048;
-    --btn-paginacion-color-hover: #53dbc9;
+    --btn-paginacion-bg-active: #27d06e;
+    --btn-paginacion-color-active: #000000;
+    --btn-paginacion-bg-hover: #27d06e;
+    --btn-paginacion-color-hover: #000000;
 
     /* Iconos */
     --icon-primary: #c9dbfd;
@@ -203,7 +203,7 @@ body.dark {
     /* Textos */
     --text-color: #bebebe;
     --span: #b0b0b0;
-    --input-caret: #6edff6;
+    --input-caret: #27d06e;
 
     /* Generales */
     --bg-sidebar: #1C1C1C;
@@ -324,7 +324,6 @@ small {
 span {
     letter-spacing: var(--letter-spacing);
     font-weight: 500;
-    transition: var(--tran-03);
     font-size: 0.875rem;
 }
 
@@ -516,6 +515,10 @@ hr {
 @media screen and (max-width: 450px) {
     .btn-actions {
         width: 130px;
+    }
+
+    .content {
+        padding: 4rem 1rem 2rem 1rem;
     }
 }
 
