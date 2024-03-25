@@ -2,11 +2,14 @@
     <div class="container-fluid">
         <button class="navbar-toggler menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
             aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                width="24px" fill="#000000">
-                <path d="M0 0h24v24H0V0z" fill="none" />
-                <path
-                    d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z" />
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                color="#000000" fill="none">
+                <path d="M4 5L16 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M4 12L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M4 19L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
             </svg>
         </button>
 

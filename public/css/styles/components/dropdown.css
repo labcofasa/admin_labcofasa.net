@@ -4,7 +4,7 @@
 }
 
 .offcanvas-body .dropdown-menu {
-    background-color: var(--card-container);
+    background-color: var(--card-bg);
     padding: 0 15px;
     width: auto;
     border: none;
