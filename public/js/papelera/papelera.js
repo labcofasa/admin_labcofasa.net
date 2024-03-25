@@ -217,19 +217,22 @@ $(document).ready(function () {
                         return `
                                 <div class="btn-toolbar">
                                     <div class="btn-group" role="group">
-                                    ${
-                                        userPermissions.some(
-                                            (permission) =>
-                                                permission.name ===
-                                                "admin_papelera_recuperar"
-                                        )
-                                            ? `
+                                    ${userPermissions.some(
+                            (permission) =>
+                                permission.name ===
+                                "admin_papelera_recuperar"
+                        )
+                                ? `
                                         <button class="btn btn-success restaurar-registro" data-table="${row.nombre_tabla}" data-id="${row.id}">
-                                            <svg class="icon-success" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M13 3c-4.97 0-9 4.03-9 9H1l4 3.99L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8z"/></svg>
+                                            <svg class="icon-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                                                <path d="M20.25 5.5L19.75 11.5M5.25 5.5L5.85461 15.5368C6.00945 18.1073 6.08688 19.3925 6.72868 20.3167C7.046 20.7737 7.4548 21.1594 7.92905 21.4493C8.51127 21.8051 9.21343 21.945 10.25 22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                                <path d="M11.75 15.5L12.8863 16.9657C13.458 14.8319 15.6514 13.5655 17.7852 14.1373C18.8775 14.43 19.7425 15.1475 20.25 16.0646M21.75 20.5L20.6137 19.0363C20.0419 21.1701 17.8486 22.4365 15.7147 21.8647C14.6478 21.5788 13.7977 20.8875 13.2859 20.001" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M3.75 5.5H21.75M16.8057 5.5L16.1231 4.09173C15.6696 3.15626 15.4428 2.68852 15.0517 2.39681C14.965 2.3321 14.8731 2.27454 14.777 2.2247C14.3439 2 13.8241 2 12.7845 2C11.7188 2 11.186 2 10.7457 2.23412C10.6481 2.28601 10.555 2.3459 10.4673 2.41317C10.0716 2.7167 9.85063 3.20155 9.40861 4.17126L8.80292 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                            </svg>
                                         </button>
                                         `
-                                            : ""
-                                    }
+                                : ""
+                            }
                                     </div>
                                 </div>
                             `;
@@ -252,7 +255,10 @@ $(document).ready(function () {
                 inputPapelera.attr("autocomplete", "off");
 
                 const iconSvg =
-                    '<svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#888"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>';
+                    "<svg class='search-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' color='#000000' fill='none'>" +
+                    "<path d='M17.5 17.5L22 22' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' />" +
+                    "<path d='M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z' stroke='currentColor' stroke-width='2' stroke-linejoin='round' />" +
+                    "</svg>";
 
                 inputPapelera.before(iconSvg);
 
@@ -360,13 +366,13 @@ $(document).ready(function () {
         );
         printWindow.document.write(
             "<style>" +
-                "body { font-family: Arial, sans-serif; }" +
-                "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-                "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-                "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-                "tr:nth-child(even) { background-color: #f9f9f9; }" +
-                "tr:hover { background-color: #f5f5f5; }" +
-                "</style>"
+            "body { font-family: Arial, sans-serif; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+            "tr:nth-child(even) { background-color: #f9f9f9; }" +
+            "tr:hover { background-color: #f5f5f5; }" +
+            "</style>"
         );
         printWindow.document.write("</head><body>");
         printWindow.document.write(

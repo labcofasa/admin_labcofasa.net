@@ -63,7 +63,7 @@
                                 <div class="row pt-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="nombre-empresa-input" class="text-label">Nombre de la empresa
+                                            <label for="nombre-empresa-input" class="form-label">Nombre de la empresa
                                                 <span class="obligatorio"> *</span></label>
                                             <input autocomplete="off" type="text" name="nombre" autofocus
                                                 class="form-control" id="nombre-empresa-input" required>
@@ -72,7 +72,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="giro-empresa-filter" class="text-label">Actividad económica<span
+                                            <label for="giro-empresa-filter" class="form-label">Actividad económica<span
                                                     class="obligatorio"> *</span>
                                             </label>
                                             <div class="input-container">
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="entidad-empresa-select" class="text-label">Tipo de entidad
+                                            <label for="entidad-empresa-select" class="form-label">Tipo de entidad
                                                 <span class="obligatorio"> *</span>
                                             </label>
                                             <select name="entidad" id="entidad-empresa-select"
@@ -103,7 +103,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="pais-empresa-select" class="text-label">País <span
+                                            <label for="pais-empresa-select" class="form-label">País <span
                                                     class="obligatorio"> *</span></label>
                                             <select name="pais" id="pais-empresa-select" class="form-control"
                                                 required>
@@ -118,7 +118,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="depto-empresa-select" class="text-label">Departamento <span
+                                            <label for="depto-empresa-select" class="form-label">Departamento <span
                                                     class="obligatorio"> *</span></label>
                                             <select name="dpto" id="depto-empresa-select" class="form-control"
                                                 required>
@@ -132,7 +132,7 @@
                                         </div>
 
                                         <div class="form-group mb-3">
-                                            <label for="municipio-empresa-select" class="text-label">Municipio <span
+                                            <label for="municipio-empresa-select" class="form-label">Municipio <span
                                                     class="obligatorio"> *</span></label>
                                             <select name="municipio" id="municipio-empresa-select"
                                                 class="form-control" required>
@@ -147,7 +147,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="direccion-textarea" class="text-label">Dirección de la
+                                            <label for="direccion-textarea" class="form-label">Dirección de la
                                                 empresa <span class="obligatorio"> *</span></label>
                                             <textarea autocomplete="off" name="direccion" class="form-control textarea-normal" id="direccion-textarea" required
                                                 maxlength="255"></textarea>
@@ -158,10 +158,10 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="imagen-empresa" class="text-label">Logo de la
+                                            <label for="imagen-empresa" class="form-label">Logo de la
                                                 empresa</label>
                                             <label for="imagen-empresa" class="file-upload-image">
-                                                <span class="text-label-image">Clic para seleccionar la imagen</span>
+                                                <span class="form-label-image">Clic para seleccionar la imagen</span>
                                                 <p class="image-empresa-name"></p>
                                             </label>
                                             <input type="file" name="imagen"
@@ -176,7 +176,7 @@
                                 <div class="row py-3">
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="telefono-empresa" class="text-label">Teléfono</label>
+                                            <label for="telefono-empresa" class="form-label">Teléfono</label>
                                             <input autocomplete="off" type="tel" name="telefono"
                                                 pattern="^(\+\d{1,3}[\s\-]?)?(\d{1,4}[\s\-]?){2}\d{4}$" maxlength="15"
                                                 autofocus class="form-control" id="telefono-empresa">
@@ -187,7 +187,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="email-empresa" class="text-label">Correo
+                                            <label for="email-empresa" class="form-label">Correo
                                                 electrónico</label>
                                             <input autocomplete="off" type="email" name="email"
                                                 class="form-control" id="email-empresa">
@@ -198,7 +198,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
-                                            <label for="web-empresa" class="text-label">Enlace URL del sitio
+                                            <label for="web-empresa" class="form-label">Enlace URL del sitio
                                                 web</label>
                                             <input autocomplete="off" type="url" name="web"
                                                 class="form-control" id="web-empresa">
@@ -210,14 +210,14 @@
                                     <h1 class="fs-5 titulo pb-1">Redes sociales</h1>
                                     <div class="col-md-6 pb-2">
                                         <div class="form-group mb-3">
-                                            <label for="nombre-rs-empresa" class="text-label">Nombre</label>
+                                            <label for="nombre-rs-empresa" class="form-label">Nombre</label>
                                             <input autocomplete="off" type="text" name="social[]"
                                                 class="form-control" id="nombre-rs-empresa">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="enlace-rs-empresa" class="text-label">Enlace URL del
+                                            <label for="enlace-rs-empresa" class="form-label">Enlace URL del
                                                 perfil</label>
                                             <input autocomplete="off" type="url" name="enlace[]"
                                                 class="form-control" id="enlace-rs-empresa">
@@ -242,7 +242,7 @@
                                             <label data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
                                                 data-bs-placement="top"
                                                 data-bs-title="Número de Identificación Tributaria"
-                                                for="nit-empresa-input" class="text-label">Registro NIT
+                                                for="nit-empresa-input" class="form-label">Registro NIT
                                                 <svg class="icon-btn-info" xmlns="http://www.w3.org/2000/svg"
                                                     height="24px" viewBox="0 0 24 24" width="24px"
                                                     fill="#000000">
@@ -258,7 +258,7 @@
                                         <div class="form-group mb-3">
                                             <label data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
                                                 data-bs-placement="top" data-bs-title="Número de Registro de Contribuyente"
-                                                for="registro-nrc-empresa-input" class="text-label">Registro NRC
+                                                for="registro-nrc-empresa-input" class="form-label">Registro NRC
                                                 <svg class="icon-btn-info" xmlns="http://www.w3.org/2000/svg"
                                                     height="24px" viewBox="0 0 24 24" width="24px"
                                                     fill="#000000">
@@ -276,7 +276,7 @@
                                             <label data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
                                                 data-bs-placement="top"
                                                 data-bs-title="Dirección Nacional de Medicamentos"
-                                                for="nombre-dnm-empresa-input" class="text-label">Nombre DNM
+                                                for="nombre-dnm-empresa-input" class="form-label">Nombre DNM
                                                 <svg class="icon-btn-info" xmlns="http://www.w3.org/2000/svg"
                                                     height="24px" viewBox="0 0 24 24" width="24px"
                                                     fill="#000000">
@@ -289,7 +289,7 @@
                                                 class="form-control" id="nombre-dnm-empresa-input">
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="fundacion-empresa-input" class="text-label">Fecha de inicio de
+                                            <label for="fundacion-empresa-input" class="form-label">Fecha de inicio de
                                                 operaciones</label>
                                             <input type="date" autocomplete="off" id="fundacion-empresa-input"
                                                 name="fundacion" class="form-control">
@@ -300,7 +300,7 @@
                                             <label data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip"
                                                 data-bs-placement="top"
                                                 data-bs-title="Dirección Nacional de Medicamentos"
-                                                for="registro-dnm-empresa-input" class="text-label">Registro DNM
+                                                for="registro-dnm-empresa-input" class="form-label">Registro DNM
                                                 <svg class="icon-btn-info" xmlns="http://www.w3.org/2000/svg"
                                                     height="24px" viewBox="0 0 24 24" width="24px"
                                                     fill="#000000">
@@ -313,7 +313,7 @@
                                                 class="form-control" id="registro-dnm-empresa-input">
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="clasificacion-empresa-select" class="text-label">Clasificación
+                                            <label for="clasificacion-empresa-select" class="form-label">Clasificación
                                                 <span class="obligatorio"> *</span></label>
                                             <select name="clasificacion" id="clasificacion-empresa-select"
                                                 class="form-control select-clasificacion" required>
@@ -328,10 +328,10 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="imagen-empresa-leyenda" class="text-label">Leyenda de la
+                                            <label for="imagen-empresa-leyenda" class="form-label">Leyenda de la
                                                 factura electrónica</label>
                                             <label for="imagen-empresa-leyenda" class="file-upload-image">
-                                                <span class="text-label-image-leyenda">Clic para seleccionar la
+                                                <span class="form-label-image-leyenda">Clic para seleccionar la
                                                     imagen</span>
                                                 <p class="image-empresa-name-leyenda"></p>
                                             </label>
@@ -347,7 +347,7 @@
                                 <div class="row py-3">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="mision-textarea" class="text-label">Mision de la
+                                            <label for="mision-textarea" class="form-label">Mision de la
                                                 empresa</label>
                                             <textarea autocomplete="off" name="mision" class="form-control textarea-normal" id="mision-textarea"
                                                 maxlength="512" autofocus></textarea>
@@ -355,7 +355,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="vision-textarea" class="text-label">Vision de la
+                                            <label for="vision-textarea" class="form-label">Vision de la
                                                 empresa</label>
                                             <textarea autocomplete="off" name="vision" class="form-control textarea-normal" id="vision-textarea"
                                                 maxlength="512"></textarea>
@@ -363,7 +363,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
-                                            <label for="calidad-textarea" class="text-label">Política de
+                                            <label for="calidad-textarea" class="form-label">Política de
                                                 calidad</label>
                                             <textarea autocomplete="off" name="calidad" class="form-control textarea-normal" id="calidad-textarea"
                                                 maxlength="512"></textarea>

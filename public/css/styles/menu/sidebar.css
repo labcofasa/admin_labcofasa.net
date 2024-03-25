@@ -64,9 +64,10 @@
 }
 
 .sidebar-desktop .menu-bar li svg {
-    height: 23px;
+    /* height: 23px; */
     min-width: 60px;
-    fill: var(--icon-secondary);
+    color: var(--icon-secondary);
+    /* fill: var(--icon-secondary); */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -93,6 +94,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.sidebar-desktop .menu-bar .menu .menu-links li .menus.active svg {
+    color: var(--positive);
 }
 
 .sidebar-desktop .menu-bar li.showMenu .sub-menu a {
@@ -196,7 +201,7 @@
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active .icon,
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active .arrow,
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active .link_name {
-    fill: var(--positive);
+    /* fill: var(--positive); */
     color: var(--accent);
     font-weight: 600;
     font-size: 0.875rem;
@@ -205,15 +210,19 @@
 .sidebar-desktop .menu-bar .menu .menu-links li a svg,
 .sidebar-desktop .menu-bar .menu .menu-links li a .link_name {
     color: var(--icon-secondary);
-    fill: var(--icon-secondary);
+    /* fill: var(--icon-secondary); */
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a.active svg,
 .sidebar-desktop .menu-bar .menu .menu-links li a.active .link_name,
 .sidebar-desktop .menu-bar .menu .menu-links li .sub-menu li a.active .links {
     color: var(--accent);
-    fill: var(--positive);
+    /* fill: var(--positive); */
     font-weight: 600;
+}
+
+.sidebar-desktop .menu-bar .menu .menu-links li a .arrow {
+    color: var(--icon-secondary); 
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a .imagen-container {
@@ -236,6 +245,7 @@
 
 .subtitle {
     padding-left: 5px;
+    font-size: 13px !important;
     font-weight: 500;
     color: #666666 !important;
 }

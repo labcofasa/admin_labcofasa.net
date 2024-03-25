@@ -103,11 +103,12 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
     transform: translateY(38%);
     pointer-events: none;
     padding-left: 10px;
+    color: var(--icon-secondary);
 }
 
 .label-search svg {
-    width: 35px;
-    fill: var(--icon-secondary);
+    width: 28px;
+    color: var(--icon-secondary);
     transition: var(--tran-03);
 }
 

@@ -16,7 +16,7 @@
 .card .menu-bar li svg {
     height: 25px;
     min-width: 60px;
-    fill: var(--icon-secondary);
+    color: var(--icon-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
 }

@@ -315,7 +315,7 @@
 
 /* Iconos */
 .icon-primary {
-    fill: var(--icon-primary);
+    color: var(--icon-primary);
     transition: var(--tran-03);
 }
 
@@ -329,12 +329,12 @@
 }
 
 .icon-success {
-    fill: var(--icon-success);
+    color: var(--icon-success);
     transition: var(--tran-03);
 }
 
 .icon-danger {
-    fill: var(--icon-danger);
+    color: var(--icon-danger);
     transition: var(--tran-03);
 }
 
@@ -349,7 +349,7 @@
 }
 
 .icon {
-    fill: var(--icon-secondary);
+    color: var(--icon-secondary);
     transition: var(--tran-03);
 }
 
