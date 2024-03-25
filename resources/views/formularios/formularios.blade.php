@@ -8,7 +8,7 @@
         <!-- Titulo-->
         <h1 class="pb-3">@yield('titulo')</h1>
 
-        <div class="card-form">
+        <div class="card-form" style="width: 355px">
             <h6 class="link_name">Conozca a su cliente</h6>
             <div>
                 <small class="mb-1">Vigencia dic 23, Version 1</small>
