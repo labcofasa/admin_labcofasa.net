@@ -132,7 +132,7 @@
 
 /* Formularios */
 .card-form {
-    width: 360px;
+    max-width: 600px;
     padding: 1rem;
     transition: var(--tran-03);
     background-color: var(--btn-card-bg);
