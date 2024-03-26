@@ -35,7 +35,7 @@ return new class extends Migration {
             $table->string('documento_identidad')->nullable();
             $table->string('documento_tarjeta_registro')->nullable();
             $table->string('documento_domicilio')->nullable();
-            $table->string('carta_responsabilidad')->nullable();
+            $table->string('formulario_firmado')->nullable();
             $table->unsignedBigInteger('pais_id')->nullable();
             $table->unsignedBigInteger('departamento_id')->nullable();
             $table->unsignedBigInteger('municipio_id')->nullable();

@@ -5,6 +5,10 @@
     font-weight: 500;
 }
 
+.dangerbtn {
+    font-size: 20px;
+}
+
 .action-title {
     color: var(--action-title);
 }

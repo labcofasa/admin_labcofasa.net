@@ -6,7 +6,7 @@
     <div class="container">
         <x-formularios.encabezado />
 
-        <h1 class="titulo">Formulario "Conozca a su Cliente"</h1>
+        <h1 class="titulo">Formulario "Conozca a su Cliente y Contraparte"</h1>
 
         @if (session('success'))
             <div class="alert alert-success text-center" role="alert">
@@ -548,15 +548,23 @@
                         </div>
                     </div>
                 </div>
-                <span class="mb-2">Por favor, adjunte su carta de responsabilidad, la cual descargó al inicio.</span>
+                <span class="mb-3">Validación de datos</span>
+
+                <p>Para continuar con el proceso, es indispensable que descargue el formulario con los
+                    datos que ha proporcionado haciendo clic en el botón <strong>Descargar formulario</strong>.
+                    Posteriormente, deberá
+                    <strong>imprimirlo</strong>, <strong>firmarlo, sellarlo</strong> y <strong>escanearlo</strong> para
+                    enviarlo en el
+                    siguiente paso.
+                </p>
                 <div class="col-sm-6">
                     <div class="mb-3">
-                        <label for="carta_responsabilidad" class="form-label">Carta de responsabilidad</label>
+                        <label for="formulario_firmado" class="form-label">Archivo del formulario firmado</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="carta_responsabilidad"
-                                name="carta_responsabilidad" required accept=".pdf, .docx, .jpg, .png, .jpeg">
+                            <input type="file" class="form-control" id="formulario_firmado" name="formulario_firmado"
+                                required accept=".pdf, .docx, .jpg, .png, .jpeg">
                             <div class="invalid-feedback">
-                                Por favor, adjunte su carta de responsabilidad.
+                                Por favor, adjunte el archivo del formulario.
                             </div>
                         </div>
                     </div>
@@ -569,15 +577,38 @@
             <x-formularios.enviar />
         </form>
 
+        <button type="submit" class="descargar-form">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
+                fill="none">
+                <path
+                    d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M4.5 7.5C4.99153 8.0057 6.29977 10 7 10M9.5 7.5C9.00847 8.0057 7.70023 10 7 10M7 10L7 2"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Descargar formulario
+        </button>
+
         <div class="row text-center">
             <div class="col">
-                <button class="btn button" data-bs-toggle="modal" data-bs-target="#enviarFormulario">Enviar
-                    formulario</button>
+                <button class="enviar-form" data-bs-toggle="modal" data-bs-target="#enviarFormulario">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                        color="#000000" fill="none">
+                        <path
+                            d="M21.0477 3.05293C18.8697 0.707363 2.48648 6.4532 2.50001 8.551C2.51535 10.9299 8.89809 11.6617 10.6672 12.1581C11.7311 12.4565 12.016 12.7625 12.2613 13.8781C13.3723 18.9305 13.9301 21.4435 15.2014 21.4996C17.2278 21.5892 23.1733 5.342 21.0477 3.05293Z"
+                            stroke="currentColor" stroke-width="1.8"></path>
+                        <path d="M11.5 12.5L15 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                    Enviar formulario
+                </button>
             </div>
         </div>
-    </div>
 
-    <x-formularios.modal />
+    </div>
 
     <script async src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
     <script async src="{{ asset('js/forms/conozca_cliente/forms_ccc.js') }}"></script>

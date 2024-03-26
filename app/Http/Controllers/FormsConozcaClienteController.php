@@ -91,7 +91,7 @@ class FormsConozcaClienteController extends Controller
             'documento_identificacion_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_matricula' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'carta_responsabilidad' => 'required|file|mimes:pdf,docx,jpg,png,jpeg',
+            'formulario_firmado' => 'required|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
         $direccionIp = $request->ip();
@@ -179,15 +179,15 @@ class FormsConozcaClienteController extends Controller
                 }
             }
 
-            if ($request->hasFile('carta_responsabilidad')) {
-                $cartaResponsabilidad = $request->file('carta_responsabilidad');
+            if ($request->hasFile('formulario_firmado')) {
+                $formulario_firmado = $request->file('formulario_firmado');
 
-                if ($cartaResponsabilidad->isValid()) {
-                    $nombreCartaResponsabilidad = time() . '_' . $cartaResponsabilidad->getClientOriginalName();
+                if ($formulario_firmado->isValid()) {
+                    $nombreFormulario_firmado = time() . '_' . $formulario_firmado->getClientOriginalName();
 
-                    $cartaResponsabilidad->move($rutaCarpeta, $nombreCartaResponsabilidad);
+                    $formulario_firmado->move($rutaCarpeta, $nombreFormulario_firmado);
 
-                    $formsccc->carta_responsabilidad = $nombreCartaResponsabilidad;
+                    $formsccc->formulario_firmado = $nombreFormulario_firmado;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }

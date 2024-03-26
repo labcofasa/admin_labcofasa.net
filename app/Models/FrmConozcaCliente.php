@@ -31,7 +31,7 @@ class FrmConozcaCliente extends Model
         'documento_identidad',
         'documento_tarjeta_registro',
         'documento_domicilio',
-        'carta_responsabilidad',
+        'formulario_firmado',
         'direccion_ip',
         'fecha_de_creacion',
         'fecha_de_modificacion'

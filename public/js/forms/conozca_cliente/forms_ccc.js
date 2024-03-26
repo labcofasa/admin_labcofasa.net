@@ -1,17 +1,5 @@
 $(document).ready(function () {
-    var modalFccc = localStorage.getItem('modalAbierto');
 
-    if (!modalFccc) {
-        var myModal = new bootstrap.Modal(document.getElementById('formccModal'), {
-            keyboard: false
-        });
-
-        window.onload = function () {
-            myModal.show();
-        };
-
-        localStorage.setItem('modalAbierto', 'true');
-    }
     const forms = document.querySelectorAll('.needs-validation')
 
     Array.from(forms).forEach(form => {
