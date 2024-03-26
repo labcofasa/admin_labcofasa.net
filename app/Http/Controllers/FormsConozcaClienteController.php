@@ -631,12 +631,4 @@ class FormsConozcaClienteController extends Controller
             return response()->json(['error' => 'Error interno del servidor.'], 500);
         }
     }
-
-    public function descargarPdf()
-    {
-        $rutaPdf = public_path('docs/forms/fccc/carta.pdf');
-        $nombrePdf = 'carta.pdf';
-
-        return response()->download($rutaPdf, $nombrePdf);
-    }
 }

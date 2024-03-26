@@ -203,7 +203,6 @@ Route::middleware(['web'])->group(function () {
     Route::get('/obtener-giros', [GiroController::class, 'obtenerGiros']);
     Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])->middleware('cors');
     Route::get('/obtener-clasificaciones', [ClasificacionController::class, 'obtenerClasificaciones']);
-    Route::get('/descargar-pdf', [FormsConozcaClienteController::class, 'descargarPdf'])->name('descargar.carta')->middleware('cors');
 
     /* Logo de la empresa */
     Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
