@@ -386,7 +386,7 @@
                     </button>
                 </div>
 
-                <span class="mb-2">Declaración jurada de origin de fondos</span>
+                <span class="mb-2">Declaración jurada de origen de fondos</span>
                 <p>a) Todos los fondos, transferencias, depósitos, productos o servicios que entreguemos tendrán un origen
                     lícito, y por ende, no estarán relacionados con los delitos de lavado de dinero y activos,
                     financiamiento al terrorismo, descritos en el artículo 6 de la Ley Contra el Lavado de Dinero y de
@@ -591,7 +591,7 @@
                 </div>
             </div>
 
-            <button type="submit" name="generar_pdf" class="descargar-form">
+            <button type="submit" name="accion" value="generar_pdf" class="descargar-form">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                     color="#000000" fill="none">
                     <path

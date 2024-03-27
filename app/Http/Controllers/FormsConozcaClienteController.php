@@ -30,11 +30,13 @@ class FormsConozcaClienteController extends Controller
 
     public function procesarFormulario(Request $request)
     {
-        if ($request->has('generar_pdf')) {
+        $accion = $request->input('accion');
+
+        if ($accion === 'generar_pdf') {
             return $this->generarPDF($request);
         }
 
-        if ($request->has('guardar_formulario')) {
+        if ($accion === 'guardar_formulario') {
             return $this->store($request);
         }
     }
