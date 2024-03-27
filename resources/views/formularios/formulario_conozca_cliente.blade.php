@@ -419,7 +419,7 @@
                 <div class="row justify-content-center row-cols-3 row-cols-lg-5 mb-3">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="cargoPublico" id="cargoPublicoSI"
+                            <input class="form-check-input" type="radio" name="cargo_publico" id="cargoPublicoSI"
                                 value="SI">
                             <label class="form-check-label mx-3" for="cargoPublicoSI">
                                 SI
@@ -428,7 +428,7 @@
                     </div>
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="cargoPublico" value="NO"
+                            <input class="form-check-input" type="radio" name="cargo_publico" value="NO"
                                 id="cargoPublicoNO" checked>
                             <label class="form-check-label mx-3" for="cargoPublicoNO">
                                 NO
@@ -438,12 +438,13 @@
                 </div>
 
                 <p>¿Tiene usted o algún miembro, funcionario o administrador algún familiar, hasta el 2do grado de
-                    consanguinidad y afinidad, que desempeñe algún el 10% o más del capital accionario de su empresa?.</p>
+                    consanguinidad y afinidad, que desempeñe algún cargo público y que posea el 10% o más del capital
+                    accionario de su empresa?.</p>
                 <div class="row justify-content-center row-cols-3 row-cols-lg-5 mb-4">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="capitalAccionario"
-                                id="capitalAccionarioSI">
+                            <input class="form-check-input" type="radio" name="familiar_publico"
+                                id="capitalAccionarioSI" value="SI">
                             <label class="form-check-label mx-3" for="capitalAccionarioSI">
                                 SI
                             </label>
@@ -451,8 +452,8 @@
                     </div>
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="capitalAccionario"
-                                id="capitalAccionarioNO" checked>
+                            <input class="form-check-input" type="radio" name="familiar_publico"
+                                id="capitalAccionarioNO" value="NO" checked>
                             <label class="form-check-label mx-3" for="capitalAccionarioNO">
                                 NO
                             </label>

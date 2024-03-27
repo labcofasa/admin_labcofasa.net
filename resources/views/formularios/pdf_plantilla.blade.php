@@ -238,7 +238,6 @@
         </tbody>
     </table>
     <br>
-    <br>
     <h6 class="subtitulo">C. Información de la administración, sus accionistas o miembros</h6>
     <br>
     <table>
@@ -313,6 +312,14 @@
         </tbody>
     </table>
     <h6 class="subtitulo">D. Información de Personas Expuestas Políticamente - PEP's</h6>
+    <p class="datos">¿Usted, o algún socio, accionista, miembro, administrador o director, desempeña o ha desempeñado
+        algún cargo como funcionario público en el país o en el extranjero?.</p>
+    <p class="datos">Su respuesta: {{ $cargo_publico }}</p>
+    <p class="datos">¿Tiene usted o algún miembro, funcionario o administrador algún familiar, hasta el 2do grado de
+        consanguinidad y afinidad, que desempeñe algún cargo público y que posea el 10% o más del capital accionario de
+        su empresa?.</p>
+    <p class="datos">Su respuesta: {{ $familiar_publico }}</p>
+
     <span>I. Identificación general del titular</span>
     <br>
     <br>

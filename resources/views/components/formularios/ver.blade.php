@@ -23,8 +23,7 @@
                         <div class="col-md-3">
                             <div class="form-group mb-3">
                                 <label for="tipo" class="form-label">Tipo</label>
-                                <input type="text" id="tipo" name="tipo" class="form-control"
-                                    disabled>
+                                <input type="text" id="tipo" name="tipo" class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -260,6 +259,22 @@
                             </div>
                         </div>
                         <span class="mb-3">Formulario de identificación de personas expuestas políticamente</span>
+                        <div class="col-md-3">
+                            <div class="form-group mb-3">
+                                <label for="cargo_publico" class="form-label">Es persona políticamente
+                                    expuestas</label>
+                                <input type="text" id="cargo_publico" name="cargo_publico" class="form-control"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-3">
+                                <label for="familiar_publico" class="form-label">Tiene algún familiar en cargos
+                                    públicos</label>
+                                <input type="text" id="familiar_publico" name="familiar_publico"
+                                    class="form-control" disabled>
+                            </div>
+                        </div>
                         <span class="mb-3">Identificación general del titular</span>
                         <div class="col-md-3">
                             <div class="form-group mb-3">
@@ -344,7 +359,8 @@
                             <div class="mb-3">
                                 <label for="monto_mensual" class="form-label">Monto aproximado de ingresos
                                     mensuales</label>
-                                <input type="text" class="form-control" id="monto_mensual" name="monto_mensual" disabled>
+                                <input type="text" class="form-control" id="monto_mensual" name="monto_mensual"
+                                    disabled>
                             </div>
                         </div>
                         <span class="mb-3">Archivos adjuntos</span>

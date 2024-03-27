@@ -75,6 +75,8 @@ class FormsConozcaClienteController extends Controller
             'numero_de_fax_juridico' => 'nullable|string',
             'direccion_juridico' => 'nullable|string',
             'monto_proyectado' => 'nullable|string',
+            'cargo_publico' => 'required|in:SI,NO',
+            'familiar_publico' => 'required|in:SI,NO',
             'nombre_accionista.*' => 'nullable|string',
             'nacionalidad_accionista.*' => 'nullable|string',
             'numero_identidad_accionista.*' => 'nullable|string',
@@ -141,6 +143,8 @@ class FormsConozcaClienteController extends Controller
             $formsccc->giro_id = $request->input('giro_id');
             $formsccc->fecha_de_nombramiento = $request->input('fecha_de_nombramiento');
             $formsccc->direccion = $request->input('direccion');
+            $formsccc->cargo_publico = $request->input('cargo_publico');
+            $formsccc->familiar_publico = $request->input('familiar_publico');
             $formsccc->direccion_ip = $direccionIp;
             $formsccc->fecha_de_creacion = now();
             $formsccc->fecha_de_modificacion = now();
@@ -601,6 +605,8 @@ class FormsConozcaClienteController extends Controller
                 'numero_de_fax_juridico' => $form->numero_de_fax_juridico,
                 'direccion_juridico' => $form->direccion_juridico,
                 'monto_proyectado' => $form->monto_proyectado,
+                'cargo_publico' => $form->cargo_publico,
+                'familiar_publico' => $form->familiar_publico,
 
                 'nombre_politico' => $form->nombre_politico,
                 'nombre_cargo_politico' => $form->nombre_cargo_politico,
@@ -717,6 +723,8 @@ class FormsConozcaClienteController extends Controller
         $telefono_juridico = $request->input('telefono_juridico') ?: 'Campo vacío';
         $direccion_juridico = $request->input('direccion_juridico') ?: 'Campo vacío';
         $monto_proyectado = $request->input('monto_proyectado') ?: 'Campo vacío';
+        $cargo_publico = $request->input('cargo_publico') ?: 'Campo vacío';
+        $familiar_publico = $request->input('familiar_publico') ?: 'Campo vacío';
         $nombre_politico = $request->input('nombre_politico') ?: 'Campo vacío';
         $nombre_cargo_politico = $request->input('nombre_cargo_politico') ?: 'Campo vacío';
         $fecha_desde_politico = $request->input('fecha_desde_politico') ?: 'Campo vacío';
@@ -812,6 +820,8 @@ class FormsConozcaClienteController extends Controller
                 'telefono_juridico',
                 'direccion_juridico',
                 'monto_proyectado',
+                'cargo_publico',
+                'familiar_publico',
                 'nombre_politico',
                 'nombre_cargo_politico',
                 'fecha_desde_politico',

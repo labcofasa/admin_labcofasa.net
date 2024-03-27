@@ -236,6 +236,8 @@ $(document).ready(function () {
         var direccion_juridico = row.direccion_juridico;
         var giro_juridico = row.giro_juridico;
         var monto_proyectado = row.monto_proyectado;
+        var cargo_publico = row.cargo_publico;
+        var familiar_publico = row.familiar_publico;
 
         var nombre_politico = row.nombre_politico;
         var nombre_cargo_politico = row.nombre_cargo_politico;
@@ -285,6 +287,8 @@ $(document).ready(function () {
         $("#direccion_juridico").val(direccion_juridico);
         $("#giro_juridico").val(giro_juridico);
         $("#monto_proyectado").val(monto_proyectado);
+        $("#cargo_publico").val(cargo_publico);
+        $("#familiar_publico").val(familiar_publico);
 
         $("#nombre_politico").val(nombre_politico);
         $("#nombre_cargo_politico").val(nombre_cargo_politico);
