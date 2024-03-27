@@ -234,6 +234,7 @@
             <tr>
                 <td class="datos" scope="col">{{ $nombre_politico }}</td>
                 <td class="datos" scope="col">{{ $nombre_cargo_politico }}</td>
+                <td class="datos" scope="col">{{ $fecha_desde_politico }}</td>
                 <td class="datos" scope="col">{{ $fecha_hasta_politico }}</td>
             </tr>
         </tbody>

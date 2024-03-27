@@ -106,7 +106,7 @@ class FormsConozcaClienteController extends Controller
             'documento_identificacion_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_matricula' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'formulario_firmado' => 'required|file|mimes:pdf,docx,jpg,png,jpeg',
+            'formulario_firmado' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
         $direccionIp = $request->ip();
