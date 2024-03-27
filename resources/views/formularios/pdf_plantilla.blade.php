@@ -64,7 +64,7 @@
             </tr>
         </tbody>
     </table>
-    <h6 class="subtitulo">A. Información persona natural - representante legal</h6>
+    <h6 class="subtitulo">A. Información Persona Natural - Representante Legal</h6>
     <br>
     <table>
         <thead>
@@ -161,7 +161,7 @@
         </tbody>
     </table>
     <br>
-    <h6 class="subtitulo">B. Información persona jurídica</h6>
+    <h6 class="subtitulo">B. Información Persona Jurídica</h6>
     <br>
     <table>
         <thead>
@@ -238,7 +238,7 @@
         </tbody>
     </table>
     <br>
-    <h6 class="subtitulo">C. Información de la administración, sus accionistas o miembros</h6>
+    <h6 class="subtitulo">C. Información de la Administración, sus Accionistas o Miembros</h6>
     <br>
     <table>
         <thead>
@@ -285,7 +285,7 @@
         </tbody>
     </table>
     <br>
-    <h6 class="subtitulo">Declaración jurada de origin de fondos</h6>
+    <h6 class="subtitulo">Declaración jurada de origen de fondos</h6>
     <p class="datos">a) Todos los fondos, transferencias, depósitos, productos o servicios que entreguemos tendrán un
         origen
         lícito, y por ende, no estarán relacionados con los delitos de lavado de dinero y activos,
@@ -442,6 +442,5 @@
     <br>
     <h4>Firma/sellos Persona Natural o Representante Legal: ______________________</h4>
 </body>
-
 
 </html>

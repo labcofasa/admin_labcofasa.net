@@ -297,7 +297,7 @@ class FormsConozcaClienteController extends Controller
             'documento_identidad' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_tarjeta_registro' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_domicilio' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_escritura' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_escritura.*' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_acuerdo' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_nit' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_credencial' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
@@ -453,6 +453,21 @@ class FormsConozcaClienteController extends Controller
                     $formsccj->documento_escritura = $nombreDocumentoEscritura;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_escritura')) {
+                $documentosEscritura = $request->file('documento_escritura');
+            
+                foreach ($documentosEscritura as $documentoEscritura) {
+                    if ($documentoEscritura->isValid()) {
+                        $nombreDocumentoEscritura = time() . '_' . $documentoEscritura->getClientOriginalName();
+            
+                        $documentoEscritura->move($rutaCarpetaJuridico, $nombreDocumentoEscritura);
+                        
+                    } else {
+                        return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                    }
                 }
             }
 

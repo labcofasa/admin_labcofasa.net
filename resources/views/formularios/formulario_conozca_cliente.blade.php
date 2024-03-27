@@ -29,7 +29,7 @@
             method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
-            <span>A. Información persona natural - representante legal</span>
+            <span>A. Información Persona Natural - Representante Legal</span>
 
             <div class="row pt-3">
                 <div class="col-sm-6">
@@ -132,7 +132,10 @@
                             <option value="">Seleccione el documento</option>
                             <option value="DUI">DUI</option>
                             <option value="NIT">NIT</option>
-                            <option value="CARNÉ DE RESIDENTE">CARNÉ DE RESIDENTE</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="Tarjeta de Residente">Tarjeta de Residente</option>
+                            <option value="Documento Diplomático">Documento Diplomático</option>
+                            <option value="Carnet de Minoridad">Carnet de Minoridad</option>
                         </select>
                     </div>
                 </div>
@@ -194,7 +197,7 @@
                         <textarea class="form-control" name="direccion" id="direccion" style="height: 100px"></textarea>
                     </div>
                 </div>
-                <span class="mb-3">B. Información persona jurídica</span>
+                <span class="mb-3">B. Información Persona Jurídica</span>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="nombre_comercial_juridico" class="form-label">Nombre comercial</label>
@@ -307,7 +310,7 @@
                         <textarea class="form-control" id="direccion_juridico" name="direccion_juridico" style="height: 100px"></textarea>
                     </div>
                 </div>
-                <span>C. Información de la administración, sus accionistas o miembros</span>
+                <span>C. Información de la Administración, sus Accionistas o Miembros</span>
                 <p>I. Detallar al beneficiario final, siendo esta persona natural con control igual o mayor al 10% de
                     participación
                     accionaria en la sociedad.</p>
@@ -465,108 +468,9 @@
                     <x-formularios.formulario_personas_expuestas />
                 </div>
 
-                <span class="mb-2">Documentos anexos a este formulario</span>
-                <span class="mb-2 text-center">Persona natural</span>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_identidad" class="form-label">Copia de DUI, Pasaporte o Carnet de
-                            Residente</label>
-                        <input type="file" class="form-control" id="documento_identidad" name="documento_identidad"
-                            accept=".pdf, .docx, .jpg, .png, .jpeg">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_tarjeta_registro" class="form-label">Copia Tarjeta de Registro de
-                            Contribuyente (Si aplica)</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_tarjeta_registro"
-                                name="documento_tarjeta_registro" accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_domicilio" class="form-label">Copia de comprobante de
-                            domicilio</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_domicilio"
-                                name="documento_domicilio" accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
-                <span class="mb-2 text-center">Persona juridica</span>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_escritura" class="form-label">Copia de Escritura de Constitución (Para
-                            Sociedades)</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_escritura"
-                                name="documento_escritura" accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_acuerdo" class="form-label">Acuerdo ejecutivo, Decreto o Acta de
-                            Constitución (para asociaciones, cooperativas, ONG's, Otros)</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_acuerdo" name="documento_acuerdo"
-                                accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_nit" class="form-label">Copia de NIT y Número de Registro
-                            Contribuyente</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_nit" name="documento_nit"
-                                accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_credencial" class="form-label">Copia credencial de elección del
-                            Representante Legal</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_credencial"
-                                name="documento_credencial" accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_identificacion_representante" class="form-label">Copia de DUI, NIT del
-                            Representante
-                            Legal</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_identificacion_representante"
-                                name="documento_identificacion_representante" accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_matricula" class="form-label">Matrícula de Comercio
-                            vigente</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_matricula"
-                                name="documento_matricula" accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="documento_domicilio_juridico" class="form-label">Copia de comprobante de
-                            domicilio</label>
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="documento_domicilio_juridico"
-                                name="documento_domicilio_juridico" accept=".pdf, .docx, .jpg, .png, .jpeg">
-                        </div>
-                    </div>
-                </div>
+                <h5 class="mb-2 text-center fw-bold">Documentos anexos</h5>
+                
+                <x-formularios.archivos />
 
                 <span class="mb-3">Validación de datos</span>
 
