@@ -97,6 +97,7 @@ $(document).ready(function () {
                         `;
                     },
                 },
+                { data: "tipo", title: "Tipo" },
                 { data: "tipo_persona", title: "Tipo persona" },
                 { data: "nombre", title: "Nombre" },
                 { data: "apellido", title: "Apellidos" },
@@ -199,6 +200,7 @@ $(document).ready(function () {
 
         modal.find(".modal-title").text(clienteTipoPersona + " con el documento " + clienteTipoDoc + ": " + clienteDocumento);
 
+        var tipo = row.tipo;
         var tipo_persona = row.tipo_persona;
         var nombre = row.nombre;
         var apellido = row.apellido;
@@ -248,6 +250,7 @@ $(document).ready(function () {
         var monto_mensual = row.monto_mensual;
 
         $("#frm_cccid").val(fccId);
+        $("#tipo").val(tipo);
         $("#tipo_persona").val(tipo_persona);
         $("#nombre_cliente").val(nombre);
         $("#apellido_cliente").val(apellido);

@@ -25,13 +25,26 @@
             Contraparte", de acuerdo con los Arts. 9-B, 10 literal A, Romano I y II de la Ley Contra el Lavado de Dinero y
             de Activos, y el Art. 4 del Reglamento de la Ley.</p>
 
-        <form id="forms_ccc" class="form needs-validation" novalidate action="{{ route('procesar.formulario') }}" method="POST"
-            enctype="multipart/form-data">
+        <form id="forms_ccc" class="form needs-validation" novalidate action="{{ route('procesar.formulario') }}"
+            method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
             <span>A. Información persona natural - representante legal</span>
 
             <div class="row pt-3">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo</label>
+                        <select class="form-select" id="tipo" name="tipo" required>
+                            <option value="">Seleccione el tipo</option>
+                            <option value="Cliente">Cliente</option>
+                            <option value="Proveedor">Proveedor</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, seleccione el tipo.
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="tipo_persona" class="form-label">Tipo de persona</label>
@@ -373,13 +386,41 @@
                     </button>
                 </div>
 
+                <span class="mb-2">Declaración jurada de origin de fondos</span>
+                <p>a) Todos los fondos, transferencias, depósitos, productos o servicios que entreguemos tendrán un origen
+                    lícito, y por ende, no estarán relacionados con los delitos de lavado de dinero y activos,
+                    financiamiento al terrorismo, descritos en el artículo 6 de la Ley Contra el Lavado de Dinero y de
+                    Activos, y ningún otro tipo de delito o actividad ilícita. Se permitirá cualquier procedimiento de
+                    investigación por parte de la COMPAÑÍA FARMACÉUTICA S.A. de C.V. y/o las autoridades correspondientes.
+                </p>
+                <p>b) Manifiesto que el pago de los productos y servicios tiene origen en la actividad económica a la que me
+                    dedico, y el monto proyectado de productos, compras o facturación mensual será el siguiente.</p>
+
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="monto_proyectado" class="form-label">Monto proyectado mensual</label>
+                        <input type="text" class="form-control" id="monto_proyectado" name="monto_proyectado">
+                    </div>
+                </div>
+                <p>c) Declaro bajo juramento, por derecho propio, que someto todos los actos que realice a través de
+                    cualquier operación que implique recepción, entrega o transferencia de fondos de cualquier tipo de
+                    depósito, bajo cualquier modalidad con la COMPAÑÍA FARMACÉUTICA S.A. de C.V., a sus condiciones
+                    contractuales y reglamentarias. Me comprometo a que todos los valores que entregue o reciba tendrán un
+                    origen y un destino que de ninguna manera estarán relacionados con los delitos generados de lavado de
+                    dinero y de activos descritos en la Ley Contra el Lavado de Dinero y de Activos, ni a ningún tipo de
+                    actividad ilícita. Asimismo, me declaro en la disposición de permitir cualquier procedimiento de
+                    investigación por parte de las autoridades correspondientes y eximo a COMPAÑÍA FARMACÉUTICA S.A. de
+                    C.V., de toda responsabilidad que se derive por información errónea, falsa o inexacta que yo hubiere
+                    proporcionado en este formulario.</p>
+
                 <span>D. Información de Personas Expuestas Políticamente - PEP's</span>
                 <p>¿Usted, o algún socio, accionista, miembro, administrador o director, desempeña o ha desempeñado algún
                     cargo como funcionario público en el país o en el extranjero?.</p>
                 <div class="row justify-content-center row-cols-3 row-cols-lg-5 mb-3">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="cargoPublico" id="cargoPublicoSI">
+                            <input class="form-check-input" type="radio" name="cargoPublico" id="cargoPublicoSI"
+                                value="SI">
                             <label class="form-check-label mx-3" for="cargoPublicoSI">
                                 SI
                             </label>
@@ -387,8 +428,8 @@
                     </div>
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="cargoPublico" id="cargoPublicoNO"
-                                checked>
+                            <input class="form-check-input" type="radio" name="cargoPublico" value="NO"
+                                id="cargoPublicoNO" checked>
                             <label class="form-check-label mx-3" for="cargoPublicoNO">
                                 NO
                             </label>
@@ -419,32 +460,9 @@
                     </div>
                 </div>
 
-                <span class="mb-2">Declaración jurada de origin de fondos</span>
-                <p>a) Todos los fondos, transferencias, depósitos, productos o servicios que entreguemos tendrán un origen
-                    lícito, y por ende, no estarán relacionados con los delitos de lavado de dinero y activos,
-                    financiamiento al terrorismo, descritos en el artículo 6 de la Ley Contra el Lavado de Dinero y de
-                    Activos, y ningún otro tipo de delito o actividad ilícita. Se permitirá cualquier procedimiento de
-                    investigación por parte de la COMPAÑÍA FARMACÉUTICA S.A. de C.V. y/o las autoridades correspondientes.
-                </p>
-                <p>b) Manifiesto que el pago de los productos y servicios tiene origen en la actividad económica a la que me
-                    dedico, y el monto proyectado de productos, compras o facturación mensual será el siguiente.</p>
-
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="monto_proyectado" class="form-label">Monto proyectado mensual</label>
-                        <input type="text" class="form-control" id="monto_proyectado" name="monto_proyectado">
-                    </div>
+                <div class="campos-adicionales pt-5">
+                    <x-formularios.formulario_personas_expuestas />
                 </div>
-                <p>c) Declaro bajo juramento, por derecho propio, que someto todos los actos que realice a través de
-                    cualquier operación que implique recepción, entrega o transferencia de fondos de cualquier tipo de
-                    depósito, bajo cualquier modalidad con la COMPAÑÍA FARMACÉUTICA S.A. de C.V., a sus condiciones
-                    contractuales y reglamentarias. Me comprometo a que todos los valores que entregue o reciba tendrán un
-                    origen y un destino que de ninguna manera estarán relacionados con los delitos generados de lavado de
-                    dinero y de activos descritos en la Ley Contra el Lavado de Dinero y de Activos, ni a ningún tipo de
-                    actividad ilícita. Asimismo, me declaro en la disposición de permitir cualquier procedimiento de
-                    investigación por parte de las autoridades correspondientes y eximo a COMPAÑÍA FARMACÉUTICA S.A. de
-                    C.V., de toda responsabilidad que se derive por información errónea, falsa o inexacta que yo hubiere
-                    proporcionado en este formulario.</p>
 
                 <span class="mb-2">Documentos anexos a este formulario</span>
                 <span class="mb-2 text-center">Persona natural</span>
@@ -548,6 +566,7 @@
                         </div>
                     </div>
                 </div>
+
                 <span class="mb-3">Validación de datos</span>
 
                 <p>Para continuar con el proceso, es indispensable que descargue el formulario con los
@@ -562,15 +581,12 @@
                         <label for="formulario_firmado" class="form-label">Archivo del formulario firmado</label>
                         <div class="input-group mb-3">
                             <input type="file" class="form-control" id="formulario_firmado" name="formulario_firmado"
-                             accept=".pdf, .docx, .jpg, .png, .jpeg">
+                                accept=".pdf, .docx, .jpg, .png, .jpeg">
                             <div class="invalid-feedback">
                                 Por favor, adjunte el archivo del formulario.
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="campos-adicionales pt-5">
-                    <x-formularios.formulario_personas_expuestas />
                 </div>
             </div>
 

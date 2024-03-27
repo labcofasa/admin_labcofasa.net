@@ -16,6 +16,7 @@ return new class extends Migration {
     {
         Schema::create('frm_conozca_cliente', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo')->nullable();
             $table->string('tipo_persona')->nullable();
             $table->boolean('estado')->default(false);
             $table->string('nombre')->nullable();

@@ -152,5 +152,5 @@
     <p class="mb-3">Yo el Suscrito, declaro bajo juramento que la información proporcionada en el presente Formulario
         es veraz y fidedigna en mi condición de Persona Expuesta Políticamente de conformidad a lo establecido en el
         Art. 9-B de la Ley contra el Lavado de Dinero y Activos, por lo cual estoy dispuesto a suministrar la
-        información requerida por las Políticas internas de la COMPAÑIA FARMACEUTICA S.A. de C.V. </p>
+        información requerida por las Políticas internas de la COMPAÑIA FARMACEUTICA S.A. de C.V.</p>
 </div>

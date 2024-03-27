@@ -18,6 +18,7 @@ use App\Models\Pais;
 use Illuminate\Http\Request;
 use TCPDF;
 use DateTime;
+use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 
 class FormsConozcaClienteController extends Controller
@@ -40,6 +41,7 @@ class FormsConozcaClienteController extends Controller
     {
 
         $this->validate($request, [
+            'tipo' => 'nullable|string',
             'tipo_persona' => 'nullable|string',
             'nombre' => 'nullable|string',
             'apellido' => 'nullable|string',
@@ -120,6 +122,7 @@ class FormsConozcaClienteController extends Controller
         try {
             $formsccc = new FrmConozcaCliente();
 
+            $formsccc->tipo = $request->input('tipo');
             $formsccc->tipo_persona = $request->input('tipo_persona');
             $formsccc->nombre = $request->input('nombre');
             $formsccc->apellido = $request->input('apellido');
@@ -493,9 +496,10 @@ class FormsConozcaClienteController extends Controller
             ->leftJoin('municipios as municipio_politico', 'frm_conozca_cliente_politico.municipio_id', '=', 'municipio_politico.id')
             ->orderBy('frm_conozca_cliente.fecha_de_creacion', 'desc');
 
-        if (!empty ($search)) {
+        if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('frm_conozca_cliente.nombre', 'like', '%' . $search . '%')
+                    ->orWhere('frm_conozca_cliente.tipo', 'like', '%' . $search . '%')
                     ->orWhere('frm_conozca_cliente.tipo_persona', 'like', '%' . $search . '%')
                     ->orWhere('frm_conozca_cliente.apellido', 'like', '%' . $search . '%')
                     ->orWhere('frm_conozca_cliente.registro_iva_nrc', 'like', '%' . $search . '%')
@@ -561,6 +565,7 @@ class FormsConozcaClienteController extends Controller
             $data[] = [
                 'id' => $form->id,
                 'contador' => $contador++,
+                'tipo' => $form->tipo,
                 'tipo_persona' => $form->tipo_persona,
                 'estado' => $form->estado,
                 'nombre' => $form->nombre,
@@ -649,6 +654,8 @@ class FormsConozcaClienteController extends Controller
 
     public function generarPDF(Request $request)
     {
+        $fecha_generacion = Carbon::now()->toDateTimeString();
+
         $pais_id = $request->input('pais_id');
         $pais = $pais_id ? Pais::find($pais_id)->nombre : 'Campo vacío';
 
@@ -685,6 +692,7 @@ class FormsConozcaClienteController extends Controller
         $clasificacion_juridico_id = $request->input('clasificacion_juridico_id');
         $clasificacion = $clasificacion_juridico_id ? Clasificacion::find($clasificacion_juridico_id)->nombre : 'Campo vacío';
 
+        $tipo = $request->input('tipo') ?: 'Campo vacío';
         $tipo_persona = $request->input('tipo_persona') ?: 'Campo vacío';
         $nombre = $request->input('nombre') ?: 'Campo vacío';
         $apellido = $request->input('apellido') ?: 'Campo vacío';
@@ -706,23 +714,71 @@ class FormsConozcaClienteController extends Controller
         $registro_nrc_juridico = $request->input('registro_nrc_juridico') ?: 'Campo vacío';
         $sitio_web_juridico = $request->input('sitio_web_juridico') ?: 'Campo vacío';
         $numero_de_fax_juridico = $request->input('numero_de_fax_juridico') ?: 'Campo vacío';
+        $telefono_juridico = $request->input('telefono_juridico') ?: 'Campo vacío';
         $direccion_juridico = $request->input('direccion_juridico') ?: 'Campo vacío';
-
-        // $nombre_accionista = $request->input('nombre_accionista') ?: 'Campo vacío';
-        // $nacionalidad_accionista = $request->input('nacionalidad_accionista') ?: 'Campo vacío';
-        // $numero_identidad_accionista = $request->input('numero_identidad_accionista') ?: 'Campo vacío';
-        // $porcentaje_participacion_accionista = $request->input('porcentaje_participacion_accionista') ?: 'Campo vacío';
-
+        $monto_proyectado = $request->input('monto_proyectado') ?: 'Campo vacío';
         $nombre_politico = $request->input('nombre_politico') ?: 'Campo vacío';
         $nombre_cargo_politico = $request->input('nombre_cargo_politico') ?: 'Campo vacío';
         $fecha_desde_politico = $request->input('fecha_desde_politico') ?: 'Campo vacío';
         $fecha_hasta_politico = $request->input('fecha_hasta_politico') ?: 'Campo vacío';
         $nombre_cliente_politico = $request->input('nombre_cliente_politico') ?: 'Campo vacío';
         $porcentaje_participacion_politico = $request->input('porcentaje_participacion_politico') ?: 'Campo vacío';
+        $fuente_ingreso = $request->input('fuente_ingreso') ?: 'Campo vacío';
+        $monto_mensual = $request->input('monto_mensual') ?: 'Campo vacío';
+
+        $accionistas = [];
+        foreach ($request->input('nombre_accionista', []) as $key => $nombreAccionista) {
+            $nacionalidadAccionista = $request->input('nacionalidad_accionista.' . $key) ?: 'Campo vacío';
+            $noIdentificacion = str_replace('-', '', $request->input('numero_identidad_accionista.' . $key)) ?: 'Campo vacío';
+            $porcentajeParticipacion = $request->input('porcentaje_participacion_accionista.' . $key) ?: 'Campo vacío';
+
+            $accionistas[] = [
+                'nombre_accionista' => $nombreAccionista ?: 'Campo vacío',
+                'nacionalidad_accionista' => $nacionalidadAccionista,
+                'numero_identidad_accionista' => $noIdentificacion,
+                'porcentaje_participacion_accionista' => $porcentajeParticipacion,
+            ];
+        }
+
+        $miembros = [];
+        foreach ($request->input('nombre_miembro', []) as $key => $nombreMiembro) {
+            $nacionalidadMiembro = $request->input('nacionalidad_miembro.' . $key) ?: 'Campo vacío';
+            $noIdentificacionMiembro = str_replace('-', '', $request->input('numero_identidad_miembro.' . $key)) ?: 'Campo vacío';
+            $cargoMiembro = $request->input('cargo_miembro.' . $key) ?: 'Campo vacío';
+
+            $miembros[] = [
+                'nombre_miembro' => $nombreMiembro ?: 'Campo vacío',
+                'nacionalidad_miembro' => $nacionalidadMiembro,
+                'numero_identidad_miembro' => $noIdentificacionMiembro,
+                'cargo_miembro' => $cargoMiembro,
+            ];
+        }
+
+        $parientes = [];
+        foreach ($request->input('nombre_pariente', []) as $key => $nombrePariente) {
+            $parentesco = $request->input('parentesco.' . $key) ?: 'Campo vacío';
+
+            $parientes[] = [
+                'nombre_pariente' => $nombrePariente ?: 'Campo vacío',
+                'parentesco' => $parentesco,
+            ];
+        }
+
+        $socios = [];
+        foreach ($request->input('nombre_socio', []) as $key => $nombreSocio) {
+            $porcentajeParticipacionSocio = $request->input('porcentaje_participacion_socio.' . $key) ?: 'Campo vacío';
+
+            $socios[] = [
+                'nombre_socio' => $nombreSocio ?: 'Campo vacío',
+                'porcentaje_participacion_socio' => $porcentajeParticipacionSocio,
+            ];
+        }
 
         $html = view(
             'formularios.pdf_plantilla',
             compact(
+                'fecha_generacion',
+                'tipo',
                 'tipo_persona',
                 'nombre',
                 'apellido',
@@ -753,12 +809,9 @@ class FormsConozcaClienteController extends Controller
                 'municipio_juridico',
                 'sitio_web_juridico',
                 'numero_de_fax_juridico',
+                'telefono_juridico',
                 'direccion_juridico',
-                // 'nombre_accionista',
-                // 'nacionalidad_accionista',
-                // 'numero_identidad_accionista',
-                // 'porcentaje_participacion_accionista',
-
+                'monto_proyectado',
                 'nombre_politico',
                 'nombre_cargo_politico',
                 'fecha_desde_politico',
@@ -768,13 +821,20 @@ class FormsConozcaClienteController extends Controller
                 'municipio_politico',
                 'nombre_cliente_politico',
                 'porcentaje_participacion_politico',
+                'accionistas',
+                'miembros',
+                'parientes',
+                'socios',
+                'fuente_ingreso',
+                'monto_mensual',
             )
         )->render();
-
         $pdf = new TCPDF();
+        $pdf->SetHeaderData('', 0, '', '', array(0, 0, 0), array(255, 255, 255));
+        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->SetMargins(15, 10, 15);
         $pdf->AddPage();
         $pdf->writeHTML($html, true, false, true, false, '');
         $pdf->Output('formulario.pdf', 'D');
     }
-
 }
