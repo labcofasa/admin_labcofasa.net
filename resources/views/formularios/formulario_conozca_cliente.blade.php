@@ -51,7 +51,7 @@
                         <select class="form-select" id="tipo_persona" name="tipo_persona" required>
                             <option value="">Seleccione el tipo</option>
                             <option value="Persona natural">Persona natural</option>
-                            <option value="Representante legal">Representante legal</option>
+                            <option value="Representante legal">Personsa Jurídica</option>
                         </select>
                         <div class="invalid-feedback">
                             Por favor, seleccione el tipo de persona.
