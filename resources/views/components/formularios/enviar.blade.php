@@ -2,7 +2,7 @@
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
         <div class="modal-content">
-            <form id="forms_ccc" action="{{ route('enviar.formulario.ccc') }}" class="form needs-validation" novalidate
+            <form id="forms_ccc" action="{{ route('procesar.formulario') }}" class="form needs-validation" novalidate
                 method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
@@ -28,7 +28,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn-actions btn btn-secondary"
                         data-bs-dismiss="modal">No, cancelar</button>
-                    <button type="submit" class="btn-actions btn btn-success">Si, enviar formulario</button>
+                    <button type="submit" name="guardar_formulario" class="btn-actions btn btn-success">Si, enviar formulario</button>
                 </div>
             </form>
         </div>

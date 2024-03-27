@@ -1,0 +1,6 @@
+/* Bootstrap */
+@import url(styles/bootstrap/bootstrap.min.css);
+@import url(styles/bootstrap/bootstrap.min.css.map);
+
+/* Fuentes */
+@import url(fonts.css);

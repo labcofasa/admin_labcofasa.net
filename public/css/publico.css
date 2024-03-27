@@ -215,6 +215,7 @@ span {
 }
 
 .descargar-form:hover {
+    background-color: #B80000;
     box-shadow: none;
 }
 
@@ -243,6 +244,7 @@ span {
 }
 
 .enviar-form:hover {
+    background-color: #009049;
     box-shadow: none;
 }
 

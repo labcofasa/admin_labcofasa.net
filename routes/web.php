@@ -196,13 +196,16 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['web'])->group(function () {
     // Formularios
     Route::get('/formulario-conozca-cliente', [FormsConozcaClienteController::class, 'index'])->name('formulario');
-    Route::post('/enviar-formulario', [FormsConozcaClienteController::class, 'store'])->name('enviar.formulario.ccc');
     Route::get('/obtener-paises', [PaisController::class, 'index']);
     Route::get('/obtener-departamentos/{pais_id}', [DepartamentoController::class, 'index']);
     Route::get('/obtener-municipios/{departamento_id}', [MunicipioController::class, 'index']);
     Route::get('/obtener-giros', [GiroController::class, 'obtenerGiros']);
     Route::get('/obtener-avisos', [AvisoController::class, 'obtenerAvisos'])->middleware('cors');
     Route::get('/obtener-clasificaciones', [ClasificacionController::class, 'obtenerClasificaciones']);
+
+    Route::post('/procesar-formulario', [FormsConozcaClienteController::class, 'procesarFormulario'])->name('procesar.formulario');
+
+
 
     /* Logo de la empresa */
     Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);

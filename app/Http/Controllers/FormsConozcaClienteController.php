@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Clasificacion;
+use App\Models\Departamento;
 use App\Models\FrmConocaClienteAccionista;
 use App\Models\FrmConozcaCliente;
 use App\Models\FrmConozcaClienteJuridico;
@@ -10,7 +12,11 @@ use App\Models\FrmConozcaClienteMiembro;
 use App\Models\FrmConozcaClientePariente;
 use App\Models\FrmConozcaClientePolitico;
 use App\Models\FrmConozcaClienteSocio;
+use App\Models\Giro;
+use App\Models\Municipio;
+use App\Models\Pais;
 use Illuminate\Http\Request;
+use TCPDF;
 use DateTime;
 use Illuminate\Database\QueryException;
 
@@ -19,6 +25,15 @@ class FormsConozcaClienteController extends Controller
     public function index()
     {
         return view('formularios.formulario_conozca_cliente');
+    }
+
+    public function procesarFormulario(Request $request)
+    {
+        if ($request->has('generar_pdf')) {
+            return $this->generarPDF($request);
+        } else {
+            return $this->store($request);
+        }
     }
 
     public function store(Request $request)
@@ -631,4 +646,135 @@ class FormsConozcaClienteController extends Controller
             return response()->json(['error' => 'Error interno del servidor.'], 500);
         }
     }
+
+    public function generarPDF(Request $request)
+    {
+        $pais_id = $request->input('pais_id');
+        $pais = $pais_id ? Pais::find($pais_id)->nombre : 'Campo vacío';
+
+        $pais_juridico_id = $request->input('pais_juridico_id');
+        $pais_juridico = $pais_juridico_id ? Pais::find($pais_juridico_id)->nombre : 'Campo vacío';
+
+        $pais_politico_id = $request->input('pais_politico_id');
+        $pais_politico = $pais_politico_id ? Pais::find($pais_politico_id)->nombre : 'Campo vacío';
+
+        $departamento_id = $request->input('departamento_id');
+        $departamento = $departamento_id ? Departamento::find($departamento_id)->nombre : 'Campo vacío';
+
+        $departamento_juridico_id = $request->input('departamento_juridico_id');
+        $departamento_juridico = $departamento_juridico_id ? Departamento::find($departamento_juridico_id)->nombre : 'Campo vacío';
+
+        $departamento_politico_id = $request->input('departamento_politico_id');
+        $departamento_politico = $departamento_politico_id ? Departamento::find($departamento_politico_id)->nombre : 'Campo vacío';
+
+        $municipio_id = $request->input('municipio_id');
+        $municipio = $municipio_id ? Municipio::find($municipio_id)->nombre : 'Campo vacío';
+
+        $municipio_juridico_id = $request->input('municipio_juridico_id');
+        $municipio_juridico = $municipio_juridico_id ? Municipio::find($municipio_juridico_id)->nombre : 'Campo vacío';
+
+        $municipio_politico_id = $request->input('municipio_politico_id');
+        $municipio_politico = $municipio_politico_id ? Municipio::find($municipio_politico_id)->nombre : 'Campo vacío';
+
+        $giro_id = $request->input('giro_id');
+        $giro = $giro_id ? Giro::find($giro_id)->nombre : 'Campo vacío';
+
+        $giro_juridico_id = $request->input('giro_juridico_id');
+        $giro_juridico = $giro_juridico_id ? Giro::find($giro_juridico_id)->nombre : 'Campo vacío';
+
+        $clasificacion_juridico_id = $request->input('clasificacion_juridico_id');
+        $clasificacion = $clasificacion_juridico_id ? Clasificacion::find($clasificacion_juridico_id)->nombre : 'Campo vacío';
+
+        $tipo_persona = $request->input('tipo_persona') ?: 'Campo vacío';
+        $nombre = $request->input('nombre') ?: 'Campo vacío';
+        $apellido = $request->input('apellido') ?: 'Campo vacío';
+        $fecha_de_nacimiento = $request->input('fecha_de_nacimiento') ?: 'Campo vacío';
+        $nacionalidad = $request->input('nacionalidad') ?: 'Campo vacío';
+        $profesion_u_oficio = $request->input('profesion_u_oficio') ?: 'Campo vacío';
+        $tipo_de_documento = $request->input('tipo_de_documento') ?: 'Campo vacío';
+        $numero_de_documento = $request->input('numero_de_documento') ?: 'Campo vacío';
+        $fecha_de_vencimiento = $request->input('fecha_de_vencimiento') ?: 'Campo vacío';
+        $registro_iva_nrc = $request->input('registro_iva_nrc') ?: 'Campo vacío';
+        $email = $request->input('email') ?: 'Campo vacío';
+        $telefono = $request->input('telefono') ?: 'Campo vacío';
+        $fecha_de_nombramiento = $request->input('fecha_de_nombramiento') ?: 'Campo vacío';
+        $direccion = $request->input('direccion') ?: 'Campo vacío';
+        $nombre_comercial_juridico = $request->input('nombre_comercial_juridico') ?: 'Campo vacío';
+        $nacionalidad_juridico = $request->input('nacionalidad_juridico') ?: 'Campo vacío';
+        $numero_de_nit_juridico = $request->input('numero_de_nit_juridico') ?: 'Campo vacío';
+        $fecha_de_constitucion_juridico = $request->input('fecha_de_constitucion_juridico') ?: 'Campo vacío';
+        $registro_nrc_juridico = $request->input('registro_nrc_juridico') ?: 'Campo vacío';
+        $sitio_web_juridico = $request->input('sitio_web_juridico') ?: 'Campo vacío';
+        $numero_de_fax_juridico = $request->input('numero_de_fax_juridico') ?: 'Campo vacío';
+        $direccion_juridico = $request->input('direccion_juridico') ?: 'Campo vacío';
+
+        // $nombre_accionista = $request->input('nombre_accionista') ?: 'Campo vacío';
+        // $nacionalidad_accionista = $request->input('nacionalidad_accionista') ?: 'Campo vacío';
+        // $numero_identidad_accionista = $request->input('numero_identidad_accionista') ?: 'Campo vacío';
+        // $porcentaje_participacion_accionista = $request->input('porcentaje_participacion_accionista') ?: 'Campo vacío';
+
+        $nombre_politico = $request->input('nombre_politico') ?: 'Campo vacío';
+        $nombre_cargo_politico = $request->input('nombre_cargo_politico') ?: 'Campo vacío';
+        $fecha_desde_politico = $request->input('fecha_desde_politico') ?: 'Campo vacío';
+        $fecha_hasta_politico = $request->input('fecha_hasta_politico') ?: 'Campo vacío';
+        $nombre_cliente_politico = $request->input('nombre_cliente_politico') ?: 'Campo vacío';
+        $porcentaje_participacion_politico = $request->input('porcentaje_participacion_politico') ?: 'Campo vacío';
+
+        $html = view(
+            'formularios.pdf_plantilla',
+            compact(
+                'tipo_persona',
+                'nombre',
+                'apellido',
+                'fecha_de_nacimiento',
+                'nacionalidad',
+                'profesion_u_oficio',
+                'tipo_de_documento',
+                'numero_de_documento',
+                'fecha_de_vencimiento',
+                'registro_iva_nrc',
+                'email',
+                'telefono',
+                'fecha_de_nombramiento',
+                'pais',
+                'departamento',
+                'municipio',
+                'giro',
+                'direccion',
+                'nombre_comercial_juridico',
+                'clasificacion',
+                'nacionalidad_juridico',
+                'numero_de_nit_juridico',
+                'fecha_de_constitucion_juridico',
+                'registro_nrc_juridico',
+                'giro_juridico',
+                'pais_juridico',
+                'departamento_juridico',
+                'municipio_juridico',
+                'sitio_web_juridico',
+                'numero_de_fax_juridico',
+                'direccion_juridico',
+                // 'nombre_accionista',
+                // 'nacionalidad_accionista',
+                // 'numero_identidad_accionista',
+                // 'porcentaje_participacion_accionista',
+
+                'nombre_politico',
+                'nombre_cargo_politico',
+                'fecha_desde_politico',
+                'fecha_hasta_politico',
+                'pais_politico',
+                'departamento_politico',
+                'municipio_politico',
+                'nombre_cliente_politico',
+                'porcentaje_participacion_politico',
+            )
+        )->render();
+
+        $pdf = new TCPDF();
+        $pdf->AddPage();
+        $pdf->writeHTML($html, true, false, true, false, '');
+        $pdf->Output('formulario.pdf', 'D');
+    }
+
 }
