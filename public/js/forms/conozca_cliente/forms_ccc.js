@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    document.getElementById("forms_ccc").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+    });
+
     const forms = document.querySelectorAll('.needs-validation')
 
     Array.from(forms).forEach(form => {
