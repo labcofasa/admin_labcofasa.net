@@ -44,7 +44,7 @@
     /* Botones */
     --btn-primary: #e8f0fe;
     --btn-primary-hover: #d0dffa;
-    --btn-secondary: #EEEEEE;
+    --btn-secondary: #eeeeee;
     --btn-secondary-hover: #e5e7e9;
     --btn-success: #e7f9ed;
     --btn-success-hover: #bde2c7;
@@ -80,25 +80,25 @@
     --input-caret: #27d06e;
 
     /* Generales */
-    --bg-sidebar: #FFFFFF;
+    --bg-sidebar: #ffffff;
     --title-color: #000000;
     --sidebar-text-hover: #111827;
     --box-shadow-2: 0 2px 10px rgba(0, 0, 0, 0.1);
 
-    --body-bg: #F8F8F8;
+    --body-bg: #f8f8f8;
     --sidebar-bg: #f0f4f9;
     --sidebar-bg-hover: #3c404314;
     /* --sidebar-icon-hover: #4a4f53; */
     --sidebar-bg-active: #e7f9ed;
     --border-radius-sidebar: 25px;
-    --card-bg: #FFFFFF;
+    --card-bg: #ffffff;
     --toggle-shadow: #999999;
     --table-border: #dee2e6;
     --component: #c0c0c0;
     --component-bg: #e9e9eb;
     --component-hover: #a0a0a0;
-    --border-radius: 0.75rem;
-    --box-shadow: 0 1px 4px rgba(18, 22, 33, .12);
+    --border-radius: 10px;
+    --box-shadow: 0 1px 4px rgba(18, 22, 33, 0.12);
 
     --dropdown-menu: #ffffff;
     --dropdown-item-hover: #0000000a;
@@ -152,10 +152,10 @@
 body.dark {
     /* Paleta de colores */
     --primary: #27d06e;
-    --secondary: #0C352D;
-    --secondary-hover: #0C352D;
+    --secondary: #0c352d;
+    --secondary-hover: #0c352d;
     --accent: #e1e1e1;
-    --positive: #FFFFFF;
+    --positive: #ffffff;
     --negative: ;
     --info: #172d3b;
     --warning: ;
@@ -206,17 +206,17 @@ body.dark {
     --input-caret: #27d06e;
 
     /* Generales */
-    --bg-sidebar: #1C1C1C;
+    --bg-sidebar: #1e1f20;
     --border: ;
     --title-color: #bebebe;
     --box-shadow-2: 0;
 
     --body-bg: #131314;
-    --sidebar-bg: #1C1C1C;
+    --sidebar-bg: #1e1f20;
     --sidebar-bg-hover: #323232;
     --sidebar-icon-hover: #adb2b6;
     --sidebar-bg-active: #323232;
-    --card-bg: #1C1C1C;
+    --card-bg: #1e1f20;
     --toggle-shadow: #383838;
     --table-border: #373b3e;
 
@@ -236,7 +236,7 @@ body.dark {
     --counter-text: #bebebe;
 
     /* Archivo style main */
-    --btn-card-bg: #1C1C1C;
+    --btn-card-bg: #1c1c1c;
 
     --card-container: #131314;
     --toggle-switch: rgb(0, 221, 80);
@@ -244,10 +244,10 @@ body.dark {
     --toggle-switch-border: #d0d0d0;
 
     /* Contadores */
-    --carta-primary: #1C1C1C;
-    --carta-secondary: #1C1C1C;
-    --carta-success: #1C1C1C;
-    --carta-info: #1C1C1C;
+    --carta-primary: #1c1c1c;
+    --carta-secondary: #1c1c1c;
+    --carta-success: #1c1c1c;
+    --carta-info: #1c1c1c;
 
     /* Iconos */
     --icon-carta-primary: #bebebe;
@@ -304,7 +304,6 @@ h6 {
     font-size: var(--font-titulo) !important;
     font-weight: 600 !important;
     color: var(--text-color) !important;
-    margin: 10px 0;
     transition: var(--tran-03);
 }
 
@@ -474,6 +473,21 @@ hr {
     animation: spin 1s linear infinite;
 }
 
+div.dataTables_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    margin-top: -26px;
+    text-align: center;
+    color: var(--text-color);
+    background-color: var(--body-bg);
+    font-weight: 600;
+    padding: 20px;
+    z-index: 10;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -485,18 +499,9 @@ hr {
 }
 
 @media (max-width: 1024px) {
-
     table.table-bordered.dataTable th,
     table.table-bordered.dataTable td {
         border-left-width: 1px;
-    }
-
-    body {
-        background-color: var(--sidebar-bg);
-    }
-
-    .table-responsive {
-        padding: 10px;
     }
 
     .card-body {
@@ -571,12 +576,6 @@ hr {
     }
 }
 
-@media screen and (max-width: 1440px) {
-    .table-responsive {
-        padding: 0;
-    }
-}
-
 @media screen and (min-width: 1920px) {
     .card-container {
         background-color: var(--card-container);
@@ -596,7 +595,6 @@ hr {
 }
 
 @media screen and (min-width: 1200px) {
-
     .navbar-brand svg,
     .navbar-brand span {
         display: none;
@@ -608,14 +606,6 @@ hr {
 }
 
 @media screen and (max-width: 1200px) {
-    .navbar {
-        background-color: var(--card-bg);
-    }
-
-    body {
-        background-color: var(--card-bg);
-    }
-
     .card-container {
         padding: 0;
         box-shadow: none;
@@ -636,12 +626,87 @@ hr {
     }
 }
 
-@media screen and (max-width: 767px) {
-    .permiso-eliminar {
-        display: none;
-    }
+/* Formularios */
+.container-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+.container-form .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    max-height: 170px;
+    background-color: var(--bg-sidebar);
+    box-shadow: var(--box-shadow);
+    transition: var(--tran-03);
+    border-radius: var(--border-radius);
+    padding: 15px;
+}
+.container-form .cards .header .text h6 {
+    white-space: normal;
+}
+.container-form .cards .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container-form .cards .header svg {
+    cursor: pointer;
+}
+.container-form .cards .enlaces {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-    .permiso-asignar {
-        display: none;
+/* Media Querys */
+
+@media screen and (max-width: 575px) {
+    .container-form {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .container-form {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .container-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+    .container-form {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    .container-form {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+    .container-form {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 1919px) {
+    .container-form {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .container-form {
+        grid-template-columns: repeat(5, 1fr);
     }
 }

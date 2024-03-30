@@ -133,11 +133,9 @@
 /* Formularios */
 .card-form {
     max-width: 600px;
-    padding: 1rem;
     transition: var(--tran-03);
-    background-color: var(--btn-card-bg);
+    background-color: var(--body-bg);
     border-radius: 10px;
-    box-shadow: var(--box-shadow);
 }
 
 @media screen and (min-width: 900px) {

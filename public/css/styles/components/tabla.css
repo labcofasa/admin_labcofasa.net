@@ -1,34 +1,43 @@
 /* Tabla */
 .table-responsive {
-    background-color: var(--card-bg);
+    background-color: var(--bg-sidebar);
     transition: var(--tran-03);
     overflow-x: visible;
-    padding: 15px;
+    padding: 12px;
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
 }
 
 table {
     border-color: var(--table-border) !important;
+    padding: 20px 0;
+}
+
+table.dataTable.fixedHeader-floating {
+    display: none;
+}
+
+table.dataTable {
+    margin: 0 !important;
 }
 
 table th {
     vertical-align: middle;
 }
 
-table#tabla-roles-permisos.dataTable tbody tr.selected>* {
+table#tabla-roles-permisos.dataTable tbody tr.selected > * {
     box-shadow: none;
     color: var(--icon-danger);
     transition: var(--tran-03);
 }
 
-table.dataTable tbody tr.selected>* {
+table.dataTable tbody tr.selected > * {
     box-shadow: none;
     color: var(--icon-primary);
     transition: var(--tran-03);
 }
 
-table.dataTable.table-hover>tbody>tr.selected:hover>* {
+table.dataTable.table-hover > tbody > tr.selected:hover > * {
     box-shadow: none;
 }
 
@@ -37,7 +46,7 @@ table.dataTable.table-sm tbody td.select-checkbox::before {
     margin-top: -6px;
 }
 
-table.dataTable>tbody>tr.selected>td.select-checkbox:after {
+table.dataTable > tbody > tr.selected > td.select-checkbox:after {
     margin-top: -18px;
 }
 
@@ -46,7 +55,7 @@ table.table-bordered.dataTable td {
     border-left-width: 1px;
 }
 
-.table> :not(caption)>*>* {
+.table > :not(caption) > * > * {
     padding: 0.2rem 0.5rem;
     color: var(--text-color);
     background-color: var(--card-bg);
@@ -56,7 +65,7 @@ table.table-bordered.dataTable td {
 }
 
 /* Icono dropdown tabla movil */
-table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
     color: var(--text-color);
 }
 
@@ -232,9 +241,11 @@ div.dt-datetime div.dt-datetime-label select {
     background-color: var(--sidebar-bg);
 }
 
-@media screen and (max-width: 900px) {
-    .table-responsive {
-        padding: 15px 0;
-        box-shadow: none;
+@media screen and (max-width: 768px) {
+    div.dt-buttons {
+        float: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1em;
     }
 }

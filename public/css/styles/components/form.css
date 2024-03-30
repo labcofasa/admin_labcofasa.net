@@ -87,7 +87,7 @@
 
 .form-control:focus {
     border-color: var(--input-caret);
-    background-color: var(--card-container);
+    background-color: var(--bg-sidebar);
     color: var(--text-color);
     box-shadow: 0 0 0 0.1rem var(--input-caret);
 }

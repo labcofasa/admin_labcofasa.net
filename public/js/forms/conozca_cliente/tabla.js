@@ -13,9 +13,9 @@ $(document).ready(function () {
 
         tabla_conozca_cliente = $("#tabla-conozca-cliente").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-8 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             processing: true,
             responsive: true,
@@ -52,13 +52,11 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 9],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 9, 10],
                     orderable: false,
                 },
                 {
-                    targets: [
-                        0, 1, 2, 3, 4, 5, 6, 7, 8
-                    ],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
                     className: "nowrap",
                 },
                 {
@@ -66,14 +64,12 @@ $(document).ready(function () {
                     className: "wrap",
                 },
                 {
-                    targets: [
-                        2, 3, 4, 5, 6, 7, 8
-                    ],
+                    targets: [2, 3, 4, 5, 6, 7, 8, 9],
                     searchable: true,
                 },
                 { responsivePriority: 1, targets: 0 },
-                { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 9 },
+                { responsivePriority: 2, targets: 1 },
+                { responsivePriority: 3, targets: 10 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
@@ -88,11 +84,14 @@ $(document).ready(function () {
                         const isChecked = row.estado == 1;
                         return `
                             <div class="form-check form-switch">
-                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id
-                            }" ${isChecked ? "checked" : ""} data-id="${row.id
-                            }">
-                                <label class="form-check-label estado-label" for="switch-${row.id
-                            }"></label>
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${
+                                    row.id
+                                }" ${isChecked ? "checked" : ""} data-id="${
+                            row.id
+                        }">
+                                <label class="form-check-label estado-label" for="switch-${
+                                    row.id
+                                }"></label>
                             </div>
                         `;
                     },
@@ -124,11 +123,13 @@ $(document).ready(function () {
                     },
                 },
             ],
-            order: [[8, "desc"]],
+            order: [[9, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;
-                const inputConozcaCliente = $("#tabla-conozca-cliente_filter input");
+                const inputConozcaCliente = $(
+                    "#tabla-conozca-cliente_filter input"
+                );
                 const btnSecondaryElements = $(
                     ".dt-buttons .btn.btn-secondary"
                 );
@@ -198,7 +199,15 @@ $(document).ready(function () {
 
         const modal = $("#verRespuestaFcc");
 
-        modal.find(".modal-title").text(clienteTipoPersona + " con el documento " + clienteTipoDoc + ": " + clienteDocumento);
+        modal
+            .find(".modal-title")
+            .text(
+                clienteTipoPersona +
+                    " con el documento " +
+                    clienteTipoDoc +
+                    ": " +
+                    clienteDocumento
+            );
 
         var tipo = row.tipo;
         var tipo_persona = row.tipo_persona;
@@ -247,7 +256,8 @@ $(document).ready(function () {
         var departamento_politico = row.departamento_politico;
         var municipio_politico = row.municipio_politico;
         var nombre_cliente_politico = row.nombre_cliente_politico;
-        var porcentaje_participacion_politico = row.porcentaje_participacion_politico;
+        var porcentaje_participacion_politico =
+            row.porcentaje_participacion_politico;
         var fuente_ingreso = row.fuente_ingreso;
         var monto_mensual = row.monto_mensual;
 
@@ -298,7 +308,9 @@ $(document).ready(function () {
         $("#departamento_politico").val(departamento_politico);
         $("#municipio_politico").val(municipio_politico);
         $("#nombre_cliente_politico").val(nombre_cliente_politico);
-        $("#porcentaje_participacion_politico").val(porcentaje_participacion_politico);
+        $("#porcentaje_participacion_politico").val(
+            porcentaje_participacion_politico
+        );
         $("#fuente_ingreso").val(fuente_ingreso);
         $("#monto_mensual").val(monto_mensual);
 
@@ -350,21 +362,32 @@ $(document).ready(function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
                     "Error al cambiar el estado del formulario. Detalles: " +
-                    errorThrown,
+                        errorThrown,
                     "error"
                 );
             },
         });
     });
-
 });
 
 /* Cargar cliente accionista */
 function verAccionistas(fccId, contadorCampos, clienteAccionista) {
-    let nombre_accionista = clienteAccionista.nombre_accionista !== null ? clienteAccionista.nombre_accionista : "";
-    let nacionalidad_accionista = clienteAccionista.nacionalidad_accionista !== null ? clienteAccionista.nacionalidad_accionista : "";
-    let numero_identidad_accionista = clienteAccionista.numero_identidad_accionista !== null ? clienteAccionista.numero_identidad_accionista : "";
-    let porcentaje_participacion_accionista = clienteAccionista.porcentaje_participacion_accionista !== null ? clienteAccionista.porcentaje_participacion_accionista : "";
+    let nombre_accionista =
+        clienteAccionista.nombre_accionista !== null
+            ? clienteAccionista.nombre_accionista
+            : "";
+    let nacionalidad_accionista =
+        clienteAccionista.nacionalidad_accionista !== null
+            ? clienteAccionista.nacionalidad_accionista
+            : "";
+    let numero_identidad_accionista =
+        clienteAccionista.numero_identidad_accionista !== null
+            ? clienteAccionista.numero_identidad_accionista
+            : "";
+    let porcentaje_participacion_accionista =
+        clienteAccionista.porcentaje_participacion_accionista !== null
+            ? clienteAccionista.porcentaje_participacion_accionista
+            : "";
 
     let clienteAccionistaHtml = `
     <div class="row">
@@ -400,10 +423,22 @@ function verAccionistas(fccId, contadorCampos, clienteAccionista) {
 
 /* Cargar cliente miembro */
 function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
-    let nombre_miembro = clienteMiembro.nombre_miembro !== null ? clienteMiembro.nombre_miembro : "";
-    let nacionalidad_miembro = clienteMiembro.nacionalidad_miembro !== null ? clienteMiembro.nacionalidad_miembro : "";
-    let numero_identidad_miembro = clienteMiembro.numero_identidad_miembro !== null ? clienteMiembro.numero_identidad_miembro : "";
-    let cargo_miembro = clienteMiembro.cargo_miembro !== null ? clienteMiembro.cargo_miembro : "";
+    let nombre_miembro =
+        clienteMiembro.nombre_miembro !== null
+            ? clienteMiembro.nombre_miembro
+            : "";
+    let nacionalidad_miembro =
+        clienteMiembro.nacionalidad_miembro !== null
+            ? clienteMiembro.nacionalidad_miembro
+            : "";
+    let numero_identidad_miembro =
+        clienteMiembro.numero_identidad_miembro !== null
+            ? clienteMiembro.numero_identidad_miembro
+            : "";
+    let cargo_miembro =
+        clienteMiembro.cargo_miembro !== null
+            ? clienteMiembro.cargo_miembro
+            : "";
 
     let clienteMiembroHtml = `
     <div class="row">
@@ -439,8 +474,12 @@ function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
 
 /* Cargar cliente miembro */
 function verParientes(fccId, contadorCamposPariente, clientePariente) {
-    let nombre_pariente = clientePariente.nombre_pariente !== null ? clientePariente.nombre_pariente : "";
-    let parentesco = clientePariente.parentesco !== null ? clientePariente.parentesco : "";
+    let nombre_pariente =
+        clientePariente.nombre_pariente !== null
+            ? clientePariente.nombre_pariente
+            : "";
+    let parentesco =
+        clientePariente.parentesco !== null ? clientePariente.parentesco : "";
 
     let clienteParienteHtml = `
     <div class="row">
@@ -464,8 +503,12 @@ function verParientes(fccId, contadorCamposPariente, clientePariente) {
 
 /* Cargar cliente miembro */
 function verSocios(fccId, contadorCamposSocio, clienteSocio) {
-    let nombre_socio = clienteSocio.nombre_socio !== null ? clienteSocio.nombre_socio : "";
-    let porcentaje_participacion_socio = clienteSocio.porcentaje_participacion_socio !== null ? clienteSocio.porcentaje_participacion_socio : "";
+    let nombre_socio =
+        clienteSocio.nombre_socio !== null ? clienteSocio.nombre_socio : "";
+    let porcentaje_participacion_socio =
+        clienteSocio.porcentaje_participacion_socio !== null
+            ? clienteSocio.porcentaje_participacion_socio
+            : "";
 
     let clienteSocioHtml = `
     <div class="row">
@@ -486,7 +529,3 @@ function verSocios(fccId, contadorCamposSocio, clienteSocio) {
 
     $("#camposSocio").append(clienteSocioHtml);
 }
-
-
-
-

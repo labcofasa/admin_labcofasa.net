@@ -107,11 +107,13 @@ class PermisoController extends Controller
         $roles_permisos = $query->get();
 
         $data = [];
+        $contador = $start + 1;
         foreach ($roles_permisos as $rolesPermiso) {
             $data[] = [
                 null,
                 'id' => $rolesPermiso->id,
-                'name' => $rolesPermiso->name,
+                'contador' => $contador++,
+                'nombre_permiso' => $rolesPermiso->name,
             ];
         }
 
@@ -211,10 +213,12 @@ class PermisoController extends Controller
         $permisosDisponibles = $query->get();
 
         $data = [];
+        $contador = $start + 1;
         foreach ($permisosDisponibles as $permiso) {
             $data[] = [
                 null,
                 'id' => $permiso->id,
+                'contador' => $contador++,
                 'name' => $permiso->name,
             ];
         }

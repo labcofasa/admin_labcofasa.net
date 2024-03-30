@@ -79,7 +79,7 @@ nav.visible {
 }
 
 .offcanvas-header {
-    padding: 1.5rem 1rem;
+    padding: 1rem 2rem;
 }
 
 .offcanvas .dropdown .dropdown-item:hover {
@@ -99,7 +99,7 @@ nav.visible {
 .offcanvas .offcanvas-body .nav-item .nav-link {
     color: var(--text-color);
     margin: 0.2rem 0;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
     border-bottom-right-radius: 1.875rem;
     border-top-right-radius: 1.875rem;
 }

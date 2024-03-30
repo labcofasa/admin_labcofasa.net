@@ -1,5 +1,6 @@
 .card-chart {
-    background: var(--body-color);
+    background-color: var(--body-bg);
+    transition: var(--tran-03);
     width: 100%;
     padding: 15px 0;
     border-radius: 10px;
@@ -19,7 +20,7 @@
 }
 
 .card-chart button.active {
-    background:  #8f44fd;
+    background: #8f44fd;
     font-family: inherit;
 }
 

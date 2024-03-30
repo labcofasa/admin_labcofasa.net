@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-lg-down" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 titulo" id="editarUsuariosLabel">Editar usuario</h1>
+                <h1 class="modal-title fs-5 titulo"></h1>
                 <button class="btn-icon-close" data-bs-dismiss="modal">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                         width="24px" fill="#000000">

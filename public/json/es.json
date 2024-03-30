@@ -44,7 +44,7 @@
         "next": "Siguiente",
         "previous": "Anterior"
     },
-    "processing": "Procesando...",
+    "processing": "Cargando...",
     "search": "Buscar:",
     "searchBuilder": {
         "add": "Añadir condición",
@@ -222,5 +222,5 @@
         "renameLabel": "Nuevo nombre para %s:",
         "renameTitle": "Renombrar"
     },
-    "infoEmpty": "No hay datos para mostrar"
+    "infoEmpty": ""
 }

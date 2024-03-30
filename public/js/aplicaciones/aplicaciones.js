@@ -12,17 +12,17 @@ $(document).ready(function () {
 
         tabla_aplicaciones = $("#tabla-aplicaciones").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-9 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             responsive: true,
             processing: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [6, 25, 50, -1],
-                ["6 filas", "25 filas", "50 filas", "Todas las filas"],
+                [10, 25, 50, -1],
+                ["10 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -37,8 +37,15 @@ $(document).ready(function () {
                     text: "Editar columnas",
                 },
                 {
-                    text: "Crear registro",
-                    className: "btn btn-lg btn-store aplicacion",
+                    text: "Nueva",
+                    className: "btn btn-lg btn-store aplicacion d-block d-md-none",
+                    action: function (e, dt, node, config) {
+                        document.getElementById("crearAplicacionBtn").click();
+                    },
+                },
+                {
+                    text: "Crear aplicación",
+                    className: "btn btn-lg btn-store aplicacion d-none d-md-block",
                     action: function (e, dt, node, config) {
                         document.getElementById("crearAplicacionBtn").click();
                     },
@@ -129,8 +136,8 @@ $(document).ready(function () {
                     searchable: true,
                     orderable: true,
                 },
-                { responsivePriority: 1, targets: 1 },
-                { responsivePriority: 2, targets: 2 },
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: 1 },
                 { responsivePriority: 3, targets: 10 },
             ],
             drawCallback: function (settings) {
@@ -176,62 +183,66 @@ $(document).ready(function () {
                         );
                         return `
                                 <div class="text-center">
-                                ${userPermissions.some(
-                            (permission) =>
-                                permission.name ===
-                                "admin_aplicaciones_ver" ||
-                                permission.name ===
-                                "admin_aplicaciones_editar" ||
-                                permission.name ===
-                                "admin_aplicaciones_eliminar"
-                        )
-                                ? `
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                                "admin_aplicaciones_ver" ||
+                                            permission.name ===
+                                                "admin_aplicaciones_editar" ||
+                                            permission.name ===
+                                                "admin_aplicaciones_eliminar"
+                                    )
+                                        ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
-                                        ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_aplicaciones_ver"
-                                )
-                                    ? `
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_aplicaciones_ver"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item ver-aplicacion nav-link" data-url="${row.enlace_aplicacion}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                         <path d="M2 8C2 8 6.47715 3 12 3C17.5228 3 22 8 22 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                                                         <path d="M21.544 13.045C21.848 13.4713 22 13.6845 22 14C22 14.3155 21.848 14.5287 21.544 14.955C20.1779 16.8706 16.6892 21 12 21C7.31078 21 3.8221 16.8706 2.45604 14.955C2.15201 14.5287 2 14.3155 2 14C2 13.6845 2.15201 13.4713 2.45604 13.045C3.8221 11.1294 7.31078 7 12 7C16.6892 7 20.1779 11.1294 21.544 13.045Z" stroke="currentColor" stroke-width="1.8" />
                                                         <path d="M15 14C15 12.3431 13.6569 11 12 11C10.3431 11 9 12.3431 9 14C9 15.6569 10.3431 17 12 17C13.6569 17 15 15.6569 15 14Z" stroke="currentColor" stroke-width="1.8" />
-                                                    </svg>                                                    
+                                                    </svg>
                                                     <span class="link">Ver aplicación</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
-                                    ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_aplicaciones_editar"
-                                )
-                                    ? `
+                                                : ""
+                                        }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_aplicaciones_editar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item editar-aplicacion nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                         <path d="M16.9459 3.17305C17.5332 2.58578 17.8268 2.29215 18.1521 2.15173C18.6208 1.94942 19.1521 1.94942 19.6208 2.15173C19.946 2.29215 20.2397 2.58578 20.8269 3.17305C21.4142 3.76032 21.7079 4.05395 21.8483 4.37925C22.0506 4.8479 22.0506 5.37924 21.8483 5.84789C21.7079 6.17319 21.4142 6.46682 20.8269 7.05409L15.8054 12.0757C14.5682 13.3129 13.9496 13.9315 13.1748 14.298C12.4 14.6645 11.5294 14.7504 9.78823 14.9222L9 15L9.07778 14.2118C9.24958 12.4706 9.33549 11.6 9.70201 10.8252C10.0685 10.0504 10.6871 9.43183 11.9243 8.19464L16.9459 3.17305Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
                                                         <path d="M6 15H3.75C2.7835 15 2 15.7835 2 16.75C2 17.7165 2.7835 18.5 3.75 18.5H13.25C14.2165 18.5 15 19.2835 15 20.25C15 21.2165 14.2165 22 13.25 22H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>                                                     
+                                                    </svg>
                                                     <span class="link">Editar</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
-                                    ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_aplicaciones_eliminar"
-                                )
-                                    ? `
+                                            : ""
+                                    }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_aplicaciones_eliminar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-aplicacion nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -239,16 +250,16 @@ $(document).ready(function () {
                                                         <path d="M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                                                         <path d="M9.5 16.5L9.5 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                                                         <path d="M14.5 16.5L14.5 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                                                    </svg>                                                    
+                                                    </svg>
                                                     <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
+                                            : ""
+                                    }
                                         </ul>
                                     </div>`
-                                : ""
-                            }
+                                        : ""
+                                }
                                 </div>
                             `;
                     },
@@ -716,13 +727,13 @@ function printAplicaciones() {
     );
     printWindow.document.write(
         "<style>" +
-        "body { font-family: Arial, sans-serif; }" +
-        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-        "tr:nth-child(even) { background-color: #f9f9f9; }" +
-        "tr:hover { background-color: #f5f5f5; }" +
-        "</style>"
+            "body { font-family: Arial, sans-serif; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+            "tr:nth-child(even) { background-color: #f9f9f9; }" +
+            "tr:hover { background-color: #f5f5f5; }" +
+            "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(

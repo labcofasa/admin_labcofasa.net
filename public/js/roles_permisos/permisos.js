@@ -11,9 +11,9 @@ $(document).ready(function () {
 
         tabla_permisos = $("#tabla-permisos").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             processing: true,
             responsive: true,
@@ -259,13 +259,13 @@ $(document).ready(function () {
         );
         printWindow.document.write(
             "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+                "body { font-family: Arial, sans-serif; }" +
+                "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+                "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+                "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+                "tr:nth-child(even) { background-color: #f9f9f9; }" +
+                "tr:hover { background-color: #f5f5f5; }" +
+                "</style>"
         );
         printWindow.document.write("</head><body>");
         printWindow.document.write(

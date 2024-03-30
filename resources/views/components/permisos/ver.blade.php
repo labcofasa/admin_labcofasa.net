@@ -26,6 +26,7 @@
                         <thead>
                             <tr>
                                 <th></th>
+                                <th>#</th>
                                 <th data-priority="1">Nombre del permiso</th>
                                 <th data-priority="2">Eliminar permiso</th>
                             </tr>

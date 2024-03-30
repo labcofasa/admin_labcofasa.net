@@ -11,7 +11,7 @@
         <div class="table-responsive" id="tabla-roles-container">
 
             <!-- Titulo-->
-            <h1 class="pb-2">@yield('titulo')</h1>
+            <h1 class="pb-3">@yield('titulo')</h1>
 
             <table id="tabla-roles" class="table align-middle responsive display" width="100%">
                 <tbody></tbody>

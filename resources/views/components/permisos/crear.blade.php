@@ -27,6 +27,7 @@
                         <thead>
                             <tr>
                                 <th></th>
+                                <th>#</th>
                                 <th>Nombre del permiso</th>
                                 <th>Asignar permiso</th>
                             </tr>

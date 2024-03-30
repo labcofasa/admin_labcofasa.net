@@ -14,17 +14,17 @@ $(document).ready(function () {
 
         tabla_usuarios = $("#tabla-usuarios").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-8 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             processing: true,
             responsive: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [5, 25, 50, -1],
-                ["5 filas", "25 filas", "50 filas", "Todas las filas"],
+                [10, 25, 50, -1],
+                ["10 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -39,8 +39,15 @@ $(document).ready(function () {
                     text: "Editar columnas",
                 },
                 {
-                    text: "Crear registro",
-                    className: "btn btn-lg btn-store usuario",
+                    text: "Nuevo",
+                    className: "btn btn-lg btn-store usuario d-block d-md-none",
+                    action: function (e, dt, node, config) {
+                        document.getElementById("registrarUsuarioBtn").click();
+                    },
+                },
+                {
+                    text: "Crear usuario",
+                    className: "btn btn-lg btn-store usuario d-none d-md-block",
                     action: function (e, dt, node, config) {
                         document.getElementById("registrarUsuarioBtn").click();
                     },
@@ -170,11 +177,14 @@ $(document).ready(function () {
                         const isChecked = row.estado == 1;
                         return `
                             <div class="form-check form-switch">
-                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id
-                            }" ${isChecked ? "checked" : ""} data-id="${row.id
-                            }">
-                                <label class="form-check-label estado-label" for="switch-${row.id
-                            }"></label>
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${
+                                    row.id
+                                }" ${isChecked ? "checked" : ""} data-id="${
+                            row.id
+                        }">
+                                <label class="form-check-label estado-label" for="switch-${
+                                    row.id
+                                }"></label>
                             </div>
                         `;
                     },
@@ -208,25 +218,27 @@ $(document).ready(function () {
                         );
                         return `
                                 <div class="text-center">
-                                ${userPermissions.some(
-                            (permission) =>
-                                permission.name ===
-                                "admin_usuarios_editar" ||
-                                permission.name ===
-                                "admin_usuarios_eliminar"
-                        )
-                                ? `
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                                "admin_usuarios_editar" ||
+                                            permission.name ===
+                                                "admin_usuarios_eliminar"
+                                    )
+                                        ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
-                                        ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_usuarios_editar"
-                                )
-                                    ? `
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_usuarios_editar"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item editar-usuario nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -236,14 +248,15 @@ $(document).ready(function () {
                                                     <span class="link">Editar</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
-                                    ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_usuarios_eliminar"
-                                )
-                                    ? `
+                                                : ""
+                                        }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_usuarios_eliminar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-usuario nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -251,15 +264,15 @@ $(document).ready(function () {
                                                         <path d="M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                                                         <path d="M9.5 16.5L9.5 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                                                         <path d="M14.5 16.5L14.5 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                                                    </svg>                                                    
+                                                    </svg>
                                                     <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
+                                            : ""
+                                    }
                                         </ul>`
-                                : ""
-                            }
+                                        : ""
+                                }
                                     </div>
                                 </div>
                             `;
@@ -458,7 +471,7 @@ $(document).ready(function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
                     "Error al cambiar el estado del usuario. Detalles: " +
-                    errorThrown,
+                        errorThrown,
                     "error"
                 );
             },
@@ -484,6 +497,8 @@ $(document).ready(function () {
         var nombreDepartamento = row.nombre_departamento;
         var municipioId = row.id_municipio;
         var nombreMunicipio = row.nombre_municipio;
+
+        const modal = $("#editarUsuario");
 
         $("#editarUsuarioForm #btn-editar-usuario").val(usuarioId);
         $("#editarUsuarioForm #nombre-usuario-editar").val(name);
@@ -573,6 +588,8 @@ $(document).ready(function () {
         );
 
         $("#editarUsuario").modal("show");
+        modal.find(".modal-title").text("Editar usuario: " + name);
+
     });
 
     $("#imagen-perfil-editar").change(function () {
@@ -774,13 +791,13 @@ function printUsuarios() {
     );
     printWindow.document.write(
         "<style>" +
-        "body { font-family: Arial, sans-serif; }" +
-        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-        "tr:nth-child(even) { background-color: #f9f9f9; }" +
-        "tr:hover { background-color: #f5f5f5; }" +
-        "</style>"
+            "body { font-family: Arial, sans-serif; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+            "tr:nth-child(even) { background-color: #f9f9f9; }" +
+            "tr:hover { background-color: #f5f5f5; }" +
+            "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(

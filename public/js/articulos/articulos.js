@@ -12,9 +12,9 @@ $(document).ready(function () {
 
         tabla_articulos = $("#tabla-articulos").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-9 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             responsive: true,
             processing: true,

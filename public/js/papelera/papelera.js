@@ -11,17 +11,17 @@ $(document).ready(function () {
 
         tabla_papelera = $("#tabla-papelera").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-6 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             processing: true,
             responsive: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [7, 25, 50, -1],
-                ["7 filas", "25 filas", "50 filas", "Todas las filas"],
+                [10, 25, 50, -1],
+                ["10 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -217,12 +217,13 @@ $(document).ready(function () {
                         return `
                                 <div class="btn-toolbar">
                                     <div class="btn-group" role="group">
-                                    ${userPermissions.some(
-                            (permission) =>
-                                permission.name ===
-                                "admin_papelera_recuperar"
-                        )
-                                ? `
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_papelera_recuperar"
+                                        )
+                                            ? `
                                         <button class="btn btn-success restaurar-registro" data-table="${row.nombre_tabla}" data-id="${row.id}">
                                             <svg class="icon-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                 <path d="M20.25 5.5L19.75 11.5M5.25 5.5L5.85461 15.5368C6.00945 18.1073 6.08688 19.3925 6.72868 20.3167C7.046 20.7737 7.4548 21.1594 7.92905 21.4493C8.51127 21.8051 9.21343 21.945 10.25 22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -231,8 +232,8 @@ $(document).ready(function () {
                                             </svg>
                                         </button>
                                         `
-                                : ""
-                            }
+                                            : ""
+                                    }
                                     </div>
                                 </div>
                             `;
@@ -366,13 +367,13 @@ $(document).ready(function () {
         );
         printWindow.document.write(
             "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+                "body { font-family: Arial, sans-serif; }" +
+                "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+                "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+                "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+                "tr:nth-child(even) { background-color: #f9f9f9; }" +
+                "tr:hover { background-color: #f5f5f5; }" +
+                "</style>"
         );
         printWindow.document.write("</head><body>");
         printWindow.document.write(

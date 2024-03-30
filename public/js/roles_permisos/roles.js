@@ -15,17 +15,17 @@ $(document).ready(function () {
 
         tabla_roles = $("#tabla-roles").DataTable({
             dom:
-                "<'row align-items-end'<'col-md-8 col-sm-8 col-12 p-0'B><'col-md-4 col-sm-12 col-12 p-0'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-3 px-0'i><'col-md-7 px-0'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             responsive: true,
             processing: true,
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [8, 25, 50, -1],
-                ["8 filas", "25 filas", "50 filas", "Todas las filas"],
+                [10, 25, 50, -1],
+                ["10 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -40,8 +40,15 @@ $(document).ready(function () {
                     text: "Editar columnas",
                 },
                 {
-                    text: "Crear registro",
-                    className: "btn btn-lg btn-store rol",
+                    text: "Nuevo",
+                    className: "btn btn-lg btn-store rol d-block d-md-none",
+                    action: function (e, dt, node, config) {
+                        document.getElementById("registrarRolBtn").click();
+                    },
+                },
+                {
+                    text: "Crear rol",
+                    className: "btn btn-lg btn-store rol d-none d-md-block",
                     action: function (e, dt, node, config) {
                         document.getElementById("registrarRolBtn").click();
                     },
@@ -168,27 +175,29 @@ $(document).ready(function () {
                         );
                         return `
                                 <div class="text-center">
-                                ${userPermissions.some(
-                            (permission) =>
-                                permission.name ===
-                                "admin_permisos_ver" ||
-                                permission.name ===
-                                "admin_roles_editar" ||
-                                permission.name ===
-                                "admin_roles_eliminar"
-                        )
-                                ? `
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                                "admin_permisos_ver" ||
+                                            permission.name ===
+                                                "admin_roles_editar" ||
+                                            permission.name ===
+                                                "admin_roles_eliminar"
+                                    )
+                                        ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
-                                        ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_permisos_ver"
-                                )
-                                    ? `
+                                        ${
+                                            userPermissions.some(
+                                                (permission) =>
+                                                    permission.name ===
+                                                    "admin_permisos_ver"
+                                            )
+                                                ? `
                                             <li>
                                                 <button class="dropdown-item ver-permisos nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -199,31 +208,33 @@ $(document).ready(function () {
                                                     <span class="link">Ver permisos</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
-                                    ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_roles_editar"
-                                )
-                                    ? `
+                                                : ""
+                                        }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_roles_editar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item editar-rol nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                         <path d="M16.9459 3.17305C17.5332 2.58578 17.8268 2.29215 18.1521 2.15173C18.6208 1.94942 19.1521 1.94942 19.6208 2.15173C19.946 2.29215 20.2397 2.58578 20.8269 3.17305C21.4142 3.76032 21.7079 4.05395 21.8483 4.37925C22.0506 4.8479 22.0506 5.37924 21.8483 5.84789C21.7079 6.17319 21.4142 6.46682 20.8269 7.05409L15.8054 12.0757C14.5682 13.3129 13.9496 13.9315 13.1748 14.298C12.4 14.6645 11.5294 14.7504 9.78823 14.9222L9 15L9.07778 14.2118C9.24958 12.4706 9.33549 11.6 9.70201 10.8252C10.0685 10.0504 10.6871 9.43183 11.9243 8.19464L16.9459 3.17305Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
                                                         <path d="M6 15H3.75C2.7835 15 2 15.7835 2 16.75C2 17.7165 2.7835 18.5 3.75 18.5H13.25C14.2165 18.5 15 19.2835 15 20.25C15 21.2165 14.2165 22 13.25 22H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>                                                
+                                                    </svg>
                                                     <span class="link">Editar</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
-                                    ${userPermissions.some(
-                                    (permission) =>
-                                        permission.name ===
-                                        "admin_roles_eliminar"
-                                )
-                                    ? `
+                                            : ""
+                                    }
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_roles_eliminar"
+                                        )
+                                            ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-rol nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -235,12 +246,12 @@ $(document).ready(function () {
                                                     <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
-                                    : ""
-                                }
+                                            : ""
+                                    }
                                         </ul>
                                     </div>`
-                                : ""
-                            }
+                                        : ""
+                                }
                                 </div>
                             `;
                     },
@@ -325,9 +336,9 @@ $(document).ready(function () {
 
         tabla_roles_permisos = $("#tabla-roles-permisos").DataTable({
             dom:
-                "<'row align-items-end'<'col-lg-8 col-md-12 col-sm-12 col-12'B><'col-lg-4 col-md-12 col-sm-12 col-12 mt-2'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             responsive: true,
             processing: true,
@@ -357,20 +368,21 @@ $(document).ready(function () {
                     },
                 },
                 {
-                    text: "Todo",
+                    text: "Todos",
                     extend: "selectAll",
                     className:
-                        "btn btn-lg btn-group-secondary permiso-eliminar",
+                        "btn btn-lg btn-group-secondary d-none d-md-block",
                 },
                 {
-                    text: "Deseleccionar",
+                    text: "Ninguno",
                     extend: "selectNone",
                     className:
-                        "btn btn-lg btn-group-secondary permiso-eliminar",
+                        "btn btn-lg btn-group-secondary d-none d-md-block",
                 },
                 {
                     text: "Eliminar",
-                    className: "btn btn-lg btn-danger permiso-eliminar",
+                    className:
+                        "btn btn-lg btn-danger d-none d-md-block btn-border-right",
                     enabled: false,
                     action: function () {
                         var selectedRowsData = tabla_roles_permisos
@@ -395,37 +407,55 @@ $(document).ready(function () {
                         }
                     },
                 },
-
                 {
                     extend: "collection",
                     text: "Exportar",
-                    className: "btn btn-lg btn-group-secondary",
+                    className:
+                        "btn btn-lg btn-group-secondary d-block d-md-none btn-border-right",
                     buttons: [
                         {
                             extend: "copy",
                             text: "Copiar",
-                            title: "Permisos del rol - Laboratorios Cofasa",
-                            filename: "Permisos del rol - Laboratorios Cofasa",
+                            title: "Roles registrados - Laboratorios Cofasa",
+                            filename: "Roles registrados - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [1],
+                                columns: [1, 2, 3, 4, 5, 6],
                             },
                         },
                         {
                             extend: "csv",
                             text: "CSV",
-                            title: "Permisos del rol - Laboratorios Cofasa",
-                            filename: "Permisos del rol - Laboratorios Cofasa",
+                            title: "Roles registrados - Laboratorios Cofasa",
+                            filename: "Roles registrados - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [1],
+                                columns: [1, 2, 3, 4, 5, 6],
                             },
                         },
                         {
                             extend: "excel",
                             text: "Excel",
-                            title: "Permisos del rol - Laboratorios Cofasa",
-                            filename: "Permisos del rol - Laboratorios Cofasa",
+                            title: "Roles registrados - Laboratorios Cofasa",
+                            filename: "Roles registrados - Laboratorios Cofasa",
                             exportOptions: {
-                                columns: [1],
+                                columns: [1, 2, 3, 4, 5, 6],
+                            },
+                        },
+                        {
+                            extend: "print",
+                            text: "Imprimir",
+                            title: "Roles registrados - Laboratorios Cofasa",
+                            filename: "Roles registrados - Laboratorios Cofasa",
+                            action: function (e, dt, node, config) {
+                                printRoles();
+                            },
+                        },
+                        {
+                            extend: "pdf",
+                            text: "PDF",
+                            title: "Roles registrados - Laboratorios Cofasa",
+                            filename: "Roles registrados - Laboratorios Cofasa",
+                            exportOptions: {
+                                columns: [1, 2, 3, 4, 5, 6],
                             },
                         },
                     ],
@@ -479,10 +509,11 @@ $(document).ready(function () {
             ],
             columns: [
                 {
-                    className: "select-checkbox permiso-eliminar",
+                    className: "select-checkbox d-none d-md-table-cell",
                     targets: 0,
                 },
-                { data: "name" },
+                { data: "contador" },
+                { data: "nombre_permiso" },
                 {
                     data: null,
                     render: function (data, type, row) {
@@ -492,12 +523,13 @@ $(document).ready(function () {
                         return `
                             <div class="btn-toolbar">
                                 <div class="btn-group" role="group">
-                                ${userPermissions.some(
-                            (permission) =>
-                                permission.name ===
-                                "admin_permisos_eliminar"
-                        )
-                                ? `
+                                ${
+                                    userPermissions.some(
+                                        (permission) =>
+                                            permission.name ===
+                                            "admin_permisos_eliminar"
+                                    )
+                                        ? `
                                     <button class="btn btn-danger eliminar-permiso" data-rol="${rolId}" data-id="${row.id}" data-toggle="tooltip" title="Eliminar permiso">
                                         <svg class="icon-danger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                             <path d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -506,8 +538,8 @@ $(document).ready(function () {
                                             <path d="M14.5 16.5L14.5 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                                         </svg>
                                     </button>`
-                                : ""
-                            }
+                                        : ""
+                                }
                                 </div>
                             </div>
                         `;
@@ -621,9 +653,9 @@ $(document).ready(function () {
 
         tabla_asignar_permisos = $("#tabla-asignar-permisos").DataTable({
             dom:
-                "<'row align-items-end'<'col-lg-8 col-md-12 col-sm-12 col-12'B><'col-lg-4 col-md-12 col-sm-12 col-12 mt-2'f>>" +
-                "<'row py-2'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5 pb-2'i><'col-md-7'p>>",
+                "<'botones-filter'<B><f>>" +
+                "<tr>" +
+                "<'info-pagination'<i><p>>",
             serverSide: true,
             responsive: true,
             pagingType: "simple_numbers",
@@ -655,22 +687,25 @@ $(document).ready(function () {
             buttons: [
                 {
                     extend: "pageLength",
-                    className: "btn btn-lg btn-group-secondary permiso-asignar",
+                    className:
+                        "btn btn-lg btn-group-secondary d-none d-md-block",
                 },
                 {
-                    text: "Todo",
+                    text: "Todos",
                     extend: "selectAll",
-                    className: "btn btn-lg btn-group-secondary permiso-asignar",
+                    className:
+                        "btn btn-lg btn-group-secondary d-none d-md-block",
                 },
                 {
-                    text: "Deseleccionar",
+                    text: "Ninguno",
                     extend: "selectNone",
-                    className: "btn btn-lg btn-group-secondary permiso-asignar",
+                    className:
+                        "btn btn-lg btn-group-secondary d-none d-md-block",
                 },
                 {
                     text: "Asignar permisos",
                     className:
-                        "btn btn-lg btn-primary permiso-asignar btn-border-right",
+                        "btn btn-lg btn-primary d-none d-md-block btn-border-right",
                     enabled: false,
                     action: function () {
                         var selectedRowsData = tabla_asignar_permisos
@@ -698,7 +733,7 @@ $(document).ready(function () {
                 {
                     extend: "pageLength",
                     className:
-                        "btn btn-lg btn-group-secondary ordenar btn-border-left",
+                        "btn btn-lg btn-group-secondary d-block d-md-none btn-border-left",
                 },
             ],
             select: {
@@ -707,9 +742,10 @@ $(document).ready(function () {
             },
             columns: [
                 {
-                    className: "select-checkbox d-none d-lg-table-cell",
+                    className: "select-checkbox d-none d-md-table-cell",
                     targets: 0,
                 },
+                { data: "contador" },
                 { data: "name" },
                 {
                     data: null,
@@ -720,20 +756,21 @@ $(document).ready(function () {
                         return `
                                 <div class="btn-toolbar">
                                     <div class="btn-group" role="group">
-                                    ${userPermissions.some(
-                            (permission) =>
-                                permission.name ===
-                                "admin_permisos_asignar"
-                        )
-                                ? `
+                                    ${
+                                        userPermissions.some(
+                                            (permission) =>
+                                                permission.name ===
+                                                "admin_permisos_asignar"
+                                        )
+                                            ? `
                                         <button class="btn btn-primary asignar-permiso" data-rol="${rolId}" data-id="${row.id}" data-toggle="tooltip" title="Asignar permiso">
                                             <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                 <path d="M11.9982 2C8.99043 2 7.04018 4.01899 4.73371 4.7549C3.79589 5.05413 3.32697 5.20374 3.1372 5.41465C2.94743 5.62556 2.89186 5.93375 2.78072 6.55013C1.59143 13.146 4.1909 19.244 10.3903 21.6175C11.0564 21.8725 11.3894 22 12.0015 22C12.6135 22 12.9466 21.8725 13.6126 21.6175C19.8116 19.2439 22.4086 13.146 21.219 6.55013C21.1078 5.93364 21.0522 5.6254 20.8624 5.41449C20.6726 5.20358 20.2037 5.05405 19.2659 4.75499C16.9585 4.01915 15.0061 2 11.9982 2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                                 <path d="M9 13C9 13 10 13 11 15C11 15 14.1765 10 17 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>                                        
+                                            </svg>
                                         </button>`
-                                : ""
-                            }
+                                            : ""
+                                    }
                                     </div>
                                 </div>
                             `;
@@ -1207,13 +1244,13 @@ $(document).ready(function () {
         );
         printWindow.document.write(
             "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+                "body { font-family: Arial, sans-serif; }" +
+                "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+                "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+                "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+                "tr:nth-child(even) { background-color: #f9f9f9; }" +
+                "tr:hover { background-color: #f5f5f5; }" +
+                "</style>"
         );
         printWindow.document.write("</head><body>");
         printWindow.document.write(
