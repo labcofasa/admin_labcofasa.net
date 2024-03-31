@@ -7,6 +7,7 @@ use App\Models\Clasificacion;
 use App\Models\Departamento;
 use App\Models\FrmConocaClienteAccionista;
 use App\Models\FrmConozcaCliente;
+use App\Models\FrmConozcaClienteArchivos;
 use App\Models\FrmConozcaClienteJuridico;
 use App\Models\FrmConozcaClienteMiembro;
 use App\Models\FrmConozcaClientePariente;
@@ -308,7 +309,7 @@ class FormsConozcaClienteController extends Controller
             'documento_iva_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_dnm_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-
+            'formulario_firmado' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
         $direccionIp = $request->ip();
@@ -469,19 +470,22 @@ class FormsConozcaClienteController extends Controller
                 }
             }
 
-            // if ($request->hasFile('documento_escritura_juridico')) {
-            //     $documentoEscrituraJuridico = $request->file('documento_escritura_juridico');
+            if ($request->hasFile('documento_escritura_juridico')) {
+                $documentosEscritura = $request->file('documento_escritura_juridico');
+                foreach ($documentosEscritura as $documento) {
+                    if ($documento->isValid()) {
+                        $nombreArchivoEscritura = time() . '_' . $documento->getClientOriginalName();
+                        $documento->move($rutaCarpeta, $nombreArchivoEscritura);
 
-            //     if ($documentoEscrituraJuridico->isValid()) {
-            //         $nombreEscrituraJuridico = time() . '_' . $documentoEscrituraJuridico->getClientOriginalName();
+                        $documentoEscrituraJuridico = new FrmConozcaClienteArchivos();
+                        $documentoEscrituraJuridico->nombre_archivo = $nombreArchivoEscritura;
 
-            //         $documentoEscrituraJuridico->move($rutaCarpeta, $nombreEscrituraJuridico);
-
-            //         $formsccc->documento_escritura_juridico = $nombreEscrituraJuridico;
-            //     } else {
-            //         return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-            //     }
-            // }
+                        $formsccc->conozcaClienteArchivos()->save($documentoEscrituraJuridico);
+                    } else {
+                        return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                    }
+                }
+            }
 
             if ($request->hasFile('documento_matricula_juridico')) {
                 $documentoMatriculaJuridico = $request->file('documento_matricula_juridico');
@@ -562,6 +566,20 @@ class FormsConozcaClienteController extends Controller
                     $documentoDnmJuridico->move($rutaCarpeta, $nombreDnmJuridico);
 
                     $formsccc->documento_dnm_juridico = $nombreDnmJuridico;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('formulario_firmado')) {
+                $documentoFirmado = $request->file('formulario_firmado');
+
+                if ($documentoFirmado->isValid()) {
+                    $nombreDocumentoFirmado = time() . '_' . $documentoFirmado->getClientOriginalName();
+
+                    $documentoFirmado->move($rutaCarpeta, $nombreDocumentoFirmado);
+
+                    $formsccc->formulario_firmado = $nombreDocumentoFirmado;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }

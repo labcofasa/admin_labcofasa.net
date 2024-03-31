@@ -39,13 +39,13 @@ class FrmConozcaCliente extends Model
         'documento_identificacion_representante',
         'documento_nit_representante',
         'documento_credencial_representante',
-        // 'documento_escritura_juridico',
         'documento_matricula_juridico',
         'documento_acuerdo_juridico',
         'documento_nit_juridico',
         'documento_iva_juridico',
         'documento_domicilio_juridico',
         'documento_dnm_juridico',
+        'formulario_firmado',
         'direccion_ip',
         'fecha_de_creacion',
         'fecha_de_modificacion'
@@ -104,5 +104,10 @@ class FrmConozcaCliente extends Model
     public function conozcaClienteSocios()
     {
         return $this->hasMany(FrmConozcaClienteSocio::class, 'frm_conozca_cliente_id');
+    }
+
+    public function conozcaClienteArchivos()
+    {
+        return $this->hasMany(FrmConozcaClienteArchivos::class, 'frm_conozca_cliente_id');
     }
 }

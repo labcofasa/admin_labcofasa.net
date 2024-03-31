@@ -1,22 +1,31 @@
 $(document).ready(function () {
+    document
+        .getElementById("forms_ccc")
+        .addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+            }
+        });
 
-    document.getElementById("forms_ccc").addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-        }
+    $("#btnEnviarFormulario").click(function () {
+        $("#formulario_firmado").prop("required", true);
     });
 
-    const forms = document.querySelectorAll('.needs-validation')
+    const forms = document.querySelectorAll(".needs-validation");
 
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
+    Array.from(forms).forEach((form) => {
+        form.addEventListener(
+            "submit",
+            (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
 
-            form.classList.add('was-validated')
-        }, false)
+                form.classList.add("was-validated");
+            },
+            false
+        );
     });
 
     const body = document.querySelector("body");
@@ -35,7 +44,7 @@ $(document).ready(function () {
     setupGiroSearch(
         "actividad_economica",
         "sugerencia-filter",
-        "id_actividad_economica",
+        "id_actividad_economica"
     );
 
     cargarClasificaciones(
@@ -47,7 +56,7 @@ $(document).ready(function () {
     setupGiroSearch(
         "giro_juridico",
         "sugerencia_filter_juridico",
-        "id_giro_juridico",
+        "id_giro_juridico"
     );
 
     cargarPaises(
@@ -80,8 +89,7 @@ $(document).ready(function () {
         camposContador++;
 
         let div = document.createElement("div");
-        div.className =
-            "row pb-3 align-items-center";
+        div.className = "row pb-3 align-items-center";
         div.innerHTML = `
             <div class="col-sm-6">
                 <div class="mb-3">
@@ -130,7 +138,9 @@ $(document).ready(function () {
     });
 
     const contenedorCamposMiembros = document.querySelector("#campos_miembros");
-    const btnAgregarCamposMiembros = document.querySelector("#agregar_campos_miembros");
+    const btnAgregarCamposMiembros = document.querySelector(
+        "#agregar_campos_miembros"
+    );
     const botonEliminarMiembros = document.querySelector(".btn-danger");
 
     let camposContadorMiembros = 0;
@@ -139,8 +149,7 @@ $(document).ready(function () {
         camposContadorMiembros++;
 
         let div = document.createElement("div");
-        div.className =
-            "row pb-3 align-items-center";
+        div.className = "row pb-3 align-items-center";
         div.innerHTML = `
             <div class="col-sm-6">
                 <div class="mb-3">
@@ -182,14 +191,19 @@ $(document).ready(function () {
         if (e.target && e.target.classList.contains("botonEliminarMiembros")) {
             const divPadre = e.target.parentNode.parentNode;
             contenedorCamposMiembros.removeChild(divPadre);
-            if (contenedorCamposMiembros.children.length === 0 && botonEliminarMiembros) {
+            if (
+                contenedorCamposMiembros.children.length === 0 &&
+                botonEliminarMiembros
+            ) {
                 botonEliminarMiembros.style.display = "none";
             }
         }
     });
 
     const contenedorParientes = document.querySelector("#campos_parientes");
-    const btnAgregarParientes = document.querySelector("#agregar_campos_parientes");
+    const btnAgregarParientes = document.querySelector(
+        "#agregar_campos_parientes"
+    );
     const botonEliminarParientes = document.querySelector(".btn-danger");
 
     let camposContadorParientes = 0;
@@ -198,8 +212,7 @@ $(document).ready(function () {
         camposContadorParientes++;
 
         let div = document.createElement("div");
-        div.className =
-            "row pb-3 align-items-center";
+        div.className = "row pb-3 align-items-center";
         div.innerHTML = `
             <div class="col-sm-6">
                 <div class="mb-3">
@@ -213,7 +226,7 @@ $(document).ready(function () {
                     <input type="text" class="form-control" id="parentesco${camposContadorParientes}" name="parentesco[]">
                 </div>
             </div>
-            
+
             <div class="col-sm-6">
                 <button type="button" class="btn-redes btn btn-danger botonEliminar">Eliminar</button>
             </div>
@@ -230,7 +243,10 @@ $(document).ready(function () {
         if (e.target && e.target.classList.contains("botonEliminar")) {
             const divPadre = e.target.parentNode.parentNode;
             contenedorParientes.removeChild(divPadre);
-            if (contenedorParientes.children.length === 0 && botonEliminarParientes) {
+            if (
+                contenedorParientes.children.length === 0 &&
+                botonEliminarParientes
+            ) {
                 botonEliminarParientes.style.display = "none";
             }
         }
@@ -246,8 +262,7 @@ $(document).ready(function () {
         camposContadorSocios++;
 
         let div = document.createElement("div");
-        div.className =
-            "row pb-3 align-items-center";
+        div.className = "row pb-3 align-items-center";
         div.innerHTML = `
             <div class="col-sm-6">
                 <div class="mb-3">
@@ -261,7 +276,7 @@ $(document).ready(function () {
                     <input type="text" class="form-control" id="porcentaje_participacion_socio${camposContadorSocios}" name="porcentaje_participacion_socio[]">
                 </div>
             </div>
-            
+
             <div class="col-sm-6">
                 <button type="button" class="btn-redes btn btn-danger botonEliminar">Eliminar</button>
             </div>
@@ -289,7 +304,6 @@ $(document).ready(function () {
     var capitalAccionarioSi = document.getElementById("capitalAccionarioSI");
     var capitalAccionarioNO = document.getElementById("capitalAccionarioNO");
     var camposAdicionales = document.querySelectorAll(".campos-adicionales");
-
 
     cargoPublicoSi.addEventListener("change", function () {
         if (cargoPublicoSi.checked || capitalAccionarioSi.checked) {

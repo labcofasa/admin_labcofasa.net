@@ -43,13 +43,13 @@ return new class extends Migration {
             $table->string('documento_identificacion_representante')->nullable();
             $table->string('documento_nit_representante')->nullable();
             $table->string('documento_credencial_representante')->nullable();
-            // $table->string('documento_escritura_juridico')->nullable();
             $table->string('documento_matricula_juridico')->nullable();
             $table->string('documento_acuerdo_juridico')->nullable();
             $table->string('documento_nit_juridico')->nullable();
             $table->string('documento_iva_juridico')->nullable();
             $table->string('documento_domicilio_juridico')->nullable();
             $table->string('documento_dnm_juridico')->nullable();
+            $table->string('formulario_firmado')->nullable();
 
             $table->unsignedBigInteger('pais_id')->nullable();
             $table->unsignedBigInteger('departamento_id')->nullable();
