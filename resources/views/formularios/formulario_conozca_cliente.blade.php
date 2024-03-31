@@ -468,8 +468,8 @@
                     <x-formularios.formulario_personas_expuestas />
                 </div>
 
-                <h5 class="mb-2 text-center fw-bold">Documentos anexos</h5>
-                
+                <h5 class="pt-4 text-center fw-bold">Documentos anexos</h5>
+
                 <x-formularios.archivos />
 
                 <span class="mb-3">Validación de datos</span>

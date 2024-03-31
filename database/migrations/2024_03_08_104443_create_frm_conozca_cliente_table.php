@@ -35,10 +35,22 @@ return new class extends Migration {
             $table->text('cargo_publico')->nullable();
             $table->text('familiar_publico')->nullable();
             $table->text('direccion_ip')->nullable();
-            $table->string('documento_identidad')->nullable();
-            $table->string('documento_tarjeta_registro')->nullable();
-            $table->string('documento_domicilio')->nullable();
-            $table->string('formulario_firmado')->nullable();
+            $table->string('documento_identidad_persona_natural')->nullable();
+            $table->string('documento_tarjeta_iva_persona_natural')->nullable();
+            $table->string('documento_nit_persona_natural')->nullable();
+            $table->string('documento_domicilio_persona_natural')->nullable();
+            $table->string('documento_dnm_persona_natural')->nullable();
+            $table->string('documento_identificacion_representante')->nullable();
+            $table->string('documento_nit_representante')->nullable();
+            $table->string('documento_credencial_representante')->nullable();
+            // $table->string('documento_escritura_juridico')->nullable();
+            $table->string('documento_matricula_juridico')->nullable();
+            $table->string('documento_acuerdo_juridico')->nullable();
+            $table->string('documento_nit_juridico')->nullable();
+            $table->string('documento_iva_juridico')->nullable();
+            $table->string('documento_domicilio_juridico')->nullable();
+            $table->string('documento_dnm_juridico')->nullable();
+
             $table->unsignedBigInteger('pais_id')->nullable();
             $table->unsignedBigInteger('departamento_id')->nullable();
             $table->unsignedBigInteger('municipio_id')->nullable();

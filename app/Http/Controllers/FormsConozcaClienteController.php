@@ -294,17 +294,21 @@ class FormsConozcaClienteController extends Controller
             'porcentaje_participacion_socio.*' => 'nullable|string',
             'fuente_ingreso' => 'nullable|string',
             'monto_mensual' => 'nullable|string',
-            'documento_identidad' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_tarjeta_registro' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_domicilio' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_escritura.*' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_acuerdo' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_nit' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_credencial' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_identidad_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_tarjeta_iva_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_nit_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_domicilio_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_dnm_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_identificacion_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_matricula' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_nit_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_credencial_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_matricula_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_acuerdo_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_nit_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_iva_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'formulario_firmado' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_dnm_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+
         ]);
 
         $direccionIp = $request->ip();
@@ -347,63 +351,217 @@ class FormsConozcaClienteController extends Controller
 
             $formscccId = $formsccc->id;
 
-            $rutaCarpeta = public_path("docs/forms/fccc/{$formscccId}");
+            $rutaCarpeta = public_path("docs/fccc/{$formscccId}");
 
             if (!file_exists($rutaCarpeta)) {
                 mkdir($rutaCarpeta, 0777, true);
             }
 
-            if ($request->hasFile('documento_identidad')) {
-                $documento = $request->file('documento_identidad');
+            if ($request->hasFile('documento_identidad_persona_natural')) {
+                $documento = $request->file('documento_identidad_persona_natural');
 
                 if ($documento->isValid()) {
                     $nombreArchivo = time() . '_' . $documento->getClientOriginalName();
 
                     $documento->move($rutaCarpeta, $nombreArchivo);
 
-                    $formsccc->documento_identidad = $nombreArchivo;
+                    $formsccc->documento_identidad_persona_natural = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
             }
 
-            if ($request->hasFile('documento_tarjeta_registro')) {
-                $tarjetaRegistro = $request->file('documento_tarjeta_registro');
+            if ($request->hasFile('documento_tarjeta_iva_persona_natural')) {
+                $tarjetaRegistro = $request->file('documento_tarjeta_iva_persona_natural');
 
                 if ($tarjetaRegistro->isValid()) {
                     $nombreArchivoTarjetaRegistro = time() . '_' . $tarjetaRegistro->getClientOriginalName();
 
                     $tarjetaRegistro->move($rutaCarpeta, $nombreArchivoTarjetaRegistro);
 
-                    $formsccc->documento_tarjeta_registro = $nombreArchivoTarjetaRegistro;
+                    $formsccc->documento_tarjeta_iva_persona_natural = $nombreArchivoTarjetaRegistro;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
             }
 
-            if ($request->hasFile('documento_domicilio')) {
-                $documentoDomicilio = $request->file('documento_domicilio');
+            if ($request->hasFile('documento_nit_persona_natural')) {
+                $documentoNitPersonaNatural = $request->file('documento_nit_persona_natural');
 
-                if ($documentoDomicilio->isValid()) {
-                    $nombreDocumentoDomicilio = time() . '_' . $documentoDomicilio->getClientOriginalName();
+                if ($documentoNitPersonaNatural->isValid()) {
+                    $nombreDocumentoNitPersonaNatural = time() . '_' . $documentoNitPersonaNatural->getClientOriginalName();
 
-                    $documentoDomicilio->move($rutaCarpeta, $nombreDocumentoDomicilio);
+                    $documentoNitPersonaNatural->move($rutaCarpeta, $nombreDocumentoNitPersonaNatural);
 
-                    $formsccc->documento_domicilio = $nombreDocumentoDomicilio;
+                    $formsccc->documento_nit_persona_natural = $nombreDocumentoNitPersonaNatural;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
             }
 
-            if ($request->hasFile('formulario_firmado')) {
-                $formulario_firmado = $request->file('formulario_firmado');
+            if ($request->hasFile('documento_domicilio_persona_natural')) {
+                $documentoDomicilioPersonaNatural = $request->file('documento_domicilio_persona_natural');
 
-                if ($formulario_firmado->isValid()) {
-                    $nombreFormulario_firmado = time() . '_' . $formulario_firmado->getClientOriginalName();
+                if ($documentoDomicilioPersonaNatural->isValid()) {
+                    $nombreDocumentoDomicilioPersonaNatural = time() . '_' . $documentoDomicilioPersonaNatural->getClientOriginalName();
 
-                    $formulario_firmado->move($rutaCarpeta, $nombreFormulario_firmado);
+                    $documentoDomicilioPersonaNatural->move($rutaCarpeta, $nombreDocumentoDomicilioPersonaNatural);
 
-                    $formsccc->formulario_firmado = $nombreFormulario_firmado;
+                    $formsccc->documento_domicilio_persona_natural = $nombreDocumentoDomicilioPersonaNatural;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_dnm_persona_natural')) {
+                $documentoDnmPersonaNatural = $request->file('documento_dnm_persona_natural');
+
+                if ($documentoDnmPersonaNatural->isValid()) {
+                    $nombreDocumentoDnmPersonaNatural = time() . '_' . $documentoDnmPersonaNatural->getClientOriginalName();
+
+                    $documentoDnmPersonaNatural->move($rutaCarpeta, $nombreDocumentoDnmPersonaNatural);
+
+                    $formsccc->documento_dnm_persona_natural = $nombreDocumentoDnmPersonaNatural;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_identificacion_representante')) {
+                $documentoIdentificacionRepresentante = $request->file('documento_identificacion_representante');
+
+                if ($documentoIdentificacionRepresentante->isValid()) {
+                    $nombreDocumentoIdentificacionRepresentate = time() . '_' . $documentoIdentificacionRepresentante->getClientOriginalName();
+
+                    $documentoIdentificacionRepresentante->move($rutaCarpeta, $nombreDocumentoIdentificacionRepresentate);
+
+                    $formsccc->documento_identificacion_representante = $nombreDocumentoIdentificacionRepresentate;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_nit_representante')) {
+                $documentoNitRepresentante = $request->file('documento_nit_representante');
+
+                if ($documentoNitRepresentante->isValid()) {
+                    $nombreDocumentoNitRepresentate = time() . '_' . $documentoNitRepresentante->getClientOriginalName();
+
+                    $documentoNitRepresentante->move($rutaCarpeta, $nombreDocumentoNitRepresentate);
+
+                    $formsccc->documento_nit_representante = $nombreDocumentoNitRepresentate;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_credencial_representante')) {
+                $documentoCredencialRepresentante = $request->file('documento_credencial_representante');
+
+                if ($documentoCredencialRepresentante->isValid()) {
+                    $nombreCredencialRepresentante = time() . '_' . $documentoCredencialRepresentante->getClientOriginalName();
+
+                    $documentoCredencialRepresentante->move($rutaCarpeta, $nombreCredencialRepresentante);
+
+                    $formsccc->documento_credencial_representante = $nombreCredencialRepresentante;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            // if ($request->hasFile('documento_escritura_juridico')) {
+            //     $documentoEscrituraJuridico = $request->file('documento_escritura_juridico');
+
+            //     if ($documentoEscrituraJuridico->isValid()) {
+            //         $nombreEscrituraJuridico = time() . '_' . $documentoEscrituraJuridico->getClientOriginalName();
+
+            //         $documentoEscrituraJuridico->move($rutaCarpeta, $nombreEscrituraJuridico);
+
+            //         $formsccc->documento_escritura_juridico = $nombreEscrituraJuridico;
+            //     } else {
+            //         return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+            //     }
+            // }
+
+            if ($request->hasFile('documento_matricula_juridico')) {
+                $documentoMatriculaJuridico = $request->file('documento_matricula_juridico');
+
+                if ($documentoMatriculaJuridico->isValid()) {
+                    $nombreMatriculaJuridico = time() . '_' . $documentoMatriculaJuridico->getClientOriginalName();
+
+                    $documentoMatriculaJuridico->move($rutaCarpeta, $nombreMatriculaJuridico);
+
+                    $formsccc->documento_matricula_juridico = $nombreMatriculaJuridico;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_acuerdo_juridico')) {
+                $documentoAcuerdoJuridico = $request->file('documento_acuerdo_juridico');
+
+                if ($documentoAcuerdoJuridico->isValid()) {
+                    $nombreAcuerdoJuridico = time() . '_' . $documentoAcuerdoJuridico->getClientOriginalName();
+
+                    $documentoAcuerdoJuridico->move($rutaCarpeta, $nombreAcuerdoJuridico);
+
+                    $formsccc->documento_acuerdo_juridico = $nombreAcuerdoJuridico;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_nit_juridico')) {
+                $documentoNitJuridico = $request->file('documento_nit_juridico');
+
+                if ($documentoNitJuridico->isValid()) {
+                    $nombreNitJuridico = time() . '_' . $documentoNitJuridico->getClientOriginalName();
+
+                    $documentoNitJuridico->move($rutaCarpeta, $nombreNitJuridico);
+
+                    $formsccc->documento_nit_juridico = $nombreNitJuridico;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_iva_juridico')) {
+                $documentoIvaJuridico = $request->file('documento_iva_juridico');
+
+                if ($documentoIvaJuridico->isValid()) {
+                    $nombreIvaJuridico = time() . '_' . $documentoIvaJuridico->getClientOriginalName();
+
+                    $documentoIvaJuridico->move($rutaCarpeta, $nombreIvaJuridico);
+
+                    $formsccc->documento_iva_juridico = $nombreIvaJuridico;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_domicilio_juridico')) {
+                $documentoDomicilioJuridico = $request->file('documento_domicilio_juridico');
+
+                if ($documentoDomicilioJuridico->isValid()) {
+                    $nombreDomicilioJuridico = time() . '_' . $documentoDomicilioJuridico->getClientOriginalName();
+
+                    $documentoDomicilioJuridico->move($rutaCarpeta, $nombreDomicilioJuridico);
+
+                    $formsccc->documento_domicilio_juridico = $nombreDomicilioJuridico;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
+            if ($request->hasFile('documento_dnm_juridico')) {
+                $documentoDnmJuridico = $request->file('documento_dnm_juridico');
+
+                if ($documentoDnmJuridico->isValid()) {
+                    $nombreDnmJuridico = time() . '_' . $documentoDnmJuridico->getClientOriginalName();
+
+                    $documentoDnmJuridico->move($rutaCarpeta, $nombreDnmJuridico);
+
+                    $formsccc->documento_dnm_juridico = $nombreDnmJuridico;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -431,129 +589,6 @@ class FormsConozcaClienteController extends Controller
             $formsccj->monto_proyectado = $request->input('monto_proyectado');
             $formsccj->fecha_de_creacion = now();
             $formsccj->fecha_de_modificacion = now();
-
-            $formsccj->save();
-
-            $formsccjId = $formsccj->id;
-
-            $rutaCarpetaJuridico = public_path("docs/forms/fccc/ccj/{$formsccjId}");
-
-            if (!file_exists($rutaCarpetaJuridico)) {
-                mkdir($rutaCarpetaJuridico, 0777, true);
-            }
-
-            if ($request->hasFile('documento_escritura')) {
-                $documentoEscritura = $request->file('documento_escritura');
-
-                if ($documentoEscritura->isValid()) {
-                    $nombreDocumentoEscritura = time() . '_' . $documentoEscritura->getClientOriginalName();
-
-                    $documentoEscritura->move($rutaCarpetaJuridico, $nombreDocumentoEscritura);
-
-                    $formsccj->documento_escritura = $nombreDocumentoEscritura;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_escritura')) {
-                $documentosEscritura = $request->file('documento_escritura');
-            
-                foreach ($documentosEscritura as $documentoEscritura) {
-                    if ($documentoEscritura->isValid()) {
-                        $nombreDocumentoEscritura = time() . '_' . $documentoEscritura->getClientOriginalName();
-            
-                        $documentoEscritura->move($rutaCarpetaJuridico, $nombreDocumentoEscritura);
-                        
-                    } else {
-                        return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                    }
-                }
-            }
-
-            if ($request->hasFile('documento_acuerdo')) {
-                $documentoAcuerdo = $request->file('documento_acuerdo');
-
-                if ($documentoAcuerdo->isValid()) {
-                    $nombreDocumentoAcuerdo = time() . '_' . $documentoAcuerdo->getClientOriginalName();
-
-                    $documentoAcuerdo->move($rutaCarpetaJuridico, $nombreDocumentoAcuerdo);
-
-                    $formsccj->documento_acuerdo = $nombreDocumentoAcuerdo;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_nit')) {
-                $documentoNit = $request->file('documento_nit');
-
-                if ($documentoNit->isValid()) {
-                    $nombreDocumentoNit = time() . '_' . $documentoNit->getClientOriginalName();
-
-                    $documentoNit->move($rutaCarpetaJuridico, $nombreDocumentoNit);
-
-                    $formsccj->documento_nit = $nombreDocumentoNit;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_credencial')) {
-                $documentoCredencial = $request->file('documento_credencial');
-
-                if ($documentoCredencial->isValid()) {
-                    $nombreDocumentoCredencial = time() . '_' . $documentoCredencial->getClientOriginalName();
-
-                    $documentoCredencial->move($rutaCarpetaJuridico, $nombreDocumentoCredencial);
-
-                    $formsccj->documento_credencial = $nombreDocumentoCredencial;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_identificacion_representante')) {
-                $documentoIdentificacionRepresentante = $request->file('documento_identificacion_representante');
-
-                if ($documentoIdentificacionRepresentante->isValid()) {
-                    $nombreDocumentoIdentificacionRepresentante = time() . '_' . $documentoIdentificacionRepresentante->getClientOriginalName();
-
-                    $documentoIdentificacionRepresentante->move($rutaCarpetaJuridico, $nombreDocumentoIdentificacionRepresentante);
-
-                    $formsccj->documento_identificacion_representante = $nombreDocumentoIdentificacionRepresentante;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_matricula')) {
-                $documentoMatricula = $request->file('documento_matricula');
-
-                if ($documentoMatricula->isValid()) {
-                    $nombreDocumentoMatricula = time() . '_' . $documentoMatricula->getClientOriginalName();
-
-                    $documentoMatricula->move($rutaCarpetaJuridico, $nombreDocumentoMatricula);
-
-                    $formsccj->documento_matricula = $nombreDocumentoMatricula;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_domicilio_juridico')) {
-                $documentoDomicilioJuridico = $request->file('documento_domicilio_juridico');
-
-                if ($documentoDomicilioJuridico->isValid()) {
-                    $nombreDocumentoDomicilioJuridico = time() . '_' . $documentoDomicilioJuridico->getClientOriginalName();
-
-                    $documentoDomicilioJuridico->move($rutaCarpetaJuridico, $nombreDocumentoDomicilioJuridico);
-
-                    $formsccj->documento_domicilio_juridico = $nombreDocumentoDomicilioJuridico;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
 
             $formsccj->save();
 

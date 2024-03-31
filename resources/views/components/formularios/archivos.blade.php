@@ -1,43 +1,43 @@
-<span class="mb-2 text-center py-2">Documentación de Persona natural</span>
+<span class="mb-2 text-center py-3">Documentación de Persona natural</span>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_identidad" class="form-label">Copia de DUI, Pasaporte o Carnet de
+        <label for="documento_identidad_persona_natural" class="form-label">Copia de DUI, Pasaporte o Carnet de
             Residente</label>
-        <input type="file" class="form-control" id="documento_identidad" name="documento_identidad"
-            accept=".pdf, .docx, .jpg, .png, .jpeg">
+        <input type="file" class="form-control" id="documento_identidad_persona_natural"
+            name="documento_identidad_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_identidad" class="form-label">Copia de tarjeta NIT</label>
-        <input type="file" class="form-control" id="documento_identidad" name="documento_identidad"
-            accept=".pdf, .docx, .jpg, .png, .jpeg">
+        <label for="documento_nit_persona_natural" class="form-label">Copia de Tarjeta NIT</label>
+        <input type="file" class="form-control" id="documento_nit_persona_natural"
+            name="documento_nit_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_tarjeta_registro" class="form-label">Copia Tarjeta de IVA (Si aplica)</label>
+        <label for="documento_tarjeta_iva_persona_natural" class="form-label">Copia Tarjeta IVA (Si aplica)</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_tarjeta_registro" name="documento_tarjeta_registro"
-                accept=".pdf, .docx, .jpg, .png, .jpeg">
+            <input type="file" class="form-control" id="documento_tarjeta_iva_persona_natural"
+                name="documento_tarjeta_iva_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_domicilio" class="form-label">Copia de comprobante de
-            domicilio</label>
+        <label for="documento_domicilio_persona_natural" class="form-label">Copia de Comprobante de
+            Domicilio</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_domicilio" name="documento_domicilio"
-                accept=".pdf, .docx, .jpg, .png, .jpeg">
+            <input type="file" class="form-control" id="documento_domicilio_persona_natural"
+                name="documento_domicilio_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_dnm" class="form-label">Autorización de DNM</label>
-        <input type="file" class="form-control" id="documento_dnm" name="documento_dnm"
-            accept=".pdf, .docx, .jpg, .png, .jpeg">
+        <label for="documento_dnm_persona_natural" class="form-label">Autorización de DNM</label>
+        <input type="file" class="form-control" id="documento_dnm_persona_natural"
+            name="documento_dnm_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
     </div>
 </div>
 <span class="mb-2 text-center py-2">Documentación de Representante legal</span>
@@ -53,69 +53,70 @@
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_nit" class="form-label">Copia de tarjeta NIT del
+        <label for="documento_nit_representante" class="form-label">Copia de tarjeta NIT del
             Representante Legal</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_nit" name="documento_nit"
-                accept=".pdf, .docx, .jpg, .png, .jpeg">
+
+            <input type="file" class="form-control" id="documento_nit_representante"
+                name="documento_nit_representante" accept=".pdf, .docx, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_credencial" class="form-label">Copia credencial de elección del
+        <label for="documento_credencial_representante" class="form-label">Copia de Credencial de Elección del
             Representante Legal</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_credencial" name="documento_credencial"
-                accept=".pdf, .docx, .jpg, .png, .jpeg">
+            <input type="file" class="form-control" id="documento_credencial_representante"
+                name="documento_credencial_representante" accept=".pdf, .docx, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
 <span class="mb-2 text-center py-2">Documentación de Persona jurídica</span>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_escritura" class="form-label">Copia de Escritura de Constitución (Para
+        <label for="documento_escritura_juridico" class="form-label">Copia de Escritura de Constitución (Para
             Sociedades)</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_escritura" name="documento_escritura[]"
-                accept=".pdf, .docx, .jpg, .png, .jpeg" multiple>
+            <input type="file" class="form-control" id="documento_escritura_juridico"
+                name="documento_escritura_juridico[]" accept=".pdf, .docx, .jpg, .png, .jpeg" multiple>
         </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_matricula" class="form-label">Matrícula de Comercio
+        <label for="documento_matricula_juridico" class="form-label">Matrícula de Comercio
             vigente</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_matricula" name="documento_matricula"
-                accept=".pdf, .docx, .jpg, .png, .jpeg">
+            <input type="file" class="form-control" id="documento_matricula_juridico"
+                name="documento_matricula_juridico" accept=".pdf, .docx, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_acuerdo" class="form-label">Acuerdo ejecutivo, Decreto o Acta de
+        <label for="documento_acuerdo_juridico" class="form-label">Acuerdo ejecutivo, Decreto o Acta de
             Constitución (para asociaciones, cooperativas, ONG's, Otros)</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_acuerdo" name="documento_acuerdo"
+            <input type="file" class="form-control" id="documento_acuerdo_juridico" name="documento_acuerdo_juridico"
                 accept=".pdf, .docx, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_iva" class="form-label">Copia de tarjeta NIT</label>
+        <label for="documento_nit_juridico" class="form-label">Copia de tarjeta NIT</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_iva" name="documento_iva"
+            <input type="file" class="form-control" id="documento_nit_juridico" name="documento_nit_juridico"
                 accept=".pdf, .docx, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_iva" class="form-label">Copia de tarjeta de IVA</label>
+        <label for="documento_iva_juridico" class="form-label">Copia de tarjeta de IVA</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_iva" name="documento_iva"
+            <input type="file" class="form-control" id="documento_iva_juridico" name="documento_iva_juridico"
                 accept=".pdf, .docx, .jpg, .png, .jpeg">
         </div>
     </div>
