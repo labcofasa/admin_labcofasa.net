@@ -1,4 +1,4 @@
-$(document).ready(function () {
+    $(document).ready(function () {
     const apiEmpresas = "/tabla-empresas";
 
     const giroTextoInput = $("#giro-empresa-editar");

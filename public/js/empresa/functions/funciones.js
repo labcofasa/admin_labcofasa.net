@@ -42,7 +42,6 @@ function cargarClasificaciones(
     });
 }
 
-
 /* Cargar paises */
 function cargarPaises(
     paisSelectId,

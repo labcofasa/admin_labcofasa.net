@@ -21,10 +21,13 @@
     </div>
 
     <x-formularios.ver />
+    <x-formularios.editar />
+    <x-formularios.eliminar />
 
     <x-notificaciones />
 
     <!-- Scripts -->
     <script async src="{{ asset('js/forms/conozca_cliente/tabla.js') }}"></script>
+    <script async src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
 
 @endsection

@@ -39,7 +39,7 @@ return new class extends Migration {
             $table->timestamp('fecha_de_creacion')->nullable();
             $table->timestamp('fecha_de_modificacion')->nullable();
 
-            $table->foreign('frm_conozca_cliente_id')->references('id')->on('frm_conozca_cliente');
+            $table->foreign('frm_conozca_cliente_id')->references('id')->on('frm_conozca_cliente')->onDelete('cascade');
             $table->foreign('clasificacion_id')->references('id')->on('clasificaciones');
             $table->foreign('giro_id')->references('id')->on('giros');
             $table->foreign('pais_id')->references('id')->on('paises');

@@ -591,7 +591,7 @@ button {
         background-color: var(--body-bg) !important;
     }
 
-    .table > :not(caption) > * > * {
+    .table> :not(caption)>*>* {
         background-color: var(--body-bg) !important;
     }
 
@@ -613,7 +613,6 @@ button {
 
     .modal-body {
         background-color: var(--body-bg) !important;
-        padding-bottom: 30px;
     }
 
     .modal-footer {
@@ -651,11 +650,7 @@ button {
     div.dataTables_wrapper div.dataTables_info {
         text-align: left;
     }
-
-    .modal-body {
-        padding-bottom: 30px;
-    }
-
+    
     .container-graficos {
         grid-template-columns: repeat(2, 1fr);
     }

@@ -20,7 +20,7 @@
 .modal-header {
     padding: 1rem 1rem;
     border-bottom: none !important;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .modal-title {

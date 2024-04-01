@@ -20,8 +20,7 @@
                 <div class="modal-body">
                     <div class="text-center">
                         <small class="mt-3">
-                            Antes de enviar el formulario, ¿podría confirmar si ha adjuntado la carta de
-                            responsabilidad?
+                            Antes de enviar el formulario, ¿podría confirmar si ha adjuntado su formulario firmado?
                         </small>
                     </div>
                 </div>

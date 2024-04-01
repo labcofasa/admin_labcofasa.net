@@ -177,6 +177,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formulario/conozca-cliente', [FormulariosController::class, 'show'])->name('pag.formulario');
     Route::get('/tabla-conozca-cliente', [FormsConozcaClienteController::class, 'tablaConozcaCliente']);
     Route::put('/cambiar-estado-form/{id}', [FormsConozcaClienteController::class, 'cambiarEstadoFormulario']);
+    Route::delete('/eliminar-formulario/{id}', [FormsConozcaClienteController::class, 'destroy']);
 });
 
 Route::middleware(['guest'])->group(function () {

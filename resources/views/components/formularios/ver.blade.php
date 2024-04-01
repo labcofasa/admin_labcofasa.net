@@ -1,6 +1,6 @@
 <!-- Modal para ver datos por id de las respuestas del formulario conozca a su cliente -->
 <div class="modal fade" id="verRespuestaFcc" tabindex="-1" role="dialog" aria-labelledby="verRespuestaFccLabel"
-    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    aria-hidden="true">
     <div class="modal-dialog modal-fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">

@@ -17,6 +17,7 @@ use App\Models\Giro;
 use App\Models\Municipio;
 use App\Models\Pais;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use TCPDF;
 use DateTime;
 use Carbon\Carbon;
@@ -699,7 +700,6 @@ class FormsConozcaClienteController extends Controller
 
             return redirect()->back()->with('success', 'Hemos recibido exitosamente su formulario.');
         } catch (QueryException $e) {
-            dd($e);
             return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
         }
     }
@@ -731,19 +731,28 @@ class FormsConozcaClienteController extends Controller
         )
             ->select(
                 'frm_conozca_cliente.*',
+                'paises.id as id_pais',
                 'paises.nombre as nombre_pais',
+                'departamentos.id as id_departamento',
                 'departamentos.nombre as departamento_nombre',
+                'municipios.id as id_municipio',
                 'municipios.nombre as municipio_nombre',
                 'giros.nombre as giro_nombre',
                 'frm_conozca_cliente_juridico.*',
                 'clasificaciones.nombre as clasificacion_nombre',
+                'paises_juridico.id as id_pais_juridico',
                 'paises_juridico.nombre as pais_juridico',
+                'departamentos_juridico.id as id_departamento_juridico',
                 'departamentos_juridico.nombre as departamento_juridico',
+                'municipios_juridico.id as id_municipio_juridico',
                 'municipios_juridico.nombre as municipio_juridico',
                 'giros_juridico.nombre as giro_juridico',
                 'frm_conozca_cliente_politico.*',
+                'paises_politico.id as id_pais_politico',
                 'paises_politico.nombre as pais_politico',
+                'departamento_politico.id as id_departamento_politico',
                 'departamento_politico.nombre as departamento_politico',
+                'municipio_politico.id as id_municipio_politico',
                 'municipio_politico.nombre as municipio_politico'
             )
             ->leftJoin('paises', 'frm_conozca_cliente.pais_id', '=', 'paises.id')
@@ -839,8 +848,11 @@ class FormsConozcaClienteController extends Controller
                 'fecha_de_nacimiento' => $form->fecha_de_nacimiento,
                 'nacionalidad' => $form->nacionalidad,
                 'profesion_u_oficio' => $form->profesion_u_oficio,
+                'id_pais' => $form->id_pais,
                 'pais' => $form->nombre_pais,
+                'id_departamento' => $form->id_departamento,
                 'departamento' => $form->departamento_nombre,
+                'id_municipio' => $form->id_municipio,
                 'municipio' => $form->municipio_nombre,
                 'tipo_de_documento' => $form->tipo_de_documento,
                 'numero_de_documento' => $form->numero_de_documento,
@@ -859,8 +871,11 @@ class FormsConozcaClienteController extends Controller
                 'numero_nit_juridico' => $form->numero_de_nit_juridico,
                 'fecha_de_constitucion' => $form->fecha_de_constitucion_juridico,
                 'registro_nrc_juridico' => $form->registro_nrc_juridico,
+                'id_pais_juridico' => $form->id_pais_juridico,
                 'pais_juridico' => $form->pais_juridico,
+                'id_departamento_juridico' => $form->id_departamento_juridico,
                 'departamento_juridico' => $form->departamento_juridico,
+                'id_municipio_juridico' => $form->id_municipio_juridico,
                 'municipio_juridico' => $form->municipio_juridico,
                 'telefono_juridico' => $form->telefono_juridico,
                 'sitio_web_juridico' => $form->sitio_web_juridico,
@@ -874,8 +889,11 @@ class FormsConozcaClienteController extends Controller
                 'nombre_cargo_politico' => $form->nombre_cargo_politico,
                 'fecha_desde_politico' => $form->fecha_desde_politico,
                 'fecha_hasta_politico' => $form->fecha_hasta_politico,
+                'id_pais_politico' => $form->id_pais_politico,
                 'pais_politico' => $form->pais_politico,
+                'id_departamento_politico' => $form->id_departamento_politico,
                 'departamento_politico' => $form->departamento_politico,
+                'id_municipio_politico' => $form->id_municipio_politico,
                 'municipio_politico' => $form->municipio_politico,
                 'nombre_cliente_politico' => $form->nombre_cliente_politico,
                 'porcentaje_participacion_politico' => $form->porcentaje_participacion_politico,
@@ -917,6 +935,32 @@ class FormsConozcaClienteController extends Controller
             return response()->json(['error' => 'Formulario no encontrado.'], 404);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error interno del servidor.'], 500);
+        }
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $formulario = FrmConozcaCliente::find($id);
+
+        if (!$formulario) {
+            return response()->json([
+                'success' => false,
+                'error' => '¡Formulario no encontrado!'
+            ]);
+        }
+
+        try {
+            $rutaCarpeta = public_path("docs/fccc/{$formulario->id}");
+
+            if (File::exists($rutaCarpeta)) {
+                File::deleteDirectory($rutaCarpeta);
+            }
+
+            $formulario->delete();
+
+            return response()->json(['success' => true, 'message' => '¡Formulario eliminado con éxito!']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => 'Error al eliminar el formulario.']);
         }
     }
 }
