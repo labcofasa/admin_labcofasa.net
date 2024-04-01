@@ -11,6 +11,24 @@ $(document).ready(function () {
         $("#formulario_firmado").prop("required", true);
     });
 
+    $("#btnEnviarFormulario").click(function () {
+        var camposVacios = false;
+        $("input[required]").each(function () {
+            if ($(this).val().trim() === '') {
+                camposVacios = true;
+                return false;
+            }
+        });
+
+        if (camposVacios) {
+            alert("Por favor, completa todos los campos requeridos antes de enviar el formulario.");
+            return false;
+        }
+
+        $("#btnEnviarFormulario").hide();
+        $("#btnCarga").show();
+    });
+
     const forms = document.querySelectorAll(".needs-validation");
 
     Array.from(forms).forEach((form) => {

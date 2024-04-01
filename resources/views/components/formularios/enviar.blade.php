@@ -30,6 +30,11 @@
                         cancelar</button>
                     <button type="submit" id="btnEnviarFormulario" name="accion" value="guardar_formulario"
                         class="btn-actions btn btn-success">Si, enviar formulario</button>
+
+                    <button id="btnCarga" class="btn-actions btn btn-success" type="button" style="display: none;" disabled>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span role="status">Enviando...</span>
+                    </button>
                 </div>
             </form>
         </div>
