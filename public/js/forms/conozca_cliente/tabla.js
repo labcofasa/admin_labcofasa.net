@@ -362,6 +362,13 @@ $(document).ready(function () {
         $("#verRespuestaFcc").modal("show");
     });
 
+    $("#verRespuestaFcc").on("hidden.bs.modal", function () {
+        $("#camposAccionista").empty();
+        $("#camposMiembro").empty();
+        $("#camposPariente").empty();
+        $("#camposSocio").empty();
+    });
+
     // Editar el estado del formulario
     $("#tabla-conozca-cliente").on("change", ".toggle-switch", function () {
         fccId = $(this).data("id");

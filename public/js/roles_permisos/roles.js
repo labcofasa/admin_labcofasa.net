@@ -175,29 +175,27 @@ $(document).ready(function () {
                         );
                         return `
                                 <div class="text-center">
-                                ${
-                                    userPermissions.some(
-                                        (permission) =>
-                                            permission.name ===
-                                                "admin_permisos_ver" ||
-                                            permission.name ===
-                                                "admin_roles_editar" ||
-                                            permission.name ===
-                                                "admin_roles_eliminar"
-                                    )
-                                        ? `
+                                ${userPermissions.some(
+                            (permission) =>
+                                permission.name ===
+                                "admin_permisos_ver" ||
+                                permission.name ===
+                                "admin_roles_editar" ||
+                                permission.name ===
+                                "admin_roles_eliminar"
+                        )
+                                ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
-                                        ${
-                                            userPermissions.some(
-                                                (permission) =>
-                                                    permission.name ===
-                                                    "admin_permisos_ver"
-                                            )
-                                                ? `
+                                        ${userPermissions.some(
+                                    (permission) =>
+                                        permission.name ===
+                                        "admin_permisos_ver"
+                                )
+                                    ? `
                                             <li>
                                                 <button class="dropdown-item ver-permisos nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -208,15 +206,14 @@ $(document).ready(function () {
                                                     <span class="link">Ver permisos</span>
                                                 </button>
                                             </li>`
-                                                : ""
-                                        }
-                                    ${
-                                        userPermissions.some(
-                                            (permission) =>
-                                                permission.name ===
-                                                "admin_roles_editar"
-                                        )
-                                            ? `
+                                    : ""
+                                }
+                                    ${userPermissions.some(
+                                    (permission) =>
+                                        permission.name ===
+                                        "admin_roles_editar"
+                                )
+                                    ? `
                                             <li>
                                                 <button class="dropdown-item editar-rol nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -226,15 +223,14 @@ $(document).ready(function () {
                                                     <span class="link">Editar</span>
                                                 </button>
                                             </li>`
-                                            : ""
-                                    }
-                                    ${
-                                        userPermissions.some(
-                                            (permission) =>
-                                                permission.name ===
-                                                "admin_roles_eliminar"
-                                        )
-                                            ? `
+                                    : ""
+                                }
+                                    ${userPermissions.some(
+                                    (permission) =>
+                                        permission.name ===
+                                        "admin_roles_eliminar"
+                                )
+                                    ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-rol nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -246,12 +242,12 @@ $(document).ready(function () {
                                                     <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
-                                            : ""
-                                    }
+                                    : ""
+                                }
                                         </ul>
                                     </div>`
-                                        : ""
-                                }
+                                : ""
+                            }
                                 </div>
                             `;
                     },
@@ -523,13 +519,12 @@ $(document).ready(function () {
                         return `
                             <div class="btn-toolbar">
                                 <div class="btn-group" role="group">
-                                ${
-                                    userPermissions.some(
-                                        (permission) =>
-                                            permission.name ===
-                                            "admin_permisos_eliminar"
-                                    )
-                                        ? `
+                                ${userPermissions.some(
+                            (permission) =>
+                                permission.name ===
+                                "admin_permisos_eliminar"
+                        )
+                                ? `
                                     <button class="btn btn-danger eliminar-permiso" data-rol="${rolId}" data-id="${row.id}" data-toggle="tooltip" title="Eliminar permiso">
                                         <svg class="icon-danger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                             <path d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -538,8 +533,8 @@ $(document).ready(function () {
                                             <path d="M14.5 16.5L14.5 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                                         </svg>
                                     </button>`
-                                        : ""
-                                }
+                                : ""
+                            }
                                 </div>
                             </div>
                         `;
@@ -756,21 +751,20 @@ $(document).ready(function () {
                         return `
                                 <div class="btn-toolbar">
                                     <div class="btn-group" role="group">
-                                    ${
-                                        userPermissions.some(
-                                            (permission) =>
-                                                permission.name ===
-                                                "admin_permisos_asignar"
-                                        )
-                                            ? `
+                                    ${userPermissions.some(
+                            (permission) =>
+                                permission.name ===
+                                "admin_permisos_asignar"
+                        )
+                                ? `
                                         <button class="btn btn-primary asignar-permiso" data-rol="${rolId}" data-id="${row.id}" data-toggle="tooltip" title="Asignar permiso">
                                             <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                 <path d="M11.9982 2C8.99043 2 7.04018 4.01899 4.73371 4.7549C3.79589 5.05413 3.32697 5.20374 3.1372 5.41465C2.94743 5.62556 2.89186 5.93375 2.78072 6.55013C1.59143 13.146 4.1909 19.244 10.3903 21.6175C11.0564 21.8725 11.3894 22 12.0015 22C12.6135 22 12.9466 21.8725 13.6126 21.6175C19.8116 19.2439 22.4086 13.146 21.219 6.55013C21.1078 5.93364 21.0522 5.6254 20.8624 5.41449C20.6726 5.20358 20.2037 5.05405 19.2659 4.75499C16.9585 4.01915 15.0061 2 11.9982 2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                                 <path d="M9 13C9 13 10 13 11 15C11 15 14.1765 10 17 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </button>`
-                                            : ""
-                                    }
+                                : ""
+                            }
                                     </div>
                                 </div>
                             `;
@@ -1103,6 +1097,7 @@ $(document).ready(function () {
         form.addClass("was-validated");
 
         if (!form[0].checkValidity()) {
+            mostrarToast("Por favor, completa todos los campos requeridos.", "error");
             return;
         }
 
@@ -1244,13 +1239,13 @@ $(document).ready(function () {
         );
         printWindow.document.write(
             "<style>" +
-                "body { font-family: Arial, sans-serif; }" +
-                "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-                "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-                "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-                "tr:nth-child(even) { background-color: #f9f9f9; }" +
-                "tr:hover { background-color: #f5f5f5; }" +
-                "</style>"
+            "body { font-family: Arial, sans-serif; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+            "tr:nth-child(even) { background-color: #f9f9f9; }" +
+            "tr:hover { background-color: #f5f5f5; }" +
+            "</style>"
         );
         printWindow.document.write("</head><body>");
         printWindow.document.write(

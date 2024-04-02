@@ -15,12 +15,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="modal-body">
-                    <p class="mt-3 text-center">
-                        ¿Está seguro de que desea eliminar toda la información del cliente: "<span
-                            class="nombre-juridico"></span>"?
-                    </p>
-                </div>
+                <p class="mt-3 text-center">
+                    ¿Está seguro de que desea eliminar toda la información del cliente: "<span
+                        class="nombre-juridico"></span>"?
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn-actions btn btn-lg btn-secondary"

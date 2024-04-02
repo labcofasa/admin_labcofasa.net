@@ -1,4 +1,4 @@
-    $(document).ready(function () {
+$(document).ready(function () {
     const apiEmpresas = "/tabla-empresas";
 
     const giroTextoInput = $("#giro-empresa-editar");
@@ -18,7 +18,7 @@
     let contadorCampos = 0;
 
     let tabla_empresas = null;
-    var empresaId, nombreEmpresa;
+    let empresaId, nombreEmpresa;
 
     tablaEmpresas();
 
@@ -279,9 +279,8 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end shadow">
                                         <li>
-                                            <a class="btn-logo" href="empresas/${
-                                                row.id
-                                            }/logo" target="_blank">
+                                            <a class="btn-logo" href="empresas/${row.id
+                            }/logo" target="_blank">
                                                 <button class="dropdown-item nav-link" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                         <path d="M2 8C2 8 6.47715 3 12 3C17.5228 3 22 8 22 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -293,9 +292,8 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="btn-logo" href="empresas/${
-                                                row.id
-                                            }/leyenda" target="_blank">
+                                            <a class="btn-logo" href="empresas/${row.id
+                            }/leyenda" target="_blank">
                                                 <button class="dropdown-item nav-link" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                         <path d="M2 8C2 8 6.47715 3 12 3C17.5228 3 22 8 22 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -306,13 +304,12 @@
                                                 </button>
                                             </a>
                                         </li>
-                                        ${
-                                            userPermissions.some(
-                                                (permission) =>
-                                                    permission.name ===
-                                                    "admin_empresas_editar"
-                                            )
-                                                ? `
+                                        ${userPermissions.some(
+                                (permission) =>
+                                    permission.name ===
+                                    "admin_empresas_editar"
+                            )
+                                ? `
                                             <li>
                                                 <button class="dropdown-item editar-empresa nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -322,15 +319,14 @@
                                                     <span class="link">Editar</span>
                                                 </button>
                                             </li>`
-                                                : ""
-                                        }
-                                        ${
-                                            userPermissions.some(
-                                                (permission) =>
-                                                    permission.name ===
-                                                    "admin_empresas_eliminar"
-                                            )
-                                                ? `
+                                : ""
+                            }
+                                        ${userPermissions.some(
+                                (permission) =>
+                                    permission.name ===
+                                    "admin_empresas_eliminar"
+                            )
+                                ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-empresa nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -342,8 +338,8 @@
                                                     <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
-                                                : ""
-                                        }
+                                : ""
+                            }
                                     </ul>
                                 </div>
                             </div>`;
@@ -464,6 +460,7 @@
         form.addClass("was-validated");
 
         if (!form[0].checkValidity()) {
+            mostrarToast("Por favor, completa todos los campos requeridos.", "error");
             return;
         }
 
@@ -556,7 +553,7 @@
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
                     "Error al registrar la empresa. Detalles: " +
-                        jqXHR.responseText,
+                    jqXHR.responseText,
                     "error"
                 );
             },
@@ -1188,13 +1185,13 @@ function empresasPrint() {
     );
     printWindow.document.write(
         "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(

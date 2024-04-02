@@ -177,14 +177,11 @@ $(document).ready(function () {
                         const isChecked = row.estado == 1;
                         return `
                             <div class="form-check form-switch">
-                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${
-                                    row.id
-                                }" ${isChecked ? "checked" : ""} data-id="${
-                            row.id
-                        }">
-                                <label class="form-check-label estado-label" for="switch-${
-                                    row.id
-                                }"></label>
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id
+                            }" ${isChecked ? "checked" : ""} data-id="${row.id
+                            }">
+                                <label class="form-check-label estado-label" for="switch-${row.id
+                            }"></label>
                             </div>
                         `;
                     },
@@ -218,27 +215,25 @@ $(document).ready(function () {
                         );
                         return `
                                 <div class="text-center">
-                                ${
-                                    userPermissions.some(
-                                        (permission) =>
-                                            permission.name ===
-                                                "admin_usuarios_editar" ||
-                                            permission.name ===
-                                                "admin_usuarios_eliminar"
-                                    )
-                                        ? `
+                                ${userPermissions.some(
+                            (permission) =>
+                                permission.name ===
+                                "admin_usuarios_editar" ||
+                                permission.name ===
+                                "admin_usuarios_eliminar"
+                        )
+                                ? `
                                     <div class="btn-group">
                                         <button class="btn-icon-close dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end shadow">
-                                        ${
-                                            userPermissions.some(
-                                                (permission) =>
-                                                    permission.name ===
-                                                    "admin_usuarios_editar"
-                                            )
-                                                ? `
+                                        ${userPermissions.some(
+                                    (permission) =>
+                                        permission.name ===
+                                        "admin_usuarios_editar"
+                                )
+                                    ? `
                                             <li>
                                                 <button class="dropdown-item editar-usuario nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -248,15 +243,14 @@ $(document).ready(function () {
                                                     <span class="link">Editar</span>
                                                 </button>
                                             </li>`
-                                                : ""
-                                        }
-                                    ${
-                                        userPermissions.some(
-                                            (permission) =>
-                                                permission.name ===
-                                                "admin_usuarios_eliminar"
-                                        )
-                                            ? `
+                                    : ""
+                                }
+                                    ${userPermissions.some(
+                                    (permission) =>
+                                        permission.name ===
+                                        "admin_usuarios_eliminar"
+                                )
+                                    ? `
                                             <li>
                                                 <button class="dropdown-item eliminar-usuario nav-link" data-id="${row.id}" type="button">
                                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
@@ -268,11 +262,11 @@ $(document).ready(function () {
                                                     <span class="link">Eliminar</span>
                                                 </button>
                                             </li>`
-                                            : ""
-                                    }
-                                        </ul>`
-                                        : ""
+                                    : ""
                                 }
+                                        </ul>`
+                                : ""
+                            }
                                     </div>
                                 </div>
                             `;
@@ -382,6 +376,7 @@ $(document).ready(function () {
         form.addClass("was-validated");
 
         if (!form[0].checkValidity()) {
+            mostrarToast("Por favor, completa todos los campos requeridos.", "error");
             return;
         }
 
@@ -471,7 +466,7 @@ $(document).ready(function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
                     "Error al cambiar el estado del usuario. Detalles: " +
-                        errorThrown,
+                    errorThrown,
                     "error"
                 );
             },
@@ -791,13 +786,13 @@ function printUsuarios() {
     );
     printWindow.document.write(
         "<style>" +
-            "body { font-family: Arial, sans-serif; }" +
-            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-            "tr:nth-child(even) { background-color: #f9f9f9; }" +
-            "tr:hover { background-color: #f5f5f5; }" +
-            "</style>"
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
     );
     printWindow.document.write("</head><body>");
     printWindow.document.write(

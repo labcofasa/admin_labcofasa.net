@@ -1,5 +1,5 @@
 <div class="modal fade" id="enviarFormulario" tabindex="-1" role="dialog" aria-labelledby="enviarFormularioLabel"
-    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
         <div class="modal-content">
             <form id="forms_ccc" action="{{ route('procesar.formulario') }}" class="form needs-validation" novalidate
@@ -30,7 +30,8 @@
                     <button type="submit" id="btnEnviarFormulario" name="accion" value="guardar_formulario"
                         class="btn-actions btn btn-success">Si, enviar formulario</button>
 
-                    <button id="btnCarga" class="btn-actions btn btn-success" type="button" style="display: none;" disabled>
+                    <button id="btnCarga" class="btn-actions btn btn-success" type="button" style="display: none;"
+                        disabled>
                         <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                         <span role="status">Enviando...</span>
                     </button>

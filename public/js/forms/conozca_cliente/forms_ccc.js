@@ -21,13 +21,14 @@ $(document).ready(function () {
         });
 
         if (camposVacios) {
-            alert("Por favor, completa todos los campos requeridos antes de enviar el formulario.");
+            mostrarToast("Por favor, completa todos los campos requeridos antes de enviar el formulario.", "error");
             return false;
         }
 
         $("#btnEnviarFormulario").hide();
         $("#btnCarga").show();
     });
+
 
     const forms = document.querySelectorAll(".needs-validation");
 
@@ -355,3 +356,21 @@ $(document).ready(function () {
         }
     });
 });
+
+function mostrarToast(mensaje, tipo) {
+    const toast = document.getElementById("notificacion");
+
+    toast.querySelector(".toast-body").textContent = mensaje;
+
+    toast.classList.remove("toast-success", "toast-error", "bg-danger");
+
+    if (tipo === "success") {
+        toast.classList.add("toast-success");
+    } else if (tipo === "error") {
+        toast.classList.add("toast-error", "bg-danger");
+    }
+
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+}
+
