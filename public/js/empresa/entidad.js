@@ -286,7 +286,7 @@ $(document).ready(function () {
         tabla_entidades.columns.adjust().responsive.recalc();
     });
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
+    $.fn.DataTable.ext.pager.numbers_length = 5;
 
     $("#crearEntidadBtn").click(function () {
         $("#crearEntidad").modal("show");

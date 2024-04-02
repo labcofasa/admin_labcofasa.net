@@ -203,7 +203,7 @@ $(document).ready(function () {
         });
     }
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
+    $.fn.DataTable.ext.pager.numbers_length = 5;
 
     /* Ver datos por id*/
     $("#tabla-conozca-cliente").on("click", ".ver-datos", function () {

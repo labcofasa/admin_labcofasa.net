@@ -292,7 +292,7 @@ $(document).ready(function () {
         });
     }
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
+    $.fn.DataTable.ext.pager.numbers_length = 5;
 
     $("#crearAvisoBtn").click(function () {
         $("#crearAviso").modal("show");

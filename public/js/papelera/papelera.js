@@ -217,13 +217,12 @@ $(document).ready(function () {
                         return `
                                 <div class="btn-toolbar">
                                     <div class="btn-group" role="group">
-                                    ${
-                                        userPermissions.some(
-                                            (permission) =>
-                                                permission.name ===
-                                                "admin_papelera_recuperar"
-                                        )
-                                            ? `
+                                    ${userPermissions.some(
+                            (permission) =>
+                                permission.name ===
+                                "admin_papelera_recuperar"
+                        )
+                                ? `
                                         <button class="btn btn-success restaurar-registro" data-table="${row.nombre_tabla}" data-id="${row.id}">
                                             <svg class="icon-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                                                 <path d="M20.25 5.5L19.75 11.5M5.25 5.5L5.85461 15.5368C6.00945 18.1073 6.08688 19.3925 6.72868 20.3167C7.046 20.7737 7.4548 21.1594 7.92905 21.4493C8.51127 21.8051 9.21343 21.945 10.25 22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -232,8 +231,8 @@ $(document).ready(function () {
                                             </svg>
                                         </button>
                                         `
-                                            : ""
-                                    }
+                                : ""
+                            }
                                     </div>
                                 </div>
                             `;
@@ -293,6 +292,8 @@ $(document).ready(function () {
         });
     }
 
+    $.fn.DataTable.ext.pager.numbers_length = 5;
+
     tablaPapelera();
 
     $("#tabla-papelera").on("click", ".restaurar-registro", function () {
@@ -338,64 +339,64 @@ $(document).ready(function () {
             },
         });
     });
-
-    /* Notificaciones */
-    function mostrarToast(mensaje, tipo) {
-        const toast = document.getElementById("notificacion");
-
-        toast.querySelector(".toast-body").textContent = mensaje;
-
-        toast.classList.remove("toast-success", "toast-error", "bg-danger");
-
-        if (tipo === "success") {
-            toast.classList.add("toast-success");
-        } else if (tipo === "error") {
-            toast.classList.add("toast-error", "bg-danger");
-        }
-
-        const bsToast = new bootstrap.Toast(toast);
-        bsToast.show();
-    }
-
-    /* Imprimir registros eliminados */
-    function printPapelera() {
-        const printWindow = window.open("", "_blank");
-        printWindow.document.title =
-            "Registros eliminados - Laboratorios Cofasa";
-        printWindow.document.write(
-            "<html><head><title>Registros eliminados - Laboratorios Cofasa</title>"
-        );
-        printWindow.document.write(
-            "<style>" +
-                "body { font-family: Arial, sans-serif; }" +
-                "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-                "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-                "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-                "tr:nth-child(even) { background-color: #f9f9f9; }" +
-                "tr:hover { background-color: #f5f5f5; }" +
-                "</style>"
-        );
-        printWindow.document.write("</head><body>");
-        printWindow.document.write(
-            '<h4 style="text-align: center;">Registros eliminados - Laboratorios Cofasa</h4>'
-        );
-        printWindow.document.write("<table>");
-
-        const headers = $("#tabla-papelera thead tr").clone();
-        headers.find("th:last").remove();
-        printWindow.document.write("<thead>" + headers.html() + "</thead>");
-
-        const tbody = $("<tbody></tbody>");
-        $("#tabla-papelera tbody tr").each(function () {
-            const row = $(this).clone();
-            row.find("td:last").remove();
-            tbody.append(row);
-        });
-        printWindow.document.write(tbody.html());
-
-        printWindow.document.write("</table>");
-        printWindow.document.write("</body></html>");
-        printWindow.document.close();
-        printWindow.print();
-    }
 });
+
+/* Notificaciones */
+function mostrarToast(mensaje, tipo) {
+    const toast = document.getElementById("notificacion");
+
+    toast.querySelector(".toast-body").textContent = mensaje;
+
+    toast.classList.remove("toast-success", "toast-error", "bg-danger");
+
+    if (tipo === "success") {
+        toast.classList.add("toast-success");
+    } else if (tipo === "error") {
+        toast.classList.add("toast-error", "bg-danger");
+    }
+
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+}
+
+/* Imprimir registros eliminados */
+function printPapelera() {
+    const printWindow = window.open("", "_blank");
+    printWindow.document.title =
+        "Registros eliminados - Laboratorios Cofasa";
+    printWindow.document.write(
+        "<html><head><title>Registros eliminados - Laboratorios Cofasa</title>"
+    );
+    printWindow.document.write(
+        "<style>" +
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
+    );
+    printWindow.document.write("</head><body>");
+    printWindow.document.write(
+        '<h4 style="text-align: center;">Registros eliminados - Laboratorios Cofasa</h4>'
+    );
+    printWindow.document.write("<table>");
+
+    const headers = $("#tabla-papelera thead tr").clone();
+    headers.find("th:last").remove();
+    printWindow.document.write("<thead>" + headers.html() + "</thead>");
+
+    const tbody = $("<tbody></tbody>");
+    $("#tabla-papelera tbody tr").each(function () {
+        const row = $(this).clone();
+        row.find("td:last").remove();
+        tbody.append(row);
+    });
+    printWindow.document.write(tbody.html());
+
+    printWindow.document.write("</table>");
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.print();
+}

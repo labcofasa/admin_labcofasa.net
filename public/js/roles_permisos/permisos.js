@@ -248,7 +248,7 @@ $(document).ready(function () {
 
     tablaPermisos();
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
+    $.fn.DataTable.ext.pager.numbers_length = 5;
 
     /* Imprimir permisos */
     function printPermisos() {
@@ -259,13 +259,13 @@ $(document).ready(function () {
         );
         printWindow.document.write(
             "<style>" +
-                "body { font-family: Arial, sans-serif; }" +
-                "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
-                "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
-                "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
-                "tr:nth-child(even) { background-color: #f9f9f9; }" +
-                "tr:hover { background-color: #f5f5f5; }" +
-                "</style>"
+            "body { font-family: Arial, sans-serif; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+            "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+            "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+            "tr:nth-child(even) { background-color: #f9f9f9; }" +
+            "tr:hover { background-color: #f5f5f5; }" +
+            "</style>"
         );
         printWindow.document.write("</head><body>");
         printWindow.document.write(

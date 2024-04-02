@@ -327,7 +327,7 @@ $(document).ready(function () {
         });
     }
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
+    $.fn.DataTable.ext.pager.numbers_length = 5;
 
     $("#tabla-aplicaciones").on("click", ".ver-aplicacion", function () {
         const url = $(this).data("url");

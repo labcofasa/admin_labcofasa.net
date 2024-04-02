@@ -859,8 +859,8 @@ $(document).ready(function () {
 
     tablaRoles();
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
-
+    $.fn.DataTable.ext.pager.numbers_length = 5;
+    
     /* Mostrar permisos del rol */
     $("#tabla-roles").on("click", ".ver-permisos", function () {
         rolId = $(this).data("id");

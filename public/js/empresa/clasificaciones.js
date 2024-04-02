@@ -283,7 +283,7 @@ $(document).ready(function () {
         tabla_clasificaciones.columns.adjust().responsive.recalc();
     });
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
+    $.fn.DataTable.ext.pager.numbers_length = 5;
 
     $("#crearClasificacionBtn").click(function () {
         $("#crearClasificacion").modal("show");

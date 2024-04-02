@@ -381,7 +381,7 @@ $(document).ready(function () {
         tabla_giros.columns.adjust().responsive.recalc();
     });
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
+    $.fn.DataTable.ext.pager.numbers_length = 5;
 
     /* Registrar giros */
     $("#crearGirosBtn").click(function () {

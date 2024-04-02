@@ -339,7 +339,7 @@ $(document).ready(function () {
         });
     }
 
-    $.fn.DataTable.ext.pager.numbers_length = 4;
+    $.fn.DataTable.ext.pager.numbers_length = 5;
 
     /* Registrar usuario */
     $("#registrarUsuarioBtn").click(function () {
