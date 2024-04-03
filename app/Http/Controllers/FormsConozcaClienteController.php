@@ -313,13 +313,13 @@ class FormsConozcaClienteController extends Controller
             'formulario_firmado' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
         ]);
 
-        $direccionIp = $request->ip();
+        // $direccionIp = $request->ip();
 
-        $numRegistros = FrmConozcaCliente::where('direccion_ip', $direccionIp)->count();
+        // $numRegistros = FrmConozcaCliente::where('direccion_ip', $direccionIp)->count();
 
-        if ($numRegistros >= 10) {
-            return redirect()->back()->with('error', 'Has excedido el límite de intentos.');
-        }
+        // if ($numRegistros >= 10) {
+        //     return redirect()->back()->with('error', 'Has excedido el límite de intentos.');
+        // }
 
         try {
             $formsccc = new FrmConozcaCliente();
@@ -345,7 +345,7 @@ class FormsConozcaClienteController extends Controller
             $formsccc->direccion = $request->input('direccion');
             $formsccc->cargo_publico = $request->input('cargo_publico');
             $formsccc->familiar_publico = $request->input('familiar_publico');
-            $formsccc->direccion_ip = $direccionIp;
+            // $formsccc->direccion_ip = $direccionIp;
             $formsccc->fecha_de_creacion = now();
             $formsccc->fecha_de_modificacion = now();
 
