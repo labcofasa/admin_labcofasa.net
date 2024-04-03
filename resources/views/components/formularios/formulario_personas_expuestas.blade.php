@@ -1,7 +1,7 @@
 <div class="row">
     <x-formularios.encabezado />
 
-    <h1 class="titulo">Formulario de identificación de personas expuestas políticamente</h1>
+    <h1 class="titulo">Formulario de Identificación de Personas Expuestas Políticamente</h1>
 
     <p class="mb-4">Nota: El presente formulario deberá ser completado por los clientes y/o contrapartes que marcaron
         "SI"
