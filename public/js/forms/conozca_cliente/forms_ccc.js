@@ -7,6 +7,19 @@ $(document).ready(function () {
             }
         });
 
+
+    const btnDescargarForm = document.getElementById('btnDescargarForm');
+
+    btnDescargarForm.addEventListener('click', function (event) {
+        const formulario = document.querySelector('form');
+
+        if (formulario.checkValidity()) {
+            mostrarToast("El formulario está completo. Descargando formulario...", "success");
+        } else {
+            mostrarToast("Por favor, completa todos los campos requeridos.", "error");
+        }
+    });
+
     $("#btnEnviarFormulario").click(function () {
         $("#formulario_firmado").prop("required", true);
     });
@@ -41,7 +54,6 @@ $(document).ready(function () {
         $("#btnEnviarFormulario").hide();
         $("#btnCarga").show();
     });
-
 
     const forms = document.querySelectorAll(".needs-validation");
 

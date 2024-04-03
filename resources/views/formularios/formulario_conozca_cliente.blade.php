@@ -34,7 +34,7 @@
             <div class="row pt-3">
                 <div class="col-sm-6">
                     <div class="mb-3">
-                        <label for="tipo" class="form-label">Tipo</label>
+                        <label for="tipo" class="form-label">Tipo<span class="obligatorio"> *</span></label>
                         <select class="form-select" id="tipo" name="tipo" required>
                             <option value="">Seleccione el tipo</option>
                             <option value="Cliente">Cliente</option>
@@ -47,7 +47,8 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
-                        <label for="tipo_persona" class="form-label">Tipo de persona</label>
+                        <label for="tipo_persona" class="form-label">Tipo de persona<span class="obligatorio">
+                                *</span></label>
                         <select class="form-select" id="tipo_persona" name="tipo_persona" required>
                             <option value="">Seleccione el tipo</option>
                             <option value="Persona Natural">Persona Natural</option>
@@ -483,7 +484,8 @@
                 </p>
                 <div class="col-sm-6">
                     <div class="mb-3">
-                        <label for="formulario_firmado" class="form-label">Archivo del formulario firmado</label>
+                        <label for="formulario_firmado" class="form-label">Archivo del formulario firmado <span
+                                class="obligatorio"> *</span></label>
                         <div class="input-group mb-3">
                             <input type="file" class="form-control" id="formulario_firmado" name="formulario_firmado"
                                 accept=".pdf, .docx, .jpg, .png, .jpeg">
@@ -495,7 +497,7 @@
                 </div>
             </div>
 
-            <button type="submit" name="accion" value="generar_pdf" class="descargar-form">
+            <button id="btnDescargarForm" type="submit" name="accion" value="generar_pdf" class="descargar-form">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                     color="#000000" fill="none">
                     <path
