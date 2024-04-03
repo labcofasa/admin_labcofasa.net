@@ -301,10 +301,10 @@
                                 </div>
                             </div>
                             <span class="mb-3">Información de la administración, sus accionistas o miembros</span>
-                            <div id="camposAccionista"></div>
+                            <div id="camposAccionistaEditar"></div>
                             <span class="mb-3">Miembros de la Junta Directiva, administrador único, alta gerencia o
                                 máximo órgano de control en la sociedad.</span>
-                            <div id="camposMiembro"></div>
+                            <div id="camposMiembroEditar"></div>
                             <span class="mb-3">Declaración jurada de origin de fondos</span>
                             <div class="col-sm-3">
                                 <div class="mb-3">

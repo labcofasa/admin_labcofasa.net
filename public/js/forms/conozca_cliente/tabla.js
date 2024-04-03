@@ -403,18 +403,18 @@ $(document).ready(function () {
 
     // Editar el formulario
     $("#tabla-conozca-cliente").on("click", ".editar-formulario", function () {
-        fccId = $(this).data("id");
+        fcc_editar_id = $(this).data("id");
         var row = tabla_conozca_cliente.row($(this).parents("tr")).data();
 
-        clienteDocumento = tabla_conozca_cliente
+        cliente_documento_editar = tabla_conozca_cliente
             .row($(this).closest("tr"))
             .data().numero_de_documento;
 
-        clienteTipoDoc = tabla_conozca_cliente
+        cliente_tipodoc_editar = tabla_conozca_cliente
             .row($(this).closest("tr"))
             .data().tipo_de_documento;
 
-        clienteTipoPersona = tabla_conozca_cliente
+        cliente_tipopersona_editar = tabla_conozca_cliente
             .row($(this).closest("tr"))
             .data().tipo_persona;
 
@@ -423,229 +423,228 @@ $(document).ready(function () {
         modal
             .find(".modal-title")
             .text(
-                clienteTipoPersona +
+                cliente_tipopersona_editar +
                 " con el documento " +
-                clienteTipoDoc +
+                cliente_tipodoc_editar +
                 ": " +
-                clienteDocumento
+                cliente_documento_editar
             );
 
-        var tipo = row.tipo;
-        var tipo_persona = row.tipo_persona;
-        var nombre = row.nombre;
-        var apellido = row.apellido;
-        var fecha_nacimiento = row.fecha_de_nacimiento;
-        var nacionalidad = row.nacionalidad;
-        var profesion_u_oficio = row.profesion_u_oficio;
+        var tipo_editar = row.tipo;
+        var tipo_persona_editar = row.tipo_persona;
+        var nombre_editar = row.nombre;
+        var apellido_editar = row.apellido;
+        var fecha_nacimiento_editar = row.fecha_de_nacimiento;
+        var nacionalidad_editar = row.nacionalidad;
+        var profesion_u_oficio_editar = row.profesion_u_oficio;
 
-        var paisId = row.id_pais;
-        var pais = row.pais;
-        var departamentoId = row.id_departamento;
-        var departamento = row.departamento;
-        var municipioId = row.id_municipio;
-        var municipio = row.municipio;
+        var pais_editar_id = row.id_pais;
+        var pais_editar = row.pais;
+        var departamento_editar_id = row.id_departamento;
+        var departamento_editar = row.departamento;
+        var municipio_editar_id = row.id_municipio;
+        var municipio_editar = row.municipio;
 
-        var paisJuridicoId = row.id_pais_juridico;
-        var paisJuridico = row.pais_juridico;
-        var departamentoJuridicoId = row.id_departamento_juridico;
-        var departamentoJuridico = row.departamento_juridico;
-        var municipioJuridicoId = row.id_municipio_juridico;
-        var municipioJuridico = row.municipio_juridico;
+        var pais_juridico_editar_id = row.id_pais_juridico;
+        var pais_juridico_editar = row.pais_juridico;
+        var departamento_juridico_editar_id = row.id_departamento_juridico;
+        var departamento_juridico_editar = row.departamento_juridico;
+        var municipio_juridico_editar_id = row.id_municipio_juridico;
+        var municipio_juridico_editar = row.municipio_juridico;
 
-        var paisPoliticoId = row.id_pais_politico;
-        var paisPolitico = row.pais_politico;
-        var departamentoPoliticoId = row.id_departamento_politico;
-        var departamentoPolitico = row.departamento_politico;
-        var municipioPoliticoId = row.id_municipio_politico;
-        var municipioPolitico = row.municipio_politico;
+        var pais_politico_editar_id = row.id_pais_politico;
+        var pais_politico_editar = row.pais_politico;
+        var departamento_politico_editar_id = row.id_departamento_politico;
+        var departamento_politico_editar = row.departamento_politico;
+        var municipio_politico_editar_id = row.id_municipio_politico;
+        var municipio_politico_editar = row.municipio_politico;
 
-        var profesion_u_oficio = row.profesion_u_oficio;
-        var tipo_de_documento = row.tipo_de_documento;
-        var numero_de_documento = row.numero_de_documento;
-        var fecha_de_vencimiento = row.fecha_de_vencimiento;
-        var registro_iva_nrc = row.registro_iva_nrc;
-        var correo = row.correo;
-        var telefono = row.telefono;
-        var fecha_de_nombramiento = row.fecha_de_nombramiento;
-        var actividad_economica = row.giro_nombre;
-        var direccion = row.direccion;
+        var tipo_de_documento_editar = row.tipo_de_documento;
+        var numero_de_documento_editar = row.numero_de_documento;
+        var fecha_de_vencimiento_editar = row.fecha_de_vencimiento;
+        var registro_iva_nrc_editar = row.registro_iva_nrc;
+        var correo_editar = row.correo;
+        var telefono_editar = row.telefono;
+        var fecha_de_nombramiento_editar = row.fecha_de_nombramiento;
+        var actividad_economica_editar = row.giro_nombre;
+        var direccion_editar = row.direccion;
 
-        var nombre_juridico = row.nombre_juridico;
-        var clasificacion = row.clasificacion;
-        var nacionalidad_juridico = row.nacionalidad_juridico;
-        var numero_nit_juridico = row.numero_nit_juridico;
-        var fecha_de_constitucion = row.fecha_de_constitucion;
-        var registro_nrc_juridico = row.registro_nrc_juridico;
-        var telefono_juridico = row.telefono_juridico;
-        var sitio_web_juridico = row.sitio_web_juridico;
-        var numero_de_fax_juridico = row.numero_de_fax_juridico;
-        var direccion_juridico = row.direccion_juridico;
-        var giro_juridico = row.giro_juridico;
-        var monto_proyectado = row.monto_proyectado;
-        var cargo_publico = row.cargo_publico;
-        var familiar_publico = row.familiar_publico;
+        var nombre_juridico_editar = row.nombre_juridico;
+        var clasificacion_editar = row.clasificacion;
+        var nacionalidad_juridico_editar = row.nacionalidad_juridico;
+        var numero_nit_juridico_editar = row.numero_nit_juridico;
+        var fecha_de_constitucion_editar = row.fecha_de_constitucion;
+        var registro_nrc_juridico_editar = row.registro_nrc_juridico;
+        var telefono_juridico_editar = row.telefono_juridico;
+        var sitio_web_juridico_editar = row.sitio_web_juridico;
+        var numero_de_fax_juridico_editar = row.numero_de_fax_juridico;
+        var direccion_juridico_editar = row.direccion_juridico;
+        var giro_juridico_editar = row.giro_juridico;
+        var monto_proyectado_editar = row.monto_proyectado;
+        var cargo_publico_editar = row.cargo_publico;
+        var familiar_publico_editar = row.familiar_publico;
 
-        var nombre_politico = row.nombre_politico;
-        var nombre_cargo_politico = row.nombre_cargo_politico;
-        var fecha_desde_politico = row.fecha_desde_politico;
-        var fecha_hasta_politico = row.fecha_hasta_politico;
-        var pais_politico = row.pais_politico;
-        var departamento_politico = row.departamento_politico;
-        var municipio_politico = row.municipio_politico;
-        var nombre_cliente_politico = row.nombre_cliente_politico;
-        var porcentaje_participacion_politico =
+        var nombre_politico_editar = row.nombre_politico;
+        var nombre_cargo_politico_editar = row.nombre_cargo_politico;
+        var fecha_desde_politico_editar = row.fecha_desde_politico;
+        var fecha_hasta_politico_editar = row.fecha_hasta_politico;
+        var pais_politico_editar = row.pais_politico;
+        var departamento_politico_editar = row.departamento_politico;
+        var municipio_politico_editar = row.municipio_politico;
+        var nombre_cliente_politico_editar = row.nombre_cliente_politico;
+        var porcentaje_participacion_politico_editar =
             row.porcentaje_participacion_politico;
-        var fuente_ingreso = row.fuente_ingreso;
-        var monto_mensual = row.monto_mensual;
+        var fuente_ingreso_editar = row.fuente_ingreso;
+        var monto_mensual_editar = row.monto_mensual;
 
-        $("#frm_cccid").val(fccId);
-        $("#tipo_editar").val(tipo);
-        $("#tipo_persona_editar").val(tipo_persona);
-        $("#nombre_cliente_editar").val(nombre);
-        $("#apellido_cliente_editar").val(apellido);
-        $("#fecha_de_nacimiento_editar").val(fecha_nacimiento);
-        $("#nacionalidad_editar").val(nacionalidad);
-        $("#profesion_u_oficio_editar").val(profesion_u_oficio);
+        $("#frm_cccid").val(fcc_editar_id);
+        $("#tipo_editar").val(tipo_editar);
+        $("#tipo_persona_editar").val(tipo_persona_editar);
+        $("#nombre_cliente_editar").val(nombre_editar);
+        $("#apellido_cliente_editar").val(apellido_editar);
+        $("#fecha_de_nacimiento_editar").val(fecha_nacimiento_editar);
+        $("#nacionalidad_editar").val(nacionalidad_editar);
+        $("#profesion_u_oficio_editar").val(profesion_u_oficio_editar);
 
-        $("#formularioEditarForm #id_editar_pais").val(paisId);
+        $("#formularioEditarForm #id_editar_pais").val(pais_editar_id);
         $("#formularioEditarForm #pais_editar").append(
             $("<option>", {
-                value: paisId,
-                text: pais,
+                value: pais_editar_id,
+                text: pais_editar,
                 selected: true,
             })
         );
 
-        $("#formularioEditarForm #id_departamento_editar").val(departamentoId);
+        $("#formularioEditarForm #id_departamento_editar").val(departamento_editar_id);
         $("#formularioEditarForm #departamento_editar").append(
             $("<option>", {
-                value: departamentoId,
-                text: departamento,
+                value: departamento_editar_id,
+                text: departamento_editar,
                 selected: true,
             })
         );
 
-        $("#formularioEditarForm #id_municipio_editar").val(municipioId);
+        $("#formularioEditarForm #id_municipio_editar").val(municipio_editar_id);
         $("#formularioEditarForm #municipio_editar").append(
             $("<option>", {
-                value: municipioId,
-                text: municipio,
+                value: municipio_editar_id,
+                text: municipio_editar,
                 selected: true,
             })
         );
 
-        $("#formularioEditarForm #id_editar_pais_juridico").val(paisJuridicoId);
+        $("#formularioEditarForm #id_editar_pais_juridico").val(pais_juridico_editar_id);
         $("#formularioEditarForm #pais_juridico_editar").append(
             $("<option>", {
-                value: paisJuridicoId,
-                text: paisJuridico,
+                value: pais_juridico_editar_id,
+                text: pais_juridico_editar,
                 selected: true,
             })
         );
 
-        $("#formularioEditarForm #id_departamento_juridico_editar").val(departamentoJuridicoId);
+        $("#formularioEditarForm #id_departamento_juridico_editar").val(departamento_juridico_editar_id);
         $("#formularioEditarForm #departamento_juridico_editar").append(
             $("<option>", {
-                value: departamentoJuridicoId,
-                text: departamentoJuridico,
+                value: departamento_juridico_editar_id,
+                text: departamento_juridico_editar,
                 selected: true,
             })
         );
 
-        $("#formularioEditarForm #id_municipio_juridico_editar").val(municipioJuridicoId);
+        $("#formularioEditarForm #id_municipio_juridico_editar").val(municipio_juridico_editar_id);
         $("#formularioEditarForm #municipio_juridico_editar").append(
             $("<option>", {
-                value: municipioJuridicoId,
-                text: municipioJuridico,
+                value: municipio_juridico_editar_id,
+                text: municipio_juridico_editar,
                 selected: true,
             })
         );
 
-        $("#formularioEditarForm #id_editar_pais_politico").val(paisPoliticoId);
+        $("#formularioEditarForm #id_editar_pais_politico").val(pais_politico_editar_id);
         $("#formularioEditarForm #pais_politico_editar").append(
             $("<option>", {
-                value: paisPoliticoId,
-                text: paisPolitico,
+                value: pais_politico_editar_id,
+                text: pais_politico_editar,
                 selected: true,
             })
         );
 
-        $("#formularioEditarForm #id_departamento_politico_editar").val(departamentoPoliticoId);
+        $("#formularioEditarForm #id_departamento_politico_editar").val(departamento_politico_editar_id);
         $("#formularioEditarForm #departamento_politico_editar").append(
             $("<option>", {
-                value: departamentoPoliticoId,
-                text: departamentoPolitico,
+                value: departamento_politico_editar_id,
+                text: departamento_politico_editar,
                 selected: true,
             })
         );
 
-        $("#formularioEditarForm #id_municipio_politico_editar").val(municipioPoliticoId);
+        $("#formularioEditarForm #id_municipio_politico_editar").val(municipio_politico_editar_id);
         $("#formularioEditarForm #municipio_politico_editar").append(
             $("<option>", {
-                value: municipioPoliticoId,
-                text: municipioPolitico,
+                value: municipio_politico_editar_id,
+                text: municipio_politico_editar,
                 selected: true,
             })
         );
 
-        $("#tipo_de_documento_editar").val(tipo_de_documento);
-        $("#numero_de_documento_editar").val(numero_de_documento);
-        $("#fecha_de_vencimiento_editar").val(fecha_de_vencimiento);
-        $("#registro_iva_nrc_editar").val(registro_iva_nrc);
-        $("#correo_editar").val(correo);
-        $("#telefono_editar").val(telefono);
-        $("#fecha_de_nombramiento_editar").val(fecha_de_nombramiento);
-        $("#actividad_economica_editar").val(actividad_economica);
-        $("#direccion_editar").val(direccion);
+        $("#tipo_de_documento_editar").val(tipo_de_documento_editar);
+        $("#numero_de_documento_editar").val(numero_de_documento_editar);
+        $("#fecha_de_vencimiento_editar").val(fecha_de_vencimiento_editar);
+        $("#registro_iva_nrc_editar").val(registro_iva_nrc_editar);
+        $("#correo_editar").val(correo_editar);
+        $("#telefono_editar").val(telefono_editar);
+        $("#fecha_de_nombramiento_editar").val(fecha_de_nombramiento_editar);
+        $("#actividad_economica_editar").val(actividad_economica_editar);
+        $("#direccion_editar").val(direccion_editar);
 
-        $("#nombre_juridico_editar").val(nombre_juridico);
-        $("#clasificacion_editar").val(clasificacion);
-        $("#nacionalidad_juridico_editar").val(nacionalidad_juridico);
-        $("#numero_nit_juridico_editar").val(numero_nit_juridico);
-        $("#fecha_de_constitucion_editar").val(fecha_de_constitucion);
-        $("#registro_nrc_juridico_editar").val(registro_nrc_juridico);
-        $("#telefono_juridico_editar").val(telefono_juridico);
-        $("#sitio_web_juridico_editar").val(sitio_web_juridico);
-        $("#numero_de_fax_juridico_editar").val(numero_de_fax_juridico);
-        $("#direccion_juridico_editar").val(direccion_juridico);
-        $("#giro_juridico_editar").val(giro_juridico);
-        $("#monto_proyectado_editar").val(monto_proyectado);
-        $("#cargo_publico_editar").val(cargo_publico);
-        $("#familiar_publico_editar").val(familiar_publico);
+        $("#nombre_juridico_editar").val(nombre_juridico_editar);
+        $("#clasificacion_editar").val(clasificacion_editar);
+        $("#nacionalidad_juridico_editar").val(nacionalidad_juridico_editar);
+        $("#numero_nit_juridico_editar").val(numero_nit_juridico_editar);
+        $("#fecha_de_constitucion_editar").val(fecha_de_constitucion_editar);
+        $("#registro_nrc_juridico_editar").val(registro_nrc_juridico_editar);
+        $("#telefono_juridico_editar").val(telefono_juridico_editar);
+        $("#sitio_web_juridico_editar").val(sitio_web_juridico_editar);
+        $("#numero_de_fax_juridico_editar").val(numero_de_fax_juridico_editar);
+        $("#direccion_juridico_editar").val(direccion_juridico_editar);
+        $("#giro_juridico_editar").val(giro_juridico_editar);
+        $("#monto_proyectado_editar").val(monto_proyectado_editar);
+        $("#cargo_publico_editar").val(cargo_publico_editar);
+        $("#familiar_publico_editar").val(familiar_publico_editar);
 
-        $("#nombre_politico_editar").val(nombre_politico);
-        $("#nombre_cargo_politico_editar").val(nombre_cargo_politico);
-        $("#fecha_desde_politico_editar").val(fecha_desde_politico);
-        $("#fecha_hasta_politico_editar").val(fecha_hasta_politico);
-        $("#pais_politico_editar").val(pais_politico);
-        $("#departamento_politico_editar").val(departamento_politico);
-        $("#municipio_politico_editar").val(municipio_politico);
-        $("#nombre_cliente_politico_editar").val(nombre_cliente_politico);
+        $("#nombre_politico_editar").val(nombre_politico_editar);
+        $("#nombre_cargo_politico_editar").val(nombre_cargo_politico_editar);
+        $("#fecha_desde_politico_editar").val(fecha_desde_politico_editar);
+        $("#fecha_hasta_politico_editar").val(fecha_hasta_politico_editar);
+        $("#pais_politico_editar").val(pais_politico_editar);
+        $("#departamento_politico_editar").val(departamento_politico_editar);
+        $("#municipio_politico_editar").val(municipio_politico_editar);
+        $("#nombre_cliente_politico_editar").val(nombre_cliente_politico_editar);
         $("#porcentaje_participacion_politico_editar").val(
-            porcentaje_participacion_politico
+            porcentaje_participacion_politico_editar
         );
-        $("#fuente_ingreso_editar").val(fuente_ingreso);
-        $("#monto_mensual_editar").val(monto_mensual);
+        $("#fuente_ingreso_editar").val(fuente_ingreso_editar);
+        $("#monto_mensual_editar").val(monto_mensual_editar);
 
         $.each(row.cliente_accionista, function (index, clienteAccionista) {
-            let contadorCampos = index + 1;
-            verAccionistas(fccId, contadorCampos, clienteAccionista);
+            let contadorCamposEditar = index + 1;
+            verAccionistasEditar(fcc_editar_id, contadorCamposEditar, clienteAccionista);
         });
 
         $.each(row.cliente_miembro, function (index, clienteMiembro) {
-            let contadorCamposMiembro = index + 1;
-            verMiembros(fccId, contadorCamposMiembro, clienteMiembro);
+            let contadorCamposMiembroEditar = index + 1;
+            verMiembrosEditar(fcc_editar_id, contadorCamposMiembroEditar, clienteMiembro);
         });
 
-        $.each(row.cliente_pariente, function (index, clientePariente) {
-            let contadorCamposPariente = index + 1;
-            verParientes(fccId, contadorCamposPariente, clientePariente);
-        });
+        // $.each(row.cliente_pariente, function (index, clientePariente) {
+        //     let contadorCamposPariente = index + 1;
+        //     verParientes(fcc_editar_id, contadorCamposPariente, clientePariente);
+        // });
 
-        $.each(row.cliente_socio, function (index, clienteSocio) {
-            let contadorCamposSocio = index + 1;
-            verSocios(fccId, contadorCamposSocio, clienteSocio);
-        });
+        // $.each(row.cliente_socio, function (index, clienteSocio) {
+        //     let contadorCamposSocio = index + 1;
+        //     verSocios(fcc_editar_id, contadorCamposSocio, clienteSocio);
+        // });
 
         cargarPaises(
             "#pais_editar",
@@ -654,9 +653,9 @@ $(document).ready(function () {
             "#id_departamento_editar",
             "#municipio_editar",
             "#id_municipio_editar",
-            paisId,
-            departamentoId,
-            municipioId
+            pais_editar_id,
+            departamento_editar_id,
+            municipio_editar_id
         );
 
         cargarPaises(
@@ -666,9 +665,9 @@ $(document).ready(function () {
             '#id_departamento_juridico_editar',
             '#municipio_juridico_editar',
             '#id_municipio_juridico_editar',
-            paisJuridicoId,
-            departamentoJuridicoId,
-            municipioJuridicoId
+            pais_juridico_editar_id,
+            departamento_juridico_editar_id,
+            municipio_juridico_editar_id
         );
 
         cargarPaises(
@@ -678,9 +677,9 @@ $(document).ready(function () {
             '#id_departamento_politico_editar',
             '#municipio_politico_editar',
             '#id_municipio_politico_editar',
-            paisPoliticoId,
-            departamentoPoliticoId,
-            municipioPoliticoId
+            pais_politico_editar_id,
+            departamento_politico_editar_id,
+            municipio_politico_editar_id
         );
 
         $("#editarFormulario").modal("show");
@@ -885,4 +884,106 @@ function verSocios(fccId, contadorCamposSocio, clienteSocio) {
     `;
 
     $("#camposSocio").append(clienteSocioHtml);
+}
+
+/* Cargar cliente accionista editar */
+function verAccionistasEditar(fcc_editar_id, contadorCamposEditar, clienteAccionista) {
+    let nombre_accionista_editar =
+        clienteAccionista.nombre_accionista !== null
+            ? clienteAccionista.nombre_accionista
+            : "";
+    let nacionalidad_accionista_editar =
+        clienteAccionista.nacionalidad_accionista !== null
+            ? clienteAccionista.nacionalidad_accionista
+            : "";
+    let numero_identidad_accionista_editar =
+        clienteAccionista.numero_identidad_accionista !== null
+            ? clienteAccionista.numero_identidad_accionista
+            : "";
+    let porcentaje_participacion_accionista_editar =
+        clienteAccionista.porcentaje_participacion_accionista !== null
+            ? clienteAccionista.porcentaje_participacion_accionista
+            : "";
+
+    let clienteAccionistaEditarHtml = `
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="nombre_accionista_editar${fcc_editar_id}-${contadorCamposEditar}" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="nombre_accionista_editar${fcc_editar_id}-${contadorCamposEditar}" name="nombre_accionista_editar[]" value="${nombre_accionista_editar}">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="nacionalidad_accionista_editar${fcc_editar_id}-${contadorCamposEditar}" class="form-label">Nacionalidad</label>
+                <input type="text" class="form-control" id="nacionalidad_accionista_editar${fcc_editar_id}-${contadorCamposEditar}" name="nacionalidad_accionista_editar[]" value="${nacionalidad_accionista_editar}">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="numero_identidad_accionista_editar${fcc_editar_id}-${contadorCamposEditar}" class="form-label">No. Identidad</label>
+                <input type="text" class="form-control" id="numero_identidad_accionista_editar${fcc_editar_id}-${contadorCamposEditar}" name="numero_identidad_accionista_editar[]" value="${numero_identidad_accionista_editar}">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="porcentaje_participacion_accionista_editar${fcc_editar_id}-${contadorCamposEditar}" class="form-label">Porcentaje de participación</label>
+                <input type="text" class="form-control" id="porcentaje_participacion_accionista_editar${fcc_editar_id}-${contadorCamposEditar}" name="porcentaje_participacion_accionista_editar[]" value="${porcentaje_participacion_accionista_editar}">
+            </div>
+        </div>
+    </div>
+    `;
+
+    $("#camposAccionistaEditar").append(clienteAccionistaEditarHtml);
+}
+
+/* Cargar cliente miembro editar */
+function verMiembrosEditar(fcc_editar_id, contadorCamposMiembroEditar, clienteMiembro) {
+    let nombre_miembro_editar =
+        clienteMiembro.nombre_miembro !== null
+            ? clienteMiembro.nombre_miembro
+            : "";
+    let nacionalidad_miembro_editar =
+        clienteMiembro.nacionalidad_miembro !== null
+            ? clienteMiembro.nacionalidad_miembro
+            : "";
+    let numero_identidad_miembro_editar =
+        clienteMiembro.numero_identidad_miembro !== null
+            ? clienteMiembro.numero_identidad_miembro
+            : "";
+    let cargo_miembro_editar =
+        clienteMiembro.cargo_miembro !== null
+            ? clienteMiembro.cargo_miembro
+            : "";
+
+    let clienteMiembroEditarHtml = `
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="nombre_miembro_editar${fcc_editar_id}-${contadorCamposMiembroEditar}" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="nombre_miembro_editar${fcc_editar_id}-${contadorCamposMiembroEditar}" name="nombre_miembro_editar[]" value="${nombre_miembro_editar}">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="nacionalidad_miembro_editar${fcc_editar_id}-${contadorCamposMiembroEditar}" class="form-label">Nacionalidad</label>
+                <input type="text" class="form-control" id="nacionalidad_miembro_editar${fcc_editar_id}-${contadorCamposMiembroEditar}" name="nacionalidad_miembro_editar[]" value="${nacionalidad_miembro_editar}">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="numero_identidad_miembro_editar${fcc_editar_id}-${contadorCamposMiembroEditar}" class="form-label">No. Identidad</label>
+                <input type="text" class="form-control" id="numero_identidad_miembro_editar${fcc_editar_id}-${contadorCamposMiembroEditar}" name="numero_identidad_miembro_editar[]" value="${numero_identidad_miembro_editar}">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="cargo_miembro_editar${fcc_editar_id}-${contadorCamposMiembroEditar}" class="form-label">Cargo</label>
+                <input type="text" class="form-control" id="cargo_miembro_editar${fcc_editar_id}-${contadorCamposMiembroEditar}" name="cargo_miembro_editar[]" value="${cargo_miembro_editar}">
+            </div>
+        </div>
+    </div>
+    `;
+
+    $("#camposMiembroEditar").append(clienteMiembroEditarHtml);
 }

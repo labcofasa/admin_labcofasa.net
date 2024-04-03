@@ -40,7 +40,7 @@
 
     <script>
         document.getElementById("botonCopiar").addEventListener("click", function() {
-            var enlace = "http://app.labcofasa.net/formulario-conozca-cliente";
+            var enlace = "https://app.labcofasa.net/formulario-conozca-cliente";
             var inputTemp = document.createElement("input");
             inputTemp.setAttribute("value", enlace);
             document.body.appendChild(inputTemp);
