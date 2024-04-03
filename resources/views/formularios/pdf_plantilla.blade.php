@@ -311,6 +311,17 @@
             </tr>
         </tbody>
     </table>
+    <p class="datos">c) Declaro bajo juramento, por derecho propio, que someto todos los actos que realice a través de
+        cualquier
+        operación que implique recepción, entrega o transferencia de fondos de cualquier tipo de depósito, bajo
+        cualquier modalidad con la COMPAÑÍA FARMACÉUTICA S.A. de C.V., a sus condiciones contractuales y reglamentarias.
+        Me comprometo a que todos los valores que entregue o reciba tendrán un origen y un destino que de ninguna manera
+        estarán relacionados con los delitos generados de lavado de dinero y de activos descritos en la Ley Contra el
+        Lavado de Dinero y de Activos, ni a ningún tipo de actividad ilícita. Asimismo, me declaro en la disposición de
+        permitir cualquier procedimiento de investigación por parte de las autoridades correspondientes y eximo a
+        COMPAÑÍA FARMACÉUTICA S.A. de C.V., de toda responsabilidad que se derive por información errónea, falsa o
+        inexacta que yo hubiere proporcionado en este formulario.
+    </p>
     <h6 class="subtitulo">D. Información de Personas Expuestas Políticamente - PEP's</h6>
     <p class="datos">¿Usted, o algún socio, accionista, miembro, administrador o director, desempeña o ha desempeñado
         algún cargo como funcionario público en el país o en el extranjero?.</p>
