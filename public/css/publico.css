@@ -247,6 +247,12 @@ span {
     box-shadow: none;
 }
 
+.enviar-form:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
 @media screen and (max-width: 1440px) {
     .container {
         width: 100%;

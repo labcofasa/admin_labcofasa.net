@@ -516,7 +516,7 @@
 
         <div class="row text-center">
             <div class="col">
-                <button class="enviar-form" data-bs-toggle="modal" data-bs-target="#enviarFormulario">
+                <button class="enviar-form" data-bs-toggle="modal" data-bs-target="#enviarFormulario" disabled>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                         color="#000000" fill="none">
                         <path

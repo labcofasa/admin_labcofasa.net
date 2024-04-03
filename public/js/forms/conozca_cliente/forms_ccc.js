@@ -11,6 +11,19 @@ $(document).ready(function () {
         $("#formulario_firmado").prop("required", true);
     });
 
+    const botonEnviar = document.querySelector('.enviar-form');
+    const inputArchivo = document.getElementById('formulario_firmado');
+
+    botonEnviar.disabled = true;
+
+    inputArchivo.addEventListener('change', function () {
+        if (this.files && this.files.length > 0) {
+            botonEnviar.disabled = false;
+        } else {
+            botonEnviar.disabled = true;
+        }
+    });
+
     $("#btnEnviarFormulario").click(function () {
         var camposVacios = false;
         $("input[required]").each(function () {
