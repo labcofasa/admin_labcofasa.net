@@ -161,7 +161,7 @@
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <label for="direccion1" class="form-label">Dirección</label>
-                                    <textarea disabled autocomplete="off" name="direccion1" class="form-control textarea-normal" id="direccion1"
+                                    <textarea disabled autocomplete="off" name="direccion1" class="form-control" id="direccion1"
                                         maxlength="255">{{ $usuario->perfil->direccion ?? 'No asignado' }}
                                     </textarea>
                                 </div>

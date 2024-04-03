@@ -184,8 +184,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="direccion-perfil-editar" class="form-label">Dirección</label>
-                                            <textarea autocomplete="off" name="direccion" class="form-control textarea-normal" id="direccion-perfil-editar"
-                                                maxlength="255"></textarea>
+                                            <textarea autocomplete="off" name="direccion" class="form-control" id="direccion-perfil-editar" maxlength="255"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -193,7 +192,8 @@
                                             <label for="imagen-perfil-editar" class="form-label">Foto de
                                                 perfil<small>(500x500 píxeles)</small></label>
                                             <label for="imagen-perfil-editar" class="file-upload-image">
-                                                <span class="text-label-image-editar">Hacer clic para seleccionar la nueva imagen</span>
+                                                <span class="text-label-image-editar">Hacer clic para seleccionar la
+                                                    nueva imagen</span>
                                                 <p class="image-perfil-name-editar"></p>
                                             </label>
                                             <input type="file" name="imagen"

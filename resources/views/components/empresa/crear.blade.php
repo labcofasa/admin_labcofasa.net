@@ -149,7 +149,7 @@
                                         <div class="form-group mb-3">
                                             <label for="direccion-textarea" class="form-label">Dirección de la
                                                 empresa <span class="obligatorio"> *</span></label>
-                                            <textarea autocomplete="off" name="direccion" class="form-control textarea-normal" id="direccion-textarea" required
+                                            <textarea autocomplete="off" name="direccion" class="form-control" id="direccion-textarea" required
                                                 maxlength="255"></textarea>
                                             <div class="invalid-feedback">
                                                 Ingrese una dirección válida
@@ -349,7 +349,7 @@
                                         <div class="form-group mb-3">
                                             <label for="mision-textarea" class="form-label">Mision de la
                                                 empresa</label>
-                                            <textarea autocomplete="off" name="mision" class="form-control textarea-normal" id="mision-textarea"
+                                            <textarea autocomplete="off" name="mision" class="form-control" id="mision-textarea"
                                                 maxlength="512" autofocus></textarea>
                                         </div>
                                     </div>
@@ -357,7 +357,7 @@
                                         <div class="form-group mb-3">
                                             <label for="vision-textarea" class="form-label">Vision de la
                                                 empresa</label>
-                                            <textarea autocomplete="off" name="vision" class="form-control textarea-normal" id="vision-textarea"
+                                            <textarea autocomplete="off" name="vision" class="form-control" id="vision-textarea"
                                                 maxlength="512"></textarea>
                                         </div>
                                     </div>
@@ -365,7 +365,7 @@
                                         <div class="form-group mb-3">
                                             <label for="calidad-textarea" class="form-label">Política de
                                                 calidad</label>
-                                            <textarea autocomplete="off" name="calidad" class="form-control textarea-normal" id="calidad-textarea"
+                                            <textarea autocomplete="off" name="calidad" class="form-control" id="calidad-textarea"
                                                 maxlength="512"></textarea>
                                         </div>
                                     </div>

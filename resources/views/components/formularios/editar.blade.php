@@ -426,17 +426,17 @@
                             </div>
                             <span class="mb-3">Información de Parientes y Asociados Comerciales o de Negocios</span>
                             <span class="mb-3">Parientes en Primer y Segundo grado de consanguinidad.</span>
-                            <div id="camposPariente"></div>
+                            <div id="camposParienteEditar"></div>
                             <span class="mb-3">Asociados comerciales o de negocios (sociedades en las que posee 25% o
                                 más
                                 del Patrimonio)</span>
-                            <div id="camposSocio"></div>
+                            <div id="camposSocioEditar"></div>
                             <span class="mb-3">Fuentes de ingresos.</span>
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="fuente_ingreso_editar" class="form-label">Principales fuentes de
                                         ingresos</label>
-                                    <textarea class="form-control" id="fuente_ingreso_editar" name="fuente_ingreso_editar" style="height: 100px"></textarea>
+                                    <textarea class="form-control" id="fuente_ingreso_editar" name="fuente_ingreso_editar"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-3">

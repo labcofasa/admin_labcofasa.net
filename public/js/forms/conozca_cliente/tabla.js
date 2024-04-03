@@ -636,15 +636,15 @@ $(document).ready(function () {
             verMiembrosEditar(fcc_editar_id, contadorCamposMiembroEditar, clienteMiembro);
         });
 
-        // $.each(row.cliente_pariente, function (index, clientePariente) {
-        //     let contadorCamposPariente = index + 1;
-        //     verParientes(fcc_editar_id, contadorCamposPariente, clientePariente);
-        // });
+        $.each(row.cliente_pariente, function (index, clientePariente) {
+            let contadorCamposParienteEditar = index + 1;
+            verParientesEditar(fcc_editar_id, contadorCamposParienteEditar, clientePariente);
+        });
 
-        // $.each(row.cliente_socio, function (index, clienteSocio) {
-        //     let contadorCamposSocio = index + 1;
-        //     verSocios(fcc_editar_id, contadorCamposSocio, clienteSocio);
-        // });
+        $.each(row.cliente_socio, function (index, clienteSocio) {
+            let contadorCamposSocioEditar = index + 1;
+            verSociosEditar(fcc_editar_id, contadorCamposSocioEditar, clienteSocio);
+        });
 
         cargarPaises(
             "#pais_editar",
@@ -683,6 +683,13 @@ $(document).ready(function () {
         );
 
         $("#editarFormulario").modal("show");
+    });
+
+    $("#editarFormulario").on("hidden.bs.modal", function () {
+        $("#camposAccionistaEditar").empty();
+        $("#camposMiembroEditar").empty();
+        $("#camposParienteEditar").empty();
+        $("#camposSocioEditar").empty();
     });
 
     // Eliminar formulario
@@ -828,7 +835,7 @@ function verMiembros(fccId, contadorCamposMiembro, clienteMiembro) {
     $("#camposMiembro").append(clienteMiembroHtml);
 }
 
-/* Cargar cliente miembro */
+/* Cargar cliente parientes */
 function verParientes(fccId, contadorCamposPariente, clientePariente) {
     let nombre_pariente =
         clientePariente.nombre_pariente !== null
@@ -857,7 +864,7 @@ function verParientes(fccId, contadorCamposPariente, clientePariente) {
     $("#camposPariente").append(clienteParienteHtml);
 }
 
-/* Cargar cliente miembro */
+/* Cargar cliente socios */
 function verSocios(fccId, contadorCamposSocio, clienteSocio) {
     let nombre_socio =
         clienteSocio.nombre_socio !== null ? clienteSocio.nombre_socio : "";
@@ -986,4 +993,62 @@ function verMiembrosEditar(fcc_editar_id, contadorCamposMiembroEditar, clienteMi
     `;
 
     $("#camposMiembroEditar").append(clienteMiembroEditarHtml);
+}
+
+/* Cargar cliente parientes editar */
+function verParientesEditar(fccId, contadorCamposParienteEditar, clientePariente) {
+    let nombre_pariente_editar =
+        clientePariente.nombre_pariente !== null
+            ? clientePariente.nombre_pariente
+            : "";
+    let parentesco_editar =
+        clientePariente.parentesco !== null ? clientePariente.parentesco : "";
+
+    let clienteParienteEditarHtml = `
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mb-3">
+                <label for="nombre_pariente_editar${fccId}-${contadorCamposParienteEditar}" class="form-label">Nombre completo</label>
+                <input disabled type="text" class="form-control" id="nombre_pariente_editar${fccId}-${contadorCamposParienteEditar}" name="nombre_pariente_editar[]" value="${nombre_pariente_editar}">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="parentesco_editar${fccId}-${contadorCamposParienteEditar}" class="form-label">Parentesco</label>
+                <input disabled type="text" class="form-control" id="parentesco_editar${fccId}-${contadorCamposParienteEditar}" name="parentesco_editar[]" value="${parentesco_editar}">
+            </div>
+        </div>
+    </div>
+    `;
+
+    $("#camposParienteEditar").append(clienteParienteEditarHtml);
+}
+
+/* Cargar cliente socios editar */
+function verSociosEditar(fccId, contadorCamposSocioEditar, clienteSocio) {
+    let nombre_socio_editar =
+        clienteSocio.nombre_socio !== null ? clienteSocio.nombre_socio : "";
+    let porcentaje_participacion_socio_editar =
+        clienteSocio.porcentaje_participacion_socio !== null
+            ? clienteSocio.porcentaje_participacion_socio
+            : "";
+
+    let clienteSocioEditarHtml = `
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mb-3">
+                <label for="nombre_socio_editar${fccId}-${contadorCamposSocioEditar}" class="form-label">Nombre completo</label>
+                <input disabled type="text" class="form-control" id="nombre_socio_editar${fccId}-${contadorCamposSocioEditar}" name="nombre_socio_editar[]" value="${nombre_socio_editar}">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="mb-3">
+                <label for="porcentaje_participacion_socio_editar${fccId}-${contadorCamposSocioEditar}" class="form-label">Porcentaje de participación</label>
+                <input disabled type="text" class="form-control" id="porcentaje_participacion_socio_editar${fccId}-${contadorCamposSocioEditar}" name="porcentaje_participacion_socio_editar[]" value="${porcentaje_participacion_socio_editar}">
+            </div>
+        </div>
+    </div>
+    `;
+
+    $("#camposSocioEditar").append(clienteSocioEditarHtml);
 }

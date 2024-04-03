@@ -195,7 +195,7 @@
                 <div class="col-sm-12">
                     <div class="mb-3">
                         <label for="direccion" class="form-label">Dirección</label>
-                        <textarea class="form-control" name="direccion" id="direccion" style="height: 100px"></textarea>
+                        <textarea class="form-control" name="direccion" id="direccion"></textarea>
                     </div>
                 </div>
                 <span class="mb-3">B. Información Persona Jurídica</span>
@@ -308,7 +308,7 @@
                 <div class="col-sm-12">
                     <div class="mb-3">
                         <label for="direccion_juridico" class="form-label">Dirección</label>
-                        <textarea class="form-control" id="direccion_juridico" name="direccion_juridico" style="height: 100px"></textarea>
+                        <textarea class="form-control" id="direccion_juridico" name="direccion_juridico"></textarea>
                     </div>
                 </div>
                 <span>C. Información de la Administración, sus Accionistas o Miembros</span>

@@ -352,7 +352,7 @@
                             <div class="mb-3">
                                 <label for="fuente_ingreso" class="form-label">Principales fuentes de
                                     ingresos</label>
-                                <textarea class="form-control" id="fuente_ingreso" name="fuente_ingreso" style="height: 100px" disabled></textarea>
+                                <textarea class="form-control" id="fuente_ingreso" name="fuente_ingreso" disabled></textarea>
                             </div>
                         </div>
                         <div class="col-sm-3">

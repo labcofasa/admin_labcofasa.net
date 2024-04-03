@@ -28,7 +28,7 @@
                     <div class="form-group mb-3">
                         <label for="entidad-editar-descripcion" class="form-label">Descripción <span
                                 class="obligatorio"> *</span></label>
-                        <textarea autocomplete="off" name="descripcion" class="form-control textarea-normal" id="entidad-editar-descripcion"
+                        <textarea autocomplete="off" name="descripcion" class="form-control" id="entidad-editar-descripcion"
                             required maxlength="255"></textarea>
                     </div>
                 </div>

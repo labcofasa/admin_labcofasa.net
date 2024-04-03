@@ -178,7 +178,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="direccion-perfil" class="form-label">Dirección</label>
-                                            <textarea autocomplete="off" name="direccion" class="form-control textarea-normal" id="direccion-perfil"
+                                            <textarea autocomplete="off" name="direccion" class="form-control" id="direccion-perfil"
                                                 maxlength="255"></textarea>
                                         </div>
                                     </div>
