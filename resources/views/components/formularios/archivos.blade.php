@@ -1,4 +1,4 @@
-<span class="mb-2 text-center py-3">Documentación de Persona natural</span>
+<span class="mb-2 text-center py-3">Documentación de Persona Natural</span>
 <div class="col-sm-6">
     <div class="mb-3">
         <label for="documento_identidad_persona_natural" class="form-label">Copia de DUI, Pasaporte o Carnet de
@@ -40,7 +40,7 @@
             name="documento_dnm_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
     </div>
 </div>
-<span class="mb-2 text-center py-2">Documentación de Representante legal</span>
+<span class="mb-2 text-center py-2">Documentación de Representante Legal</span>
 <div class="col-sm-6">
     <div class="mb-3">
         <label for="documento_identificacion_representante" class="form-label">Copia de DUI del
@@ -72,7 +72,7 @@
         </div>
     </div>
 </div>
-<span class="mb-2 text-center py-2">Documentación de Persona jurídica</span>
+<span class="mb-2 text-center py-2">Documentación de Persona Jurídica</span>
 <div class="col-sm-6">
     <div class="mb-3">
         <label for="documento_escritura_juridico" class="form-label">Copia de Escritura de Constitución (Para

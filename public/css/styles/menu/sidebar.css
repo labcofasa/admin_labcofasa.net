@@ -64,10 +64,8 @@
 }
 
 .sidebar-desktop .menu-bar li svg {
-    /* height: 23px; */
-    min-width: 60px;
+    min-width: 50px;
     color: var(--icon-secondary);
-    /* fill: var(--icon-secondary); */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -222,7 +220,7 @@
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a .arrow {
-    color: var(--icon-secondary); 
+    color: var(--icon-secondary);
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a .imagen-container {
@@ -244,8 +242,8 @@
 }
 
 .subtitle {
-    padding-left: 5px;
+    padding-left: 15px;
     font-size: 13px !important;
     font-weight: 500;
-    color: #666666 !important;
+    color: var(--text-color);
 }

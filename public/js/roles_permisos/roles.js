@@ -860,7 +860,7 @@ $(document).ready(function () {
     tablaRoles();
 
     $.fn.DataTable.ext.pager.numbers_length = 5;
-    
+
     /* Mostrar permisos del rol */
     $("#tabla-roles").on("click", ".ver-permisos", function () {
         rolId = $(this).data("id");
@@ -893,9 +893,10 @@ $(document).ready(function () {
     $("#tabla-asignar-permisos").on("click", ".asignar-permiso", function () {
         var rolId = $(this).attr("data-rol");
         var permisoId = $(this).attr("data-id");
+
         var permisoNombre = $(this)
             .closest("tr")
-            .find("td:nth-child(2)")
+            .find("td:nth-child(3)")
             .text();
 
         $("#nombre-permiso").text(permisoNombre);
@@ -994,7 +995,7 @@ $(document).ready(function () {
 
         const permisoNombre = $(this)
             .closest("tr")
-            .find("td:nth-child(2)")
+            .find("td:nth-child(3)")
             .text();
 
         const rolId = $(this).data("rol");
