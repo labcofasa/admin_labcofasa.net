@@ -384,13 +384,50 @@ $(document).ready(function () {
     const tipoPersonaSelect = document.getElementById('tipo_persona');
     const camposPersonaJuridica = document.querySelector('.campos-persona-juridica');
 
+    const nombreComercialJuridicoInput = document.getElementById('nombre_comercial_juridico');
+    const clasificacionJuridicaId = document.getElementById('clasificacion_juridico_id');
+    const nacionalidadJuridico = document.getElementById('nacionalidad_juridico');
+    const numeroNitJuridico = document.getElementById('numero_de_nit_juridico');
+    const fechaConstitucionJuridico = document.getElementById('fecha_de_constitucion_juridico');
+    const registroNrcJuridico = document.getElementById('registro_nrc_juridico');
+    const giroJuridico = document.getElementById('giro_juridico');
+    const paisJuridico = document.getElementById('pais_juridico');
+    const departamentoJuridico = document.getElementById('departamento_juridico');
+    const municipioJuridico = document.getElementById('municipio_juridico');
+    const telefonoJuridico = document.getElementById('telefono_juridico');
+    const direccionJuridico = document.getElementById('direccion_juridico');
+
     camposPersonaJuridica.style.display = 'none';
 
     tipoPersonaSelect.addEventListener('change', function () {
         if (tipoPersonaSelect.value === 'Persona Natural / Titular de Establecimiento') {
             camposPersonaJuridica.style.display = 'none';
+            nombreComercialJuridicoInput.removeAttribute('required');
+            clasificacionJuridicaId.removeAttribute('required');
+            nacionalidadJuridico.removeAttribute('required');
+            numeroNitJuridico.removeAttribute('required');
+            fechaConstitucionJuridico.removeAttribute('required');
+            registroNrcJuridico.removeAttribute('required');
+            giroJuridico.removeAttribute('required');
+            paisJuridico.removeAttribute('required');
+            departamentoJuridico.removeAttribute('required');
+            municipioJuridico.removeAttribute('required');
+            telefonoJuridico.removeAttribute('required');
+            direccionJuridico.removeAttribute('required');
         } else {
             camposPersonaJuridica.style.display = 'flex';
+            nombreComercialJuridicoInput.setAttribute('required', 'required');
+            clasificacionJuridicaId.setAttribute('required', 'required');
+            nacionalidadJuridico.setAttribute('required', 'required');
+            numeroNitJuridico.setAttribute('required', 'required');
+            fechaConstitucionJuridico.setAttribute('required', 'required');
+            registroNrcJuridico.setAttribute('required', 'required');
+            giroJuridico.setAttribute('required', 'required');
+            paisJuridico.setAttribute('required', 'required');
+            departamentoJuridico.setAttribute('required', 'required');
+            municipioJuridico.setAttribute('required', 'required');
+            telefonoJuridico.setAttribute('required', 'required');
+            direccionJuridico.setAttribute('required', 'required');
         }
     });
 });

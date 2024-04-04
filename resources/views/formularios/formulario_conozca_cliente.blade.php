@@ -262,6 +262,9 @@
                             <label for="nombre_comercial_juridico" class="form-label">Nombre comercial</label>
                             <input type="text" class="form-control" id="nombre_comercial_juridico"
                                 name="nombre_comercial_juridico">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el nombre comercial.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -270,6 +273,9 @@
                             <select class="form-select" id="clasificacion_juridico_id">
                                 <option value="">Seleccione el tipo</option>
                             </select>
+                            <div class="invalid-feedback">
+                                Por favor, seleccione el tipo de contribuyente.
+                            </div>
                             <input type="hidden" id="id_clasificacion_juridico" name="clasificacion_juridico_id"
                                 value="">
                         </div>
@@ -279,6 +285,9 @@
                             <label for="nacionalidad_juridico" class="form-label">Nacionalidad</label>
                             <input type="text" class="form-control" id="nacionalidad_juridico"
                                 name="nacionalidad_juridico">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese la nacionalidad.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -286,6 +295,9 @@
                             <label for="numero_de_nit_juridico" class="form-label">Número de NIT</label>
                             <input type="text" class="form-control" id="numero_de_nit_juridico"
                                 name="numero_de_nit_juridico">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el número de NIT.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -293,6 +305,9 @@
                             <label for="fecha_de_constitucion_juridico" class="form-label">Fecha de constitución</label>
                             <input type="date" class="form-control" id="fecha_de_constitucion_juridico"
                                 name="fecha_de_constitucion_juridico">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese la fecha de constitución.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -300,6 +315,9 @@
                             <label for="registro_nrc_juridico" class="form-label">Número de registro IVA (NRC)</label>
                             <input type="text" class="form-control" id="registro_nrc_juridico"
                                 name="registro_nrc_juridico">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el registro NRC.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -313,6 +331,9 @@
                                     Escriba para buscar y seleccione la actividad económica deseada.
                                 </div>
                                 <input type="hidden" id="id_giro_juridico" name="giro_juridico_id" value="">
+                                <div class="invalid-feedback">
+                                    Por favor, busque y seleccione la actividad económica.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -323,6 +344,9 @@
                                 <option value="">Seleccione el país</option>
                             </select>
                             <input type="hidden" id="id_pais_juridico" name="pais_juridico_id" value="">
+                            <div class="invalid-feedback">
+                                Por favor, seleccione el país.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -334,6 +358,9 @@
                             </select>
                             <input type="hidden" id="id_departamento_juridico" name="departamento_juridico_id"
                                 value="">
+                            <div class="invalid-feedback">
+                                Por favor, seleccione el departamento.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -344,12 +371,18 @@
                             </select>
                             <input type="hidden" id="id_municipio_juridico" name="municipio_juridico_id"
                                 value="">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el municipio.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="telefono_juridico" class="form-label">Teléfono</label>
                             <input type="tel" class="form-control" id="telefono_juridico" name="telefono_juridico">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el número de teléfono.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -357,6 +390,9 @@
                             <label for="sitio_web_juridico" class="form-label">Sitio web</label>
                             <input type="url" class="form-control" id="sitio_web_juridico"
                                 name="sitio_web_juridico">
+                            <div class="valid-feedback">
+                                Opcional.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -364,12 +400,18 @@
                             <label for="numero_de_fax_juridico" class="form-label">Número de FAX</label>
                             <input type="text" class="form-control" id="numero_de_fax_juridico"
                                 name="numero_de_fax_juridico">
+                            <div class="valid-feedback">
+                                Opcional.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="mb-3">
                             <label for="direccion_juridico" class="form-label">Dirección</label>
                             <textarea class="form-control" id="direccion_juridico" name="direccion_juridico"></textarea>
+                            <div class="invalid-feedback">
+                                Por favor, ingrese la dirección.
+                            </div>
                         </div>
                     </div>
                     <span>C. Información de la Administración, sus Accionistas o Miembros</span>
