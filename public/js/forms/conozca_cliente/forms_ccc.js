@@ -380,6 +380,19 @@ $(document).ready(function () {
             });
         }
     });
+
+    const tipoPersonaSelect = document.getElementById('tipo_persona');
+    const camposPersonaJuridica = document.querySelector('.campos-persona-juridica');
+
+    camposPersonaJuridica.style.display = 'none';
+
+    tipoPersonaSelect.addEventListener('change', function () {
+        if (tipoPersonaSelect.value === 'Persona Natural / Titular de Establecimiento') {
+            camposPersonaJuridica.style.display = 'none';
+        } else {
+            camposPersonaJuridica.style.display = 'flex';
+        }
+    });
 });
 
 function mostrarToast(mensaje, tipo) {

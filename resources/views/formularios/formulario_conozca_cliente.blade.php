@@ -51,7 +51,8 @@
                                 *</span></label>
                         <select class="form-select" id="tipo_persona" name="tipo_persona" required>
                             <option value="">Seleccione el tipo</option>
-                            <option value="Persona Natural">Persona Natural</option>
+                            <option value="Persona Natural / Titular de Establecimiento">Persona Natural / Titular de
+                                Establecimiento</option>
                             <option value="Persona Jurídica">Persona Jurídica</option>
                         </select>
                         <div class="invalid-feedback">
@@ -65,71 +66,98 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" autofocus
+                        <input type="text" class="form-control" id="nombre" name="nombre" required autofocus
                             aria-describedby="ayuda">
                         <div id="ayuda" class="form-text">
                             Nombres según documento de identidad.
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese sus nombres.
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="apellido" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="apellido" name="apellido" aria-describedby="ayuda">
+                        <input type="text" class="form-control" id="apellido" name="apellido" required
+                            aria-describedby="ayuda">
                         <div id="ayuda" class="form-text">
                             Apellidos según documento de identidad.
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese sus apellidos.
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="fecha_de_nacimiento" class="form-label">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" id="fecha_de_nacimiento" name="fecha_de_nacimiento">
+                        <input type="date" class="form-control" id="fecha_de_nacimiento" name="fecha_de_nacimiento"
+                            required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese su fecha de nacimiento.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                        <input type="text" class="form-control" id="nacionalidad" name="nacionalidad">
+                        <input type="text" class="form-control" id="nacionalidad" required name="nacionalidad">
+                        <div class="invalid-feedback">
+                            Por favor, ingrese su nacionalidad.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="profesion_u_oficio" class="form-label">Profesión u oficio</label>
-                        <input type="text" class="form-control" id="profesion_u_oficio" name="profesion_u_oficio">
+                        <input type="text" class="form-control" id="profesion_u_oficio" name="profesion_u_oficio"
+                            required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese su profesión u oficio.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="pais" class="form-label">País</label>
-                        <select class="form-select" id="pais">
+                        <select class="form-select" id="pais" required>
                             <option value="">Seleccione el país</option>
                         </select>
                         <input type="hidden" id="id_pais" name="pais_id" value="">
+                        <div class="invalid-feedback">
+                            Por favor, seleccione el país.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="departamento" class="form-label">Departamento</label>
-                        <select class="form-select" id="departamento">
+                        <select class="form-select" id="departamento" required>
                             <option value="">Seleccione el departamento</option>
                         </select>
                         <input type="hidden" id="id_departamento" name="departamento_id" value="">
+                        <div class="invalid-feedback">
+                            Por favor, seleccione el departamento.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="municipio" class="form-label">Municipio</label>
-                        <select class="form-select" id="municipio">
+                        <select class="form-select" id="municipio" required>
                             <option value="">Seleccione el municipio</option>
                         </select>
                         <input type="hidden" id="id_municipio" name="municipio_id" value="">
+                        <div class="invalid-feedback">
+                            Por favor, seleccione el municipio.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="tipo_de_documento" class="form-label">Tipo de documento</label>
-                        <select class="form-select" id="tipo_de_documento" name="tipo_de_documento">
+                        <select class="form-select" id="tipo_de_documento" name="tipo_de_documento" required>
                             <option value="">Seleccione el documento</option>
                             <option value="DUI">DUI</option>
                             <option value="NIT">NIT</option>
@@ -138,37 +166,57 @@
                             <option value="Documento Diplomático">Documento Diplomático</option>
                             <option value="Carnet de Minoridad">Carnet de Minoridad</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Por favor, seleccione el tipo de documento.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="numero_de_documento" class="form-label">Número de documento</label>
-                        <input type="text" class="form-control" id="numero_de_documento" name="numero_de_documento">
+                        <input type="text" class="form-control" id="numero_de_documento" name="numero_de_documento"
+                            required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese el número de documento.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="fecha_de_vencimiento" class="form-label">Fecha de vencimiento</label>
-                        <input type="date" class="form-control" id="fecha_de_vencimiento"
-                            name="fecha_de_vencimiento">
+                        <input type="date" class="form-control" id="fecha_de_vencimiento" name="fecha_de_vencimiento"
+                            required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese la fecha de vencimiento.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="registro_iva_nrc" class="form-label">Registro de IVA (NRC)</label>
                         <input type="text" class="form-control" id="registro_iva_nrc" name="registro_iva_nrc">
+                        <div class="valid-feedback">
+                            Opcional
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" autocomplete="email">
+                        <input type="email" class="form-control" id="email" name="email" autocomplete="email"
+                            required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese su correo electrónico.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" name="telefono">
+                        <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese su número de teléfono.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -181,6 +229,9 @@
                             <div id="ayuda" class="form-text">
                                 Escriba para buscar y seleccione la actividad económica deseada.
                             </div>
+                            <div class="valid-feedback">
+                                Opcional.
+                            </div>
                             <input type="hidden" id="id_actividad_economica" name="giro_id" value="">
                         </div>
                     </div>
@@ -190,204 +241,216 @@
                         <label for="fecha_de_nombramiento" class="form-label">Fecha de nombramiento</label>
                         <input type="date" class="form-control" id="fecha_de_nombramiento"
                             name="fecha_de_nombramiento">
+                        <div class="valid-feedback">
+                            Opcional.
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="mb-3">
                         <label for="direccion" class="form-label">Dirección</label>
-                        <textarea class="form-control" name="direccion" id="direccion"></textarea>
-                    </div>
-                </div>
-                <span class="mb-3">B. Información Persona Jurídica</span>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="nombre_comercial_juridico" class="form-label">Nombre comercial</label>
-                        <input type="text" class="form-control" id="nombre_comercial_juridico"
-                            name="nombre_comercial_juridico">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="clasificacion_juridico_id" class="form-label">Tipo de contribuyente</label>
-                        <select class="form-select" id="clasificacion_juridico_id">
-                            <option value="">Seleccione el tipo</option>
-                        </select>
-                        <input type="hidden" id="id_clasificacion_juridico" name="clasificacion_juridico_id"
-                            value="">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="nacionalidad_juridico" class="form-label">Nacionalidad</label>
-                        <input type="text" class="form-control" id="nacionalidad_juridico"
-                            name="nacionalidad_juridico">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="numero_de_nit_juridico" class="form-label">Número de NIT</label>
-                        <input type="text" class="form-control" id="numero_de_nit_juridico"
-                            name="numero_de_nit_juridico">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="fecha_de_constitucion_juridico" class="form-label">Fecha de constitución</label>
-                        <input type="date" class="form-control" id="fecha_de_constitucion_juridico"
-                            name="fecha_de_constitucion_juridico">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="registro_nrc_juridico" class="form-label">Número de registro IVA (NRC)</label>
-                        <input type="text" class="form-control" id="registro_nrc_juridico"
-                            name="registro_nrc_juridico">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="giro_juridico" class="form-label">Actividad económica</label>
-                        <div class="input-container">
-                            <input type="text" class="form-control" id="giro_juridico" name="giro_juridico"
-                                aria-describedby="ayuda">
-                            <div id="sugerencia_filter_juridico" class="sugerencia"></div>
-                            <div id="ayuda" class="form-text">
-                                Escriba para buscar y seleccione la actividad económica deseada.
-                            </div>
-                            <input type="hidden" id="id_giro_juridico" name="giro_juridico_id" value="">
+                        <textarea class="form-control" name="direccion" id="direccion" required></textarea>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese la dirección de su domicilio.
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="pais_juridico" class="form-label">País</label>
-                        <select class="form-select" id="pais_juridico" aria-label="Seleccione el país">
-                            <option value="">Seleccione el país</option>
-                        </select>
-                        <input type="hidden" id="id_pais_juridico" name="pais_juridico_id" value="">
+                <div class="row campos-persona-juridica">
+                    <span class="mb-3">B. Información Persona Jurídica</span>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="nombre_comercial_juridico" class="form-label">Nombre comercial</label>
+                            <input type="text" class="form-control" id="nombre_comercial_juridico"
+                                name="nombre_comercial_juridico">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="departamento_juridico" class="form-label">Departamento</label>
-                        <select class="form-select" id="departamento_juridico" aria-label="Seleccione el departamento">
-                            <option value="">Seleccione el departamento</option>
-                        </select>
-                        <input type="hidden" id="id_departamento_juridico" name="departamento_juridico_id"
-                            value="">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="clasificacion_juridico_id" class="form-label">Tipo de contribuyente</label>
+                            <select class="form-select" id="clasificacion_juridico_id">
+                                <option value="">Seleccione el tipo</option>
+                            </select>
+                            <input type="hidden" id="id_clasificacion_juridico" name="clasificacion_juridico_id"
+                                value="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="municipio_juridico" class="form-label">Municipio</label>
-                        <select class="form-select" id="municipio_juridico" aria-label="Seleccione el municipio">
-                            <option value="">Seleccione el municipio</option>
-                        </select>
-                        <input type="hidden" id="id_municipio_juridico" name="municipio_juridico_id" value="">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="nacionalidad_juridico" class="form-label">Nacionalidad</label>
+                            <input type="text" class="form-control" id="nacionalidad_juridico"
+                                name="nacionalidad_juridico">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="telefono_juridico" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono_juridico" name="telefono_juridico">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="numero_de_nit_juridico" class="form-label">Número de NIT</label>
+                            <input type="text" class="form-control" id="numero_de_nit_juridico"
+                                name="numero_de_nit_juridico">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="sitio_web_juridico" class="form-label">Sitio web</label>
-                        <input type="url" class="form-control" id="sitio_web_juridico" name="sitio_web_juridico">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="fecha_de_constitucion_juridico" class="form-label">Fecha de constitución</label>
+                            <input type="date" class="form-control" id="fecha_de_constitucion_juridico"
+                                name="fecha_de_constitucion_juridico">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="numero_de_fax_juridico" class="form-label">Número de FAX</label>
-                        <input type="text" class="form-control" id="numero_de_fax_juridico"
-                            name="numero_de_fax_juridico">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="registro_nrc_juridico" class="form-label">Número de registro IVA (NRC)</label>
+                            <input type="text" class="form-control" id="registro_nrc_juridico"
+                                name="registro_nrc_juridico">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="mb-3">
-                        <label for="direccion_juridico" class="form-label">Dirección</label>
-                        <textarea class="form-control" id="direccion_juridico" name="direccion_juridico"></textarea>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="giro_juridico" class="form-label">Actividad económica</label>
+                            <div class="input-container">
+                                <input type="text" class="form-control" id="giro_juridico" name="giro_juridico"
+                                    aria-describedby="ayuda">
+                                <div id="sugerencia_filter_juridico" class="sugerencia"></div>
+                                <div id="ayuda" class="form-text">
+                                    Escriba para buscar y seleccione la actividad económica deseada.
+                                </div>
+                                <input type="hidden" id="id_giro_juridico" name="giro_juridico_id" value="">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <span>C. Información de la Administración, sus Accionistas o Miembros</span>
-                <p>I. Detallar al beneficiario final, siendo esta persona natural con control igual o mayor al 10% de
-                    participación
-                    accionaria en la sociedad.</p>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="nombre_accionista" class="form-label">Nombre completo</label>
-                        <input type="text" class="form-control" id="nombre_accionista" name="nombre_accionista[]">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="pais_juridico" class="form-label">País</label>
+                            <select class="form-select" id="pais_juridico" aria-label="Seleccione el país">
+                                <option value="">Seleccione el país</option>
+                            </select>
+                            <input type="hidden" id="id_pais_juridico" name="pais_juridico_id" value="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="nacionalidad_accionista" class="form-label">Nacionalidad</label>
-                        <input type="text" class="form-control" id="nacionalidad_accionista"
-                            name="nacionalidad_accionista[]">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="departamento_juridico" class="form-label">Departamento</label>
+                            <select class="form-select" id="departamento_juridico"
+                                aria-label="Seleccione el departamento">
+                                <option value="">Seleccione el departamento</option>
+                            </select>
+                            <input type="hidden" id="id_departamento_juridico" name="departamento_juridico_id"
+                                value="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="numero_identidad_accionista" class="form-label">No. Identidad</label>
-                        <input type="text" class="form-control" id="numero_identidad_accionista"
-                            name="numero_identidad_accionista[]">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="municipio_juridico" class="form-label">Municipio</label>
+                            <select class="form-select" id="municipio_juridico" aria-label="Seleccione el municipio">
+                                <option value="">Seleccione el municipio</option>
+                            </select>
+                            <input type="hidden" id="id_municipio_juridico" name="municipio_juridico_id"
+                                value="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="porcentaje_participacion_accionista" class="form-label">Porcentaje de
-                            participación</label>
-                        <input type="text" class="form-control" placeholder="Ejemplo: 10%"
-                            id="porcentaje_participacion_accionista" name="porcentaje_participacion_accionista[]">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="telefono_juridico" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono_juridico" name="telefono_juridico">
+                        </div>
                     </div>
-                </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="sitio_web_juridico" class="form-label">Sitio web</label>
+                            <input type="url" class="form-control" id="sitio_web_juridico"
+                                name="sitio_web_juridico">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="numero_de_fax_juridico" class="form-label">Número de FAX</label>
+                            <input type="text" class="form-control" id="numero_de_fax_juridico"
+                                name="numero_de_fax_juridico">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <label for="direccion_juridico" class="form-label">Dirección</label>
+                            <textarea class="form-control" id="direccion_juridico" name="direccion_juridico"></textarea>
+                        </div>
+                    </div>
+                    <span>C. Información de la Administración, sus Accionistas o Miembros</span>
+                    <p>I. Detallar al beneficiario final, siendo esta persona natural con control igual o mayor al 10% de
+                        participación
+                        accionaria en la sociedad.</p>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="nombre_accionista" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="nombre_accionista"
+                                name="nombre_accionista[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="nacionalidad_accionista" class="form-label">Nacionalidad</label>
+                            <input type="text" class="form-control" id="nacionalidad_accionista"
+                                name="nacionalidad_accionista[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="numero_identidad_accionista" class="form-label">No. Identidad</label>
+                            <input type="text" class="form-control" id="numero_identidad_accionista"
+                                name="numero_identidad_accionista[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="porcentaje_participacion_accionista" class="form-label">Porcentaje de
+                                participación</label>
+                            <input type="text" class="form-control" placeholder="Ejemplo: 10%"
+                                id="porcentaje_participacion_accionista" name="porcentaje_participacion_accionista[]">
+                        </div>
+                    </div>
 
-                <div id="campos_form"></div>
+                    <div id="campos_form"></div>
 
-                <div class="col-md-6 mb-3">
-                    <button type="button" id="agregar_campos" class="btn btn-secondary">
-                        Añadir más campos
-                    </button>
-                </div>
-
-                <p>II. Detallar a los miembros de la Junta Directiva, administrador único, alta gerencia o máximo órgano
-                    de control en la sociedad.</p>
-
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="nombre_miembro" class="form-label">Nombre completo</label>
-                        <input type="text" class="form-control" id="nombre_miembro" name="nombre_miembro[]">
+                    <div class="col-md-6 mb-3">
+                        <button type="button" id="agregar_campos" class="btn btn-secondary">
+                            Añadir más campos
+                        </button>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="nacionalidad_miembro" class="form-label">Nacionalidad</label>
-                        <input type="text" class="form-control" id="nacionalidad_miembro"
-                            name="nacionalidad_miembro[]">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="numero_identidad_miembro" class="form-label">No. Identidad</label>
-                        <input type="text" class="form-control" id="numero_identidad_miembro"
-                            name="numero_identidad_miembro[]">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="mb-3">
-                        <label for="cargo_miembro" class="form-label">Cargo</label>
-                        <input type="text" class="form-control" id="cargo_miembro" name="cargo_miembro[]">
-                    </div>
-                </div>
 
-                <div id="campos_miembros"></div>
+                    <p>II. Detallar a los miembros de la Junta Directiva, administrador único, alta gerencia o máximo órgano
+                        de control en la sociedad.</p>
 
-                <div class="col-md-6 mb-3">
-                    <button type="button" id="agregar_campos_miembros" class="btn btn-secondary">
-                        Añadir más campos
-                    </button>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="nombre_miembro" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="nombre_miembro" name="nombre_miembro[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="nacionalidad_miembro" class="form-label">Nacionalidad</label>
+                            <input type="text" class="form-control" id="nacionalidad_miembro"
+                                name="nacionalidad_miembro[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="numero_identidad_miembro" class="form-label">No. Identidad</label>
+                            <input type="text" class="form-control" id="numero_identidad_miembro"
+                                name="numero_identidad_miembro[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="cargo_miembro" class="form-label">Cargo</label>
+                            <input type="text" class="form-control" id="cargo_miembro" name="cargo_miembro[]">
+                        </div>
+                    </div>
+
+                    <div id="campos_miembros"></div>
+
+                    <div class="col-md-6 mb-3">
+                        <button type="button" id="agregar_campos_miembros" class="btn btn-secondary">
+                            Añadir más campos
+                        </button>
+                    </div>
                 </div>
 
                 <span class="mb-2">Declaración jurada de origen de fondos</span>
@@ -403,7 +466,11 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="monto_proyectado" class="form-label">Monto proyectado mensual</label>
-                        <input type="text" class="form-control" id="monto_proyectado" name="monto_proyectado">
+                        <input type="text" class="form-control" id="monto_proyectado" name="monto_proyectado"
+                            required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese el monto proyectado mensual.
+                        </div>
                     </div>
                 </div>
                 <p>c) Declaro bajo juramento, por derecho propio, que someto todos los actos que realice a través de
