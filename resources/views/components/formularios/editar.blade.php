@@ -19,7 +19,7 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
-                    <span>Información persona natural - representante legal</span>
+                    <span>Información Persona Natural - Representante Legal</span>
                     <div class="form pt-3">
                         <div class="row">
                             <input type="hidden" id="frm_cccid" name="frm_conozca_cliente_id">
@@ -177,7 +177,7 @@
                                     <textarea type="text" id="direccion_editar" name="direccion_editar" class="form-control"></textarea>
                                 </div>
                             </div>
-                            <span class="mb-3">Información persona jurídica</span>
+                            <span class="mb-3">Información Persona Jurídica</span>
                             <div class="col-sm-3">
                                 <div class="form-group mb-3">
                                     <label for="nombre_juridico_editar" class="form-label">Nombre comercial o Razón
@@ -210,7 +210,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group mb-3">
                                     <label for="fecha_de_constitucion_editar" class="form-label">Fecha de
-                                        constictución</label>
+                                        constitución</label>
                                     <input type="text" id="fecha_de_constitucion_editar"
                                         name="fecha_de_constitucion_editar" class="form-control">
                                 </div>
@@ -245,8 +245,8 @@
                                         class="form-control" required>
                                         <option value="">Seleccione el departamento</option>
                                     </select>
-                                    <input type="hidden" id="id_departamento_juridico_editar" name="departamento_juridico_id"
-                                        value="">
+                                    <input type="hidden" id="id_departamento_juridico_editar"
+                                        name="departamento_juridico_id" value="">
                                     <div class="invalid-feedback">
                                         Seleccione un departamento
                                     </div>
@@ -259,8 +259,8 @@
                                         class="form-control" required>
                                         <option value="">Seleccione el municipio</option>
                                     </select>
-                                    <input type="hidden" id="id_municipio_juridico_editar" name="municipio_juridico_id"
-                                        value="">
+                                    <input type="hidden" id="id_municipio_juridico_editar"
+                                        name="municipio_juridico_id" value="">
                                     <div class="invalid-feedback">
                                         Seleccione un municipio
                                     </div>
@@ -300,10 +300,10 @@
                                     <textarea type="text" id="direccion_juridico_editar" name="direccion_juridico_editar" class="form-control"></textarea>
                                 </div>
                             </div>
-                            <span class="mb-3">Información de la administración, sus accionistas o miembros</span>
+                            <span class="mb-3">Información de la Administración, sus Accionistas o Miembros</span>
                             <div id="camposAccionistaEditar"></div>
-                            <span class="mb-3">Miembros de la Junta Directiva, administrador único, alta gerencia o
-                                máximo órgano de control en la sociedad.</span>
+                            <span class="mb-3">Miembros de la Junta Directiva, Administrador Único, Alta Gerencia o
+                                máximo órgano de Control en la Sociedad.</span>
                             <div id="camposMiembroEditar"></div>
                             <span class="mb-3">Declaración jurada de origin de fondos</span>
                             <div class="col-sm-3">
@@ -314,8 +314,8 @@
                                         name="monto_proyectado_editar">
                                 </div>
                             </div>
-                            <span class="mb-3">Formulario de identificación de personas expuestas
-                                políticamente</span>
+                            <span class="mb-3">Formulario de Identificación de Personas Expuestas
+                                Políticamente</span>
                             <div class="col-sm-3">
                                 <div class="form-group mb-3">
                                     <label for="cargo_publico_editar" class="form-label">Es persona políticamente
@@ -333,7 +333,7 @@
                                         class="form-control">
                                 </div>
                             </div>
-                            <span class="mb-3">Identificación general del titular</span>
+                            <span class="mb-3">Identificación General del Titular</span>
                             <div class="col-sm-3">
                                 <div class="form-group mb-3">
                                     <label for="nombre_politico_editar" class="form-label">Nombre</label>
@@ -369,10 +369,12 @@
                                 <div class="form-group mb-3">
                                     <label for="pais_politico_editar" class="form-label">País donde ejerce/ejerció el
                                         cargo</label>
-                                    <select name="pais_politico_editar" id="pais_politico_editar" class="form-control" required>
+                                    <select name="pais_politico_editar" id="pais_politico_editar"
+                                        class="form-control" required>
                                         <option value="">Seleccione el país</option>
                                     </select>
-                                    <input type="hidden" id="id_editar_pais_politico" name="pais_politico_id" value="">
+                                    <input type="hidden" id="id_editar_pais_politico" name="pais_politico_id"
+                                        value="">
                                     <div class="invalid-feedback">
                                         Seleccione el país
                                     </div>
@@ -381,12 +383,12 @@
                             <div class="col-sm-3">
                                 <div class="form-group mb-3">
                                     <label for="departamento_politico_editar" class="form-label">Departamento</label>
-                                    <select name="departamento_politico_editar" id="departamento_politico_editar" class="form-control"
-                                        required>
+                                    <select name="departamento_politico_editar" id="departamento_politico_editar"
+                                        class="form-control" required>
                                         <option value="">Seleccione el departamento</option>
                                     </select>
-                                    <input type="hidden" id="id_departamento_politico_editar" name="departamento_politico_id"
-                                        value="">
+                                    <input type="hidden" id="id_departamento_politico_editar"
+                                        name="departamento_politico_id" value="">
                                     <div class="invalid-feedback">
                                         Seleccione un departamento
                                     </div>
@@ -395,12 +397,12 @@
                             <div class="col-sm-3">
                                 <div class="form-group mb-3">
                                     <label for="municipio_politico_editar" class="form-label">Municipio</label>
-                                    <select name="municipio_politico_editar" id="municipio_politico_editar" class="form-control"
-                                        required>
+                                    <select name="municipio_politico_editar" id="municipio_politico_editar"
+                                        class="form-control" required>
                                         <option value="">Seleccione el municipio</option>
                                     </select>
-                                    <input type="hidden" id="id_municipio_politico_editar" name="municipio_politico_id"
-                                        value="">
+                                    <input type="hidden" id="id_municipio_politico_editar"
+                                        name="municipio_politico_id" value="">
                                     <div class="invalid-feedback">
                                         Seleccione un municipio
                                     </div>
@@ -425,9 +427,9 @@
                                 </div>
                             </div>
                             <span class="mb-3">Información de Parientes y Asociados Comerciales o de Negocios</span>
-                            <span class="mb-3">Parientes en Primer y Segundo grado de consanguinidad.</span>
+                            <span class="mb-3">Parientes en Primer y Segundo grado de Consanguinidad.</span>
                             <div id="camposParienteEditar"></div>
-                            <span class="mb-3">Asociados comerciales o de negocios (sociedades en las que posee 25% o
+                            <span class="mb-3">Asociados Comerciales o de Negocios (Sociedades en las que posee 25% o
                                 más
                                 del Patrimonio)</span>
                             <div id="camposSocioEditar"></div>

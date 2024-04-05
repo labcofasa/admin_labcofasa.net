@@ -16,7 +16,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <span>Información persona natural - representante legal</span>
+                <span>Información Persona Natural - Representante Legal</span>
                 <div class="form pt-3">
                     <div class="row">
                         <input type="hidden" id="frm_cccid" name="frm_conozca_cliente_id">
@@ -146,7 +146,7 @@
                                 <textarea type="text" id="direccion" name="direccion" class="form-control" disabled></textarea>
                             </div>
                         </div>
-                        <span class="mb-3">Información persona jurídica</span>
+                        <span class="mb-3">Información Persona Jurídica</span>
                         <div class="col-md-3">
                             <div class="form-group mb-3">
                                 <label for="nombre_juridico" class="form-label">Nombre comercial o Razón
@@ -178,14 +178,14 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group mb-3">
-                                <label for="fecha_de_constitucion" class="form-label">Fecha de constictución</label>
+                                <label for="fecha_de_constitucion" class="form-label">Fecha de constitución</label>
                                 <input type="text" id="fecha_de_constitucion" name="fecha_de_constitucion"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group mb-3">
-                                <label for="registro_nrc_juridico" class="form-label">Número de registro IVA
+                                <label for="registro_nrc_juridico" class="form-label">Número de Registro IVA
                                     (NRC)</label>
                                 <input type="text" id="registro_nrc_juridico" name="registro_nrc_juridico"
                                     class="form-control" disabled>
@@ -245,10 +245,10 @@
                                 <textarea type="text" id="direccion_juridico" name="direccion_juridico" class="form-control" disabled></textarea>
                             </div>
                         </div>
-                        <span class="mb-3">Información de la administración, sus accionistas o miembros</span>
+                        <span class="mb-3">Información de la Administración, sus Accionistas o Miembros</span>
                         <div id="camposAccionista"></div>
-                        <span class="mb-3">Miembros de la Junta Directiva, administrador único, alta gerencia o
-                            máximo órgano de control en la sociedad.</span>
+                        <span class="mb-3">Miembros de la Junta Directiva, Administrador Único, Alta Gerencia o
+                            máximo órgano de Control en la Sociedad.</span>
                         <div id="camposMiembro"></div>
                         <span class="mb-3">Declaración jurada de origin de fondos</span>
                         <div class="col-sm-3">
@@ -258,7 +258,7 @@
                                     name="monto_proyectado" disabled>
                             </div>
                         </div>
-                        <span class="mb-3">Formulario de identificación de personas expuestas políticamente</span>
+                        <span class="mb-3">Formulario de Identificación de Personas Expuestas Políticamente</span>
                         <div class="col-md-3">
                             <div class="form-group mb-3">
                                 <label for="cargo_publico" class="form-label">Es persona políticamente
@@ -342,9 +342,9 @@
                             </div>
                         </div>
                         <span class="mb-3">Información de Parientes y Asociados Comerciales o de Negocios</span>
-                        <span class="mb-3">Parientes en Primer y Segundo grado de consanguinidad.</span>
+                        <span class="mb-3">Parientes en Primer y Segundo Grado de Consanguinidad.</span>
                         <div id="camposPariente"></div>
-                        <span class="mb-3">Asociados comerciales o de negocios (sociedades en las que posee 25% o más
+                        <span class="mb-3">Asociados Comerciales o de Negocios (Sociedades en las que posee 25% o más
                             del Patrimonio)</span>
                         <div id="camposSocio"></div>
                         <span class="mb-3">Fuentes de ingresos.</span>

@@ -196,7 +196,7 @@
                         <label for="registro_iva_nrc" class="form-label">Registro de IVA (NRC)</label>
                         <input type="text" class="form-control" id="registro_iva_nrc" name="registro_iva_nrc">
                         <div class="valid-feedback">
-                            Opcional
+                            Campo opcional.
                         </div>
                     </div>
                 </div>
@@ -230,7 +230,7 @@
                                 Escriba para buscar y seleccione la actividad económica deseada.
                             </div>
                             <div class="valid-feedback">
-                                Opcional.
+                                Campo opcional.
                             </div>
                             <input type="hidden" id="id_actividad_economica" name="giro_id" value="">
                         </div>
@@ -242,7 +242,7 @@
                         <input type="date" class="form-control" id="fecha_de_nombramiento"
                             name="fecha_de_nombramiento">
                         <div class="valid-feedback">
-                            Opcional.
+                            Campo opcional.
                         </div>
                     </div>
                 </div>
@@ -391,7 +391,7 @@
                             <input type="url" class="form-control" id="sitio_web_juridico"
                                 name="sitio_web_juridico">
                             <div class="valid-feedback">
-                                Opcional.
+                                Campo opcional.
                             </div>
                         </div>
                     </div>
@@ -401,7 +401,7 @@
                             <input type="text" class="form-control" id="numero_de_fax_juridico"
                                 name="numero_de_fax_juridico">
                             <div class="valid-feedback">
-                                Opcional.
+                                Campo opcional.
                             </div>
                         </div>
                     </div>
@@ -423,6 +423,9 @@
                             <label for="nombre_accionista" class="form-label">Nombre completo</label>
                             <input type="text" class="form-control" id="nombre_accionista"
                                 name="nombre_accionista[]">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el nombre.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -430,6 +433,9 @@
                             <label for="nacionalidad_accionista" class="form-label">Nacionalidad</label>
                             <input type="text" class="form-control" id="nacionalidad_accionista"
                                 name="nacionalidad_accionista[]">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese la nacionalidad.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -437,6 +443,9 @@
                             <label for="numero_identidad_accionista" class="form-label">No. Identidad</label>
                             <input type="text" class="form-control" id="numero_identidad_accionista"
                                 name="numero_identidad_accionista[]">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el número de identidad.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -445,6 +454,9 @@
                                 participación</label>
                             <input type="text" class="form-control" placeholder="Ejemplo: 10%"
                                 id="porcentaje_participacion_accionista" name="porcentaje_participacion_accionista[]">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el porcentaje de participación.
+                            </div>
                         </div>
                     </div>
 
@@ -463,6 +475,9 @@
                         <div class="mb-3">
                             <label for="nombre_miembro" class="form-label">Nombre completo</label>
                             <input type="text" class="form-control" id="nombre_miembro" name="nombre_miembro[]">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el nombre.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -470,6 +485,9 @@
                             <label for="nacionalidad_miembro" class="form-label">Nacionalidad</label>
                             <input type="text" class="form-control" id="nacionalidad_miembro"
                                 name="nacionalidad_miembro[]">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese la nacionalidad.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -477,12 +495,18 @@
                             <label for="numero_identidad_miembro" class="form-label">No. Identidad</label>
                             <input type="text" class="form-control" id="numero_identidad_miembro"
                                 name="numero_identidad_miembro[]">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el número de identidad.
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="cargo_miembro" class="form-label">Cargo</label>
                             <input type="text" class="form-control" id="cargo_miembro" name="cargo_miembro[]">
+                            <div class="invalid-feedback">
+                                Por favor, ingrese el cargo.
+                            </div>
                         </div>
                     </div>
 

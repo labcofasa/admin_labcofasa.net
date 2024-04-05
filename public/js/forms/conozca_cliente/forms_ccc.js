@@ -138,25 +138,37 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nombre_accionista${camposContador}" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="nombre_accionista${camposContador}" name="nombre_accionista[]">
+                    <input type="text" class="form-control" id="nombre_accionista${camposContador}" name="nombre_accionista[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el nombre.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nacionalidad_accionista${camposContador}" class="form-label">Nacionalidad</label>
-                    <input type="text" class="form-control" id="nacionalidad_accionista${camposContador}" name="nacionalidad_accionista[]">
+                    <input type="text" class="form-control" id="nacionalidad_accionista${camposContador}" name="nacionalidad_accionista[]" required>
+                    <div class="invalid-feedback">
+                            Por favor, ingrese la nacionalidad.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="numero_identidad_accionista${camposContador}" class="form-label">No. Identidad</label>
-                    <input type="text" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]">
+                    <input type="text" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el número de identidad.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="porcentaje_participacion_accionista${camposContador}" class="form-label">Porcentaje de participación</label>
-                    <input type="text" class="form-control" id="porcentaje_participacion_accionista${camposContador}" name="porcentaje_participacion_accionista[]">
+                    <input type="text" class="form-control" id="porcentaje_participacion_accionista${camposContador}" name="porcentaje_participacion_accionista[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el porcentaje de participación.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -198,25 +210,37 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nombre_miembro${camposContadorMiembros}" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="nombre_miembro${camposContadorMiembros}" name="nombre_miembro[]">
+                    <input type="text" class="form-control" id="nombre_miembro${camposContadorMiembros}" name="nombre_miembro[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el nombre.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nacionalidad_miembro${camposContadorMiembros}" class="form-label">Nacionalidad</label>
-                    <input type="text" class="form-control" id="nacionalidad_miembro${camposContadorMiembros}" name="nacionalidad_miembro[]">
+                    <input type="text" class="form-control" id="nacionalidad_miembro${camposContadorMiembros}" name="nacionalidad_miembro[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese la nacionalidad.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="numero_identidad_miembro${camposContadorMiembros}" class="form-label">No. Identidad</label>
-                    <input type="text" class="form-control" id="numero_identidad_miembro${camposContadorMiembros}" name="numero_identidad_miembro[]">
+                    <input type="text" class="form-control" id="numero_identidad_miembro${camposContadorMiembros}" name="numero_identidad_miembro[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el número de identidad.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="cargo_miembro${camposContadorMiembros}" class="form-label">Cargo</label>
-                    <input type="text" class="form-control" id="cargo_miembro${camposContadorMiembros}" name="cargo_miembro[]">
+                    <input type="text" class="form-control" id="cargo_miembro${camposContadorMiembros}" name="cargo_miembro[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el cargo.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -261,13 +285,19 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nombre_pariente${camposContadorParientes}" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="nombre_pariente${camposContadorParientes}" name="nombre_pariente[]">
+                    <input type="text" class="form-control" id="nombre_pariente${camposContadorParientes}" name="nombre_pariente[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el nombre.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="parentesco${camposContadorParientes}" class="form-label">Parentesco</label>
-                    <input type="text" class="form-control" id="parentesco${camposContadorParientes}" name="parentesco[]">
+                    <input type="text" class="form-control" id="parentesco${camposContadorParientes}" name="parentesco[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el parentesco.
+                    </div>
                 </div>
             </div>
 
@@ -311,13 +341,19 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="nombre_socio${camposContadorSocios}" class="form-label">Nombre de la entidad</label>
-                    <input type="text" class="form-control" id="nombre_socio${camposContadorSocios}" name="nombre_socio[]">
+                    <input type="text" class="form-control" id="nombre_socio${camposContadorSocios}" name="nombre_socio[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el nombre.
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="porcentaje_participacion_socio${camposContadorSocios}" class="form-label">Porcentaje de participación</label>
-                    <input type="text" class="form-control" id="porcentaje_participacion_socio${camposContadorSocios}" name="porcentaje_participacion_socio[]">
+                    <input type="text" class="form-control" id="porcentaje_participacion_socio${camposContadorSocios}" name="porcentaje_participacion_socio[]" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingrese el porcentaje.
+                    </div>
                 </div>
             </div>
 
@@ -395,7 +431,19 @@ $(document).ready(function () {
     const departamentoJuridico = document.getElementById('departamento_juridico');
     const municipioJuridico = document.getElementById('municipio_juridico');
     const telefonoJuridico = document.getElementById('telefono_juridico');
+    const sitioWebJuridico = document.getElementById('sitio_web_juridico');
+    const numeroFaxJuridico = document.getElementById('numero_de_fax_juridico');
     const direccionJuridico = document.getElementById('direccion_juridico');
+
+    const nombreAccionista = document.getElementById('nombre_accionista');
+    const nacionalidadAccionista = document.getElementById('nacionalidad_accionista');
+    const numeroIdentidadAccionista = document.getElementById('numero_identidad_accionista');
+    const porcentajeParticipacionAccionista = document.getElementById('porcentaje_participacion_accionista');
+
+    const nombreMiembro = document.getElementById('nombre_miembro');
+    const nacionalidadMiembro = document.getElementById('nacionalidad_miembro');
+    const numeroIdentidadMiembro = document.getElementById('numero_identidad_miembro');
+    const cargoMiembro = document.getElementById('cargo_miembro');
 
     camposPersonaJuridica.style.display = 'none';
 
@@ -414,6 +462,41 @@ $(document).ready(function () {
             municipioJuridico.removeAttribute('required');
             telefonoJuridico.removeAttribute('required');
             direccionJuridico.removeAttribute('required');
+            nombreAccionista.removeAttribute('required');
+            nacionalidadAccionista.removeAttribute('required');
+            numeroIdentidadAccionista.removeAttribute('required');
+            porcentajeParticipacionAccionista.removeAttribute('required');
+            nombreMiembro.removeAttribute('required');
+            nacionalidadMiembro.removeAttribute('required');
+            numeroIdentidadMiembro.removeAttribute('required');
+            cargoMiembro.removeAttribute('required');
+            nombreComercialJuridicoInput.value = '';
+            clasificacionJuridicaId.value = '';
+            document.getElementById('id_clasificacion_juridico').value = '';
+            nacionalidadJuridico.value = '';
+            numeroNitJuridico.value = '';
+            fechaConstitucionJuridico.value = '';
+            registroNrcJuridico.value = '';
+            giroJuridico.value = '';
+            document.getElementById('id_giro_juridico').value = '';
+            paisJuridico.value = '';
+            departamentoJuridico.value = '';
+            municipioJuridico.value = '';
+            document.getElementById('id_pais_juridico').value = '';
+            document.getElementById('id_departamento_juridico').value = '';
+            document.getElementById('id_municipio_juridico').value = '';
+            telefonoJuridico.value = '';
+            sitioWebJuridico.value = '';
+            numeroFaxJuridico.value = '';
+            direccionJuridico.value = '';
+            nombreAccionista.value = '';
+            nacionalidadAccionista.value = '';
+            numeroIdentidadAccionista.value = '';
+            porcentajeParticipacionAccionista.value = '';
+            nombreMiembro.value = '';
+            nacionalidadMiembro.value = '';
+            numeroIdentidadMiembro.value = '';
+            cargoMiembro.value = '';
         } else {
             camposPersonaJuridica.style.display = 'flex';
             nombreComercialJuridicoInput.setAttribute('required', 'required');
@@ -428,8 +511,102 @@ $(document).ready(function () {
             municipioJuridico.setAttribute('required', 'required');
             telefonoJuridico.setAttribute('required', 'required');
             direccionJuridico.setAttribute('required', 'required');
+            nombreAccionista.setAttribute('required', 'required');
+            nacionalidadAccionista.setAttribute('required', 'required');
+            numeroIdentidadAccionista.setAttribute('required', 'required');
+            porcentajeParticipacionAccionista.setAttribute('required', 'required');
+            nombreMiembro.setAttribute('required', 'required');
+            nacionalidadMiembro.setAttribute('required', 'required');
+            numeroIdentidadMiembro.setAttribute('required', 'required');
+            cargoMiembro.setAttribute('required', 'required');
         }
     });
+
+    const radioSI = document.getElementById('cargoPublicoSI');
+    const radioNO = document.getElementById('cargoPublicoNO');
+    const radio1SI = document.getElementById('capitalAccionarioSI');
+    const radio2NO = document.getElementById('capitalAccionarioNO');
+
+    const campoNombrePolitico = document.getElementById('nombre_politico');
+    const nombreCargoPolitico = document.getElementById('nombre_cargo_politico');
+    const fechaDesdePolitico = document.getElementById('fecha_desde_politico');
+    const fechaHastaPolitico = document.getElementById('fecha_hasta_politico');
+    const paisPolitico = document.getElementById('pais_politico');
+    const departamentoPolitico = document.getElementById('departamento_politico');
+    const municipioPolitico = document.getElementById('municipio_politico');
+    const nombreClientePolitico = document.getElementById('nombre_cliente_politico');
+    const porcentajeParticipacionPolitico = document.getElementById('porcentaje_participacion_politico');
+    const nombrePariente = document.getElementById('nombre_pariente');
+    const parentesco = document.getElementById('parentesco');
+    const nombreSocio = document.getElementById('nombre_socio');
+    const porcentajeParticipacionSocio = document.getElementById('porcentaje_participacion_socio');
+    const fuenteIngreso = document.getElementById('fuente_ingreso');
+    const montoMensual = document.getElementById('monto_mensual');
+
+    function verificarCampoRequerido() {
+        if (radioSI.checked || radio1SI.checked) {
+            campoNombrePolitico.setAttribute('required', 'required');
+            nombreCargoPolitico.setAttribute('required', 'required');
+            fechaDesdePolitico.setAttribute('required', 'required');
+            fechaHastaPolitico.setAttribute('required', 'required');
+            paisPolitico.setAttribute('required', 'required');
+            departamentoPolitico.setAttribute('required', 'required');
+            municipioPolitico.setAttribute('required', 'required');
+            nombreClientePolitico.setAttribute('required', 'required');
+            porcentajeParticipacionPolitico.setAttribute('required', 'required');
+            nombrePariente.setAttribute('required', 'required');
+            parentesco.setAttribute('required', 'required');
+            nombreSocio.setAttribute('required', 'required');
+            porcentajeParticipacionSocio.setAttribute('required', 'required');
+            fuenteIngreso.setAttribute('required', 'required');
+            montoMensual.setAttribute('required', 'required');
+        }
+    }
+
+    radioSI.addEventListener('change', verificarCampoRequerido);
+    radio1SI.addEventListener('change', verificarCampoRequerido);
+
+    function verificarCampoOpcional() {
+        if (radioNO.checked && radio2NO.checked) {
+            campoNombrePolitico.removeAttribute('required');
+            nombreCargoPolitico.removeAttribute('required');
+            fechaDesdePolitico.removeAttribute('required');
+            fechaHastaPolitico.removeAttribute('required');
+            paisPolitico.removeAttribute('required');
+            departamentoPolitico.removeAttribute('required');
+            municipioPolitico.removeAttribute('required');
+            nombreClientePolitico.removeAttribute('required');
+            porcentajeParticipacionPolitico.removeAttribute('required');
+            nombrePariente.removeAttribute('required');
+            parentesco.removeAttribute('required');
+            nombreSocio.removeAttribute('required');
+            porcentajeParticipacionSocio.removeAttribute('required');
+            fuenteIngreso.removeAttribute('required');
+            montoMensual.removeAttribute('required');
+            campoNombrePolitico.value = '';
+            nombreCargoPolitico.value = '';
+            fechaDesdePolitico.value = '';
+            fechaHastaPolitico.value = '';
+            paisPolitico.value = '';
+            document.getElementById('id_pais_politico').value = '';
+            departamentoPolitico.value = '';
+            document.getElementById('id_departamento_politico').value = '';
+            municipioPolitico.value = '';
+            document.getElementById('id_municipio_politico').value = '';
+            nombreClientePolitico.value = '';
+            porcentajeParticipacionPolitico.value = '';
+            nombrePariente.value = '';
+            parentesco.value = '';
+            nombreSocio.value = '';
+            porcentajeParticipacionSocio.value = '';
+            fuenteIngreso.value = '';
+            montoMensual.value = '';
+        }
+    }
+
+    radioNO.addEventListener('change', verificarCampoOpcional);
+    radio2NO.addEventListener('change', verificarCampoOpcional);
+
 });
 
 function mostrarToast(mensaje, tipo) {
