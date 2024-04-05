@@ -134,13 +134,13 @@
                                     class="form-control" disabled>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group mb-3">
                                 <label for="actividad_economica" class="form-label">Actividad económica</label>
                                 <textarea type="text" id="actividad_economica" name="actividad_economica" class="form-control" disabled></textarea>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="form-group mb-3">
                                 <label for="direccion" class="form-label">Dirección</label>
                                 <textarea type="text" id="direccion" name="direccion" class="form-control" disabled></textarea>
@@ -363,7 +363,8 @@
                                     disabled>
                             </div>
                         </div>
-                        <span class="mb-3">Archivos adjuntos</span>
+                        <span class="mb-4">Archivos adjuntos</span>
+                        <div class="container-cards p-2"></div>
                     </div>
                 </div>
             </div>
