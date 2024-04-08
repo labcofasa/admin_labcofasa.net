@@ -88,11 +88,11 @@ function MultiselectDropdown(options) {
                 if (k === "class") {
                     Array.isArray(attrs[k])
                         ? attrs[k].forEach((o) =>
-                            o !== "" ? e.classList.add(o) : 0
-                        )
+                              o !== "" ? e.classList.add(o) : 0
+                          )
                         : attrs[k] !== ""
-                            ? e.classList.add(attrs[k])
-                            : 0;
+                        ? e.classList.add(attrs[k])
+                        : 0;
                 } else if (k === "style") {
                     Object.keys(attrs[k]).forEach((ks) => {
                         e.style[ks] = attrs[k][ks];
@@ -345,5 +345,98 @@ function cargarEmpresas(
     $(empresaSelectId).on("change", function () {
         var selectEmpresaId = $(this).val();
         $(idEmpresaInputId).val(selectEmpresaId);
+    });
+}
+
+// Cargar actividad económicas
+// Cargar actividades económicas
+function setupGiroSearch(inputId, suggestionsId, hiddenInputId) {
+    const input = document.getElementById(inputId);
+    const suggestionsContainer = document.getElementById(suggestionsId);
+    const hiddenInput = document.getElementById(hiddenInputId);
+    let currentSuggestions = new Set();
+    let noResultsDisplayed = false;
+    let timer;
+
+    input.addEventListener("input", async function () {
+        const inputValue = input.value.trim();
+
+        currentSuggestions.clear();
+
+        suggestionsContainer.innerHTML = "";
+        noResultsDisplayed = false;
+
+        if (inputValue.length === 0) {
+            suggestionsContainer.classList.remove("visible");
+            return;
+        }
+
+        clearTimeout(timer);
+
+        timer = setTimeout(async function () {
+            try {
+                const response = await fetch(
+                    `/obtener-giros?query=${inputValue}`
+                );
+                const data = await response.json();
+
+                if (data && data.giros && data.giros.length > 0) {
+                    data.giros.forEach((giro) => {
+                        if (!currentSuggestions.has(giro.nombre)) {
+                            const suggestionItem =
+                                document.createElement("div");
+                            suggestionItem.classList.add("sugerencia-item");
+                            suggestionItem.textContent = giro.nombre;
+
+                            suggestionItem.addEventListener(
+                                "click",
+                                function () {
+                                    hiddenInput.value = giro.id;
+                                    input.value = giro.nombre;
+
+                                    suggestionsContainer.innerHTML = "";
+                                    suggestionsContainer.classList.remove(
+                                        "visible"
+                                    );
+                                }
+                            );
+
+                            suggestionsContainer.appendChild(suggestionItem);
+                            currentSuggestions.add(giro.nombre);
+                        }
+                    });
+
+                    suggestionsContainer.classList.add("visible");
+                } else {
+                    if (!noResultsDisplayed) {
+                        const noResultsItem = document.createElement("div");
+                        noResultsItem.classList.add("sin-resultados");
+                        noResultsItem.textContent = "No hay resultados";
+                        suggestionsContainer.appendChild(noResultsItem);
+
+                        suggestionsContainer.classList.add("visible");
+                        noResultsDisplayed = true;
+                    }
+                }
+            } catch (error) {
+                console.error("Error obteniendo datos:", error);
+            }
+        }, 500);
+    });
+
+    document.addEventListener("click", function (event) {
+        const isInputOrSuggestions =
+            input.contains(event.target) ||
+            suggestionsContainer.contains(event.target);
+
+        if (!isInputOrSuggestions) {
+            suggestionsContainer.classList.remove("visible");
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            suggestionsContainer.classList.remove("visible");
+        }
     });
 }

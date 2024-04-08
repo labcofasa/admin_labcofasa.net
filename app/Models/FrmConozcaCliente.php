@@ -110,4 +110,9 @@ class FrmConozcaCliente extends Model
     {
         return $this->hasMany(FrmConozcaClienteArchivos::class, 'frm_conozca_cliente_id');
     }
+
+    public function usuarioModificador()
+    {
+        return $this->belongsTo(User::class, 'usuario_modificador_id');
+    }
 }

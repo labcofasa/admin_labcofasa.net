@@ -3,6 +3,9 @@ $(document).ready(function () {
     let tabla_conozca_cliente = null;
     var fccId;
 
+    const giroTextoInput = $("#giro-formulario-editar");
+    const idGiroHidden = $("#id-giro-formulario-editar");
+
     tablaConozcaCliente();
 
     function tablaConozcaCliente() {
@@ -52,15 +55,15 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 9, 10],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+                    targets: [0, 1, 2, 3, 8, 9],
                     className: "nowrap",
                 },
                 {
-                    targets: [],
+                    targets: [4, 5, 6, 7],
                     className: "wrap",
                 },
                 {
@@ -69,7 +72,7 @@ $(document).ready(function () {
                 },
                 { responsivePriority: 1, targets: 0 },
                 { responsivePriority: 2, targets: 1 },
-                { responsivePriority: 3, targets: 10 },
+                { responsivePriority: 4, targets: 9 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();
@@ -84,19 +87,21 @@ $(document).ready(function () {
                         const isChecked = row.estado == 1;
                         return `
                             <div class="form-check form-switch">
-                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${row.id
-                            }" ${isChecked ? "checked" : ""} data-id="${row.id
-                            }">
-                                <label class="form-check-label estado-label" for="switch-${row.id
-                            }"></label>
+                                <input class="form-check-input toggle-switch" type="checkbox" id="switch-${
+                                    row.id
+                                }" ${isChecked ? "checked" : ""} data-id="${
+                            row.id
+                        }">
+                                <label class="form-check-label estado-label" for="switch-${
+                                    row.id
+                                }"></label>
                             </div>
                         `;
                     },
                 },
+                { data: "codigo_cliente", title: "Código de cliente" },
                 { data: "tipo", title: "Tipo" },
                 { data: "tipo_persona", title: "Tipo persona" },
-                { data: "nombre", title: "Nombre" },
-                { data: "apellido", title: "Apellidos" },
                 { data: "nombre_juridico", title: "Persona jurídica" },
                 { data: "registro_nrc_juridico", title: "Registro NRC" },
                 { data: "numero_nit_juridico", title: "Número de NIT" },
@@ -148,7 +153,7 @@ $(document).ready(function () {
                     },
                 },
             ],
-            order: [[9, "desc"]],
+            order: [[8, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;
@@ -228,180 +233,400 @@ $(document).ready(function () {
             .find(".modal-title")
             .text(
                 clienteTipoPersona +
-                " con el documento " +
-                clienteTipoDoc +
-                ": " +
-                clienteDocumento
+                    " con el documento " +
+                    clienteTipoDoc +
+                    ": " +
+                    clienteDocumento
             );
 
         var container = $(".container-cards");
         container.empty();
 
         if (row.formulario_firmado !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.formulario_firmado).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" + fccId + "/" + row.formulario_firmado
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
+            </svg>'
+            ).appendTo(card);
             $("<p>").addClass("name").text("Formulario firmado").appendTo(card);
         }
 
         if (row.documento_identidad_persona_natural !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_identidad_persona_natural).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_identidad_persona_natural
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Documento de identidad Persona Natural").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Documento de identidad Persona Natural")
+                .appendTo(card);
         }
 
         if (row.documento_tarjeta_iva_persona_natural !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_tarjeta_iva_persona_natural).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_tarjeta_iva_persona_natural
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Tarjeta de IVA Persona Natural").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Tarjeta de IVA Persona Natural")
+                .appendTo(card);
         }
 
         if (row.documento_nit_persona_natural !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_nit_persona_natural).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_nit_persona_natural
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Documento NIT Persona Natural").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Documento NIT Persona Natural")
+                .appendTo(card);
         }
 
         if (row.documento_domicilio_persona_natural !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_domicilio_persona_natural).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_domicilio_persona_natural
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Comprobante de Domicilio Persona Natural").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Comprobante de Domicilio Persona Natural")
+                .appendTo(card);
         }
 
         if (row.documento_dnm_persona_natural !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_dnm_persona_natural).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_dnm_persona_natural
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Autorización DNM Persona Natural").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Autorización DNM Persona Natural")
+                .appendTo(card);
         }
 
         if (row.documento_identificacion_representante !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_identificacion_representante).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_identificacion_representante
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Documento de Indentificación Representante Legal").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Documento de Indentificación Representante Legal")
+                .appendTo(card);
         }
 
         if (row.documento_nit_representante !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_nit_representante).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_nit_representante
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Tarjeta NIT Representante Legal").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Tarjeta NIT Representante Legal")
+                .appendTo(card);
         }
 
         if (row.documento_credencial_representante !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_credencial_representante).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_credencial_representante
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Credencial de Elección Representante Legal").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Credencial de Elección Representante Legal")
+                .appendTo(card);
         }
 
         if (row.documento_matricula_juridico !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_matricula_juridico).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_matricula_juridico
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Matrícula de Comercio Persona Jurídica").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Matrícula de Comercio Persona Jurídica")
+                .appendTo(card);
         }
 
         if (row.documento_acuerdo_juridico !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_acuerdo_juridico).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" + fccId + "/" + row.documento_acuerdo_juridico
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Acuerdo Ejecutivo Persona Jurídica").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Acuerdo Ejecutivo Persona Jurídica")
+                .appendTo(card);
         }
 
         if (row.documento_nit_juridico !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_nit_juridico).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" + fccId + "/" + row.documento_nit_juridico
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Tarjeta NIT Persona Jurídica").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Tarjeta NIT Persona Jurídica")
+                .appendTo(card);
         }
 
         if (row.documento_iva_juridico !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_iva_juridico).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" + fccId + "/" + row.documento_iva_juridico
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Tarjeta IVA Persona Jurídica").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Tarjeta IVA Persona Jurídica")
+                .appendTo(card);
         }
 
         if (row.documento_domicilio_juridico !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_domicilio_juridico).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" +
+                        fccId +
+                        "/" +
+                        row.documento_domicilio_juridico
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Comprobante de Domicilio Persona Jurídica").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Comprobante de Domicilio Persona Jurídica")
+                .appendTo(card);
         }
 
         if (row.documento_dnm_juridico !== null) {
-            var link = $("<a>").attr("href", "/docs/fccc/" + fccId + "/" + row.documento_dnm_juridico).attr("target", "_blank").appendTo(container);
+            var link = $("<a>")
+                .attr(
+                    "href",
+                    "/docs/fccc/" + fccId + "/" + row.documento_dnm_juridico
+                )
+                .attr("target", "_blank")
+                .appendTo(container);
             var card = $("<div>").addClass("cards").appendTo(link);
-            var svgIcon = $('<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+            var svgIcon = $(
+                '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
                 <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
                 <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
                 <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
-            </svg>').appendTo(card);
-            $("<p>").addClass("name").text("Documento DNM Persona Jurídica").appendTo(card);
+            </svg>'
+            ).appendTo(card);
+            $("<p>")
+                .addClass("name")
+                .text("Documento DNM Persona Jurídica")
+                .appendTo(card);
         }
 
+        if (row.cliente_archivo !== null && row.cliente_archivo.length > 0) {
+            var archivosContainer = $("<div>")
+                .addClass("archivos-container")
+                .appendTo(container);
+            row.cliente_archivo.forEach(function (archivo) {
+                var link = $("<a>")
+                    .attr(
+                        "href",
+                        "/docs/fccc/" + fccId + "/" + archivo.nombre_archivo
+                    )
+                    .attr("target", "_blank")
+                    .appendTo(archivosContainer);
+                var card = $("<div>").addClass("cards").appendTo(link);
+                var svgIcon = $(
+                    '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">\
+                    <path d="M3.5 8.23077V5.46154C3.5 3.54978 5.067 2 7 2C8.933 2 10.5 3.54978 10.5 5.46154L10.5 9.26923C10.5 10.2251 9.7165 11 8.75 11C7.7835 11 7 10.2251 7 9.26923L7 5.46154" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />\
+                    <path d="M12.5 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
+                    <path d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />\
+                </svg>'
+                ).appendTo(card);
+                $("<p>")
+                    .addClass("name")
+                    .text("Escrituras de Constitución")
+                    .appendTo(card);
+            });
+        }
+
+        var codigo_cliente = row.codigo_cliente;
         var tipo = row.tipo;
         var tipo_persona = row.tipo_persona;
         var nombre = row.nombre;
@@ -455,6 +680,7 @@ $(document).ready(function () {
         var monto_mensual = row.monto_mensual;
 
         $("#frm_cccid").val(fccId);
+        $("#codigo_cliente").val(codigo_cliente);
         $("#tipo").val(tipo);
         $("#tipo_persona").val(tipo_persona);
         $("#nombre_cliente").val(nombre);
@@ -562,11 +788,17 @@ $(document).ready(function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
                     "Error al cambiar el estado del formulario. Detalles: " +
-                    errorThrown,
+                        errorThrown,
                     "error"
                 );
             },
         });
+    });
+
+    giroTextoInput.on("input", function () {
+        const giroTexto = $(this).val().trim();
+
+        idGiroHidden.val(giroTexto ? "" : giroTexto);
     });
 
     // Editar el formulario
@@ -592,12 +824,13 @@ $(document).ready(function () {
             .find(".modal-title")
             .text(
                 cliente_tipo_persona_editar +
-                " con el documento " +
-                cliente_tipodoc_editar +
-                ": " +
-                cliente_documento_editar
+                    " con el documento " +
+                    cliente_tipodoc_editar +
+                    ": " +
+                    cliente_documento_editar
             );
 
+        var codigo_cliente_editar = row.codigo_cliente;
         var tipo_editar = row.tipo;
         var tipo_persona_editar = row.tipo_persona;
         var nombre_editar = row.nombre;
@@ -613,19 +846,19 @@ $(document).ready(function () {
         var municipio_editar_id = row.id_municipio;
         var municipio_editar = row.municipio;
 
-        var pais_juridico_editar_id = row.id_pais_juridico;
-        var pais_juridico_editar = row.pais_juridico;
-        var departamento_juridico_editar_id = row.id_departamento_juridico;
-        var departamento_juridico_editar = row.departamento_juridico;
-        var municipio_juridico_editar_id = row.id_municipio_juridico;
-        var municipio_juridico_editar = row.municipio_juridico;
+        // var pais_juridico_editar_id = row.id_pais_juridico;
+        // var pais_juridico_editar = row.pais_juridico;
+        // var departamento_juridico_editar_id = row.id_departamento_juridico;
+        // var departamento_juridico_editar = row.departamento_juridico;
+        // var municipio_juridico_editar_id = row.id_municipio_juridico;
+        // var municipio_juridico_editar = row.municipio_juridico;
 
-        var pais_politico_editar_id = row.id_pais_politico;
-        var pais_politico_editar = row.pais_politico;
-        var departamento_politico_editar_id = row.id_departamento_politico;
-        var departamento_politico_editar = row.departamento_politico;
-        var municipio_politico_editar_id = row.id_municipio_politico;
-        var municipio_politico_editar = row.municipio_politico;
+        // var pais_politico_editar_id = row.id_pais_politico;
+        // var pais_politico_editar = row.pais_politico;
+        // var departamento_politico_editar_id = row.id_departamento_politico;
+        // var departamento_politico_editar = row.departamento_politico;
+        // var municipio_politico_editar_id = row.id_municipio_politico;
+        // var municipio_politico_editar = row.municipio_politico;
 
         var tipo_de_documento_editar = row.tipo_de_documento;
         var numero_de_documento_editar = row.numero_de_documento;
@@ -634,38 +867,40 @@ $(document).ready(function () {
         var correo_editar = row.correo;
         var telefono_editar = row.telefono;
         var fecha_de_nombramiento_editar = row.fecha_de_nombramiento;
+        var id_giro = row.id_giro;
         var actividad_economica_editar = row.giro_nombre;
         var direccion_editar = row.direccion;
 
-        var nombre_juridico_editar = row.nombre_juridico;
-        var clasificacion_editar = row.clasificacion;
-        var nacionalidad_juridico_editar = row.nacionalidad_juridico;
-        var numero_nit_juridico_editar = row.numero_nit_juridico;
-        var fecha_de_constitucion_editar = row.fecha_de_constitucion;
-        var registro_nrc_juridico_editar = row.registro_nrc_juridico;
-        var telefono_juridico_editar = row.telefono_juridico;
-        var sitio_web_juridico_editar = row.sitio_web_juridico;
-        var numero_de_fax_juridico_editar = row.numero_de_fax_juridico;
-        var direccion_juridico_editar = row.direccion_juridico;
-        var giro_juridico_editar = row.giro_juridico;
-        var monto_proyectado_editar = row.monto_proyectado;
-        var cargo_publico_editar = row.cargo_publico;
-        var familiar_publico_editar = row.familiar_publico;
+        // var nombre_juridico_editar = row.nombre_juridico;
+        // var clasificacion_editar = row.clasificacion;
+        // var nacionalidad_juridico_editar = row.nacionalidad_juridico;
+        // var numero_nit_juridico_editar = row.numero_nit_juridico;
+        // var fecha_de_constitucion_editar = row.fecha_de_constitucion;
+        // var registro_nrc_juridico_editar = row.registro_nrc_juridico;
+        // var telefono_juridico_editar = row.telefono_juridico;
+        // var sitio_web_juridico_editar = row.sitio_web_juridico;
+        // var numero_de_fax_juridico_editar = row.numero_de_fax_juridico;
+        // var direccion_juridico_editar = row.direccion_juridico;
+        // var giro_juridico_editar = row.giro_juridico;
+        // var monto_proyectado_editar = row.monto_proyectado;
+        // var cargo_publico_editar = row.cargo_publico;
+        // var familiar_publico_editar = row.familiar_publico;
 
-        var nombre_politico_editar = row.nombre_politico;
-        var nombre_cargo_politico_editar = row.nombre_cargo_politico;
-        var fecha_desde_politico_editar = row.fecha_desde_politico;
-        var fecha_hasta_politico_editar = row.fecha_hasta_politico;
-        var pais_politico_editar = row.pais_politico;
-        var departamento_politico_editar = row.departamento_politico;
-        var municipio_politico_editar = row.municipio_politico;
-        var nombre_cliente_politico_editar = row.nombre_cliente_politico;
-        var porcentaje_participacion_politico_editar =
-            row.porcentaje_participacion_politico;
-        var fuente_ingreso_editar = row.fuente_ingreso;
-        var monto_mensual_editar = row.monto_mensual;
+        // var nombre_politico_editar = row.nombre_politico;
+        // var nombre_cargo_politico_editar = row.nombre_cargo_politico;
+        // var fecha_desde_politico_editar = row.fecha_desde_politico;
+        // var fecha_hasta_politico_editar = row.fecha_hasta_politico;
+        // var pais_politico_editar = row.pais_politico;
+        // var departamento_politico_editar = row.departamento_politico;
+        // var municipio_politico_editar = row.municipio_politico;
+        // var nombre_cliente_politico_editar = row.nombre_cliente_politico;
+        // var porcentaje_participacion_politico_editar =
+        //     row.porcentaje_participacion_politico;
+        // var fuente_ingreso_editar = row.fuente_ingreso;
+        // var monto_mensual_editar = row.monto_mensual;
 
-        $("#frm_cccid").val(fcc_editar_id);
+        $("#formularioEditarForm #btn-editar-formulario").val(fcc_editar_id);
+        $("#codigo_cliente_editar").val(codigo_cliente_editar);
         $("#tipo_editar").val(tipo_editar);
         $("#tipo_persona_editar").val(tipo_persona_editar);
         $("#nombre_cliente_editar").val(nombre_editar);
@@ -683,7 +918,9 @@ $(document).ready(function () {
             })
         );
 
-        $("#formularioEditarForm #id_departamento_editar").val(departamento_editar_id);
+        $("#formularioEditarForm #id_departamento_editar").val(
+            departamento_editar_id
+        );
         $("#formularioEditarForm #departamento_editar").append(
             $("<option>", {
                 value: departamento_editar_id,
@@ -692,7 +929,9 @@ $(document).ready(function () {
             })
         );
 
-        $("#formularioEditarForm #id_municipio_editar").val(municipio_editar_id);
+        $("#formularioEditarForm #id_municipio_editar").val(
+            municipio_editar_id
+        );
         $("#formularioEditarForm #municipio_editar").append(
             $("<option>", {
                 value: municipio_editar_id,
@@ -701,59 +940,71 @@ $(document).ready(function () {
             })
         );
 
-        $("#formularioEditarForm #id_editar_pais_juridico").val(pais_juridico_editar_id);
-        $("#formularioEditarForm #pais_juridico_editar").append(
-            $("<option>", {
-                value: pais_juridico_editar_id,
-                text: pais_juridico_editar,
-                selected: true,
-            })
-        );
+        // $("#formularioEditarForm #id_editar_pais_juridico").val(
+        //     pais_juridico_editar_id
+        // );
+        // $("#formularioEditarForm #pais_juridico_editar").append(
+        //     $("<option>", {
+        //         value: pais_juridico_editar_id,
+        //         text: pais_juridico_editar,
+        //         selected: true,
+        //     })
+        // );
 
-        $("#formularioEditarForm #id_departamento_juridico_editar").val(departamento_juridico_editar_id);
-        $("#formularioEditarForm #departamento_juridico_editar").append(
-            $("<option>", {
-                value: departamento_juridico_editar_id,
-                text: departamento_juridico_editar,
-                selected: true,
-            })
-        );
+        // $("#formularioEditarForm #id_departamento_juridico_editar").val(
+        //     departamento_juridico_editar_id
+        // );
+        // $("#formularioEditarForm #departamento_juridico_editar").append(
+        //     $("<option>", {
+        //         value: departamento_juridico_editar_id,
+        //         text: departamento_juridico_editar,
+        //         selected: true,
+        //     })
+        // );
 
-        $("#formularioEditarForm #id_municipio_juridico_editar").val(municipio_juridico_editar_id);
-        $("#formularioEditarForm #municipio_juridico_editar").append(
-            $("<option>", {
-                value: municipio_juridico_editar_id,
-                text: municipio_juridico_editar,
-                selected: true,
-            })
-        );
+        // $("#formularioEditarForm #id_municipio_juridico_editar").val(
+        //     municipio_juridico_editar_id
+        // );
+        // $("#formularioEditarForm #municipio_juridico_editar").append(
+        //     $("<option>", {
+        //         value: municipio_juridico_editar_id,
+        //         text: municipio_juridico_editar,
+        //         selected: true,
+        //     })
+        // );
 
-        $("#formularioEditarForm #id_editar_pais_politico").val(pais_politico_editar_id);
-        $("#formularioEditarForm #pais_politico_editar").append(
-            $("<option>", {
-                value: pais_politico_editar_id,
-                text: pais_politico_editar,
-                selected: true,
-            })
-        );
+        // $("#formularioEditarForm #id_editar_pais_politico").val(
+        //     pais_politico_editar_id
+        // );
+        // $("#formularioEditarForm #pais_politico_editar").append(
+        //     $("<option>", {
+        //         value: pais_politico_editar_id,
+        //         text: pais_politico_editar,
+        //         selected: true,
+        //     })
+        // );
 
-        $("#formularioEditarForm #id_departamento_politico_editar").val(departamento_politico_editar_id);
-        $("#formularioEditarForm #departamento_politico_editar").append(
-            $("<option>", {
-                value: departamento_politico_editar_id,
-                text: departamento_politico_editar,
-                selected: true,
-            })
-        );
+        // $("#formularioEditarForm #id_departamento_politico_editar").val(
+        //     departamento_politico_editar_id
+        // );
+        // $("#formularioEditarForm #departamento_politico_editar").append(
+        //     $("<option>", {
+        //         value: departamento_politico_editar_id,
+        //         text: departamento_politico_editar,
+        //         selected: true,
+        //     })
+        // );
 
-        $("#formularioEditarForm #id_municipio_politico_editar").val(municipio_politico_editar_id);
-        $("#formularioEditarForm #municipio_politico_editar").append(
-            $("<option>", {
-                value: municipio_politico_editar_id,
-                text: municipio_politico_editar,
-                selected: true,
-            })
-        );
+        // $("#formularioEditarForm #id_municipio_politico_editar").val(
+        //     municipio_politico_editar_id
+        // );
+        // $("#formularioEditarForm #municipio_politico_editar").append(
+        //     $("<option>", {
+        //         value: municipio_politico_editar_id,
+        //         text: municipio_politico_editar,
+        //         selected: true,
+        //     })
+        // );
 
         $("#tipo_de_documento_editar").val(tipo_de_documento_editar);
         $("#numero_de_documento_editar").val(numero_de_documento_editar);
@@ -762,57 +1013,76 @@ $(document).ready(function () {
         $("#correo_editar").val(correo_editar);
         $("#telefono_editar").val(telefono_editar);
         $("#fecha_de_nombramiento_editar").val(fecha_de_nombramiento_editar);
-        $("#actividad_economica_editar").val(actividad_economica_editar);
+        $("#giro-formulario-editar").val(actividad_economica_editar);
+        $("#id-giro-formulario-editar").val(id_giro);
         $("#direccion_editar").val(direccion_editar);
 
-        $("#nombre_juridico_editar").val(nombre_juridico_editar);
-        $("#clasificacion_editar").val(clasificacion_editar);
-        $("#nacionalidad_juridico_editar").val(nacionalidad_juridico_editar);
-        $("#numero_nit_juridico_editar").val(numero_nit_juridico_editar);
-        $("#fecha_de_constitucion_editar").val(fecha_de_constitucion_editar);
-        $("#registro_nrc_juridico_editar").val(registro_nrc_juridico_editar);
-        $("#telefono_juridico_editar").val(telefono_juridico_editar);
-        $("#sitio_web_juridico_editar").val(sitio_web_juridico_editar);
-        $("#numero_de_fax_juridico_editar").val(numero_de_fax_juridico_editar);
-        $("#direccion_juridico_editar").val(direccion_juridico_editar);
-        $("#giro_juridico_editar").val(giro_juridico_editar);
-        $("#monto_proyectado_editar").val(monto_proyectado_editar);
-        $("#cargo_publico_editar").val(cargo_publico_editar);
-        $("#familiar_publico_editar").val(familiar_publico_editar);
+        // $("#nombre_juridico_editar").val(nombre_juridico_editar);
+        // $("#clasificacion_editar").val(clasificacion_editar);
+        // $("#nacionalidad_juridico_editar").val(nacionalidad_juridico_editar);
+        // $("#numero_nit_juridico_editar").val(numero_nit_juridico_editar);
+        // $("#fecha_de_constitucion_editar").val(fecha_de_constitucion_editar);
+        // $("#registro_nrc_juridico_editar").val(registro_nrc_juridico_editar);
+        // $("#telefono_juridico_editar").val(telefono_juridico_editar);
+        // $("#sitio_web_juridico_editar").val(sitio_web_juridico_editar);
+        // $("#numero_de_fax_juridico_editar").val(numero_de_fax_juridico_editar);
+        // $("#direccion_juridico_editar").val(direccion_juridico_editar);
+        // $("#giro_juridico_editar").val(giro_juridico_editar);
+        // $("#monto_proyectado_editar").val(monto_proyectado_editar);
+        // $("#cargo_publico_editar").val(cargo_publico_editar);
+        // $("#familiar_publico_editar").val(familiar_publico_editar);
 
-        $("#nombre_politico_editar").val(nombre_politico_editar);
-        $("#nombre_cargo_politico_editar").val(nombre_cargo_politico_editar);
-        $("#fecha_desde_politico_editar").val(fecha_desde_politico_editar);
-        $("#fecha_hasta_politico_editar").val(fecha_hasta_politico_editar);
-        $("#pais_politico_editar").val(pais_politico_editar);
-        $("#departamento_politico_editar").val(departamento_politico_editar);
-        $("#municipio_politico_editar").val(municipio_politico_editar);
-        $("#nombre_cliente_politico_editar").val(nombre_cliente_politico_editar);
-        $("#porcentaje_participacion_politico_editar").val(
-            porcentaje_participacion_politico_editar
-        );
-        $("#fuente_ingreso_editar").val(fuente_ingreso_editar);
-        $("#monto_mensual_editar").val(monto_mensual_editar);
+        // $("#nombre_politico_editar").val(nombre_politico_editar);
+        // $("#nombre_cargo_politico_editar").val(nombre_cargo_politico_editar);
+        // $("#fecha_desde_politico_editar").val(fecha_desde_politico_editar);
+        // $("#fecha_hasta_politico_editar").val(fecha_hasta_politico_editar);
+        // $("#pais_politico_editar").val(pais_politico_editar);
+        // $("#departamento_politico_editar").val(departamento_politico_editar);
+        // $("#municipio_politico_editar").val(municipio_politico_editar);
+        // $("#nombre_cliente_politico_editar").val(
+        //     nombre_cliente_politico_editar
+        // );
+        // $("#porcentaje_participacion_politico_editar").val(
+        //     porcentaje_participacion_politico_editar
+        // );
+        // $("#fuente_ingreso_editar").val(fuente_ingreso_editar);
+        // $("#monto_mensual_editar").val(monto_mensual_editar);
 
-        $.each(row.cliente_accionista, function (index, clienteAccionista) {
-            let contadorCamposEditar = index + 1;
-            verAccionistasEditar(fcc_editar_id, contadorCamposEditar, clienteAccionista);
-        });
+        // $.each(row.cliente_accionista, function (index, clienteAccionista) {
+        //     let contadorCamposEditar = index + 1;
+        //     verAccionistasEditar(
+        //         fcc_editar_id,
+        //         contadorCamposEditar,
+        //         clienteAccionista
+        //     );
+        // });
 
-        $.each(row.cliente_miembro, function (index, clienteMiembro) {
-            let contadorCamposMiembroEditar = index + 1;
-            verMiembrosEditar(fcc_editar_id, contadorCamposMiembroEditar, clienteMiembro);
-        });
+        // $.each(row.cliente_miembro, function (index, clienteMiembro) {
+        //     let contadorCamposMiembroEditar = index + 1;
+        //     verMiembrosEditar(
+        //         fcc_editar_id,
+        //         contadorCamposMiembroEditar,
+        //         clienteMiembro
+        //     );
+        // });
 
-        $.each(row.cliente_pariente, function (index, clientePariente) {
-            let contadorCamposParienteEditar = index + 1;
-            verParientesEditar(fcc_editar_id, contadorCamposParienteEditar, clientePariente);
-        });
+        // $.each(row.cliente_pariente, function (index, clientePariente) {
+        //     let contadorCamposParienteEditar = index + 1;
+        //     verParientesEditar(
+        //         fcc_editar_id,
+        //         contadorCamposParienteEditar,
+        //         clientePariente
+        //     );
+        // });
 
-        $.each(row.cliente_socio, function (index, clienteSocio) {
-            let contadorCamposSocioEditar = index + 1;
-            verSociosEditar(fcc_editar_id, contadorCamposSocioEditar, clienteSocio);
-        });
+        // $.each(row.cliente_socio, function (index, clienteSocio) {
+        //     let contadorCamposSocioEditar = index + 1;
+        //     verSociosEditar(
+        //         fcc_editar_id,
+        //         contadorCamposSocioEditar,
+        //         clienteSocio
+        //     );
+        // });
 
         cargarPaises(
             "#pais_editar",
@@ -826,31 +1096,75 @@ $(document).ready(function () {
             municipio_editar_id
         );
 
-        cargarPaises(
-            '#pais_juridico_editar',
-            '#id_editar_pais_juridico',
-            '#departamento_juridico_editar',
-            '#id_departamento_juridico_editar',
-            '#municipio_juridico_editar',
-            '#id_municipio_juridico_editar',
-            pais_juridico_editar_id,
-            departamento_juridico_editar_id,
-            municipio_juridico_editar_id
+        setupGiroSearch(
+            "giro-formulario-editar",
+            "giro-sugerencia-formulario-editar",
+            "id-giro-formulario-editar"
         );
 
-        cargarPaises(
-            '#pais_politico_editar',
-            '#id_editar_pais_politico',
-            '#departamento_politico_editar',
-            '#id_departamento_politico_editar',
-            '#municipio_politico_editar',
-            '#id_municipio_politico_editar',
-            pais_politico_editar_id,
-            departamento_politico_editar_id,
-            municipio_politico_editar_id
-        );
+        // cargarPaises(
+        //     "#pais_juridico_editar",
+        //     "#id_editar_pais_juridico",
+        //     "#departamento_juridico_editar",
+        //     "#id_departamento_juridico_editar",
+        //     "#municipio_juridico_editar",
+        //     "#id_municipio_juridico_editar",
+        //     pais_juridico_editar_id,
+        //     departamento_juridico_editar_id,
+        //     municipio_juridico_editar_id
+        // );
+
+        // cargarPaises(
+        //     "#pais_politico_editar",
+        //     "#id_editar_pais_politico",
+        //     "#departamento_politico_editar",
+        //     "#id_departamento_politico_editar",
+        //     "#municipio_politico_editar",
+        //     "#id_municipio_politico_editar",
+        //     pais_politico_editar_id,
+        //     departamento_politico_editar_id,
+        //     municipio_politico_editar_id
+        // );
 
         $("#editarFormulario").modal("show");
+    });
+
+    $("#formularioEditarForm").submit(function (e) {
+        e.preventDefault();
+
+        if (this.checkValidity() === false) {
+            e.stopPropagation();
+            $(this).addClass("was-validated");
+            return;
+        }
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+            url: "/actualizar-formulario/" + $("#btn-editar-formulario").val(),
+            method: "PUT",
+            data: formData,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                tabla_conozca_cliente.ajax.reload();
+
+                $("#editarFormulario").modal("hide");
+
+                if (response.success) {
+                    mostrarToast(response.message, "success");
+                } else {
+                    mostrarToast(response.error, "error");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                mostrarToast(
+                    "Error al editar el formulario. Por favor, intente de nuevo.",
+                    "error"
+                );
+            },
+        });
     });
 
     $("#editarFormulario").on("hidden.bs.modal", function () {
@@ -861,16 +1175,22 @@ $(document).ready(function () {
     });
 
     // Eliminar formulario
-    $("#tabla-conozca-cliente").on("click", ".eliminar-formulario", function () {
-        const formularioId = $(this).data("id");
-        nombreJuridico = tabla_conozca_cliente.row($(this).closest("tr")).data().nombre_juridico;
+    $("#tabla-conozca-cliente").on(
+        "click",
+        ".eliminar-formulario",
+        function () {
+            const formularioId = $(this).data("id");
+            nombreJuridico = tabla_conozca_cliente
+                .row($(this).closest("tr"))
+                .data().nombre_juridico;
 
-        const modal = $("#eliminarFormulario");
-        modal.modal("show");
+            const modal = $("#eliminarFormulario");
+            modal.modal("show");
 
-        modal.find(".nombre-juridico").text(nombreJuridico);
-        $("#btn-eliminar-formulario").data("id", formularioId);
-    });
+            modal.find(".nombre-juridico").text(nombreJuridico);
+            $("#btn-eliminar-formulario").data("id", formularioId);
+        }
+    );
 
     $("#btn-eliminar-formulario").on("click", function () {
         const formularioId = $(this).data("id");
@@ -1062,7 +1382,11 @@ function verSocios(fccId, contadorCamposSocio, clienteSocio) {
 }
 
 /* Cargar cliente accionista editar */
-function verAccionistasEditar(fcc_editar_id, contadorCamposEditar, clienteAccionista) {
+function verAccionistasEditar(
+    fcc_editar_id,
+    contadorCamposEditar,
+    clienteAccionista
+) {
     let nombre_accionista_editar =
         clienteAccionista.nombre_accionista !== null
             ? clienteAccionista.nombre_accionista
@@ -1113,7 +1437,11 @@ function verAccionistasEditar(fcc_editar_id, contadorCamposEditar, clienteAccion
 }
 
 /* Cargar cliente miembro editar */
-function verMiembrosEditar(fcc_editar_id, contadorCamposMiembroEditar, clienteMiembro) {
+function verMiembrosEditar(
+    fcc_editar_id,
+    contadorCamposMiembroEditar,
+    clienteMiembro
+) {
     let nombre_miembro_editar =
         clienteMiembro.nombre_miembro !== null
             ? clienteMiembro.nombre_miembro
@@ -1164,7 +1492,11 @@ function verMiembrosEditar(fcc_editar_id, contadorCamposMiembroEditar, clienteMi
 }
 
 /* Cargar cliente parientes editar */
-function verParientesEditar(fccId, contadorCamposParienteEditar, clientePariente) {
+function verParientesEditar(
+    fccId,
+    contadorCamposParienteEditar,
+    clientePariente
+) {
     let nombre_pariente_editar =
         clientePariente.nombre_pariente !== null
             ? clientePariente.nombre_pariente

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    habilitarTooltips();
     document
         .getElementById("forms_ccc")
         .addEventListener("keypress", function (event) {
@@ -7,16 +8,21 @@ $(document).ready(function () {
             }
         });
 
+    const btnDescargarForm = document.getElementById("btnDescargarForm");
 
-    const btnDescargarForm = document.getElementById('btnDescargarForm');
-
-    btnDescargarForm.addEventListener('click', function (event) {
-        const formulario = document.querySelector('form');
+    btnDescargarForm.addEventListener("click", function (event) {
+        const formulario = document.querySelector("form");
 
         if (formulario.checkValidity()) {
-            mostrarToast("El formulario está completo. Descargando formulario...", "success");
+            mostrarToast(
+                "El formulario está completo. Descargando formulario...",
+                "success"
+            );
         } else {
-            mostrarToast("Por favor, completa todos los campos requeridos.", "error");
+            mostrarToast(
+                "Por favor, completa todos los campos requeridos.",
+                "error"
+            );
         }
     });
 
@@ -24,12 +30,12 @@ $(document).ready(function () {
         $("#formulario_firmado").prop("required", true);
     });
 
-    const botonEnviar = document.querySelector('.enviar-form');
-    const inputArchivo = document.getElementById('formulario_firmado');
+    const botonEnviar = document.querySelector(".enviar-form");
+    const inputArchivo = document.getElementById("formulario_firmado");
 
     botonEnviar.disabled = true;
 
-    inputArchivo.addEventListener('change', function () {
+    inputArchivo.addEventListener("change", function () {
         if (this.files && this.files.length > 0) {
             botonEnviar.disabled = false;
         } else {
@@ -40,14 +46,17 @@ $(document).ready(function () {
     $("#btnEnviarFormulario").click(function () {
         var camposVacios = false;
         $("input[required]").each(function () {
-            if ($(this).val().trim() === '') {
+            if ($(this).val().trim() === "") {
                 camposVacios = true;
                 return false;
             }
         });
 
         if (camposVacios) {
-            mostrarToast("Por favor, completa todos los campos requeridos antes de enviar el formulario.", "error");
+            mostrarToast(
+                "Por favor, completa todos los campos requeridos antes de enviar el formulario.",
+                "error"
+            );
             return false;
         }
 
@@ -417,197 +426,246 @@ $(document).ready(function () {
         }
     });
 
-    const tipoPersonaSelect = document.getElementById('tipo_persona');
-    const camposPersonaJuridica = document.querySelector('.campos-persona-juridica');
+    const tipoPersonaSelect = document.getElementById("tipo_persona");
+    const camposPersonaJuridica = document.querySelector(
+        ".campos-persona-juridica"
+    );
 
-    const nombreComercialJuridicoInput = document.getElementById('nombre_comercial_juridico');
-    const clasificacionJuridicaId = document.getElementById('clasificacion_juridico_id');
-    const nacionalidadJuridico = document.getElementById('nacionalidad_juridico');
-    const numeroNitJuridico = document.getElementById('numero_de_nit_juridico');
-    const fechaConstitucionJuridico = document.getElementById('fecha_de_constitucion_juridico');
-    const registroNrcJuridico = document.getElementById('registro_nrc_juridico');
-    const giroJuridico = document.getElementById('giro_juridico');
-    const paisJuridico = document.getElementById('pais_juridico');
-    const departamentoJuridico = document.getElementById('departamento_juridico');
-    const municipioJuridico = document.getElementById('municipio_juridico');
-    const telefonoJuridico = document.getElementById('telefono_juridico');
-    const sitioWebJuridico = document.getElementById('sitio_web_juridico');
-    const numeroFaxJuridico = document.getElementById('numero_de_fax_juridico');
-    const direccionJuridico = document.getElementById('direccion_juridico');
+    const nombreComercialJuridicoInput = document.getElementById(
+        "nombre_comercial_juridico"
+    );
+    const clasificacionJuridicaId = document.getElementById(
+        "clasificacion_juridico_id"
+    );
+    const nacionalidadJuridico = document.getElementById(
+        "nacionalidad_juridico"
+    );
+    const numeroNitJuridico = document.getElementById("numero_de_nit_juridico");
+    const fechaConstitucionJuridico = document.getElementById(
+        "fecha_de_constitucion_juridico"
+    );
+    const registroNrcJuridico = document.getElementById(
+        "registro_nrc_juridico"
+    );
+    const giroJuridico = document.getElementById("giro_juridico");
+    const paisJuridico = document.getElementById("pais_juridico");
+    const departamentoJuridico = document.getElementById(
+        "departamento_juridico"
+    );
+    const municipioJuridico = document.getElementById("municipio_juridico");
+    const telefonoJuridico = document.getElementById("telefono_juridico");
+    const sitioWebJuridico = document.getElementById("sitio_web_juridico");
+    const numeroFaxJuridico = document.getElementById("numero_de_fax_juridico");
+    const direccionJuridico = document.getElementById("direccion_juridico");
 
-    const nombreAccionista = document.getElementById('nombre_accionista');
-    const nacionalidadAccionista = document.getElementById('nacionalidad_accionista');
-    const numeroIdentidadAccionista = document.getElementById('numero_identidad_accionista');
-    const porcentajeParticipacionAccionista = document.getElementById('porcentaje_participacion_accionista');
+    const nombreAccionista = document.getElementById("nombre_accionista");
+    const nacionalidadAccionista = document.getElementById(
+        "nacionalidad_accionista"
+    );
+    const numeroIdentidadAccionista = document.getElementById(
+        "numero_identidad_accionista"
+    );
+    const porcentajeParticipacionAccionista = document.getElementById(
+        "porcentaje_participacion_accionista"
+    );
 
-    const nombreMiembro = document.getElementById('nombre_miembro');
-    const nacionalidadMiembro = document.getElementById('nacionalidad_miembro');
-    const numeroIdentidadMiembro = document.getElementById('numero_identidad_miembro');
-    const cargoMiembro = document.getElementById('cargo_miembro');
+    const nombreMiembro = document.getElementById("nombre_miembro");
+    const nacionalidadMiembro = document.getElementById("nacionalidad_miembro");
+    const numeroIdentidadMiembro = document.getElementById(
+        "numero_identidad_miembro"
+    );
+    const cargoMiembro = document.getElementById("cargo_miembro");
 
-    camposPersonaJuridica.style.display = 'none';
+    camposPersonaJuridica.style.display = "none";
 
-    tipoPersonaSelect.addEventListener('change', function () {
-        if (tipoPersonaSelect.value === 'Persona Natural / Titular de Establecimiento') {
-            camposPersonaJuridica.style.display = 'none';
-            nombreComercialJuridicoInput.removeAttribute('required');
-            clasificacionJuridicaId.removeAttribute('required');
-            nacionalidadJuridico.removeAttribute('required');
-            numeroNitJuridico.removeAttribute('required');
-            fechaConstitucionJuridico.removeAttribute('required');
-            registroNrcJuridico.removeAttribute('required');
-            giroJuridico.removeAttribute('required');
-            paisJuridico.removeAttribute('required');
-            departamentoJuridico.removeAttribute('required');
-            municipioJuridico.removeAttribute('required');
-            telefonoJuridico.removeAttribute('required');
-            direccionJuridico.removeAttribute('required');
-            nombreAccionista.removeAttribute('required');
-            nacionalidadAccionista.removeAttribute('required');
-            numeroIdentidadAccionista.removeAttribute('required');
-            porcentajeParticipacionAccionista.removeAttribute('required');
-            nombreMiembro.removeAttribute('required');
-            nacionalidadMiembro.removeAttribute('required');
-            numeroIdentidadMiembro.removeAttribute('required');
-            cargoMiembro.removeAttribute('required');
-            nombreComercialJuridicoInput.value = '';
-            clasificacionJuridicaId.value = '';
-            document.getElementById('id_clasificacion_juridico').value = '';
-            nacionalidadJuridico.value = '';
-            numeroNitJuridico.value = '';
-            fechaConstitucionJuridico.value = '';
-            registroNrcJuridico.value = '';
-            giroJuridico.value = '';
-            document.getElementById('id_giro_juridico').value = '';
-            paisJuridico.value = '';
-            departamentoJuridico.value = '';
-            municipioJuridico.value = '';
-            document.getElementById('id_pais_juridico').value = '';
-            document.getElementById('id_departamento_juridico').value = '';
-            document.getElementById('id_municipio_juridico').value = '';
-            telefonoJuridico.value = '';
-            sitioWebJuridico.value = '';
-            numeroFaxJuridico.value = '';
-            direccionJuridico.value = '';
-            nombreAccionista.value = '';
-            nacionalidadAccionista.value = '';
-            numeroIdentidadAccionista.value = '';
-            porcentajeParticipacionAccionista.value = '';
-            nombreMiembro.value = '';
-            nacionalidadMiembro.value = '';
-            numeroIdentidadMiembro.value = '';
-            cargoMiembro.value = '';
+    tipoPersonaSelect.addEventListener("change", function () {
+        if (
+            tipoPersonaSelect.value ===
+            "Persona Natural / Titular de Establecimiento"
+        ) {
+            camposPersonaJuridica.style.display = "none";
+            nombreComercialJuridicoInput.removeAttribute("required");
+            clasificacionJuridicaId.removeAttribute("required");
+            nacionalidadJuridico.removeAttribute("required");
+            numeroNitJuridico.removeAttribute("required");
+            fechaConstitucionJuridico.removeAttribute("required");
+            registroNrcJuridico.removeAttribute("required");
+            giroJuridico.removeAttribute("required");
+            paisJuridico.removeAttribute("required");
+            departamentoJuridico.removeAttribute("required");
+            municipioJuridico.removeAttribute("required");
+            telefonoJuridico.removeAttribute("required");
+            direccionJuridico.removeAttribute("required");
+            nombreAccionista.removeAttribute("required");
+            nacionalidadAccionista.removeAttribute("required");
+            numeroIdentidadAccionista.removeAttribute("required");
+            porcentajeParticipacionAccionista.removeAttribute("required");
+            nombreMiembro.removeAttribute("required");
+            nacionalidadMiembro.removeAttribute("required");
+            numeroIdentidadMiembro.removeAttribute("required");
+            cargoMiembro.removeAttribute("required");
+            nombreComercialJuridicoInput.value = "";
+            clasificacionJuridicaId.value = "";
+            document.getElementById("id_clasificacion_juridico").value = "";
+            nacionalidadJuridico.value = "";
+            numeroNitJuridico.value = "";
+            fechaConstitucionJuridico.value = "";
+            registroNrcJuridico.value = "";
+            giroJuridico.value = "";
+            document.getElementById("id_giro_juridico").value = "";
+            paisJuridico.value = "";
+            departamentoJuridico.value = "";
+            municipioJuridico.value = "";
+            document.getElementById("id_pais_juridico").value = "";
+            document.getElementById("id_departamento_juridico").value = "";
+            document.getElementById("id_municipio_juridico").value = "";
+            telefonoJuridico.value = "";
+            sitioWebJuridico.value = "";
+            numeroFaxJuridico.value = "";
+            direccionJuridico.value = "";
+            nombreAccionista.value = "";
+            nacionalidadAccionista.value = "";
+            numeroIdentidadAccionista.value = "";
+            porcentajeParticipacionAccionista.value = "";
+            nombreMiembro.value = "";
+            nacionalidadMiembro.value = "";
+            numeroIdentidadMiembro.value = "";
+            cargoMiembro.value = "";
         } else {
-            camposPersonaJuridica.style.display = 'flex';
-            nombreComercialJuridicoInput.setAttribute('required', 'required');
-            clasificacionJuridicaId.setAttribute('required', 'required');
-            nacionalidadJuridico.setAttribute('required', 'required');
-            numeroNitJuridico.setAttribute('required', 'required');
-            fechaConstitucionJuridico.setAttribute('required', 'required');
-            registroNrcJuridico.setAttribute('required', 'required');
-            giroJuridico.setAttribute('required', 'required');
-            paisJuridico.setAttribute('required', 'required');
-            departamentoJuridico.setAttribute('required', 'required');
-            municipioJuridico.setAttribute('required', 'required');
-            telefonoJuridico.setAttribute('required', 'required');
-            direccionJuridico.setAttribute('required', 'required');
-            nombreAccionista.setAttribute('required', 'required');
-            nacionalidadAccionista.setAttribute('required', 'required');
-            numeroIdentidadAccionista.setAttribute('required', 'required');
-            porcentajeParticipacionAccionista.setAttribute('required', 'required');
-            nombreMiembro.setAttribute('required', 'required');
-            nacionalidadMiembro.setAttribute('required', 'required');
-            numeroIdentidadMiembro.setAttribute('required', 'required');
-            cargoMiembro.setAttribute('required', 'required');
+            camposPersonaJuridica.style.display = "flex";
+            nombreComercialJuridicoInput.setAttribute("required", "required");
+            clasificacionJuridicaId.setAttribute("required", "required");
+            nacionalidadJuridico.setAttribute("required", "required");
+            numeroNitJuridico.setAttribute("required", "required");
+            fechaConstitucionJuridico.setAttribute("required", "required");
+            registroNrcJuridico.setAttribute("required", "required");
+            giroJuridico.setAttribute("required", "required");
+            paisJuridico.setAttribute("required", "required");
+            departamentoJuridico.setAttribute("required", "required");
+            municipioJuridico.setAttribute("required", "required");
+            telefonoJuridico.setAttribute("required", "required");
+            direccionJuridico.setAttribute("required", "required");
+            nombreAccionista.setAttribute("required", "required");
+            nacionalidadAccionista.setAttribute("required", "required");
+            numeroIdentidadAccionista.setAttribute("required", "required");
+            porcentajeParticipacionAccionista.setAttribute(
+                "required",
+                "required"
+            );
+            nombreMiembro.setAttribute("required", "required");
+            nacionalidadMiembro.setAttribute("required", "required");
+            numeroIdentidadMiembro.setAttribute("required", "required");
+            cargoMiembro.setAttribute("required", "required");
         }
     });
 
-    const radioSI = document.getElementById('cargoPublicoSI');
-    const radioNO = document.getElementById('cargoPublicoNO');
-    const radio1SI = document.getElementById('capitalAccionarioSI');
-    const radio2NO = document.getElementById('capitalAccionarioNO');
+    const radioSI = document.getElementById("cargoPublicoSI");
+    const radioNO = document.getElementById("cargoPublicoNO");
+    const radio1SI = document.getElementById("capitalAccionarioSI");
+    const radio2NO = document.getElementById("capitalAccionarioNO");
 
-    const campoNombrePolitico = document.getElementById('nombre_politico');
-    const nombreCargoPolitico = document.getElementById('nombre_cargo_politico');
-    const fechaDesdePolitico = document.getElementById('fecha_desde_politico');
-    const fechaHastaPolitico = document.getElementById('fecha_hasta_politico');
-    const paisPolitico = document.getElementById('pais_politico');
-    const departamentoPolitico = document.getElementById('departamento_politico');
-    const municipioPolitico = document.getElementById('municipio_politico');
-    const nombreClientePolitico = document.getElementById('nombre_cliente_politico');
-    const porcentajeParticipacionPolitico = document.getElementById('porcentaje_participacion_politico');
-    const nombrePariente = document.getElementById('nombre_pariente');
-    const parentesco = document.getElementById('parentesco');
-    const nombreSocio = document.getElementById('nombre_socio');
-    const porcentajeParticipacionSocio = document.getElementById('porcentaje_participacion_socio');
-    const fuenteIngreso = document.getElementById('fuente_ingreso');
-    const montoMensual = document.getElementById('monto_mensual');
+    const campoNombrePolitico = document.getElementById("nombre_politico");
+    const nombreCargoPolitico = document.getElementById(
+        "nombre_cargo_politico"
+    );
+    const fechaDesdePolitico = document.getElementById("fecha_desde_politico");
+    const fechaHastaPolitico = document.getElementById("fecha_hasta_politico");
+    const paisPolitico = document.getElementById("pais_politico");
+    const departamentoPolitico = document.getElementById(
+        "departamento_politico"
+    );
+    const municipioPolitico = document.getElementById("municipio_politico");
+    const nombreClientePolitico = document.getElementById(
+        "nombre_cliente_politico"
+    );
+    const porcentajeParticipacionPolitico = document.getElementById(
+        "porcentaje_participacion_politico"
+    );
+    const nombrePariente = document.getElementById("nombre_pariente");
+    const parentesco = document.getElementById("parentesco");
+    const nombreSocio = document.getElementById("nombre_socio");
+    const porcentajeParticipacionSocio = document.getElementById(
+        "porcentaje_participacion_socio"
+    );
+    const fuenteIngreso = document.getElementById("fuente_ingreso");
+    const montoMensual = document.getElementById("monto_mensual");
 
     function verificarCampoRequerido() {
         if (radioSI.checked || radio1SI.checked) {
-            campoNombrePolitico.setAttribute('required', 'required');
-            nombreCargoPolitico.setAttribute('required', 'required');
-            fechaDesdePolitico.setAttribute('required', 'required');
-            fechaHastaPolitico.setAttribute('required', 'required');
-            paisPolitico.setAttribute('required', 'required');
-            departamentoPolitico.setAttribute('required', 'required');
-            municipioPolitico.setAttribute('required', 'required');
-            nombreClientePolitico.setAttribute('required', 'required');
-            porcentajeParticipacionPolitico.setAttribute('required', 'required');
-            nombrePariente.setAttribute('required', 'required');
-            parentesco.setAttribute('required', 'required');
-            nombreSocio.setAttribute('required', 'required');
-            porcentajeParticipacionSocio.setAttribute('required', 'required');
-            fuenteIngreso.setAttribute('required', 'required');
-            montoMensual.setAttribute('required', 'required');
+            campoNombrePolitico.setAttribute("required", "required");
+            nombreCargoPolitico.setAttribute("required", "required");
+            fechaDesdePolitico.setAttribute("required", "required");
+            fechaHastaPolitico.setAttribute("required", "required");
+            paisPolitico.setAttribute("required", "required");
+            departamentoPolitico.setAttribute("required", "required");
+            municipioPolitico.setAttribute("required", "required");
+            nombreClientePolitico.setAttribute("required", "required");
+            porcentajeParticipacionPolitico.setAttribute(
+                "required",
+                "required"
+            );
+            nombrePariente.setAttribute("required", "required");
+            parentesco.setAttribute("required", "required");
+            nombreSocio.setAttribute("required", "required");
+            porcentajeParticipacionSocio.setAttribute("required", "required");
+            fuenteIngreso.setAttribute("required", "required");
+            montoMensual.setAttribute("required", "required");
         }
     }
 
-    radioSI.addEventListener('change', verificarCampoRequerido);
-    radio1SI.addEventListener('change', verificarCampoRequerido);
+    radioSI.addEventListener("change", verificarCampoRequerido);
+    radio1SI.addEventListener("change", verificarCampoRequerido);
 
     function verificarCampoOpcional() {
         if (radioNO.checked && radio2NO.checked) {
-            campoNombrePolitico.removeAttribute('required');
-            nombreCargoPolitico.removeAttribute('required');
-            fechaDesdePolitico.removeAttribute('required');
-            fechaHastaPolitico.removeAttribute('required');
-            paisPolitico.removeAttribute('required');
-            departamentoPolitico.removeAttribute('required');
-            municipioPolitico.removeAttribute('required');
-            nombreClientePolitico.removeAttribute('required');
-            porcentajeParticipacionPolitico.removeAttribute('required');
-            nombrePariente.removeAttribute('required');
-            parentesco.removeAttribute('required');
-            nombreSocio.removeAttribute('required');
-            porcentajeParticipacionSocio.removeAttribute('required');
-            fuenteIngreso.removeAttribute('required');
-            montoMensual.removeAttribute('required');
-            campoNombrePolitico.value = '';
-            nombreCargoPolitico.value = '';
-            fechaDesdePolitico.value = '';
-            fechaHastaPolitico.value = '';
-            paisPolitico.value = '';
-            document.getElementById('id_pais_politico').value = '';
-            departamentoPolitico.value = '';
-            document.getElementById('id_departamento_politico').value = '';
-            municipioPolitico.value = '';
-            document.getElementById('id_municipio_politico').value = '';
-            nombreClientePolitico.value = '';
-            porcentajeParticipacionPolitico.value = '';
-            nombrePariente.value = '';
-            parentesco.value = '';
-            nombreSocio.value = '';
-            porcentajeParticipacionSocio.value = '';
-            fuenteIngreso.value = '';
-            montoMensual.value = '';
+            campoNombrePolitico.removeAttribute("required");
+            nombreCargoPolitico.removeAttribute("required");
+            fechaDesdePolitico.removeAttribute("required");
+            fechaHastaPolitico.removeAttribute("required");
+            paisPolitico.removeAttribute("required");
+            departamentoPolitico.removeAttribute("required");
+            municipioPolitico.removeAttribute("required");
+            nombreClientePolitico.removeAttribute("required");
+            porcentajeParticipacionPolitico.removeAttribute("required");
+            nombrePariente.removeAttribute("required");
+            parentesco.removeAttribute("required");
+            nombreSocio.removeAttribute("required");
+            porcentajeParticipacionSocio.removeAttribute("required");
+            fuenteIngreso.removeAttribute("required");
+            montoMensual.removeAttribute("required");
+            campoNombrePolitico.value = "";
+            nombreCargoPolitico.value = "";
+            fechaDesdePolitico.value = "";
+            fechaHastaPolitico.value = "";
+            paisPolitico.value = "";
+            document.getElementById("id_pais_politico").value = "";
+            departamentoPolitico.value = "";
+            document.getElementById("id_departamento_politico").value = "";
+            municipioPolitico.value = "";
+            document.getElementById("id_municipio_politico").value = "";
+            nombreClientePolitico.value = "";
+            porcentajeParticipacionPolitico.value = "";
+            nombrePariente.value = "";
+            parentesco.value = "";
+            nombreSocio.value = "";
+            porcentajeParticipacionSocio.value = "";
+            fuenteIngreso.value = "";
+            montoMensual.value = "";
         }
     }
 
-    radioNO.addEventListener('change', verificarCampoOpcional);
-    radio2NO.addEventListener('change', verificarCampoOpcional);
-
+    radioNO.addEventListener("change", verificarCampoOpcional);
+    radio2NO.addEventListener("change", verificarCampoOpcional);
 });
+
+function habilitarTooltips() {
+    const tooltipTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = Array.from(tooltipTriggerList).map(
+        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+    );
+}
 
 function mostrarToast(mensaje, tipo) {
     const toast = document.getElementById("notificacion");
@@ -625,4 +683,3 @@ function mostrarToast(mensaje, tipo) {
     const bsToast = new bootstrap.Toast(toast);
     bsToast.show();
 }
-

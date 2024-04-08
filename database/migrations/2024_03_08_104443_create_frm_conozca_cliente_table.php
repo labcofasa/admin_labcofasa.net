@@ -4,18 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
-
-    // php artisan migrate:rollback --step=7
-
 
     public function up(): void
     {
         Schema::create('frm_conozca_cliente', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo_cliente')->nullable();
             $table->string('tipo')->nullable();
             $table->string('tipo_persona')->nullable();
             $table->boolean('estado')->default(false);
@@ -55,6 +54,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('departamento_id')->nullable();
             $table->unsignedBigInteger('municipio_id')->nullable();
             $table->unsignedBigInteger('giro_id')->nullable();
+            $table->unsignedBigInteger('usuario_modificador_id')->nullable();
 
             $table->timestamp('fecha_de_creacion')->nullable();
             $table->timestamp('fecha_de_modificacion')->nullable();
@@ -63,6 +63,7 @@ return new class extends Migration {
             $table->foreign('departamento_id')->references('id')->on('departamentos');
             $table->foreign('municipio_id')->references('id')->on('municipios');
             $table->foreign('giro_id')->references('id')->on('giros');
+            $table->foreign('usuario_modificador_id')->references('id')->on('users');
         });
     }
 

@@ -4,14 +4,14 @@
         <label for="documento_identidad_persona_natural" class="form-label">Copia de DUI, Pasaporte o Carnet de
             Residente</label>
         <input type="file" class="form-control" id="documento_identidad_persona_natural"
-            name="documento_identidad_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
+            name="documento_identidad_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
         <label for="documento_nit_persona_natural" class="form-label">Copia de Tarjeta NIT</label>
         <input type="file" class="form-control" id="documento_nit_persona_natural"
-            name="documento_nit_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
+            name="documento_nit_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
     </div>
 </div>
 <div class="col-sm-6">
@@ -19,7 +19,7 @@
         <label for="documento_tarjeta_iva_persona_natural" class="form-label">Copia Tarjeta IVA (Si aplica)</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_tarjeta_iva_persona_natural"
-                name="documento_tarjeta_iva_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
+                name="documento_tarjeta_iva_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -29,7 +29,7 @@
             Domicilio</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_domicilio_persona_natural"
-                name="documento_domicilio_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
+                name="documento_domicilio_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -37,7 +37,7 @@
     <div class="mb-3">
         <label for="documento_dnm_persona_natural" class="form-label">Autorización de DNM</label>
         <input type="file" class="form-control" id="documento_dnm_persona_natural"
-            name="documento_dnm_persona_natural" accept=".pdf, .docx, .jpg, .png, .jpeg">
+            name="documento_dnm_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
     </div>
 </div>
 <span class="mb-2 text-center py-2">Documentación de Representante Legal</span>
@@ -47,7 +47,7 @@
             Representante Legal</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_identificacion_representante"
-                name="documento_identificacion_representante" accept=".pdf, .docx, .jpg, .png, .jpeg">
+                name="documento_identificacion_representante" accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -58,7 +58,7 @@
         <div class="input-group mb-3">
 
             <input type="file" class="form-control" id="documento_nit_representante"
-                name="documento_nit_representante" accept=".pdf, .docx, .jpg, .png, .jpeg">
+                name="documento_nit_representante" accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -68,7 +68,7 @@
             Representante Legal</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_credencial_representante"
-                name="documento_credencial_representante" accept=".pdf, .docx, .jpg, .png, .jpeg">
+                name="documento_credencial_representante" accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -79,7 +79,7 @@
             Sociedades)</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_escritura_juridico"
-                name="documento_escritura_juridico[]" accept=".pdf, .docx, .jpg, .png, .jpeg" multiple>
+                name="documento_escritura_juridico[]" accept=".pdf, .jpg, .png, .jpeg" multiple>
         </div>
     </div>
 </div>
@@ -89,7 +89,7 @@
             vigente</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_matricula_juridico"
-                name="documento_matricula_juridico" accept=".pdf, .docx, .jpg, .png, .jpeg">
+                name="documento_matricula_juridico" accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -98,8 +98,8 @@
         <label for="documento_acuerdo_juridico" class="form-label">Acuerdo ejecutivo, Decreto o Acta de
             Constitución (para asociaciones, cooperativas, ONG's, Otros)</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_acuerdo_juridico" name="documento_acuerdo_juridico"
-                accept=".pdf, .docx, .jpg, .png, .jpeg">
+            <input type="file" class="form-control" id="documento_acuerdo_juridico"
+                name="documento_acuerdo_juridico" accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -108,7 +108,7 @@
         <label for="documento_nit_juridico" class="form-label">Copia de tarjeta NIT</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_nit_juridico" name="documento_nit_juridico"
-                accept=".pdf, .docx, .jpg, .png, .jpeg">
+                accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -117,7 +117,7 @@
         <label for="documento_iva_juridico" class="form-label">Copia de tarjeta de IVA</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_iva_juridico" name="documento_iva_juridico"
-                accept=".pdf, .docx, .jpg, .png, .jpeg">
+                accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -127,7 +127,7 @@
             domicilio</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_domicilio_juridico"
-                name="documento_domicilio_juridico" accept=".pdf, .docx, .jpg, .png, .jpeg">
+                name="documento_domicilio_juridico" accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
@@ -135,6 +135,6 @@
     <div class="mb-3">
         <label for="documento_dnm_juridico" class="form-label">Autorización de DNM</label>
         <input type="file" class="form-control" id="documento_dnm_juridico" name="documento_dnm_juridico"
-            accept=".pdf, .docx, .jpg, .png, .jpeg">
+            accept=".pdf, .jpg, .png, .jpeg">
     </div>
 </div>

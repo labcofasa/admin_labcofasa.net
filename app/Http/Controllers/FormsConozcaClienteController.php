@@ -296,21 +296,21 @@ class FormsConozcaClienteController extends Controller
             'porcentaje_participacion_socio.*' => 'nullable|string',
             'fuente_ingreso' => 'nullable|string',
             'monto_mensual' => 'nullable|string',
-            'documento_identidad_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_tarjeta_iva_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_nit_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_domicilio_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_dnm_persona_natural' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_identificacion_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_nit_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_credencial_representante' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_matricula_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_acuerdo_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_nit_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_iva_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'documento_dnm_juridico' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
-            'formulario_firmado' => 'nullable|file|mimes:pdf,docx,jpg,png,jpeg',
+            'documento_identidad_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_tarjeta_iva_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_nit_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_domicilio_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_dnm_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_identificacion_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_nit_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_credencial_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_matricula_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_acuerdo_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_nit_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_iva_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_dnm_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'formulario_firmado' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
         ]);
 
         // $direccionIp = $request->ip();
@@ -719,15 +719,14 @@ class FormsConozcaClienteController extends Controller
         $start = $request->input('start');
         $length = $request->input('length');
         $search = $request->input('search.value');
-        $orderColumnIndex = $request->input('order.0.column');
-        $orderDirection = $request->input('order.0.dir');
 
         $query = FrmConozcaCliente::with(
             'conozcaClienteMiembros',
             'conozcaClienteAccionistas',
             'conozcaClientePoliticos',
             'conozcaClienteParientes',
-            'conozcaClienteSocios'
+            'conozcaClienteSocios',
+            'conozcaClienteArchivos'
         )
             ->select(
                 'frm_conozca_cliente.*',
@@ -737,6 +736,7 @@ class FormsConozcaClienteController extends Controller
                 'departamentos.nombre as departamento_nombre',
                 'municipios.id as id_municipio',
                 'municipios.nombre as municipio_nombre',
+                'giros.id as id_giro',
                 'giros.nombre as giro_nombre',
                 'frm_conozca_cliente_juridico.*',
                 'clasificaciones.nombre as clasificacion_nombre',
@@ -774,6 +774,7 @@ class FormsConozcaClienteController extends Controller
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('frm_conozca_cliente.nombre', 'like', '%' . $search . '%')
+                    ->orWhere('frm_conozca_cliente.codigo_cliente', 'like', '%' . $search . '%')
                     ->orWhere('frm_conozca_cliente.tipo', 'like', '%' . $search . '%')
                     ->orWhere('frm_conozca_cliente.tipo_persona', 'like', '%' . $search . '%')
                     ->orWhere('frm_conozca_cliente.apellido', 'like', '%' . $search . '%')
@@ -837,9 +838,17 @@ class FormsConozcaClienteController extends Controller
                 ];
             });
 
+            $clienteArchivosData = $form->conozcaClienteArchivos->map(function ($clienteArchivo) {
+                return [
+                    'id' => $clienteArchivo->id,
+                    'nombre_archivo' => $clienteArchivo->nombre_archivo
+                ];
+            });
+
             $data[] = [
                 'id' => $form->id,
                 'contador' => $contador++,
+                'codigo_cliente' => $form->codigo_cliente,
                 'tipo' => $form->tipo,
                 'tipo_persona' => $form->tipo_persona,
                 'estado' => $form->estado,
@@ -861,6 +870,7 @@ class FormsConozcaClienteController extends Controller
                 'correo' => $form->email,
                 'telefono' => $form->telefono,
                 'fecha_de_nombramiento' => $form->fecha_de_nombramiento,
+                'id_giro' => $form->id_giro,
                 'giro_nombre' => $form->giro_nombre,
                 'direccion' => $form->direccion,
                 'clasificacion' => $form->clasificacion_nombre,
@@ -920,7 +930,8 @@ class FormsConozcaClienteController extends Controller
                 'cliente_miembro' => $clienteMiembroData,
                 'cliente_pariente' => $clienteParienteData,
                 'cliente_socio' => $clienteSociosData,
-                'fecha_creacion' => (new DateTime($form->fecha_de_creacion))->format('Y-m-d H:i:s'),
+                'cliente_archivo' => $clienteArchivosData,
+                'fecha_creacion' => $form->fecha_de_creacion,
             ];
         }
 
@@ -953,7 +964,109 @@ class FormsConozcaClienteController extends Controller
         }
     }
 
-    public function destroy(Request $request, $id)
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'codigo_cliente' => 'nullable|string',
+            'tipo' => 'nullable|string',
+            'tipo_persona' => 'nullable|string',
+            'nombre' => 'nullable|string',
+            'apellido' => 'nullable|string',
+            'fecha_de_nacimiento' => 'nullable|date',
+            'nacionalidad' => 'nullable|string',
+            'profesion_u_oficio' => 'nullable|string',
+            'pais_id' => 'nullable|exists:paises,id',
+            'departamento_id' => 'nullable|exists:departamentos,id',
+            'municipio_id' => 'nullable|exists:municipios,id',
+            'tipo_de_documento' => 'nullable|string',
+            'numero_de_documento' => 'nullable|string',
+            'fecha_de_vencimiento' => 'nullable|date',
+            'registro_iva_nrc' => 'nullable|string',
+            'email' => 'nullable|email',
+            'telefono' => 'nullable|string',
+            'giro_id' => 'nullable|exists:giros,id',
+            'fecha_de_nombramiento' => 'nullable|date',
+            'direccion' => 'nullable|string',
+            'nombre_comercial_juridico' => 'nullable|string',
+            'clasificacion_juridico_id' => 'nullable|exists:clasificaciones,id',
+            'nacionalidad_juridico' => 'nullable|string',
+            'numero_de_nit_juridico' => 'nullable|string',
+            'fecha_de_constitucion_juridico' => 'nullable|date',
+            'registro_nrc_juridico' => 'nullable|string',
+            'giro_juridico_id' => 'nullable|exists:giros,id',
+            'pais_juridico_id' => 'nullable|exists:paises,id',
+            'departamento_juridico_id' => 'nullable|exists:departamentos,id',
+            'municipio_juridico_id' => 'nullable|exists:municipios,id',
+            'telefono_juridico' => 'nullable|string',
+            'sitio_web_juridico' => 'nullable|url',
+            'numero_de_fax_juridico' => 'nullable|string',
+            'direccion_juridico' => 'nullable|string',
+            'monto_proyectado' => 'nullable|string',
+            'cargo_publico' => 'nullable|in:SI,NO',
+            'familiar_publico' => 'nullable|in:SI,NO',
+            'nombre_accionista.*' => 'nullable|string',
+            'nacionalidad_accionista.*' => 'nullable|string',
+            'numero_identidad_accionista.*' => 'nullable|string',
+            'porcentaje_participacion_accionista.*' => 'nullable|string',
+            'nombre_miembro.*' => 'nullable|string',
+            'nacionalidad_miembro.*' => 'nullable|string',
+            'numero_identidad_miembro.*' => 'nullable|string',
+            'cargo_miembro.*' => 'nullable|string',
+            'nombre_politico' => 'nullable|string',
+            'nombre_cargo_politico' => 'nullable|string',
+            'fecha_desde_politico' => 'nullable|date',
+            'fecha_hasta_politico' => 'nullable|date',
+            'pais_politico_id' => 'nullable|exists:paises,id',
+            'departamento_politico_id' => 'nullable|exists:departamentos,id',
+            'municipio_politico_id' => 'nullable|exists:municipios,id',
+            'nombre_cliente_politico' => 'nullable|string',
+            'porcentaje_participacion_politico' => 'nullable|string',
+            'nombre_pariente.*' => 'nullable|string',
+            'parentesco.*' => 'nullable|string',
+            'nombre_socio.*' => 'nullable|string',
+            'porcentaje_participacion_socio.*' => 'nullable|string',
+            'fuente_ingreso' => 'nullable|string',
+            'monto_mensual' => 'nullable|string',
+        ]);
+
+        try {
+            $formulario = FrmConozcaCliente::findOrFail($id);
+
+            $formulario->codigo_cliente = $request->input('codigo_cliente');
+            $formulario->tipo = $request->input('tipo_editar');
+            $formulario->tipo_persona = $request->input('tipo_persona_editar');
+            $formulario->nombre = $request->input('nombre_cliente_editar');
+            $formulario->apellido = $request->input('apellido_cliente_editar');
+            $formulario->fecha_de_nacimiento = $request->input('fecha_de_nacimiento_editar');
+            $formulario->nacionalidad = $request->input('nacionalidad_editar');
+            $formulario->profesion_u_oficio = $request->input('profesion_u_oficio_editar');
+            $formulario->usuario_modificador_id = auth()->user()->id;
+            $formulario->fecha_de_modificacion = now();
+            $formulario->pais_id = $request->input('pais_editar_id');
+            $formulario->departamento_id = $request->input('departamento_editar_id');
+            $formulario->municipio_id = $request->input('municipio_editar_id');
+            $formulario->tipo_de_documento = $request->input('tipo_de_documento_editar');
+            $formulario->numero_de_documento = str_replace('-', '', $request->input('numero_de_documento_editar'));
+            $formulario->fecha_de_vencimiento = $request->input('fecha_de_vencimiento_editar');
+            $formulario->registro_iva_nrc = str_replace('-', '', $request->input('registro_iva_nrc_editar'));
+            $formulario->email = $request->input('correo_editar');
+            $formulario->telefono = str_replace(['+', '-'], '', $request->input('telefono_editar'));
+
+            $formulario->giro_id = $request->input('giro_id');
+            $formulario->fecha_de_nombramiento = $request->input('fecha_de_nombramiento_editar');
+            $formulario->direccion = $request->input('direccion_editar');
+            // $formsccc->cargo_publico = $request->input('cargo_publico');
+            // $formsccc->familiar_publico = $request->input('familiar_publico');
+
+            $formulario->save();
+
+            return response()->json(['success' => true, 'message' => 'Formulario actualizado con éxito!', 'data' => $formulario]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => '¡Actualización fallida!: ' . $e->getMessage()]);
+        }
+    }
+
+    public function destroy($id)
     {
         $formulario = FrmConozcaCliente::find($id);
 

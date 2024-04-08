@@ -664,7 +664,7 @@
                 </button>
             </div>
         </div>
-
+        <x-formularios.atencion_cliente />
     </div>
 
     <x-notificaciones />
