@@ -705,7 +705,7 @@ class FormsConozcaClienteController extends Controller
     }
 
     public function tablaConozcaCliente(Request $request)
-    {
+    {   
         $this->validate($request, [
             'draw' => 'required',
             'start' => 'required|numeric',

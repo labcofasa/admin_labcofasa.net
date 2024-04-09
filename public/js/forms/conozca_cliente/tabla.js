@@ -59,11 +59,11 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 8, 9],
+                    targets: [0, 1, 2, 3, 6, 7, 8, 9],
                     className: "nowrap",
                 },
                 {
-                    targets: [4, 5, 6, 7],
+                    targets: [4, 5],
                     className: "wrap",
                 },
                 {
@@ -99,7 +99,7 @@ $(document).ready(function () {
                         `;
                     },
                 },
-                { data: "codigo_cliente", title: "Código de cliente" },
+                { data: "codigo_cliente", title: "Código" },
                 { data: "tipo", title: "Tipo" },
                 { data: "tipo_persona", title: "Tipo persona" },
                 { data: "nombre_juridico", title: "Persona jurídica" },
@@ -846,7 +846,7 @@ $(document).ready(function () {
         var municipio_editar_id = row.id_municipio;
         var municipio_editar = row.municipio;
 
-        // var pais_juridico_editar_id = row.id_pais_juridico;
+        var pais_juridico_editar_id = row.id_pais_juridico;
         // var pais_juridico_editar = row.pais_juridico;
         // var departamento_juridico_editar_id = row.id_departamento_juridico;
         // var departamento_juridico_editar = row.departamento_juridico;
@@ -871,7 +871,7 @@ $(document).ready(function () {
         var actividad_economica_editar = row.giro_nombre;
         var direccion_editar = row.direccion;
 
-        // var nombre_juridico_editar = row.nombre_juridico;
+        var nombre_juridico_editar = row.nombre_juridico;
         // var clasificacion_editar = row.clasificacion;
         // var nacionalidad_juridico_editar = row.nacionalidad_juridico;
         // var numero_nit_juridico_editar = row.numero_nit_juridico;
@@ -1017,7 +1017,7 @@ $(document).ready(function () {
         $("#id-giro-formulario-editar").val(id_giro);
         $("#direccion_editar").val(direccion_editar);
 
-        // $("#nombre_juridico_editar").val(nombre_juridico_editar);
+        $("#nombre_juridico_editar").val(nombre_juridico_editar);
         // $("#clasificacion_editar").val(clasificacion_editar);
         // $("#nacionalidad_juridico_editar").val(nacionalidad_juridico_editar);
         // $("#numero_nit_juridico_editar").val(numero_nit_juridico_editar);

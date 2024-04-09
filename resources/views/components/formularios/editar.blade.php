@@ -208,7 +208,7 @@
                                     <textarea type="text" id="direccion_editar" name="direccion_editar" class="form-control"></textarea>
                                 </div>
                             </div>
-                            {{-- <span class="mb-3">Información Persona Jurídica</span>
+                            <span class="mb-3">Información Persona Jurídica</span>
                             <div class="col-sm-3">
                                 <div class="form-group mb-3">
                                     <label for="nombre_juridico_editar" class="form-label">Nombre comercial o Razón
@@ -216,7 +216,7 @@
                                     <input type="text" id="nombre_juridico_editar" name="nombre_juridico_editar"
                                         class="form-control">
                                 </div>
-                            </div> --}}
+                            </div>
                             {{-- <div class="col-sm-3">
                                 <div class="form-group mb-3">
                                     <label for="clasificacion_editar" class="form-label">Tipo de contribuyente</label>
