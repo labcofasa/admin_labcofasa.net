@@ -34,7 +34,7 @@
             @endif
         </ul>
         <div class="tab-content" id="miPanelContent">
-            @can('admin_formularios_ver_cliente')
+            @if (auth()->user()->can('admin_formularios_ver_cliente') && auth()->user()->can('admin_formularios_ver_proveedor'))
                 <div class="tab-pane show active" id="clientes-tab-pane" role="tabpanel" aria-labelledby="clientes-tab"
                     tabindex="0">
 
@@ -67,7 +67,8 @@
                         </table>
                     </div>
                     <!-- Tabla aplicaciones -->
-                    <div class="table-responsive mt-3" id="tabla-formulario-conozca-cliente-container" style="display: none;">
+                    <div class="table-responsive mt-3" id="tabla-formulario-conozca-cliente-container"
+                        style="display: none;">
 
                         <!-- Titulo-->
                         <h1 class="pb-3">Formulario conozca a su cliente</h1>
@@ -80,8 +81,6 @@
                     <!-- Permisos -->
                     <x-widgets.roles.permisos />
                 </div>
-            @endcan
-            @can('admin_formularios_ver_proveedor')
                 <div class="tab-pane" id="proveedores-tab-pane" role="tabpanel" aria-labelledby="proveedores-tab"
                     tabindex="0">
                     <!-- Tabla fantasma -->
@@ -128,7 +127,101 @@
                     <!-- Permisos -->
                     <x-widgets.roles.permisos />
                 </div>
-            @endcan
+            @elseif (auth()->user()->can('admin_formularios_ver_cliente'))
+                <div class="tab-pane show active" id="clientes-tab-pane" role="tabpanel" aria-labelledby="clientes-tab"
+                    tabindex="0">
+
+                    <!-- Tabla fantasma -->
+                    <div class="table-responsive placeholder-glow mt-3" id="placeholder_cliente">
+                        <table class="table align-middle">
+                            <div class="row justify-content-between">
+                                <div class="col-md-6">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-12 py-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                            </div>
+                        </table>
+                    </div>
+                    <!-- Tabla aplicaciones -->
+                    <div class="table-responsive mt-3" id="tabla-formulario-conozca-cliente-container"
+                        style="display: none;">
+
+                        <!-- Titulo-->
+                        <h1 class="pb-3">Formulario conozca a su cliente</h1>
+
+                        <table id="tabla-conozca-cliente" class="table align-middle responsive display" width="100%">
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Permisos -->
+                    <x-widgets.roles.permisos />
+                </div>
+            @elseif (auth()->user()->can('admin_formularios_ver_proveedor'))
+                <div class="tab-pane active active" id="proveedores-tab-pane" role="tabpanel"
+                    aria-labelledby="proveedores-tab" tabindex="0">
+                    <!-- Tabla fantasma -->
+                    <div class="table-responsive placeholder-glow mt-3" id="placeholder_proveedor">
+                        <table class="table align-middle">
+                            <div class="row justify-content-between">
+                                <div class="col-md-6">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-12 py-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="placeholder col-12"></span>
+                                </div>
+                            </div>
+                        </table>
+                    </div>
+
+                    <!-- Tabla aplicaciones -->
+                    <div class="table-responsive mt-3" id="tabla-formulario-conozca-proveedor-container"
+                        style="display: none;">
+
+                        <!-- Titulo-->
+                        <h1 class="pb-3">Formulario conozca a su proveedor</h1>
+
+                        <table id="tabla-conozca-proveedor" class="table align-middle responsive display" width="100%">
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Permisos -->
+                    <x-widgets.roles.permisos />
+                </div>
+            @endif
         </div>
     </div>
 
