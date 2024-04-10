@@ -78,7 +78,7 @@ class FrmConozcaCliente extends Model
 
     public function conozcaClienteJuridico()
     {
-        return $this->hasMany(FrmConozcaClienteJuridico::class, 'frm_conozca_cliente_id');
+        return $this->hasOne(FrmConozcaClienteJuridico::class, 'frm_conozca_cliente_id');
     }
 
     public function conozcaClienteAccionistas()

@@ -122,6 +122,11 @@ class RoleSeeder extends Seeder
 
             // Formularios
             ['name' => 'admin_formularios_ver', 'descripcion' => 'Ver formularios'],
+            ['name' => 'admin_formularios_ver_cliente', 'descripcion' => 'Ver formulario de clientes'],
+            ['name' => 'admin_formularios_ver_proveedor', 'descripcion' => 'Ver formulario de proveedores'],
+            ['name' => 'admin_formularios_crear', 'descripcion' => 'Crear formularios'],
+            ['name' => 'admin_formularios_editar', 'descripcion' => 'Editar formularios'],
+            ['name' => 'admin_formularios_eliminar', 'descripcion' => 'Eliminar formularios'],
 
             // Candidatos
             ['name' => 'admin_candidatos_ver', 'descripcion' => 'Ver candidatos'],

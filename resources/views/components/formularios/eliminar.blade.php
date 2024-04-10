@@ -16,8 +16,7 @@
             </div>
             <div class="modal-body">
                 <p class="mt-3 text-center">
-                    ¿Está seguro de que desea eliminar toda la información del cliente: "<span
-                        class="nombre-juridico"></span>"?
+                    ¿Está seguro de que desea eliminar toda la información del cliente?
                 </p>
             </div>
             <div class="modal-footer">

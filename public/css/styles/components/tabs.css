@@ -1,17 +1,19 @@
 /* Tabs */
 .nav-tabs {
     border-color: var(--table-border);
+    transition: var(--tran-03);
 }
 
 .nav-tabs .nav-link {
     color: var(--text-color);
-    transition: none;
+    transition: var(--tran-03);
 }
 
 .nav-tabs .nav-link.active {
     color: var(--input-caret) !important;
     background-color: var(--card-bg);
     border-color: var(--table-border);
+    transition: var(--tran-03);
 }
 
 .nav-tabs .nav-link:hover {
