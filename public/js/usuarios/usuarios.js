@@ -130,7 +130,7 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 3, 17],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17],
                     searchable: false,
                     orderable: false,
                 },
@@ -150,6 +150,9 @@ $(document).ready(function () {
                         1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                     ],
                     searchable: true,
+                },
+                {
+                    targets: [13],
                     orderable: true,
                 },
                 { responsivePriority: 1, targets: 1 },
@@ -273,7 +276,7 @@ $(document).ready(function () {
                     },
                 },
             ],
-            order: [[12, "desc"]],
+            order: [[13, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;

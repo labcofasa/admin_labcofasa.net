@@ -51,7 +51,7 @@
                                 *</span></label>
                         <select class="form-select" id="tipo_persona" name="tipo_persona" required>
                             <option value="">Seleccione el tipo</option>
-                            <option value="Persona Natural / Titular de Establecimiento">Persona Natural / Titular de
+                            <option value="Persona Natural">Persona Natural / Titular de
                                 Establecimiento</option>
                             <option value="Persona Jurídica">Persona Jurídica</option>
                         </select>

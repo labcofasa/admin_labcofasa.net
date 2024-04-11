@@ -61,7 +61,8 @@ class UsuarioController extends Controller
             ->leftJoin('empresas', 'empresas.id', '=', 'perfiles.empresa_id')
             ->leftJoin('paises', 'paises.id', '=', 'perfiles.pais_id')
             ->leftJoin('departamentos', 'departamentos.id', '=', 'perfiles.departamento_id')
-            ->leftJoin('municipios', 'municipios.id', '=', 'perfiles.municipio_id');
+            ->leftJoin('municipios', 'municipios.id', '=', 'perfiles.municipio_id')
+            ->orderBy('users.created_at', 'desc');
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
