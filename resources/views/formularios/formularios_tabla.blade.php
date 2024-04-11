@@ -70,9 +70,6 @@
                     <div class="table-responsive mt-3" id="tabla-formulario-conozca-cliente-container"
                         style="display: none;">
 
-                        <!-- Titulo-->
-                        <h1 class="pb-3">Formulario conozca a su cliente</h1>
-
                         <table id="tabla-conozca-cliente" class="table align-middle responsive display" width="100%">
                             <tbody></tbody>
                         </table>
@@ -115,9 +112,6 @@
                     <!-- Tabla aplicaciones -->
                     <div class="table-responsive mt-3" id="tabla-formulario-conozca-proveedor-container"
                         style="display: none;">
-
-                        <!-- Titulo-->
-                        <h1 class="pb-3">Formulario conozca a su proveedor</h1>
 
                         <table id="tabla-conozca-proveedor" class="table align-middle responsive display" width="100%">
                             <tbody></tbody>
