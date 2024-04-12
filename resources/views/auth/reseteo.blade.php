@@ -12,7 +12,7 @@
                 </div>
                 <div class="col">
                     <div class="input-box">
-                        <h6 class="titulo-rest py-3">Recupere su contraseña</h6>
+                        <h5 class="titulo-aut">Recupere su contraseña</h5>
                         <form action="{{ route('actualizar.clave') }}" method="POST">
                             @csrf
                             @method('POST')

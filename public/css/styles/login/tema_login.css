@@ -28,7 +28,6 @@
 
 .logo {
     text-align: center;
-    padding-bottom: 10px;
 }
 
 .logo img {
@@ -69,7 +68,7 @@
     font-weight: 700;
     font-size: 20px;
     color: var(--text-color);
-    padding: 20px 0;
+    padding: 18px 0;
 }
 
 .titulo-rest {

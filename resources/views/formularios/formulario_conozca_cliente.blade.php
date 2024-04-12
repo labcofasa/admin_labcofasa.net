@@ -27,7 +27,6 @@
 
         <form id="forms_ccc" class="form needs-validation" novalidate action="{{ route('procesar.formulario') }}"
             method="POST" enctype="multipart/form-data">
-            @csrf
             @method('POST')
             <span>A. Información Persona Natural - Representante Legal</span>
 
