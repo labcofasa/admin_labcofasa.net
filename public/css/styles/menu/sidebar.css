@@ -95,7 +95,7 @@
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li .menus.active svg {
-    color: var(--positive);
+    color: var(--accent);
 }
 
 .sidebar-desktop .menu-bar li.showMenu .sub-menu a {
@@ -242,7 +242,7 @@
 }
 
 .subtitle {
-    padding-left: 15px;
+    padding-left: 30px;
     font-size: 13px !important;
     font-weight: 500;
     color: var(--text-color);

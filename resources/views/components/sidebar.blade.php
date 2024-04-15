@@ -1,5 +1,6 @@
 <div class="offcanvas-body">
     <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+        <span class="link_name subtitle">Menú</span>
         @can('admin_dashboard_ver')
             <li class="nav-item">
                 <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
@@ -44,8 +45,40 @@
                 <span class="link">Aplicaciones</span>
             </a>
         </li>
+        @can('admin_formularios_ver')
+            <li class="nav-item">
+                <a href="{{ route('pag.formularios') }}"
+                    class="nav-link {{ request()->routeIs('pag.formularios') ? 'active' : '' }}">
+                    <svg class="icon pe-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                        height="24" color="#000000" fill="none">
+                        <path
+                            d="M2 12.4C2 9.38301 2 7.87452 2.94627 6.93726C3.89254 6 5.41554 6 8.46154 6H9.53846C12.5845 6 14.1075 6 15.0537 6.93726C16 7.87452 16 9.38301 16 12.4V15.6C16 18.617 16 20.1255 15.0537 21.0627C14.1075 22 12.5845 22 9.53846 22H8.46154C5.41554 22 3.89254 22 2.94627 21.0627C2 20.1255 2 18.617 2 15.6V12.4Z"
+                            stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                        <path
+                            d="M15.5376 16H16.4608C19.072 16 20.3776 16 21.1888 15.1799C22 14.3598 22 13.0399 22 10.4V7.6C22 4.96013 22 3.6402 21.1888 2.8201C20.3776 2 19.072 2 16.4608 2H15.5376C12.9264 2 11.6208 2 10.8096 2.8201C10.1002 3.53726 10.0112 4.63664 10 6.66667"
+                            stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                        <path d="M6 12H9M6 17H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                        <path d="M10.5 3L14.5 6.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    </svg>
+                    <span class="link">Formularios</span>
+                </a>
+            </li>
+        @endcan
+    </ul>
+    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+        @if (auth()->user()->hasAnyPermission([
+                    'admin_empresas_ver',
+                    'admin_usuarios_ver',
+                    'admin_empresas_ver',
+                    'admin_aplicaciones_ver',
+                    'admin_clientes_ver',
+                    'admin_articulos_ver',
+                    'admin_avisos_ver',
+                    'admin_papelera_ver',
+                ]))
+            <span class="link_name subtitle pt-3 mb-1">Administración</span>
+        @endif
         @can('admin_usuarios_ver')
-            <span class="link_name my-2 px-3">Administración</span>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -170,29 +203,7 @@
                 </a>
             </li>
         @endcan
-        @can('admin_papelera_ver')
-            <li class="nav-item">
-                <a href="{{ route('pag.papelera') }}"
-                    class="nav-link {{ request()->routeIs('pag.papelera') ? 'active' : '' }}" aria-current="page">
-                    <svg class="icon pe-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                        height="24" color="#000000" fill="none">
-                        <path d="M22 12L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path
-                            d="M3.5 12.1819C3.5 9.21871 3.5 7.73713 3.96894 6.55382C4.72281 4.65149 6.31714 3.15095 8.33836 2.44142C9.59563 2.00007 11.1698 2.00007 14.3182 2.00007C16.1173 2.00007 17.0168 2.00007 17.7352 2.25227C18.8902 2.65771 19.8012 3.51516 20.232 4.60221C20.5 5.27839 20.5 6.12501 20.5 7.81825L20.5 12.0001"
-                            stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                        <path
-                            d="M3.5 12C3.5 10.1591 4.99238 8.66667 6.83333 8.66667C7.49912 8.66667 8.28404 8.78333 8.93137 8.60988C9.50652 8.45576 9.95576 8.00652 10.1099 7.43136C10.2833 6.78404 10.1667 5.99912 10.1667 5.33333C10.1667 3.49238 11.6591 2 13.5 2"
-                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M6 15L6 17M10 15V22M14 15V18M18 15V20" stroke="currentColor" stroke-width="1.8"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <span class="link">Papelera</span>
-                </a>
-            </li>
-        @endcan
         @can('admin_clientes_ver')
-            <span class="link_name my-2 px-3">Ventas</span>
             <li class="nav-item">
                 <a href="{{ route('pag.cliente') }}"
                     class="nav-link {{ request()->routeIs('pag.cliente') ? 'active' : '' }}">
@@ -252,23 +263,24 @@
                 </a>
             </li>
         @endcan
-        @can('admin_formularios_ver')
-            <span class="link_name my-2 px-3">Formularios</span>
+        @can('admin_papelera_ver')
             <li class="nav-item">
-                <a href="{{ route('pag.formularios') }}"
-                    class="nav-link {{ request()->routeIs('pag.formularios') ? 'active' : '' }}">
+                <a href="{{ route('pag.papelera') }}"
+                    class="nav-link {{ request()->routeIs('pag.papelera') ? 'active' : '' }}" aria-current="page">
                     <svg class="icon pe-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                         height="24" color="#000000" fill="none">
+                        <path d="M22 12L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round" />
                         <path
-                            d="M2 12.4C2 9.38301 2 7.87452 2.94627 6.93726C3.89254 6 5.41554 6 8.46154 6H9.53846C12.5845 6 14.1075 6 15.0537 6.93726C16 7.87452 16 9.38301 16 12.4V15.6C16 18.617 16 20.1255 15.0537 21.0627C14.1075 22 12.5845 22 9.53846 22H8.46154C5.41554 22 3.89254 22 2.94627 21.0627C2 20.1255 2 18.617 2 15.6V12.4Z"
+                            d="M3.5 12.1819C3.5 9.21871 3.5 7.73713 3.96894 6.55382C4.72281 4.65149 6.31714 3.15095 8.33836 2.44142C9.59563 2.00007 11.1698 2.00007 14.3182 2.00007C16.1173 2.00007 17.0168 2.00007 17.7352 2.25227C18.8902 2.65771 19.8012 3.51516 20.232 4.60221C20.5 5.27839 20.5 6.12501 20.5 7.81825L20.5 12.0001"
                             stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
                         <path
-                            d="M15.5376 16H16.4608C19.072 16 20.3776 16 21.1888 15.1799C22 14.3598 22 13.0399 22 10.4V7.6C22 4.96013 22 3.6402 21.1888 2.8201C20.3776 2 19.072 2 16.4608 2H15.5376C12.9264 2 11.6208 2 10.8096 2.8201C10.1002 3.53726 10.0112 4.63664 10 6.66667"
-                            stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                        <path d="M6 12H9M6 17H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                        <path d="M10.5 3L14.5 6.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                            d="M3.5 12C3.5 10.1591 4.99238 8.66667 6.83333 8.66667C7.49912 8.66667 8.28404 8.78333 8.93137 8.60988C9.50652 8.45576 9.95576 8.00652 10.1099 7.43136C10.2833 6.78404 10.1667 5.99912 10.1667 5.33333C10.1667 3.49238 11.6591 2 13.5 2"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6 15L6 17M10 15V22M14 15V18M18 15V20" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                    <span class="link">Formularios</span>
+                    <span class="link">Papelera</span>
                 </a>
             </li>
         @endcan
