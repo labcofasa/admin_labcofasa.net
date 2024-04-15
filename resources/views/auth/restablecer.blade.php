@@ -12,7 +12,7 @@
                 </div>
                 <div class="col form-group">
                     <div class="input-box">
-                        <h6 class="titulo-rest py-3">¿Tiene problemas para iniciar sesión en su cuenta?</h6>
+                        <h5 class="titulo-aut">¿Tiene problemas para iniciar sesión en su cuenta?</h5>
                         <small>Proporcione su correo electrónico institucional para recibir un enlace
                             y recuperar el acceso a su cuenta.</small>
                         <form action="{{ route('enviar.enlace') }}" method="POST">
