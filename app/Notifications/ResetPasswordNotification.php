@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Perfil;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -65,7 +66,10 @@ class ResetPasswordNotification extends Notification
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
 
-        return $this->buildMailMessage($notifiable, $this->resetUrl($notifiable));
+        $perfil = Perfil::where('user_id', $notifiable->id)->first();
+
+        return $this->buildMailMessage($notifiable, $this->resetUrl($notifiable))
+            ->greeting('Hola ' . $perfil->nombres . ' ' . $perfil->apellidos);
     }
 
     /**
@@ -76,9 +80,9 @@ class ResetPasswordNotification extends Notification
      */
     protected function buildMailMessage($notifiable, $url)
     {
+
         return (new MailMessage)
             ->subject(Lang::get('Notificación de restablecimiento de contraseña'))
-            ->greeting('Hola ' . $notifiable->name)
             ->line(Lang::get('Está recibiendo este correo electrónico porque recibimos una solicitud de restablecimiento de contraseña para su cuenta.'))
             ->action(Lang::get('Restablecer la contraseña'), $url)
             ->line(Lang::get('Este enlace para restablecer contraseña caducará en :count minutos.', ['count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')]))
