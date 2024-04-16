@@ -4,16 +4,14 @@
 
 @section('contenido')
     <div class="container-fluid content">
+        <h1 class="d-xl-none pb-3">@yield('titulo')</h1>
+        <x-widgets.empresas.crear />
+
         <!-- Tabla fantasma -->
         <x-skeleton />
 
         <!-- Tabla empresas -->
         <div class="table-responsive" id="tabla-empresas-container" style="display: none;">
-
-            <!-- Titulos y botón de acción -->
-            <x-widgets.empresas.crear />
-            <h1 class="d-xl-none pb-2">@yield('titulo')</h1>
-
             <table id="tabla-empresas" class="table align-middle responsive display" width="100%">
                 <tbody></tbody>
             </table>

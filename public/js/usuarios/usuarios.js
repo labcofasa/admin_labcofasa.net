@@ -157,8 +157,7 @@ $(document).ready(function () {
                 },
                 { responsivePriority: 1, targets: 1 },
                 { responsivePriority: 2, targets: 2 },
-                { responsivePriority: 3, targets: 13 },
-                { responsivePriority: 4, targets: 17 },
+                { responsivePriority: 3, targets: 17 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder").hide();

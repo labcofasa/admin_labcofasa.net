@@ -36,6 +36,13 @@ $(document).ready(function () {
                     extend: "pageLength",
                     className: "btn btn-lg btn-group-secondary",
                 },
+                {
+                    text: 'Recargar',
+                    className: "btn btn-lg btn-group-secondary",
+                    action: function (e, dt, node, config) {
+                        dt.ajax.reload();
+                    }
+                }
             ],
             language: {
                 url: "/json/es.json",
@@ -274,6 +281,13 @@ $(document).ready(function () {
                     extend: "pageLength",
                     className: "btn btn-lg btn-group-secondary",
                 },
+                {
+                    text: 'Recargar',
+                    className: "btn btn-lg btn-group-secondary",
+                    action: function (e, dt, node, config) {
+                        dt.ajax.reload();
+                    }
+                }
             ],
             language: {
                 url: "/json/es.json",
@@ -2421,13 +2435,13 @@ $(document).ready(function () {
     });
 
     // Tabs
-    $('#clientes-tab').on('shown.bs.tab', function (e) {
-        tablaConozcaCliente();
-    });
+    // $('#clientes-tab').on('shown.bs.tab', function (e) {
+    //     tablaConozcaCliente();
+    // });
 
-    $('#proveedores-tab').on('shown.bs.tab', function (e) {
-        tablaConozcaProveedor();
-    });
+    // $('#proveedores-tab').on('shown.bs.tab', function (e) {
+    //     tablaConozcaProveedor();
+    // });
 });
 
 /* Cargar cliente accionista */

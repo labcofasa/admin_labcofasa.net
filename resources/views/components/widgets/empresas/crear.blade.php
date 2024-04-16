@@ -1,5 +1,5 @@
 <div class="d-none d-xl-block">
-    <div class="row justify-content-between pb-3 align-items-end">
+    <div class="row justify-content-between pb-3">
         <div class="col-md-4">
             <h1>@yield('titulo')</h1>
         </div>

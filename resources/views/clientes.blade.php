@@ -4,15 +4,12 @@
 
 @section('contenido')
     <div class="container-fluid content">
-        <!-- Tabla fantasma -->
+        <h1 class="pb-3">@yield('titulo')</h1>
+
         <x-skeleton />
 
         <!-- Tabla clientes -->
         <div class="table-responsive" id="tabla-clientes-container" style="display: none;">
-
-            <!-- Titulo-->
-            <h1 class="pb-3">@yield('titulo')</h1>
-
             <table id="tabla-clientes" class="table align-middle responsive display" width="100%">
                 <tbody></tbody>
             </table>
