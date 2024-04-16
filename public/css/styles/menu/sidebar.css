@@ -242,6 +242,13 @@
 }
 
 .subtitle {
+    padding-left: 15px;
+    font-size: 13px !important;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.subtitle-movil {
     padding-left: 30px;
     font-size: 13px !important;
     font-weight: 500;

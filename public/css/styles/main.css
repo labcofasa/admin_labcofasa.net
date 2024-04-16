@@ -29,10 +29,10 @@
 /* Colores para el diseño claro */
 :root {
     /* Paleta de colores */
-    --primary: #5DC9C9;
+    --primary: #76D6C5;
     --secondary: #b5e4ca;
     --secondary-hover: #b5e4ca;
-    --accent: #00bdbd;
+    --accent: #33b7a0;
     --positive: #27d06e;
     --negative: ;
     --info: #e0edfc;
@@ -89,7 +89,7 @@
     --sidebar-bg: #f0f4f9;
     --sidebar-bg-hover: #3c404314;
     /* --sidebar-icon-hover: #4a4f53; */
-    --sidebar-bg-active: #daffff;
+    --sidebar-bg-active: #ddfff9;
     --border-radius-sidebar: 25px;
     --card-bg: #ffffff;
     --toggle-shadow: #999999;

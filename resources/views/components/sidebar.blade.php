@@ -1,6 +1,6 @@
 <div class="offcanvas-body">
     <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-        <span class="link_name subtitle">Menú</span>
+        <span class="link_name subtitle-movil">Menú</span>
         @can('admin_dashboard_ver')
             <li class="nav-item">
                 <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
@@ -76,7 +76,7 @@
                     'admin_avisos_ver',
                     'admin_papelera_ver',
                 ]))
-            <span class="link_name subtitle pt-3 mb-1">Administración</span>
+            <span class="link_name subtitle-movil pt-3 mb-1">Administración</span>
         @endif
         @can('admin_usuarios_ver')
             <li class="nav-item dropdown">
