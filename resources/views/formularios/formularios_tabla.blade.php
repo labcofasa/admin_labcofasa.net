@@ -35,7 +35,7 @@
         </ul>
         <div class="tab-content" id="miPanelContent">
             @if (auth()->user()->can('admin_formularios_ver_cliente') && auth()->user()->can('admin_formularios_ver_proveedor'))
-                <div class="tab-pane show active" id="clientes-tab-pane" role="tabpanel" aria-labelledby="clientes-tab"
+                <div class="tab-pane fade show active" id="clientes-tab-pane" role="tabpanel" aria-labelledby="clientes-tab"
                     tabindex="0">
 
                     <!-- Tabla fantasma -->
@@ -78,7 +78,7 @@
                     <!-- Permisos -->
                     <x-widgets.roles.permisos />
                 </div>
-                <div class="tab-pane" id="proveedores-tab-pane" role="tabpanel" aria-labelledby="proveedores-tab"
+                <div class="tab-pane fade " id="proveedores-tab-pane" role="tabpanel" aria-labelledby="proveedores-tab"
                     tabindex="0">
                     <!-- Tabla fantasma -->
                     <div class="table-responsive placeholder-glow mt-3" id="placeholder_proveedor">
@@ -122,8 +122,8 @@
                     <x-widgets.roles.permisos />
                 </div>
             @elseif (auth()->user()->can('admin_formularios_ver_cliente'))
-                <div class="tab-pane show active" id="clientes-tab-pane" role="tabpanel" aria-labelledby="clientes-tab"
-                    tabindex="0">
+                <div class="tab-pane fade show active" id="clientes-tab-pane" role="tabpanel"
+                    aria-labelledby="clientes-tab" tabindex="0">
 
                     <!-- Tabla fantasma -->
                     <div class="table-responsive placeholder-glow mt-3" id="placeholder_cliente">
@@ -169,7 +169,7 @@
                     <x-widgets.roles.permisos />
                 </div>
             @elseif (auth()->user()->can('admin_formularios_ver_proveedor'))
-                <div class="tab-pane active active" id="proveedores-tab-pane" role="tabpanel"
+                <div class="tab-pane fade active active" id="proveedores-tab-pane" role="tabpanel"
                     aria-labelledby="proveedores-tab" tabindex="0">
                     <!-- Tabla fantasma -->
                     <div class="table-responsive placeholder-glow mt-3" id="placeholder_proveedor">

@@ -2435,13 +2435,13 @@ $(document).ready(function () {
     });
 
     // Tabs
-    // $('#clientes-tab').on('shown.bs.tab', function (e) {
-    //     tablaConozcaCliente();
-    // });
+    $('#clientes-tab').on('shown.bs.tab', function (e) {
+        tablaConozcaCliente();
+    });
 
-    // $('#proveedores-tab').on('shown.bs.tab', function (e) {
-    //     tablaConozcaProveedor();
-    // });
+    $('#proveedores-tab').on('shown.bs.tab', function (e) {
+        tablaConozcaProveedor();
+    });
 });
 
 /* Cargar cliente accionista */

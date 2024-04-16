@@ -568,7 +568,7 @@ div.dataTables_processing {
 
     .columna-scroll {
         padding-bottom: 2rem;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
         flex: 1;
         overflow-y: auto;
     }
