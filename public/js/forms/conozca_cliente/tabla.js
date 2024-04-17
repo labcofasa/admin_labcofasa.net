@@ -2346,6 +2346,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 tabla_conozca_cliente.ajax.reload();
+                tabla_conozca_proveedor.ajax.reload();
 
                 $("#editarFormulario").modal("hide");
 

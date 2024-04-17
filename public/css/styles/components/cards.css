@@ -81,20 +81,19 @@
 }
 
 .carta-primary {
-    background-color: var(--carta-primary);
+    background-color: var(--carta-primary) !important;
+    ;
     transition: var(--tran-03);
-    border-radius: var(--border-radius);
 }
 
-.carta-primary .icon {
-    fill: var(--icon-carta-primary);
+.carta-primary svg {
+    color: var(--icon-carta-primary) !important;
     transition: var(--tran-03);
 }
 
 .carta-secondary {
     background-color: var(--carta-secondary);
     transition: var(--tran-03);
-    border-radius: var(--border-radius);
 }
 
 .carta-secondary .icon {
@@ -103,20 +102,38 @@
 }
 
 .carta-success {
-    background-color: var(--carta-success);
+    background-color: var(--carta-success) !important;
     transition: var(--tran-03);
-    border-radius: var(--border-radius);
 }
 
-.carta-success .icon {
-    fill: var(--icon-carta-success);
+.carta-success svg {
+    color: var(--icon-carta-success) !important;
+    transition: var(--tran-03);
+}
+
+.carta-warning {
+    background-color: var(--carta-warning) !important;
+    transition: var(--tran-03);
+}
+
+.carta-warning svg {
+    color: var(--icon-carta-warning) !important;
+    transition: var(--tran-03);
+}
+
+.carta-danger {
+    background-color: var(--carta-danger) !important;
+    transition: var(--tran-03);
+}
+
+.carta-danger svg {
+    color: var(--icon-carta-danger) !important;
     transition: var(--tran-03);
 }
 
 .carta-info {
     background-color: var(--carta-info);
     transition: var(--tran-03);
-    border-radius: var(--border-radius);
 }
 
 .carta-info .icon {
@@ -134,6 +151,17 @@
     transition: var(--tran-03);
     background-color: var(--body-bg);
     border-radius: 10px;
+}
+
+.img-thumbnail {
+    width: 150px;
+}
+
+.img-fluid {
+    padding: .25rem;
+    background-color: var(--bs-body-bg);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
 }
 
 @media screen and (max-width: 500px) {

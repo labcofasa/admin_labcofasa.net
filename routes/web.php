@@ -22,8 +22,10 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AvisoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\Empleos\VacantesController;
 use App\Http\Controllers\FormsConozcaClienteController;
 use App\Http\Controllers\FormulariosController;
+use App\Models\Empleos\Vacante;
 use Illuminate\Support\Facades\Route;
 
 
@@ -180,6 +182,14 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/cambiar-estado-form/{id}', [FormsConozcaClienteController::class, 'cambiarEstadoFormulario']);
     Route::put('/actualizar-formulario/{id}', [FormsConozcaClienteController::class, 'update']);
     Route::delete('/eliminar-formulario/{id}', [FormsConozcaClienteController::class, 'destroy']);
+
+    Route::middleware(['can:admin_vacantes_ver'])->group(function () {
+        Route::get('/vacantes', [VacantesController::class, 'index'])->name('pag.vacantes');
+        Route::get('/crear-vacante', [VacantesController::class, 'create'])->name('crear.vacante');
+        Route::post('/creando-vacante', [VacantesController::class, 'store'])->name('creando.vacante');
+        Route::get('/vacantes/{id}/editar', [VacantesController::class, 'edit'])->name('editar.vacante');
+        Route::delete('/eliminar-vacante/{id}', [VacantesController::class, 'destroy'])->name('eliminar.vacante');
+    });
 });
 
 Route::middleware(['guest'])->group(function () {
