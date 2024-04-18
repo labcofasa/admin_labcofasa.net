@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     var fechaActual = new Date();
-    var fechaVencimiento = new Date(document.getElementById('fecha_vencimiento').innerText);
-    if (fechaVencimiento <= fechaActual) {
-        document.getElementById('fecha_vencimiento').classList.add('fecha-vencida');
+    var fechaVencimientoElemento = document.getElementById('fecha_vencimiento');
+
+    if (fechaVencimientoElemento) {
+        var fechaVencimientoTexto = fechaVencimientoElemento.innerText;
+        if (fechaVencimientoTexto.trim() !== "") {
+            var fechaVencimiento = new Date(fechaVencimientoTexto);
+            if (fechaVencimiento <= fechaActual) {
+                fechaVencimientoElemento.classList.add('fecha-vencida');
+            }
+        }
     }
 });
