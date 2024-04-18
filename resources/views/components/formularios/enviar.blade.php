@@ -27,7 +27,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn-actions btn btn-secondary" data-bs-dismiss="modal">No,
                         cancelar</button>
-                    <button type="submit" id="btnEnviarFormulario" name="accion" value="guardar_formulario"
+                    <button id="btnEnviarFormulario" type="submit" name="accion" value="guardar_formulario"
                         class="btn-actions btn btn-success">Si, enviar formulario</button>
 
                     <button id="btnCarga" class="btn-actions btn btn-success" type="button" style="display: none;"

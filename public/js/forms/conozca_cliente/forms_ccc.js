@@ -9,6 +9,9 @@ $(document).ready(function () {
         });
 
     const btnDescargarForm = document.getElementById("btnDescargarForm");
+    const documentoIdentidadPersonaNatural = document.getElementById(
+        "documento_identidad_persona_natural"
+    );
 
     btnDescargarForm.addEventListener("click", function (event) {
         const formulario = document.querySelector("form");
@@ -26,9 +29,9 @@ $(document).ready(function () {
         }
     });
 
-    $("#btnEnviarFormulario").click(function () {
-        $("#formulario_firmado").prop("required", true);
-    });
+    // $("#btnEnviarFormulario").click(function () {
+    //     $("#formulario_firmado").prop("required", true);
+    // });
 
     const botonEnviar = document.querySelector(".enviar-form");
     const inputArchivo = document.getElementById("formulario_firmado");
@@ -45,6 +48,7 @@ $(document).ready(function () {
 
     $("#btnEnviarFormulario").click(function () {
         var camposVacios = false;
+
         $("input[required]").each(function () {
             if ($(this).val().trim() === "") {
                 camposVacios = true;
@@ -57,6 +61,19 @@ $(document).ready(function () {
                 "Por favor, completa todos los campos requeridos antes de enviar el formulario.",
                 "error"
             );
+
+            if ($("#tipo_persona").val() === "Persona Natural") {
+                documentoIdentidadPersonaNatural.setAttribute(
+                    "required",
+                    "required"
+                );
+            }
+
+            if ($("#tipo_persona").val() === "Persona Jurídica") {
+                documentoIdentidadPersonaNatural.removeAttribute("required");
+                documentoIdentidadPersonaNatural.value = "";
+            }
+
             return false;
         }
 
@@ -479,10 +496,7 @@ $(document).ready(function () {
     camposPersonaJuridica.style.display = "none";
 
     tipoPersonaSelect.addEventListener("change", function () {
-        if (
-            tipoPersonaSelect.value ===
-            "Persona Natural / Titular de Establecimiento"
-        ) {
+        if (tipoPersonaSelect.value === "Persona Natural") {
             camposPersonaJuridica.style.display = "none";
             nombreComercialJuridicoInput.removeAttribute("required");
             clasificacionJuridicaId.removeAttribute("required");
@@ -504,6 +518,7 @@ $(document).ready(function () {
             nacionalidadMiembro.removeAttribute("required");
             numeroIdentidadMiembro.removeAttribute("required");
             cargoMiembro.removeAttribute("required");
+
             nombreComercialJuridicoInput.value = "";
             clasificacionJuridicaId.value = "";
             document.getElementById("id_clasificacion_juridico").value = "";

@@ -1,25 +1,34 @@
-<span class="mb-2 text-center py-3">Documentación de Persona Natural</span>
+<span class="mb-2 text-center py-3">Documentación de Persona Natural / Representante Legal</span>
 <div class="col-sm-6">
     <div class="mb-3">
         <label for="documento_identidad_persona_natural" class="form-label">Copia de DUI, Pasaporte o Carnet de
             Residente</label>
-        <input type="file" class="form-control" id="documento_identidad_persona_natural"
+        <input type="file" id="documento_identidad_persona_natural" class="form-control"
             name="documento_identidad_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
+        <div class="invalid-feedback">
+            Por favor, adjuntar copia de documento.
+        </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_nit_persona_natural" class="form-label">Copia de Tarjeta NIT</label>
+        <label for="documento_nit_persona_natural" class="form-label">Copia de Tarjeta NIT</label>
         <input type="file" class="form-control" id="documento_nit_persona_natural"
             name="documento_nit_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
+        <div class="invalid-feedback">
+            Por favor, adjuntar copia de documento.
+        </div>
     </div>
 </div>
 <div class="col-sm-6">
     <div class="mb-3">
         <label for="documento_tarjeta_iva_persona_natural" class="form-label">Copia Tarjeta IVA (Si aplica)</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_tarjeta_iva_persona_natural"
-                name="documento_tarjeta_iva_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
+            <input type="file" class="form-control" name="documento_tarjeta_iva_persona_natural"
+                id="documento_tarjeta_iva_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
+            <div class="invalid-feedback">
+                Por favor, adjuntar copia de documento.
+            </div>
         </div>
     </div>
 </div>
@@ -29,7 +38,11 @@
             Domicilio</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_domicilio_persona_natural"
-                name="documento_domicilio_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
+                name="documento_domicilio_persona_natural" id="documento_domicilio_persona_natural"
+                accept=".pdf, .jpg, .png, .jpeg">
+            <div class="invalid-feedback">
+                Por favor, adjuntar copia de documento.
+            </div>
         </div>
     </div>
 </div>
@@ -40,32 +53,9 @@
             name="documento_dnm_persona_natural" accept=".pdf, .jpg, .png, .jpeg">
     </div>
 </div>
-<span class="mb-2 text-center py-2">Documentación de Representante Legal</span>
 <div class="col-sm-6">
     <div class="mb-3">
-        <label for="documento_identificacion_representante" class="form-label">Copia de DUI del
-            Representante Legal</label>
-        <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_identificacion_representante"
-                name="documento_identificacion_representante" accept=".pdf, .jpg, .png, .jpeg">
-        </div>
-    </div>
-</div>
-<div class="col-sm-6">
-    <div class="mb-3">
-        <label for="documento_nit_representante" class="form-label">Copia de tarjeta NIT del
-            Representante Legal</label>
-        <div class="input-group mb-3">
-
-            <input type="file" class="form-control" id="documento_nit_representante"
-                name="documento_nit_representante" accept=".pdf, .jpg, .png, .jpeg">
-        </div>
-    </div>
-</div>
-<div class="col-sm-6">
-    <div class="mb-3">
-        <label for="documento_credencial_representante" class="form-label">Copia de Credencial de Elección del
-            Representante Legal</label>
+        <label for="documento_credencial_representante" class="form-label">Copia de Credencial de Elección</label>
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="documento_credencial_representante"
                 name="documento_credencial_representante" accept=".pdf, .jpg, .png, .jpeg">
@@ -98,8 +88,8 @@
         <label for="documento_acuerdo_juridico" class="form-label">Acuerdo ejecutivo, Decreto o Acta de
             Constitución (para asociaciones, cooperativas, ONG's, Otros)</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="documento_acuerdo_juridico"
-                name="documento_acuerdo_juridico" accept=".pdf, .jpg, .png, .jpeg">
+            <input type="file" class="form-control" id="documento_acuerdo_juridico" name="documento_acuerdo_juridico"
+                accept=".pdf, .jpg, .png, .jpeg">
         </div>
     </div>
 </div>
