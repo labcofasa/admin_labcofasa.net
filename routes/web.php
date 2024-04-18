@@ -188,6 +188,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/crear-vacante', [VacantesController::class, 'create'])->name('crear.vacante');
         Route::post('/creando-vacante', [VacantesController::class, 'store'])->name('creando.vacante');
         Route::get('/vacantes/{id}/editar', [VacantesController::class, 'edit'])->name('editar.vacante');
+        Route::put('/actualizar-vacante/{id}', [VacantesController::class, 'update'])->name('actualizar.vacante');
         Route::delete('/eliminar-vacante/{id}', [VacantesController::class, 'destroy'])->name('eliminar.vacante');
     });
 });

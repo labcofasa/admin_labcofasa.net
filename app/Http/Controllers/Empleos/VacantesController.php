@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Empleos\Vacante;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\QueryException;
 
@@ -75,6 +76,53 @@ class VacantesController extends Controller
 
         return view('empleos.editar-vacante', compact('usuario', 'vacante'));
     }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'nombre' => 'sometimes|string',
+            'descripcion' => 'sometimes|string',
+            'fecha_vencimiento' => 'sometimes|date',
+            'imagen' => 'sometimes|image|mimes:jpeg,png,jpg',
+        ]);
+
+        try {
+            $vacante = Vacante::findOrFail($id);
+
+            $vacante->nombre = $request->input('nombre');
+            $vacante->descripcion = $request->input('descripcion');
+            $vacante->fecha_vencimiento = $request->input('fecha_vencimiento');
+            $vacante->fecha_modificacion = now();
+
+            if ($request->hasFile('imagen')) {
+                if ($vacante->imagen) {
+                    $rutaImagenAnterior = public_path("images/empleos/imagenes/{$id}/{$vacante->imagen}");
+                    if (file_exists($rutaImagenAnterior)) {
+                        unlink($rutaImagenAnterior);
+                    }
+                }
+
+                $rutaCarpetaImagen = public_path("images/empleos/imagenes/{$id}");
+                if (!file_exists($rutaCarpetaImagen)) {
+                    mkdir($rutaCarpetaImagen, 0777, true);
+                }
+
+                $imagen = $request->file('imagen');
+                $nombreImagen = $imagen->getClientOriginalName();
+                $imagen->move($rutaCarpetaImagen, $nombreImagen);
+                $vacante->imagen = $nombreImagen;
+            }
+
+            $vacante->save();
+
+            return redirect()->route('pag.vacantes')->with('success', 'Vacante actualizada exitosamente.');
+
+        } catch (QueryException $e) {
+            return redirect()->back()->with('error', 'Hubo un error al actualizar la vacante');
+        }
+    }
+
+
 
     public function destroy($id)
     {

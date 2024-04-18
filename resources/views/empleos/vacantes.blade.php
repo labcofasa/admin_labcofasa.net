@@ -43,7 +43,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
                                 <li>
-                                    <a href="{{ route('editar.vacante', ['id' => $vacante->id ]) }}"
+                                    <a href="{{ route('editar.vacante', ['id' => $vacante->id]) }}"
                                         class="dropdown-item nav-link" type="button">
                                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             width="24" height="24" color="#000000" fill="none">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="aviso mb-1">
                         <small>Fecha de vencimiento</small>
-                        <small>{{ $vacante->fecha_vencimiento }}</small>
+                        <small id="fecha_vencimiento">{{ $vacante->fecha_vencimiento }}</small>
                     </div>
                     <div class="botones">
                         <button class="btn btn-warning">Más información</button>
@@ -120,4 +120,6 @@
             @endforeach
         </div>
     </div>
+
+    <script src="{{ asset('js/empleos/vacante.js') }}"></script>
 @endsection

@@ -39,6 +39,97 @@ document.addEventListener("DOMContentLoaded", function () {
     habilitarTooltips();
 });
 
+function initializeDropzone(dropZoneElementId, inputElementId, eliminarImagenBtnId) {
+    const dropZoneElement = document.getElementById(dropZoneElementId);
+    const inputElement = document.getElementById(inputElementId);
+    const eliminarImagenBtn = document.getElementById(eliminarImagenBtnId);
+
+    inputElement.addEventListener("change", (e) => {
+        if (inputElement.files.length) {
+            updateDropzoneFileList(dropZoneElement, inputElement.files[0]);
+            mostrarEliminarImagenBtn();
+        }
+    });
+
+    eliminarImagenBtn.addEventListener("click", () => {
+        eliminarImagen();
+        ocultarEliminarImagenBtn();
+        ocultarImagenSeleccionada();
+    });
+
+    dropZoneElement.addEventListener("dragenter", (e) => {
+        e.preventDefault();
+        dropZoneElement.classList.add("dropzone--over");
+    });
+
+    dropZoneElement.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZoneElement.classList.add("dropzone--over");
+    });
+
+    dropZoneElement.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        dropZoneElement.classList.remove("dropzone--over");
+    });
+
+    dropZoneElement.addEventListener("drop", (e) => {
+        e.preventDefault();
+
+        dropZoneElement.classList.remove("dropzone--over");
+
+        if (e.dataTransfer.files.length) {
+            inputElement.files = e.dataTransfer.files;
+            inputElement.dispatchEvent(new Event('change'));
+            updateDropzoneFileList(dropZoneElement, e.dataTransfer.files[0]);
+            mostrarEliminarImagenBtn();
+        }
+    });
+
+    function updateDropzoneFileList(dropzoneElement, file) {
+        let dropzoneFileMessage = dropzoneElement.querySelector(".message");
+
+        dropzoneFileMessage.innerHTML = `
+        ${file.name}, ${file.size} bytes
+        `;
+    }
+
+    function mostrarEliminarImagenBtn() {
+        eliminarImagenBtn.style.display = "inline-block";
+    }
+
+    function ocultarEliminarImagenBtn() {
+        eliminarImagenBtn.style.display = "none";
+    }
+
+    function eliminarImagen() {
+        let dropzoneFileMessage = dropZoneElement.querySelector(".message");
+        dropzoneFileMessage.innerHTML = "Ningún archivo seleccionado.";
+        inputElement.value = "";
+    }
+
+    inputElement.addEventListener('change', function () {
+        mostrarImagenSeleccionada(this);
+    });
+}
+
+function mostrarImagenSeleccionada(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('.imagen-seleccionada').attr('src', e.target.result).show();
+            $('.archivo').hide();
+            $('.caption').hide();
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function ocultarImagenSeleccionada() {
+    $('.imagen-seleccionada').attr('src', '').hide();
+    $('.archivo').show();
+    $('.caption').show();
+}
+
 function habilitarTooltips() {
     const tooltipTriggerList = document.querySelectorAll(
         '[data-bs-toggle="tooltip"]'
@@ -69,6 +160,7 @@ var style = document.createElement("style");
 style.setAttribute("id", "multiselect_dropdown_styles");
 document.head.appendChild(style);
 
+// Multi select
 function MultiselectDropdown(options) {
     var config = {
         search: true,
@@ -88,11 +180,11 @@ function MultiselectDropdown(options) {
                 if (k === "class") {
                     Array.isArray(attrs[k])
                         ? attrs[k].forEach((o) =>
-                              o !== "" ? e.classList.add(o) : 0
-                          )
+                            o !== "" ? e.classList.add(o) : 0
+                        )
                         : attrs[k] !== ""
-                        ? e.classList.add(attrs[k])
-                        : 0;
+                            ? e.classList.add(attrs[k])
+                            : 0;
                 } else if (k === "style") {
                     Object.keys(attrs[k]).forEach((ks) => {
                         e.style[ks] = attrs[k][ks];
@@ -349,7 +441,6 @@ function cargarEmpresas(
 }
 
 // Cargar actividad económicas
-// Cargar actividades económicas
 function setupGiroSearch(inputId, suggestionsId, hiddenInputId) {
     const input = document.getElementById(inputId);
     const suggestionsContainer = document.getElementById(suggestionsId);

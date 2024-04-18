@@ -785,6 +785,9 @@ div.dataTables_processing {
     transition: var(--tran-03);
 }
 
+.fecha-vencida {
+    color: red;
+}
 
 /* Media Querys */
 

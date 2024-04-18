@@ -62,10 +62,10 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <div class="form-label ">Imagen principal</div>
+                        <div class="form-label">Imagen principal</div>
                         <label for="imagen" class="subir-imagen dropzone-area" id="dropzone">
                             <span>
-                                <svg id="archivo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50"
+                                <svg class="archivo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50"
                                     height="50" color="#000000" fill="none">
                                     <path
                                         d="M13 3.00231C12.5299 3 12.0307 3 11.5 3C7.02166 3 4.78249 3 3.39124 4.39124C2 5.78249 2 8.02166 2 12.5C2 16.9783 2 19.2175 3.39124 20.6088C4.78249 22 7.02166 22 11.5 22C15.9783 22 18.2175 22 19.6088 20.6088C20.9472 19.2703 20.998 17.147 20.9999 13"
@@ -81,10 +81,10 @@
                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                <img id="imagen-seleccionada" src="#" class="img-thumbnail mb-2"
+                                <img src="#" class="img-thumbnail mb-2 imagen-seleccionada"
                                     style="display: none;">
                             </span>
-                            <p class="pt-3" id="caption">Arrastra y suelta tu imagen aquí o haz clic para seleccionar
+                            <p class="pt-3 caption">Arrastra y suelta tu imagen aquí o haz clic para seleccionar
                                 una.</p>
                             <p class="message">Ningún archivo seleccionado.</p>
                         </label>
@@ -757,5 +757,5 @@
         </form>
     </div>
 
-    <script src="{{ asset('js/empleos/main.js') }}"></script>
+    <script src="{{ asset('js/empleos/crear-vacante.js') }}"></script>
 @endsection

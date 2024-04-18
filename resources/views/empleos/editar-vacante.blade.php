@@ -15,7 +15,7 @@
                 </svg>
                 <h1>@yield('titulo') {{ $vacante->nombre }}</h1>
             </a>
-            <button id="enviarFormulario" class="btn btn-lg btn-success d-none d-xl-block accion" type="button">
+            <button id="actualizarVacante" class="btn btn-lg btn-success d-none d-xl-block accion" type="button">
                 <div class="accion">
                     <svg class="icon-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                         height="24" color="#000000" fill="none">
@@ -33,10 +33,10 @@
                 </div>
             </button>
         </div>
-        <form id="frmEditarVacante" action="" class="form needs-validation" novalidate method="POST"
-            enctype="multipart/form-data">
+        <form id="frmEditarVacante" action="{{ route('actualizar.vacante', ['id' => $vacante->id]) }}"
+            class="form needs-validation" novalidate method="POST" enctype="multipart/form-data">
             @csrf
-            @method('UPDATE')
+            @method('PUT')
             <div class="row add-vacante">
                 <div class="col-12 col-xl-4">
                     <img class="img-fluid"
@@ -67,10 +67,10 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <div class="form-label ">Imagen principal</div>
+                        <div class="form-label">Imagen principal</div>
                         <label for="imagen" class="subir-imagen dropzone-area" id="dropzone">
                             <span>
-                                <svg id="archivo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50"
+                                <svg class="archivo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50"
                                     height="50" color="#000000" fill="none">
                                     <path
                                         d="M13 3.00231C12.5299 3 12.0307 3 11.5 3C7.02166 3 4.78249 3 3.39124 4.39124C2 5.78249 2 8.02166 2 12.5C2 16.9783 2 19.2175 3.39124 20.6088C4.78249 22 7.02166 22 11.5 22C15.9783 22 18.2175 22 19.6088 20.6088C20.9472 19.2703 20.998 17.147 20.9999 13"
@@ -86,25 +86,23 @@
                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                <img id="imagen-seleccionada" src="#" class="img-thumbnail mb-2"
+                                <img src="#" class="img-thumbnail mb-2 imagen-seleccionada"
                                     style="display: none;">
                             </span>
-                            <p class="pt-3" id="caption">Arrastra y suelta tu imagen aquí o haz clic para
-                                seleccionar
+                            <p class="pt-3 caption">Arrastra y suelta tu imagen aquí o haz clic para seleccionar
                                 una.</p>
                             <p class="message">Ningún archivo seleccionado.</p>
                         </label>
                         <input class="input-file" name="imagen" accept=".jpg, .jpeg, .png" id="imagen"
-                            type="file" required />
+                            type="file" />
                         <div class="invalid-feedback">
                             Por favor, seleccione la imagen.
                         </div>
                     </div>
 
                     <button type="button" class="btn btn-danger" id="eliminar-imagen" style="display: none;">Eliminar
-
-
-                        {{-- <div class="mb-6">
+                        imagen</button>
+                    {{-- <div class="mb-6">
                         <h4 class="mb-3"> Product Description</h4>
                         <textarea class="tinymce" name="content"
                             data-tinymce="{&quot;height&quot;:&quot;15rem&quot;,&quot;placeholder&quot;:&quot;Write a description here...&quot;}"
@@ -764,5 +762,5 @@
         </form>
     </div>
 
-    <script src="{{ asset('js/empleos/main.js') }}"></script>
+    <script src="{{ asset('js/empleos/editar-vacante.js') }}"></script>
 @endsection
