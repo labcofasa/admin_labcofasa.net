@@ -69,18 +69,18 @@
     <table>
         <thead>
             <tr>
-                <th class="datos">Tipo</th>
                 <th class="datos">Tipo de persona</th>
                 <th class="datos">Nombre</th>
                 <th class="datos">Fecha de nacimiento</th>
+                <th class="datos">Nacionalidad</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="datos">{{ $tipo }}</td>
                 <td class="datos">{{ $tipo_persona }}</td>
                 <td class="datos">{{ $nombre }} {{ $apellido }}</td>
                 <td class="datos">{{ $fecha_de_nacimiento }}</td>
+                <td class="datos">{{ $nacionalidad }}</td>
             </tr>
         </tbody>
     </table>
@@ -89,18 +89,18 @@
     <table>
         <thead>
             <tr>
-                <th class="datos">Nacionalidad</th>
                 <th class="datos">País</th>
                 <th class="datos">Departamento</th>
                 <th class="datos">Municipio</th>
+                <th class="datos">Profesión u oficio</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="datos">{{ $nacionalidad }}</td>
                 <td class="datos" scope="col">{{ $pais }}</td>
                 <td class="datos" scope="col">{{ $departamento }}</td>
                 <td class="datos" scope="col">{{ $municipio }}</td>
+                <td class="datos" scope="col">{{ $profesion_u_oficio }}</td>
             </tr>
         </tbody>
     </table>
@@ -109,18 +109,19 @@
     <table>
         <thead>
             <tr>
-                <th class="datos">Profesión u oficio</th>
                 <th class="datos">Tipo de documento</th>
                 <th class="datos">Número de documento</th>
                 <th class="datos">Fecha de vencimiento</th>
+                <th class="datos">Teléfono</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="datos" scope="col">{{ $profesion_u_oficio }}</td>
+
                 <td class="datos" scope="col">{{ $tipo_de_documento }}</td>
                 <td class="datos" scope="col">{{ $numero_de_documento }}</td>
                 <td class="datos" scope="col">{{ $fecha_de_vencimiento }}</td>
+                <td class="datos" scope="col">{{ $telefono }}</td>
             </tr>
         </tbody>
     </table>
@@ -130,17 +131,17 @@
         <thead>
             <tr>
                 <th class="datos">Actividad económica</th>
-                <th class="datos">Teléfono</th>
                 <th class="datos">Correo electrónico</th>
                 <th class="datos">Registro NRC</th>
+                <th class="datos">Fecha de nombramiento</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="datos" scope="col">{{ $giro }}</td>
-                <td class="datos" scope="col">{{ $telefono }}</td>
                 <td class="datos" scope="col">{{ $email }}</td>
                 <td class="datos" scope="col">{{ $registro_iva_nrc }}</td>
+                <td class="datos" scope="col">{{ $fecha_de_nombramiento }}</td>
             </tr>
         </tbody>
     </table>
@@ -149,13 +150,11 @@
     <table>
         <thead>
             <tr>
-                <th class="datos">Fecha de nombramiento</th>
                 <th class="datos">Dirección</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="datos" scope="col">{{ $fecha_de_nombramiento }}</td>
                 <td class="datos" scope="col">{{ $direccion }}</td>
             </tr>
         </tbody>

@@ -9,9 +9,41 @@ $(document).ready(function () {
         });
 
     const btnDescargarForm = document.getElementById("btnDescargarForm");
+
     const documentoIdentidadPersonaNatural = document.getElementById(
         "documento_identidad_persona_natural"
     );
+    const documentoNitPersonaNatural = document.getElementById(
+        "documento_nit_persona_natural"
+    );
+    const documentoIvaPersonaNatural = document.getElementById(
+        "documento_tarjeta_iva_persona_natural"
+    );
+    const documentoDomicilioPersonaNatural = document.getElementById(
+        "documento_domicilio_persona_natural"
+    );
+    const documentoCredencialPersonaNatural = document.getElementById(
+        "documento_credencial_representante"
+    );
+    const documentoEscrituraJuridico = document.getElementById(
+        "documento_escritura_juridico"
+    );
+    const documentoMatriculaJuridico = document.getElementById(
+        "documento_matricula_juridico"
+    );
+    const documentoAcuerdoJuridico = document.getElementById(
+        "documento_acuerdo_juridico"
+    );
+    const documentoNitJuridico = document.getElementById(
+        "documento_nit_juridico"
+    );
+    const documentoIvaJuridico = document.getElementById(
+        "documento_iva_juridico"
+    );
+    const documentoDomicilioJuridico = document.getElementById(
+        "documento_domicilio_juridico"
+    );
+
 
     btnDescargarForm.addEventListener("click", function (event) {
         const formulario = document.querySelector("form");
@@ -28,10 +60,6 @@ $(document).ready(function () {
             );
         }
     });
-
-    // $("#btnEnviarFormulario").click(function () {
-    //     $("#formulario_firmado").prop("required", true);
-    // });
 
     const botonEnviar = document.querySelector(".enviar-form");
     const inputArchivo = document.getElementById("formulario_firmado");
@@ -56,23 +84,75 @@ $(document).ready(function () {
             }
         });
 
-        if (camposVacios) {
+        if ($("#tipo_persona").val() === "Persona Natural") {
+            documentoIdentidadPersonaNatural.setAttribute(
+                "required",
+                "required"
+            );
+            documentoNitPersonaNatural.setAttribute(
+                "required",
+                "required"
+            );
+            documentoIvaPersonaNatural.setAttribute(
+                "required",
+                "required"
+            );
+            documentoDomicilioPersonaNatural.setAttribute(
+                "required",
+                "required"
+            );
+
             mostrarToast(
-                "Por favor, completa todos los campos requeridos antes de enviar el formulario.",
+                "Por favor, complete todos los campos requeridos antes de enviar el formulario.",
                 "error"
             );
 
-            if ($("#tipo_persona").val() === "Persona Natural") {
-                documentoIdentidadPersonaNatural.setAttribute(
-                    "required",
-                    "required"
-                );
-            }
+            return false;
+        }
 
-            if ($("#tipo_persona").val() === "Persona Jurídica") {
-                documentoIdentidadPersonaNatural.removeAttribute("required");
-                documentoIdentidadPersonaNatural.value = "";
-            }
+        if ($("#tipo_persona").val() === "Persona Jurídica") {
+            documentoEscrituraJuridico.setAttribute(
+                "required",
+                "required"
+            );
+            documentoMatriculaJuridico.setAttribute(
+                "required",
+                "required"
+            );
+            documentoAcuerdoJuridico.setAttribute(
+                "required",
+                "required"
+            );
+            documentoNitJuridico.setAttribute(
+                "required",
+                "required"
+            );
+            documentoIvaJuridico.setAttribute(
+                "required",
+                "required"
+            );
+            documentoCredencialPersonaNatural.setAttribute(
+                "required",
+                "required"
+            );
+            documentoDomicilioJuridico.setAttribute(
+                "required",
+                "required"
+            );
+
+            mostrarToast(
+                "Por favor, complete todos los campos requeridos antes de enviar el formulario.",
+                "error"
+            );
+
+            return false;
+        }
+
+        if (camposVacios) {
+            mostrarToast(
+                "Por favor, complete todos los campos requeridos antes de enviar el formulario.",
+                "error"
+            );
 
             return false;
         }
@@ -519,6 +599,21 @@ $(document).ready(function () {
             numeroIdentidadMiembro.removeAttribute("required");
             cargoMiembro.removeAttribute("required");
 
+            documentoEscrituraJuridico.removeAttribute("required");
+            documentoEscrituraJuridico.value = "";
+            documentoMatriculaJuridico.removeAttribute("required");
+            documentoMatriculaJuridico.value = "";
+            documentoAcuerdoJuridico.removeAttribute("required");
+            documentoAcuerdoJuridico.value = "";
+            documentoNitJuridico.removeAttribute("required");
+            documentoNitJuridico.value = "";
+            documentoIvaJuridico.removeAttribute("required");
+            documentoIvaJuridico.value = "";
+            documentoDomicilioJuridico.removeAttribute("required");
+            documentoDomicilioJuridico.value = "";
+            documentoCredencialPersonaNatural.removeAttribute("required");
+            documentoCredencialPersonaNatural.value = "";
+
             nombreComercialJuridicoInput.value = "";
             clasificacionJuridicaId.value = "";
             document.getElementById("id_clasificacion_juridico").value = "";
@@ -571,6 +666,15 @@ $(document).ready(function () {
             nacionalidadMiembro.setAttribute("required", "required");
             numeroIdentidadMiembro.setAttribute("required", "required");
             cargoMiembro.setAttribute("required", "required");
+
+            documentoIdentidadPersonaNatural.removeAttribute("required");
+            documentoIdentidadPersonaNatural.value = "";
+            documentoNitPersonaNatural.removeAttribute("required");
+            documentoNitPersonaNatural.value = "";
+            documentoIvaPersonaNatural.removeAttribute("required");
+            documentoIvaPersonaNatural.value = "";
+            documentoDomicilioPersonaNatural.removeAttribute("required");
+            documentoDomicilioPersonaNatural.value = "";
         }
     });
 
