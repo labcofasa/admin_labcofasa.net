@@ -5,7 +5,7 @@
 @section('contenido')
     <div class="container-fluid content">
         <div class="encabezado">
-            <h1 class="pb-3">@yield('titulo')</h1>
+            <h1>@yield('titulo')</h1>
             <a class="btn btn-lg btn-primary d-none d-xl-block" href="{{ route('crear.vacante') }}">
                 <div class="accion">
                     <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
@@ -85,7 +85,11 @@
                         </div>
                     </div>
                     <div class="imagen">
-                        <img src="{{ asset('images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen) }}">
+                        @if ($vacante->imagen)
+                            <img src="{{ asset('images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen) }}">
+                        @else
+                            <img src="{{ asset('images/empleo-defecto.png') }}">
+                        @endif
                     </div>
                     <div class="titulo">
                         <h6>{{ $vacante->nombre }}</h6>
