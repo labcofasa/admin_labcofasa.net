@@ -16,14 +16,8 @@ $(document).ready(function () {
     const documentoNitPersonaNatural = document.getElementById(
         "documento_nit_persona_natural"
     );
-    const documentoIvaPersonaNatural = document.getElementById(
-        "documento_tarjeta_iva_persona_natural"
-    );
     const documentoDomicilioPersonaNatural = document.getElementById(
         "documento_domicilio_persona_natural"
-    );
-    const documentoCredencialPersonaNatural = document.getElementById(
-        "documento_credencial_representante"
     );
     const documentoEscrituraJuridico = document.getElementById(
         "documento_escritura_juridico"
@@ -42,6 +36,9 @@ $(document).ready(function () {
     );
     const documentoDomicilioJuridico = document.getElementById(
         "documento_domicilio_juridico"
+    );
+    const documentoCredencialPersonaNatural = document.getElementById(
+        "documento_credencial_representante"
     );
 
 
@@ -84,18 +81,49 @@ $(document).ready(function () {
             }
         });
 
-        if (camposVacios) {
-            mostrarToast(
-                "Por favor, complete todos los campos requeridos antes de enviar el formulario.",
-                "error"
-            );
+        var tipoPersona = $("#tipo_persona").val();
 
+        if (tipoPersona === "Persona Natural") {
+            var documentoIdentidad = $("#documento_identidad_persona_natural").val().trim();
+            var documentoNit = $("#documento_nit_persona_natural").val().trim();
+            var documentoDomicilio = $("#documento_domicilio_persona_natural").val().trim();
+            if (documentoIdentidad === "" || documentoNit === "" || documentoDomicilio === "") {
+                camposVacios = true;
+                documentoIdentidadPersonaNatural.setAttribute("required", "required");
+                documentoNitPersonaNatural.setAttribute("required", "required");
+                documentoDomicilioPersonaNatural.setAttribute("required", "required");
+            }
+        }
+
+        if (tipoPersona === "Persona Jurídica") {
+            var documentoEscritura = $("#documento_escritura_juridico").val().trim();
+            var documentoMatricula = $("#documento_matricula_juridico").val().trim();
+            var documentoAcuerdo = $("#documento_acuerdo_juridico").val().trim();
+            var documentoNitJud = $("#documento_nit_juridico").val().trim();
+            var documentoIvaJud = $("#documento_iva_juridico").val().trim();
+            var documentoDomiJud = $("#documento_domicilio_juridico").val().trim();
+            var documentoCredJud = $("#documento_credencial_representante").val().trim();
+            if (documentoEscritura === "" || documentoMatricula === "" || documentoAcuerdo === "" || documentoNitJud === "" || documentoIvaJud === "" || documentoDomiJud === "" || documentoCredJud === "") {
+                camposVacios = true;
+                documentoEscrituraJuridico.setAttribute("required", "required");
+                documentoMatriculaJuridico.setAttribute("required", "required");
+                documentoAcuerdoJuridico.setAttribute("required", "required");
+                documentoNitJuridico.setAttribute("required", "required");
+                documentoIvaJuridico.setAttribute("required", "required");
+                documentoDomicilioJuridico.setAttribute("required", "required");
+                documentoCredencialPersonaNatural.setAttribute("required", "required");
+            }
+        }
+
+        if (camposVacios) {
+            mostrarToast("Por favor, complete todos los campos requeridos antes de enviar el formulario.", "error");
             return false;
         }
 
         $("#btnEnviarFormulario").hide();
         $("#btnCarga").show();
     });
+
 
     const forms = document.querySelectorAll(".needs-validation");
 
@@ -607,8 +635,6 @@ $(document).ready(function () {
             documentoIdentidadPersonaNatural.value = "";
             documentoNitPersonaNatural.removeAttribute("required");
             documentoNitPersonaNatural.value = "";
-            documentoIvaPersonaNatural.removeAttribute("required");
-            documentoIvaPersonaNatural.value = "";
             documentoDomicilioPersonaNatural.removeAttribute("required");
             documentoDomicilioPersonaNatural.value = "";
         }

@@ -1,4 +1,4 @@
-<div class="container-fluid px-0 pb-3">
+<div class="container-fluid px-0 pb-4">
     <div class="container-counters">
         <div class="cards carta-primary">
             <div class="counter">

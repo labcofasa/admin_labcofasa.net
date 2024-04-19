@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-danger" id="eliminar-imagen" style="display: none;">Eliminar
+                    <button type="button" class="btn btn-danger mb-3" id="eliminar-imagen" style="display: none;">Eliminar
                         imagen</button>
                 </div>
                 <div class="col-12 col-md-4">

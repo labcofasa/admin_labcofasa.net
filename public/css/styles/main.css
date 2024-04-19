@@ -771,11 +771,10 @@ div.dataTables_processing {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 190px;
     border: 2px dashed var(--component);
     align-items: center;
     text-align: center;
-    padding: 5px;
+    padding: 20px;
     color: #404040;
     cursor: pointer;
 }

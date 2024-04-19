@@ -932,7 +932,9 @@ class FormsConozcaClienteController extends Controller
                 'cliente_pariente' => $clienteParienteData,
                 'cliente_socio' => $clienteSociosData,
                 'cliente_archivo' => $clienteArchivosData,
-                'fecha_creacion' => $form->fecha_de_creacion,
+
+                $fecha_creacion = new DateTime($form->fecha_de_creacion),
+                'fecha_creacion' => $fecha_creacion->format('Y-m-d H:i:s'),
             ];
         }
 
@@ -1175,7 +1177,9 @@ class FormsConozcaClienteController extends Controller
                 'cliente_pariente' => $clienteParienteData,
                 'cliente_socio' => $clienteSociosData,
                 'cliente_archivo' => $clienteArchivosData,
-                'fecha_creacion' => $form->fecha_de_creacion,
+
+                $fecha_creacion = new DateTime($form->fecha_de_creacion),
+                'fecha_creacion' => $fecha_creacion->format('Y-m-d H:i:s'),
             ];
         }
 
