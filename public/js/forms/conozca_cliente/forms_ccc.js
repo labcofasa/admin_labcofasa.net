@@ -71,7 +71,8 @@ $(document).ready(function () {
         }
     });
 
-    $("#btnEnviarFormulario").click(function () {
+    $("#btnEnviarFormulario").submit(function (event) {
+        event.preventDefault();
         var camposVacios = false;
 
         $("input[required]").each(function () {
@@ -116,6 +117,7 @@ $(document).ready(function () {
         }
 
         if (camposVacios) {
+            $("#enviarFormulario").modal("hide");
             mostrarToast("Por favor, complete todos los campos requeridos antes de enviar el formulario.", "error");
             return false;
         }
@@ -226,7 +228,7 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="numero_identidad_accionista${camposContador}" class="form-label">No. Identidad</label>
-                    <input type="text" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]" required>
+                    <input type="number" placeholder="Sin guiones" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]" required>
                     <div class="invalid-feedback">
                         Por favor, ingrese el número de identidad.
                     </div>
@@ -298,7 +300,7 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="numero_identidad_miembro${camposContadorMiembros}" class="form-label">No. Identidad</label>
-                    <input type="text" class="form-control" id="numero_identidad_miembro${camposContadorMiembros}" name="numero_identidad_miembro[]" required>
+                    <input type="number" placeholder="Sin guiones" class="form-control" id="numero_identidad_miembro${camposContadorMiembros}" name="numero_identidad_miembro[]" required>
                     <div class="invalid-feedback">
                         Por favor, ingrese el número de identidad.
                     </div>

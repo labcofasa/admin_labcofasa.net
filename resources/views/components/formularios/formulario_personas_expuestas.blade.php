@@ -187,7 +187,7 @@
     <div class="col-sm-6">
         <div class="mb-3">
             <label for="monto_mensual" class="form-label">Monto aproximado de ingresos mensuales</label>
-            <input type="text" placeholder="Ejemplo: 1000" class="form-control" id="monto_mensual"
+            <input type="number" placeholder="Ejemplo: 1000" class="form-control" id="monto_mensual"
                 name="monto_mensual">
             <div class="invalid-feedback">
                 Por favor, ingrese el monto aproximado mensual.

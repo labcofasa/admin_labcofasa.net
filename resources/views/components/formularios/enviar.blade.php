@@ -8,7 +8,7 @@
                 @method('POST')
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="enviarFormularioLabel">Confirmar envío</h1>
-                    <button class="btn-icon-close" data-bs-dismiss="modal">
+                    <button type="button" class="btn-icon-close" data-bs-dismiss="modal">
                         <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                             width="24px" fill="#000000">
                             <path d="M0 0h24v24H0V0z" fill="none" />

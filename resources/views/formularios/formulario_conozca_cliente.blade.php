@@ -173,7 +173,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="numero_de_documento" class="form-label">Número de documento</label>
-                        <input type="text" class="form-control" id="numero_de_documento" name="numero_de_documento"
+                        <input type="number" placeholder="Sin guiones" class="form-control" id="numero_de_documento" name="numero_de_documento"
                             required>
                         <div class="invalid-feedback">
                             Por favor, ingrese el número de documento.
@@ -193,7 +193,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="registro_iva_nrc" class="form-label">Registro de IVA (NRC)</label>
-                        <input type="text" class="form-control" id="registro_iva_nrc" name="registro_iva_nrc">
+                        <input type="number" placeholder="Sin guiones" class="form-control" id="registro_iva_nrc" name="registro_iva_nrc">
                         <div class="valid-feedback">
                             Campo opcional.
                         </div>
@@ -292,7 +292,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="numero_de_nit_juridico" class="form-label">Número de NIT</label>
-                            <input type="text" class="form-control" id="numero_de_nit_juridico"
+                            <input type="number" placeholder="Sin guiones" class="form-control" id="numero_de_nit_juridico"
                                 name="numero_de_nit_juridico">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el número de NIT.
@@ -312,7 +312,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="registro_nrc_juridico" class="form-label">Número de registro IVA (NRC)</label>
-                            <input type="text" class="form-control" id="registro_nrc_juridico"
+                            <input type="number" placeholder="Sin guiones" class="form-control" id="registro_nrc_juridico"
                                 name="registro_nrc_juridico">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el registro NRC.
@@ -387,7 +387,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="sitio_web_juridico" class="form-label">Sitio web</label>
-                            <input type="url" class="form-control" id="sitio_web_juridico"
+                            <input type="text" class="form-control" id="sitio_web_juridico"
                                 name="sitio_web_juridico">
                             <div class="valid-feedback">
                                 Campo opcional.
@@ -397,7 +397,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="numero_de_fax_juridico" class="form-label">Número de FAX</label>
-                            <input type="text" class="form-control" id="numero_de_fax_juridico"
+                            <input type="number" class="form-control" id="numero_de_fax_juridico"
                                 name="numero_de_fax_juridico">
                             <div class="valid-feedback">
                                 Campo opcional.
@@ -440,7 +440,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="numero_identidad_accionista" class="form-label">No. Identidad</label>
-                            <input type="text" class="form-control" id="numero_identidad_accionista"
+                            <input type="number" placeholder="Sin guiones" class="form-control" id="numero_identidad_accionista"
                                 name="numero_identidad_accionista[]">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el número de identidad.
@@ -492,7 +492,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="numero_identidad_miembro" class="form-label">No. Identidad</label>
-                            <input type="text" class="form-control" id="numero_identidad_miembro"
+                            <input type="number" placeholder="Sin guiones" class="form-control" id="numero_identidad_miembro"
                                 name="numero_identidad_miembro[]">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el número de identidad.
@@ -531,7 +531,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="monto_proyectado" class="form-label">Monto proyectado mensual</label>
-                        <input type="text" class="form-control" id="monto_proyectado" name="monto_proyectado"
+                        <input type="number" class="form-control" id="monto_proyectado" name="monto_proyectado"
                             required>
                         <div class="invalid-feedback">
                             Por favor, ingrese el monto proyectado mensual.
