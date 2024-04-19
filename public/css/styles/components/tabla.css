@@ -3,7 +3,7 @@
     background-color: var(--body-bg);
     transition: var(--tran-03);
     overflow-x: visible;
-    padding: 12px 0;
+    padding: 0 0 20px 0;
 }
 
 table {

@@ -69,11 +69,11 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 6, 7, 8, 9],
+                    targets: [0, 1, 2, 3, 4, 6, 7, 8, 9],
                     className: "nowrap",
                 },
                 {
-                    targets: [4, 5],
+                    targets: [5],
                     className: "wrap",
                 },
                 {
@@ -314,11 +314,11 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 6, 7, 8, 9],
+                    targets: [0, 1, 2, 3, 4, 6, 7, 8, 9],
                     className: "nowrap",
                 },
                 {
-                    targets: [4, 5],
+                    targets: [5],
                     className: "wrap",
                 },
                 {
