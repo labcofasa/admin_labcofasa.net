@@ -19,6 +19,7 @@ $(document).ready(function () {
     const documentoDomicilioPersonaNatural = document.getElementById(
         "documento_domicilio_persona_natural"
     );
+
     const documentoEscrituraJuridico = document.getElementById(
         "documento_escritura_juridico"
     );
@@ -40,7 +41,6 @@ $(document).ready(function () {
     const documentoCredencialPersonaNatural = document.getElementById(
         "documento_credencial_representante"
     );
-
 
     btnDescargarForm.addEventListener("click", function (event) {
         const formulario = document.querySelector("form");
@@ -71,61 +71,37 @@ $(document).ready(function () {
         }
     });
 
-    $("#btnEnviarFormulario").submit(function (event) {
-        event.preventDefault();
-        var camposVacios = false;
-
-        $("input[required]").each(function () {
-            if ($(this).val().trim() === "") {
-                camposVacios = true;
-                return false;
-            }
-        });
-
+    $("#btnEnviarFormulario").click(function () {
+        var formulario = document.querySelector("#forms_ccc");
         var tipoPersona = $("#tipo_persona").val();
 
         if (tipoPersona === "Persona Natural") {
-            var documentoIdentidad = $("#documento_identidad_persona_natural").val().trim();
-            var documentoNit = $("#documento_nit_persona_natural").val().trim();
-            var documentoDomicilio = $("#documento_domicilio_persona_natural").val().trim();
-            if (documentoIdentidad === "" || documentoNit === "" || documentoDomicilio === "") {
-                camposVacios = true;
-                documentoIdentidadPersonaNatural.setAttribute("required", "required");
-                documentoNitPersonaNatural.setAttribute("required", "required");
-                documentoDomicilioPersonaNatural.setAttribute("required", "required");
-            }
+            $("#documento_identidad_persona_natural").prop("required", true);
+            $("#documento_nit_persona_natural").prop("required", true);
+            $("#documento_domicilio_persona_natural").prop("required", true);
+        } else {
+            $("#documento_escritura_juridico").prop("required", true);
+            $("#documento_matricula_juridico").prop("required", true);
+            $("#documento_acuerdo_juridico").prop("required", true);
+            $("#documento_nit_juridico").prop("required", true);
+            $("#documento_iva_juridico").prop("required", true);
+            $("#documento_domicilio_juridico").prop("required", true);
+            $("#documento_credencial_representante").prop("required", true);
         }
 
-        if (tipoPersona === "Persona Jurídica") {
-            var documentoEscritura = $("#documento_escritura_juridico").val().trim();
-            var documentoMatricula = $("#documento_matricula_juridico").val().trim();
-            var documentoAcuerdo = $("#documento_acuerdo_juridico").val().trim();
-            var documentoNitJud = $("#documento_nit_juridico").val().trim();
-            var documentoIvaJud = $("#documento_iva_juridico").val().trim();
-            var documentoDomiJud = $("#documento_domicilio_juridico").val().trim();
-            var documentoCredJud = $("#documento_credencial_representante").val().trim();
-            if (documentoEscritura === "" || documentoMatricula === "" || documentoAcuerdo === "" || documentoNitJud === "" || documentoIvaJud === "" || documentoDomiJud === "" || documentoCredJud === "") {
-                camposVacios = true;
-                documentoEscrituraJuridico.setAttribute("required", "required");
-                documentoMatriculaJuridico.setAttribute("required", "required");
-                documentoAcuerdoJuridico.setAttribute("required", "required");
-                documentoNitJuridico.setAttribute("required", "required");
-                documentoIvaJuridico.setAttribute("required", "required");
-                documentoDomicilioJuridico.setAttribute("required", "required");
-                documentoCredencialPersonaNatural.setAttribute("required", "required");
-            }
-        }
+        if (formulario.checkValidity()) {
+            $("#btnEnviarFormulario").hide();
+            $("#btnCarga").show();
+            $("#forms_ccc").submit();
+        } else {
+            mostrarToast(
+                "Por favor, complete todos los campos requeridos antes de enviar el formulario.",
+                "error"
+            );
 
-        if (camposVacios) {
             $("#enviarFormulario").modal("hide");
-            mostrarToast("Por favor, complete todos los campos requeridos antes de enviar el formulario.", "error");
-            return false;
         }
-
-        $("#btnEnviarFormulario").hide();
-        $("#btnCarga").show();
     });
-
 
     const forms = document.querySelectorAll(".needs-validation");
 
