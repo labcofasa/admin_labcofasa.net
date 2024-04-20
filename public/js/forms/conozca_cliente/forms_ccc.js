@@ -79,7 +79,9 @@ $(document).ready(function () {
             $("#documento_identidad_persona_natural").prop("required", true);
             $("#documento_nit_persona_natural").prop("required", true);
             $("#documento_domicilio_persona_natural").prop("required", true);
-        } else {
+        }
+
+        if (tipoPersona === "Persona Jurídica") {
             $("#documento_escritura_juridico").prop("required", true);
             $("#documento_matricula_juridico").prop("required", true);
             $("#documento_acuerdo_juridico").prop("required", true);
@@ -204,7 +206,7 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="numero_identidad_accionista${camposContador}" class="form-label">No. Identidad</label>
-                    <input type="number" placeholder="Sin guiones" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]" required>
+                    <input type="text" class="form-control" id="numero_identidad_accionista${camposContador}" name="numero_identidad_accionista[]" required>
                     <div class="invalid-feedback">
                         Por favor, ingrese el número de identidad.
                     </div>
@@ -276,7 +278,7 @@ $(document).ready(function () {
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="numero_identidad_miembro${camposContadorMiembros}" class="form-label">No. Identidad</label>
-                    <input type="number" placeholder="Sin guiones" class="form-control" id="numero_identidad_miembro${camposContadorMiembros}" name="numero_identidad_miembro[]" required>
+                    <input type="text" class="form-control" id="numero_identidad_miembro${camposContadorMiembros}" name="numero_identidad_miembro[]" required>
                     <div class="invalid-feedback">
                         Por favor, ingrese el número de identidad.
                     </div>
