@@ -849,10 +849,7 @@ $(document).ready(function () {
             var link = $("<a>")
                 .attr(
                     "href",
-                    "/docs/fccc/" +
-                    fccId +
-                    "/" +
-                    row.documento_domicilio_juridico
+                    "/docs/fccc/" + fccId + "/" + row.documento_domicilio_juridico
                 )
                 .attr("target", "_blank")
                 .appendTo(container);
@@ -866,7 +863,7 @@ $(document).ready(function () {
             ).appendTo(card);
             $("<p>")
                 .addClass("name")
-                .text("Comprobante de Domicilio Persona Jurídica")
+                .text("Comprobante de domicilio Persona Jurídica")
                 .appendTo(card);
         }
 

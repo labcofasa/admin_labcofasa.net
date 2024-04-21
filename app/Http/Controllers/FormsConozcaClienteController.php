@@ -363,10 +363,11 @@ class FormsConozcaClienteController extends Controller
                 $documento = $request->file('documento_identidad_persona_natural');
 
                 if ($documento->isValid()) {
-                    $nombreArchivo = time() . '_' . $documento->getClientOriginalName();
+                    $nombreOriginal = $documento->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
                     $documento->move($rutaCarpeta, $nombreArchivo);
-
                     $formsccc->documento_identidad_persona_natural = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
@@ -377,11 +378,12 @@ class FormsConozcaClienteController extends Controller
                 $tarjetaRegistro = $request->file('documento_tarjeta_iva_persona_natural');
 
                 if ($tarjetaRegistro->isValid()) {
-                    $nombreArchivoTarjetaRegistro = time() . '_' . $tarjetaRegistro->getClientOriginalName();
+                    $nombreOriginal = $tarjetaRegistro->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $tarjetaRegistro->move($rutaCarpeta, $nombreArchivoTarjetaRegistro);
-
-                    $formsccc->documento_tarjeta_iva_persona_natural = $nombreArchivoTarjetaRegistro;
+                    $tarjetaRegistro->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_tarjeta_iva_persona_natural = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -391,11 +393,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoNitPersonaNatural = $request->file('documento_nit_persona_natural');
 
                 if ($documentoNitPersonaNatural->isValid()) {
-                    $nombreDocumentoNitPersonaNatural = time() . '_' . $documentoNitPersonaNatural->getClientOriginalName();
+                    $nombreOriginal = $documentoNitPersonaNatural->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoNitPersonaNatural->move($rutaCarpeta, $nombreDocumentoNitPersonaNatural);
-
-                    $formsccc->documento_nit_persona_natural = $nombreDocumentoNitPersonaNatural;
+                    $documentoNitPersonaNatural->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_nit_persona_natural = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -405,11 +408,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoDomicilioPersonaNatural = $request->file('documento_domicilio_persona_natural');
 
                 if ($documentoDomicilioPersonaNatural->isValid()) {
-                    $nombreDocumentoDomicilioPersonaNatural = time() . '_' . $documentoDomicilioPersonaNatural->getClientOriginalName();
+                    $nombreOriginal = $documentoDomicilioPersonaNatural->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoDomicilioPersonaNatural->move($rutaCarpeta, $nombreDocumentoDomicilioPersonaNatural);
-
-                    $formsccc->documento_domicilio_persona_natural = $nombreDocumentoDomicilioPersonaNatural;
+                    $documentoDomicilioPersonaNatural->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_domicilio_persona_natural = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -419,11 +423,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoDnmPersonaNatural = $request->file('documento_dnm_persona_natural');
 
                 if ($documentoDnmPersonaNatural->isValid()) {
-                    $nombreDocumentoDnmPersonaNatural = time() . '_' . $documentoDnmPersonaNatural->getClientOriginalName();
+                    $nombreOriginal = $documentoDnmPersonaNatural->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoDnmPersonaNatural->move($rutaCarpeta, $nombreDocumentoDnmPersonaNatural);
-
-                    $formsccc->documento_dnm_persona_natural = $nombreDocumentoDnmPersonaNatural;
+                    $documentoDnmPersonaNatural->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_dnm_persona_natural = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -433,11 +438,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoIdentificacionRepresentante = $request->file('documento_identificacion_representante');
 
                 if ($documentoIdentificacionRepresentante->isValid()) {
-                    $nombreDocumentoIdentificacionRepresentate = time() . '_' . $documentoIdentificacionRepresentante->getClientOriginalName();
+                    $nombreOriginal = $documentoIdentificacionRepresentante->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoIdentificacionRepresentante->move($rutaCarpeta, $nombreDocumentoIdentificacionRepresentate);
-
-                    $formsccc->documento_identificacion_representante = $nombreDocumentoIdentificacionRepresentate;
+                    $documentoIdentificacionRepresentante->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_identificacion_representante = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -447,11 +453,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoNitRepresentante = $request->file('documento_nit_representante');
 
                 if ($documentoNitRepresentante->isValid()) {
-                    $nombreDocumentoNitRepresentate = time() . '_' . $documentoNitRepresentante->getClientOriginalName();
+                    $nombreOriginal = $documentoNitRepresentante->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoNitRepresentante->move($rutaCarpeta, $nombreDocumentoNitRepresentate);
-
-                    $formsccc->documento_nit_representante = $nombreDocumentoNitRepresentate;
+                    $documentoNitRepresentante->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_nit_representante = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -461,11 +468,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoCredencialRepresentante = $request->file('documento_credencial_representante');
 
                 if ($documentoCredencialRepresentante->isValid()) {
-                    $nombreCredencialRepresentante = time() . '_' . $documentoCredencialRepresentante->getClientOriginalName();
+                    $nombreOriginal = $documentoCredencialRepresentante->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoCredencialRepresentante->move($rutaCarpeta, $nombreCredencialRepresentante);
-
-                    $formsccc->documento_credencial_representante = $nombreCredencialRepresentante;
+                    $documentoCredencialRepresentante->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_credencial_representante = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -475,11 +483,14 @@ class FormsConozcaClienteController extends Controller
                 $documentosEscritura = $request->file('documento_escritura_juridico');
                 foreach ($documentosEscritura as $documento) {
                     if ($documento->isValid()) {
-                        $nombreArchivoEscritura = time() . '_' . $documento->getClientOriginalName();
-                        $documento->move($rutaCarpeta, $nombreArchivoEscritura);
+                        $nombreOriginal = $documento->getClientOriginalName();
+                        $numeroAleatorio = mt_rand(100000, 999999);
+                        $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
+
+                        $documento->move($rutaCarpeta, $nombreArchivo);
 
                         $documentoEscrituraJuridico = new FrmConozcaClienteArchivos();
-                        $documentoEscrituraJuridico->nombre_archivo = $nombreArchivoEscritura;
+                        $documentoEscrituraJuridico->nombre_archivo = $nombreArchivo;
 
                         $formsccc->conozcaClienteArchivos()->save($documentoEscrituraJuridico);
                     } else {
@@ -492,11 +503,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoMatriculaJuridico = $request->file('documento_matricula_juridico');
 
                 if ($documentoMatriculaJuridico->isValid()) {
-                    $nombreMatriculaJuridico = time() . '_' . $documentoMatriculaJuridico->getClientOriginalName();
+                    $nombreOriginal = $documentoMatriculaJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoMatriculaJuridico->move($rutaCarpeta, $nombreMatriculaJuridico);
-
-                    $formsccc->documento_matricula_juridico = $nombreMatriculaJuridico;
+                    $documentoMatriculaJuridico->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_matricula_juridico = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -506,11 +518,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoAcuerdoJuridico = $request->file('documento_acuerdo_juridico');
 
                 if ($documentoAcuerdoJuridico->isValid()) {
-                    $nombreAcuerdoJuridico = time() . '_' . $documentoAcuerdoJuridico->getClientOriginalName();
+                    $nombreOriginal = $documentoAcuerdoJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoAcuerdoJuridico->move($rutaCarpeta, $nombreAcuerdoJuridico);
-
-                    $formsccc->documento_acuerdo_juridico = $nombreAcuerdoJuridico;
+                    $documentoAcuerdoJuridico->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_acuerdo_juridico = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -520,11 +533,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoNitJuridico = $request->file('documento_nit_juridico');
 
                 if ($documentoNitJuridico->isValid()) {
-                    $nombreNitJuridico = time() . '_' . $documentoNitJuridico->getClientOriginalName();
+                    $nombreOriginal = $documentoNitJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoNitJuridico->move($rutaCarpeta, $nombreNitJuridico);
-
-                    $formsccc->documento_nit_juridico = $nombreNitJuridico;
+                    $documentoNitJuridico->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_nit_juridico = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -534,11 +548,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoIvaJuridico = $request->file('documento_iva_juridico');
 
                 if ($documentoIvaJuridico->isValid()) {
-                    $nombreIvaJuridico = time() . '_' . $documentoIvaJuridico->getClientOriginalName();
+                    $nombreOriginal = $documentoIvaJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoIvaJuridico->move($rutaCarpeta, $nombreIvaJuridico);
-
-                    $formsccc->documento_iva_juridico = $nombreIvaJuridico;
+                    $documentoIvaJuridico->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_iva_juridico = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -548,11 +563,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoDomicilioJuridico = $request->file('documento_domicilio_juridico');
 
                 if ($documentoDomicilioJuridico->isValid()) {
-                    $nombreDomicilioJuridico = time() . '_' . $documentoDomicilioJuridico->getClientOriginalName();
+                    $nombreOriginal = $documentoDomicilioJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoDomicilioJuridico->move($rutaCarpeta, $nombreDomicilioJuridico);
-
-                    $formsccc->documento_domicilio_juridico = $nombreDomicilioJuridico;
+                    $documentoDomicilioJuridico->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_domicilio_juridico = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -562,11 +578,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoDnmJuridico = $request->file('documento_dnm_juridico');
 
                 if ($documentoDnmJuridico->isValid()) {
-                    $nombreDnmJuridico = time() . '_' . $documentoDnmJuridico->getClientOriginalName();
+                    $nombreOriginal = $documentoDnmJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoDnmJuridico->move($rutaCarpeta, $nombreDnmJuridico);
-
-                    $formsccc->documento_dnm_juridico = $nombreDnmJuridico;
+                    $documentoDnmJuridico->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->documento_dnm_juridico = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -576,11 +593,12 @@ class FormsConozcaClienteController extends Controller
                 $documentoFirmado = $request->file('formulario_firmado');
 
                 if ($documentoFirmado->isValid()) {
-                    $nombreDocumentoFirmado = time() . '_' . $documentoFirmado->getClientOriginalName();
+                    $nombreOriginal = $documentoFirmado->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $nombreOriginal;
 
-                    $documentoFirmado->move($rutaCarpeta, $nombreDocumentoFirmado);
-
-                    $formsccc->formulario_firmado = $nombreDocumentoFirmado;
+                    $documentoFirmado->move($rutaCarpeta, $nombreArchivo);
+                    $formsccc->formulario_firmado = $nombreArchivo;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -729,6 +747,7 @@ class FormsConozcaClienteController extends Controller
         )
             ->select(
                 'frm_conozca_cliente.*',
+                'frm_conozca_cliente.documento_domicilio_juridico as domicilio_juridico',
                 'paises.id as id_pais',
                 'paises.nombre as nombre_pais',
                 'departamentos.id as id_departamento',
@@ -924,7 +943,7 @@ class FormsConozcaClienteController extends Controller
                 'documento_acuerdo_juridico' => $form->documento_acuerdo_juridico,
                 'documento_nit_juridico' => $form->documento_nit_juridico,
                 'documento_iva_juridico' => $form->documento_iva_juridico,
-                'documento_domicilio_juridico' => $form->documento_domicilio_juridico,
+                'documento_domicilio_juridico' => $form->domicilio_juridico,
                 'documento_dnm_juridico' => $form->documento_dnm_juridico,
 
                 'cliente_accionista' => $clienteAccionistaData,
@@ -974,6 +993,7 @@ class FormsConozcaClienteController extends Controller
         )
             ->select(
                 'frm_conozca_cliente.*',
+                'frm_conozca_cliente.documento_domicilio_juridico as domicilio_juridico',
                 'paises.id as id_pais',
                 'paises.nombre as nombre_pais',
                 'departamentos.id as id_departamento',
@@ -1169,7 +1189,7 @@ class FormsConozcaClienteController extends Controller
                 'documento_acuerdo_juridico' => $form->documento_acuerdo_juridico,
                 'documento_nit_juridico' => $form->documento_nit_juridico,
                 'documento_iva_juridico' => $form->documento_iva_juridico,
-                'documento_domicilio_juridico' => $form->documento_domicilio_juridico,
+                'documento_domicilio_juridico' => $form->domicilio_juridico,
                 'documento_dnm_juridico' => $form->documento_dnm_juridico,
 
                 'cliente_accionista' => $clienteAccionistaData,
