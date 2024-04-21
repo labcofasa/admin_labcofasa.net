@@ -47,7 +47,7 @@ class AutenticacionController extends Controller
                     if (Hash::check($password, $user->password)) {
                         Auth::login($user);
 
-                        return redirect()->route('accesos')->with('success', 'Bienvenido al sistema');
+                        return redirect()->route('accesos')->with('success', 'Bienvenido/a al sistema');
                     } else {
                         $errors = ['username' => 'Credenciales incorrectas.'];
                     }

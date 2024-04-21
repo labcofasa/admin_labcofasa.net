@@ -126,5 +126,7 @@
         </form>
     </div>
 
+    <x-notificaciones.notificaciones-ia :usuario="$usuario" />
+
     <script src="{{ asset('js/empleos/editar-vacante.js') }}"></script>
 @endsection

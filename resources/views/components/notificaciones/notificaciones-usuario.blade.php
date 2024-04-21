@@ -9,7 +9,7 @@
                         $apellido = explode(' ', $usuario->perfil->apellidos);
                     @endphp
 
-                    <p class="me-auto mx-2">Hola {{ $nombre[0] }} {{ $apellido[0] }}</p>
+                    <p class="me-auto mx-2">{{ $saludo }} {{ $nombre[0] }} {{ $apellido[0] }}</p>
                 @endif
                 <button class="btn-icon-close" data-bs-dismiss="toast">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"

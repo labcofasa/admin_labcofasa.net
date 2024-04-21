@@ -84,7 +84,8 @@
                                 <img src="#" class="img-thumbnail mb-2 imagen-seleccionada"
                                     style="display: none;">
                             </span>
-                            <small class="fw-bold pt-3 caption">Arrastra y suelta tu imagen aquí o haz clic para seleccionar
+                            <small class="fw-bold pt-3 caption">Arrastra y suelta tu imagen aquí o haz clic para
+                                seleccionar
                                 una.</small>
                             <small class="message">Ningún archivo seleccionado.</small>
                         </label>
@@ -101,6 +102,8 @@
             </div>
         </form>
     </div>
+
+    <x-notificaciones.notificaciones-ia :usuario="$usuario" />
 
     <script src="{{ asset('js/empleos/crear-vacante.js') }}"></script>
 @endsection

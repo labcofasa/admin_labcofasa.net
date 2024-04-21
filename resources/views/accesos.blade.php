@@ -11,5 +11,6 @@
         <x-dashboard.cartas :aplicaciones="$aplicaciones" />
     </div>
 
-    <x-notificaciones.notificaciones-usuario :usuario="$usuario" />
+    <x-notificaciones.notificaciones-usuario :usuario="$usuario" :saludo="$saludo" />
+
 @endsection
