@@ -272,6 +272,11 @@
     --bs-btn-active-color: #121213;
     --bs-btn-active-bg: var(--action);
     --bs-btn-active-border-color: var(--action);
+    z-index: 1;
+}
+
+.btn-float:hover {
+    background-color: var(--action);
 }
 
 .imagen-perfil {
@@ -639,7 +644,7 @@ button {
         background-color: var(--body-bg) !important;
     }
 
-    .table> :not(caption)>*>* {
+    .table > :not(caption) > * > * {
         background-color: var(--body-bg) !important;
     }
 

@@ -37,9 +37,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     habilitarTooltips();
+
+    const toastLiveExample = document.getElementById("notificacionToast");
+    if (toastLiveExample) {
+        const toastBootstrap = new bootstrap.Toast(toastLiveExample);
+        toastBootstrap.show();
+    }
 });
 
-function initializeDropzone(dropZoneElementId, inputElementId, eliminarImagenBtnId) {
+function initializeDropzone(
+    dropZoneElementId,
+    inputElementId,
+    eliminarImagenBtnId
+) {
     const dropZoneElement = document.getElementById(dropZoneElementId);
     const inputElement = document.getElementById(inputElementId);
     const eliminarImagenBtn = document.getElementById(eliminarImagenBtnId);
@@ -79,7 +89,7 @@ function initializeDropzone(dropZoneElementId, inputElementId, eliminarImagenBtn
 
         if (e.dataTransfer.files.length) {
             inputElement.files = e.dataTransfer.files;
-            inputElement.dispatchEvent(new Event('change'));
+            inputElement.dispatchEvent(new Event("change"));
             updateDropzoneFileList(dropZoneElement, e.dataTransfer.files[0]);
             mostrarEliminarImagenBtn();
         }
@@ -107,7 +117,7 @@ function initializeDropzone(dropZoneElementId, inputElementId, eliminarImagenBtn
         inputElement.value = "";
     }
 
-    inputElement.addEventListener('change', function () {
+    inputElement.addEventListener("change", function () {
         mostrarImagenSeleccionada(this);
     });
 }
@@ -116,18 +126,18 @@ function mostrarImagenSeleccionada(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $('.imagen-seleccionada').attr('src', e.target.result).show();
-            $('.archivo').hide();
-            $('.caption').hide();
-        }
+            $(".imagen-seleccionada").attr("src", e.target.result).show();
+            $(".archivo").hide();
+            $(".caption").hide();
+        };
         reader.readAsDataURL(input.files[0]);
     }
 }
 
 function ocultarImagenSeleccionada() {
-    $('.imagen-seleccionada').attr('src', '').hide();
-    $('.archivo').show();
-    $('.caption').show();
+    $(".imagen-seleccionada").attr("src", "").hide();
+    $(".archivo").show();
+    $(".caption").show();
 }
 
 function habilitarTooltips() {
@@ -180,11 +190,11 @@ function MultiselectDropdown(options) {
                 if (k === "class") {
                     Array.isArray(attrs[k])
                         ? attrs[k].forEach((o) =>
-                            o !== "" ? e.classList.add(o) : 0
-                        )
+                              o !== "" ? e.classList.add(o) : 0
+                          )
                         : attrs[k] !== ""
-                            ? e.classList.add(attrs[k])
-                            : 0;
+                        ? e.classList.add(attrs[k])
+                        : 0;
                 } else if (k === "style") {
                     Object.keys(attrs[k]).forEach((ks) => {
                         e.style[ks] = attrs[k][ks];

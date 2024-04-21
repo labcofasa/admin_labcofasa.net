@@ -10,4 +10,6 @@
         <!-- Botones para aplicaciones registradas -->
         <x-dashboard.cartas :aplicaciones="$aplicaciones" />
     </div>
+
+    <x-notificaciones.notificaciones-usuario :usuario="$usuario" />
 @endsection

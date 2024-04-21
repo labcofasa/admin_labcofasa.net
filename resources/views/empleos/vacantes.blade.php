@@ -123,6 +123,9 @@
                 <x-empleos.eliminar :vacante="$vacante" />
             @endforeach
         </div>
+
+        <x-notificaciones.notificaciones-ia :usuario="$usuario" />
+
     </div>
 
     <script src="{{ asset('js/empleos/vacante.js') }}"></script>

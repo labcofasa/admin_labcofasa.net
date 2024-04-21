@@ -16,6 +16,7 @@
 /* Componentes */
 @import url(styles/components/form.css);
 @import url(styles/components/botones.css);
+@import url(styles/components/toast.css);
 @import url(styles/components/modal.css);
 @import url(styles/components/graficas.css);
 @import url(styles/components/cards.css);

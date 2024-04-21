@@ -17,7 +17,9 @@ class VacantesController extends Controller
         $usuario = User::with('perfil')->find(auth()->id());
         $vacantes = Vacante::all();
 
-        return view('empleos.vacantes', compact('usuario', 'vacantes'));
+        $nombreUsuario = $usuario->name;
+
+        return view('empleos.vacantes', compact('usuario', 'nombreUsuario', 'vacantes'));
     }
 
     public function create()
@@ -63,7 +65,7 @@ class VacantesController extends Controller
 
             $vacante->save();
 
-            return redirect()->route('pag.vacantes')->with('success', 'Vacante regitrada exitosamente.');
+            return redirect()->route('pag.vacantes')->with('success', 'Vacante registrada');
         } catch (QueryException $e) {
             return redirect()->back()->with('error', 'Hubo un error al crear la vacante');
         }
@@ -115,8 +117,7 @@ class VacantesController extends Controller
 
             $vacante->save();
 
-            return redirect()->route('pag.vacantes')->with('success', 'Vacante actualizada exitosamente.');
-
+            return redirect()->route('pag.vacantes')->with('success', 'Vacante actualizada');
         } catch (QueryException $e) {
             return redirect()->back()->with('error', 'Hubo un error al actualizar la vacante');
         }
@@ -137,7 +138,7 @@ class VacantesController extends Controller
 
             $vacante->delete();
 
-            return redirect()->route('pag.vacantes')->with('success', 'Vacante eliminada exitosamente.');
+            return redirect()->route('pag.vacantes')->with('success', 'Vacante eliminada');
         } catch (QueryException $e) {
             return redirect()->back()->with('error', 'Hubo un error al eliminar la vacante');
         }

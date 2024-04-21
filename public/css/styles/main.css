@@ -136,12 +136,12 @@
     --toggle-switch-border: #dee2e6;
 
     /* Contadores */
-    --carta-primary: #379FFF;
+    --carta-primary: #379fff;
     --carta-secondary: #e3e3e3;
-    --carta-success: #8BC43F;
+    --carta-success: #8bc43f;
     --carta-info: #d7e2fc;
-    --carta-warning: #FFD143;
-    --carta-danger: #FF993A;
+    --carta-warning: #ffd143;
+    --carta-danger: #ff993a;
 
     /* Iconos */
     --icon-carta-primary: #ffffff;
@@ -335,7 +335,7 @@ span {
 }
 
 ul {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 }
 
 li {
@@ -508,7 +508,6 @@ div.dataTables_processing {
 }
 
 @media (max-width: 1024px) {
-
     table.table-bordered.dataTable th,
     table.table-bordered.dataTable td {
         border-left-width: 1px;
@@ -605,7 +604,6 @@ div.dataTables_processing {
 }
 
 @media screen and (min-width: 1200px) {
-
     .navbar-brand svg,
     .navbar-brand span {
         display: none;

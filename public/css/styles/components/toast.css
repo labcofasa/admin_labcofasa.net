@@ -1,0 +1,15 @@
+.toast {
+    color: var(--text-color);
+    background-color: var(--bg-sidebar);
+    border: 0;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    transition: var(--tran-03);
+}
+
+.toast-header {
+    color: var(--text-color);
+    background-color: var(--bg-sidebar);
+    border-bottom: var(--bs-toast-border-width) solid var(--table-border);
+    transition: var(--tran-03);
+}
