@@ -5,21 +5,16 @@ namespace App\Models\Empleos;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vacante extends Model
+class TipoContratacion extends Model
 {
     use HasFactory;
 
-    protected $table = 'vacantes';
+    protected $table = 'tipo_contratacion';
     public $timestamps = false;
-    protected $dates = ['fecha_creacion', 'fecha_modificacion', 'fecha_vencimiento'];
+    protected $dates = ['fecha_creacion', 'fecha_modificacion'];
 
     protected $fillable = [
         'nombre',
-        'descripcion',
-        'requisitos',
-        'beneficios',
-        'fecha_vencimiento',
-        'imagen',
         'fecha_creacion',
         'fecha_modificacion'
     ];

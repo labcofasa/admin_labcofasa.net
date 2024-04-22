@@ -1,0 +1,14 @@
+.vacante {
+    padding: 0.5rem 2rem !important;
+}
+
+.offcanvas-full-screen {
+    background-color: var(--body-bg);
+}
+
+.offcanvas-tabla {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

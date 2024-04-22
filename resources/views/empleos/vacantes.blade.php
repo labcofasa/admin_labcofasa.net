@@ -99,11 +99,13 @@
                         <small>30</small>
                     </div>
                     <div class="aviso mb-1">
-                        <small>Fecha de vencimiento</small>
+                        <small>Fecha límite de solicitud</small>
                         <small id="fecha_vencimiento">{{ $vacante->fecha_vencimiento }}</small>
                     </div>
                     <div class="botones">
-                        <button class="btn btn-warning">Más información</button>
+                        <button data-bs-toggle="offcanvas" data-bs-target="#verVacanteOffCanvas{{ $vacante->id }}"
+                            aria-controls="verVacanteOffCanvas" class="btn btn-warning">Más información</button>
+                        <x-empleos.ver :vacante="$vacante" />
                         <button class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-title="Compartir">
                             <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"

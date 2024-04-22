@@ -38,31 +38,44 @@
             @csrf
             @method('POST')
             <div class="row add-vacante">
-                <div class="col-12 col-xl-8">
+                <div class="col-12 col-xl-4">
+                    <h6 class="mb-3">Información principal</h6>
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Titúlo de la vacante</label>
+                        <label for="nombre" class="form-label">Título del puesto<span class="obligatorio">
+                                *</span></label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required
                             autocomplete="off">
                         <div class="invalid-feedback">
-                            Por favor, ingrese el titúlo de la vacante.
+                            Por favor, ingrese el titúlo.
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción de la vacante</label>
+                        <label for="descripcion" class="form-label">Descripción del trabajo<span class="obligatorio">
+                                *</span></label>
                         <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
                         <div class="invalid-feedback">
-                            Por favor, ingrese la descripción de la vacante.
+                            Por favor, ingrese la descripción.
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="fecha_vencimiento" class="form-label">Fecha de vencimiento</label>
-                        <input type="date" required class="form-control" id="fecha_vencimiento" name="fecha_vencimiento">
+                        <label for="requisitos" class="form-label">Requisitos de calificación<span class="obligatorio">
+                                *</span></label>
+                        <textarea class="form-control" name="requisitos" id="requisitos" required></textarea>
                         <div class="invalid-feedback">
-                            Por favor, ingrese la fecha de vencimiento.
+                            Por favor, ingrese los requerimientos.
                         </div>
                     </div>
                     <div class="mb-3">
-                        <div class="form-label">Imagen principal</div>
+                        <label for="beneficios" class="form-label">Beneficios<span class="obligatorio">
+                                *</span></label>
+                        <textarea class="form-control" name="beneficios" id="beneficios" required></textarea>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese los beneficios.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">Imagen principal<span class="obligatorio">
+                                *</span></div>
                         <label for="imagen" class="subir-imagen dropzone-area" id="dropzone">
                             <span>
                                 <svg class="archivo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50"
@@ -99,6 +112,126 @@
                     <button type="button" class="btn btn-danger" id="eliminar-imagen" style="display: none;">Eliminar
                         imagen</button>
                 </div>
+                <div class="col-12 col-xl-4">
+                    <h6 class="mb-3">Información adicional</h6>
+                    <div class="mb-3">
+                        <label for="fecha_vencimiento" class="form-label">Fecha límite de solicitud<span
+                                class="obligatorio">
+                                *</span></label>
+                        <input type="date" required class="form-control" id="fecha_vencimiento"
+                            name="fecha_vencimiento">
+                        <div class="invalid-feedback">
+                            Por favor, ingrese la fecha límite de solicitud.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="encabezado mb-0">
+                            <label for="contrato" class="form-label">Tipo de contrato<span class="obligatorio">
+                                    *</span></label>
+                            <button type="button" class="link_name" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                <small class="fw-bold">Agregar nuevo</small>
+                            </button>
+                            <x-empleos.tipo-contratacion />
+                        </div>
+                        <select class="form-select" id="contrato" name="contrato" required>
+                            <option value="">Seleccione el tipo</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, seleccione el tipo de contrato.
+                        </div>
+                    </div>
+                    {{-- <div class="mb-3">
+                        <div class="encabezado mb-0">
+                            <label for="modalidad" class="form-label">Modalidad del puesto<span class="obligatorio">
+                                    *</span></label>
+                            <a href="#" class="link_name"><small class="fw-bold">Agregar nuevo</small></a>
+                        </div>
+                        <select class="form-select" id="modalidad" name="modalidad" required>
+                            <option value="">Seleccione la modalidad</option>
+                            <option value="">Indefinido</option>
+                            <option value="">Tiempo completo</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, seleccione la modalidad.
+                        </div>
+                    </div> --}}
+                    {{-- <div class="mb-3">
+                        <h6 class="mb-3">Ubicación</h6>
+                        <div class="mb-3">
+                            <div class="encabezado mb-0">
+                                <div for="pais_vacante" class="form-label">País<span class="obligatorio">
+                                        *</span></div>
+                                <a href="{{ route('pag.empresas') }}" class="link_name" type="button"><small
+                                        class="fw-bold">Agregar
+                                        nuevo</small></a>
+                            </div>
+                            <select class="form-select" id="pais_vacante" required>
+                                <option value="">Seleccione el país</option>
+                            </select>
+                            <input type="hidden" id="id_pais" name="pais_id" value="">
+                            <div class="invalid-feedback">
+                                Por favor, seleccione el país.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="departamento_vacante" class="form-label">Departamento<span class="obligatorio">
+                                    *</span></label>
+                            <select class="form-select" id="departamento_vacante" required>
+                                <option value="">Seleccione el departamento</option>
+                            </select>
+                            <input type="hidden" id="id_departamento" name="departamento_id" value="">
+                            <div class="invalid-feedback">
+                                Por favor, seleccione el departamento.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="municipio_vacante" class="form-label">Municipio<span class="obligatorio">
+                                    *</span></label>
+                            <select class="form-select" id="municipio_vacante" required>
+                                <option value="">Seleccione el municipio</option>
+                            </select>
+                            <input type="hidden" id="id_municipio" name="municipio_id" value="">
+                            <div class="invalid-feedback">
+                                Por favor, seleccione el municipio.
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+                <div class="col-12 col-xl-4">
+                    <h6 class="mb-3">Información empresarial</h6>
+                    {{-- <div class="mb-3">
+                        <div class="encabezado mb-0">
+                            <label for="empresa_vacante" class="form-label">Empresa<span class="obligatorio">
+                                    *</span></label>
+                            <a href="{{ route('pag.empresas') }}" class="link_name"><small class="fw-bold">Agregar
+                                    nuevo</small></a>
+                        </div>
+                        <select id="empresa_vacante" class="form-control" required>
+                            <option value="">Seleccione una empresa</option>
+                        </select>
+                        <input type="hidden" id="id_empresa" name="empresa_id" value="">
+                        <div class="invalid-feedback">
+                            Seleccione una empresa
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="encabezado mb-0">
+                            <label for="division" class="form-label">Divisiones<span class="obligatorio">
+                                    *</span></label>
+                            <a href="{{ route('pag.empresas') }}" class="link_name"><small class="fw-bold">Agregar
+                                    nuevo</small></a>
+                        </div>
+                        <select class="form-select" id="division" name="division" required>
+                            <option value="">Seleccione la división</option>
+                            <option value="">Contabilidad</option>
+                            <option value="">Informatica</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, seleccione la división.
+                        </div>
+                    </div> --}}
+                </div>
             </div>
         </form>
     </div>
@@ -106,4 +239,5 @@
     <x-notificaciones.notificaciones-ia :usuario="$usuario" />
 
     <script src="{{ asset('js/empleos/crear-vacante.js') }}"></script>
+    <script src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
 @endsection

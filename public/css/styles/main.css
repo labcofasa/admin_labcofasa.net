@@ -295,7 +295,6 @@ h2 {
 }
 
 h3 {
-    font-size: var(--font-titulo) !important;
     font-weight: 600 !important;
     color: var(--text-color) !important;
     margin: 10px 0;
@@ -308,7 +307,6 @@ h5 {
 }
 
 h6 {
-    font-size: var(--font-titulo) !important;
     font-weight: 600 !important;
     color: var(--text-color) !important;
     transition: var(--tran-03);
@@ -508,6 +506,7 @@ div.dataTables_processing {
 }
 
 @media (max-width: 1024px) {
+
     table.table-bordered.dataTable th,
     table.table-bordered.dataTable td {
         border-left-width: 1px;
@@ -604,6 +603,7 @@ div.dataTables_processing {
 }
 
 @media screen and (min-width: 1200px) {
+
     .navbar-brand svg,
     .navbar-brand span {
         display: none;
@@ -795,7 +795,7 @@ div.dataTables_processing {
 
 @media screen and (max-width: 575px) {
     h1 {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 600;
     }
 
@@ -831,6 +831,13 @@ div.dataTables_processing {
     .container-counters .cards .counter .text .counter-text {
         font-size: 12px !important;
     }
+
+    .offcanvas-full-screen {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100%;
+        max-height: 100%;
+    }
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
@@ -861,6 +868,13 @@ div.dataTables_processing {
 
     .card .menu-bar li svg {
         min-width: 50px !important;
+    }
+
+    .offcanvas-full-screen {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100%;
+        max-height: 100%;
     }
 }
 
@@ -893,6 +907,13 @@ div.dataTables_processing {
     .card .menu-bar li svg {
         min-width: 50px !important;
     }
+
+    .offcanvas-full-screen {
+        width: 80% !important;
+        max-width: 80% !important;
+        height: 100%;
+        max-height: 100%;
+    }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1024px) {
@@ -908,6 +929,13 @@ div.dataTables_processing {
         grid-template-columns: repeat(3, 1fr);
         margin-top: 5px;
     }
+
+    .offcanvas-full-screen {
+        width: 60% !important;
+        max-width: 60% !important;
+        height: 100%;
+        max-height: 100%;
+    }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1280px) {
@@ -917,6 +945,13 @@ div.dataTables_processing {
 
     .container-empleos {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .offcanvas-full-screen {
+        width: 50% !important;
+        max-width: 50% !important;
+        height: 100%;
+        max-height: 100%;
     }
 }
 
@@ -928,6 +963,13 @@ div.dataTables_processing {
     .container-empleos {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .offcanvas-full-screen {
+        width: 40% !important;
+        max-width: 40% !important;
+        height: 100%;
+        max-height: 100%;
+    }
 }
 
 @media screen and (min-width: 1441px) and (max-width: 1919px) {
@@ -938,6 +980,13 @@ div.dataTables_processing {
     .container-empleos {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .offcanvas-full-screen {
+        width: 40% !important;
+        max-width: 40% !important;
+        height: 100%;
+        max-height: 100%;
+    }
 }
 
 @media screen and (min-width: 1920px) {
@@ -947,5 +996,12 @@ div.dataTables_processing {
 
     .container-empleos {
         grid-template-columns: repeat(5, 1fr);
+    }
+
+    .offcanvas-full-screen {
+        width: 30% !important;
+        max-width: 30% !important;
+        height: 100%;
+        max-height: 100%;
     }
 }

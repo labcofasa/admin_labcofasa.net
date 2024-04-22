@@ -13,7 +13,7 @@
                     <path d="M8.99996 17C8.99996 17 4.00001 13.3176 4 12C3.99999 10.6824 9 7 9 7" stroke="currentColor"
                         stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <h1>@yield('titulo') {{ $vacante->nombre }}</h1>
+                <h1>@yield('titulo'): {{ $vacante->nombre }}</h1>
             </a>
             <button id="actualizarVacante" class="btn btn-lg btn-success d-none d-xl-block accion" type="button">
                 <div class="accion">

@@ -1,7 +1,6 @@
 /* Form inputs */
 .form input {
     outline: 0;
-    background-color: var(--btn-secondary);
     color: var(--text-color);
     border: 0;
     padding: 15px;

@@ -10,14 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('vacantes', function (Blueprint $table) {
+        Schema::create('tipo_contratacion', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->text('descripcion');
-            $table->text('requisitos');
-            $table->text('beneficios');
-            $table->date('fecha_vencimiento');
-            $table->string('imagen')->nullable();
             $table->timestamp('fecha_creacion');
             $table->timestamp('fecha_modificacion');
         });
@@ -28,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('vacantes');
+        Schema::dropIfExists('tipo_contratacion');
     }
 };

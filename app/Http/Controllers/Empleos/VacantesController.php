@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Empleos\Vacante;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\QueryException;
 
@@ -34,6 +33,8 @@ class VacantesController extends Controller
         $this->validate($request, [
             'nombre' => 'required|string',
             'descripcion' => 'required|string',
+            'requisitos' => 'required|string',
+            'beneficios' => 'required|string',
             'fecha_vencimiento' => 'required|date',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg',
         ]);
@@ -43,6 +44,8 @@ class VacantesController extends Controller
 
             $vacante->nombre = $request->input('nombre');
             $vacante->descripcion = $request->input('descripcion');
+            $vacante->requisitos = $request->input('requisitos');
+            $vacante->beneficios = $request->input('beneficios');
             $vacante->fecha_vencimiento = $request->input('fecha_vencimiento');
             $vacante->fecha_creacion = now();
             $vacante->fecha_modificacion = now();
@@ -122,8 +125,6 @@ class VacantesController extends Controller
             return redirect()->back()->with('error', 'Hubo un error al actualizar la vacante');
         }
     }
-
-
 
     public function destroy($id)
     {

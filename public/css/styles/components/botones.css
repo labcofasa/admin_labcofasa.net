@@ -640,16 +640,8 @@ button {
         box-shadow: none !important;
     }
 
-    .dataTables_filter input {
-        background-color: var(--body-bg) !important;
-    }
-
     .table > :not(caption) > * > * {
         background-color: var(--body-bg) !important;
-    }
-
-    .dataTables_filter input {
-        background-color: var(--body-bg);
     }
 
     .nav-tabs .nav-link.active {

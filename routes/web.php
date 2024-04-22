@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AutenticacionController;
 use App\Http\Controllers\Auth\RestablecerController;
 use App\Http\Controllers\ClasificacionController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\Empleos\TipoContratacionController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EntidadController;
 use App\Http\Controllers\GiroController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\Empleos\VacantesController;
 use App\Http\Controllers\FormsConozcaClienteController;
 use App\Http\Controllers\FormulariosController;
+use App\Models\Empleos\TipoContratacion;
 use App\Models\Empleos\Vacante;
 use Illuminate\Support\Facades\Route;
 
@@ -190,6 +192,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/vacantes/{id}/editar', [VacantesController::class, 'edit'])->name('editar.vacante');
         Route::put('/actualizar-vacante/{id}', [VacantesController::class, 'update'])->name('actualizar.vacante');
         Route::delete('/eliminar-vacante/{id}', [VacantesController::class, 'destroy'])->name('eliminar.vacante');
+
+        Route::get('/tabla-tipo-contratacion', [TipoContratacionController::class, 'tablaTipoContratacion']);
     });
 });
 
