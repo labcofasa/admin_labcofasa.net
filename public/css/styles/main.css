@@ -32,26 +32,26 @@
     --primary: #33b7a0;
     --secondary: #b5e4ca;
     --secondary-hover: #b5e4ca;
-    --accent: #33b7a0;
-    --positive: #33b7a0;
+    --accent: #20c997;
+    --positive: #20c997;
     --negative: ;
     --info: #e0edfc;
     --warning: ;
 
-    --action: #33b7a0;
-    --action-title: #fff;
+    --action: #0dcaf01a;
+    --action-title: #0dcaf0;
 
     /* Botones */
-    --btn-primary: #e8f0fe;
+    --btn-primary: #0d6efd1a;
     --btn-primary-hover: #d0dffa;
     --btn-secondary: #eeeeee;
     --btn-secondary-hover: #e5e7e9;
-    --btn-success: #e7f9ed;
-    --btn-success-hover: #bde2c7;
-    --btn-danger: #fce8e6;
-    --btn-danger-hover: #f8d8d5;
-    --btn-warning: #fff3cd;
-    --btn-warning-hover: #ffe5b4;
+    --btn-success: #20c9971a;
+    --btn-success-hover: #d6f5df;
+    --btn-danger: #ed0b211a;
+    --btn-danger-hover: #ffdade;
+    --btn-warning: #ffc1071a;
+    --btn-warning-hover: #fff2da;
     --btn-info: ;
 
     --bg-tooltip: #27d06e;
@@ -65,10 +65,10 @@
     --btn-paginacion-color-hover: #fff;
 
     /* Iconos */
-    --icon-primary: #1967d2;
+    --icon-primary: #0d6efd;
     --icon-secondary: #454545;
-    --icon-success: #27d06e;
-    --icon-danger: #ea4335;
+    --icon-success: #20c997;
+    --icon-danger: #dc3545;
     --icon-warning: #ffc107;
     --icon-info: ;
 
@@ -89,7 +89,7 @@
     --sidebar-bg: #f0f4f9;
     --sidebar-bg-hover: #3c404314;
     /* --sidebar-icon-hover: #4a4f53; */
-    --sidebar-bg-active: #ddfff9;
+    --sidebar-bg-active: #20c9971a;
     --border-radius-sidebar: 25px;
     --card-bg: #ffffff;
     --toggle-shadow: #999999;
@@ -158,8 +158,8 @@ body.dark {
     --primary: #33b7a0;
     --secondary: #0c352d;
     --secondary-hover: #0c352d;
-    --accent: #e1e1e1;
-    --positive: #ffffff;
+    --accent: #20c997;
+    --positive: #20c997;
     --negative: ;
     --info: #172d3b;
     --warning: ;
@@ -168,16 +168,16 @@ body.dark {
     --action-title: #000000;
 
     /* Botones */
-    --btn-primary: #2a4d7c;
-    --btn-primary-hover: #3a5f8c;
+    --btn-primary: #0d6efd1a;
+    --btn-primary-hover: #1c324d;
     --btn-secondary: #323232;
     --btn-secondary-hover: #3d3d3d;
-    --btn-success: #2a5739;
-    --btn-success-hover: #3a6f49;
+    --btn-success: #20c9971a;
+    --btn-success-hover: #1e472a;
     --btn-danger: #7a3030;
     --btn-danger-hover: #873434;
-    --btn-warning: #7a5f00;
-    --btn-warning-hover: #8a6f10;
+    --btn-warning: #ffc1071a;
+    --btn-warning-hover: #64541b;
     --btn-info: ;
 
     --bg-tooltip: #27d06e;
@@ -192,9 +192,9 @@ body.dark {
     --btn-paginacion-color-hover: #fff;
 
     /* Iconos */
-    --icon-primary: #c9dbfd;
+    --icon-primary: #0d6efd;
     --icon-secondary: #c2c2c2;
-    --icon-success: #6de9a0;
+    --icon-success: #20c997;
     --icon-danger: #ff1400;
     --icon-warning: #ffc107;
     --icon-info: ;
@@ -219,7 +219,7 @@ body.dark {
     --sidebar-bg: #1e1f20;
     --sidebar-bg-hover: #323232;
     --sidebar-icon-hover: #adb2b6;
-    --sidebar-bg-active: #323232;
+    --sidebar-bg-active: #20c9971a;
     --card-bg: #1e1f20;
     --toggle-shadow: #383838;
     --table-border: #373b3e;

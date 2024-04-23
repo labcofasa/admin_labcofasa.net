@@ -26,12 +26,33 @@
         <div class="container-empleos">
             @foreach ($vacantes as $vacante)
                 <div class="cards">
-                    <div class="acciones">
+                    <div class="imagen">
+                        @if ($vacante->imagen)
+                            <img src="{{ asset('images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen) }}">
+                        @else
+                            <img src="{{ asset('images/empleo-defecto.png') }}">
+                        @endif
+                    </div>
+                    <div class="titulo">
+                        <h6>{{ $vacante->nombre }}</h6>
+                    </div>
+                    <div class="info">
+                        <small>Solicitudes</small>
+                        <small>30</small>
+                    </div>
+                    <div class="aviso mb-1">
+                        <small>Fecha límite de solicitud</small>
+                        <small id="fecha_vencimiento">{{ $vacante->fecha_vencimiento }}</small>
+                    </div>
+                    <div class="botones">
+                        <button data-bs-toggle="offcanvas" data-bs-target="#verVacanteOffCanvas{{ $vacante->id }}"
+                            aria-controls="verVacanteOffCanvas" class="btn btn-warning">Más información</button>
+                        <x-empleos.ver :vacante="$vacante" />
                         <div class="btn-group">
-                            <button class="btn-edit dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static"
-                                aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                    color="#000000" fill="none">
+                            <button class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown"
+                                data-bs-display="static" aria-expanded="false">
+                                <svg class="icon-danger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    width="22" height="22" color="#000000" fill="none">
                                     <path
                                         d="M16.2141 4.98239L17.6158 3.58063C18.39 2.80646 19.6452 2.80646 20.4194 3.58063C21.1935 4.3548 21.1935 5.60998 20.4194 6.38415L19.0176 7.78591M16.2141 4.98239L10.9802 10.2163C9.93493 11.2616 9.41226 11.7842 9.05637 12.4211C8.70047 13.058 8.3424 14.5619 8 16C9.43809 15.6576 10.942 15.2995 11.5789 14.9436C12.2158 14.5877 12.7384 14.0651 13.7837 13.0198L19.0176 7.78591M16.2141 4.98239L19.0176 7.78591"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -81,45 +102,7 @@
                                     </button>
                                 </li>
                             </ul>
-
                         </div>
-                    </div>
-                    <div class="imagen">
-                        @if ($vacante->imagen)
-                            <img src="{{ asset('images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen) }}">
-                        @else
-                            <img src="{{ asset('images/empleo-defecto.png') }}">
-                        @endif
-                    </div>
-                    <div class="titulo">
-                        <h6>{{ $vacante->nombre }}</h6>
-                    </div>
-                    <div class="info">
-                        <small>Solicitudes</small>
-                        <small>30</small>
-                    </div>
-                    <div class="aviso mb-1">
-                        <small>Fecha límite de solicitud</small>
-                        <small id="fecha_vencimiento">{{ $vacante->fecha_vencimiento }}</small>
-                    </div>
-                    <div class="botones">
-                        <button data-bs-toggle="offcanvas" data-bs-target="#verVacanteOffCanvas{{ $vacante->id }}"
-                            aria-controls="verVacanteOffCanvas" class="btn btn-warning">Más información</button>
-                        <x-empleos.ver :vacante="$vacante" />
-                        <button class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top"
-                            data-bs-title="Compartir">
-                            <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                width="24" height="24" color="#000000" fill="none">
-                                <path
-                                    d="M20.3927 8.03168L18.6457 6.51461C17.3871 5.42153 16.8937 4.83352 16.2121 5.04139C15.3622 5.30059 15.642 6.93609 15.642 7.48824C14.3206 7.48824 12.9468 7.38661 11.6443 7.59836C7.34453 8.29742 6 11.3566 6 14.6525C7.21697 13.9065 8.43274 13.0746 9.8954 12.7289C11.7212 12.2973 13.7603 12.5032 15.642 12.5032C15.642 13.0554 15.3622 14.6909 16.2121 14.9501C16.9844 15.1856 17.3871 14.5699 18.6457 13.4769L20.3927 11.9598C21.4642 11.0293 22 10.564 22 9.99574C22 9.4275 21.4642 8.96223 20.3927 8.03168Z"
-                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path
-                                    d="M10.5676 3C6.70735 3.00694 4.68594 3.10152 3.39411 4.39073C2 5.78202 2 8.02125 2 12.4997C2 16.9782 2 19.2174 3.3941 20.6087C4.78821 22 7.03198 22 11.5195 22C16.0071 22 18.2509 22 19.645 20.6087C20.6156 19.64 20.9104 18.2603 21 16"
-                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </button>
                     </div>
                 </div>
                 <x-empleos.eliminar :vacante="$vacante" />

@@ -45,7 +45,7 @@
                                     <label for="tipo_persona_editar" class="form-label">Tipo de persona</label>
                                     <select class="form-select" id="tipo_persona_editar" name="tipo_persona_editar">
                                         <option value="">Seleccione el tipo</option>
-                                        <option value="Persona Natural / Titular de Establecimiento">Persona Natural /
+                                        <option value="Persona Natural">Persona Natural /
                                             Titular de
                                             Establecimiento</option>
                                         <option value="Persona Jurídica">Persona Jurídica</option>
