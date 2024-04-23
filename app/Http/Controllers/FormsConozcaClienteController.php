@@ -364,7 +364,8 @@ class FormsConozcaClienteController extends Controller
                 $documento = $request->file('documento_identidad_persona_natural');
 
                 if ($documento->isValid()) {
-                    $nombreArchivo = time() . '_' . $documento->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivo = $numeroAleatorio . '_' . $documento->getClientOriginalName();
 
                     $documento->move($rutaCarpeta, $nombreArchivo);
 
@@ -374,11 +375,13 @@ class FormsConozcaClienteController extends Controller
                 }
             }
 
+
             if ($request->hasFile('documento_tarjeta_iva_persona_natural')) {
                 $tarjetaRegistro = $request->file('documento_tarjeta_iva_persona_natural');
 
                 if ($tarjetaRegistro->isValid()) {
-                    $nombreArchivoTarjetaRegistro = time() . '_' . $tarjetaRegistro->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreArchivoTarjetaRegistro = $numeroAleatorio . '_' . $tarjetaRegistro->getClientOriginalName();
 
                     $tarjetaRegistro->move($rutaCarpeta, $nombreArchivoTarjetaRegistro);
 
@@ -392,7 +395,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoNitPersonaNatural = $request->file('documento_nit_persona_natural');
 
                 if ($documentoNitPersonaNatural->isValid()) {
-                    $nombreDocumentoNitPersonaNatural = time() . '_' . $documentoNitPersonaNatural->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoNitPersonaNatural = $numeroAleatorio . '_' . $documentoNitPersonaNatural->getClientOriginalName();
 
                     $documentoNitPersonaNatural->move($rutaCarpeta, $nombreDocumentoNitPersonaNatural);
 
@@ -406,7 +410,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoDomicilioPersonaNatural = $request->file('documento_domicilio_persona_natural');
 
                 if ($documentoDomicilioPersonaNatural->isValid()) {
-                    $nombreDocumentoDomicilioPersonaNatural = time() . '_' . $documentoDomicilioPersonaNatural->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoDomicilioPersonaNatural = $numeroAleatorio . '_' . $documentoDomicilioPersonaNatural->getClientOriginalName();
 
                     $documentoDomicilioPersonaNatural->move($rutaCarpeta, $nombreDocumentoDomicilioPersonaNatural);
 
@@ -420,7 +425,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoDnmPersonaNatural = $request->file('documento_dnm_persona_natural');
 
                 if ($documentoDnmPersonaNatural->isValid()) {
-                    $nombreDocumentoDnmPersonaNatural = time() . '_' . $documentoDnmPersonaNatural->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoDnmPersonaNatural = $numeroAleatorio . '_' . $documentoDnmPersonaNatural->getClientOriginalName();
 
                     $documentoDnmPersonaNatural->move($rutaCarpeta, $nombreDocumentoDnmPersonaNatural);
 
@@ -434,7 +440,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoIdentificacionRepresentante = $request->file('documento_identificacion_representante');
 
                 if ($documentoIdentificacionRepresentante->isValid()) {
-                    $nombreDocumentoIdentificacionRepresentate = time() . '_' . $documentoIdentificacionRepresentante->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoIdentificacionRepresentate = $numeroAleatorio . '_' . $documentoIdentificacionRepresentante->getClientOriginalName();
 
                     $documentoIdentificacionRepresentante->move($rutaCarpeta, $nombreDocumentoIdentificacionRepresentate);
 
@@ -448,7 +455,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoNitRepresentante = $request->file('documento_nit_representante');
 
                 if ($documentoNitRepresentante->isValid()) {
-                    $nombreDocumentoNitRepresentate = time() . '_' . $documentoNitRepresentante->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoNitRepresentate = $numeroAleatorio . '_' . $documentoNitRepresentante->getClientOriginalName();
 
                     $documentoNitRepresentante->move($rutaCarpeta, $nombreDocumentoNitRepresentate);
 
@@ -462,7 +470,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoCredencialRepresentante = $request->file('documento_credencial_representante');
 
                 if ($documentoCredencialRepresentante->isValid()) {
-                    $nombreCredencialRepresentante = time() . '_' . $documentoCredencialRepresentante->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreCredencialRepresentante = $numeroAleatorio . '_' . $documentoCredencialRepresentante->getClientOriginalName();
 
                     $documentoCredencialRepresentante->move($rutaCarpeta, $nombreCredencialRepresentante);
 
@@ -476,7 +485,8 @@ class FormsConozcaClienteController extends Controller
                 $documentosEscritura = $request->file('documento_escritura_juridico');
                 foreach ($documentosEscritura as $documento) {
                     if ($documento->isValid()) {
-                        $nombreArchivoEscritura = time() . '_' . $documento->getClientOriginalName();
+                        $numeroAleatorio = mt_rand(100000, 999999);
+                        $nombreArchivoEscritura = $numeroAleatorio . '_' . $documento->getClientOriginalName();
                         $documento->move($rutaCarpeta, $nombreArchivoEscritura);
 
                         $documentoEscrituraJuridico = new FrmConozcaClienteArchivos();
@@ -493,7 +503,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoMatriculaJuridico = $request->file('documento_matricula_juridico');
 
                 if ($documentoMatriculaJuridico->isValid()) {
-                    $nombreMatriculaJuridico = time() . '_' . $documentoMatriculaJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreMatriculaJuridico = $numeroAleatorio . '_' . $documentoMatriculaJuridico->getClientOriginalName();
 
                     $documentoMatriculaJuridico->move($rutaCarpeta, $nombreMatriculaJuridico);
 
@@ -507,7 +518,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoAcuerdoJuridico = $request->file('documento_acuerdo_juridico');
 
                 if ($documentoAcuerdoJuridico->isValid()) {
-                    $nombreAcuerdoJuridico = time() . '_' . $documentoAcuerdoJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreAcuerdoJuridico = $numeroAleatorio . '_' . $documentoAcuerdoJuridico->getClientOriginalName();
 
                     $documentoAcuerdoJuridico->move($rutaCarpeta, $nombreAcuerdoJuridico);
 
@@ -521,7 +533,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoNitJuridico = $request->file('documento_nit_juridico');
 
                 if ($documentoNitJuridico->isValid()) {
-                    $nombreNitJuridico = time() . '_' . $documentoNitJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreNitJuridico = $numeroAleatorio . '_' . $documentoNitJuridico->getClientOriginalName();
 
                     $documentoNitJuridico->move($rutaCarpeta, $nombreNitJuridico);
 
@@ -535,7 +548,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoIvaJuridico = $request->file('documento_iva_juridico');
 
                 if ($documentoIvaJuridico->isValid()) {
-                    $nombreIvaJuridico = time() . '_' . $documentoIvaJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreIvaJuridico = $numeroAleatorio . '_' . $documentoIvaJuridico->getClientOriginalName();
 
                     $documentoIvaJuridico->move($rutaCarpeta, $nombreIvaJuridico);
 
@@ -549,7 +563,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoDomicilioJuridico = $request->file('documento_domicilio_juridico');
 
                 if ($documentoDomicilioJuridico->isValid()) {
-                    $nombreDomicilioJuridico = time() . '_' . $documentoDomicilioJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDomicilioJuridico = $numeroAleatorio . '_' . $documentoDomicilioJuridico->getClientOriginalName();
 
                     $documentoDomicilioJuridico->move($rutaCarpeta, $nombreDomicilioJuridico);
 
@@ -563,7 +578,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoDnmJuridico = $request->file('documento_dnm_juridico');
 
                 if ($documentoDnmJuridico->isValid()) {
-                    $nombreDnmJuridico = time() . '_' . $documentoDnmJuridico->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDnmJuridico = $numeroAleatorio . '_' . $documentoDnmJuridico->getClientOriginalName();
 
                     $documentoDnmJuridico->move($rutaCarpeta, $nombreDnmJuridico);
 
@@ -577,7 +593,8 @@ class FormsConozcaClienteController extends Controller
                 $documentoFirmado = $request->file('formulario_firmado');
 
                 if ($documentoFirmado->isValid()) {
-                    $nombreDocumentoFirmado = time() . '_' . $documentoFirmado->getClientOriginalName();
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoFirmado = $numeroAleatorio . '_' . $documentoFirmado->getClientOriginalName();
 
                     $documentoFirmado->move($rutaCarpeta, $nombreDocumentoFirmado);
 
