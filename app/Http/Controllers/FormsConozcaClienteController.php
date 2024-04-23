@@ -337,7 +337,8 @@ class FormsConozcaClienteController extends Controller
             $formsccc->tipo_de_documento = $request->input('tipo_de_documento');
             $formsccc->numero_de_documento = str_replace('-', '', $request->input('numero_de_documento'));
             $formsccc->fecha_de_vencimiento = $request->input('fecha_de_vencimiento');
-            $formsccc->registro_iva_nrc = str_replace('-', '', $request->input('registro_iva_nrc'));
+            $registro_iva_nrc = $request->input('registro_iva_nrc');
+            $formsccc->registro_iva_nrc = empty($registro_iva_nrc) ? null : str_replace('-', '', $registro_iva_nrc);
             $formsccc->email = $request->input('email');
             $formsccc->telefono = str_replace(['+', '-'], '', $request->input('telefono'));
             $formsccc->giro_id = $request->input('giro_id');
@@ -594,16 +595,20 @@ class FormsConozcaClienteController extends Controller
             $formsccj->frm_conozca_cliente_id = $formsccc->id;
             $formsccj->clasificacion_id = $request->input('clasificacion_juridico_id');
             $formsccj->nacionalidad_juridico = $request->input('nacionalidad_juridico');
-            $formsccj->numero_de_nit_juridico = str_replace('-', '', $request->input('numero_de_nit_juridico'));
+            $numero_de_nit_juridico = $request->input('numero_de_nit_juridico');
+            $formsccj->numero_de_nit_juridico = empty($numero_de_nit_juridico) ? null : str_replace('-', '', $numero_de_nit_juridico);
             $formsccj->fecha_de_constitucion_juridico = $request->input('fecha_de_constitucion_juridico');
-            $formsccj->registro_nrc_juridico = str_replace('-', '', $request->input('registro_nrc_juridico'));
+            $registro_nrc_juridico = $request->input('registro_nrc_juridico');
+            $formsccj->registro_nrc_juridico = empty($registro_nrc_juridico) ? null : str_replace('-', '', $registro_nrc_juridico);
             $formsccj->pais_id = $request->input('pais_juridico_id');
             $formsccj->departamento_id = $request->input('departamento_juridico_id');
             $formsccj->municipio_id = $request->input('municipio_juridico_id');
             $formsccj->giro_id = $request->input('giro_juridico_id');
-            $formsccj->telefono_juridico = str_replace(['+', '-'], '', $request->input('telefono_juridico'));
+            $telefono_juridico = $request->input('telefono_juridico');
+            $formsccj->telefono_juridico = empty($telefono_juridico) ? null : str_replace(['+', '-'], '', $telefono_juridico);
             $formsccj->sitio_web_juridico = $request->input('sitio_web_juridico');
-            $formsccj->numero_de_fax_juridico = str_replace(['+', '-'], '', $request->input('numero_de_fax_juridico'));
+            $numero_de_fax_juridico = $request->input('numero_de_fax_juridico');
+            $formsccj->numero_de_fax_juridico = empty($numero_de_fax_juridico) ? null : str_replace(['+', '-'], '', $numero_de_fax_juridico);
             $formsccj->direccion_juridico = $request->input('direccion_juridico');
             $formsccj->monto_proyectado = $request->input('monto_proyectado');
             $formsccj->fecha_de_creacion = now();
@@ -615,7 +620,9 @@ class FormsConozcaClienteController extends Controller
 
             foreach ($request->input('nombre_accionista', []) as $key => $nombreAccionista) {
                 $nacionalidadAccionista = $request->input('nacionalidad_accionista.' . $key);
-                $noIdentificacion = str_replace('-', '', $request->input('numero_identidad_accionista.' . $key));
+                $noIdentificacion = $request->input('numero_identidad_accionista.' . $key);
+                $noIdentificacion = str_replace('-', '', $noIdentificacion);
+                $noIdentificacion = empty($noIdentificacion) ? null : $noIdentificacion;
                 $porcentajeParticipacion = $request->input('porcentaje_participacion_accionista.' . $key);
 
                 $accionista = new FrmConocaClienteAccionista();
@@ -634,7 +641,9 @@ class FormsConozcaClienteController extends Controller
 
             foreach ($request->input('nombre_miembro', []) as $key => $nombreMiembro) {
                 $nacionalidadMiembro = $request->input('nacionalidad_miembro.' . $key);
-                $noIdentificacionMiembro = str_replace('-', '', $request->input('numero_identidad_miembro.' . $key));
+                $noIdentificacionMiembro = $request->input('numero_identidad_miembro.' . $key);
+                $noIdentificacionMiembro = str_replace('-', '', $noIdentificacionMiembro);
+                $noIdentificacionMiembro = empty($noIdentificacionMiembro) ? null : $noIdentificacionMiembro;
                 $cargoMiembro = $request->input('cargo_miembro.' . $key);
 
                 $miembro = new FrmConozcaClienteMiembro();
@@ -703,7 +712,7 @@ class FormsConozcaClienteController extends Controller
             return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
         }
     }
-    
+
     public function tablaConozcaCliente(Request $request)
     {
         $this->validate($request, [
