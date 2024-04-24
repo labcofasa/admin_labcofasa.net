@@ -193,6 +193,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/tabla-tipo-contratacion', [TipoContratacionController::class, 'tablaTipoContratacion']);
         Route::post('/creando-tipo-contratacion', [TipoContratacionController::class, 'store'])->name('crear.contratacion');
+        Route::put('/actualizar-tipo-contratacion/{id}', [TipoContratacionController::class, 'update']);
+        Route::delete('/eliminar-tipo-contratacion/{id}', [TipoContratacionController::class, 'destroy']);
     });
 });
 

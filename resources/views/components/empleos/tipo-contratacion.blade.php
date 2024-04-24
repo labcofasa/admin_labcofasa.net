@@ -23,14 +23,13 @@
                 </table>
             </div>
 
-            <div class="nuevo py-4">
+            <div class="nuevo pb-4">
                 <h6 class="mb-3">Crear nuevo tipo de contratacíon</h6>
-                <form id="contratacionForm" action="{{ route('crear.contratacion') }}" class="form needs-validation"
-                    method="POST">
+                <form id="contratacionForm" class="form needs-validation" method="POST">
                     @csrf
                     @method('POST')
                     <div class="mb-3">
-                        <label for="nombre_tipo" class="form-label">Tipo de contratacíon<span class="obligatorio">
+                        <label for="nombre_tipo" class="form-label">Nuevo tipo de contratacíon<span class="obligatorio">
                                 *</span></label>
                         <input type="text" class="form-control" id="nombre_tipo" name="nombre_tipo"
                             autocomplete="off" required>
@@ -39,10 +38,14 @@
                         </div>
                     </div>
                     <div class="text-end">
-                        <button type="button" id="guardarTipoBtn" class="btn btn-lg btn-success">Guardar tipo</button>
+                        <button id="guardarTipoBtn" class="btn btn-lg btn-success">Guardar tipo</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<x-empleos.contratacion.editar />
+<x-empleos.contratacion.eliminar />
+

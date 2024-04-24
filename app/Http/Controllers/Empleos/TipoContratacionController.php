@@ -24,9 +24,9 @@ class TipoContratacionController extends Controller
 
             $tipo->save();
 
-            return redirect()->route('crear.vacante')->with('success', 'Tipo de contratación registrado');
-        } catch (QueryException $e) {
-            return redirect()->back()->with('error', 'Hubo un error al crear el tipo de contratación');
+            return response()->json(['success' => true, 'message' => '¡Tipo de contratación registrada exitosamente!', 'data' => $tipo]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => 'Error al registrar el tipo de contratación: ' . $e->getMessage()]);
         }
     }
 
@@ -91,13 +91,36 @@ class TipoContratacionController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre_tipo' => 'sometimes|string',
+        ]);
 
+        try {
+            $tipo = TipoContratacion::findOrFail($id);
+
+            $tipo->nombre_tipo = $request->input('nombre_tipo');
+            $tipo->fecha_modificacion = now();
+
+            $tipo->save();
+
+            return response()->json(['success' => true, 'message' => '¡Tipo de contratación actualizada con éxito!']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => 'Error al actualizar el tipo de contratación.']);
+        }
     }
 
-    public function destroy()
+    public function destroy($id)
     {
+        $tipo = TipoContratacion::find($id);
 
+        try {
+            $tipo->delete();
+
+            return response()->json(['success' => true, 'message' => '¡Tipo de contratación eliminada con éxito!']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => 'Error al eliminar el tipo de contratación.']);
+        }
     }
 }

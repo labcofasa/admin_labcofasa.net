@@ -238,6 +238,8 @@
 
     <x-notificaciones.notificaciones-ia :usuario="$usuario" />
 
+    <x-notificaciones />
+
     <script src="{{ asset('js/empleos/crear-vacante.js') }}"></script>
     <script src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
 @endsection

@@ -1,5 +1,5 @@
 .vacante {
-    padding: 0.5rem 2rem !important;
+    padding: 0 2rem !important;
 }
 
 .offcanvas-full-screen {
@@ -11,4 +11,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.offcanvas-body .side .dropdown-menu {
+    background-color: var(--dropdown-menu);
+    padding: 3px 7px;
+    border-radius: var(--border-radius);
+    width: auto;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.offcanvas-body .side .dropdown-menu .dropdown-item {
+    border-radius: var(--border-radius);
 }
