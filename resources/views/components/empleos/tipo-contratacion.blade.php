@@ -23,14 +23,25 @@
                 </table>
             </div>
 
-            <div class="nuevo">
+            <div class="nuevo py-4">
                 <h6 class="mb-3">Crear nuevo tipo de contratacíon</h6>
-                <div class="mb-3">
-                    <label for="tipo_contratacion" class="form-label">Tipo de contratacíon<span class="obligatorio">
-                            *</span></label>
-                    <input type="text" class="form-control" id="tipo_contratacion" name="tipo_contratacion"
-                        autocomplete="off">
-                </div>
+                <form id="contratacionForm" action="{{ route('crear.contratacion') }}" class="form needs-validation"
+                    method="POST">
+                    @csrf
+                    @method('POST')
+                    <div class="mb-3">
+                        <label for="nombre_tipo" class="form-label">Tipo de contratacíon<span class="obligatorio">
+                                *</span></label>
+                        <input type="text" class="form-control" id="nombre_tipo" name="nombre_tipo"
+                            autocomplete="off" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese el tipo de contratacíon.
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" id="guardarTipoBtn" class="btn btn-lg btn-success">Guardar tipo</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

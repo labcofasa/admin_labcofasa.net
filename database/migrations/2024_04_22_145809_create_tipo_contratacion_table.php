@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('tipo_contratacion', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre_tipo');
             $table->timestamp('fecha_creacion');
             $table->timestamp('fecha_modificacion');
         });

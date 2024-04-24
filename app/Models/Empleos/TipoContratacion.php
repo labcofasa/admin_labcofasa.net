@@ -14,7 +14,7 @@ class TipoContratacion extends Model
     protected $dates = ['fecha_creacion', 'fecha_modificacion'];
 
     protected $fillable = [
-        'nombre',
+        'nombre_tipo',
         'fecha_creacion',
         'fecha_modificacion'
     ];

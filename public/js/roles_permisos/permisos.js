@@ -172,12 +172,8 @@ $(document).ready(function () {
                     orderable: false,
                 },
                 {
-                    targets: [0, 3, 4],
+                    targets: [0, 1, 2, 3, 4],
                     className: "nowrap",
-                },
-                {
-                    targets: [1, 2],
-                    className: "wrap",
                 },
                 {
                     targets: [1, 2, 3, 4],
@@ -188,9 +184,9 @@ $(document).ready(function () {
             columns: [
                 { data: "contador", title: "#" },
                 { data: "name", title: "Nombre del permiso" },
-                { data: "descripcion", title: "Descrición" },
+                { data: "descripcion", title: "Descripción" },
                 { data: "created_at", title: "Fecha de creación" },
-                { data: "updated_at", title: "Fecha de actualización" },
+                { data: "updated_at", title: "Fecha de modificación" },
             ],
 
             order: [[3, "desc"]],

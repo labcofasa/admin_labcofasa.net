@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             columns: [
                 { data: "contador", title: "#" },
-                { data: "nombre", title: "Tipo de contratación" },
+                { data: "nombre_tipo", title: "Tipo de contratación" },
             ],
             // order: [[13, "desc"]],
 
@@ -199,4 +199,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $.fn.DataTable.ext.pager.numbers_length = 5;
 
+    $('#guardarTipoBtn').click(function (e) {
+        e.preventDefault();
+
+        var formData = $('#contratacionForm').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: $('#contratacionForm').attr('action'),
+            data: formData,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
 });

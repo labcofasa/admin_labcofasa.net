@@ -268,21 +268,21 @@
     align-items: center;
     justify-content: space-evenly;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    background-color: var(--action);
-    --bs-btn-color: #121213;
-    --bs-btn-border-color: var(--action);
-    --bs-btn-hover-color: var(--action-hover);
-    --bs-btn-hover-bg: var(--action-hover);
-    --bs-btn-hover-border-color: var(--action-hover);
-    --bs-btn-focus-shadow: var(--action);
+    background-color: var(--btn-primary);
+    --bs-btn-color: var(--icon-primary);
+    --bs-btn-border-color: var(--btn-primary);
+    --bs-btn-hover-color: var(--btn-primaryr);
+    --bs-btn-hover-bg: var(--btn-primary);
+    --bs-btn-hover-border-color: var(--btn-primary);
+    --bs-btn-focus-shadow: var(--btn-primary);
     --bs-btn-active-color: #121213;
-    --bs-btn-active-bg: var(--action);
-    --bs-btn-active-border-color: var(--action);
+    --bs-btn-active-bg: var(--btn-primary);
+    --bs-btn-active-border-color: var(--btn-primary);
     z-index: 1;
 }
 
 .btn-float:hover {
-    background-color: var(--action);
+    background-color: var(--btn-primary);
 }
 
 .imagen-perfil {

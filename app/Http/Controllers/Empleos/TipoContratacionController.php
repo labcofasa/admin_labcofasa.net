@@ -4,13 +4,30 @@ namespace App\Http\Controllers\Empleos;
 
 use App\Http\Controllers\Controller;
 use App\Models\Empleos\TipoContratacion;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class TipoContratacionController extends Controller
 {
-    public function store()
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre_tipo' => 'nullable|string'
+        ]);
 
+        try {
+            $tipo = new TipoContratacion();
+
+            $tipo->nombre_tipo = $request->nombre_tipo;
+            $tipo->fecha_creacion = now();
+            $tipo->fecha_modificacion = now();
+
+            $tipo->save();
+
+            return redirect()->route('crear.vacante')->with('success', 'Tipo de contratación registrado');
+        } catch (QueryException $e) {
+            return redirect()->back()->with('error', 'Hubo un error al crear el tipo de contratación');
+        }
     }
 
     public function tablaTipoContratacion(Request $request)
@@ -35,12 +52,12 @@ class TipoContratacionController extends Controller
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
-                $q->where('tipo_contratacion.nombre', 'like', "%$search%");
+                $q->where('tipo_contratacion.nombre_tipo', 'like', "%$search%");
                 // ->orWhere('modified_users.name', 'like', "%$search%");
             });
         }
 
-        $columnNames = ['id', 'nombre'];
+        $columnNames = ['id', 'nombre_tipo'];
         $orderColumn = $columnNames[$orderColumnIndex];
         $query->orderBy($orderColumn, $orderDirection);
 
@@ -60,7 +77,7 @@ class TipoContratacionController extends Controller
             $data[] = [
                 'id' => $tipo_contrato->id,
                 'contador' => $contador++,
-                'nombre' => $tipo_contrato->nombre,
+                'nombre_tipo' => $tipo_contrato->nombre_tipo,
             ];
         }
 

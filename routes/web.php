@@ -26,8 +26,6 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\Empleos\VacantesController;
 use App\Http\Controllers\FormsConozcaClienteController;
 use App\Http\Controllers\FormulariosController;
-use App\Models\Empleos\TipoContratacion;
-use App\Models\Empleos\Vacante;
 use Illuminate\Support\Facades\Route;
 
 
@@ -194,6 +192,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/eliminar-vacante/{id}', [VacantesController::class, 'destroy'])->name('eliminar.vacante');
 
         Route::get('/tabla-tipo-contratacion', [TipoContratacionController::class, 'tablaTipoContratacion']);
+        Route::post('/creando-tipo-contratacion', [TipoContratacionController::class, 'store'])->name('crear.contratacion');
     });
 });
 

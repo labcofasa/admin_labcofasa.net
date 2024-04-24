@@ -124,7 +124,7 @@
                             Por favor, ingrese la fecha límite de solicitud.
                         </div>
                     </div>
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <div class="encabezado mb-0">
                             <label for="contrato" class="form-label">Tipo de contrato<span class="obligatorio">
                                     *</span></label>
@@ -132,7 +132,6 @@
                                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                                 <small class="fw-bold">Agregar nuevo</small>
                             </button>
-                            <x-empleos.tipo-contratacion />
                         </div>
                         <select class="form-select" id="contrato" name="contrato" required>
                             <option value="">Seleccione el tipo</option>
@@ -140,7 +139,7 @@
                         <div class="invalid-feedback">
                             Por favor, seleccione el tipo de contrato.
                         </div>
-                    </div> --}}
+                    </div>
                     {{-- <div class="mb-3">
                         <div class="encabezado mb-0">
                             <label for="modalidad" class="form-label">Modalidad del puesto<span class="obligatorio">
@@ -234,6 +233,7 @@
                 </div>
             </div>
         </form>
+        <x-empleos.tipo-contratacion />
     </div>
 
     <x-notificaciones.notificaciones-ia :usuario="$usuario" />
