@@ -38,14 +38,14 @@ $(document).ready(function () {
                 },
                 {
                     text: "Nueva",
-                    className: "btn btn-lg btn-store aplicacion d-block d-md-none",
+                    className: "btn btn-lg btn-primary aplicacion d-block d-md-none",
                     action: function (e, dt, node, config) {
                         document.getElementById("crearAplicacionBtn").click();
                     },
                 },
                 {
                     text: "Crear aplicación",
-                    className: "btn btn-lg btn-store aplicacion d-none d-md-block",
+                    className: "btn btn-lg btn-primary aplicacion d-none d-md-block",
                     action: function (e, dt, node, config) {
                         document.getElementById("crearAplicacionBtn").click();
                     },

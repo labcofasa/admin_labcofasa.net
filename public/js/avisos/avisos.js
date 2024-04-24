@@ -38,14 +38,14 @@ $(document).ready(function () {
                 },
                 {
                     text: "Nuevo",
-                    className: "btn btn-lg btn-store aviso d-block d-md-none",
+                    className: "btn btn-lg btn-primary aviso d-block d-md-none",
                     action: function (e, dt, node, config) {
                         document.getElementById("crearAvisoBtn").click();
                     },
                 },
                 {
                     text: "Crear publicidad",
-                    className: "btn btn-lg btn-store aviso d-none d-md-block",
+                    className: "btn btn-lg btn-primary aviso d-none d-md-block",
                     action: function (e, dt, node, config) {
                         document.getElementById("crearAvisoBtn").click();
                     },

@@ -41,14 +41,14 @@ $(document).ready(function () {
                 },
                 {
                     text: "Nuevo",
-                    className: "btn btn-lg btn-store rol d-block d-md-none",
+                    className: "btn btn-lg btn-primary rol d-block d-md-none",
                     action: function (e, dt, node, config) {
                         document.getElementById("registrarRolBtn").click();
                     },
                 },
                 {
                     text: "Crear rol",
-                    className: "btn btn-lg btn-store rol d-none d-md-block",
+                    className: "btn btn-lg btn-primary rol d-none d-md-block",
                     action: function (e, dt, node, config) {
                         document.getElementById("registrarRolBtn").click();
                     },
@@ -352,7 +352,7 @@ $(document).ready(function () {
                 },
                 {
                     text: "Asignar",
-                    className: "btn btn-lg btn-store2 permiso",
+                    className: "btn btn-lg btn-primary permiso",
                     action: function (e, dt, node, config) {
                         var rolId = idRol;
                         var nombreRol = rolNombre;

@@ -59,10 +59,10 @@
 
     /* Paginación de las tablas */
     --btn-paginacion-bg: #e5e7e9;
-    --btn-paginacion-bg-active: #33b7a0;
-    --btn-paginacion-color-active: #fff;
-    --btn-paginacion-bg-hover: #33b7a0;
-    --btn-paginacion-color-hover: #fff;
+    --btn-paginacion-bg-active: #20c9971a;
+    --btn-paginacion-color-active: #20c997;
+    --btn-paginacion-bg-hover: #20c9971a;
+    --btn-paginacion-color-hover: #20c997;
 
     /* Iconos */
     --icon-primary: #0d6efd;
@@ -174,8 +174,8 @@ body.dark {
     --btn-secondary-hover: #3d3d3d;
     --btn-success: #20c9971a;
     --btn-success-hover: #1e472a;
-    --btn-danger: #7a3030;
-    --btn-danger-hover: #873434;
+    --btn-danger: #dc35451a;
+    --btn-danger-hover: #593030;
     --btn-warning: #ffc1071a;
     --btn-warning-hover: #64541b;
     --btn-info: ;
@@ -186,10 +186,10 @@ body.dark {
     /* Paginación de las tablas */
     --btn-paginacion-bg: #323232;
     --btn-paginacion-color: #fff;
-    --btn-paginacion-bg-active: #33b7a0;
-    --btn-paginacion-color-active: #fff;
-    --btn-paginacion-bg-hover: #33b7a0;
-    --btn-paginacion-color-hover: #fff;
+    --btn-paginacion-bg-active: #20c9971a;
+    --btn-paginacion-color-active: #20c997;
+    --btn-paginacion-bg-hover: #20c9971a;
+    --btn-paginacion-color-hover: #20c997;
 
     /* Iconos */
     --icon-primary: #0d6efd;
@@ -991,7 +991,7 @@ div.dataTables_processing {
 
 @media screen and (min-width: 1920px) {
     .container-form {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .container-empleos {
