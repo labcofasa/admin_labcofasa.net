@@ -67,7 +67,7 @@
 .btn-success {
     background-color: var(--btn-success) !important;
     border: none !important;
-    color: var(--icon-primary) !important;
+    color: var(--icon-success) !important;
 }
 
 .btn-outline-danger {
@@ -116,13 +116,13 @@
 .btn-success:hover {
     background-color: var(--btn-success-hover) !important;
     border: none !important;
-    color: var(--icon-primary) !important;
+    color: var(--icon-success) !important;
 }
 
 .btn-success:active {
     background-color: var(--btn-success) !important;
     border: none !important;
-    color: var(--icon-primary) !important;
+    color: var(--icon-success) !important;
 }
 
 .btn-success:focus,
