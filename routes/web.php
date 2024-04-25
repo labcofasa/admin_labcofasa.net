@@ -23,6 +23,7 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AvisoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\Empleos\ModalidadController;
 use App\Http\Controllers\Empleos\VacantesController;
 use App\Http\Controllers\FormsConozcaClienteController;
 use App\Http\Controllers\FormulariosController;
@@ -193,9 +194,15 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/tabla-tipo-contratacion', [TipoContratacionController::class, 'tablaTipoContratacion']);
         Route::get('/obtener-tipo-contratacion', [TipoContratacionController::class, 'obtenerTipoContratacion']);
-        Route::post('/creando-tipo-contratacion', [TipoContratacionController::class, 'store'])->name('crear.contratacion');
+        Route::post('/creando-tipo-contratacion', [TipoContratacionController::class, 'store']);
         Route::put('/actualizar-tipo-contratacion/{id}', [TipoContratacionController::class, 'update']);
         Route::delete('/eliminar-tipo-contratacion/{id}', [TipoContratacionController::class, 'destroy']);
+        
+        Route::get('/tabla-modalidades', [ModalidadController::class, 'tablaModalidades']);
+        Route::get('/obtener-modalidad', [ModalidadController::class, 'obtenerModalidad']);
+        Route::post('/creando-modalidad', [ModalidadController::class, 'store']);
+        Route::put('/actualizar-modalidad/{id}', [ModalidadController::class, 'update']);
+        Route::delete('/eliminar-modalidad/{id}', [ModalidadController::class, 'destroy']);
     });
 });
 

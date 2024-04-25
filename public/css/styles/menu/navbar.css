@@ -9,6 +9,11 @@ nav.visible {
     translate: 0;
 }
 
+.nav-link:focus-visible {
+    outline: 0;
+    box-shadow: none;
+}
+
 .navbar {
     transition: var(--tran-03);
     height: 55px;

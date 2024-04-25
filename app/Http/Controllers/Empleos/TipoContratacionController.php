@@ -13,7 +13,7 @@ class TipoContratacionController extends Controller
         $tipo_contratacion = TipoContratacion::pluck('nombre_tipo', 'id');
         return response()->json($tipo_contratacion);
     }
-    
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -50,21 +50,14 @@ class TipoContratacionController extends Controller
         $start = $request->input('start');
         $length = $request->input('length');
         $search = $request->input('search.value');
-        $orderColumnIndex = $request->input('order.0.column');
-        $orderDirection = $request->input('order.0.dir');
 
-        $query = TipoContratacion::select('tipo_contratacion.*');
+        $query = TipoContratacion::select('tipo_contratacion.*')->orderBy('tipo_contratacion.fecha_creacion', 'desc');
 
         if (!empty($search)) {
             $query->where(function ($q) use ($search) {
                 $q->where('tipo_contratacion.nombre_tipo', 'like', "%$search%");
-                // ->orWhere('modified_users.name', 'like', "%$search%");
             });
         }
-
-        $columnNames = ['id', 'nombre_tipo'];
-        $orderColumn = $columnNames[$orderColumnIndex];
-        $query->orderBy($orderColumn, $orderDirection);
 
         $filteredQuery = clone $query;
 

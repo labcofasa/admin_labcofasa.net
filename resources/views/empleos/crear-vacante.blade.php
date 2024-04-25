@@ -129,7 +129,7 @@
                             <label for="contrato" class="form-label">Tipo de contrato<span class="obligatorio">
                                     *</span></label>
                             <button type="button" class="link_name" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                data-bs-target="#offcanvasTipoContratacion" aria-controls="offcanvasTipoContratacion">
                                 <small class="fw-bold">Agregar nuevo</small>
                             </button>
                         </div>
@@ -141,21 +141,23 @@
                             Por favor, seleccione el tipo de contrato.
                         </div>
                     </div>
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <div class="encabezado mb-0">
                             <label for="modalidad" class="form-label">Modalidad del puesto<span class="obligatorio">
                                     *</span></label>
-                            <a href="#" class="link_name"><small class="fw-bold">Agregar nuevo</small></a>
+                            <button type="button" class="link_name" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasModalidad" aria-controls="offcanvasRight">
+                                <small class="fw-bold">Agregar nuevo</small>
+                            </button>
                         </div>
                         <select class="form-select" id="modalidad" name="modalidad" required>
                             <option value="">Seleccione la modalidad</option>
-                            <option value="">Indefinido</option>
-                            <option value="">Tiempo completo</option>
                         </select>
+                        <input type="hidden" id="modalidad_id" name="id_modalidad" value="">
                         <div class="invalid-feedback">
                             Por favor, seleccione la modalidad.
                         </div>
-                    </div> --}}
+                    </div>
                     {{-- <div class="mb-3">
                         <h6 class="mb-3">Ubicación</h6>
                         <div class="mb-3">
@@ -234,7 +236,8 @@
                 </div>
             </div>
         </form>
-        <x-empleos.tipo-contratacion />
+        <x-empleos.contratacion.tipo-contratacion />
+        <x-empleos.modalidad.modalidad />
     </div>
 
     <x-notificaciones.notificaciones-ia :usuario="$usuario" />
@@ -242,5 +245,7 @@
     <x-notificaciones />
 
     <script src="{{ asset('js/empleos/crear-vacante.js') }}"></script>
+    <script src="{{ asset('js/empleos/contrataciones/contratacion.js') }}"></script>
+    <script src="{{ asset('js/empleos/modalidades/modalidad.js') }}"></script>
     <script src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
 @endsection

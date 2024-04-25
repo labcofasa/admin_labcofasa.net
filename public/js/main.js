@@ -541,3 +541,47 @@ function cargarTipoContratacion(
         $(idTipoContratacionInputId).val(selectTipoContratacionId);
     });
 }
+
+// Cargar tipos de contribuyente
+function cargarModalidades(
+    modalidadSelectId,
+    idModalidadInputId,
+    editar,
+    modalidadActual
+) {
+    $.ajax({
+        url: "/obtener-modalidad",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            const modalidadSelect = $(modalidadSelectId);
+            modalidadSelect.empty();
+            modalidadSelect.append(
+                $("<option>", {
+                    value: "",
+                    text: "Seleccione la modalidad",
+                })
+            );
+
+            $.each(data, function (key, value) {
+                modalidadSelect.append(
+                    '<option value="' + key + '">' + value + "</option>"
+                );
+            });
+
+            if (editar && modalidadActual) {
+                modalidadSelect.val(modalidadActual);
+            }
+
+            $(idModalidadInputId).val(modalidadSelect.val());
+        },
+        error: function (error) {
+            console.log("Error al obtener las modalidades");
+        },
+    });
+
+    $(modalidadSelectId).on("change", function () {
+        var selectModalidadId = $(this).val();
+        $(idModalidadInputId).val(selectModalidadId);
+    });
+}

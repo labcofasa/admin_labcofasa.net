@@ -1,7 +1,7 @@
-<div class="offcanvas offcanvas-end offcanvas-full-screen" tabindex="-1" id="offcanvasRight"
-    aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end offcanvas-full-screen" tabindex="-1" id="offcanvasTipoContratacion"
+    aria-labelledby="offcanvasTipoContratacionLabel">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title" id="offcanvasRightLabel">Tipos de contratacíon</h1>
+        <h1 class="offcanvas-title" id="offcanvasTipoContratacionLabel">Tipos de contratacíon</h1>
         <button type="button" class="btn-icon-close" data-bs-dismiss="offcanvas">
             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
                 fill="#000000">
@@ -11,7 +11,7 @@
             </svg>
         </button>
     </div>
-    <div class="offcanvas-body vacante">
+    <div class="offcanvas-body contenedor">
         <!-- Tabla fantasma -->
         <x-skeleton />
 
@@ -29,7 +29,7 @@
                     @csrf
                     @method('POST')
                     <div class="mb-3">
-                        <label for="nombre_tipo" class="form-label">Nuevo tipo de contratacíon<span class="obligatorio">
+                        <label for="nombre_tipo" class="form-label">Tipo de contratacíon<span class="obligatorio">
                                 *</span></label>
                         <input type="text" class="form-control" id="nombre_tipo" name="nombre_tipo"
                             autocomplete="off" required>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="text-end">
-                        <button id="guardarTipoBtn" class="btn btn-lg btn-success">Guardar tipo</button>
+                        <button id="guardarTipoBtn" class="btn btn-lg btn-success">Guardar</button>
                     </div>
                 </form>
             </div>
