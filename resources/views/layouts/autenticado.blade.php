@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="manifest" href="/manifest.json">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -18,6 +19,7 @@
 
         <!-- Titulo del sitio -->
         <title>@yield('titulo') - {{ config('app.name') }}</title>
+        @laravelPWA
     </head>
 
     <body>
