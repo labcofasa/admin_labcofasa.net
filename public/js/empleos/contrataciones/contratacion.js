@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var offcanvasTipoContratacion = document.getElementById('offcanvasTipoContratacion');
     const apiTipoContratacion = "/tabla-tipo-contratacion";
     let tabla_tipo_contratacion = null;
 
@@ -306,5 +307,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 );
             },
         });
+    });
+
+    offcanvasTipoContratacion.addEventListener('hidden.bs.offcanvas', function () {
+        $("#contratacionForm")
+            .removeClass("was-validated")
+            .find(":input")
+            .removeClass("is-invalid")
+            .end()[0]
+            .reset();
     });
 });

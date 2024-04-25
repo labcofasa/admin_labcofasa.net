@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var offcanvasModalidad = document.getElementById('offcanvasModalidad');
     const apiModalidades = "/tabla-modalidades";
     let tabla_modalidades = null;
 
@@ -307,5 +308,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 );
             },
         });
+    });
+
+    offcanvasModalidad.addEventListener('hidden.bs.offcanvas', function () {
+        $("#modalidadForm")
+            .removeClass("was-validated")
+            .find(":input")
+            .removeClass("is-invalid")
+            .end()[0]
+            .reset();
     });
 });
