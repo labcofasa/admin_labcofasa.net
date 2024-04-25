@@ -18,8 +18,14 @@ return new class extends Migration {
             $table->text('beneficios');
             $table->date('fecha_vencimiento');
             $table->string('imagen')->nullable();
+            $table->unsignedBigInteger('id_tipo_contratacion')->nullable();
+            $table->unsignedBigInteger('id_modalidad')->nullable();
+
             $table->timestamp('fecha_creacion');
             $table->timestamp('fecha_modificacion');
+
+            $table->foreign('id_tipo_contratacion')->references('id')->on('tipo_contratacion');
+            $table->foreign('id_modalidad')->references('id')->on('modalidades');
         });
     }
 
