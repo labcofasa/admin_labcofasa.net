@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Empleos;
 
 use App\Http\Controllers\Controller;
 use App\Models\Empleos\TipoContratacion;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class TipoContratacionController extends Controller
 {
+    public function obtenerTipoContratacion()
+    {
+        $tipo_contratacion = TipoContratacion::pluck('nombre_tipo', 'id');
+        return response()->json($tipo_contratacion);
+    }
+    
     public function store(Request $request)
     {
         $this->validate($request, [

@@ -63,6 +63,12 @@ document.addEventListener("DOMContentLoaded", function () {
         false
     );
 
+    cargarTipoContratacion(
+        "#contrato",
+        "#tipo_contratacion_id",
+        false
+    );
+
     tablaTipoContratacion();
 
 
@@ -250,6 +256,12 @@ document.addEventListener("DOMContentLoaded", function () {
             success: function (response) {
                 tabla_tipo_contratacion.ajax.reload();
 
+                cargarTipoContratacion(
+                    "#contrato",
+                    "#tipo_contratacion_id",
+                    false
+                );
+
                 if (response.success) {
                     mostrarToast(response.message, "success");
                     $('#nombre_tipo').val('');
@@ -259,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarToast(
-                    "Error al registrar el usuario. Por favor, intente de nuevo.",
+                    "Error al registrar el tipo de contratación. Por favor, intente de nuevo.",
                     "error"
                 );
             },
@@ -299,6 +311,12 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             success: function (response) {
                 tabla_tipo_contratacion.ajax.reload();
+
+                cargarTipoContratacion(
+                    "#contrato",
+                    "#tipo_contratacion_id",
+                    false
+                );
 
                 if (response.success) {
                     mostrarToast(response.message, "success");
@@ -346,6 +364,12 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             success: function (response) {
                 tabla_tipo_contratacion.ajax.reload();
+
+                cargarTipoContratacion(
+                    "#contrato",
+                    "#tipo_contratacion_id",
+                    false
+                );
 
                 $("#eliminarContratacion").modal("hide");
 

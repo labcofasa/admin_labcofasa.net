@@ -136,6 +136,7 @@
                         <select class="form-select" id="contrato" name="contrato" required>
                             <option value="">Seleccione el tipo</option>
                         </select>
+                        <input type="hidden" id="tipo_contratacion_id" name="id_tipo_contratacion" value="">
                         <div class="invalid-feedback">
                             Por favor, seleccione el tipo de contrato.
                         </div>

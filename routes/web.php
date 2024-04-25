@@ -192,6 +192,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/eliminar-vacante/{id}', [VacantesController::class, 'destroy'])->name('eliminar.vacante');
 
         Route::get('/tabla-tipo-contratacion', [TipoContratacionController::class, 'tablaTipoContratacion']);
+        Route::get('/obtener-tipo-contratacion', [TipoContratacionController::class, 'obtenerTipoContratacion']);
         Route::post('/creando-tipo-contratacion', [TipoContratacionController::class, 'store'])->name('crear.contratacion');
         Route::put('/actualizar-tipo-contratacion/{id}', [TipoContratacionController::class, 'update']);
         Route::delete('/eliminar-tipo-contratacion/{id}', [TipoContratacionController::class, 'destroy']);

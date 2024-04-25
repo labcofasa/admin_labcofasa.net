@@ -190,11 +190,11 @@ function MultiselectDropdown(options) {
                 if (k === "class") {
                     Array.isArray(attrs[k])
                         ? attrs[k].forEach((o) =>
-                              o !== "" ? e.classList.add(o) : 0
-                          )
+                            o !== "" ? e.classList.add(o) : 0
+                        )
                         : attrs[k] !== ""
-                        ? e.classList.add(attrs[k])
-                        : 0;
+                            ? e.classList.add(attrs[k])
+                            : 0;
                 } else if (k === "style") {
                     Object.keys(attrs[k]).forEach((ks) => {
                         e.style[ks] = attrs[k][ks];
@@ -495,5 +495,49 @@ function setupGiroSearch(inputId, suggestionsId, hiddenInputId) {
         if (event.key === "Escape") {
             suggestionsContainer.classList.remove("visible");
         }
+    });
+}
+
+// Cargar tipos de contribuyente
+function cargarTipoContratacion(
+    tipoContratacionSelectId,
+    idTipoContratacionInputId,
+    editar,
+    tipoContratacionActual
+) {
+    $.ajax({
+        url: "/obtener-tipo-contratacion",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            const tipoContratacionSelect = $(tipoContratacionSelectId);
+            tipoContratacionSelect.empty();
+            tipoContratacionSelect.append(
+                $("<option>", {
+                    value: "",
+                    text: "Seleccione un tipo",
+                })
+            );
+
+            $.each(data, function (key, value) {
+                tipoContratacionSelect.append(
+                    '<option value="' + key + '">' + value + "</option>"
+                );
+            });
+
+            if (editar && tipoContratacionActual) {
+                tipoContratacionSelect.val(tipoContratacionActual);
+            }
+
+            $(idTipoContratacionInputId).val(tipoContratacionSelect.val());
+        },
+        error: function (error) {
+            console.log("Error al obtener los tipos de contratación");
+        },
+    });
+
+    $(tipoContratacionSelectId).on("change", function () {
+        var selectTipoContratacionId = $(this).val();
+        $(idTipoContratacionInputId).val(selectTipoContratacionId);
     });
 }
