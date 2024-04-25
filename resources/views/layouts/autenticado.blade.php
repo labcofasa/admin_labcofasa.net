@@ -18,7 +18,7 @@
         <script src="{{ asset('js/graficas/chart.js') }}"></script>
 
         <!-- Titulo del sitio -->
-        <title>@yield('titulo') - {{ config('app.name') }}</title>
+        <title>@yield('titulo')</title>
         @laravelPWA
     </head>
 
