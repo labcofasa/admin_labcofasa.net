@@ -89,6 +89,30 @@
     transition: var(--tran-03);
 }
 
+.btn-primary {
+    background-color: var(--btn-primary) !important;
+    border: none !important;
+    color: var(--icon-primary) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-primary-hover) !important;
+    border: none !important;
+    color: var(--icon-primary) !important;
+}
+
+.btn-primary:active {
+    background-color: var(--btn-primary) !important;
+    border: none !important;
+    color: var(--icon-primary) !important;
+}
+
+.btn-primary:focus,
+.btn-primary-visible {
+    background-color: var(--btn-primary);
+    border: none !important;
+}
+
 .btn-success:hover {
     background-color: var(--btn-success-hover) !important;
     border: none !important;
@@ -153,7 +177,7 @@
     border-color: var(--btn-secondary);
 }
 
-.btn-group > :not(.btn-check:first-child) + .btn {
+.btn-group> :not(.btn-check:first-child)+.btn {
     margin-left: 0;
 }
 
@@ -646,7 +670,7 @@ button {
         box-shadow: none !important;
     }
 
-    .table > :not(caption) > * > * {
+    .table> :not(caption)>*>* {
         background-color: var(--body-bg) !important;
     }
 
