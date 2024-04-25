@@ -64,8 +64,8 @@
     border-color: var(--action);
 }
 
-.btn-primary {
-    background-color: var(--btn-primary) !important;
+.btn-success {
+    background-color: var(--btn-success) !important;
     border: none !important;
     color: var(--icon-primary) !important;
 }
@@ -89,21 +89,21 @@
     transition: var(--tran-03);
 }
 
-.btn-primary:hover {
-    background-color: var(--btn-primary-hover) !important;
+.btn-success:hover {
+    background-color: var(--btn-success-hover) !important;
     border: none !important;
     color: var(--icon-primary) !important;
 }
 
-.btn-primary:active {
-    background-color: var(--btn-primary) !important;
+.btn-success:active {
+    background-color: var(--btn-success) !important;
     border: none !important;
     color: var(--icon-primary) !important;
 }
 
-.btn-primary:focus,
-.btn-primary-visible {
-    background-color: var(--btn-primary);
+.btn-success:focus,
+.btn-success-visible {
+    background-color: var(--btn-success);
     border: none !important;
 }
 
@@ -268,21 +268,21 @@
     align-items: center;
     justify-content: space-evenly;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    background-color: var(--btn-primary);
-    --bs-btn-color: var(--icon-primary);
-    --bs-btn-border-color: var(--btn-primary);
-    --bs-btn-hover-color: var(--btn-primaryr);
-    --bs-btn-hover-bg: var(--btn-primary);
-    --bs-btn-hover-border-color: var(--btn-primary);
-    --bs-btn-focus-shadow: var(--btn-primary);
+    background-color: var(--btn-success);
+    --bs-btn-color: var(--icon-success);
+    --bs-btn-border-color: var(--btn-success);
+    --bs-btn-hover-color: var(--btn-success);
+    --bs-btn-hover-bg: var(--btn-success);
+    --bs-btn-hover-border-color: var(--btn-success);
+    --bs-btn-focus-shadow: var(--btn-success);
     --bs-btn-active-color: #121213;
-    --bs-btn-active-bg: var(--btn-primary);
-    --bs-btn-active-border-color: var(--btn-primary);
+    --bs-btn-active-bg: var(--btn-success);
+    --bs-btn-active-border-color: var(--btn-success);
     z-index: 1;
 }
 
 .btn-float:hover {
-    background-color: var(--btn-primary);
+    background-color: var(--btn-success);
 }
 
 .imagen-perfil {

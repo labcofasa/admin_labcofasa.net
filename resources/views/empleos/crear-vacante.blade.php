@@ -158,16 +158,11 @@
                             Por favor, seleccione la modalidad.
                         </div>
                     </div>
-                    {{-- <div class="mb-3">
-                        <h6 class="mb-3">Ubicación</h6>
+                    <div class="mb-4">
+                        <h6 class="mb-2">Ubicación</h6>
                         <div class="mb-3">
-                            <div class="encabezado mb-0">
-                                <div for="pais_vacante" class="form-label">País<span class="obligatorio">
-                                        *</span></div>
-                                <a href="{{ route('pag.empresas') }}" class="link_name" type="button"><small
-                                        class="fw-bold">Agregar
-                                        nuevo</small></a>
-                            </div>
+                            <label for="pais_vacante" class="form-label">País<span class="obligatorio">
+                                    *</span></label>
                             <select class="form-select" id="pais_vacante" required>
                                 <option value="">Seleccione el país</option>
                             </select>
@@ -198,7 +193,7 @@
                                 Por favor, seleccione el municipio.
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="col-12 col-xl-4">
                     <h6 class="mb-3">Información empresarial</h6>

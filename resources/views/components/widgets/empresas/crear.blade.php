@@ -139,7 +139,7 @@
             ]))
         <button class="btn btn-lg gap-2 btn-float dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-expanded="false" data-bs-offset="0,7">
-            <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+            <svg class="icon-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                 color="#000000" fill="none">
                 <path d="M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
