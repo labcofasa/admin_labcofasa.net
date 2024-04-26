@@ -794,6 +794,10 @@ div.dataTables_processing {
 /* Media Querys */
 
 @media screen and (max-width: 575px) {
+    .navbar {
+        padding: 0 5px;
+    }
+    
     h1 {
         font-size: 1rem;
         font-weight: 600;
@@ -841,6 +845,10 @@ div.dataTables_processing {
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
+    .navbar {
+        padding: 0 10px;
+    }
+
     .sub-container {
         padding: 20px 0;
     }
@@ -879,6 +887,10 @@ div.dataTables_processing {
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+    .navbar {
+        padding: 0 10px;
+    }
+
     .sub-container {
         padding: 20px 0;
     }
@@ -917,6 +929,10 @@ div.dataTables_processing {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1024px) {
+    .navbar {
+        padding: 0 10px;
+    }
+
     .sub-container {
         padding: 20px 0;
     }
