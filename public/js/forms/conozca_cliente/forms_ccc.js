@@ -543,20 +543,20 @@ $(document).ready(function () {
             numeroIdentidadMiembro.removeAttribute("required");
             cargoMiembro.removeAttribute("required");
 
-            documentoEscrituraJuridico.removeAttribute("required");
-            documentoEscrituraJuridico.value = "";
-            documentoMatriculaJuridico.removeAttribute("required");
-            documentoMatriculaJuridico.value = "";
-            documentoAcuerdoJuridico.removeAttribute("required");
-            documentoAcuerdoJuridico.value = "";
-            documentoNitJuridico.removeAttribute("required");
-            documentoNitJuridico.value = "";
-            documentoIvaJuridico.removeAttribute("required");
-            documentoIvaJuridico.value = "";
-            documentoDomicilioJuridico.removeAttribute("required");
-            documentoDomicilioJuridico.value = "";
-            documentoCredencialPersonaNatural.removeAttribute("required");
-            documentoCredencialPersonaNatural.value = "";
+            // documentoEscrituraJuridico.removeAttribute("required");
+            // documentoEscrituraJuridico.value = "";
+            // documentoMatriculaJuridico.removeAttribute("required");
+            // documentoMatriculaJuridico.value = "";
+            // documentoAcuerdoJuridico.removeAttribute("required");
+            // documentoAcuerdoJuridico.value = "";
+            // documentoNitJuridico.removeAttribute("required");
+            // documentoNitJuridico.value = "";
+            // documentoIvaJuridico.removeAttribute("required");
+            // documentoIvaJuridico.value = "";
+            // documentoDomicilioJuridico.removeAttribute("required");
+            // documentoDomicilioJuridico.value = "";
+            // documentoCredencialPersonaNatural.removeAttribute("required");
+            // documentoCredencialPersonaNatural.value = "";
 
             nombreComercialJuridicoInput.value = "";
             clasificacionJuridicaId.value = "";
@@ -611,12 +611,12 @@ $(document).ready(function () {
             numeroIdentidadMiembro.setAttribute("required", "required");
             cargoMiembro.setAttribute("required", "required");
 
-            documentoIdentidadPersonaNatural.removeAttribute("required");
-            documentoIdentidadPersonaNatural.value = "";
-            documentoNitPersonaNatural.removeAttribute("required");
-            documentoNitPersonaNatural.value = "";
-            documentoDomicilioPersonaNatural.removeAttribute("required");
-            documentoDomicilioPersonaNatural.value = "";
+            // documentoIdentidadPersonaNatural.removeAttribute("required");
+            // documentoIdentidadPersonaNatural.value = "";
+            // documentoNitPersonaNatural.removeAttribute("required");
+            // documentoNitPersonaNatural.value = "";
+            // documentoDomicilioPersonaNatural.removeAttribute("required");
+            // documentoDomicilioPersonaNatural.value = "";
         }
     });
 
