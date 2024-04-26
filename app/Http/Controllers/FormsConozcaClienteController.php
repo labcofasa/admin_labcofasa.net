@@ -297,13 +297,14 @@ class FormsConozcaClienteController extends Controller
             'fuente_ingreso' => 'nullable|string',
             'monto_mensual' => 'nullable|string',
             'documento_identidad_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
-            'documento_tarjeta_iva_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_nit_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_tarjeta_iva_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_domicilio_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_dnm_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_identificacion_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_nit_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_credencial_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_escritura_juridico.*' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_matricula_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_acuerdo_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_nit_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
@@ -390,7 +391,6 @@ class FormsConozcaClienteController extends Controller
                 }
             }
 
-
             if ($request->hasFile('documento_tarjeta_iva_persona_natural')) {
                 $tarjetaRegistro = $request->file('documento_tarjeta_iva_persona_natural');
 
@@ -436,35 +436,35 @@ class FormsConozcaClienteController extends Controller
                 }
             }
 
-            // if ($request->hasFile('documento_identificacion_representante')) {
-            //     $documentoIdentificacionRepresentante = $request->file('documento_identificacion_representante');
+            if ($request->hasFile('documento_identificacion_representante')) {
+                $documentoIdentificacionRepresentante = $request->file('documento_identificacion_representante');
 
-            //     if ($documentoIdentificacionRepresentante->isValid()) {
-            //         $numeroAleatorio = mt_rand(100000, 999999);
-            //         $nombreDocumentoIdentificacionRepresentate = $numeroAleatorio . '_' . $documentoIdentificacionRepresentante->getClientOriginalName();
+                if ($documentoIdentificacionRepresentante->isValid()) {
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoIdentificacionRepresentate = $numeroAleatorio . '_' . $documentoIdentificacionRepresentante->getClientOriginalName();
 
-            //         $documentoIdentificacionRepresentante->move($rutaCarpeta, $nombreDocumentoIdentificacionRepresentate);
+                    $documentoIdentificacionRepresentante->move($rutaCarpeta, $nombreDocumentoIdentificacionRepresentate);
 
-            //         $formsccc->documento_identificacion_representante = $nombreDocumentoIdentificacionRepresentate;
-            //     } else {
-            //         return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-            //     }
-            // }
+                    $formsccc->documento_identificacion_representante = $nombreDocumentoIdentificacionRepresentate;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
 
-            // if ($request->hasFile('documento_nit_representante')) {
-            //     $documentoNitRepresentante = $request->file('documento_nit_representante');
+            if ($request->hasFile('documento_nit_representante')) {
+                $documentoNitRepresentante = $request->file('documento_nit_representante');
 
-            //     if ($documentoNitRepresentante->isValid()) {
-            //         $numeroAleatorio = mt_rand(100000, 999999);
-            //         $nombreDocumentoNitRepresentate = $numeroAleatorio . '_' . $documentoNitRepresentante->getClientOriginalName();
+                if ($documentoNitRepresentante->isValid()) {
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoNitRepresentate = $numeroAleatorio . '_' . $documentoNitRepresentante->getClientOriginalName();
 
-            //         $documentoNitRepresentante->move($rutaCarpeta, $nombreDocumentoNitRepresentate);
+                    $documentoNitRepresentante->move($rutaCarpeta, $nombreDocumentoNitRepresentate);
 
-            //         $formsccc->documento_nit_representante = $nombreDocumentoNitRepresentate;
-            //     } else {
-            //         return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-            //     }
-            // }
+                    $formsccc->documento_nit_representante = $nombreDocumentoNitRepresentate;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
 
             if ($request->hasFile('documento_credencial_representante')) {
                 $documentoCredencialRepresentante = $request->file('documento_credencial_representante');
@@ -726,7 +726,6 @@ class FormsConozcaClienteController extends Controller
 
             return redirect()->back()->with('success', 'Hemos recibido exitosamente su formulario.');
         } catch (QueryException $e) {
-            dd($e);
             return redirect()->back()->with('error', 'Hubo un error al procesar su formulario' . $e->getMessage());
         }
     }

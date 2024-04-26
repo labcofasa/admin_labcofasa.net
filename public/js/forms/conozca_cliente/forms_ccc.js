@@ -73,23 +73,6 @@ $(document).ready(function () {
 
     $("#btnEnviarFormulario").click(function () {
         var formulario = document.querySelector("#forms_ccc");
-        // var tipoPersona = $("#tipo_persona").val();
-
-        // if (tipoPersona === "Persona Natural") {
-        //     $("#documento_identidad_persona_natural").prop("required", true);
-        //     $("#documento_nit_persona_natural").prop("required", true);
-        //     $("#documento_domicilio_persona_natural").prop("required", true);
-        // }
-
-        // if (tipoPersona === "Persona Jurídica") {
-        //     $("#documento_escritura_juridico").prop("required", true);
-        //     $("#documento_matricula_juridico").prop("required", true);
-        //     $("#documento_acuerdo_juridico").prop("required", true);
-        //     $("#documento_nit_juridico").prop("required", true);
-        //     $("#documento_iva_juridico").prop("required", true);
-        //     $("#documento_domicilio_juridico").prop("required", true);
-        //     $("#documento_credencial_representante").prop("required", true);
-        // }
 
         if (formulario.checkValidity()) {
             $("#btnEnviarFormulario").hide();
@@ -543,20 +526,20 @@ $(document).ready(function () {
             numeroIdentidadMiembro.removeAttribute("required");
             cargoMiembro.removeAttribute("required");
 
-            // documentoEscrituraJuridico.removeAttribute("required");
-            // documentoEscrituraJuridico.value = "";
-            // documentoMatriculaJuridico.removeAttribute("required");
-            // documentoMatriculaJuridico.value = "";
-            // documentoAcuerdoJuridico.removeAttribute("required");
-            // documentoAcuerdoJuridico.value = "";
-            // documentoNitJuridico.removeAttribute("required");
-            // documentoNitJuridico.value = "";
-            // documentoIvaJuridico.removeAttribute("required");
-            // documentoIvaJuridico.value = "";
-            // documentoDomicilioJuridico.removeAttribute("required");
-            // documentoDomicilioJuridico.value = "";
-            // documentoCredencialPersonaNatural.removeAttribute("required");
-            // documentoCredencialPersonaNatural.value = "";
+            documentoEscrituraJuridico.removeAttribute("required");
+            documentoEscrituraJuridico.value = "";
+            documentoMatriculaJuridico.removeAttribute("required");
+            documentoMatriculaJuridico.value = "";
+            documentoAcuerdoJuridico.removeAttribute("required");
+            documentoAcuerdoJuridico.value = "";
+            documentoNitJuridico.removeAttribute("required");
+            documentoNitJuridico.value = "";
+            documentoIvaJuridico.removeAttribute("required");
+            documentoIvaJuridico.value = "";
+            documentoDomicilioJuridico.removeAttribute("required");
+            documentoDomicilioJuridico.value = "";
+            documentoCredencialPersonaNatural.removeAttribute("required");
+            documentoCredencialPersonaNatural.value = "";
 
             nombreComercialJuridicoInput.value = "";
             clasificacionJuridicaId.value = "";
@@ -611,12 +594,12 @@ $(document).ready(function () {
             numeroIdentidadMiembro.setAttribute("required", "required");
             cargoMiembro.setAttribute("required", "required");
 
-            // documentoIdentidadPersonaNatural.removeAttribute("required");
-            // documentoIdentidadPersonaNatural.value = "";
-            // documentoNitPersonaNatural.removeAttribute("required");
-            // documentoNitPersonaNatural.value = "";
-            // documentoDomicilioPersonaNatural.removeAttribute("required");
-            // documentoDomicilioPersonaNatural.value = "";
+            documentoIdentidadPersonaNatural.removeAttribute("required");
+            documentoIdentidadPersonaNatural.value = "";
+            documentoNitPersonaNatural.removeAttribute("required");
+            documentoNitPersonaNatural.value = "";
+            documentoDomicilioPersonaNatural.removeAttribute("required");
+            documentoDomicilioPersonaNatural.value = "";
         }
     });
 
