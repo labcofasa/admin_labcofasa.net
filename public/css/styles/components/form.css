@@ -4,6 +4,7 @@
     color: var(--text-color);
     border: 0;
     padding: 15px;
+    background-color: var(--btn-secondary);
     transition: background-color 0.4s ease;
     font-size: var(--font-size);
     letter-spacing: var(--letter-spacing);

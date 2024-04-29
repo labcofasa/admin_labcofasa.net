@@ -451,13 +451,8 @@ $(document).ready(function () {
     });
 
     const tipoPersonaSelect = document.getElementById("tipo_persona");
-    const camposPersonaJuridica = document.querySelector(
-        ".campos-persona-juridica"
-    );
-
-    const nombreComercialJuridicoInput = document.getElementById(
-        "nombre_comercial_juridico"
-    );
+    const camposPersonaJuridica = document.querySelector(".campos-persona-juridica");
+    const nombreComercialJuridicoInput = document.getElementById("nombre_comercial_juridico");
     const clasificacionJuridicaId = document.getElementById(
         "clasificacion_juridico_id"
     );

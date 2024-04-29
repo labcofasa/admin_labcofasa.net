@@ -27,8 +27,7 @@ class FormsConozcaClienteController extends Controller
 {
     public function index()
     {
-        // return view('formularios.formulario_conozca_cliente');
-        return view('mantenimiento');
+        return view('formularios.formulario_conozca_cliente');
     }
 
     public function procesarFormulario(Request $request)
@@ -88,7 +87,7 @@ class FormsConozcaClienteController extends Controller
         $tipo_persona = $request->input('tipo_persona') ?: 'Campo vacío';
         $nombre = $request->input('nombre') ?: 'Campo vacío';
         $apellido = $request->input('apellido') ?: 'Campo vacío';
-        
+
         $fecha_de_nacimiento = $request->input('fecha_de_nacimiento') ?: 'Campo vacío';
         $nacionalidad = $request->input('nacionalidad') ?: 'Campo vacío';
         $profesion_u_oficio = $request->input('profesion_u_oficio') ?: 'Campo vacío';
@@ -258,31 +257,31 @@ class FormsConozcaClienteController extends Controller
             'giro_id' => 'nullable|exists:giros,id',
             'fecha_de_nombramiento' => 'nullable|date',
             'direccion' => 'nullable|string',
-            'nombre_comercial_juridico' => 'nullable|string',
-            'clasificacion_juridico_id' => 'nullable|exists:clasificaciones,id',
-            'nacionalidad_juridico' => 'nullable|string',
-            'numero_de_nit_juridico' => 'nullable|string',
-            'fecha_de_constitucion_juridico' => 'nullable|date',
-            'registro_nrc_juridico' => 'nullable|string',
-            'giro_juridico_id' => 'nullable|exists:giros,id',
-            'pais_juridico_id' => 'nullable|exists:paises,id',
-            'departamento_juridico_id' => 'nullable|exists:departamentos,id',
-            'municipio_juridico_id' => 'nullable|exists:municipios,id',
-            'telefono_juridico' => 'nullable|string',
-            'sitio_web_juridico' => 'nullable|url',
-            'numero_de_fax_juridico' => 'nullable|string',
-            'direccion_juridico' => 'nullable|string',
             'monto_proyectado' => 'nullable|string',
             'cargo_publico' => 'nullable|in:SI,NO',
             'familiar_publico' => 'nullable|in:SI,NO',
-            'nombre_accionista.*' => 'nullable|string',
-            'nacionalidad_accionista.*' => 'nullable|string',
-            'numero_identidad_accionista.*' => 'nullable|string',
-            'porcentaje_participacion_accionista.*' => 'nullable|string',
-            'nombre_miembro.*' => 'nullable|string',
-            'nacionalidad_miembro.*' => 'nullable|string',
-            'numero_identidad_miembro.*' => 'nullable|string',
-            'cargo_miembro.*' => 'nullable|string',
+            'nombre_comercial_juridico' => 'nullable|string',
+            // 'clasificacion_juridico_id' => 'nullable|exists:clasificaciones,id',
+            // 'nacionalidad_juridico' => 'nullable|string',
+            // 'numero_de_nit_juridico' => 'nullable|string',
+            // 'fecha_de_constitucion_juridico' => 'nullable|date',
+            // 'registro_nrc_juridico' => 'nullable|string',
+            // 'giro_juridico_id' => 'nullable|exists:giros,id',
+            // 'pais_juridico_id' => 'nullable|exists:paises,id',
+            // 'departamento_juridico_id' => 'nullable|exists:departamentos,id',
+            // 'municipio_juridico_id' => 'nullable|exists:municipios,id',
+            // 'telefono_juridico' => 'nullable|string',
+            // 'sitio_web_juridico' => 'nullable|url',
+            // 'numero_de_fax_juridico' => 'nullable|string',
+            // 'direccion_juridico' => 'nullable|string',
+            // 'nombre_accionista.*' => 'nullable|string',
+            // 'nacionalidad_accionista.*' => 'nullable|string',
+            // 'numero_identidad_accionista.*' => 'nullable|string',
+            // 'porcentaje_participacion_accionista.*' => 'nullable|string',
+            // 'nombre_miembro.*' => 'nullable|string',
+            // 'nacionalidad_miembro.*' => 'nullable|string',
+            // 'numero_identidad_miembro.*' => 'nullable|string',
+            // 'cargo_miembro.*' => 'nullable|string',
             'nombre_politico' => 'nullable|string',
             'nombre_cargo_politico' => 'nullable|string',
             'fecha_desde_politico' => 'nullable|date',
@@ -298,22 +297,20 @@ class FormsConozcaClienteController extends Controller
             'porcentaje_participacion_socio.*' => 'nullable|string',
             'fuente_ingreso' => 'nullable|string',
             'monto_mensual' => 'nullable|string',
+            'formulario_firmado' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_identidad_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_nit_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_tarjeta_iva_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_domicilio_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_dnm_persona_natural' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
-            'documento_identificacion_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
-            'documento_nit_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
-            'documento_credencial_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_escritura_juridico.*' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_matricula_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_acuerdo_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_nit_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_iva_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_domicilio_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
+            'documento_credencial_representante' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
             'documento_dnm_juridico' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
-            'formulario_firmado' => 'nullable|file|mimes:pdf,jpg,png,jpeg',
         ]);
 
         // $direccionIp = $request->ip();
@@ -361,6 +358,21 @@ class FormsConozcaClienteController extends Controller
 
             if (!file_exists($rutaCarpeta)) {
                 mkdir($rutaCarpeta, 0777, true);
+            }
+
+            if ($request->hasFile('formulario_firmado')) {
+                $documentoFirmado = $request->file('formulario_firmado');
+
+                if ($documentoFirmado->isValid()) {
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreDocumentoFirmado = $numeroAleatorio . '_' . $documentoFirmado->getClientOriginalName();
+
+                    $documentoFirmado->move($rutaCarpeta, $nombreDocumentoFirmado);
+
+                    $formsccc->formulario_firmado = $nombreDocumentoFirmado;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
             }
 
             if ($request->hasFile('documento_identidad_persona_natural')) {
@@ -433,51 +445,6 @@ class FormsConozcaClienteController extends Controller
                     $documentoDnmPersonaNatural->move($rutaCarpeta, $nombreDocumentoDnmPersonaNatural);
 
                     $formsccc->documento_dnm_persona_natural = $nombreDocumentoDnmPersonaNatural;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_identificacion_representante')) {
-                $documentoIdentificacionRepresentante = $request->file('documento_identificacion_representante');
-
-                if ($documentoIdentificacionRepresentante->isValid()) {
-                    $numeroAleatorio = mt_rand(100000, 999999);
-                    $nombreDocumentoIdentificacionRepresentate = $numeroAleatorio . '_' . $documentoIdentificacionRepresentante->getClientOriginalName();
-
-                    $documentoIdentificacionRepresentante->move($rutaCarpeta, $nombreDocumentoIdentificacionRepresentate);
-
-                    $formsccc->documento_identificacion_representante = $nombreDocumentoIdentificacionRepresentate;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_nit_representante')) {
-                $documentoNitRepresentante = $request->file('documento_nit_representante');
-
-                if ($documentoNitRepresentante->isValid()) {
-                    $numeroAleatorio = mt_rand(100000, 999999);
-                    $nombreDocumentoNitRepresentate = $numeroAleatorio . '_' . $documentoNitRepresentante->getClientOriginalName();
-
-                    $documentoNitRepresentante->move($rutaCarpeta, $nombreDocumentoNitRepresentate);
-
-                    $formsccc->documento_nit_representante = $nombreDocumentoNitRepresentate;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('documento_credencial_representante')) {
-                $documentoCredencialRepresentante = $request->file('documento_credencial_representante');
-
-                if ($documentoCredencialRepresentante->isValid()) {
-                    $numeroAleatorio = mt_rand(100000, 999999);
-                    $nombreCredencialRepresentante = $numeroAleatorio . '_' . $documentoCredencialRepresentante->getClientOriginalName();
-
-                    $documentoCredencialRepresentante->move($rutaCarpeta, $nombreCredencialRepresentante);
-
-                    $formsccc->documento_credencial_representante = $nombreCredencialRepresentante;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
@@ -576,6 +543,21 @@ class FormsConozcaClienteController extends Controller
                 }
             }
 
+            if ($request->hasFile('documento_credencial_representante')) {
+                $documentoCredencialRepresentante = $request->file('documento_credencial_representante');
+
+                if ($documentoCredencialRepresentante->isValid()) {
+                    $numeroAleatorio = mt_rand(100000, 999999);
+                    $nombreCredencialRepresentante = $numeroAleatorio . '_' . $documentoCredencialRepresentante->getClientOriginalName();
+
+                    $documentoCredencialRepresentante->move($rutaCarpeta, $nombreCredencialRepresentante);
+
+                    $formsccc->documento_credencial_representante = $nombreCredencialRepresentante;
+                } else {
+                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
+                }
+            }
+
             if ($request->hasFile('documento_dnm_juridico')) {
                 $documentoDnmJuridico = $request->file('documento_dnm_juridico');
 
@@ -586,21 +568,6 @@ class FormsConozcaClienteController extends Controller
                     $documentoDnmJuridico->move($rutaCarpeta, $nombreDnmJuridico);
 
                     $formsccc->documento_dnm_juridico = $nombreDnmJuridico;
-                } else {
-                    return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
-                }
-            }
-
-            if ($request->hasFile('formulario_firmado')) {
-                $documentoFirmado = $request->file('formulario_firmado');
-
-                if ($documentoFirmado->isValid()) {
-                    $numeroAleatorio = mt_rand(100000, 999999);
-                    $nombreDocumentoFirmado = $numeroAleatorio . '_' . $documentoFirmado->getClientOriginalName();
-
-                    $documentoFirmado->move($rutaCarpeta, $nombreDocumentoFirmado);
-
-                    $formsccc->formulario_firmado = $nombreDocumentoFirmado;
                 } else {
                     return redirect()->back()->with('error', 'Hubo un error al procesar su formulario');
                 }
