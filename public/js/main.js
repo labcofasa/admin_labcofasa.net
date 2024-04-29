@@ -515,7 +515,7 @@ function cargarTipoContratacion(
             tipoContratacionSelect.append(
                 $("<option>", {
                     value: "",
-                    text: "Seleccione un tipo",
+                    text: "Seleccione el tipo",
                 })
             );
 

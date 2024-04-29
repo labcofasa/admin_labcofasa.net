@@ -154,7 +154,7 @@
 
 body {
     background: #c8e8e9;
-    display: none;
+    /* display: none; */
     align-items: center;
     justify-content: center;
 }

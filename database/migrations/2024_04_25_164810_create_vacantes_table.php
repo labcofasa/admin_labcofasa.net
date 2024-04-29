@@ -20,12 +20,18 @@ return new class extends Migration {
             $table->string('imagen')->nullable();
             $table->unsignedBigInteger('id_tipo_contratacion')->nullable();
             $table->unsignedBigInteger('id_modalidad')->nullable();
+            $table->unsignedBigInteger('id_pais')->nullable();
+            $table->unsignedBigInteger('id_departamento')->nullable();
+            $table->unsignedBigInteger('id_municipio')->nullable();
 
             $table->timestamp('fecha_creacion');
             $table->timestamp('fecha_modificacion');
 
             $table->foreign('id_tipo_contratacion')->references('id')->on('tipo_contratacion');
             $table->foreign('id_modalidad')->references('id')->on('modalidades');
+            $table->foreign('id_pais')->references('id')->on('paises');
+            $table->foreign('id_departamento')->references('id')->on('departamentos');
+            $table->foreign('id_municipio')->references('id')->on('municipios');
         });
     }
 

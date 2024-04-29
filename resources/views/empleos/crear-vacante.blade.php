@@ -133,7 +133,7 @@
                                 <small class="fw-bold">Agregar nuevo</small>
                             </button>
                         </div>
-                        <select class="form-select" id="contrato" name="contrato" required>
+                        <select class="form-select" required id="contrato" name="contrato">
                             <option value="">Seleccione el tipo</option>
                         </select>
                         <input type="hidden" id="tipo_contratacion_id" name="id_tipo_contratacion" value="">
@@ -166,7 +166,7 @@
                             <select class="form-select" id="pais_vacante" required>
                                 <option value="">Seleccione el país</option>
                             </select>
-                            <input type="hidden" id="id_pais" name="pais_id" value="">
+                            <input type="hidden" id="id_pais" name="id_pais" value="">
                             <div class="invalid-feedback">
                                 Por favor, seleccione el país.
                             </div>
@@ -177,7 +177,7 @@
                             <select class="form-select" id="departamento_vacante" required>
                                 <option value="">Seleccione el departamento</option>
                             </select>
-                            <input type="hidden" id="id_departamento" name="departamento_id" value="">
+                            <input type="hidden" id="id_departamento" name="id_departamento" value="">
                             <div class="invalid-feedback">
                                 Por favor, seleccione el departamento.
                             </div>
@@ -188,7 +188,7 @@
                             <select class="form-select" id="municipio_vacante" required>
                                 <option value="">Seleccione el municipio</option>
                             </select>
-                            <input type="hidden" id="id_municipio" name="municipio_id" value="">
+                            <input type="hidden" id="id_municipio" name="id_municipio" value="">
                             <div class="invalid-feedback">
                                 Por favor, seleccione el municipio.
                             </div>

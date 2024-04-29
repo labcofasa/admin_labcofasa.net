@@ -27,7 +27,8 @@ class FormsConozcaClienteController extends Controller
 {
     public function index()
     {
-        return view('formularios.formulario_conozca_cliente');
+        // return view('formularios.formulario_conozca_cliente');
+        return view('mantenimiento');
     }
 
     public function procesarFormulario(Request $request)
@@ -87,6 +88,7 @@ class FormsConozcaClienteController extends Controller
         $tipo_persona = $request->input('tipo_persona') ?: 'Campo vacío';
         $nombre = $request->input('nombre') ?: 'Campo vacío';
         $apellido = $request->input('apellido') ?: 'Campo vacío';
+        
         $fecha_de_nacimiento = $request->input('fecha_de_nacimiento') ?: 'Campo vacío';
         $nacionalidad = $request->input('nacionalidad') ?: 'Campo vacío';
         $profesion_u_oficio = $request->input('profesion_u_oficio') ?: 'Campo vacío';

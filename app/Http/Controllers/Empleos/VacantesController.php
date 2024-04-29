@@ -37,6 +37,11 @@ class VacantesController extends Controller
             'beneficios' => 'required|string',
             'fecha_vencimiento' => 'required|date',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg',
+            'id_tipo_contratacion' => 'nullable|exists:tipo_contratacion,id',
+            'id_modalidad' => 'nullable|exists:modalidades,id',
+            'id_pais' => 'nullable|exists:paises,id',
+            'id_departamento' => 'nullable|exists:departamentos,id',
+            'id_municipio' => 'nullable|exists:municipios,id',
         ]);
 
         try {
@@ -47,6 +52,11 @@ class VacantesController extends Controller
             $vacante->requisitos = $request->input('requisitos');
             $vacante->beneficios = $request->input('beneficios');
             $vacante->fecha_vencimiento = $request->input('fecha_vencimiento');
+            $vacante->id_tipo_contratacion = $request->input('id_tipo_contratacion');
+            $vacante->id_modalidad = $request->input('id_modalidad');
+            $vacante->id_pais = $request->input('id_pais');
+            $vacante->id_departamento = $request->input('id_departamento');
+            $vacante->id_municipio = $request->input('id_municipio');
             $vacante->fecha_creacion = now();
             $vacante->fecha_modificacion = now();
 
