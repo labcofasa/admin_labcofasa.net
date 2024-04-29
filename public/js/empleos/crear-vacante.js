@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     var formulario = document.getElementById('frmVacante');
-    var campos = formulario.querySelectorAll('#nombre, #descripcion, #requisitos, #beneficios, #imagen, #fecha_vencimiento');
-
-    // #contrato, #modalidad, #pais_vacante, #departamento_vacante, #municipio_vacante
+    var campos = formulario.querySelectorAll('#nombre, #descripcion, #requisitos, #beneficios, #imagen, #fecha_vencimiento, #contrato, #modalidad, #pais_vacante, #departamento_vacante, #municipio_vacante, #empresa_vacante');
 
     function ocultarFeedbackInvalido() {
         var feedbacks = formulario.querySelectorAll('.invalid-feedback');

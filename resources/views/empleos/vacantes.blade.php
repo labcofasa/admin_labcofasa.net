@@ -38,7 +38,7 @@
                     </div>
                     <div class="info">
                         <small>Solicitudes</small>
-                        <small>30</small>
+                        <small>0</small>
                     </div>
                     <div class="aviso mb-1">
                         <small>Fecha límite de solicitud</small>

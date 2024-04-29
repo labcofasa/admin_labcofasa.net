@@ -37,6 +37,7 @@ class VacantesController extends Controller
             'beneficios' => 'required|string',
             'fecha_vencimiento' => 'required|date',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg',
+            'id_empresa' => 'nullable|exists:empresas,id',
             'id_tipo_contratacion' => 'nullable|exists:tipo_contratacion,id',
             'id_modalidad' => 'nullable|exists:modalidades,id',
             'id_pais' => 'nullable|exists:paises,id',
@@ -52,6 +53,7 @@ class VacantesController extends Controller
             $vacante->requisitos = $request->input('requisitos');
             $vacante->beneficios = $request->input('beneficios');
             $vacante->fecha_vencimiento = $request->input('fecha_vencimiento');
+            $vacante->id_empresa = $request->input('id_empresa');
             $vacante->id_tipo_contratacion = $request->input('id_tipo_contratacion');
             $vacante->id_modalidad = $request->input('id_modalidad');
             $vacante->id_pais = $request->input('id_pais');

@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->text('beneficios');
             $table->date('fecha_vencimiento');
             $table->string('imagen')->nullable();
+            $table->unsignedBigInteger('id_empresa')->nullable();
             $table->unsignedBigInteger('id_tipo_contratacion')->nullable();
             $table->unsignedBigInteger('id_modalidad')->nullable();
             $table->unsignedBigInteger('id_pais')->nullable();
@@ -27,6 +28,7 @@ return new class extends Migration {
             $table->timestamp('fecha_creacion');
             $table->timestamp('fecha_modificacion');
 
+            $table->foreign('id_empresa')->references('id')->on('empresas');
             $table->foreign('id_tipo_contratacion')->references('id')->on('tipo_contratacion');
             $table->foreign('id_modalidad')->references('id')->on('modalidades');
             $table->foreign('id_pais')->references('id')->on('paises');

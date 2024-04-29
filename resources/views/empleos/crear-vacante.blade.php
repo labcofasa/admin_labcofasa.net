@@ -8,10 +8,10 @@
             <a href="{{ route('pag.vacantes') }}" class="d-flex gap-3 text-decoration-none align-items-center">
                 <svg class="text-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                     color="#000000" fill="none">
-                    <path d="M4 12L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    <path d="M4 12L20 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                         stroke-linejoin="round" />
                     <path d="M8.99996 17C8.99996 17 4.00001 13.3176 4 12C3.99999 10.6824 9 7 9 7" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <h1>@yield('titulo')</h1>
             </a>
@@ -136,10 +136,10 @@
                         <select class="form-select" required id="contrato" name="contrato">
                             <option value="">Seleccione el tipo</option>
                         </select>
-                        <input type="hidden" id="tipo_contratacion_id" name="id_tipo_contratacion" value="">
                         <div class="invalid-feedback">
                             Por favor, seleccione el tipo de contrato.
                         </div>
+                        <input type="hidden" id="tipo_contratacion_id" name="id_tipo_contratacion" value="">
                     </div>
                     <div class="mb-3">
                         <div class="encabezado mb-0">
@@ -153,10 +153,10 @@
                         <select class="form-select" id="modalidad" name="modalidad" required>
                             <option value="">Seleccione la modalidad</option>
                         </select>
-                        <input type="hidden" id="modalidad_id" name="id_modalidad" value="">
                         <div class="invalid-feedback">
                             Por favor, seleccione la modalidad.
                         </div>
+                        <input type="hidden" id="modalidad_id" name="id_modalidad" value="">
                     </div>
                     <div class="mb-4">
                         <h6 class="mb-2">Ubicación</h6>
@@ -166,10 +166,10 @@
                             <select class="form-select" id="pais_vacante" required>
                                 <option value="">Seleccione el país</option>
                             </select>
-                            <input type="hidden" id="id_pais" name="id_pais" value="">
                             <div class="invalid-feedback">
                                 Por favor, seleccione el país.
                             </div>
+                            <input type="hidden" id="id_pais" name="id_pais" value="">
                         </div>
                         <div class="mb-3">
                             <label for="departamento_vacante" class="form-label">Departamento<span class="obligatorio">
@@ -177,10 +177,10 @@
                             <select class="form-select" id="departamento_vacante" required>
                                 <option value="">Seleccione el departamento</option>
                             </select>
-                            <input type="hidden" id="id_departamento" name="id_departamento" value="">
                             <div class="invalid-feedback">
                                 Por favor, seleccione el departamento.
                             </div>
+                            <input type="hidden" id="id_departamento" name="id_departamento" value="">
                         </div>
                         <div class="mb-3">
                             <label for="municipio_vacante" class="form-label">Municipio<span class="obligatorio">
@@ -188,31 +188,27 @@
                             <select class="form-select" id="municipio_vacante" required>
                                 <option value="">Seleccione el municipio</option>
                             </select>
-                            <input type="hidden" id="id_municipio" name="id_municipio" value="">
                             <div class="invalid-feedback">
                                 Por favor, seleccione el municipio.
                             </div>
+                            <input type="hidden" id="id_municipio" name="id_municipio" value="">
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-xl-4">
                     <h6 class="mb-3">Información empresarial</h6>
-                    {{-- <div class="mb-3">
-                        <div class="encabezado mb-0">
-                            <label for="empresa_vacante" class="form-label">Empresa<span class="obligatorio">
-                                    *</span></label>
-                            <a href="{{ route('pag.empresas') }}" class="link_name"><small class="fw-bold">Agregar
-                                    nuevo</small></a>
-                        </div>
+                    <div class="mb-3">
+                        <label for="empresa_vacante" class="form-label">Empresa<span class="obligatorio">
+                                *</span></label>
                         <select id="empresa_vacante" class="form-control" required>
                             <option value="">Seleccione una empresa</option>
                         </select>
-                        <input type="hidden" id="id_empresa" name="empresa_id" value="">
                         <div class="invalid-feedback">
                             Seleccione una empresa
                         </div>
+                        <input type="hidden" id="id_empresa" name="id_empresa" value="">
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <div class="encabezado mb-0">
                             <label for="division" class="form-label">Divisiones<span class="obligatorio">
                                     *</span></label>
