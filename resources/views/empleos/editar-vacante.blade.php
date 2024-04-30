@@ -83,8 +83,9 @@
                         imagen</button>
                 </div>
                 <div class="col-12 col-md-4">
+                    <h6 class="mb-3">Información principal</h6>
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Titúlo de la vacante</label>
+                        <label for="nombre" class="form-label">Título del puesto</label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
                             value="{{ $vacante->nombre }}" required autocomplete="off">
                         <div class="invalid-feedback">
@@ -92,21 +93,120 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción de la vacante</label>
+                        <label for="descripcion" class="form-label">Descripción del trabajo<span
+                                class="obligatorio">
+                                *</span></label>
                         <textarea class="form-control" name="descripcion" id="descripcion" required>{{ $vacante->descripcion }}</textarea>
                         <div class="invalid-feedback">
-                            Por favor, ingrese la descripción de la vacante.
+                            Por favor, ingrese la descripción.
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="requisitos" class="form-label">Requisitos de calificación<span
+                                class="obligatorio">
+                                *</span></label>
+                        <textarea class="form-control" name="requisitos" id="requisitos" required>{{ $vacante->requisitos }}</textarea>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese los requerimientos.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="beneficios" class="form-label">Beneficios<span class="obligatorio">
+                                *</span></label>
+                        <textarea class="form-control" name="beneficios" id="beneficios" required>{{ $vacante->beneficios }}</textarea>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese los beneficios.
+                        </div>
+                    </div>
+                    <h6 class="mb-3">Información empresarial</h6>
+                    <div class="mb-3">
+                        <label for="empresa_vacante_editar" class="form-label">Empresa
+                            <span class="obligatorio"> *</span>
+                        </label>
+                        <select name="empresa" id="empresa_vacante_editar" class="form-control" required>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese la empresa.
+                        </div>
+                        <input type="hidden" id="id_empresa_seleccionada" value="{{ $vacante->id_empresa }}"
+                            name="empresa_seleccionada">
+                        <input type="hidden" id="id_empresa_editar" name="id_empresa" value="">
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
+                    <h6 class="mb-3">Información adicional</h6>
                     <div class="mb-3">
-                        <label for="fecha_vencimiento" class="form-label">Fecha de
-                            vencimiento</label>
+                        <label for="fecha_vencimiento" class="form-label">Fecha de vencimiento</label>
                         <input type="date" required class="form-control" id="fecha_vencimiento"
                             value="{{ $vacante->fecha_vencimiento }}" name="fecha_vencimiento">
                         <div class="invalid-feedback">
                             Por favor, ingrese la fecha de vencimiento.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrato_editar" class="form-label">Tipo de contrato<span
+                                class="obligatorio">*</span></label>
+                        <select class="form-select" id="contrato_editar" name="contrato" required>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, seleccione el tipo de contrato.
+                        </div>
+                        <input type="hidden" id="tipo_contratacion_seleccionada"
+                            value="{{ $vacante->id_tipo_contratacion }}" name="contratacion_seleccionado">
+                        <input type="hidden" id="id_tipo_contratacion_editar" name="id_tipo_contratacion"
+                            value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="modalidad" class="form-label">Modalidad del puesto<span class="obligatorio">
+                                *</span></label>
+                        <select class="form-select" id="modalidad_editar" name="modalidad" required>
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, seleccione la modalidad.
+                        </div>
+                        <input type="hidden" id="modalidad_seleccionada" name="modalidad_seleccionada"
+                            value="{{ $vacante->id_modalidad }}">
+                        <input type="hidden" id="id_modalidad_editar" name="id_modalidad" value="">
+                    </div>
+                    <div class="mb-4">
+                        <h6 class="mb-2">Ubicación</h6>
+                        <div class="mb-3">
+                            <label for="pais_vacante_editar" class="form-label">País<span class="obligatorio">
+                                    *</span></label>
+                            <select class="form-select" id="pais_vacante_editar" name="pais_vacante_editar">
+                                <option value="{{ $vacante->pais->id }}"
+                                    {{ $vacante->pais->id == $vacante->pais->id ? 'selected' : '' }}>
+                                    {{ $vacante->pais->nombre }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor, seleccione el país.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="departamento_vacante_editar" class="form-label">Departamento<span
+                                    class="obligatorio">
+                                    *</span></label>
+                            <select class="form-select" id="departamento_vacante_editar"
+                                name="departamento_vacante_editar">
+                                <option value="{{ $vacante->departamento->id }}"
+                                    {{ $vacante->departamento->id == $vacante->departamento->id ? 'selected' : '' }}>
+                                    {{ $vacante->departamento->nombre }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor, seleccione el departamento.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="municipio_vacante_editar" class="form-label">Municipio<span class="obligatorio">
+                                    *</span></label>
+                            <select class="form-select" id="municipio_vacante_editar" name="municipio_vacante_editar">
+                                <option value="{{ $vacante->municipio->id }}"
+                                    {{ $vacante->municipio->id == $vacante->municipio->id ? 'selected' : '' }}>
+                                    {{ $vacante->municipio->nombre }}
+                                </option>
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     var formulario = document.getElementById('frmEditarVacante');
     var inputs = formulario.querySelectorAll('#nombre, #descripcion, #fecha_vencimiento, #imagen');
 
@@ -43,4 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     initializeDropzone("dropzone", "imagen", "eliminar-imagen");
+
+    var empresaId = $('#id_empresa_seleccionada').val();
+    var tipoContratoId = $('#tipo_contratacion_seleccionada').val();
+    var modalidadId = $('#modalidad_seleccionada').val();
+
+    cargarEmpresas('#empresa_vacante_editar', '#id_empresa_editar', true, empresaId);
+    cargarTipoContratacion("#contrato_editar", "#id_tipo_contratacion_editar", true, tipoContratoId);
+    cargarModalidades("#modalidad_editar", "#id_modalidad_editar", true, modalidadId);
 });

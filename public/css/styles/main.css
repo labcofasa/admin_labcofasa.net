@@ -69,11 +69,12 @@
     --icon-secondary: #454545;
     --icon-success: #20c997;
     --icon-danger: #dc3545;
-    --icon-warning: #ffc107;
+    --icon-warning: #d7a100;
     --icon-info: ;
 
     /* Textos */
     --text-color: #3c4043;
+    --texto-secundario: #212529bf;
     --span: #555555;
     --font-size: 0.875rem;
     --letter-spacing: 0.0178571429em;
@@ -205,6 +206,7 @@ body.dark {
     --alert-primary-border: #084298;
 
     /* Textos */
+    --texto-secundario: #bebebe;
     --text-color: #bebebe;
     --span: #b0b0b0;
     --input-caret: #33b7a0;
@@ -319,6 +321,10 @@ p {
     letter-spacing: var(--letter-spacing);
     color: var(--text-color) !important;
     transition: var(--tran-03);
+}
+
+.texto-secundario {
+    color: var(--texto-secundario);
 }
 
 small {

@@ -6,6 +6,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Empleos\Vacante;
 use App\Http\Controllers\Controller;
+use App\Models\Departamento;
+use App\Models\Empleos\Modalidad;
+use App\Models\Empleos\TipoContratacion;
+use App\Models\Empresa;
+use App\Models\Municipio;
+use App\Models\Pais;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\QueryException;
 
@@ -14,7 +20,7 @@ class VacantesController extends Controller
     public function index()
     {
         $usuario = User::with('perfil')->find(auth()->id());
-        $vacantes = Vacante::all();
+        $vacantes = Vacante::with('pais', 'departamento', 'municipio')->get();
 
         $nombreUsuario = $usuario->name;
 
@@ -89,7 +95,7 @@ class VacantesController extends Controller
     public function edit($id)
     {
         $usuario = User::with('perfil')->find(auth()->id());
-        $vacante = Vacante::find($id);
+        $vacante = Vacante::with('empresa', 'tipoContratacion', 'modalidad', 'pais', 'departamento', 'municipio')->find($id);
 
         return view('empleos.editar-vacante', compact('usuario', 'vacante'));
     }
@@ -97,10 +103,15 @@ class VacantesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nombre' => 'sometimes|string',
-            'descripcion' => 'sometimes|string',
-            'fecha_vencimiento' => 'sometimes|date',
-            'imagen' => 'sometimes|image|mimes:jpeg,png,jpg',
+            'nombre' => 'required|string',
+            'descripcion' => 'required|string',
+            'requisitos' => 'required|string',
+            'beneficios' => 'required|string',
+            'fecha_vencimiento' => 'required|date',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg',
+            'id_empresa' => 'nullable|exists:empresas,id',
+            'id_tipo_contratacion' => 'nullable|exists:tipo_contratacion,id',
+            'id_modalidad' => 'nullable|exists:modalidades,id',
         ]);
 
         try {
@@ -108,7 +119,12 @@ class VacantesController extends Controller
 
             $vacante->nombre = $request->input('nombre');
             $vacante->descripcion = $request->input('descripcion');
+            $vacante->requisitos = $request->input('requisitos');
+            $vacante->beneficios = $request->input('beneficios');
             $vacante->fecha_vencimiento = $request->input('fecha_vencimiento');
+            $vacante->id_empresa = $request->input('id_empresa');
+            $vacante->id_tipo_contratacion = $request->input('id_tipo_contratacion');
+            $vacante->id_modalidad = $request->input('id_modalidad');
             $vacante->fecha_modificacion = now();
 
             if ($request->hasFile('imagen')) {
