@@ -1,5 +1,5 @@
 <div class="offcanvas-body">
-    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+    <ul class="navbar-nav nav-movil justify-content-start flex-grow-1 pe-3">
         <span class="link_name subtitle-movil">Menú</span>
         @can('admin_dashboard_ver')
             <li class="nav-item">
@@ -97,7 +97,7 @@
             </li>
         @endcan
     </ul>
-    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+    <ul class="navbar-nav nav-movil justify-content-start flex-grow-1 pe-3">
         @if (auth()->user()->hasAnyPermission([
                     'admin_empresas_ver',
                     'admin_usuarios_ver',

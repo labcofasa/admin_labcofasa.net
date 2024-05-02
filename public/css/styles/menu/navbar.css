@@ -101,7 +101,7 @@ nav.visible {
     color: var(--accent);
 }
 
-.offcanvas .offcanvas-body .nav-item .nav-link {
+.offcanvas .offcanvas-body .nav-movil .nav-item .nav-link {
     color: var(--text-color);
     margin: 0.2rem 0;
     padding: 0.5rem 2rem;

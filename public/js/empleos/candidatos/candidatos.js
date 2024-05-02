@@ -260,6 +260,15 @@ $(document).ready(function () {
 
     $.fn.DataTable.ext.pager.numbers_length = 5;
 
+    $("#tabla-candidatos").on("click", ".ver-candidato", function () {
+        var row = tabla_candidatos.row($(this).parents("tr")).data();
+
+        var nombreCandidato = row.nombre;
+
+        $("#offcanvasCandidato").offcanvas('show');
+        $("#offcanvasCandidato .offcanvas-title").text(nombreCandidato);
+    });
+
     $("#tabla-candidatos").on("click", ".eliminar-candidato", function () {
         const candidatoId = $(this).data("id");
         const candidatoNombre = $(this)

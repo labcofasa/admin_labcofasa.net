@@ -133,7 +133,7 @@
                                 <small class="fw-bold">Agregar nuevo</small>
                             </button>
                         </div>
-                        <select class="form-select" required id="contrato" name="contrato">
+                        <select class="form-control" required id="contrato" name="contrato">
                             <option value="">Seleccione el tipo</option>
                         </select>
                         <div class="invalid-feedback">
@@ -150,7 +150,7 @@
                                 <small class="fw-bold">Agregar nuevo</small>
                             </button>
                         </div>
-                        <select class="form-select" id="modalidad" name="modalidad" required>
+                        <select class="form-control" id="modalidad" name="modalidad" required>
                             <option value="">Seleccione la modalidad</option>
                         </select>
                         <div class="invalid-feedback">
@@ -163,7 +163,7 @@
                         <div class="mb-3">
                             <label for="pais_vacante" class="form-label">País<span class="obligatorio">
                                     *</span></label>
-                            <select class="form-select" id="pais_vacante" required>
+                            <select class="form-control" id="pais_vacante" required>
                                 <option value="">Seleccione el país</option>
                             </select>
                             <div class="invalid-feedback">
@@ -174,7 +174,7 @@
                         <div class="mb-3">
                             <label for="departamento_vacante" class="form-label">Departamento<span class="obligatorio">
                                     *</span></label>
-                            <select class="form-select" id="departamento_vacante" required>
+                            <select class="form-control" id="departamento_vacante" required>
                                 <option value="">Seleccione el departamento</option>
                             </select>
                             <div class="invalid-feedback">
@@ -185,7 +185,7 @@
                         <div class="mb-3">
                             <label for="municipio_vacante" class="form-label">Municipio<span class="obligatorio">
                                     *</span></label>
-                            <select class="form-select" id="municipio_vacante" required>
+                            <select class="form-control" id="municipio_vacante" required>
                                 <option value="">Seleccione el municipio</option>
                             </select>
                             <div class="invalid-feedback">
@@ -215,7 +215,7 @@
                             <a href="{{ route('pag.empresas') }}" class="link_name"><small class="fw-bold">Agregar
                                     nuevo</small></a>
                         </div>
-                        <select class="form-select" id="division" name="division" required>
+                        <select class="form-control" id="division" name="division" required>
                             <option value="">Seleccione la división</option>
                             <option value="">Contabilidad</option>
                             <option value="">Informatica</option>

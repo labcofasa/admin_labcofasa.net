@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top" aria-label="Menu">
     <div class="container-fluid">
-        <button class="navbar-toggler menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
+        <button class="navbar-toggler menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-scroll="false" data-bs-target="#offcanvasNavbar2"
             aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                 color="#000000" fill="none">
@@ -25,7 +25,7 @@
             <span class="logo-nombre">Labs. Cofasa</span>
         </div>
 
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2"
+        <div class="offcanvas offcanvas-start" data-bs-scroll="false" tabindex="-1" id="offcanvasNavbar2"
             aria-labelledby="offcanvasNavbar2Label">
             <div class="offcanvas-header">
                 <a href="/"
