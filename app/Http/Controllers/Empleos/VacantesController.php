@@ -6,12 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Empleos\Vacante;
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Empleos\Modalidad;
-use App\Models\Empleos\TipoContratacion;
-use App\Models\Empresa;
-use App\Models\Municipio;
-use App\Models\Pais;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\QueryException;
 
@@ -20,9 +15,14 @@ class VacantesController extends Controller
     public function index()
     {
         $usuario = User::with('perfil')->find(auth()->id());
-        $vacantes = Vacante::with('pais', 'departamento', 'municipio')->get();
+        $vacantes = Vacante::with('pais', 'departamento', 'municipio', 'candidatos')->get();
 
         $nombreUsuario = $usuario->name;
+
+        $vacantes->transform(function ($vacante) {
+            $vacante->fecha_vencimiento = Carbon::parse($vacante->fecha_vencimiento)->format('d-m-Y');
+            return $vacante;
+        });
 
         return view('empleos.vacantes', compact('usuario', 'nombreUsuario', 'vacantes'));
     }

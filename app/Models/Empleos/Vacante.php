@@ -28,6 +28,11 @@ class Vacante extends Model
         'fecha_modificacion'
     ];
 
+    public function candidatos()
+    {
+        return $this->hasMany(Candidato::class, 'id_vacante');
+    }
+
     public function empresa()
     {
         return $this->belongsTo(Empresa::class, 'id_empresa');

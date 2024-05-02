@@ -931,7 +931,7 @@ class FormsConozcaClienteController extends Controller
                 'cliente_archivo' => $clienteArchivosData,
 
                 $fecha_creacion = new DateTime($form->fecha_de_creacion),
-                'fecha_creacion' => $fecha_creacion->format('Y-m-d H:i:s'),
+                'fecha_creacion' => $fecha_creacion->format('d-m-Y H:i:s'),
             ];
         }
 
@@ -1316,7 +1316,7 @@ class FormsConozcaClienteController extends Controller
             return response()->json(['success' => false, 'error' => '¡Actualización fallida!: ' . $e->getMessage()]);
         }
     }
-
+    
     public function destroy($id)
     {
         $formulario = FrmConozcaCliente::find($id);

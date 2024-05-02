@@ -37,12 +37,12 @@
                         <h6>{{ $vacante->nombre }}</h6>
                     </div>
                     <div class="info">
-                        <small>Solicitudes</small>
-                        <small>0</small>
+                        <small class="texto-secundario">Solicitudes</small>
+                        <small class="texto-secundario">{{ $vacante->candidatos->count() }}</small>
                     </div>
                     <div class="aviso mb-1">
-                        <small>Fecha límite de solicitud</small>
-                        <small id="fecha_vencimiento">{{ $vacante->fecha_vencimiento }}</small>
+                        <small class="texto-secundario">Fecha límite de solicitud</small>
+                        <small class="texto-secundario" id="fecha_vencimiento">{{ $vacante->fecha_vencimiento }}</small>
                     </div>
                     <div class="botones">
                         <button data-bs-toggle="offcanvas" data-bs-target="#verVacanteOffCanvas{{ $vacante->id }}"
@@ -52,32 +52,50 @@
                             <button class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown"
                                 data-bs-display="static" aria-expanded="false">
                                 <svg class="icon-danger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                    width="22" height="22" color="#000000" fill="none">
+                                    width="24" height="24" color="#000000" fill="none">
+                                    <path d="M6.51331 16H10.5133M6.51331 11H14.5133" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" />
+                                    <path d="M10.0133 22H11.0133" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
                                     <path
-                                        d="M16.2141 4.98239L17.6158 3.58063C18.39 2.80646 19.6452 2.80646 20.4194 3.58063C21.1935 4.3548 21.1935 5.60998 20.4194 6.38415L19.0176 7.78591M16.2141 4.98239L10.9802 10.2163C9.93493 11.2616 9.41226 11.7842 9.05637 12.4211C8.70047 13.058 8.3424 14.5619 8 16C9.43809 15.6576 10.942 15.2995 11.5789 14.9436C12.2158 14.5877 12.7384 14.0651 13.7837 13.0198L19.0176 7.78591M16.2141 4.98239L19.0176 7.78591"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                        d="M7.50993 22C6.36069 21.975 5.58621 22 4.58688 21.775C3.53758 21.5 2.88801 20.85 2.66317 19.55C2.43831 18.7 2.5106 14.9238 2.51327 11.325C2.51533 8.53219 2.53385 5.99934 2.7631 5.475C3.08789 4.35 3.83739 3.55 6.16084 3.525M16.0292 3.525C16.8287 3.6 18.9184 3.525 19.327 5.825C19.5491 7.075 19.5019 8.85 19.5019 10.975M8.18449 5.5C9.23379 5.525 12.6065 5.5 13.7558 5.5C14.905 5.5 15.5123 4.55409 15.5046 3.675C15.4967 2.77925 14.7051 2.08017 13.9307 2C12.9813 2 8.95897 2 8.1595 2C7.23512 2.05 6.61054 2.8 6.5106 3.55C6.41067 4.575 7.16017 5.45 8.18449 5.5Z"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                     <path
-                                        d="M21 12C21 16.2426 21 18.364 19.682 19.682C18.364 21 16.2426 21 12 21C7.75736 21 5.63604 21 4.31802 19.682C3 18.364 3 16.2426 3 12C3 7.75736 3 5.63604 4.31802 4.31802C5.63604 3 7.75736 3 12 3"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                        d="M18.2776 14.375C16.9035 15.775 14.2553 18.275 14.2553 18.45C14.0417 18.7468 13.8555 19.35 13.7306 20.2C13.5737 20.9879 13.3858 21.675 13.6057 21.875C13.8256 22.075 14.6535 21.9064 15.5294 21.725C16.229 21.65 16.8785 21.4 17.2033 21.15C17.678 20.7298 20.9009 17.475 21.2756 17.05C21.5504 16.675 21.5754 15.975 21.3356 15.55C21.2007 15.25 20.3512 14.45 20.0764 14.225C19.5767 13.925 18.8772 13.875 18.2776 14.375Z"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                 </svg>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li>
+                                    <a href="{{ route('pag.candidatos', ['id' => $vacante->id]) }}"
+                                        class="dropdown-item nav-link" type="button">
+                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            width="24" height="24" color="#000000" fill="none">
+                                            <path d="M13 15C10.7083 21 4.29167 15 2 21" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M15.5 15H17.0013C19.3583 15 20.5368 15 21.2691 14.2678C22.0013 13.5355 22.0013 12.357 22.0013 10V8C22.0013 5.64298 22.0013 4.46447 21.2691 3.73223C20.5368 3 19.3583 3 17.0013 3H13.0013C10.6443 3 9.46576 3 8.73353 3.73223C8.11312 4.35264 8.01838 5.29344 8.00391 7"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <circle cx="7.5" cy="12.5" r="2.5" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M12 7H18M18 11H15" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <span class="link">Candidatos</span>
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="{{ route('editar.vacante', ['id' => $vacante->id]) }}"
                                         class="dropdown-item nav-link" type="button">
                                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             width="24" height="24" color="#000000" fill="none">
-                                            <path d="M7.01428 16.0029H11.0143M7.01428 11.0053H15.0143" stroke="currentColor"
-                                                stroke-width="1.5" stroke-linecap="round" />
-                                            <path d="M10.0143 21.9999H11.0143" stroke="currentColor" stroke-width="1.5"
+                                            <path
+                                                d="M15.2141 5.98239L16.6158 4.58063C17.39 3.80646 18.6452 3.80646 19.4194 4.58063C20.1935 5.3548 20.1935 6.60998 19.4194 7.38415L18.0176 8.78591M15.2141 5.98239L6.98023 14.2163C5.93493 15.2616 5.41226 15.7842 5.05637 16.4211C4.70047 17.058 4.3424 18.5619 4 20C5.43809 19.6576 6.94199 19.2995 7.57889 18.9436C8.21579 18.5877 8.73844 18.0651 9.78375 17.0198L18.0176 8.78591M15.2141 5.98239L18.0176 8.78591"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M11 20H17" stroke="currentColor" stroke-width="1.5"
                                                 stroke-linecap="round" />
-                                            <path
-                                                d="M7.51083 21.9999C6.33921 21.9749 5.53921 21.9 4.76421 21.6751C3.71491 21.4002 2.94905 20.4757 2.72421 19.1763C2.43921 17.9519 2.53921 14.9284 2.51416 11.3302C2.51623 8.53874 2.3892 5.85787 2.8392 4.33362C3.1142 3.83386 3.3392 2.00976 7.06421 2.03475C7.68921 2.00976 14.3142 1.95978 15.3642 2.05973C18.8642 2.1347 19.2142 3.93381 19.4142 5.63298C19.541 6.88236 19.5142 8.88138 19.5142 11.0053M7.01421 2.00976C7.31421 3.63396 7.28921 4.68344 8.38921 4.93332C8.86421 5.00828 9.9495 5.00628 11.1142 5.00828C12.1538 5.01007 13.2142 5.01945 13.6892 4.90833C14.8642 4.63347 14.7392 3.18418 15.0392 2.00976"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                            <path
-                                                d="M18.2786 14.3787C16.9045 15.778 14.2563 18.2768 14.2563 18.4517C14.0427 18.7483 13.8565 19.3512 13.7316 20.2008C13.5747 20.9884 13.3868 21.6751 13.6067 21.875C13.8266 22.0749 14.6545 21.9064 15.5304 21.7251C16.2299 21.6501 16.8795 21.4002 17.2043 21.1504C17.679 20.7304 20.9018 17.4772 21.2766 17.0524C21.5514 16.6776 21.5764 15.9779 21.3365 15.5531C21.2016 15.2533 20.3522 14.4536 20.0774 14.2288C19.5777 13.9289 18.8782 13.8789 18.2786 14.3787Z"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                         </svg>
                                         <span class="link">Editar</span>
                                     </a>

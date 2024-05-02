@@ -28,8 +28,6 @@ class RoleSeeder extends Seeder
     {
         $admin = Role::findOrCreate('administrador');
 
-        // php artisan db:seed --class=RoleSeeder
-
         $permissions = [
             // Dashboard
             ['name' => 'admin_dashboard_ver', 'descripcion' => 'Ver dashboard de estadisticas'],
@@ -132,7 +130,7 @@ class RoleSeeder extends Seeder
             ['name' => 'admin_candidatos_ver', 'descripcion' => 'Ver candidatos'],
             ['name' => 'admin_candidatos_crear', 'descripcion' => 'Crear candidatos'],
             ['name' => 'admin_candidatos_editar', 'descripcion' => 'Editar candidatos'],
-            ['name' => 'admin_candidatos_descartar', 'descripcion' => 'descartar candidatos'],
+            ['name' => 'admin_candidatos_eliminar', 'descripcion' => 'Eliminar candidatos'],
 
             // Vacantes
             ['name' => 'admin_vacantes_ver', 'descripcion' => 'Ver vacantes'],

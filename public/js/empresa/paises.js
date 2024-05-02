@@ -42,7 +42,7 @@ $(document).ready(function () {
                 },
                 {
                     text: "Crear registro",
-                    className: "btn btn-lg btn-store pais",
+                    className: "btn btn-lg btn-primary pais",
                     action: function (e, dt, node, config) {
                         document.getElementById("registrarPaisBtn").click();
                     },
@@ -492,7 +492,7 @@ $(document).ready(function () {
                 },
                 {
                     text: "Crear registro",
-                    className: "btn btn-lg btn-store departamento",
+                    className: "btn btn-lg btn-primary departamento",
                     action: function (e, dt, node, config) {
                         document
                             .getElementById("registrarDepartamentoBtn")
@@ -966,7 +966,7 @@ $(document).ready(function () {
                 },
                 {
                     text: "Crear registro",
-                    className: "btn btn-lg btn-store municipio",
+                    className: "btn btn-lg btn-primary municipio",
                     action: function (e, dt, node, config) {
                         document
                             .getElementById("registrarMunicipioBtn")

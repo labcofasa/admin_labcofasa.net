@@ -93,8 +93,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción del trabajo<span
-                                class="obligatorio">
+                        <label for="descripcion" class="form-label">Descripción del trabajo<span class="obligatorio">
                                 *</span></label>
                         <textarea class="form-control" name="descripcion" id="descripcion" required>{{ $vacante->descripcion }}</textarea>
                         <div class="invalid-feedback">
@@ -102,8 +101,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="requisitos" class="form-label">Requisitos de calificación<span
-                                class="obligatorio">
+                        <label for="requisitos" class="form-label">Requisitos de calificación<span class="obligatorio">
                                 *</span></label>
                         <textarea class="form-control" name="requisitos" id="requisitos" required>{{ $vacante->requisitos }}</textarea>
                         <div class="invalid-feedback">
@@ -146,7 +144,7 @@
                     <div class="mb-3">
                         <label for="contrato_editar" class="form-label">Tipo de contrato<span
                                 class="obligatorio">*</span></label>
-                        <select class="form-select" id="contrato_editar" name="contrato" required>
+                        <select class="form-control" id="contrato_editar" name="contrato" required>
                         </select>
                         <div class="invalid-feedback">
                             Por favor, seleccione el tipo de contrato.
@@ -157,9 +155,9 @@
                             value="">
                     </div>
                     <div class="mb-3">
-                        <label for="modalidad" class="form-label">Modalidad del puesto<span class="obligatorio">
+                        <label for="modalidad_editar" class="form-label">Modalidad del puesto<span class="obligatorio">
                                 *</span></label>
-                        <select class="form-select" id="modalidad_editar" name="modalidad" required>
+                        <select class="form-control" id="modalidad_editar" name="modalidad" required>
                         </select>
                         <div class="invalid-feedback">
                             Por favor, seleccione la modalidad.
@@ -173,7 +171,7 @@
                         <div class="mb-3">
                             <label for="pais_vacante_editar" class="form-label">País<span class="obligatorio">
                                     *</span></label>
-                            <select class="form-select" id="pais_vacante_editar" name="pais_vacante_editar">
+                            <select class="form-control" id="pais_vacante_editar" name="pais_vacante_editar">
                                 <option value="{{ $vacante->pais->id }}"
                                     {{ $vacante->pais->id == $vacante->pais->id ? 'selected' : '' }}>
                                     {{ $vacante->pais->nombre }}
@@ -187,7 +185,7 @@
                             <label for="departamento_vacante_editar" class="form-label">Departamento<span
                                     class="obligatorio">
                                     *</span></label>
-                            <select class="form-select" id="departamento_vacante_editar"
+                            <select class="form-control" id="departamento_vacante_editar"
                                 name="departamento_vacante_editar">
                                 <option value="{{ $vacante->departamento->id }}"
                                     {{ $vacante->departamento->id == $vacante->departamento->id ? 'selected' : '' }}>
@@ -201,7 +199,7 @@
                         <div class="mb-3">
                             <label for="municipio_vacante_editar" class="form-label">Municipio<span class="obligatorio">
                                     *</span></label>
-                            <select class="form-select" id="municipio_vacante_editar" name="municipio_vacante_editar">
+                            <select class="form-control" id="municipio_vacante_editar" name="municipio_vacante_editar">
                                 <option value="{{ $vacante->municipio->id }}"
                                     {{ $vacante->municipio->id == $vacante->municipio->id ? 'selected' : '' }}>
                                     {{ $vacante->municipio->nombre }}

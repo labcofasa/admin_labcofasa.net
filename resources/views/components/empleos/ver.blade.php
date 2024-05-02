@@ -14,8 +14,8 @@
     </div>
     <div class="offcanvas-body contenedor">
         <div class="d-flex gap-3 align-items-center mb-2">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" color="#000000"
-                fill="none">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
+                color="#000000" fill="none">
                 <path
                     d="M2.57198 8.22365C2.51219 7.73035 2.48229 7.4837 2.51104 7.28193C2.59477 6.69433 3.00682 6.213 3.56187 6.05444C3.75245 6 3.99351 6 4.47562 6H19.5244C20.0065 6 20.2475 6 20.4381 6.05444C20.9932 6.213 21.4052 6.69433 21.489 7.28193C21.5177 7.4837 21.4878 7.73035 21.428 8.22365C21.2687 9.53773 21.1891 10.1948 20.9939 10.7377C20.429 12.3094 19.138 13.4846 17.5556 13.8676C17.0089 14 16.3668 14 15.0826 14H8.91743C7.63318 14 6.99105 14 6.44436 13.8676C4.86198 13.4846 3.571 12.3094 3.00609 10.7377C2.81092 10.1948 2.73128 9.53773 2.57198 8.22365Z"
                     stroke="currentColor" stroke-width="1.8" />
@@ -31,8 +31,8 @@
             <p>{{ $vacante->empresa->nombre }}</p>
         </div>
         <div class="d-flex gap-3 align-items-center mb-2">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" color="#000000"
-                fill="none">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
+                color="#000000" fill="none">
                 <path
                     d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z"
                     stroke="currentColor" stroke-width="1.8" />
@@ -58,24 +58,24 @@
         <div class="mb-3">
             <span class="link_name">Acerca del empleo</span>
             <div>
-                <small class="texto-secundario">{{ $vacante->descripcion }}</small>
+                <p class="texto-secundario">{{ $vacante->descripcion }}</p>
             </div>
         </div>
         <div class="mb-3">
             <span class="link_name">Perfil requerido</span>
-            <p>{{ $vacante->requisitos }}</p>
+            <p class="texto-secundario">{{ $vacante->requisitos }}</p>
         </div>
         <div class="mb-3">
             <span class="link_name">Beneficios</span>
-            <p>{{ $vacante->beneficios }}</p>
+            <p class="texto-secundario">{{ $vacante->beneficios }}</p>
         </div>
         <div class="mb-3">
             <span class="link_name">Acerca de la empresa</span>
             <div>
-                <span>Nombre</span>
-                <p>{{ $vacante->empresa->nombre }}</p>
-                <span>Dirección</span>
-                <p>{{ $vacante->empresa->direccion }}</p>
+                <span class="link_name">Nombre</span>
+                <p class="texto-secundario">{{ $vacante->empresa->nombre }}</p>
+                <span class="link_name">Dirección</span>
+                <p class="texto-secundario">{{ $vacante->empresa->direccion }}</p>
             </div>
         </div>
     </div>

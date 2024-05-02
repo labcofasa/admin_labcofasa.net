@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AutenticacionController;
 use App\Http\Controllers\Auth\RestablecerController;
 use App\Http\Controllers\ClasificacionController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\Empleos\CandidatosController;
 use App\Http\Controllers\Empleos\TipoContratacionController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EntidadController;
@@ -184,6 +185,13 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/actualizar-formulario/{id}', [FormsConozcaClienteController::class, 'update']);
     Route::delete('/eliminar-formulario/{id}', [FormsConozcaClienteController::class, 'destroy']);
 
+    Route::middleware(['can:admin_candidatos_ver'])->group(function () {
+        Route::get('/candidatos/{id}', [CandidatosController::class, 'index'])->name('pag.candidatos');
+        Route::get('/tabla-candidatos/{id}', [CandidatosController::class, 'tablaCandidatos']);
+        Route::delete('/eliminar-candidato/{id}', [CandidatosController::class, 'destroy']);
+    });
+
+
     Route::middleware(['can:admin_vacantes_ver'])->group(function () {
         Route::get('/vacantes', [VacantesController::class, 'index'])->name('pag.vacantes');
         Route::get('/crear-vacante', [VacantesController::class, 'create'])->name('crear.vacante');
@@ -197,7 +205,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/creando-tipo-contratacion', [TipoContratacionController::class, 'store']);
         Route::put('/actualizar-tipo-contratacion/{id}', [TipoContratacionController::class, 'update']);
         Route::delete('/eliminar-tipo-contratacion/{id}', [TipoContratacionController::class, 'destroy']);
-        
+
         Route::get('/tabla-modalidades', [ModalidadController::class, 'tablaModalidades']);
         Route::get('/obtener-modalidad', [ModalidadController::class, 'obtenerModalidad']);
         Route::post('/creando-modalidad', [ModalidadController::class, 'store']);

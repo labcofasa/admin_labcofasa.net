@@ -1,0 +1,1 @@
+<x-empleos.candidatos.eliminar />

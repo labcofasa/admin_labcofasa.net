@@ -8,7 +8,7 @@
                         $nombre = explode(' ', $usuario->perfil->nombres);
                     @endphp
 
-                    <p class="me-auto mx-2">Acción exitosa</p>
+                    <p class="me-auto mx-2">Acción exitosa {{ $nombre[0] }}</p>
                 @endif
                 <button class="btn-icon-close" data-bs-dismiss="toast">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
@@ -36,7 +36,7 @@
                         $nombre = explode(' ', $usuario->perfil->nombres);
                     @endphp
 
-                    <p class="me-auto mx-2">Algo salió mal</p>
+                    <p class="me-auto mx-2">Algo salió mal {{ $nombre[0] }}</p>
                 @endif
                 <button class="btn-icon-close" data-bs-dismiss="toast">
                     <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
