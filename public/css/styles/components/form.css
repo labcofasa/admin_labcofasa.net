@@ -72,7 +72,7 @@
 
 .form-control {
     color: var(--text-color);
-    background-color: var(--btn-secondary);
+    background-color: var(--bg-sidebar);
 }
 
 .form-select:focus {
@@ -83,7 +83,7 @@
 
 .form-control:focus {
     border-color: var(--input-caret);
-    background-color: var(--body-bg);
+    background-color: var(--bg-sidebar);
     color: var(--text-color);
     box-shadow: 0 0 0 0.1rem var(--input-caret);
 }
@@ -113,13 +113,13 @@
 }
 
 label {
-    font-size: var(--font-size);
+    font-size: small;
     letter-spacing: var(--letter-spacing);
 }
 
 .form-label {
     margin-bottom: 0.5rem;
-    font-size: var(--font-size);
+    font-size: small;
     letter-spacing: var(--letter-spacing);
     font-weight: 500;
     color: var(--text-color);

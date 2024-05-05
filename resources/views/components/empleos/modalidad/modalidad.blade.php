@@ -13,7 +13,7 @@
     </div>
     <div class="offcanvas-body contenedor">
         <!-- Tabla usuarios -->
-        <div class="offcanvas-tabla">
+        <div class="offcanvas-tabla pt-3">
             <!-- Tabla fantasma -->
             <div class="table-responsive placeholder-glow" id="placeholder_modalidad">
                 <table class="table align-middle">
@@ -42,7 +42,7 @@
                     </div>
                 </table>
             </div>
-            <div class="table-responsive pt-2" id="tabla-modalidad-container" style="display: none;">
+            <div class="table-responsive" id="tabla-modalidad-container" style="display: none;">
                 <table id="tabla-modalidad" class="table align-middle responsive display" width="100%">
                     <tbody></tbody>
                 </table>

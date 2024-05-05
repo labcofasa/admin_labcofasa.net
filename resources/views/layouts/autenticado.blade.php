@@ -19,7 +19,7 @@
 
         <!-- Titulo del sitio -->
         <title>@yield('titulo')</title>
-        @laravelPWA
+        {{-- @laravelPWA --}}
     </head>
 
     <body>

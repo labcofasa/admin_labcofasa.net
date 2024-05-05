@@ -2,8 +2,13 @@
     padding: 0 2rem !important;
 }
 
+.offcanvas .table-responsive {
+    padding: 0;
+    box-shadow: none;
+}
+
 .offcanvas-full-screen {
-    background-color: var(--body-bg);
+    background-color: var(--bg-sidebar);
 }
 
 .offcanvas-tabla {

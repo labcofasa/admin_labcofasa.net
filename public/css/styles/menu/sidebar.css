@@ -44,7 +44,7 @@
 }
 
 .sidebar-desktop .link_name {
-    font-size: 0.875rem;
+    font-size: small;
     white-space: nowrap;
     color: var(--text-color);
     transition: var(--tran-03);
@@ -145,7 +145,12 @@
 }
 
 .sidebar-desktop .menu-bar .bottom-content .menu .menu-links .mode:hover,
-.sidebar-desktop .menu-bar .bottom-content .menu .menu-links .mode:focus-visible {
+.sidebar-desktop
+    .menu-bar
+    .bottom-content
+    .menu
+    .menu-links
+    .mode:focus-visible {
     background-color: var(--sidebar-bg);
 }
 
@@ -171,7 +176,7 @@
 .sidebar-desktop .menu-bar .menu .menu-links .nav-link {
     padding: 0.5rem 0 0.5rem 0;
     margin: 4px 0 4px 0;
-    border-radius: var(--border-radius-sidebar)
+    border-radius: var(--border-radius-sidebar);
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links .nav-link.active {

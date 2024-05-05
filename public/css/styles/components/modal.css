@@ -13,7 +13,7 @@
 .modal-content,
 .modal-footer {
     border: none;
-    background-color: var(--body-bg);
+    background-color: var(--bg-sidebar);
     color: var(--text-color);
 }
 

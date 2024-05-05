@@ -16,8 +16,8 @@
         <x-skeleton />
 
         <!-- Tabla usuarios -->
-        <div class="offcanvas-tabla">
-            <div class="table-responsive pt-2" id="tabla-contratacion-container" style="display: none;">
+        <div class="offcanvas-tabla pt-3">
+            <div class="table-responsive" id="tabla-contratacion-container" style="display: none;">
                 <table id="tabla-tipo-contratacion" class="table align-middle responsive display" width="100%">
                     <tbody></tbody>
                 </table>

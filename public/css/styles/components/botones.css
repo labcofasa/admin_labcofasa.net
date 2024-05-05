@@ -155,9 +155,9 @@
 }
 
 .btn-group-secondary {
-    background-color: var(--btn-secondary);
     border-color: var(--btn-secondary);
     color: var(--icon-secondary) !important;
+    transition: var(--tran-03);
 }
 
 .btn-group-secondary:hover {
@@ -177,7 +177,7 @@
     border-color: var(--btn-secondary);
 }
 
-.btn-group> :not(.btn-check:first-child)+.btn {
+.btn-group > :not(.btn-check:first-child) + .btn {
     margin-left: 0;
 }
 
@@ -578,7 +578,7 @@ button {
 }
 
 .container-counters .cards .counter .text .counter-text {
-    color: #fff !important;
+    color: var(--text-color-contador) !important;
     font-size: 16px;
     font-weight: 500;
 }
@@ -664,35 +664,8 @@ button {
         margin-top: 1em;
     }
 
-    .table-responsive {
-        padding: 0 !important;
-        background-color: var(--body-bg) !important;
-        box-shadow: none !important;
-    }
-
-    .table> :not(caption)>*>* {
-        background-color: var(--body-bg) !important;
-    }
-
     .nav-tabs .nav-link.active {
         background-color: var(--body-bg) !important;
-    }
-
-    .modal-header {
-        background-color: var(--body-bg) !important;
-    }
-
-    .modal-content {
-        background-color: var(--body-bg) !important;
-    }
-
-    .modal-body {
-        background-color: var(--body-bg) !important;
-    }
-
-    .modal-footer {
-        background-color: var(--body-bg) !important;
-        flex-wrap: nowrap;
     }
 
     .card {
