@@ -57,7 +57,7 @@ table.table-bordered.dataTable td {
 }
 
 .table > :not(caption) > * > * {
-    padding: 0.7rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     color: var(--text-color);
     background-color: var(--bg-sidebar);
     font-size: small;
