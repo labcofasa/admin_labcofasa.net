@@ -27,6 +27,19 @@ class VacantesController extends Controller
         return view('empleos.vacantes', compact('usuario', 'nombreUsuario', 'vacantes'));
     }
 
+    public function obtenerVacantes()
+    {
+        $vacantes = Vacante::with('pais', 'departamento', 'municipio', 'candidatos')->get();
+
+        $vacantes->transform(function ($vacante) {
+            $vacante->fecha_vencimiento = Carbon::parse($vacante->fecha_vencimiento)->format('d-m-Y');
+            $vacante->imagen = asset($vacante->imagen);
+            return $vacante;
+        });
+
+        return response()->json($vacantes);
+    }
+
     public function create()
     {
         $usuario = User::with('perfil')->find(auth()->id());

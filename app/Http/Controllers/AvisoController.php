@@ -14,7 +14,6 @@ class AvisoController extends Controller
 
         return view('avisos', compact('usuario'));
     }
-
     public function tablaAvisos(Request $request)
     {
         $this->validate($request, [
@@ -83,7 +82,6 @@ class AvisoController extends Controller
             'data' => $data,
         ]);
     }
-
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -127,7 +125,6 @@ class AvisoController extends Controller
             return response()->json(['success' => false, 'error' => '¡Guardado fallido!: ' . $e->getMessage()]);
         }
     }
-
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -167,7 +164,6 @@ class AvisoController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al actualizar la publicidad: ' . $e->getMessage()]);
         }
     }
-
     public function destroy($id)
     {
         $aviso = Aviso::find($id);
