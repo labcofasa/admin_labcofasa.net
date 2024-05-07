@@ -33,7 +33,8 @@ class VacantesController extends Controller
 
         $vacantes->transform(function ($vacante) {
             $vacante->fecha_vencimiento = Carbon::parse($vacante->fecha_vencimiento)->format('d-m-Y');
-            $vacante->imagen = asset($vacante->imagen);
+            $vacante->imagen = 'https://app.labcofasa.net/images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen;
+
             return $vacante;
         });
 
