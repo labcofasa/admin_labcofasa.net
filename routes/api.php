@@ -17,3 +17,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::get('/vacantes', [VacantesController::class, 'obtenerVacantes']);
+Route::get('/vacantes/{id}', [VacantesController::class, 'obtenerVacantesPorCandidato']);

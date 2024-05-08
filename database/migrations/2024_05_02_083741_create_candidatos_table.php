@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('nombre_candidato');
             $table->unsignedBigInteger('id_vacante')->nullable();
+            $table->unsignedBigInteger('id_candidato')->nullable();
 
             $table->timestamp('fecha_creacion');
             $table->timestamp('fecha_modificacion');

@@ -35,6 +35,7 @@ class VacantesController extends Controller
             $vacante->fecha_vencimiento = Carbon::parse($vacante->fecha_vencimiento)->format('d-m-Y');
             $vacante->imagen = 'https://app.labcofasa.net/images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen;
             $vacante->nombre_empresa = $vacante->empresa->nombre;
+            $vacante->direccion = $vacante->empresa->direccion;
             $vacante->nombre_modalidad = $vacante->modalidad->nombre_modalidad;
             $vacante->nombre_tipo_contratacion = $vacante->tipoContratacion->nombre_tipo;
             $vacante->nombre_pais = $vacante->pais->nombre;
@@ -53,7 +54,6 @@ class VacantesController extends Controller
             unset ($vacante->departamento);
             unset ($vacante->id_municipio);
             unset ($vacante->municipio);
-
             unset ($vacante->fecha_modificacion);
 
             return $vacante;
@@ -61,6 +61,40 @@ class VacantesController extends Controller
 
         return response()->json($vacantes);
     }
+
+    public function obtenerVacantesPorCandidato($id_candidato)
+    {
+        $vacantes = Vacante::whereHas('candidatos', function ($query) use ($id_candidato) {
+            $query->where('id_candidato', $id_candidato);
+        })
+            ->with('empresa', 'modalidad', 'tipoContratacion', 'pais', 'departamento', 'municipio')
+            ->get();
+
+        $vacantes->transform(function ($vacante) {
+            $vacante->fecha_vencimiento = Carbon::parse($vacante->fecha_vencimiento)->format('d-m-Y');
+            $vacante->imagen = 'https://app.labcofasa.net/images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen;
+            $vacante->nombre_empresa = $vacante->empresa->nombre;
+            $vacante->direccion = $vacante->empresa->direccion;
+            $vacante->nombre_modalidad = $vacante->modalidad->nombre_modalidad;
+            $vacante->nombre_tipo_contratacion = $vacante->tipoContratacion->nombre_tipo;
+            $vacante->nombre_pais = $vacante->pais->nombre;
+            $vacante->nombre_departamento = $vacante->departamento->nombre;
+            $vacante->nombre_municipio = $vacante->municipio->nombre;
+
+            unset ($vacante->empresa);
+            unset ($vacante->modalidad);
+            unset ($vacante->tipoContratacion);
+            unset ($vacante->pais);
+            unset ($vacante->departamento);
+            unset ($vacante->municipio);
+            unset ($vacante->fecha_modificacion);
+
+            return $vacante;
+        });
+
+        return response()->json($vacantes);
+    }
+
 
 
     public function create()
