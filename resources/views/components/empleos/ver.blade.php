@@ -1,8 +1,8 @@
 <div class="offcanvas offcanvas-end offcanvas-full-screen" tabindex="-1" id="verVacanteOffCanvas{{ $vacante->id }}"
     aria-labelledby="verVacanteOffCanvasLabel">
     <div class="offcanvas-header">
-        <p class="offcanvas-title" id="verVacanteOffCanvasLabel">{{ $vacante->nombre }}
-        </p>
+        <h1 class="offcanvas-title" id="verVacanteOffCanvasLabel">{{ $vacante->nombre }}
+        </h1>
         <button type="button" class="btn-icon-close" data-bs-dismiss="offcanvas">
             <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
                 fill="#000000">
