@@ -29,17 +29,39 @@ class VacantesController extends Controller
 
     public function obtenerVacantes()
     {
-        $vacantes = Vacante::with('pais', 'departamento', 'municipio', 'candidatos')->get();
+        $vacantes = Vacante::with('empresa', 'modalidad', 'tipoContratacion', 'pais', 'departamento', 'municipio', 'candidatos')->get();
 
         $vacantes->transform(function ($vacante) {
             $vacante->fecha_vencimiento = Carbon::parse($vacante->fecha_vencimiento)->format('d-m-Y');
             $vacante->imagen = 'https://app.labcofasa.net/images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen;
+            $vacante->nombre_empresa = $vacante->empresa->nombre;
+            $vacante->nombre_modalidad = $vacante->modalidad->nombre_modalidad;
+            $vacante->nombre_tipo_contratacion = $vacante->tipoContratacion->nombre_tipo;
+            $vacante->nombre_pais = $vacante->pais->nombre;
+            $vacante->nombre_departamento = $vacante->departamento->nombre;
+            $vacante->nombre_municipio = $vacante->municipio->nombre;
+
+            unset ($vacante->id_empresa);
+            unset ($vacante->empresa);
+            unset ($vacante->id_modalidad);
+            unset ($vacante->modalidad);
+            unset ($vacante->id_tipo_contratacion);
+            unset ($vacante->tipoContratacion);
+            unset ($vacante->id_pais);
+            unset ($vacante->pais);
+            unset ($vacante->id_departamento);
+            unset ($vacante->departamento);
+            unset ($vacante->id_municipio);
+            unset ($vacante->municipio);
+
+            unset ($vacante->fecha_modificacion);
 
             return $vacante;
         });
 
         return response()->json($vacantes);
     }
+
 
     public function create()
     {
