@@ -37,6 +37,32 @@ $(document).ready(function () {
                     className: "btn btn-lg btn-group-secondary",
                 },
                 {
+                    extend: "colvis",
+                    className:
+                        "btn btn-lg btn-group-secondary d-none d-lg-block",
+                    postfixButtons: ["colvisRestore"],
+                    text: "Editar columnas",
+                },
+                {
+                    extend: "collection",
+                    text: "Exportar",
+                    className: "btn btn-lg btn-group-secondary",
+                    buttons: [
+                        {
+                            extend: "excel",
+                            text: "Excel",
+                            title: "Clientes registrados - Laboratorios Cofasa",
+                            filename:
+                                "Clientes registrados - Laboratorios Cofasa",
+                            exportOptions: {
+                                columns: [
+                                    0, 1, 2, 3, 4, 5
+                                ],
+                            },
+                        },
+                    ],
+                },
+                {
                     text: 'Recargar',
                     className: "btn btn-lg btn-group-secondary",
                     action: function (e, dt, node, config) {
@@ -280,6 +306,32 @@ $(document).ready(function () {
                 {
                     extend: "pageLength",
                     className: "btn btn-lg btn-group-secondary",
+                },
+                {
+                    extend: "colvis",
+                    className:
+                        "btn btn-lg btn-group-secondary d-none d-lg-block",
+                    postfixButtons: ["colvisRestore"],
+                    text: "Editar columnas",
+                },
+                {
+                    extend: "collection",
+                    text: "Exportar",
+                    className: "btn btn-lg btn-group-secondary",
+                    buttons: [
+                        {
+                            extend: "excel",
+                            text: "Excel",
+                            title: "Proveedores registrados - Laboratorios Cofasa",
+                            filename:
+                                "Proveedores registrados - Laboratorios Cofasa",
+                            exportOptions: {
+                                columns: [
+                                    1, 2, 3, 4, 5
+                                ],
+                            },
+                        },
+                    ],
                 },
                 {
                     text: 'Recargar',
