@@ -56,7 +56,7 @@ $(document).ready(function () {
                                 "Clientes registrados - Laboratorios Cofasa",
                             exportOptions: {
                                 columns: [
-                                    0, 1, 2, 3, 4, 5
+                                    0, 1, 2, 3, 4, 5, 6, 7, 8
                                 ],
                             },
                         },
@@ -327,7 +327,7 @@ $(document).ready(function () {
                                 "Proveedores registrados - Laboratorios Cofasa",
                             exportOptions: {
                                 columns: [
-                                    1, 2, 3, 4, 5
+                                    0, 1, 2, 3, 4, 5, 6, 7, 8,
                                 ],
                             },
                         },
