@@ -206,8 +206,7 @@
 .sidebar-desktop .menu-bar .menu .menu-links .menus.active .link_name {
     /* fill: var(--positive); */
     color: var(--accent);
-    font-weight: 600;
-    font-size: 0.875rem;
+    font-size: small;
 }
 
 .sidebar-desktop .menu-bar .menu .menu-links li a svg,

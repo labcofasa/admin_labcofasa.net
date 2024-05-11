@@ -29,7 +29,7 @@
 /* Colores para el diseño claro */
 :root {
     /* Paleta de colores */
-    --primary: #33b7a0;
+    --primary: #009F77;
     --secondary: #b5e4ca;
     --secondary-hover: #b5e4ca;
     --accent: #20c997;
@@ -81,18 +81,18 @@
     --input-caret: #33b7a0;
 
     /* Generales */
-    --bg-sidebar: #ffffff;
+    --bg-sidebar: #FFFFFF;
     --title-color: #000000;
     --sidebar-text-hover: #111827;
     --box-shadow-2: 0 2px 10px rgba(0, 0, 0, 0.1);
 
-    --body-bg: #fafafa;
-    --sidebar-bg: #f0f4f9;
+    --body-bg: #FCFCFC;
+    --sidebar-bg: #FFFFFF;
     --sidebar-bg-hover: #3c404314;
     /* --sidebar-icon-hover: #4a4f53; */
     --sidebar-bg-active: #20c9971a;
     --border-radius-sidebar: 25px;
-    --card-bg: #ffffff;
+    --card-bg: #FFFFFF;
     --toggle-shadow: #999999;
     --table-border: #dee2e6;
     --component: #c0c0c0;
@@ -161,11 +161,11 @@
 /* Colores para el diseño oscuro */
 body.dark {
     /* Paleta de colores */
-    --primary: #33b7a0;
+    --primary: #66efc2;
     --secondary: #0c352d;
     --secondary-hover: #0c352d;
-    --accent: #20c997;
-    --positive: #20c997;
+    --accent: #66efc2;
+    --positive: #66efc2;
     --negative: ;
     --info: #172d3b;
     --warning: ;
@@ -176,8 +176,8 @@ body.dark {
     /* Botones */
     --btn-primary: #0d6efd1a;
     --btn-primary-hover: #1c324d;
-    --btn-secondary: #323232;
-    --btn-secondary-hover: #3d3d3d;
+    --btn-secondary: #212121;
+    --btn-secondary-hover: #212121;
     --btn-success: #20c9971a;
     --btn-success-hover: #1e472a;
     --btn-danger: #dc35451a;
@@ -214,20 +214,20 @@ body.dark {
     --texto-secundario: #bebebe;
     --text-color: #bebebe;
     --span: #b0b0b0;
-    --input-caret: #33b7a0;
+    --input-caret: #66efc2;
 
     /* Generales */
-    --bg-sidebar: #1e1f20;
+    --bg-sidebar: #101010;
     --border: ;
     --title-color: #bebebe;
     --box-shadow-2: 0;
 
-    --body-bg: #131314;
-    --sidebar-bg: #1e1f20;
-    --sidebar-bg-hover: #323232;
+    --body-bg: #000000;
+    --sidebar-bg: #101010;
+    --sidebar-bg-hover: #212121;
     --sidebar-icon-hover: #adb2b6;
-    --sidebar-bg-active: #20c9971a;
-    --card-bg: #1e1f20;
+    --sidebar-bg-active: #212121;
+    --card-bg: #101010;
     --toggle-shadow: #383838;
     --table-border: #373b3e;
 
@@ -247,7 +247,7 @@ body.dark {
     --counter-text: #bebebe;
 
     /* Tabla */
-    --thead-bg: #191919;
+    --thead-bg: #212121;
 
     /* Archivo style main */
     --btn-card-bg: #1c1c1c;
@@ -258,12 +258,12 @@ body.dark {
     --toggle-switch-border: #d0d0d0;
 
     /* Contadores */
-    --carta-primary: #1e1f20;
-    --carta-secondary: #1e1f20;
-    --carta-success: #1e1f20;
-    --carta-info: #1e1f20;
-    --carta-warning: #1e1f20;
-    --carta-danger: #1e1f20;
+    --carta-primary: #101010;
+    --carta-secondary: #101010;
+    --carta-success: #101010;
+    --carta-info: #101010;
+    --carta-warning: #101010;
+    --carta-danger: #101010;
 
     --text-color-contador: #bebebe;
 
@@ -289,7 +289,7 @@ body {
 }
 
 h1 {
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: var(--letter-spacing);
     font-size: calc(1.2625rem + 0.15vw);
     margin-bottom: 0;
@@ -389,7 +389,7 @@ hr {
 }
 
 .content {
-    padding: 4rem 1.5rem 0 1.5rem;
+    padding: 3.7rem 1.5rem 0 1.5rem;
 }
 
 .card-container {

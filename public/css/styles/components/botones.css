@@ -664,10 +664,6 @@ button {
         margin-top: 1em;
     }
 
-    .nav-tabs .nav-link.active {
-        background-color: var(--body-bg) !important;
-    }
-
     .card {
         background-color: var(--body-bg) !important;
         box-shadow: none !important;
