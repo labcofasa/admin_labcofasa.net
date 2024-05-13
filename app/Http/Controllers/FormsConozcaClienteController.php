@@ -45,7 +45,7 @@ class FormsConozcaClienteController extends Controller
 
     public function generarPDF(Request $request)
     {
-        $fecha_generacion = Carbon::now()->toDateTimeString();
+        $fecha_generacion = Carbon::now()->format('d-m-Y H:i:s');
 
         $pais_id = $request->input('pais_id');
         $pais = $pais_id ? Pais::find($pais_id)->nombre : 'Campo vacío';
@@ -88,21 +88,21 @@ class FormsConozcaClienteController extends Controller
         $nombre = $request->input('nombre') ?: 'Campo vacío';
         $apellido = $request->input('apellido') ?: 'Campo vacío';
 
-        $fecha_de_nacimiento = $request->input('fecha_de_nacimiento') ?: 'Campo vacío';
+        $fecha_de_nacimiento = $request->input('fecha_de_nacimiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_nacimiento'))->format('d-m-Y') : 'Campo vacío';
         $nacionalidad = $request->input('nacionalidad') ?: 'Campo vacío';
         $profesion_u_oficio = $request->input('profesion_u_oficio') ?: 'Campo vacío';
         $tipo_de_documento = $request->input('tipo_de_documento') ?: 'Campo vacío';
         $numero_de_documento = $request->input('numero_de_documento') ?: 'Campo vacío';
-        $fecha_de_vencimiento = $request->input('fecha_de_vencimiento') ?: 'Campo vacío';
+        $fecha_de_vencimiento = $request->input('fecha_de_vencimiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_vencimiento'))->format('d-m-Y') : 'Campo vacío';
         $registro_iva_nrc = $request->input('registro_iva_nrc') ?: 'Campo vacío';
         $email = $request->input('email') ?: 'Campo vacío';
         $telefono = $request->input('telefono') ?: 'Campo vacío';
-        $fecha_de_nombramiento = $request->input('fecha_de_nombramiento') ?: 'Campo vacío';
+        $fecha_de_nombramiento = $request->input('fecha_de_nombramiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_nombramiento'))->format('d-m-Y') : 'Campo vacío';
         $direccion = $request->input('direccion') ?: 'Campo vacío';
         $nombre_comercial_juridico = $request->input('nombre_comercial_juridico') ?: 'Campo vacío';
         $nacionalidad_juridico = $request->input('nacionalidad_juridico') ?: 'Campo vacío';
         $numero_de_nit_juridico = $request->input('numero_de_nit_juridico') ?: 'Campo vacío';
-        $fecha_de_constitucion_juridico = $request->input('fecha_de_constitucion_juridico') ?: 'Campo vacío';
+        $fecha_de_constitucion_juridico = $request->input('fecha_de_constitucion_juridico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_constitucion_juridico'))->format('d-m-Y') : 'Campo vacío';
         $registro_nrc_juridico = $request->input('registro_nrc_juridico') ?: 'Campo vacío';
         $sitio_web_juridico = $request->input('sitio_web_juridico') ?: 'Campo vacío';
         $numero_de_fax_juridico = $request->input('numero_de_fax_juridico') ?: 'Campo vacío';
@@ -113,8 +113,8 @@ class FormsConozcaClienteController extends Controller
         $familiar_publico = $request->input('familiar_publico') ?: 'Campo vacío';
         $nombre_politico = $request->input('nombre_politico') ?: 'Campo vacío';
         $nombre_cargo_politico = $request->input('nombre_cargo_politico') ?: 'Campo vacío';
-        $fecha_desde_politico = $request->input('fecha_desde_politico') ?: 'Campo vacío';
-        $fecha_hasta_politico = $request->input('fecha_hasta_politico') ?: 'Campo vacío';
+        $fecha_desde_politico = $request->input('fecha_desde_politico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_desde_politico'))->format('d-m-Y') : 'Campo vacío';
+        $fecha_hasta_politico = $request->input('fecha_hasta_politico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_hasta_politico'))->format('d-m-Y') : 'Campo vacío';
         $nombre_cliente_politico = $request->input('nombre_cliente_politico') ?: 'Campo vacío';
         $porcentaje_participacion_politico = $request->input('porcentaje_participacion_politico') ?: 'Campo vacío';
         $fuente_ingreso = $request->input('fuente_ingreso') ?: 'Campo vacío';
@@ -1177,7 +1177,7 @@ class FormsConozcaClienteController extends Controller
                 'cliente_archivo' => $clienteArchivosData,
 
                 $fecha_creacion = new DateTime($form->fecha_de_creacion),
-                'fecha_creacion' => $fecha_creacion->format('Y-m-d H:i:s'),
+                'fecha_creacion' => $fecha_creacion->format('d-m-Y H:i:s'),
             ];
         }
 
