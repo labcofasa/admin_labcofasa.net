@@ -6,8 +6,8 @@ use App\Http\Controllers\Empleos\CandidatosController;
 use App\Http\Controllers\Empleos\VacantesController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/candidato', [CandidatosController::class, 'store']);
 Route::post('/autenticar', [AutenticacionController::class, 'autenticacionApi']);
+Route::post('/candidato', [CandidatosController::class, 'store']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/clientes', [ClienteController::class, 'verClientes']);

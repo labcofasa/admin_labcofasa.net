@@ -84,7 +84,6 @@ class CandidatosController extends Controller
             return response()->json(['success' => false, 'error' => 'Error al postularte a la vacante: ' . $e->getMessage()]);
         }
     }
-
     public function destroy($id)
     {
         $candidato = Candidato::find($id);
