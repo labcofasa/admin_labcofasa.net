@@ -109,7 +109,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-danger" id="eliminar-imagen" style="display: none;">Eliminar
+                    <button type="button" class="btn btn-danger mb-3" id="eliminar-imagen" style="display: none;">Eliminar
                         imagen</button>
                 </div>
                 <div class="col-12 col-xl-4">
@@ -208,22 +208,6 @@
                         </div>
                         <input type="hidden" id="id_empresa" name="id_empresa" value="">
                     </div>
-                    {{-- <div class="mb-3">
-                        <div class="encabezado mb-0">
-                            <label for="division" class="form-label">Divisiones<span class="obligatorio">
-                                    *</span></label>
-                            <a href="{{ route('pag.empresas') }}" class="link_name"><small class="fw-bold">Agregar
-                                    nuevo</small></a>
-                        </div>
-                        <select class="form-control" id="division" name="division" required>
-                            <option value="">Seleccione la división</option>
-                            <option value="">Contabilidad</option>
-                            <option value="">Informatica</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Por favor, seleccione la división.
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </form>
@@ -238,5 +222,4 @@
     <script src="{{ asset('js/empleos/crear-vacante.js') }}"></script>
     <script src="{{ asset('js/empleos/contrataciones/contratacion.js') }}"></script>
     <script src="{{ asset('js/empleos/modalidades/modalidad.js') }}"></script>
-    <script src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
 @endsection

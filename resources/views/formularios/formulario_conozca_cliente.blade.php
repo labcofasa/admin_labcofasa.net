@@ -668,7 +668,7 @@
 
     <x-notificaciones />
 
-    <script async src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
+    <script async src="{{ asset('js/main.js') }}"></script>
     <script async src="{{ asset('js/forms/conozca_cliente/forms_ccc.js') }}"></script>
 
 @endsection

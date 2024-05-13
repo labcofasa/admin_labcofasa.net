@@ -56,7 +56,9 @@ $(document).ready(function () {
                                 "Clientes registrados - Laboratorios Cofasa",
                             exportOptions: {
                                 columns: [
-                                    0, 1, 2, 3, 4, 5, 6, 7, 8
+                                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+                                    20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+                                    38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49
                                 ],
                             },
                         },
@@ -91,11 +93,11 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50],
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 4, 6, 7, 8, 9],
+                    targets: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10],
                     className: "nowrap",
                 },
                 {
@@ -103,12 +105,12 @@ $(document).ready(function () {
                     className: "wrap",
                 },
                 {
-                    targets: [2, 3, 4, 5, 6, 7, 8, 9],
+                    targets: [2, 3, 4, 5, 6, 7, 8],
                     searchable: true,
                 },
                 { responsivePriority: 1, targets: 0 },
                 { responsivePriority: 2, targets: 1 },
-                { responsivePriority: 4, targets: 9 },
+                { responsivePriority: 4, targets: 50 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder_cliente").hide();
@@ -136,9 +138,50 @@ $(document).ready(function () {
                 { data: "tipo", title: "Tipo" },
                 { data: "tipo_persona", title: "Tipo persona" },
                 { data: "nombre_juridico", title: "Persona jurídica" },
+                { data: "nombre", title: "Nombres" },
+                { data: "apellido", title: "Apellidos" },
                 { data: "registro_nrc_juridico", title: "Registro NRC" },
                 { data: "numero_nit_juridico", title: "Número de NIT" },
                 { data: "fecha_creacion", title: "Fecha de creación" },
+                { data: "fecha_de_nacimiento", title: "Fecha de nacimiento", visible: false },
+                { data: "nacionalidad", title: "Nacionalidad", visible: false },
+                { data: "profesion_u_oficio", title: "Profesión u oficio", visible: false },
+                { data: "pais", title: "País", visible: false },
+                { data: "departamento", title: "Departamento", visible: false },
+                { data: "municipio", title: "Municipio", visible: false },
+                { data: "tipo_de_documento", title: "Tipo de documento", visible: false },
+                { data: "numero_de_documento", title: "Número de documento", visible: false },
+                { data: "fecha_de_vencimiento", title: "Fecha de vencimiento", visible: false },
+                { data: "registro_iva_nrc", title: "Registro NRC persona natural", visible: false },
+                { data: "correo", title: "Correo electrónico", visible: false },
+                { data: "telefono", title: "Correo electrónico", visible: false },
+                { data: "fecha_de_nombramiento", title: "Fecha de nombramiento", visible: false },
+                { data: "giro_nombre", title: "Actividad económica", visible: false },
+                { data: "direccion", title: "Dirección", visible: false },
+                { data: "clasificacion", title: "Tipo de contribuyente", visible: false },
+                { data: "nacionalidad_juridico", title: "Nacionalidad jurídico", visible: false },
+                { data: "fecha_de_constitucion", title: "Fecha de constitución", visible: false },
+                { data: "pais_juridico", title: "País jurídico", visible: false },
+                { data: "departamento_juridico", title: "Departamento jurídico", visible: false },
+                { data: "municipio_juridico", title: "Municipio jurídico", visible: false },
+                { data: "telefono_juridico", title: "Teléfono jurídico", visible: false },
+                { data: "sitio_web_juridico", title: "Sitio web jurídico", visible: false },
+                { data: "numero_de_fax_juridico", title: "Número de FAX jurídico", visible: false },
+                { data: "direccion_juridico", title: "Dirección jurídico", visible: false },
+                { data: "monto_proyectado", title: "Monto proyectado", visible: false },
+                { data: "cargo_publico", title: "Cargo público", visible: false },
+                { data: "familiar_publico", title: "Familiar con cargo público", visible: false },
+                { data: "nombre_politico", title: "Nombre pólitico", visible: false },
+                { data: "nombre_cargo_politico", title: "Nombre cargo pólitico", visible: false },
+                { data: "fecha_desde_politico", title: "Fecha de inicio pólitico", visible: false },
+                { data: "fecha_hasta_politico", title: "Fecha de fin pólitico", visible: false },
+                { data: "pais_politico", title: "País", visible: false },
+                { data: "departamento_politico", title: "Departamento", visible: false },
+                { data: "municipio_politico", title: "Municipio", visible: false },
+                { data: "nombre_cliente_politico", title: "Nombre cliente", visible: false },
+                { data: "porcentaje_participacion_politico", title: "Porcentaje de participación", visible: false },
+                { data: "fuente_ingreso", title: "Fuente de ingreso", visible: false },
+                { data: "monto_mensual", title: "Monto mensual", visible: false },
                 {
                     data: null,
                     render: function (data, type, row) {
@@ -227,7 +270,7 @@ $(document).ready(function () {
                     },
                 },
             ],
-            order: [[8, "desc"]],
+            order: [[10, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;
@@ -327,7 +370,9 @@ $(document).ready(function () {
                                 "Proveedores registrados - Laboratorios Cofasa",
                             exportOptions: {
                                 columns: [
-                                    0, 1, 2, 3, 4, 5, 6, 7, 8,
+                                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+                                    20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+                                    38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49
                                 ],
                             },
                         },
@@ -362,11 +407,11 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50],
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 4, 6, 7, 8, 9],
+                    targets: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10],
                     className: "nowrap",
                 },
                 {
@@ -374,12 +419,12 @@ $(document).ready(function () {
                     className: "wrap",
                 },
                 {
-                    targets: [2, 3, 4, 5, 6, 7, 8, 9],
+                    targets: [2, 3, 4, 5, 6, 7, 8],
                     searchable: true,
                 },
                 { responsivePriority: 1, targets: 0 },
                 { responsivePriority: 2, targets: 1 },
-                { responsivePriority: 4, targets: 9 },
+                { responsivePriority: 3, targets: 50 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder_proveedor").hide();
@@ -407,9 +452,50 @@ $(document).ready(function () {
                 { data: "tipo", title: "Tipo" },
                 { data: "tipo_persona", title: "Tipo persona" },
                 { data: "nombre_juridico", title: "Persona jurídica" },
+                { data: "nombre", title: "Nombres" },
+                { data: "apellido", title: "Apellidos" },
                 { data: "registro_nrc_juridico", title: "Registro NRC" },
                 { data: "numero_nit_juridico", title: "Número de NIT" },
                 { data: "fecha_creacion", title: "Fecha de creación" },
+                { data: "fecha_de_nacimiento", title: "Fecha de nacimiento", visible: false },
+                { data: "nacionalidad", title: "Nacionalidad", visible: false },
+                { data: "profesion_u_oficio", title: "Profesión u oficio", visible: false },
+                { data: "pais", title: "País", visible: false },
+                { data: "departamento", title: "Departamento", visible: false },
+                { data: "municipio", title: "Municipio", visible: false },
+                { data: "tipo_de_documento", title: "Tipo de documento", visible: false },
+                { data: "numero_de_documento", title: "Número de documento", visible: false },
+                { data: "fecha_de_vencimiento", title: "Fecha de vencimiento", visible: false },
+                { data: "registro_iva_nrc", title: "Registro NRC persona natural", visible: false },
+                { data: "correo", title: "Correo electrónico", visible: false },
+                { data: "telefono", title: "Correo electrónico", visible: false },
+                { data: "fecha_de_nombramiento", title: "Fecha de nombramiento", visible: false },
+                { data: "giro_nombre", title: "Actividad económica", visible: false },
+                { data: "direccion", title: "Dirección", visible: false },
+                { data: "clasificacion", title: "Tipo de contribuyente", visible: false },
+                { data: "nacionalidad_juridico", title: "Nacionalidad jurídico", visible: false },
+                { data: "fecha_de_constitucion", title: "Fecha de constitución", visible: false },
+                { data: "pais_juridico", title: "País jurídico", visible: false },
+                { data: "departamento_juridico", title: "Departamento jurídico", visible: false },
+                { data: "municipio_juridico", title: "Municipio jurídico", visible: false },
+                { data: "telefono_juridico", title: "Teléfono jurídico", visible: false },
+                { data: "sitio_web_juridico", title: "Sitio web jurídico", visible: false },
+                { data: "numero_de_fax_juridico", title: "Número de FAX jurídico", visible: false },
+                { data: "direccion_juridico", title: "Dirección jurídico", visible: false },
+                { data: "monto_proyectado", title: "Monto proyectado", visible: false },
+                { data: "cargo_publico", title: "Cargo público", visible: false },
+                { data: "familiar_publico", title: "Familiar con cargo público", visible: false },
+                { data: "nombre_politico", title: "Nombre pólitico", visible: false },
+                { data: "nombre_cargo_politico", title: "Nombre cargo pólitico", visible: false },
+                { data: "fecha_desde_politico", title: "Fecha de inicio pólitico", visible: false },
+                { data: "fecha_hasta_politico", title: "Fecha de fin pólitico", visible: false },
+                { data: "pais_politico", title: "País", visible: false },
+                { data: "departamento_politico", title: "Departamento", visible: false },
+                { data: "municipio_politico", title: "Municipio", visible: false },
+                { data: "nombre_cliente_politico", title: "Nombre cliente", visible: false },
+                { data: "porcentaje_participacion_politico", title: "Porcentaje de participación", visible: false },
+                { data: "fuente_ingreso", title: "Fuente de ingreso", visible: false },
+                { data: "monto_mensual", title: "Monto mensual", visible: false },
                 {
                     data: null,
                     render: function (data, type, row) {
@@ -498,7 +584,7 @@ $(document).ready(function () {
                     },
                 },
             ],
-            order: [[8, "desc"]],
+            order: [[10, "desc"]],
 
             initComplete: function () {
                 let searchTimeout;

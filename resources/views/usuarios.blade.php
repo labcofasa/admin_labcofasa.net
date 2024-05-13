@@ -31,6 +31,5 @@
 
     <script async src="{{ asset('js/usuarios/usuarios.js') }}"></script>
     <script async src="{{ asset('js/roles_permisos/roles.js') }}"></script>
-    <script async src="{{ asset('js/empresa/functions/funciones.js') }}"></script>
 
 @endsection

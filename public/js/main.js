@@ -737,6 +737,49 @@ function setupGiroSearch(inputId, suggestionsId, hiddenInputId) {
     });
 }
 
+function cargarClasificaciones(
+    clasificacionSelectId,
+    idClasificacionInputId,
+    editar,
+    clasificacionActual
+) {
+    $.ajax({
+        url: "/obtener-clasificaciones",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            const clasificacionSelect = $(clasificacionSelectId);
+            clasificacionSelect.empty();
+            clasificacionSelect.append(
+                $("<option>", {
+                    value: "",
+                    text: "Seleccione una clasificación",
+                })
+            );
+
+            $.each(data, function (key, value) {
+                clasificacionSelect.append(
+                    '<option value="' + key + '">' + value + "</option>"
+                );
+            });
+
+            if (editar && clasificacionActual) {
+                clasificacionSelect.val(clasificacionActual);
+            }
+
+            $(idClasificacionInputId).val(clasificacionSelect.val());
+        },
+        error: function (error) {
+            console.log("Error al obtener las clasificaciones");
+        },
+    });
+
+    $(clasificacionSelectId).on("change", function () {
+        var selectClasificacionId = $(this).val();
+        $(idClasificacionInputId).val(selectClasificacionId);
+    });
+}
+
 function cargarTipoContratacion(
     tipoContratacionSelectId,
     idTipoContratacionInputId,
@@ -821,4 +864,126 @@ function cargarModalidades(
         var selectModalidadId = $(this).val();
         $(idModalidadInputId).val(selectModalidadId);
     });
+}
+
+// Funciones para imprimir
+
+function printPaises() {
+    const printWindow = window.open("", "_blank");
+    printWindow.document.title = "Paises - Laboratorios Cofasa";
+    printWindow.document.write(
+        "<html><head><title>Paises - Laboratorios Cofasa</title>"
+    );
+    printWindow.document.write(
+        "<style>" +
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
+    );
+    printWindow.document.write("</head><body>");
+    printWindow.document.write(
+        '<h4 style="text-align: center;">Paises - Laboratorios Cofasa</h4>'
+    );
+    printWindow.document.write("<table>");
+
+    const headers = $("#tabla-paises thead tr").clone();
+    headers.find("th:last").remove();
+    printWindow.document.write("<thead>" + headers.html() + "</thead>");
+
+    const tbody = $("<tbody></tbody>");
+    $("#tabla-paises tbody tr").each(function () {
+        const row = $(this).clone();
+        row.find("td:last").remove();
+        tbody.append(row);
+    });
+    printWindow.document.write(tbody.html());
+
+    printWindow.document.write("</table>");
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.print();
+}
+
+function printDepartamentos() {
+    const printWindow = window.open("", "_blank");
+    printWindow.document.title = "Departamentos - Laboratorios Cofasa";
+    printWindow.document.write(
+        "<html><head><title>Departamentos - Laboratorios Cofasa</title>"
+    );
+    printWindow.document.write(
+        "<style>" +
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
+    );
+    printWindow.document.write("</head><body>");
+    printWindow.document.write(
+        '<h4 style="text-align: center;">Departamentos - Laboratorios Cofasa</h4>'
+    );
+    printWindow.document.write("<table>");
+
+    const headers = $("#tabla-departamentos thead tr").clone();
+    headers.find("th:last").remove();
+    printWindow.document.write("<thead>" + headers.html() + "</thead>");
+
+    const tbody = $("<tbody></tbody>");
+    $("#tabla-departamentos tbody tr").each(function () {
+        const row = $(this).clone();
+        row.find("td:last").remove();
+        tbody.append(row);
+    });
+    printWindow.document.write(tbody.html());
+
+    printWindow.document.write("</table>");
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.print();
+}
+
+function printMunicipios() {
+    const printWindow = window.open("", "_blank");
+    printWindow.document.title = "Municipios - Laboratorios Cofasa";
+    printWindow.document.write(
+        "<html><head><title>Municipios - Laboratorios Cofasa</title>"
+    );
+    printWindow.document.write(
+        "<style>" +
+        "body { font-family: Arial, sans-serif; }" +
+        "table { border-collapse: collapse; width: 100%; margin-top: 20px; }" +
+        "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }" +
+        "th { background-color: #f2f2f2; color: #333; font-size: 14px; font-weight: bold; }" +
+        "tr:nth-child(even) { background-color: #f9f9f9; }" +
+        "tr:hover { background-color: #f5f5f5; }" +
+        "</style>"
+    );
+    printWindow.document.write("</head><body>");
+    printWindow.document.write(
+        '<h4 style="text-align: center;">Municipios - Laboratorios Cofasa</h4>'
+    );
+    printWindow.document.write("<table>");
+
+    const headers = $("#tabla-municipios thead tr").clone();
+    headers.find("th:last").remove();
+    printWindow.document.write("<thead>" + headers.html() + "</thead>");
+
+    const tbody = $("<tbody></tbody>");
+    $("#tabla-municipios tbody tr").each(function () {
+        const row = $(this).clone();
+        row.find("td:last").remove();
+        tbody.append(row);
+    });
+    printWindow.document.write(tbody.html());
+
+    printWindow.document.write("</table>");
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.print();
 }
