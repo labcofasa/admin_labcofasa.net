@@ -372,7 +372,7 @@ $(document).ready(function () {
                                 columns: [
                                     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
                                     20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
-                                    38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49
+                                    38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48
                                 ],
                             },
                         },
@@ -407,11 +407,11 @@ $(document).ready(function () {
             },
             columnDefs: [
                 {
-                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 49],
                     orderable: false,
                 },
                 {
-                    targets: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10],
+                    targets: [0, 1, 2, 3, 4, 6, 7, 8, 9],
                     className: "nowrap",
                 },
                 {
@@ -424,7 +424,7 @@ $(document).ready(function () {
                 },
                 { responsivePriority: 1, targets: 0 },
                 { responsivePriority: 2, targets: 1 },
-                { responsivePriority: 3, targets: 50 },
+                { responsivePriority: 3, targets: 49 },
             ],
             drawCallback: function (settings) {
                 $("#placeholder_proveedor").hide();
@@ -448,7 +448,6 @@ $(document).ready(function () {
                         `;
                     },
                 },
-                { data: "codigo_cliente", title: "Código" },
                 { data: "tipo", title: "Tipo" },
                 { data: "tipo_persona", title: "Tipo persona" },
                 { data: "nombre_juridico", title: "Persona jurídica" },
@@ -1876,7 +1875,7 @@ $(document).ready(function () {
         var actividad_economica_editar = row.giro_nombre;
         var direccion_editar = row.direccion;
 
-        var nombre_juridico_editar = row.nombre_juridico;
+        // var nombre_juridico_editar = row.nombre_juridico;
         // var clasificacion_editar = row.clasificacion;
         // var nacionalidad_juridico_editar = row.nacionalidad_juridico;
         // var numero_nit_juridico_editar = row.numero_nit_juridico;
@@ -2022,7 +2021,7 @@ $(document).ready(function () {
         $("#id-giro-formulario-editar").val(id_giro);
         $("#direccion_editar").val(direccion_editar);
 
-        $("#nombre_juridico_editar").val(nombre_juridico_editar);
+        // $("#nombre_juridico_editar").val(nombre_juridico_editar);
         // $("#clasificacion_editar").val(clasificacion_editar);
         // $("#nacionalidad_juridico_editar").val(nacionalidad_juridico_editar);
         // $("#numero_nit_juridico_editar").val(numero_nit_juridico_editar);
