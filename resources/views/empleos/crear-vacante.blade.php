@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <div class="form-label">Imagen principal<span class="obligatorio">
+                        <div class="form-label">Imagen principal 500x350px<span class="obligatorio">
                                 *</span></div>
                         <label for="imagen" class="subir-imagen dropzone-area" id="dropzone">
                             <span>

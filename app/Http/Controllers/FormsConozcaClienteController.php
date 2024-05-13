@@ -1233,46 +1233,6 @@ class FormsConozcaClienteController extends Controller
             'giro_id' => 'nullable|exists:giros,id',
             'fecha_de_nombramiento' => 'nullable|date',
             'direccion' => 'nullable|string',
-            'nombre_comercial_juridico' => 'nullable|string',
-            'clasificacion_juridico_id' => 'nullable|exists:clasificaciones,id',
-            'nacionalidad_juridico' => 'nullable|string',
-            'numero_de_nit_juridico' => 'nullable|string',
-            'fecha_de_constitucion_juridico' => 'nullable|date',
-            'registro_nrc_juridico' => 'nullable|string',
-            'giro_juridico_id' => 'nullable|exists:giros,id',
-            'pais_juridico_id' => 'nullable|exists:paises,id',
-            'departamento_juridico_id' => 'nullable|exists:departamentos,id',
-            'municipio_juridico_id' => 'nullable|exists:municipios,id',
-            'telefono_juridico' => 'nullable|string',
-            'sitio_web_juridico' => 'nullable|url',
-            'numero_de_fax_juridico' => 'nullable|string',
-            'direccion_juridico' => 'nullable|string',
-            'monto_proyectado' => 'nullable|string',
-            'cargo_publico' => 'nullable|in:SI,NO',
-            'familiar_publico' => 'nullable|in:SI,NO',
-            'nombre_accionista.*' => 'nullable|string',
-            'nacionalidad_accionista.*' => 'nullable|string',
-            'numero_identidad_accionista.*' => 'nullable|string',
-            'porcentaje_participacion_accionista.*' => 'nullable|string',
-            'nombre_miembro.*' => 'nullable|string',
-            'nacionalidad_miembro.*' => 'nullable|string',
-            'numero_identidad_miembro.*' => 'nullable|string',
-            'cargo_miembro.*' => 'nullable|string',
-            'nombre_politico' => 'nullable|string',
-            'nombre_cargo_politico' => 'nullable|string',
-            'fecha_desde_politico' => 'nullable|date',
-            'fecha_hasta_politico' => 'nullable|date',
-            'pais_politico_id' => 'nullable|exists:paises,id',
-            'departamento_politico_id' => 'nullable|exists:departamentos,id',
-            'municipio_politico_id' => 'nullable|exists:municipios,id',
-            'nombre_cliente_politico' => 'nullable|string',
-            'porcentaje_participacion_politico' => 'nullable|string',
-            'nombre_pariente.*' => 'nullable|string',
-            'parentesco.*' => 'nullable|string',
-            'nombre_socio.*' => 'nullable|string',
-            'porcentaje_participacion_socio.*' => 'nullable|string',
-            'fuente_ingreso' => 'nullable|string',
-            'monto_mensual' => 'nullable|string',
         ]);
 
         try {
@@ -1301,15 +1261,8 @@ class FormsConozcaClienteController extends Controller
             $formulario->giro_id = $request->input('giro_id');
             $formulario->fecha_de_nombramiento = $request->input('fecha_de_nombramiento_editar');
             $formulario->direccion = $request->input('direccion_editar');
-            // $formsccc->cargo_publico = $request->input('cargo_publico');
-            // $formsccc->familiar_publico = $request->input('familiar_publico');
 
             $formulario->save();
-
-            $formularioJuridico = $formulario->conozcaClienteJuridico;
-
-            $formularioJuridico->nombre_comercial_juridico = $request->input('nombre_comercial_juridico');
-            $formularioJuridico->save();
 
             return response()->json(['success' => true, 'message' => 'Formulario actualizado con éxito!', 'data' => $formulario]);
         } catch (\Exception $e) {

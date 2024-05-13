@@ -1851,7 +1851,7 @@ $(document).ready(function () {
         var municipio_editar_id = row.id_municipio;
         var municipio_editar = row.municipio;
 
-        var pais_juridico_editar_id = row.id_pais_juridico;
+        // var pais_juridico_editar_id = row.id_pais_juridico;
         // var pais_juridico_editar = row.pais_juridico;
         // var departamento_juridico_editar_id = row.id_departamento_juridico;
         // var departamento_juridico_editar = row.departamento_juridico;

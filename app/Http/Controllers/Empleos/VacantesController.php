@@ -95,8 +95,6 @@ class VacantesController extends Controller
         return response()->json($vacantes);
     }
 
-
-
     public function create()
     {
         $usuario = User::with('perfil')->find(auth()->id());
@@ -161,7 +159,6 @@ class VacantesController extends Controller
             return redirect()->back()->with('error', 'Hubo un error al crear la vacante');
         }
     }
-
     public function edit($id)
     {
         $usuario = User::with('perfil')->find(auth()->id());

@@ -61,6 +61,30 @@ class CandidatosController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'nombre_candidato' => 'required|string',
+            'id_vacante' => 'required|exists:vacantes,id',
+            'id_candidato' => 'required'
+        ]);
+
+        try {
+            $candidato = new Candidato();
+
+            $candidato->nombre_candidato = $request->nombre_candidato;
+            $candidato->id_vacante = $request->id_vacante;
+            $candidato->id_candidato = $request->id_candidato;
+            $candidato->fecha_creacion = now();
+            $candidato->fecha_modificacion = now();
+            $candidato->save();
+
+            return response()->json(['message' => 'Te has postulado a la vacante exitosamente', 'data' => $candidato], 201);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => 'Error al postularte a la vacante: ' . $e->getMessage()]);
+        }
+    }
+
     public function destroy($id)
     {
         $candidato = Candidato::find($id);

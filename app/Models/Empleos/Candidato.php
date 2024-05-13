@@ -14,6 +14,8 @@ class Candidato extends Model
     protected $dates = ['fecha_creacion', 'fecha_modificacion'];
 
     protected $fillable = [
+        'nombre_candidato',
+        'id_candidato',
         'fecha_creacion',
         'fecha_modificacion'
     ];
