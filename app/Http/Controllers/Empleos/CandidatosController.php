@@ -69,15 +69,15 @@ class CandidatosController extends Controller
             'id_candidato' => 'required'
         ]);
 
+        $existente = Candidato::where('id_vacante', $request->id_vacante)
+            ->where('id_candidato', $request->id_candidato)
+            ->exists();
+
+        if ($existente) {
+            return response()->json(['success' => false, 'error' => 'Ya te has postulado a esta vacante anteriormente.'], 409);
+        }
+
         try {
-            $existente = Candidato::where('id_vacante', $request->id_vacante)
-                ->where('id_candidato', $request->id_candidato)
-                ->exists();
-
-            if ($existente) {
-                return response()->json(['success' => false, 'error' => 'Ya te has postulado a esta vacante anteriormente.']);
-            }
-
             $candidato = new Candidato();
 
             $candidato->nombre_candidato = $request->nombre_candidato;
@@ -89,10 +89,9 @@ class CandidatosController extends Controller
 
             return response()->json(['message' => 'Te has postulado a la vacante exitosamente', 'data' => $candidato], 201);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'error' => 'Error al postularte a la vacante: ' . $e->getMessage()]);
+            return response()->json(['success' => false, 'error' => 'Error al postularte a la vacante: ' . $e->getMessage()], 500);
         }
     }
-
 
     public function destroy($id)
     {
