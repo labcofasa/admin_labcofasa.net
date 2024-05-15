@@ -28,8 +28,8 @@ $(document).ready(function () {
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [8, 25, 50, -1],
-                ["8 filas", "25 filas", "50 filas", "Todas las filas"],
+                [7, 25, 50, -1],
+                ["7 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
@@ -342,8 +342,8 @@ $(document).ready(function () {
             pagingType: "simple_numbers",
             fixedHeader: true,
             lengthMenu: [
-                [8, 25, 50, -1],
-                ["8 filas", "25 filas", "50 filas", "Todas las filas"],
+                [7, 25, 50, -1],
+                ["7 filas", "25 filas", "50 filas", "Todas las filas"],
             ],
             buttons: [
                 {
