@@ -202,11 +202,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input type="text" class="form-control" id="email" name="email" autocomplete="email"
-                            required>
-                        <div class="invalid-feedback">
-                            Por favor, ingrese su correo electrónico.
-                        </div>
+                        <input type="email" class="form-control" id="email" name="email" autocomplete="email">
                     </div>
                 </div>
                 <div class="col-sm-6">
