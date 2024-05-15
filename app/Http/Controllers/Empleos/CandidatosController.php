@@ -87,7 +87,7 @@ class CandidatosController extends Controller
             $candidato->fecha_modificacion = now();
             $candidato->save();
 
-            return response()->json(['message' => 'Te has postulado a la vacante exitosamente', 'data' => $candidato], 201);
+            return response()->json(['message' => 'Te has postulado a la vacante exitosamente.', 'data' => $candidato], 201);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'error' => 'Error al postularte a la vacante: ' . $e->getMessage()], 500);
         }
