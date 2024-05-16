@@ -527,7 +527,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="monto_proyectado" class="form-label">Monto proyectado mensual</label>
-                        <input type="number" class="form-control" id="monto_proyectado" name="monto_proyectado"
+                        <input type="text" class="form-control" id="monto_proyectado" name="monto_proyectado"
                             required>
                         <div class="invalid-feedback">
                             Por favor, ingrese el monto proyectado mensual.

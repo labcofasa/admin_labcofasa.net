@@ -62,8 +62,6 @@ class VacantesController extends Controller
 
         return response()->json($vacantes);
     }
-
-
     public function obtenerVacantesPorCandidato($id_candidato)
     {
         $vacantes = Vacante::whereHas('candidatos', function ($query) use ($id_candidato) {
