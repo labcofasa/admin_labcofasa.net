@@ -9,7 +9,10 @@ class SetJsonAcceptHeader
 {
     public function handle(Request $request, Closure $next)
     {
-        $request->headers->set('Accept', 'application/json');
+        if (!$request->expectsJson()) {
+            $request->headers->set('Accept', 'application/json');
+        }
+        
         return $next($request);
     }
 }

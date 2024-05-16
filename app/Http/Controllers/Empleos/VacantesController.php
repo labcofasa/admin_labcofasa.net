@@ -29,9 +29,10 @@ class VacantesController extends Controller
 
     public function obtenerVacantes()
     {
-        $vacantes = Vacante::with('empresa', 'modalidad', 'tipoContratacion', 'pais', 'departamento', 'municipio', 'candidatos')->get();
+        $vacantes = Vacante::with('empresa', 'modalidad', 'tipoContratacion', 'pais', 'departamento', 'municipio', 'candidatos')
+            ->paginate(10);
 
-        $vacantes->transform(function ($vacante) {
+        $vacantes->getCollection()->map(function ($vacante) {
             $vacante->fecha_vencimiento = Carbon::parse($vacante->fecha_vencimiento)->format('d-m-Y');
             $vacante->imagen = 'https://app.labcofasa.net/images/empleos/imagenes/' . $vacante->id . '/' . $vacante->imagen;
             $vacante->nombre_empresa = $vacante->empresa->nombre;
@@ -61,6 +62,7 @@ class VacantesController extends Controller
 
         return response()->json($vacantes);
     }
+
 
     public function obtenerVacantesPorCandidato($id_candidato)
     {
