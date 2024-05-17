@@ -30,6 +30,7 @@ class VacantesController extends Controller
     public function obtenerVacantes()
     {
         $vacantes = Vacante::with('empresa', 'modalidad', 'tipoContratacion', 'pais', 'departamento', 'municipio', 'candidatos')
+            ->orderBy('fecha_creacion', 'desc')
             ->paginate(10);
 
         $vacantes->getCollection()->map(function ($vacante) {
@@ -95,13 +96,13 @@ class VacantesController extends Controller
         return response()->json($vacante);
     }
 
-
     public function obtenerVacantesPorCandidato($id_candidato)
     {
         $vacantes = Vacante::whereHas('candidatos', function ($query) use ($id_candidato) {
             $query->where('id_candidato', $id_candidato);
         })
             ->with('empresa', 'modalidad', 'tipoContratacion', 'pais', 'departamento', 'municipio')
+            ->orderBy('fecha_creacion', 'desc')
             ->get();
 
         $vacantes->transform(function ($vacante) {
