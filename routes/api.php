@@ -12,11 +12,12 @@ Route::post('/candidato', [CandidatosController::class, 'store']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/clientes', [ClienteController::class, 'verClientes']);
     Route::get('/clientes/{idCliente}', [ClienteController::class, 'buscarClientePorId']);
-    
+
     Route::post('/cerrar-sesion', [AutenticacionController::class, 'cerrarSesionApi']);
-    
+
     Route::get('/verificar-token', [AutenticacionController::class, 'verificarToken']);
 });
 
 Route::get('/vacantes', [VacantesController::class, 'obtenerVacantes']);
+Route::get('/vacante/{id}', [VacantesController::class, 'obtenerVacantePorId']);
 Route::get('/vacantes/{id}', [VacantesController::class, 'obtenerVacantesPorCandidato']);
