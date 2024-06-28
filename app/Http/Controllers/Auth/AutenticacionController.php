@@ -78,16 +78,20 @@ class AutenticacionController extends Controller
                 if (Auth::attempt($credentials)) {
                     $user = Auth::user();
 
+                    #recibimos el id que viene desde el aplicativo
+                    $id_proyecto = $request->id_proyecto;
+
                     $token = $user->createToken('laboratorios-cofasa');
 
                     $rol = $user->getRoleNames()->first();
 
                     $aplicaciones = Aplicacion::whereHas('roles', function ($query) use ($rol) {
                         $query->where('name', $rol);
-                    })->get();
+                    })->where('id',$id_proyecto)->get();
 
                     return response()->json([
                         'token' => $token->plainTextToken,
+                        'id_proyecto' => $id_proyecto,
                         'user' => $user,
                         'rol' => $rol,
                         'aplicaciones' => $aplicaciones,
