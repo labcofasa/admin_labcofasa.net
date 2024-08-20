@@ -16,6 +16,7 @@ use App\Models\FrmConozcaClienteSocio;
 use App\Models\Giro;
 use App\Models\Municipio;
 use App\Models\Pais;
+use App\Helpers\CustomPDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use TCPDF;
@@ -45,89 +46,90 @@ class FormsConozcaClienteController extends Controller
 
     public function generarPDF(Request $request)
     {
+
         $fecha_generacion = Carbon::now()->format('d-m-Y H:i:s');
 
         $pais_id = $request->input('pais_id');
-        $pais = $pais_id ? Pais::find($pais_id)->nombre : 'Campo vacío';
+        $pais = $pais_id ? Pais::find($pais_id)->nombre : '—————';
 
         $pais_juridico_id = $request->input('pais_juridico_id');
-        $pais_juridico = $pais_juridico_id ? Pais::find($pais_juridico_id)->nombre : 'Campo vacío';
+        $pais_juridico = $pais_juridico_id ? Pais::find($pais_juridico_id)->nombre : '—————';
 
         $pais_politico_id = $request->input('pais_politico_id');
-        $pais_politico = $pais_politico_id ? Pais::find($pais_politico_id)->nombre : 'Campo vacío';
+        $pais_politico = $pais_politico_id ? Pais::find($pais_politico_id)->nombre : '—————';
 
         $departamento_id = $request->input('departamento_id');
-        $departamento = $departamento_id ? Departamento::find($departamento_id)->nombre : 'Campo vacío';
+        $departamento = $departamento_id ? Departamento::find($departamento_id)->nombre : '—————';
 
         $departamento_juridico_id = $request->input('departamento_juridico_id');
-        $departamento_juridico = $departamento_juridico_id ? Departamento::find($departamento_juridico_id)->nombre : 'Campo vacío';
+        $departamento_juridico = $departamento_juridico_id ? Departamento::find($departamento_juridico_id)->nombre : '—————';
 
         $departamento_politico_id = $request->input('departamento_politico_id');
-        $departamento_politico = $departamento_politico_id ? Departamento::find($departamento_politico_id)->nombre : 'Campo vacío';
+        $departamento_politico = $departamento_politico_id ? Departamento::find($departamento_politico_id)->nombre : '—————';
 
         $municipio_id = $request->input('municipio_id');
-        $municipio = $municipio_id ? Municipio::find($municipio_id)->nombre : 'Campo vacío';
+        $municipio = $municipio_id ? Municipio::find($municipio_id)->nombre : '—————';
 
         $municipio_juridico_id = $request->input('municipio_juridico_id');
-        $municipio_juridico = $municipio_juridico_id ? Municipio::find($municipio_juridico_id)->nombre : 'Campo vacío';
+        $municipio_juridico = $municipio_juridico_id ? Municipio::find($municipio_juridico_id)->nombre : '—————';
 
         $municipio_politico_id = $request->input('municipio_politico_id');
-        $municipio_politico = $municipio_politico_id ? Municipio::find($municipio_politico_id)->nombre : 'Campo vacío';
+        $municipio_politico = $municipio_politico_id ? Municipio::find($municipio_politico_id)->nombre : '—————';
 
         $giro_id = $request->input('giro_id');
-        $giro = $giro_id ? Giro::find($giro_id)->nombre : 'Campo vacío';
+        $giro = $giro_id ? Giro::find($giro_id)->nombre : '—————';
 
         $giro_juridico_id = $request->input('giro_juridico_id');
-        $giro_juridico = $giro_juridico_id ? Giro::find($giro_juridico_id)->nombre : 'Campo vacío';
+        $giro_juridico = $giro_juridico_id ? Giro::find($giro_juridico_id)->nombre : '—————';
 
         $clasificacion_juridico_id = $request->input('clasificacion_juridico_id');
-        $clasificacion = $clasificacion_juridico_id ? Clasificacion::find($clasificacion_juridico_id)->nombre : 'Campo vacío';
+        $clasificacion = $clasificacion_juridico_id ? Clasificacion::find($clasificacion_juridico_id)->nombre : '—————';
 
-        $tipo = $request->input('tipo') ?: 'Campo vacío';
-        $tipo_persona = $request->input('tipo_persona') ?: 'Campo vacío';
-        $nombre = $request->input('nombre') ?: 'Campo vacío';
-        $apellido = $request->input('apellido') ?: 'Campo vacío';
+        $tipo = $request->input('tipo') ?: '—————';
+        $tipo_persona = $request->input('tipo_persona') ?: '—————';
+        $nombre = $request->input('nombre') ?: '—————';
+        $apellido = $request->input('apellido') ?: '—————';
 
-        $fecha_de_nacimiento = $request->input('fecha_de_nacimiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_nacimiento'))->format('d-m-Y') : 'Campo vacío';
-        $nacionalidad = $request->input('nacionalidad') ?: 'Campo vacío';
-        $profesion_u_oficio = $request->input('profesion_u_oficio') ?: 'Campo vacío';
-        $tipo_de_documento = $request->input('tipo_de_documento') ?: 'Campo vacío';
-        $numero_de_documento = $request->input('numero_de_documento') ?: 'Campo vacío';
-        $fecha_de_vencimiento = $request->input('fecha_de_vencimiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_vencimiento'))->format('d-m-Y') : 'Campo vacío';
-        $registro_iva_nrc = $request->input('registro_iva_nrc') ?: 'Campo vacío';
-        $email = $request->input('email') ?: 'Campo vacío';
-        $telefono = $request->input('telefono') ?: 'Campo vacío';
-        $fecha_de_nombramiento = $request->input('fecha_de_nombramiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_nombramiento'))->format('d-m-Y') : 'Campo vacío';
-        $direccion = $request->input('direccion') ?: 'Campo vacío';
-        $nombre_comercial_juridico = $request->input('nombre_comercial_juridico') ?: 'Campo vacío';
-        $nacionalidad_juridico = $request->input('nacionalidad_juridico') ?: 'Campo vacío';
-        $numero_de_nit_juridico = $request->input('numero_de_nit_juridico') ?: 'Campo vacío';
-        $fecha_de_constitucion_juridico = $request->input('fecha_de_constitucion_juridico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_constitucion_juridico'))->format('d-m-Y') : 'Campo vacío';
-        $registro_nrc_juridico = $request->input('registro_nrc_juridico') ?: 'Campo vacío';
-        $sitio_web_juridico = $request->input('sitio_web_juridico') ?: 'Campo vacío';
-        $numero_de_fax_juridico = $request->input('numero_de_fax_juridico') ?: 'Campo vacío';
-        $telefono_juridico = $request->input('telefono_juridico') ?: 'Campo vacío';
-        $direccion_juridico = $request->input('direccion_juridico') ?: 'Campo vacío';
-        $monto_proyectado = $request->input('monto_proyectado') ?: 'Campo vacío';
-        $cargo_publico = $request->input('cargo_publico') ?: 'Campo vacío';
-        $familiar_publico = $request->input('familiar_publico') ?: 'Campo vacío';
-        $nombre_politico = $request->input('nombre_politico') ?: 'Campo vacío';
-        $nombre_cargo_politico = $request->input('nombre_cargo_politico') ?: 'Campo vacío';
-        $fecha_desde_politico = $request->input('fecha_desde_politico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_desde_politico'))->format('d-m-Y') : 'Campo vacío';
-        $fecha_hasta_politico = $request->input('fecha_hasta_politico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_hasta_politico'))->format('d-m-Y') : 'Campo vacío';
-        $nombre_cliente_politico = $request->input('nombre_cliente_politico') ?: 'Campo vacío';
-        $porcentaje_participacion_politico = $request->input('porcentaje_participacion_politico') ?: 'Campo vacío';
-        $fuente_ingreso = $request->input('fuente_ingreso') ?: 'Campo vacío';
-        $monto_mensual = $request->input('monto_mensual') ?: 'Campo vacío';
+        $fecha_de_nacimiento = $request->input('fecha_de_nacimiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_nacimiento'))->format('d-m-Y') : '—————';
+        $nacionalidad = $request->input('nacionalidad') ?: '—————';
+        $profesion_u_oficio = $request->input('profesion_u_oficio') ?: '—————';
+        $tipo_de_documento = $request->input('tipo_de_documento') ?: '—————';
+        $numero_de_documento = $request->input('numero_de_documento') ?: '—————';
+        $fecha_de_vencimiento = $request->input('fecha_de_vencimiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_vencimiento'))->format('d-m-Y') : '—————';
+        $registro_iva_nrc = $request->input('registro_iva_nrc') ?: '—————';
+        $email = $request->input('email') ?: '—————';
+        $telefono = $request->input('telefono') ?: '—————';
+        $fecha_de_nombramiento = $request->input('fecha_de_nombramiento') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_nombramiento'))->format('d-m-Y') : '—————';
+        $direccion = $request->input('direccion') ?: '—————';
+        $nombre_comercial_juridico = $request->input('nombre_comercial_juridico') ?: '—————';
+        $nacionalidad_juridico = $request->input('nacionalidad_juridico') ?: '—————';
+        $numero_de_nit_juridico = $request->input('numero_de_nit_juridico') ?: '—————';
+        $fecha_de_constitucion_juridico = $request->input('fecha_de_constitucion_juridico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_de_constitucion_juridico'))->format('d-m-Y') : '—————';
+        $registro_nrc_juridico = $request->input('registro_nrc_juridico') ?: '—————';
+        $sitio_web_juridico = $request->input('sitio_web_juridico') ?: '—————';
+        $numero_de_fax_juridico = $request->input('numero_de_fax_juridico') ?: '—————';
+        $telefono_juridico = $request->input('telefono_juridico') ?: '—————';
+        $direccion_juridico = $request->input('direccion_juridico') ?: '—————';
+        $monto_proyectado = $request->input('monto_proyectado') ?: '—————';
+        $cargo_publico = $request->input('cargo_publico') ?: '—————';
+        $familiar_publico = $request->input('familiar_publico') ?: '—————';
+        $nombre_politico = $request->input('nombre_politico') ?: '—————';
+        $nombre_cargo_politico = $request->input('nombre_cargo_politico') ?: '—————';
+        $fecha_desde_politico = $request->input('fecha_desde_politico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_desde_politico'))->format('d-m-Y') : '—————';
+        $fecha_hasta_politico = $request->input('fecha_hasta_politico') ? Carbon::createFromFormat('Y-m-d', $request->input('fecha_hasta_politico'))->format('d-m-Y') : '—————';
+        $nombre_cliente_politico = $request->input('nombre_cliente_politico') ?: '—————';
+        $porcentaje_participacion_politico = $request->input('porcentaje_participacion_politico') ?: '—————';
+        $fuente_ingreso = $request->input('fuente_ingreso') ?: '—————';
+        $monto_mensual = $request->input('monto_mensual') ?: '—————';
 
         $accionistas = [];
         foreach ($request->input('nombre_accionista', []) as $key => $nombreAccionista) {
-            $nacionalidadAccionista = $request->input('nacionalidad_accionista.' . $key) ?: 'Campo vacío';
-            $noIdentificacion = str_replace('-', '', $request->input('numero_identidad_accionista.' . $key)) ?: 'Campo vacío';
-            $porcentajeParticipacion = $request->input('porcentaje_participacion_accionista.' . $key) ?: 'Campo vacío';
+            $nacionalidadAccionista = $request->input('nacionalidad_accionista.' . $key) ?: '—————';
+            $noIdentificacion = str_replace('-', '', $request->input('numero_identidad_accionista.' . $key)) ?: '—————';
+            $porcentajeParticipacion = $request->input('porcentaje_participacion_accionista.' . $key) ?: '—————';
 
             $accionistas[] = [
-                'nombre_accionista' => $nombreAccionista ?: 'Campo vacío',
+                'nombre_accionista' => $nombreAccionista ?: '—————',
                 'nacionalidad_accionista' => $nacionalidadAccionista,
                 'numero_identidad_accionista' => $noIdentificacion,
                 'porcentaje_participacion_accionista' => $porcentajeParticipacion,
@@ -136,12 +138,12 @@ class FormsConozcaClienteController extends Controller
 
         $miembros = [];
         foreach ($request->input('nombre_miembro', []) as $key => $nombreMiembro) {
-            $nacionalidadMiembro = $request->input('nacionalidad_miembro.' . $key) ?: 'Campo vacío';
-            $noIdentificacionMiembro = str_replace('-', '', $request->input('numero_identidad_miembro.' . $key)) ?: 'Campo vacío';
-            $cargoMiembro = $request->input('cargo_miembro.' . $key) ?: 'Campo vacío';
+            $nacionalidadMiembro = $request->input('nacionalidad_miembro.' . $key) ?: '—————';
+            $noIdentificacionMiembro = str_replace('-', '', $request->input('numero_identidad_miembro.' . $key)) ?: '—————';
+            $cargoMiembro = $request->input('cargo_miembro.' . $key) ?: '—————';
 
             $miembros[] = [
-                'nombre_miembro' => $nombreMiembro ?: 'Campo vacío',
+                'nombre_miembro' => $nombreMiembro ?: '—————',
                 'nacionalidad_miembro' => $nacionalidadMiembro,
                 'numero_identidad_miembro' => $noIdentificacionMiembro,
                 'cargo_miembro' => $cargoMiembro,
@@ -150,20 +152,20 @@ class FormsConozcaClienteController extends Controller
 
         $parientes = [];
         foreach ($request->input('nombre_pariente', []) as $key => $nombrePariente) {
-            $parentesco = $request->input('parentesco.' . $key) ?: 'Campo vacío';
+            $parentesco = $request->input('parentesco.' . $key) ?: '—————';
 
             $parientes[] = [
-                'nombre_pariente' => $nombrePariente ?: 'Campo vacío',
+                'nombre_pariente' => $nombrePariente ?: '—————',
                 'parentesco' => $parentesco,
             ];
         }
 
         $socios = [];
         foreach ($request->input('nombre_socio', []) as $key => $nombreSocio) {
-            $porcentajeParticipacionSocio = $request->input('porcentaje_participacion_socio.' . $key) ?: 'Campo vacío';
+            $porcentajeParticipacionSocio = $request->input('porcentaje_participacion_socio.' . $key) ?: '—————';
 
             $socios[] = [
-                'nombre_socio' => $nombreSocio ?: 'Campo vacío',
+                'nombre_socio' => $nombreSocio ?: '—————',
                 'porcentaje_participacion_socio' => $porcentajeParticipacionSocio,
             ];
         }
@@ -225,12 +227,38 @@ class FormsConozcaClienteController extends Controller
                 'monto_mensual',
             )
         )->render();
-        $pdf = new TCPDF();
+        // $pdf = new TCPDF('P', 'mm', 'LETTER', true, 'UTF-8', false);
+        // $pdf->SetHeaderData('', 0, '', '', array(0, 0, 0), array(255, 255, 255));
+        // $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        // $pdf->SetMargins(15, 10, 15);
+        // $pdf = new CustomPDF();
+        // $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        // $pdf->SetFooterMargin(10);
+        // $pdf->AddPage();
+        // $pdf->writeHTML($html, true, false, true, false, '');
+        // $pdf->Output('formulario.pdf', 'D');
+
+        // Crear una instancia de CustomPDF si es que usas configuración personalizada
+        $pdf = new CustomPdf('P', 'mm', 'LETTER', true, 'UTF-8', false);
+
+        // Configuración del encabezado
         $pdf->SetHeaderData('', 0, '', '', array(0, 0, 0), array(255, 255, 255));
         $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+
+        // Configuración de márgenes
         $pdf->SetMargins(15, 10, 15);
+
+        // Configuración del pie de página
+        $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $pdf->SetFooterMargin(10);
+
+        // Añadir una página
         $pdf->AddPage();
+
+        // Añadir contenido HTML al PDF
         $pdf->writeHTML($html, true, false, true, false, '');
+
+        // Generar el PDF y forzar descarga
         $pdf->Output('formulario.pdf', 'D');
     }
 

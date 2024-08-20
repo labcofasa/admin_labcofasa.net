@@ -35,13 +35,15 @@
             width: 30%;
             border-bottom: 2px solid black;
         }
+
     </style>
 </head>
 
 <body>
-    <img src="images/pdfcofasalogo.png" width="150" height="75">
+    <br>
+    <br>
     <h2 style="text-align: center">Formulario Conozca a su Cliente y Contraparte</h2>
-    <p class="datos">Compañía Farmacéutica S.A. de C.V. reconoce el firme compromiso con el cumplimiento integral de
+    <p class="datos" style="text-align: justify;">Compañía Farmacéutica S.A. de C.V. reconoce el firme compromiso con el cumplimiento integral de
         las normativas
         legales vigentes. Por ello, se compromete en la aplicación de las buenas prácticas de "Conozca a su Cliente y
         Contraparte", de acuerdo con los Arts. 9-B, 10 literal A, Romano I y II de la Ley Contra el Lavado de Dinero y
@@ -160,7 +162,7 @@
         </tbody>
     </table>
     <br>
-    @if ($nombre_comercial_juridico != 'Campo vacío')
+    @if ($nombre_comercial_juridico != '—————')
         <h6 class="subtitulo">B. Información Persona Jurídica</h6>
         <br>
         <table>
@@ -287,7 +289,7 @@
         <br>
     @endif
     <h6 class="subtitulo">Declaración jurada de origen de fondos</h6>
-    <p class="datos">a) Todos los fondos, transferencias, depósitos, productos o servicios que entreguemos tendrán
+    <p class="datos" style="text-align: justify;">a) Todos los fondos, transferencias, depósitos, productos o servicios que entreguemos tendrán
         un
         origen
         lícito, y por ende, no estarán relacionados con los delitos de lavado de dinero y activos,
@@ -295,7 +297,7 @@
         Activos, y ningún otro tipo de delito o actividad ilícita. Se permitirá cualquier procedimiento de
         investigación por parte de la COMPAÑÍA FARMACÉUTICA S.A. de C.V. y/o las autoridades correspondientes.
     </p>
-    <p class="datos">b) Manifiesto que el pago de los productos y servicios tiene origen en la actividad económica
+    <p class="datos" style="text-align: justify;">b) Manifiesto que el pago de los productos y servicios tiene origen en la actividad económica
         a
         la que me
         dedico, y el monto proyectado de productos, compras o facturación mensual será el siguiente.
@@ -314,7 +316,7 @@
             </tr>
         </tbody>
     </table>
-    <p class="datos">c) Declaro bajo juramento, por derecho propio, que someto todos los actos que realice a
+    <p class="datos" style="text-align: justify;">c) Declaro bajo juramento, por derecho propio, que someto todos los actos que realice a
         través de
         cualquier
         operación que implique recepción, entrega o transferencia de fondos de cualquier tipo de depósito, bajo
@@ -331,18 +333,18 @@
         inexacta que yo hubiere proporcionado en este formulario.
     </p>
     <h6 class="subtitulo">D. Información de Personas Expuestas Políticamente - PEP's</h6>
-    <p class="datos">¿Usted, o algún socio, accionista, miembro, administrador o director, desempeña o ha
+    <p class="datos" style="text-align: justify;">¿Usted, o algún socio, accionista, miembro, administrador o director, desempeña o ha
         desempeñado
         algún cargo como funcionario público en el país o en el extranjero?.</p>
-    <p class="datos">Su respuesta: {{ $cargo_publico }}</p>
-    <p class="datos">¿Tiene usted o algún miembro, funcionario o administrador algún familiar, hasta el 2do grado
+    <p class="datos" style="text-align: justify;">Su respuesta: {{ $cargo_publico }}</p>
+    <p class="datos" style="text-align: justify;">¿Tiene usted o algún miembro, funcionario o administrador algún familiar, hasta el 2do grado
         de
         consanguinidad y afinidad, que desempeñe algún cargo público y que posea el 10% o más del capital accionario
         de
         su empresa?.</p>
-    <p class="datos">Su respuesta: {{ $familiar_publico }}</p>
+    <p class="datos" style="text-align: justify;">Su respuesta: {{ $familiar_publico }}</p>
 
-    @if ($nombre_politico != 'Campo vacío')
+    @if ($nombre_politico != '—————')
         <span>I. Identificación general del titular</span>
         <br>
         <br>
@@ -444,7 +446,7 @@
         <br>
     @endif
     <h6 class="subtitulo">IV. Declaración Jurada</h6>
-    <p class="datos">Yo el Suscrito, declaro bajo juramento que la información proporcionada en el presente
+    <p class="datos" style="text-align: justify;">Yo el Suscrito, declaro bajo juramento que la información proporcionada en el presente
         Formulario
         es veraz y fidedigna en mi condición de Persona Expuesta Políticamente de conformidad a lo establecido en el
         Art. 9-B de la Ley contra el Lavado de Dinero y Activos, por lo cual estoy dispuesto a suministrar la

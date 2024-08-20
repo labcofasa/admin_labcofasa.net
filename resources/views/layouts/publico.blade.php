@@ -12,6 +12,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/publico.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles/components/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles/components/notificaciones.css') }}">
+
 
     <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
 

@@ -66,7 +66,7 @@
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombres</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required autofocus
-                            aria-describedby="ayuda">
+                            aria-describedby="ayuda" value="{{ old('nombre')}}">
                         <div id="ayuda" class="form-text">
                             Nombres según documento de identidad.
                         </div>
@@ -79,7 +79,7 @@
                     <div class="mb-3">
                         <label for="apellido" class="form-label">Apellidos</label>
                         <input type="text" class="form-control" id="apellido" name="apellido" required
-                            aria-describedby="ayuda">
+                            aria-describedby="ayuda" value="{{ old('apellido')}}">
                         <div id="ayuda" class="form-text">
                             Apellidos según documento de identidad.
                         </div>
@@ -92,7 +92,7 @@
                     <div class="mb-3">
                         <label for="fecha_de_nacimiento" class="form-label">Fecha de nacimiento</label>
                         <input type="date" class="form-control" id="fecha_de_nacimiento" name="fecha_de_nacimiento"
-                            required>
+                            required value="{{ old('fecha_de_nacimiento')}}">
                         <div class="invalid-feedback">
                             Por favor, ingrese su fecha de nacimiento.
                         </div>
@@ -101,7 +101,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                        <input type="text" class="form-control" id="nacionalidad" required name="nacionalidad">
+                        <input type="text" class="form-control" id="nacionalidad" required name="nacionalidad" value="{{ old('nacionalidad')}}">
                         <div class="invalid-feedback">
                             Por favor, ingrese su nacionalidad.
                         </div>
@@ -111,7 +111,7 @@
                     <div class="mb-3">
                         <label for="profesion_u_oficio" class="form-label">Profesión u oficio</label>
                         <input type="text" class="form-control" id="profesion_u_oficio" name="profesion_u_oficio"
-                            required>
+                            required value="{{ old('profesion_u_oficio')}}">
                         <div class="invalid-feedback">
                             Por favor, ingrese su profesión u oficio.
                         </div>
@@ -123,7 +123,7 @@
                         <select class="form-select" id="pais" required>
                             <option value="">Seleccione el país</option>
                         </select>
-                        <input type="hidden" id="id_pais" name="pais_id" value="">
+                        <input type="hidden" id="id_pais" name="pais_id" value="{{old('pais_id')}}">
                         <div class="invalid-feedback">
                             Por favor, seleccione el país.
                         </div>
@@ -135,7 +135,7 @@
                         <select class="form-select" id="departamento" required>
                             <option value="">Seleccione el departamento</option>
                         </select>
-                        <input type="hidden" id="id_departamento" name="departamento_id" value="">
+                        <input type="hidden" id="id_departamento" name="departamento_id" value="{{old('departamento_id')}}">
                         <div class="invalid-feedback">
                             Por favor, seleccione el departamento.
                         </div>
@@ -147,7 +147,7 @@
                         <select class="form-select" id="municipio" required>
                             <option value="">Seleccione el municipio</option>
                         </select>
-                        <input type="hidden" id="id_municipio" name="municipio_id" value="">
+                        <input type="hidden" id="id_municipio" name="municipio_id" value="{{old('municipio_id')}}">
                         <div class="invalid-feedback">
                             Por favor, seleccione el municipio.
                         </div>
@@ -173,7 +173,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="numero_de_documento" class="form-label">Número de documento</label>
-                        <input type="text" class="form-control" id="numero_de_documento" name="numero_de_documento"
+                        <input type="text" class="form-control" id="numero_de_documento" name="numero_de_documento" value="{{ old('numero_de_documento')}}"
                             required>
                         <div class="invalid-feedback">
                             Por favor, ingrese el número de documento.
@@ -183,7 +183,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="fecha_de_vencimiento" class="form-label">Fecha de vencimiento</label>
-                        <input type="date" class="form-control" id="fecha_de_vencimiento" name="fecha_de_vencimiento"
+                        <input type="date" class="form-control" id="fecha_de_vencimiento" name="fecha_de_vencimiento" value="{{ old('fecha_de_vencimiento')}}"
                             required>
                         <div class="invalid-feedback">
                             Por favor, ingrese la fecha de vencimiento.
@@ -193,7 +193,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="registro_iva_nrc" class="form-label">Registro de IVA (NRC)</label>
-                        <input type="text" class="form-control" id="registro_iva_nrc" name="registro_iva_nrc">
+                        <input type="text" class="form-control" id="registro_iva_nrc" name="registro_iva_nrc" value="{{ old('registro_iva_nrc')}}">
                         <div class="valid-feedback">
                             Campo opcional.
                         </div>
@@ -202,13 +202,13 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" autocomplete="email">
+                        <input type="email" class="form-control" id="email" name="email" autocomplete="email" value="{{ old('email')}}">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" value="{{ old('telefono')}}" required>
                         <div class="invalid-feedback">
                             Por favor, ingrese su número de teléfono.
                         </div>
@@ -219,7 +219,7 @@
                         <label for="actividad_economica" class="form-label">Actividad económica</label>
                         <div class="input-container">
                             <input type="text" class="form-control" id="actividad_economica"
-                                name="actividad_economica" aria-describedby="ayuda">
+                                name="actividad_economica" aria-describedby="ayuda" value="{{ old('actividad_economica')}}">
                             <div id="sugerencia-filter" class="sugerencia"></div>
                             <div id="ayuda" class="form-text">
                                 Escriba para buscar y seleccione la actividad económica deseada.
@@ -227,7 +227,7 @@
                             <div class="valid-feedback">
                                 Campo opcional.
                             </div>
-                            <input type="hidden" id="id_actividad_economica" name="giro_id" value="">
+                            <input type="hidden" id="id_actividad_economica" name="giro_id" value="{{ old('id_actividad_economica')}}">
                         </div>
                     </div>
                 </div>
@@ -235,7 +235,7 @@
                     <div class="mb-3">
                         <label for="fecha_de_nombramiento" class="form-label">Fecha de nombramiento</label>
                         <input type="date" class="form-control" id="fecha_de_nombramiento"
-                            name="fecha_de_nombramiento">
+                            name="fecha_de_nombramiento" value="{{ old('fecha_de_nombramiento')}}">
                         <div class="valid-feedback">
                             Campo opcional.
                         </div>
@@ -256,7 +256,7 @@
                         <div class="mb-3">
                             <label for="nombre_comercial_juridico" class="form-label">Nombre comercial</label>
                             <input type="text" class="form-control" id="nombre_comercial_juridico"
-                                name="nombre_comercial_juridico">
+                                name="nombre_comercial_juridico" value="{{ old('nombre_comercial_juridico')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el nombre comercial.
                             </div>
@@ -272,14 +272,14 @@
                                 Por favor, seleccione el tipo de contribuyente.
                             </div>
                             <input type="hidden" id="id_clasificacion_juridico" name="clasificacion_juridico_id"
-                                value="">
+                            value="{{ old('clasificacion_juridico_id')}}">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="nacionalidad_juridico" class="form-label">Nacionalidad</label>
                             <input type="text" class="form-control" id="nacionalidad_juridico"
-                                name="nacionalidad_juridico">
+                                name="nacionalidad_juridico" value="{{ old('nacionalidad_juridico')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese la nacionalidad.
                             </div>
@@ -289,7 +289,7 @@
                         <div class="mb-3">
                             <label for="numero_de_nit_juridico" class="form-label">Número de NIT</label>
                             <input type="text" class="form-control" id="numero_de_nit_juridico"
-                                name="numero_de_nit_juridico">
+                                name="numero_de_nit_juridico" value="{{ old('numero_de_nit_juridico')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el número de NIT.
                             </div>
@@ -299,7 +299,7 @@
                         <div class="mb-3">
                             <label for="fecha_de_constitucion_juridico" class="form-label">Fecha de constitución</label>
                             <input type="date" class="form-control" id="fecha_de_constitucion_juridico"
-                                name="fecha_de_constitucion_juridico">
+                                name="fecha_de_constitucion_juridico" value="{{ old('fecha_de_constitucion_juridico')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese la fecha de constitución.
                             </div>
@@ -309,7 +309,7 @@
                         <div class="mb-3">
                             <label for="registro_nrc_juridico" class="form-label">Número de registro IVA (NRC)</label>
                             <input type="text" class="form-control" id="registro_nrc_juridico"
-                                name="registro_nrc_juridico">
+                                name="registro_nrc_juridico" value="{{ old('registro_nrc_juridico')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el registro NRC.
                             </div>
@@ -320,12 +320,12 @@
                             <label for="giro_juridico" class="form-label">Actividad económica</label>
                             <div class="input-container">
                                 <input type="text" class="form-control" id="giro_juridico" name="giro_juridico"
-                                    aria-describedby="ayuda">
+                                    aria-describedby="ayuda" value="{{ old('giro_juridico')}}">
                                 <div id="sugerencia_filter_juridico" class="sugerencia"></div>
                                 <div id="ayuda" class="form-text">
                                     Escriba para buscar y seleccione la actividad económica deseada.
                                 </div>
-                                <input type="hidden" id="id_giro_juridico" name="giro_juridico_id" value="">
+                                <input type="hidden" id="id_giro_juridico" name="giro_juridico_id" value="{{ old('giro_juridico_id')}}">
                                 <div class="invalid-feedback">
                                     Por favor, busque y seleccione la actividad económica.
                                 </div>
@@ -338,7 +338,7 @@
                             <select class="form-select" id="pais_juridico" aria-label="Seleccione el país">
                                 <option value="">Seleccione el país</option>
                             </select>
-                            <input type="hidden" id="id_pais_juridico" name="pais_juridico_id" value="">
+                            <input type="hidden" id="id_pais_juridico" name="pais_juridico_id" value="{{ old('pais_juridico_id')}}">
                             <div class="invalid-feedback">
                                 Por favor, seleccione el país.
                             </div>
@@ -352,7 +352,7 @@
                                 <option value="">Seleccione el departamento</option>
                             </select>
                             <input type="hidden" id="id_departamento_juridico" name="departamento_juridico_id"
-                                value="">
+                            value="{{ old('departamento_juridico_id')}}">
                             <div class="invalid-feedback">
                                 Por favor, seleccione el departamento.
                             </div>
@@ -365,7 +365,7 @@
                                 <option value="">Seleccione el municipio</option>
                             </select>
                             <input type="hidden" id="id_municipio_juridico" name="municipio_juridico_id"
-                                value="">
+                                value="{{ old('municipio_juridico_id')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el municipio.
                             </div>
@@ -374,7 +374,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="telefono_juridico" class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control" id="telefono_juridico" name="telefono_juridico">
+                            <input type="tel" class="form-control" id="telefono_juridico" name="telefono_juridico" value="{{ old('telefono_juridico')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el número de teléfono.
                             </div>
@@ -384,7 +384,7 @@
                         <div class="mb-3">
                             <label for="sitio_web_juridico" class="form-label">Sitio web</label>
                             <input type="text" class="form-control" id="sitio_web_juridico"
-                                name="sitio_web_juridico">
+                                name="sitio_web_juridico" value="{{ old('sitio_web_juridico')}}">
                             <div class="valid-feedback">
                                 Campo opcional.
                             </div>
@@ -394,7 +394,7 @@
                         <div class="mb-3">
                             <label for="numero_de_fax_juridico" class="form-label">Número de FAX</label>
                             <input type="text" class="form-control" id="numero_de_fax_juridico"
-                                name="numero_de_fax_juridico">
+                                name="numero_de_fax_juridico" value="{{ old('numero_de_fax_juridico')}}">
                             <div class="valid-feedback">
                                 Campo opcional.
                             </div>
@@ -417,7 +417,7 @@
                         <div class="mb-3">
                             <label for="nombre_accionista" class="form-label">Nombre completo</label>
                             <input type="text" class="form-control" id="nombre_accionista"
-                                name="nombre_accionista[]">
+                                name="nombre_accionista[]" value="{{ old('nombre_accionista[]')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el nombre.
                             </div>
@@ -427,7 +427,7 @@
                         <div class="mb-3">
                             <label for="nacionalidad_accionista" class="form-label">Nacionalidad</label>
                             <input type="text" class="form-control" id="nacionalidad_accionista"
-                                name="nacionalidad_accionista[]">
+                                name="nacionalidad_accionista[]" value="{{ old('nacionalidad_accionista[]')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese la nacionalidad.
                             </div>
@@ -437,7 +437,7 @@
                         <div class="mb-3">
                             <label for="numero_identidad_accionista" class="form-label">No. Identidad</label>
                             <input type="text" class="form-control" id="numero_identidad_accionista"
-                                name="numero_identidad_accionista[]">
+                                name="numero_identidad_accionista[]" value="{{ old('numero_identidad_accionista[]')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el número de identidad.
                             </div>
@@ -448,7 +448,7 @@
                             <label for="porcentaje_participacion_accionista" class="form-label">Porcentaje de
                                 participación</label>
                             <input type="text" class="form-control" placeholder="Ejemplo: 10%"
-                                id="porcentaje_participacion_accionista" name="porcentaje_participacion_accionista[]">
+                                id="porcentaje_participacion_accionista" name="porcentaje_participacion_accionista[]" value="{{ old('porcentaje_participacion_accionista[]')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el porcentaje de participación.
                             </div>
@@ -469,7 +469,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="nombre_miembro" class="form-label">Nombre completo</label>
-                            <input type="text" class="form-control" id="nombre_miembro" name="nombre_miembro[]">
+                            <input type="text" class="form-control" id="nombre_miembro" name="nombre_miembro[]" value="{{ old('nombre_miembro[]')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el nombre.
                             </div>
@@ -479,7 +479,7 @@
                         <div class="mb-3">
                             <label for="nacionalidad_miembro" class="form-label">Nacionalidad</label>
                             <input type="text" class="form-control" id="nacionalidad_miembro"
-                                name="nacionalidad_miembro[]">
+                                name="nacionalidad_miembro[]" value="{{ old('nacionalidad_miembro[]')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese la nacionalidad.
                             </div>
@@ -489,7 +489,7 @@
                         <div class="mb-3">
                             <label for="numero_identidad_miembro" class="form-label">No. Identidad</label>
                             <input type="text" class="form-control" id="numero_identidad_miembro"
-                                name="numero_identidad_miembro[]">
+                                name="numero_identidad_miembro[]" value="{{ old('numero_identidad_miembro[]')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el número de identidad.
                             </div>
@@ -498,7 +498,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label for="cargo_miembro" class="form-label">Cargo</label>
-                            <input type="text" class="form-control" id="cargo_miembro" name="cargo_miembro[]">
+                            <input type="text" class="form-control" id="cargo_miembro" name="cargo_miembro[]" value="{{ old('cargo_miembro[]')}}">
                             <div class="invalid-feedback">
                                 Por favor, ingrese el cargo.
                             </div>
@@ -599,6 +599,8 @@
 
                 <h5 class="pt-4 text-center fw-bold">Documentos anexos</h5>
 
+                <p class="note">Nota: Solo se admiten archivos con las siguientes extensiones: .pdf, .jpg, .png, .jpeg.</p>
+
                 <x-formularios.archivos />
 
                 <span class="mb-3">Validación de datos</span>
@@ -642,7 +644,13 @@
 
             <x-formularios.enviar />
         </form>
-
+        <div id="notification" class="notification hidden">
+            <div class="notification-content">
+                <p id="notification-text"></p>
+                <button id="notification-close" class="notification-close">&times;</button>
+            </div>
+        </div>
+        <script src="{{ asset('js/validaciones/scripts_validacion.js') }}"></script>
 
         <div class="row text-center">
             <div class="col">

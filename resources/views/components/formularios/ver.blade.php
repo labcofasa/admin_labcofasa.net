@@ -16,7 +16,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <span>Información Persona Natural - Representante Legal</span>
+                {{-- Mostrar Información Persona Natural - Representante Legal --}}
+                <div class="enfas-wrapper">
+                    <span class="enfas">Información Persona Natural - Representante Legal</span>
+                </div>
+                <div class="line"></div>
                 <div class="form pt-3">
                     <div class="row">
                         <input type="hidden" id="frm_cccid" name="frm_conozca_cliente_id">
@@ -153,7 +157,11 @@
                                 <textarea type="text" id="direccion" name="direccion" class="form-control" disabled></textarea>
                             </div>
                         </div>
-                        <span class="mb-3">Información Persona Jurídica</span>
+                        {{-- Mostrar Información Persona Jurídica --}}
+                        <div class="enfas-wrapper">
+                            <span class="enfas">Información Persona Jurídica</span>
+                        </div>
+                        <div class="line"></div>
                         <div class="col-md-3">
                             <div class="form-group mb-3">
                                 <label for="nombre_juridico" class="form-label">Nombre comercial o Razón
@@ -252,12 +260,23 @@
                                 <textarea type="text" id="direccion_juridico" name="direccion_juridico" class="form-control" disabled></textarea>
                             </div>
                         </div>
-                        <span class="mb-3">Información de la Administración, sus Accionistas o Miembros</span>
+                        <!-- Mostrar Información de la Administración, accionistas y/o miembros  -->
+                        <div class="enfas-wrapper">
+                            <span class="enfas">Información de la Administración, sus Accionistas o Miembros</span>
+                        </div>
+                        <div class="line"></div>
                         <div id="camposAccionista"></div>
-                        <span class="mb-3">Miembros de la Junta Directiva, Administrador Único, Alta Gerencia o
-                            máximo órgano de Control en la Sociedad.</span>
+                        <!-- Mostrar Información de la Miembros de la Junta Directiva  -->
+                        <div class="enfas-wrapper">
+                            <span class="enfas">Miembros de la Junta Directiva, Aministrador Único, Alta gerencia o máximo órgano de Control en la sociedad</span>
+                        </div>
+                        <div class="line"></div>
                         <div id="camposMiembro"></div>
-                        <span class="mb-3">Declaración jurada de origin de fondos</span>
+                        <!-- Mostrar Declaración jurada de origin de fondos  -->
+                        <div class="enfas-wrapper">
+                            <span class="enfas">Declaración jurada de origin de fondos</span>
+                        </div>
+                        <div class="line"></div>
                         <div class="col-sm-3">
                             <div class="mb-3">
                                 <label for="monto_proyectado" class="form-label">Monto proyectado mensual</label>
@@ -265,7 +284,11 @@
                                     name="monto_proyectado" disabled>
                             </div>
                         </div>
-                        <span class="mb-3">Formulario de Identificación de Personas Expuestas Políticamente</span>
+                        {{-- Mostrar Formulario de Identificación de Personas Expuestas Políticamente --}}
+                        <div class="enfas-wrapper">
+                            <span class="enfas">Formulario de Identificación de Personas Expuestas Políticamente</span>
+                        </div>
+                        <div class="line"></div>
                         <div class="col-md-3">
                             <div class="form-group mb-3">
                                 <label for="cargo_publico" class="form-label">Es persona políticamente
@@ -282,7 +305,11 @@
                                     class="form-control" disabled>
                             </div>
                         </div>
-                        <span class="mb-3">Identificación general del titular</span>
+                        {{-- Mostrar Identificación general del titular --}}
+                        <div class="enfas-wrapper">
+                            <span class="enfas">Identificación general del titular</span>
+                        </div>
+                        <div class="line"></div>
                         <div class="col-md-3">
                             <div class="form-group mb-3">
                                 <label for="nombre_politico" class="form-label">Nombre</label>
@@ -348,13 +375,17 @@
                                     name="porcentaje_participacion_politico" disabled>
                             </div>
                         </div>
-                        <span class="mb-3">Información de Parientes y Asociados Comerciales o de Negocios</span>
-                        <span class="mb-3">Parientes en Primer y Segundo Grado de Consanguinidad.</span>
+                        {{-- Mostrar Información de Parientes y Asociados Comerciales o de Negocios --}}
+                        <div class="enfas-wrapper">
+                            <span class="enfas">Información de Parientes y Asociados Comerciales o de Negocios</span>
+                        </div>
+                        <div class="line"></div>
+                        <span class="mb-3 subenfas">Parientes en Primer y Segundo Grado de Consanguinidad.</span>
                         <div id="camposPariente"></div>
-                        <span class="mb-3">Asociados Comerciales o de Negocios (Sociedades en las que posee 25% o más
+                        <span class="mb-3 subenfas">Asociados Comerciales o de Negocios (Sociedades en las que posee 25% o más
                             del Patrimonio)</span>
                         <div id="camposSocio"></div>
-                        <span class="mb-3">Fuentes de ingresos.</span>
+                        <span class="mb-3 subenfas">Fuentes de ingresos.</span>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="fuente_ingreso" class="form-label">Principales fuentes de
@@ -370,7 +401,7 @@
                                     disabled>
                             </div>
                         </div>
-                        <span class="mb-3">Archivos adjuntos</span>
+                        <span class="mb-3 subenfas">Archivos adjuntos</span>
                         <div class="container-cards p-2"></div>
                     </div>
                 </div>
