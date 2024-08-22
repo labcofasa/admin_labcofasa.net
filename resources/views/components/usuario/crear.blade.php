@@ -75,7 +75,7 @@
                                                 Seleccione un rol
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>                                    
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
                                             <label for="email-usuario" class="form-label">Correo electrónico
@@ -86,6 +86,16 @@
                                                 Ingrese un correo válido
                                             </div>
                                         </div>
+                                        
+                                            {{-- Codigo de vendedor --}}
+                                            <div class="form-group mb-3 d-none" id="codigo-vendedor-group">
+                                                <label for="codigo-vendedor" class="form-label">Código de vendedor</label>
+                                                <input type="text" name="codigo-vendedor-create" class="form-control" id="codigo-vendedor-create">
+                                                <div class="invalid-feedback">
+                                                    Ingrese un código de vendedor válido
+                                                </div>
+                                            </div>
+
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">

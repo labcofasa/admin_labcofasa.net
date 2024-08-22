@@ -987,3 +987,42 @@ function printMunicipios() {
     printWindow.document.close();
     printWindow.print();
 }
+
+// Obtener ID para mostrar vendedor ID
+document.getElementById('rol-usuario-select').addEventListener('change', function() {
+    const rolSeleccionado = parseInt(this.value);
+    const codigoVendedorGroup = document.getElementById('codigo-vendedor-group');
+    
+    if (rolSeleccionado === 3) { // ID 3 es para vendedor
+        codigoVendedorGroup.classList.remove('d-none');
+    } else {
+        codigoVendedorGroup.classList.add('d-none');
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const rolSelect = document.getElementById('rol-usuario-select-editar');
+    const codigoVendedorGroup = document.getElementById('codigo-vendedor-group-editar');
+    const modalElement = document.getElementById('editarUsuario');
+
+    // Función para actualizar la visibilidad del campo de código de vendedor
+    function actualizarVisibilidad() {
+        const rolSeleccionado = parseInt(rolSelect.value, 10);
+        if (rolSeleccionado === 3) { // ID 3 es para vendedor
+            codigoVendedorGroup.classList.remove('d-none');
+        } else {
+            codigoVendedorGroup.classList.add('d-none');
+        }
+    }
+
+    // Ejecuta la actualización de visibilidad cuando el modal se muestra
+    if (modalElement) {
+        modalElement.addEventListener('show.bs.modal', actualizarVisibilidad);
+    }
+
+    // Actualiza la visibilidad cuando el rol cambia
+    rolSelect.addEventListener('change', actualizarVisibilidad);
+});
+
+

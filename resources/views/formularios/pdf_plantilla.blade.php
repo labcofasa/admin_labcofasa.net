@@ -42,7 +42,7 @@
 <body>
     <br>
     <br>
-    <h2 style="text-align: center">Formulario Conozca a su Cliente y Contraparte</h2>
+    <h3 style="text-align: center">Formulario Conozca a su Cliente y Contraparte</h2>
     <p class="datos" style="text-align: justify;">Compañía Farmacéutica S.A. de C.V. reconoce el firme compromiso con el cumplimiento integral de
         las normativas
         legales vigentes. Por ello, se compromete en la aplicación de las buenas prácticas de "Conozca a su Cliente y

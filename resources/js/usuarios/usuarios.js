@@ -370,12 +370,14 @@ $(document).ready(function () {
         var nombreDepartamento = row.nombre_departamento;
         var municipioId = row.id_municipio;
         var nombreMunicipio = row.nombre_municipio;
+        var codigoVendedor = row.codigo_vendedor;
 
         $("#editarUsuarioForm #btn-editar-usuario").val(usuarioId);
         $("#editarUsuarioForm #nombre-usuario-editar").val(name);
         $("#editarUsuarioForm #email-usuario-editar").val(email);
         $("#editarUsuarioForm #nombre-input-editar").val(nombre);
         $("#editarUsuarioForm #apellido-input-editar").val(apellido);
+        $("#editarUsuarioForm #codigo-vendedor-editar").val(codigoVendedor);
         $("#editarUsuarioForm #telefono-perfil-editar").val(telefono);
         $("#editarUsuarioForm #direccion-perfil-editar").val(direccion);
 

@@ -239,7 +239,7 @@ class FormsConozcaClienteController extends Controller
         // $pdf->Output('formulario.pdf', 'D');
 
         // Crear una instancia de CustomPDF si es que usas configuración personalizada
-        $pdf = new CustomPdf('P', 'mm', 'LETTER', true, 'UTF-8', false);
+        $pdf = new custompdf('P', 'mm', 'LETTER', true, 'UTF-8', false);
 
         // Configuración del encabezado
         $pdf->SetHeaderData('', 0, '', '', array(0, 0, 0), array(255, 255, 255));

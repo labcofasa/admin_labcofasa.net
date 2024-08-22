@@ -37,6 +37,7 @@ class UsuarioController extends Controller
         $query = User::query()
             ->select(
                 'users.*',
+                'users.codigo_vendedor',
                 'roles.name as rol',
                 'perfiles.nombres',
                 'perfiles.apellidos',
@@ -91,6 +92,7 @@ class UsuarioController extends Controller
             'apellidos',
             'telefono',
             'email',
+            'codigo_vendedor',
             'nombre_empresa',
             'nombre_pais',
             'nombre_departamento',
@@ -152,6 +154,7 @@ class UsuarioController extends Controller
                 'id_municipio' => $usuario->perfil->municipio_id ?? null,
                 'nombre_municipio' => $usuario->perfil->municipio->nombre ?? null,
                 'direccion' => $usuario->perfil->direccion ?? null,
+                'codigo_vendedor' => $usuario->codigo_vendedor ?? null,
                 'roles' => $roles->toArray(),
                 'created_at' => optional($usuario->created_at)->format('Y-m-d H:i:s'),
                 'user_name' => $usuario->user_name,
@@ -188,6 +191,7 @@ class UsuarioController extends Controller
             'pais_id' => 'nullable|exists:paises,id',
             'departamento_id' => 'nullable|exists:departamentos,id',
             'municipio_id' => 'nullable|exists:municipios,id',
+            'codigo_vendedor' => 'nullable|numeric'
         ]);
 
         try {
@@ -195,7 +199,7 @@ class UsuarioController extends Controller
             $usuario->name = $request->input('name');
             $usuario->email = $request->input('email');
             $usuario->user_id = auth()->user()->id;
-
+            $usuario->codigo_vendedor = $request->input('codigo-vendedor-create');
             $password = $request->input('password');
 
             if ($password) {
@@ -277,6 +281,7 @@ class UsuarioController extends Controller
             'pais_id' => 'nullable|exists:paises,id',
             'departamento_id' => 'nullable|exists:departamentos,id',
             'municipio_id' => 'nullable|exists:municipios,id',
+            'codigo_vendedor' => 'nullable|numeric',
         ]);
 
         try {
@@ -285,7 +290,7 @@ class UsuarioController extends Controller
             $usuario->name = $request->input('name');
             $usuario->email = $request->input('email');
             $usuario->user_modified_id = auth()->user()->id;
-
+            $usuario->codigo_vendedor = $request->input('codigo-vendedor-editar');
             $nuevaClave = $request->input('password');
             if ($nuevaClave) {
                 $this->validate($request, [
@@ -315,7 +320,7 @@ class UsuarioController extends Controller
             $perfil->pais_id = $request->input('pais_id');
             $perfil->departamento_id = $request->input('departamento_id');
             $perfil->municipio_id = $request->input('municipio_id');
-
+            
             $perfil->save();
 
             $perfilId = $perfil->id;
@@ -338,7 +343,7 @@ class UsuarioController extends Controller
 
             $rolId = $request->input('rol');
             $role = Role::findById($rolId);
-
+            
             if ($role) {
                 $usuario->syncRoles($role);
             } else {
@@ -346,6 +351,7 @@ class UsuarioController extends Controller
             }
 
             return response()->json(['success' => true, 'message' => '¡Usuario actualizado exitosamente!', 'data' => $usuario]);
+            
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'error' => 'Error al actualizar el usuario: ' . $e->getMessage()]);
         }

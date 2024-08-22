@@ -87,6 +87,16 @@
                                                 Ingrese un correo válido
                                             </div>
                                         </div>
+
+                                        <div class="form-group mb-3 d-none" id="codigo-vendedor-group-editar">
+                                            <label for="codigo-vendedor-editar" class="form-label">Código de vendedor</label>
+                                            <input autocomplete="off" type="text" name="codigo-vendedor-editar" class="form-control" id="codigo-vendedor-editar" 
+                                             pattern="\d*">
+                                            <div class="invalid-feedback">
+                                                Ingrese un código de vendedor válido
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">

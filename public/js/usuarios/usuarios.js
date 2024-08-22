@@ -495,14 +495,16 @@ $(document).ready(function () {
         var nombreDepartamento = row.nombre_departamento;
         var municipioId = row.id_municipio;
         var nombreMunicipio = row.nombre_municipio;
+        var codigoVendedor = row.codigo_vendedor;
 
         const modal = $("#editarUsuario");
-
+        
         $("#editarUsuarioForm #btn-editar-usuario").val(usuarioId);
         $("#editarUsuarioForm #nombre-usuario-editar").val(name);
         $("#editarUsuarioForm #email-usuario-editar").val(email);
         $("#editarUsuarioForm #nombre-input-editar").val(nombres);
         $("#editarUsuarioForm #apellido-input-editar").val(apellidos);
+        $("#editarUsuarioForm #codigo-vendedor-editar").val(codigoVendedor);
         $(".image-perfil-name-editar").text(row.imagen);
         $("#editarUsuarioForm #telefono-perfil-editar").val(telefono);
         $("#editarUsuarioForm #direccion-perfil-editar").val(direccion);
