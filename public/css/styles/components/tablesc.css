@@ -1,0 +1,87 @@
+.dataTables_wrapper .row:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.filter-section label {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    padding: 0;
+}
+
+.filter-section input[type="checkbox"] {
+    margin: 0 5px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.dataTables_wrapper .dataTables_scrollBody table tbody tr td input[type="checkbox"] {
+    vertical-align: middle;
+    margin-top: -2px;
+}
+
+.table-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.table-controls label {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.dataTables_filter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dataTables_filter label {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.dataTables_filter input {
+    width: auto;
+    max-width: 200px;
+}
+
+.form-check {
+    margin-bottom: 15px;
+}
+
+.form-check .form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-check-input {
+    margin-left: 0;
+}
+
+/* Ajustes generales para mejorar la visibilidad */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Mejorar la visibilidad en dispositivos más pequeños */
+@media only screen and (max-width: 600px) {
+    table.dataTable {
+        font-size: 8px;
+        /* Puedes ajustar el tamaño de fuente según sea necesario */
+    }
+    
+    /* Ajustar el padding en pantallas pequeñas para evitar desbordamiento */
+    .table th, .table td {
+        padding: 0.5rem;
+    }
+}

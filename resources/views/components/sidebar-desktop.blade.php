@@ -85,13 +85,16 @@
                             class="nav-link {{ request()->routeIs('pag.vacantes') ? 'active' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                                 color="#000000" fill="none">
+                                {{-- Suit case --}}
                                 <path
                                     d="M11.0065 21H9.60546C6.02021 21 4.22759 21 3.11379 19.865C2 18.7301 2 16.9034 2 13.25C2 9.59661 2 7.76992 3.11379 6.63496C4.22759 5.5 6.02021 5.5 9.60546 5.5H13.4082C16.9934 5.5 18.7861 5.5 19.8999 6.63496C20.7568 7.50819 20.9544 8.7909 21 11"
                                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                {{-- lupa --}}
                                 <path
                                     d="M20.0167 20.0233L21.9998 22M21.0528 17.5265C21.0528 15.5789 19.4739 14 17.5263 14C15.5786 14 13.9998 15.5789 13.9998 17.5265C13.9998 19.4742 15.5786 21.0531 17.5263 21.0531C19.4739 21.0531 21.0528 19.4742 21.0528 17.5265Z"
                                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                     stroke-linejoin="round" />
+                                {{-- manija --}}
                                 <path
                                     d="M15.9998 5.5L15.9004 5.19094C15.4054 3.65089 15.1579 2.88087 14.5686 2.44043C13.9794 2 13.1967 2 11.6313 2H11.3682C9.8028 2 9.02011 2 8.43087 2.44043C7.84162 2.88087 7.59411 3.65089 7.0991 5.19094L6.99976 5.5"
                                     stroke="currentColor" stroke-width="1.5" />
@@ -99,6 +102,22 @@
                             <span class="link_name">Vacantes</span>
                         </a>
                     </li>
+                @endcan
+                @can('admin_encuestas_ver')
+                <li>
+                    {{-- iconos con Fonts Awesome (más parecido a original) 27 de strokewidth --}}
+                    <a href="{{ route('pag.encuesta') }}"
+                        class="nav-link {{ request()->routeIs('pag.encuesta') ? 'active' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24"
+                            color="#000000" fill="none" class="icon">
+                            <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM325.8 139.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-21.4 21.4-71-71 21.4-21.4c15.6-15.6 40.9-15.6 56.6 0zM119.9 289L225.1 183.8l71 71L190.9 359.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"
+                            stroke="currentColor" stroke-width="27"
+                            />
+                            
+                        </svg>
+                        <span class="link_name">Encuesta</span>
+                    </a>
+                </li>
                 @endcan
             </ul>
             <ul class="menu-links">

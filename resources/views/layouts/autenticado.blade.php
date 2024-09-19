@@ -13,9 +13,11 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('css/autenticado.css') }}">
+        @stack('styles')
 
         <script src="{{ asset('js/datatables/datatables.min.js') }}"></script>
         <script src="{{ asset('js/graficas/chart.js') }}"></script>
+        
 
         <!-- Titulo del sitio -->
         <title>@yield('titulo')</title>
