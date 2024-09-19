@@ -137,6 +137,12 @@ class RoleSeeder extends Seeder
             ['name' => 'admin_vacantes_crear', 'descripcion' => 'Crear vacantes'],
             ['name' => 'admin_vacantes_editar', 'descripcion' => 'Editar vacantes'],
             ['name' => 'admin_vacantes_eliminar', 'descripcion' => 'Eliminar vacantes'],
+
+            //Encuestas
+            ['name' => 'admin_encuestas_ver', 'descripcion' => 'Ver encuestas'],
+            ['name' => 'admin_encuestas_crear', 'descripcion' => 'Crear encuestas'],
+            ['name' => 'admin_encuestas_editar', 'descripcion' => 'Editar encuestas'],
+            ['name' => 'admin_encuestas_eliminar', 'descripcion' => 'Eliminar encuestas'],
         ];
 
         foreach ($permissions as $permissionData) {

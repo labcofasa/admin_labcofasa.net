@@ -135,6 +135,34 @@ return [
                 PDO::ATTR_EMULATE_PREPARES => true,
             ],
         ],
+        'DB_CONNECTION_ENCUESTAS' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_ENCUESTAS', 'localhost'),
+            'port' => env('DB_PORT_ENCUESTAS', '1433'),
+            'database' => env('DB_DATABASE_ENCUESTAS', 'forge'),
+            'username' => env('DB_USERNAME_ENCUESTAS', 'forge'),
+            'password' => env('DB_PASSWORD_ENCUESTAS', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'options' => [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ],
+        ],
+        'DB_CONNECTION_ADMIN' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_ADMIN', 'localhost'),
+            'port' => env('DB_PORT_ADMIN', '1433'),
+            'database' => env('DB_DATABASE_ADMIN', 'forge'),
+            'username' => env('DB_USERNAME_ADMIN', 'forge'),
+            'password' => env('DB_PASSWORD_ADMIN', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'options' => [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ],
+        ],
 
 
     ],

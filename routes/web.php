@@ -28,6 +28,8 @@ use App\Http\Controllers\Empleos\ModalidadController;
 use App\Http\Controllers\Empleos\VacantesController;
 use App\Http\Controllers\FormsConozcaClienteController;
 use App\Http\Controllers\FormulariosController;
+use App\Http\Controllers\EncuestaController;
+use App\Http\Controllers\PruebasController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -246,3 +248,17 @@ Route::middleware(['web'])->group(function () {
     Route::get('/empresas/{id}/logo', [EmpresaController::class, 'mostrarLogo']);
     Route::get('/empresas/{id}/leyenda', [EmpresaController::class, 'mostrarLeyenda']);
 });
+
+
+    //pruebas
+    Route::middleware(['can:admin_encuestas_ver'])->group(function () {
+        Route::get('/encuestas', [EncuestaController::class,'index'])->name('pag.encuesta');
+        Route::get('/crear-encuestas', [EncuestaController::class,'create'])->name('crear.encuesta');
+        Route::post('/creando-encuesta', [EncuestaController::class,'store'])->name('creando.encuesta');
+        Route::get('/tabla-encuestas', [EncuestaController::class,'tablaEncuestas']);
+        Route::get('/cargar-preguntas', [EncuestaController::class, 'cargarPreguntas'])->name('cargar.preguntas');
+        Route::post('/guardar-encuesta', [EncuestaController::class, 'guardarEncuesta']);
+        Route::get('/user-data', [EncuestaController::class, 'getUserData']);
+        Route::post('/guardar-observaciones', [EncuestaController::class, 'guardarObs']);
+    });
+
