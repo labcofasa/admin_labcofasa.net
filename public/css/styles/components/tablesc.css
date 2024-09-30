@@ -30,13 +30,6 @@
     margin-bottom: 15px;
 }
 
-.table-controls label {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    padding: 0;
-}
-
 .dataTables_filter {
     display: flex;
     justify-content: flex-end;
@@ -76,12 +69,15 @@
 /* Mejorar la visibilidad en dispositivos más pequeños */
 @media only screen and (max-width: 600px) {
     table.dataTable {
-        font-size: 8px;
-        /* Puedes ajustar el tamaño de fuente según sea necesario */
+        font-size: 10px; /* Ajusta el tamaño de fuente */
     }
-    
+
     /* Ajustar el padding en pantallas pequeñas para evitar desbordamiento */
     .table th, .table td {
-        padding: 0.5rem;
+        padding: 0.25rem; /* Reduce el padding */
+        max-width: 100px; /* Limita el ancho de las columnas */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; /* Evitar que el texto se rompa en varias líneas */
     }
 }

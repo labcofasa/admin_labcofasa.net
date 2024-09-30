@@ -62,9 +62,10 @@ label[for="activo-filter"] {
 
 .radio-button-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around; /* Espacia los elementos horizontalmente */
     align-items: center;
     gap: var(--radio-button-gap);
+    padding: 10px; /* Agregar padding al contenedor */
 }
 
 .radio-button-wrapper {
@@ -77,9 +78,14 @@ label[for="activo-filter"] {
 
 
 @media (max-width: 600px) {
-    :root {
-        --radio-button-gap: 10px;
-        --radio-button-inner-gap: 5px;
+    .radio-button-container {
+        flex-direction: row; /* Cambiar a columna para mejor visualización */
+        align-items: stretch; /* Hacer que los elementos ocupen todo el ancho */
+    }
+
+    .radio-button-wrapper {
+        min-width: auto; /* Permitir que los elementos se ajusten */
+        width: 100%; /* Hacer que los botones de radio ocupen todo el ancho */
     }
 }
 
