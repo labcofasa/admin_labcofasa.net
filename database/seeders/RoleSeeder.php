@@ -142,7 +142,19 @@ class RoleSeeder extends Seeder
             ['name' => 'admin_encuestas_ver', 'descripcion' => 'Ver encuestas'],
             ['name' => 'admin_encuestas_crear', 'descripcion' => 'Crear encuestas'],
             ['name' => 'admin_encuestas_editar', 'descripcion' => 'Editar encuestas'],
-            ['name' => 'admin_encuestas_eliminar', 'descripcion' => 'Eliminar encuestas'],
+            ['name' => 'admin_encuestas_eliminar', 'descripcion' => 'Eliminar encuestas'], 
+            
+            //GiftCard
+            ['name' => 'admin_giftcard_ver', 'descripcion' => 'Ver giftcards'],
+
+            //Facturas
+            ['name' => 'admin_facturas_ver', 'descripcion' => 'Ver Facturas'],
+
+            //Movimientos
+            ['name' => 'admin_movimientos_ver', 'descripcion' => 'Ver Movimientos'],
+
+            //Articulos (Productos Giftcards)
+            ['name' => 'admin_articulos_ver', 'descripcion' => 'Ver Articulos'],
         ];
 
         foreach ($permissions as $permissionData) {

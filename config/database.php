@@ -163,6 +163,21 @@ return [
                 PDO::ATTR_EMULATE_PREPARES => true,
             ],
         ],
+        'DB_CONNECTION_GIFT' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_GIFT', 'localhost'),
+            'port' => env('DB_PORT_GIFT', '1433'),
+            'database' => env('DB_DATABASE_GIFT', 'forge'),
+            'username' => env('DB_USERNAME_GIFT', 'forge'),
+            'password' => env('DB_PASSWORD_GIFT', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'options' => [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ],
+        ],
+
 
 
     ],

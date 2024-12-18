@@ -809,6 +809,25 @@ div.dataTables_processing {
     height: 100% !important;
 }
 
+.tab-background {
+    background-color: var(--bg-sidebar);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    transition: var(--tran-03);
+    border-radius: var(--border-radius);
+}
+
+/* Botón de cierre ("X") en modo claro */
+.modal-header .btn-close {
+    filter: none; /* Modo claro, sin cambios */
+}
+
+/* Botón de cierre ("X") en modo oscuro */
+body.dark .modal-header .btn-close {
+    filter: invert(1); /* Invertir colores para hacer la "X" blanca en modo oscuro */
+}
+
+
 /* Media Querys */
 
 @media screen and (max-width: 575px) {
