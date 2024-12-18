@@ -2,6 +2,18 @@
     background-color: var(--bg-sidebar);
     transition: var(--tran-03);
     box-shadow: var(--box-shadow);
+    overflow-y: auto;
+    position: relative;
+}
+
+.sidebar-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: var(--bg-sidebar);
+    z-index: 500;
 }
 
 .sidebar-desktop .logo-detalles {

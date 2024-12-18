@@ -26,6 +26,7 @@
 
     <body>
         <header class="side-menu">
+            <div class="sidebar-bg"></div>
             <x-sidebar-desktop />
         </header>
         <x-navbar :usuario="$usuario" />
@@ -35,6 +36,7 @@
         </main>
 
         <!-- Scripts -->
+        @stack('scripts')
         <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
     </body>

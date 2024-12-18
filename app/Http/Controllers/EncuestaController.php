@@ -96,9 +96,6 @@ class EncuestaController extends Controller
     public function guardarEncuesta(Request $request)
     {
         try {
-            // Verificar los datos recibidos
-            Log::info('Datos recibidos:', $request->all());
-
             $encuestas = $request->input('encuestas');
 
             foreach ($encuestas as $encuesta) {
@@ -163,7 +160,7 @@ class EncuestaController extends Controller
             'observaciones' => 'nullable|string|max:1000',
             'curso'=> 'nullable|string|max:100',
             'usuarioReg' => 'nullable|string',
-        'FechaReg' => 'nullable|string',
+            'FechaReg' => 'nullable|string',
         ]);   
 
         $codEvaluador = $request->input('CodEvaluador');
@@ -172,17 +169,7 @@ class EncuestaController extends Controller
         $nombreCurso = $request->input('NombreCurso');
         $usuarioReg = $request->input('usuarioReg');
         $fechaReg = $request->input('FechaReg');
-
-        Log::info('Datos recibidos en guardarObservaciones:', [
-            'CodEvaluador' => $codEvaluador,
-            'CodEvaluar' => $codEvaluar,
-            'Observacion' => $observacion,
-            'NombreCurso' => $nombreCurso,
-            'usuarioReg' => $usuarioReg,
-            'FechaReg' => $fechaReg
-        ]);
     
-
         if (empty($observacion) && empty($nombreCurso)) {
             return response()->json(['message' => 'No se guardaron observaciones ni curso, ambos campos están vacíos.'], 400);
         }

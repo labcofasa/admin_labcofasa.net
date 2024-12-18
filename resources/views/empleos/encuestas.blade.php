@@ -8,16 +8,13 @@
 @endpush
 
 @section('contenido')
-    <style>
-
-    </style>
     <div class="container-fluid content">
         <!-- tabla usuario encuesta -->
         <div class="encabezado">
             <h1 class="pb-3">@yield('titulo')</h1>
         </div>
         <div class="table-responsive">
-            <table id="encuestas-table" class="table align-middle+ display" style="width:100%">
+            <table id="encuestas-table" class="table align-middle display" style="width:100%">
                 <thead>
                     {{-- Aquí irán los encabezados de la tabla --}}
                 </thead>
