@@ -292,6 +292,7 @@
                         </a>
                     </li>
                 @endcan
+                @can('admin_giftcard_ver')
                 <li class="pt-1">
                     <div class="menus {{ request()->routeIs('pag.giftcards') ? 'active' : '' }}">
                         <a href="{{ route('pag.giftcards') }}">
@@ -335,6 +336,7 @@
 
                     </ul>
                 </li>
+                @endcan
                 @can('admin_avisos_ver')
                     <li>
                         <a href="{{ route('pag.aviso') }}"
