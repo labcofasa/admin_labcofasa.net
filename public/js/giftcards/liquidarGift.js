@@ -255,9 +255,6 @@ $(document).ready(function() {
             }
         });
 
-        console.log(data);
-    
-
         $.ajax({
             url: '/movimientos/liquidar',
             type: 'POST',
