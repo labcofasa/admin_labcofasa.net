@@ -181,20 +181,12 @@ $(document).ready(function() {
                         selectGiftCard.append('<option selected disabled>Seleccione una Gift Card</option>');
     
                         data.forEach(giftCard => {
-                            if (giftCard.cantidad > 0) {  // Filtrar gift cards con cantidad mayor a 0
-                                const optionText = `Valor: ${giftCard.valor} - Cantidad: ${giftCard.cantidad}`;
-                                selectGiftCard.append(`<option value="${giftCard.idGiftCard}">${optionText}</option>`);
-                            }
+                            const optionText = `Valor: ${giftCard.valor} - Cantidad: ${giftCard.cantidad}`;
+                            selectGiftCard.append(`<option value="${giftCard.idGiftCard}">${optionText}</option>`);
                         });
-    
-                        // Verificar si se agregaron opciones después del filtrado
-                        if (selectGiftCard.children('option').length === 1) { // Solo queda la opción de 'Seleccione una Gift Card'
-                            selectGiftCard.append('<option selected disabled>No hay resultados disponibles</option>');
-                        }
                     } else {
                         selectGiftCard.append('<option selected disabled>No hay resultados</option>');
                     }
-    
                 })
                 .catch(error => {
                     console.error('Error al cargar las Gift Cards:', error);
@@ -202,8 +194,7 @@ $(document).ready(function() {
         } else {
             console.error('No se ha seleccionado un vendedor.');
         }
-    }
-    
+    }  
 
     $('#modalLiquidarGiftCard').on('show.bs.modal', function () {
         cargarGiftCards();
@@ -263,7 +254,6 @@ $(document).ready(function() {
                 data.productos.push(producto);
             }
         });
-    
 
         $.ajax({
             url: '/movimientos/liquidar',

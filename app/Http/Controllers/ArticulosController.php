@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class ArticulosController extends Controller
 {
+    //ARTICULOS PARA GIFTCARDS
     public function index(Request $request)
     {
         $searchTerm = $request->get('search', '');
