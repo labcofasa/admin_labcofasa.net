@@ -217,7 +217,7 @@ class MovimientosController extends Controller
         }
         return response($pdf->Output($nombreArchivo, 'S'))
                 ->header('Content-Type', 'application/pdf')
-                ->header('Content-Disposition', 'attachment; filename="'.$nombreArchivo.'"');
+                ->header('Content-Disposition', 'inline; filename="'.$nombreArchivo.'"');
     }
 
     public function asignarGiftCardsVendedor(Request $request) {
@@ -275,7 +275,14 @@ class MovimientosController extends Controller
                     ->table('Inventario_Vendedor_GiftCards as ivg')
                     ->join('GiftCards as gc', 'ivg.idGiftCard', '=', 'gc.idGift')
                     ->where('ivg.idVendedor', $idVendedor)
-                    ->select('ivg.idInventario', 'ivg.idVendedor', 'gc.valor', 'ivg.idGiftCard' ,'ivg.cantidad')
+                    ->where('ivg.cantidad', '>', 0)
+                    ->select(
+                        'ivg.idGiftCard',
+                        'gc.valor',
+                        DB::raw('SUM(ivg.cantidad) as cantidad'),
+                        DB::raw('MIN(ivg.fechaReg) as fechaReg')
+                    )
+                    ->groupBy('ivg.idGiftCard', 'gc.valor')
                     ->get();
         return response()->json($giftVendedores);
     }
@@ -294,7 +301,9 @@ class MovimientosController extends Controller
             $id = $user->name; 
             $usuario = Adminbd::where('codigoEmp', $id)->first();
             $nombreUsuario = $usuario ? $usuario->usuario : null;
-            $valorMovimiento =  DB::connection('DB_CONNECTION_GIFT')->table('GiftCards')->where('idGift', $request->input('giftCard'))
+            $valorMovimiento =  DB::connection('DB_CONNECTION_GIFT')
+            ->table('GiftCards')
+            ->where('idGift', $request->input('giftCard'))
             ->value('valor');
     
             foreach ($request->input('productos') as $producto) {
@@ -333,14 +342,26 @@ class MovimientosController extends Controller
                 // Registrar el detalle de la liquidación
                 DB::connection('DB_CONNECTION_GIFT')->table('liquidacion_detalles')->insert($detalleData);
             }
-            DB::connection('DB_CONNECTION_GIFT')->table('Inventario_Vendedor_GiftCards')
+            
+            $entradaMasAntigua = DB::connection('DB_CONNECTION_GIFT')->table('Inventario_Vendedor_GiftCards')
             ->where('idVendedor', $request->input('vendedor'))
             ->where('idGiftCard', $request->input('giftCard'))
-            ->update([
-                'cantidad' => DB::raw('cantidad - 1'),
+            ->where('cantidad', '>', 0) // Asegurar que tenga cantidad disponible
+            ->orderBy('fechaReg', 'asc') // Seleccionar la entrada más antigua
+            ->first();
+
+            if (!$entradaMasAntigua) {
+                return response()->json(['error' => 'No hay suficiente inventario para esta Gift Card.'], 400);
+            }
+
+            // Actualizar la cantidad de la entrada más antigua
+            DB::connection('DB_CONNECTION_GIFT')->table('Inventario_Vendedor_GiftCards')
+            ->where('idInventario', $entradaMasAntigua->idInventario)
+            ->decrement('cantidad', 1, [
                 'fechaMod' => now(),
-                'usuarioMod' => $nombreUsuario
+                'usuarioMod' => $nombreUsuario,
             ]);
+            
             return response()->json(['message' => 'Gift Cards liquidadas correctamente'], 201);
         }catch(Exception $e){
             Log::error('Error al liquidar gift card:', ['message' => $e->getMessage()]);
@@ -487,9 +508,6 @@ class MovimientosController extends Controller
 
         ';
         
-
-       
-        
         try {
             $pdf->writeHTML($html, true, false, true, false, '');
         } catch (Exception $e) {
@@ -499,7 +517,7 @@ class MovimientosController extends Controller
 
         return response($pdf->Output($nombreArchivo, 'S'))
         ->header('Content-Type', 'application/pdf')
-        ->header('Content-Disposition', 'attachment; filename="'.$nombreArchivo.'"');
+        ->header('Content-Disposition', 'inline; filename="'.$nombreArchivo.'"');
     }
 
     public function devolucionGift(Request $request){

@@ -310,12 +310,7 @@ $(document).ready(function() {
             },
             success: function(blob) {
                 const url = window.URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', nombreArchivo);
-                document.body.appendChild(link);
-                link.click();
-                link.parentNode.removeChild(link);
+                window.open(url, '_blank');
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('Error al generar el PDF:', textStatus, errorThrown);
@@ -363,12 +358,7 @@ $(document).ready(function() {
             },
             success: function(blob) {
                 const url = window.URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', nombreArchivo);
-                document.body.appendChild(link);
-                link.click();
-                link.parentNode.removeChild(link);
+                window.open(url, '_blank');
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('Error al generar el PDF:', textStatus, errorThrown);
