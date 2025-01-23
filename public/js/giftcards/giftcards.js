@@ -98,8 +98,6 @@ $('#filter').on('input', function() {
     loadGiftCards(filterValue); // Llama a la función para recargar con el filtro
 });
 
-
-
 $('#btnGuardarGift').on('click', function() {
 
     let valor = $('#valor').val();

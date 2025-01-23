@@ -54,6 +54,9 @@
         transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    .table-uppercase td, .table-uppercase th {
+        text-transform: uppercase;
+    }
 
     @media (max-width: 768px) {
         .dataTables_wrapper .dataTables_paginate {
@@ -152,13 +155,13 @@
                 </div>
 
                 <div class="btn-group mb-3" role="group" aria-label="Tipo de movimientos">
-                    <button type="button" class="btn btn-outline-success" data-target="#tablaMovimientos">Asignación</button>
-                    <button type="button" class="btn btn-outline-success" data-target="#tablaLiquidacion">Liquidación</button>
-                    <button type="button" class="btn btn-outline-success" data-target="#tablaDevolucion">Devolución</button>
+                    <button type="button" class="btn btn-outline-success" data-tipo="entrega">Asignación</button>
+                    <button type="button" class="btn btn-outline-success" data-tipo="liquidacion">Liquidación</button>
+                    <button type="button" class="btn btn-outline-success" data-tipo="devolucion">Devolución</button>
                 </div>
 
                 <div class="table-responsive">
-                    <table id="tablaMovimientos" class="table align-middle display" style="width:100%">
+                    <table id="tablaMovimientos" class="table align-middle display table-uppercase" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -174,37 +177,6 @@
                         </tbody>
                     </table>
 
-                    <table id="tablaLiquidacion" class="table align-middle display" style="width:100%; display: none;">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Cargo</th>
-                                <th>Tipo de Movimiento</th>
-                                <th>Fecha del Movimiento</th>
-                                <th>Valor del movimiento</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Datos dinámicos -->
-                        </tbody>
-                    </table>
-    
-                    <table id="tablaDevolucion" class="table align-middle display" style="width:100%; display: none;">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Cargo</th>
-                                <th>Tipo de Movimiento</th>
-                                <th>Fecha del Movimiento</th>
-                                <th>Valor del movimiento</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Datos dinámicos -->
-                        </tbody>
-                    </table>
                 </div>
 
                 

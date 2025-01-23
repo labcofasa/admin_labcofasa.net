@@ -334,6 +334,7 @@ $(document).ready(function() {
                 mostrarToast('Gift cards asignadas correctamente', 'success');
                 $('#modalAgregarGiftCard').modal('hide');
                 $(document).trigger('giftCardsAssigned');
+                tablaMovimientos.ajax.reload();
             },
             error: function(error) {
                 console.error('Error al asignar gift cards:', error);

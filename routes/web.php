@@ -261,13 +261,15 @@ use Illuminate\Support\Facades\Route;
             Route::get('/giftcards/disponibles', [MovimientosController::class, 'disponibles'])->name('giftcards.disponibles');
             Route::get('/facturas/correlativo/{idGiftCard}', [MovimientosController::class, 'getCorrelativoFactura']);
             Route::post('/giftcards/pdf_plantilla_entrega', [MovimientosController::class, 'generarPDFEntrega']);
-            Route::get('/movimientos/Agrupados', [MovimientosController::class, 'getMovimientosAgrupados'])->name('movimientos');
+            Route::get('/movimientos/Agrupados/{tipoMovimiento}', [MovimientosController::class, 'getMovimientos']);
             Route::get('/movimientos/articulos', [MovimientosController::class, 'getArticulos'])->name('movimientos.Articulos');
             Route::get('/movimientos/clientes', [MovimientosController::class, 'getClientes'])->name('movimientos.clientes');
             Route::get('/movimientos/giftcards', [MovimientosController::class, 'getGiftVendedores'])->name('movimientos.giftcards');
             Route::post('/movimientos/liquidar', [MovimientosController::class, 'LiquidarGift'])->name('movimientos.liquidar');
             Route::get('/movimientos/Liquidaciones', [MovimientosController::class, 'getLiquidaciones'])->name('movimientos.liquidaciones');
             Route::post('/giftcards/pdf_plantilla_liquidacion', [MovimientosController::class, 'generarPDFLiquidacion']);
+            Route::post('/vendedores/devolver', [MovimientosController::class, 'devolucionGift'])->name('vendedores.devolucionGift');
+            Route::post('/giftcards/pdf_plantilla_devolucion', [MovimientosController::class, 'generarPDFDevolucion']);
         });
 
         // Articulos GiftCard

@@ -31,7 +31,7 @@ $(document).ready(function() {
                     response.forEach(function(giftCard){
                         if (giftCard.cantidad > 0){
                             $('#giftcard-select-dev').append(
-                                `<option value="${giftCard.idGiftCard}" data-cantidad="${giftCard.cantidad}">
+                                `<option value="${giftCard.idGiftCard}" data-cantidad-D="${giftCard.cantidad}">
                                    $${giftCard.valor} - Disponibles: ${giftCard.cantidad}
                                 </option>`
                             );
@@ -67,5 +67,62 @@ $(document).ready(function() {
             $(this).val(cantidadMaxima);
         }
     });
+
+    $(document).on('click', '#btnGuardarGiftDev', function () {
+        const vendedorId = parseInt($('#idVendedorD').val());
+        const giftCardId = parseInt($('#giftcard-select-dev').val());
+        const cantidad = parseInt($('.cantidad').val());
+        const cantidadDisponible = parseInt($('#giftcard-select-dev option:selected').data('cantidad-d'));
+    
+        // Validaciones
+        if (!vendedorId || !giftCardId) {
+            alert('Por favor, selecciona un vendedor y una Gift Card válida.');
+            return;
+        }
+    
+        if (isNaN(cantidad) || cantidad < 1) {
+            console.log(cantidad); //debug
+            alert('Por favor, ingresa una cantidad válida.');
+            return;
+        }
+    
+        if (cantidad > cantidadDisponible) {
+            alert('La cantidad supera las Gift Cards disponibles.');
+            return;
+        }
+    
+        // Crear el JSON a enviar
+        const dataToSend = {
+            IdVendedor: vendedorId,
+            IdGift: giftCardId,
+            Cantidad: cantidad
+        };
+    
+        console.log(dataToSend); //debug
+        
+        // Enviar datos por AJAX
+        $.ajax({
+            url: '/vendedores/devolver',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(dataToSend),
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                mostrarToast('Gift cards asignadas correctamente', 'success');
+                $('#modalDevolucionGiftCard').modal('hide');
+            },
+            error: function (xhr, status, error) {
+                console.error('Error al devolver gift cards:', error);
+                console.log('Response:', xhr.responseText); // Esto imprime la respuesta completa del servidor
+                console.log('Status:', status); // Esto imprime el estado
+                console.log('XHR Object:', xhr); // Muestra toda la información del objeto XHR
+                mostrarToast('Hubo un error al devolver las gift cards.', 'error');
+            }
+        });
+    });
+    
     
 });

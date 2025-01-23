@@ -270,6 +270,7 @@ $(document).ready(function() {
                 const newRowHTML = getProductRowHTML(1); 
                 $('#productos-container').append(newRowHTML);
                 cargarGiftCards();
+                tablaLiquidacion.ajax.reload();
             },
             error: function(xhr) {
                 mostrarToast('Hubo un error al liquidar la Giftcard.', 'error');
