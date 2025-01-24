@@ -187,6 +187,7 @@
     <x-movimientos.EntregarGift />
     <x-movimientos.LiquidarGift />
     <x-movimientos.DevolverGift />
+    <x-facturas.detalleFactura/>
     <x-notificaciones />
     <x-notificaciones.confirmacion buttonColor="btn-danger" />
 @endsection

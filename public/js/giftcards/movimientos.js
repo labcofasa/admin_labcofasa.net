@@ -131,14 +131,14 @@ $(document).ready(function() {
     // Función para recargar la tabla según el tipo de movimiento
     function cargarDatos(tipo) {
         var url = '/movimientos/Agrupados/'+ tipo;
-        console.log(url); //debug
+        // console.log(url); //debug
         tablaMovimientos.ajax.url(url).load();
     }
 
     // Manejo del clic en los botones
     $('.btn-group button').on('click', function() {
         var tipo = $(this).data('tipo');
-        console.log(tipo); //debug
+        // console.log(tipo); //debug
         cargarDatos(tipo);
     });
 

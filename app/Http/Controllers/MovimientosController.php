@@ -617,7 +617,7 @@ class MovimientosController extends Controller
     
             $movimientos = [];
             foreach ($facturasDisponibles as $factura) {
-                Log::info('Procesando factura:', ['factura' => $factura]);
+                // Log::info('Procesando factura:', ['factura' => $factura]); //debug
             
                 if ($cantidadRestante <= 0) break;
             
@@ -662,10 +662,10 @@ class MovimientosController extends Controller
             // Insertar los movimientos
             Movimientos::insert($movimientos);
     
-            Log::info('Devolución procesada para Gift Card', [
-                'movimientos' => $movimientos,
-                'usuarioReg' => $nombreUsuario,
-            ]);
+            // Log::info('Devolución procesada para Gift Card', [
+            //     'movimientos' => $movimientos,
+            //     'usuarioReg' => $nombreUsuario,
+            // ]); //debug
     
             return response()->json(['message' => 'Gift cards devueltas correctamente']);
         } catch (Exception $e) {
@@ -746,5 +746,15 @@ class MovimientosController extends Controller
         return response($pdf->Output($nombreArchivo, 'S'))
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . $nombreArchivo . '"');
+    }
+
+    public function getInvetarioGeneralGift($idVendedor){
+        $idVendedor = (int) $idVendedor;
+        $inventario = DB::connection('DB_CONNECTION_GIFT')
+        ->table('vInventarioGeneral')
+        ->where('idvendedor', $idVendedor)
+        ->get();
+
+        return response()->json($inventario);
     }
 }

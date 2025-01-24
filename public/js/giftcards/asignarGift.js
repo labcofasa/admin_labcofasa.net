@@ -53,6 +53,7 @@ $(document).ready(function() {
                         <li><a class="dropdown-item btn-asignar" href="#" data-id="${row.idVendedor}" data-nombre="${row.Alias}" data-cargo="${row.Nombre}">Asignar</a></li>
                         <li><a class="dropdown-item btn-liquidar" href="#" data-id="${row.idVendedor}" data-nombre="${row.Alias}" data-cargo="${row.Nombre}">Liquidar</a></li>
                         <li><a class="dropdown-item btn-devolucion" href="#" data-id="${row.idVendedor}" data-nombre="${row.Alias}" data-cargo="${row.Nombre}">Devolución</a></li>
+                        <li><a class="dropdown-item btn-inventario" href="#" data-id="${row.idVendedor}" data-nombre="${row.Alias}" data-cargo="${row.Nombre}">Inventario General</a></li>
                     </ul>
                 </div>
             `;      
@@ -77,6 +78,59 @@ $(document).ready(function() {
     
     let giftcardRowIndex = 0;
     
+    $(document).on('click', '.btn-inventario', function(event) {
+        event.preventDefault();
+        console.log('Boton inv presionado');
+        // Obtén el ID del vendedor desde el botón
+        const idVendedor = parseInt($(this).data('id'));
+        const nombreVendedor = $(this).data('nombre');
+        const cargoVendedor = $(this).data('cargo');
+        console.log(idVendedor);
+        // Limpia la tabla del modal antes de cargar los nuevos datos
+        $('#modalDetalles').empty();
+    
+        // Modifica el título y los campos específicos para inventario
+        $('#detalleFacturaModalLabel').text('Inventario General');
+        $('#ComprobanteLabel').html('<strong>Vendedor:</strong>');
+        $('#FechaLabel').html('<strong>Cargo:</strong>');
+        $('#modalCorrelativo').text(nombreVendedor); // Usado como nombre del vendedor
+        $('#modalFechaCompra').text(cargoVendedor); // Usado como cargo del vendedor
+        $('#modalNRCProveedor').closest('p').hide(); // Oculta el NRC del proveedor
+        $('#modalNombreProveedor').closest('p').hide(); // Oculta el proveedor
+        $('#modalMontoTotal').closest('p').hide(); // Oculta el monto total
+    
+        // Realiza la petición AJAX
+        $.ajax({
+            url: `/vendedores/${idVendedor}/inventario`,
+            method: 'POST',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content') // Token CSRF
+            },
+            success: function(data) {
+                if (data.length > 0) {
+                    // Itera sobre los datos y rellena la tabla
+                    data.forEach(item => {
+                        $('#modalDetalles').append(`
+                            <tr>
+                                <td>*</td>
+                                <td>${item.GiftCard}</td>
+                                <td>${item.Cantidad}</td>
+                            </tr>
+                        `);
+                    });
+                } else {
+                    $('#modalDetalles').append('<tr><td colspan="3">No hay datos disponibles.</td></tr>');
+                }
+            },
+            error: function() {
+                $('#modalDetalles').append('<tr><td colspan="3">Error al cargar los datos.</td></tr>');
+            }
+        });
+    
+        // Muestra el modal
+        $('#detalleFacturaModal').modal('show');
+    });  
+
     $(document).on('click', '.btn-asignar', function() {
         var vendedorId = $(this).data('id');
         var vendedorNombre = $(this).data('nombre');
