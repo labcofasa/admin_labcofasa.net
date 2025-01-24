@@ -81,7 +81,7 @@ $(document).ready(function() {
         }
     
         if (isNaN(cantidad) || cantidad < 1) {
-            console.log(cantidad); //debug
+            // console.log(cantidad); //debug
             alert('Por favor, ingresa una cantidad válida.');
             return;
         }
@@ -98,7 +98,7 @@ $(document).ready(function() {
             Cantidad: cantidad
         };
     
-        console.log(dataToSend); //debug
+        // console.log(dataToSend); //debug
         
         // Enviar datos por AJAX
         $.ajax({

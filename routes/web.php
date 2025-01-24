@@ -270,6 +270,7 @@ use Illuminate\Support\Facades\Route;
             Route::post('/giftcards/pdf_plantilla_liquidacion', [MovimientosController::class, 'generarPDFLiquidacion']);
             Route::post('/vendedores/devolver', [MovimientosController::class, 'devolucionGift'])->name('vendedores.devolucionGift');
             Route::post('/giftcards/pdf_plantilla_devolucion', [MovimientosController::class, 'generarPDFDevolucion']);
+            Route::post('/vendedores/{id}/inventario', [MovimientosController::class, 'getInvetarioGeneralGift'])->name('vendedores.inventario');
         });
 
         // Articulos GiftCard

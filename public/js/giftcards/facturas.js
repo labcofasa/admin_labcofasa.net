@@ -121,13 +121,31 @@ var facturaIdGlobal;
         }
     });
 
+    function formatDate(dateString) {
+        const date = new Date(dateString);  // Convierte la cadena en un objeto Date
+        const day = ("0" + date.getDate()).slice(-2);  // Obtén el día y añade el 0 si es menor de 10
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);  // Obtén el mes (es necesario sumar 1)
+        const year = date.getFullYear();  // Obtén el año
+    
+        return `${day}/${month}/${year}`;  // Retorna la fecha en formato dd/mm/yyyy
+    }
+
     function verDetalleFactura(idFactura) {
         $.ajax({
             url: '/facturas/' + idFactura + '/detalle',
             type: 'GET',
             success: function(response) {
+                // Configuración específica para facturas
+                $('#detalleFacturaModalLabel').text('Detalles de la Factura');
+                $('#ComprobanteLabel').html('<strong>Comprobante:</strong>');
+                $('#FechaLabel').html('<strong>Fecha de Compra:</strong>');
+                $('#modalNRCProveedor').closest('p').show(); // Muestra el NRC
+                $('#modalNombreProveedor').closest('p').show(); // Muestra el proveedor
+                $('#modalMontoTotal').closest('p').show(); // Muestra el monto total
+    
+                // Rellenar los datos del modal
                 $('#modalCorrelativo').text(response.Correlativo);
-                $('#modalFechaCompra').text(response.Fecha_Compra);
+                $('#modalFechaCompra').text(formatDate(response.Fecha_Compra));
                 $('#modalNRCProveedor').text(response.NRC_Proveedor);
                 $('#modalNombreProveedor').text(response.Nombre_Proveedor);
                 $('#modalMontoTotal').text(response.MontoTotal);
@@ -143,6 +161,7 @@ var facturaIdGlobal;
                     `);
                 });
     
+                // Mostrar el modal
                 $('#detalleFacturaModal').modal('show');
             },
             error: function() {

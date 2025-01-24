@@ -7,8 +7,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p><strong>Comprobante:</strong> <span id="modalCorrelativo"></span></p>
-                <p class="mt-2"><strong>Fecha de Compra:</strong> <span id="modalFechaCompra"></span></p>
+                <p id="ComprobanteLabel"><strong>Comprobante:</strong> </p>
+                <span id="modalCorrelativo"></span>
+                <p class="mt-2" id="FechaLabel"><strong>Fecha de Compra:</strong> </p>
+                <span id="modalFechaCompra"></span>
                 <p class="mt-2"><strong>NRC del Proveedor:</strong> <span id="modalNRCProveedor"></span></p>
                 <p class="mt-2"><strong>Proveedor:</strong> <span id="modalNombreProveedor"></span></p>
 
