@@ -9,7 +9,7 @@
                 <form id="form-liquidar-giftcard" method="POST" action="">
                     @csrf
                     <div class="row">
-                        <!-- Columna Izquierda -->
+                        <!-- Primera fila -->
                         <div class="col-md-6">
                             <!-- Cliente input box combined with select -->
                             <div class="mb-3 position-relative">
@@ -18,7 +18,21 @@
                                 <input type="hidden" id="clienteIdHidden" name="cliente_id">
                                 <div id="clientesLiquidarDropdown" class="dropdown-menu" style="display: none; position: absolute; width: 100%;"></div>
                             </div>
-
+                        </div>
+                    
+                        <div class="col-md-6">
+                            <!-- Vendedor -->
+                            <div class="mb-3">
+                                <label for="nombreVendedorLiquidar" class="form-label">Vendedor:</label>
+                                <h6 id="nombreVendedorLiquidar"></h6>
+                                <input type="hidden" id="idVendedorLiquidar" name="idVendedorLiquidar">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <!-- Segunda fila -->
+                        <div class="col-md-4">
                             <!-- Gift Card select -->
                             <div class="mb-3">
                                 <label for="giftCardSelectLiquidar" class="form-label">Gift Card:</label>
@@ -27,17 +41,23 @@
                                 </select>
                             </div>
                         </div>
-
-                        <!-- Columna Derecha -->
-                        <div class="col-md-6">
-                            <!-- Nombre del Vendedor -->
+                    
+                        <div class="col-md-4">
+                            <!-- Cantidad de Giftcards a liquidar -->
                             <div class="mb-3">
-                                <label for="nombreVendedorLiquidar" class="form-label">Vendedor:</label>
-                                <h6 id="nombreVendedorLiquidar"></h6>
-                                <input type="hidden" id="idVendedorLiquidar" name="idVendedorLiquidar">
+                                <label for="cantidadGift" class="form-label">Cantidad de Giftcards a liquidar:</label>
+                                <input type="number" id="cantidadGift" name="cantidadGift" class="form-control" value="1">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <!-- fecha del Movimiento -->
+                            <div class="mb-3">
+                                <label for="fechaMov" class="form-label">Fecha del Movimiento</label>
+                                <input type="date" id="fechaMov" name="fechaMov" class="form-control">
                             </div>
                         </div>
                     </div>
+                    
 
                     <!-- Producto y Cantidad group -->
                     <div id="productos-container">

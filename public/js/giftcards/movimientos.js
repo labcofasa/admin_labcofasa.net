@@ -88,9 +88,13 @@ $(document).ready(function() {
                         nombreCliente: vendedor.nombreCliente,
                         valorTotal: valorTotal.toFixed(2),
                         movimientos: vendedor.movimientos
+                        
                     };
+
                 });
+
             }
+            
         },    
         columns: [
             { data: 'nombreVendedor' },
@@ -125,6 +129,7 @@ $(document).ready(function() {
                 api.columns.adjust().responsive.recalc();
             }, 500); 
         }
+        
     });
     
 

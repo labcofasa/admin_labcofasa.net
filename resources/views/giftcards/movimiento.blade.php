@@ -118,6 +118,9 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="ver-movimientos-tab" data-bs-toggle="tab" href="#ver-movimientos" role="tab" aria-controls="ver-movimientos" aria-selected="false">Ver Movimientos</a>
             </li>
+            {{-- <li class="nav-item" role="presentation">
+                <a class="nav-link" id="ver-reportes-tab" data-bs-toggle="tab" href="#ver-reportes" role="tab" aria-controls="ver-reportes" aria-selected="false">Reportes</a>
+            </li> --}}
         </ul>
 
         <!-- Contenido de las Pestañas -->
@@ -181,6 +184,21 @@
 
                 
             </div>
+            {{-- <!-- Ver reportes-->
+            <div class="tab-pane fade mt-3 tab-background" id="ver-reportes" role="tabpanel" aria-labelledby="ver-reportes-tab">
+                <div class="encabezado d-flex justify-content-between align-items-center mb-3">
+                    <h1>Reportes</h1>
+                </div>
+
+                <div class="login-form">
+                    
+                </div>
+
+                
+            </div> --}}
+
+            
+
             
         </div>
     </div>

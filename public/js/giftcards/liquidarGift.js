@@ -41,6 +41,9 @@ $(document).ready(function() {
         const newRowHTML = getProductRowHTML(productCount);
         
         container.insertAdjacentHTML('beforeend', newRowHTML);
+
+        $('#cantidadGift').val(1);
+        $('#fechaMov').val('');
     });
 
     function getProductRowHTML(count) {
@@ -238,6 +241,8 @@ $(document).ready(function() {
             cliente: parseInt($('#clienteIdHidden').val(), 10),
             vendedor: parseInt($('#idVendedorLiquidar').val(), 10),
             giftCard: parseInt($('#giftCardSelectLiquidar').val(), 10),
+            cantidadGiftcard: parseInt($('#cantidadGift').val(), 10),
+            fechaMovimiento: $('#fechaMov').val(),
             productos: []
         };
     
