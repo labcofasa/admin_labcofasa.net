@@ -10,7 +10,7 @@ use App\Models\Movimientos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Exception;
-
+use Carbon\Carbon;
 class MovimientosController extends Controller
 {
     public function index()
@@ -125,8 +125,7 @@ class MovimientosController extends Controller
         return response()->json($resultado);
     }    
 
-    public function getArticulos(Request $request)
-    {
+    public function getArticulos(Request $request){
         try {
             $search = $request->query('search', '');
             
@@ -149,8 +148,7 @@ class MovimientosController extends Controller
         }
     }
 
-    public function getVendedores()
-    {
+    public function getVendedores(){
         $vendedores = DB::connection('DB_CONNECTION_GIFT')
                         ->table('vVendedoresFiltrados')
                         ->select('Alias', 'Nombre', 'idVendedor')
@@ -159,8 +157,7 @@ class MovimientosController extends Controller
         return response()->json($vendedores);
     }
 
-    public function disponibles()
-    {
+    public function disponibles(){
         $giftcards = DB::connection('DB_CONNECTION_GIFT')
                         ->table('GiftCards as gc')
                         ->join('GiftCard_Factura_Saldo as saldo', 'gc.idGift', '=', 'saldo.idGiftCard')
@@ -174,8 +171,7 @@ class MovimientosController extends Controller
         return response()->json(['giftcards' => $giftcards]);
     }
 
-    public function getCorrelativoFactura($idGiftCard, Request $request)
-    {
+    public function getCorrelativoFactura($idGiftCard, Request $request) {
         $cantidadSolicitada = $request->query('cantidadSolicitada');
         $facturas = DB::connection('DB_CONNECTION_GIFT')
                       ->table('GiftCard_Factura_Saldo as saldo')
@@ -225,8 +221,7 @@ class MovimientosController extends Controller
         }
     }
     
-    public function generarPDFEntrega(Request $request)
-    {
+    public function generarPDFEntrega(Request $request){
         // Obtener los datos enviados desde el frontend
         $data = $request->input('data');
 
@@ -408,9 +403,9 @@ class MovimientosController extends Controller
                     'idVendedor' => $request->input('vendedor'),
                     'idCliente' => $request->input('cliente', null),
                     'idArticulo' => $producto['idArticulo'],
-                    'cantidad' => 1,
+                    'cantidad' => $request->input('cantidadGiftcard'),
                     'valorMovimiento' => $valorMovimiento,
-                    'fechaMovimiento' => now(),
+                    'fechaMovimiento' => $request->input('fechaMovimiento'),
                     'usuarioReg' => $nombreUsuario,
                     'fechaReg' => now(),
                     'eliminado' => 0,
@@ -448,10 +443,11 @@ class MovimientosController extends Controller
                 return response()->json(['error' => 'No hay suficiente inventario para esta Gift Card.'], 400);
             }
             
+            $cantGift= $request->input('cantidadGiftcard');
             // Actualizar la cantidad de la entrada más antigua
             DB::connection('DB_CONNECTION_GIFT')->table('Inventario_Vendedor_GiftCards')
             ->where('idInventario', $entradaMasAntigua->idInventario)
-            ->decrement('cantidad', 1, [
+            ->decrement('cantidad', $cantGift, [
                 'fechaMod' => now(),
                 'usuarioMod' => $nombreUsuario,
             ]);
@@ -487,7 +483,17 @@ class MovimientosController extends Controller
         $movimientos = $data['movimientos'] ?? [];
         $fechaFormateada = date('dmy', strtotime($fechaMovimiento)); 
         $totalUnidades = 0;
+        $cantidadGift =0;
         // Log::debug('Data recibida:', $data);
+
+        //seccion de la cantidad de giftcards
+
+        foreach ($movimientos as $mov) {
+            $cantidadGift = $mov['cantidad'];
+
+        }
+        $fechaHoraActual = Carbon::now()->format('d/m/Y H:i:s');
+
 
         $valorMovimientoFormateado = number_format($valorMovimiento, 2, '.', ',');
 
@@ -500,7 +506,7 @@ class MovimientosController extends Controller
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('José Ricardo Mejía Gámez');
         $pdf->SetTitle('Liquidacion PDF');
-        $pdf->SetHeaderData('', 0, 'Compañía Farmaceutica S.A de C.V');
+        $pdf->SetHeaderData('', 0, 'Compañía Farmaceutica S.A de C.V                                                                                                  #' . $idAgrupacion);
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -514,8 +520,26 @@ class MovimientosController extends Controller
         // Agregar contenido HTML al PDF
         $html = '
             <br>
-            <h2 style="text-align: center; ">Control de paquetes patrocinios</h2>
-            <h3 style="text-align: center; margin-top: 10px;"><strong>Gift Card a Liquidar</strong> $' . $valorMovimientoFormateado . '</h3>
+
+           <table border="0" cellpadding="4" cellspacing="0" width="100%">
+                    <tr>
+                        <td width="100%" style="text-align: right;">
+                            ' . $fechaHoraActual . '
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="100%" style="text-align: center;">
+                            <h2>Control de paquetes patrocinios </h2>
+                        </td>
+                    </tr>
+            </table>
+            <table border="0" cellpadding="4" cellspacing="0" width="100%">
+                <tr>
+                    <td width="50%"><h3 style="margin: 0;"><strong>Gift Card a Liquidar</strong> $' . $valorMovimientoFormateado . '</h3></td>
+                    <td width="50%"><h3 style="margin: 0;"><strong>Cantidad Giftcards: </strong>' . $cantidadGift . '</h3></td>
+                </tr>
+            </table>
+
             <table border="0" cellpadding="4" cellspacing="0" width="100%">
                 <tr>
                     <td width="50%"><strong>Nombre de Cliente:</strong><br> ' . $nombreCliente . '</td>
